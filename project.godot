@@ -19,6 +19,10 @@ config/name="Climactivity-app"
 run/main_scene="res://MainScreen.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+GameManager="*res://GameManager.gd"
+
 [display]
 
 window/size/width=1080
@@ -32,6 +36,19 @@ window/stretch/aspect="keep"
 [editor_plugins]
 
 enabled=PoolStringArray( "tile_object" )
+
+[input]
+
+"Zoom In"={
+"deadzone": 0.5,
+"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":4,"pressed":false,"doubleclick":false,"script":null)
+ ]
+}
+"Zoom Out"={
+"deadzone": 0.5,
+"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":5,"pressed":false,"doubleclick":false,"script":null)
+ ]
+}
 
 [input_devices]
 

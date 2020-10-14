@@ -6,9 +6,6 @@ extends CanvasLayer
 # var b = "text"
 
 
-func _ready():
-	pass
-	#self.vi
 
 func move(offset: Vector2) -> void: 
 	print("Move by ", offset)
