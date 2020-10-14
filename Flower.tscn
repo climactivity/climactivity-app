@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Assets/Foliage_Retina/foliagePack_001.png" type="Texture" id=1]
+[ext_resource path="res://addons/tile_object/tile_object.gd" type="Script" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 51.9658, 64.3155 )
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 21.1489
+
+[node name="TilePlaceableObject" type="Node2D"]
+script = ExtResource( 2 )
+tile_size = Vector2( 0, 0 )
+tile_offset = Vector2( 60, 80 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="PickArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickArea"]
+shape = SubResource( 1 )
+
+[node name="PlaceArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlaceArea"]
+position = Vector2( 0, 48.2658 )
+shape = SubResource( 2 )

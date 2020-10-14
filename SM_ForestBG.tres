@@ -1,0 +1,13 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=2]
+
+[ext_resource path="res://Vertical_Gradient.shader" type="Shader" id=1]
+
+[sub_resource type="Gradient" id=1]
+colors = PoolColorArray( 0.544519, 0.851563, 0.389191, 1, 0.347214, 0.722656, 0.441074, 1 )
+
+[sub_resource type="GradientTexture" id=2]
+gradient = SubResource( 1 )
+
+[resource]
+shader = ExtResource( 1 )
+shader_param/gradient = SubResource( 2 )
