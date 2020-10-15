@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://addons/tile_object/tile_object.gd" type="Script" id=1]
-[ext_resource path="res://Assets/Foliage_Retina/foliagePack_001.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Foliage_Retina/foliagePack_043.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 51.9658, 64.3155 )
@@ -14,20 +14,35 @@ script = ExtResource( 1 )
 tile_size = Vector2( 0, 0 )
 tile_offset = Vector2( 60, 80 )
 
+[node name="Control" type="Control" parent="."]
+margin_left = -38.0
+margin_top = -257.0
+margin_right = 38.0
+margin_bottom = -175.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Sprite" type="Sprite" parent="."]
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 2 )
-offset = Vector2( 0, 45.919 )
+offset = Vector2( 0, -144.425 )
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="PickArea" type="Area2D" parent="."]
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PickArea"]
 shape = SubResource( 1 )
 
 [node name="PlaceArea" type="Area2D" parent="."]
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlaceArea"]
 position = Vector2( 0, 48.2658 )
