@@ -16,7 +16,7 @@ export(Vector2) var tile_dimensions = Vector2(1,1) setget set_tile_dimensions
 export(Vector2) var tile_offset = Vector2.ZERO setget set_tile_offset
 
 export(Vector2) var tile_pos = Vector2(0,0) setget set_tile_pos
-
+export var fixed = false
 
 #func _ready():
 #	if get_parent() is TileMap:
@@ -25,11 +25,12 @@ export(Vector2) var tile_pos = Vector2(0,0) setget set_tile_pos
 #	set_tile_pos(Vector2(round(tile.x), round(tile.y)))
 
 func _ready():
+	
 	if get_parent() is TileMap:
 		var parent: TileMap = get_parent()
 		set_tile_size(parent.cell_size)
 		print(parent.world_to_map(position))
-		set_tile_pos(parent.world_to_map(position + tile_offset))
+		#set_tile_pos(parent.world_to_map(position + tile_offset))
 
 	_update_position()
 
@@ -60,6 +61,8 @@ func set_tile_dimensions(value: Vector2) -> void:
 		update()
 
 func set_tile_pos(value: Vector2) -> void:
+	if fixed: 
+		return
 	tile_pos = value 
 	_update_position()
 	if Engine.editor_hint:

@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://UI/Cloud.gd" type="Script" id=1]
+[ext_resource path="res://Interactables/Cloud.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Icons/cloud-test.png" type="Texture" id=2]
 [ext_resource path="res://Drop_Shadow.shader" type="Shader" id=3]
 
@@ -14,7 +14,9 @@ shader_param/shadow_color = Color( 0, 0, 0, 0.529412 )
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 671.488, 391.159 )
 
-[node name="Cloud" type="Sprite"]
+[node name="Cloud" type="Sprite" groups=[
+"cloud",
+]]
 material = SubResource( 1 )
 scale = Vector2( 0.186885, 0.186885 )
 texture = ExtResource( 2 )

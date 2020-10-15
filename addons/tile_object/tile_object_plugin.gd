@@ -24,6 +24,6 @@ func forward_canvas_gui_input(event):
 			assert(_current.get_parent() is TileMap)
 			
 			var origin_tile = _current.get_parent().world_to_map(_current.position) # _current.position / _current.tile_size
-			_current.tile_pos = Vector2(round(origin_tile.x), round(origin_tile.y))
+			_current.set_tile_pos(Vector2(round(origin_tile.x), round(origin_tile.y)))
 			_current.update()
 			print(_current.tile_pos)

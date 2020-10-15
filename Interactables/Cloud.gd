@@ -3,6 +3,8 @@ extends Sprite
 var pressed = false 
 var idle = true
 var start_position = Vector2.ZERO 
+export var return_force = 0.5
+export var snap_back = true
 signal cloudMoving(isSelected)
 
 
@@ -16,8 +18,8 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if (idle):
-		position = lerp(position, start_position, delta)
+	if (idle and snap_back):
+		position = lerp(position, start_position, delta * return_force)
 	idle = true
 
 func _on_Area2D_input_event(viewport, event, shape_idx):

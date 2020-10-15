@@ -4,8 +4,9 @@
 [ext_resource path="res://Vertical_Gradient.shader" type="Shader" id=2]
 [ext_resource path="res://SM_ForestBG.tres" type="Material" id=3]
 [ext_resource path="res://Assets/Icons/cloud-test.png" type="Texture" id=4]
-[ext_resource path="res://UI/Cloud.gd" type="Script" id=5]
+[ext_resource path="res://Interactables/Cloud.gd" type="Script" id=5]
 [ext_resource path="res://ForestCanvas.gd" type="Script" id=6]
+
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item; 

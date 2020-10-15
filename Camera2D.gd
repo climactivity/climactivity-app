@@ -3,7 +3,7 @@ extends Camera2D
 var pressed
 var cloud_moving 
 var zoom_step = 1.1
-
+onready var cursor = $Cursor
 
 func _ready():
 	if (is_instance_valid(GameManager.cloud)): 
@@ -44,6 +44,8 @@ func _unhandled_input(event):
 	if event is InputEventMouseButton:
 		if event.button_index == BUTTON_LEFT:
 			pressed = event.pressed
+			cursor.position =  event.global_position
+			cursor.monitoring = event.pressed 
 
 		if(event.is_action_pressed("Zoom In")): 
 				print("Zoom In")
@@ -53,3 +55,7 @@ func _unhandled_input(event):
 	if event is InputEventMouseMotion:
 		if pressed && !cloud_moving:
 			move(-event.relative)
+
+
+func _on_Cursor_area_entered(area):
+	print(area.name)
