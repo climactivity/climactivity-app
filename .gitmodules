@@ -1,0 +1,3 @@
+[submodule "addons/Radial-progress-bar"]
+	path = addons/Radial-progress-bar
+	url = https://github.com/vovinhd/Radial-progress-bar
