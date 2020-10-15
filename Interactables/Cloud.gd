@@ -20,15 +20,15 @@ func _ready():
 func _process(delta):
 	if (idle and snap_back):
 		position = lerp(position, start_position, delta * return_force)
-	idle = true
+
 
 func _on_Area2D_input_event(viewport, event, shape_idx):
 	get_tree().set_input_as_handled()
-	idle = false
+
 	if event is InputEventMouseButton:
 		print("Mouse Click/Unclick at: ", event.position, " Hi from Cloud")
 		pressed = event.pressed
-		
+		idle = !event.pressed
 		emit_signal("cloudMoving", pressed)
 
 	if event is InputEventMouseMotion:

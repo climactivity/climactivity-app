@@ -50,7 +50,6 @@ layer = 3
 
 [node name="Cloud" parent="SceneMountPoint/Forest_Scene/Interactables" instance=ExtResource( 4 )]
 position = Vector2( 912.755, 106.356 )
-snap_back = false
 
 [node name="ForestCanvas" parent="SceneMountPoint/Forest_Scene" instance=ExtResource( 2 )]
 
