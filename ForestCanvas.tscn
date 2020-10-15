@@ -3,9 +3,10 @@
 [ext_resource path="res://ForestCanvas.gd" type="Script" id=1]
 [ext_resource path="res://Camera2D.gd" type="Script" id=2]
 [ext_resource path="res://ForestMap.gd" type="Script" id=3]
-[ext_resource path="res://Flower.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Zelt.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Placeables/Flower.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Placeables/Zelt.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Assets/hexagonTerrain_sheet.png" type="Texture" id=6]
+
 
 [sub_resource type="ConvexPolygonShape2D" id=6]
 points = PoolVector2Array( 0.160614, 35.3163, 60.1631, 0, 120, 35.3163, 119.887, 105.366, 60.1631, 139.972, 0, 104.808 )

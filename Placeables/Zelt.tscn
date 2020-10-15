@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://Assets/zelt_ld.svg" type="Texture" id=1]
-[ext_resource path="res://addons/tile_object/tile_object.gd" type="Script" id=2]
+[ext_resource path="res://addons/tile_object/tile_object.gd" type="Script" id=1]
+[ext_resource path="res://Assets/zelt_ld.svg" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 51.9658, 64.3155 )
@@ -10,13 +10,13 @@ extents = Vector2( 51.9658, 64.3155 )
 radius = 21.1489
 
 [node name="Zelt" type="Node2D"]
-script = ExtResource( 2 )
+script = ExtResource( 1 )
 tile_size = Vector2( 0, 0 )
 tile_offset = Vector2( 60, 55 )
 
 [node name="Sprite" type="Sprite" parent="."]
 modulate = Color( 1, 0.529412, 0.529412, 1 )
-texture = ExtResource( 1 )
+texture = ExtResource( 2 )
 __meta__ = {
 "_edit_group_": true
 }

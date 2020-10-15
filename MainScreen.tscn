@@ -1,17 +1,13 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Vertical_Gradient.shader" type="Shader" id=1]
 [ext_resource path="res://ForestCanvas.tscn" type="PackedScene" id=2]
 [ext_resource path="res://SM_ForestBG.tres" type="Material" id=3]
-[ext_resource path="res://Assets/Icons/chart-line-solid.svg" type="Texture" id=4]
-[ext_resource path="res://Assets/Icons/bell-solid.svg" type="Texture" id=5]
-[ext_resource path="res://Assets/Icons/project-diagram-solid.svg" type="Texture" id=6]
-[ext_resource path="res://Assets/Icons/tree-solid.svg" type="Texture" id=7]
-[ext_resource path="res://Assets/Icons/user-solid.svg" type="Texture" id=8]
+[ext_resource path="res://UI/MainMenu.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Assets/Icons/cloud-test.png" type="Texture" id=9]
-[ext_resource path="res://Cloud.gd" type="Script" id=10]
+[ext_resource path="res://UI/Cloud.gd" type="Script" id=10]
 
-[sub_resource type="Shader" id=8]
+[sub_resource type="Shader" id=1]
 code = "shader_type canvas_item; 
 
 uniform float strength = 2.0; 
@@ -47,43 +43,31 @@ void fragment() {
 	COLOR = mix(color, shadow_color, max_alpha - min_alpha);
 }"
 
-[sub_resource type="ShaderMaterial" id=9]
-shader = SubResource( 8 )
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
 shader_param/strength = 100.0
 shader_param/shadow_color = Color( 0, 0, 0, 1 )
 shader_param/shadow_offset = Vector2( 0, 0 )
 
-[sub_resource type="RectangleShape2D" id=10]
+[sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 671.488, 391.159 )
 
-[sub_resource type="StyleBoxFlat" id=11]
-bg_color = Color( 1, 1, 1, 1 )
-corner_radius_top_left = 40
-corner_radius_top_right = 40
-corner_radius_bottom_right = 40
-corner_radius_bottom_left = 40
-shadow_color = Color( 0, 0, 0, 0.168627 )
-shadow_size = 10
-shadow_offset = Vector2( 0, 5 )
-
-[sub_resource type="StyleBoxEmpty" id=12]
-
-[sub_resource type="Gradient" id=13]
+[sub_resource type="Gradient" id=6]
 colors = PoolColorArray( 0.222656, 0.562744, 1, 1, 0.737, 0.898438, 0.883303, 1 )
 
-[sub_resource type="GradientTexture" id=14]
-gradient = SubResource( 13 )
+[sub_resource type="GradientTexture" id=7]
+gradient = SubResource( 6 )
 
-[sub_resource type="ShaderMaterial" id=15]
+[sub_resource type="ShaderMaterial" id=8]
 shader = ExtResource( 1 )
-shader_param/gradient = SubResource( 14 )
+shader_param/gradient = SubResource( 7 )
 
-[sub_resource type="Gradient" id=16]
+[sub_resource type="Gradient" id=9]
 offsets = PoolRealArray( 0, 0.651613, 1 )
 colors = PoolColorArray( 0.162735, 0.514452, 0.925781, 1, 0.378803, 0.639754, 0.944934, 1, 1, 1, 1, 1 )
 
-[sub_resource type="GradientTexture" id=17]
-gradient = SubResource( 16 )
+[sub_resource type="GradientTexture" id=10]
+gradient = SubResource( 9 )
 width = 40
 
 [node name="MainScreen" type="Control"]
@@ -101,203 +85,64 @@ __meta__ = {
 [node name="UICanvas" type="CanvasLayer" parent="."]
 layer = 3
 
-[node name="Cloud" type="Sprite" parent="UICanvas"]
-material = SubResource( 9 )
+[node name="MainMenu" parent="UICanvas" instance=ExtResource( 4 )]
+
+[node name="SceneMountPoint" type="Node" parent="."]
+
+[node name="Forest_Scene" type="Control" parent="SceneMountPoint"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Interactables" type="CanvasLayer" parent="SceneMountPoint/Forest_Scene"]
+layer = 3
+
+[node name="Cloud" type="Sprite" parent="SceneMountPoint/Forest_Scene/Interactables"]
+material = SubResource( 2 )
 position = Vector2( 904.417, 101.594 )
 scale = Vector2( 0.186885, 0.186885 )
 texture = ExtResource( 9 )
 script = ExtResource( 10 )
 
-[node name="Area2D" type="Area2D" parent="UICanvas/Cloud"]
+[node name="Area2D" type="Area2D" parent="SceneMountPoint/Forest_Scene/Interactables/Cloud"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="UICanvas/Cloud/Area2D"]
-shape = SubResource( 10 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SceneMountPoint/Forest_Scene/Interactables/Cloud/Area2D"]
+shape = SubResource( 3 )
 
-[node name="MainMenu" type="Control" parent="UICanvas"]
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_top = -300.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="ForestCanvas" parent="SceneMountPoint/Forest_Scene" instance=ExtResource( 2 )]
 
-[node name="MarginContainer" type="MarginContainer" parent="UICanvas/MainMenu"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 10.0
-margin_top = 85.0
-margin_right = -10.0
-margin_bottom = -10.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="PanelContainer" type="PanelContainer" parent="UICanvas/MainMenu/MarginContainer"]
-margin_left = 255.0
-margin_top = 37.0
-margin_right = 805.0
-margin_bottom = 167.0
-size_flags_horizontal = 4
-size_flags_vertical = 4
-custom_styles/panel = SubResource( 11 )
-
-[node name="MarginContainer" type="MarginContainer" parent="UICanvas/MainMenu/MarginContainer/PanelContainer"]
-margin_right = 550.0
-margin_bottom = 130.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_constants/margin_right = 40
-custom_constants/margin_top = 40
-custom_constants/margin_left = 40
-custom_constants/margin_bottom = 40
-
-[node name="HBoxContainer" type="HBoxContainer" parent="UICanvas/MainMenu/MarginContainer/PanelContainer/MarginContainer"]
-margin_left = 40.0
-margin_top = 40.0
-margin_right = 510.0
-margin_bottom = 90.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="VSeparator" type="VSeparator" parent="UICanvas/MainMenu/MarginContainer/PanelContainer/MarginContainer/HBoxContainer"]
-margin_bottom = 3.0
-size_flags_horizontal = 0
-size_flags_vertical = 0
-custom_styles/separator = SubResource( 12 )
-custom_constants/separation = -1361
-
-[node name="TextureButton" type="TextureButton" parent="UICanvas/MainMenu/MarginContainer/PanelContainer/MarginContainer/HBoxContainer"]
-margin_left = 4.0
-margin_right = 54.0
-margin_bottom = 50.0
-grow_horizontal = 2
-grow_vertical = 2
-rect_min_size = Vector2( 50, 50 )
-size_flags_horizontal = 5
-size_flags_vertical = 4
-texture_normal = ExtResource( 7 )
-expand = true
-stretch_mode = 5
-
-[node name="VSeparator2" type="VSeparator" parent="UICanvas/MainMenu/MarginContainer/PanelContainer/MarginContainer/HBoxContainer"]
-margin_left = 58.0
-margin_right = 103.0
-margin_bottom = 50.0
-custom_styles/separator = SubResource( 12 )
-custom_constants/separation = 45
-
-[node name="TextureButton2" type="TextureButton" parent="UICanvas/MainMenu/MarginContainer/PanelContainer/MarginContainer/HBoxContainer"]
-margin_left = 107.0
-margin_right = 157.0
-margin_bottom = 50.0
-grow_horizontal = 2
-grow_vertical = 2
-rect_min_size = Vector2( 50, 50 )
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture_normal = ExtResource( 5 )
-expand = true
-
-[node name="VSeparator3" type="VSeparator" parent="UICanvas/MainMenu/MarginContainer/PanelContainer/MarginContainer/HBoxContainer"]
-margin_left = 161.0
-margin_right = 206.0
-margin_bottom = 50.0
-custom_styles/separator = SubResource( 12 )
-custom_constants/separation = 45
-
-[node name="TextureButton3" type="TextureButton" parent="UICanvas/MainMenu/MarginContainer/PanelContainer/MarginContainer/HBoxContainer"]
-margin_left = 210.0
-margin_right = 260.0
-margin_bottom = 50.0
-grow_horizontal = 2
-grow_vertical = 2
-rect_min_size = Vector2( 50, 50 )
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture_normal = ExtResource( 4 )
-expand = true
-
-[node name="VSeparator4" type="VSeparator" parent="UICanvas/MainMenu/MarginContainer/PanelContainer/MarginContainer/HBoxContainer"]
-margin_left = 264.0
-margin_right = 309.0
-margin_bottom = 50.0
-custom_styles/separator = SubResource( 12 )
-custom_constants/separation = 45
-
-[node name="TextureButton4" type="TextureButton" parent="UICanvas/MainMenu/MarginContainer/PanelContainer/MarginContainer/HBoxContainer"]
-margin_left = 313.0
-margin_right = 363.0
-margin_bottom = 50.0
-grow_horizontal = 2
-grow_vertical = 2
-rect_min_size = Vector2( 50, 50 )
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture_normal = ExtResource( 6 )
-expand = true
-
-[node name="VSeparator5" type="VSeparator" parent="UICanvas/MainMenu/MarginContainer/PanelContainer/MarginContainer/HBoxContainer"]
-margin_left = 367.0
-margin_right = 412.0
-margin_bottom = 50.0
-custom_styles/separator = SubResource( 12 )
-custom_constants/separation = 45
-
-[node name="TextureButton5" type="TextureButton" parent="UICanvas/MainMenu/MarginContainer/PanelContainer/MarginContainer/HBoxContainer"]
-margin_left = 416.0
-margin_right = 466.0
-margin_bottom = 50.0
-grow_horizontal = 2
-grow_vertical = 2
-rect_min_size = Vector2( 50, 50 )
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture_normal = ExtResource( 8 )
-expand = true
-
-[node name="VSeparator6" type="VSeparator" parent="UICanvas/MainMenu/MarginContainer/PanelContainer/MarginContainer/HBoxContainer"]
-margin_left = 470.0
-margin_right = 470.0
-margin_bottom = 3.0
-size_flags_horizontal = 0
-size_flags_vertical = 0
-custom_styles/separator = SubResource( 12 )
-custom_constants/separation = -1361
-
-[node name="SkyCanvas" type="CanvasLayer" parent="."]
+[node name="SkyCanvas" type="CanvasLayer" parent="SceneMountPoint/Forest_Scene"]
 layer = 2
 
-[node name="Sky_BG" type="TextureRect" parent="SkyCanvas"]
-material = SubResource( 15 )
+[node name="Sky_BG" type="TextureRect" parent="SceneMountPoint/Forest_Scene/SkyCanvas"]
+material = SubResource( 8 )
 margin_right = 1080.0
 margin_bottom = 350.0
 mouse_filter = 2
-texture = SubResource( 17 )
+texture = SubResource( 10 )
 expand = true
 __meta__ = {
 "_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
-[node name="ForestCanvas" parent="." instance=ExtResource( 2 )]
-
-[node name="BackgroundCanvas" type="CanvasLayer" parent="."]
+[node name="BackgroundCanvas" type="CanvasLayer" parent="SceneMountPoint/Forest_Scene"]
 layer = 0
 
-[node name="BG" type="TextureRect" parent="BackgroundCanvas"]
+[node name="BG" type="TextureRect" parent="SceneMountPoint/Forest_Scene/BackgroundCanvas"]
 material = ExtResource( 3 )
 margin_left = 5.41418
 margin_top = 333.414
 margin_right = 1085.41
 margin_bottom = 1925.41
 mouse_filter = 2
-texture = SubResource( 17 )
+texture = SubResource( 10 )
 expand = true
 __meta__ = {
 "_edit_lock_": true,
 "_edit_use_anchors_": false
 }
-[connection signal="input_event" from="UICanvas/Cloud/Area2D" to="UICanvas/Cloud" method="_on_Area2D_input_event"]
+[connection signal="input_event" from="SceneMountPoint/Forest_Scene/Interactables/Cloud/Area2D" to="SceneMountPoint/Forest_Scene/Interactables/Cloud" method="_on_Area2D_input_event"]

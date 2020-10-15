@@ -22,6 +22,7 @@ config/icon="res://icon.png"
 [autoload]
 
 GameManager="*res://GameManager.gd"
+Transition="*res://UI/Transition.tscn"
 
 [display]
 
