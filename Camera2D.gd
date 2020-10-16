@@ -3,9 +3,13 @@ extends Camera2D
 var pressed
 var cloud_moving 
 var zoom_step = 1.1
-onready var cursor = $Cursor
+var initial_offset = Vector2.ZERO
+export(NodePath) var cursor_path
+var cursor
 
 func _ready():
+	initial_offset = offset
+	cursor = get_parent().get_child(0)
 	if (is_instance_valid(GameManager.cloud)): 
 		GameManager.cloud.connect("cloudMoving", self, "_cloud_moving")
 
@@ -13,7 +17,6 @@ func _cloud_moving(is_moving):
 	cloud_moving = is_moving
 
 func move(offset: Vector2) -> void: 
-	print("Move by ", offset)
 	self.offset += offset * zoom.x
 
 func zoom_at_point(zoom_change, point):
@@ -25,14 +28,12 @@ func zoom_at_point(zoom_change, point):
 
 	c1 = c0 + (-0.5*v0 + point)*(z0 - z1)
 	zoom = z1
-	global_position = c1
+	offset += c1
 
 func _on_TileMap_move_view(offset):
 	move(offset)
 
-
 func _unhandled_input(event):
-	
 	if event is InputEventMouse:
 		if event.is_pressed():
 			var mouse_position = event.position
@@ -44,18 +45,22 @@ func _unhandled_input(event):
 	if event is InputEventMouseButton:
 		if event.button_index == BUTTON_LEFT:
 			pressed = event.pressed
-			cursor.position =  event.global_position
+			var viewport_size = get_viewport_rect().size
+
+			print(viewport_size, offset)
+			var cursor_pos =  event.position 
+			print(cursor_pos)
+			cursor_pos = cursor_pos * zoom + (viewport_size / 2.0) * (1.0 - zoom.x) # apply zoom  
+			print(cursor_pos)
+			cursor_pos = cursor_pos + offset - initial_offset # reset from initial offset
+			print(cursor_pos)
+			#print("Cursor: ",cursor_pos, ", Global Mouse; ", get_global_mouse_position(), ", Local Mouse:", get_local_mouse_position(),  ", VP Mouse:", get_viewport().get_mouse_position(), ", event.position: ", event.position, ", event.global_position: ", event.global_position)
+			cursor.position =  cursor_pos
 			cursor.monitoring = event.pressed 
-
-		if(event.is_action_pressed("Zoom In")): 
-				print("Zoom In")
-		if(event.is_action_pressed("Zoom Out")): 
-				print("Zoom Out")
-
+			cursor.monitorable = event.pressed 
 	if event is InputEventMouseMotion:
 		if pressed && !cloud_moving:
 			move(-event.relative)
 
-
 func _on_Cursor_area_entered(area):
-	print(area.name)
+	print( area.get_parent() if is_instance_valid(area.get_parent()) else area.name)

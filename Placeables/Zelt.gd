@@ -13,3 +13,11 @@ func _on_PickArea_input_event(viewport, event, shape_idx):
 		print(event.as_text())
 		if event.button_index == BUTTON_LEFT:
 			_move_to_sector()
+
+func _on_select():
+	_move_to_sector()
+
+func _on_PickArea_area_entered(area):
+	if(area.name == "Cursor"): 
+		print("_on_select ",get_parent().name) 
+		_on_select()

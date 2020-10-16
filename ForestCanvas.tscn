@@ -54,19 +54,21 @@ points = PoolVector2Array( 0.160614, 35.3163, 60.1631, 0, 120, 35.3163, 119.887,
 follow_viewport_enable = true
 script = ExtResource( 1 )
 
+[node name="Cursor" type="Area2D" parent="." groups=[
+"cursor",
+]]
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cursor"]
+shape = SubResource( 3 )
+
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2( 540, 960 )
 current = true
 smoothing_enabled = true
 editor_draw_limits = true
 script = ExtResource( 2 )
-
-[node name="Cursor" type="Area2D" parent="Camera2D"]
-monitoring = false
-monitorable = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/Cursor"]
-shape = SubResource( 3 )
 
 [node name="Forest" type="Node2D" parent="."]
 position = Vector2( 360.962, 742.06 )
@@ -186,4 +188,4 @@ fixed = true
 position = Vector2( -120, 208 )
 tile_pos = Vector2( -1, 2 )
 fixed = true
-[connection signal="area_entered" from="Camera2D/Cursor" to="Camera2D" method="_on_Cursor_area_entered"]
+[connection signal="area_entered" from="Cursor" to="Camera2D" method="_on_Cursor_area_entered"]
