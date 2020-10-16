@@ -19,8 +19,8 @@ shader_param/h = 1920.0
 shader = ExtResource( 3 )
 shader_param/fg_color = Color( 0.364706, 0.568627, 1, 1 )
 shader_param/bg_color = Color( 0, 0, 0, 0 )
-shader_param/fg_progress = 1.0
-shader_param/bg_progress = 1.0
+shader_param/fg_progress = 0.0
+shader_param/bg_progress = 0.0
 shader_param/w = null
 shader_param/h = null
 
@@ -155,6 +155,7 @@ tracks/4/keys = {
 
 [sub_resource type="Animation" id=7]
 resource_name = "swipe_left"
+length = 0.6
 tracks/0/type = "value"
 tracks/0/path = NodePath("swipe_left:visible")
 tracks/0/interp = 1
@@ -174,7 +175,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.4 ),
+"times": PoolRealArray( 0, 0.1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ 0.0, 1.0 ]
@@ -186,7 +187,7 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.6, 1 ),
+"times": PoolRealArray( 0, 0.3, 0.5 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ 0.0, 0.0, 1.0 ]
@@ -198,7 +199,7 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0.5 ),
+"times": PoolRealArray( 0.2 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],
@@ -223,7 +224,6 @@ __meta__ = {
 }
 
 [node name="swipe_left" type="TextureRect" parent="."]
-visible = false
 material = SubResource( 6 )
 anchor_right = 1.0
 anchor_bottom = 1.0
