@@ -1,0 +1,80 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://SM_Screen.tres" type="Material" id=1]
+[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Kiko/speech_bubble.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Kiko/kiko_avatar.png" type="Texture" id=4]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.470588, 0.72549, 0.0980392, 0.352941 )
+corner_radius_top_left = 40
+corner_radius_bottom_left = 40
+shadow_color = Color( 0, 0, 0, 0.603922 )
+shadow_offset = Vector2( 0, 4 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 1, 1, 1, 1 )
+corner_radius_top_left = 40
+corner_radius_bottom_left = 40
+shadow_color = Color( 0, 0, 0, 0.101961 )
+shadow_size = 12
+shadow_offset = Vector2( 0, 8 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 1, 1, 1, 1 )
+corner_radius_top_left = 40
+corner_radius_bottom_left = 40
+shadow_color = Color( 1, 1, 1, 0.678431 )
+shadow_size = 12
+shadow_offset = Vector2( 0, -8 )
+
+[node name="BG" type="TextureRect"]
+material = ExtResource( 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 1
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="kiko_avatar" type="Sprite" parent="."]
+position = Vector2( 317.699, 426.786 )
+texture = ExtResource( 4 )
+
+[node name="speech_bubble" type="Sprite" parent="kiko_avatar"]
+position = Vector2( 329.895, 41.5923 )
+scale = Vector2( 0.737155, 0.737155 )
+texture = ExtResource( 3 )
+
+[node name="Panel" type="Panel" parent="."]
+margin_left = 195.0
+margin_top = 675.0
+margin_right = 1077.0
+margin_bottom = 1724.0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel2" type="Panel" parent="."]
+margin_left = 129.113
+margin_top = 144.866
+margin_right = 1011.11
+margin_bottom = 242.866
+custom_styles/panel = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel3" type="Panel" parent="."]
+margin_left = 129.113
+margin_top = 144.866
+margin_right = 1011.11
+margin_bottom = 242.866
+custom_styles/panel = SubResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

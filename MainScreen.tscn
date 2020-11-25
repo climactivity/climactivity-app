@@ -73,14 +73,12 @@ layer = 0
 
 [node name="BG" type="TextureRect" parent="SceneMountPoint/Forest_Scene/BackgroundCanvas"]
 material = ExtResource( 3 )
-margin_left = 5.41418
-margin_top = 333.414
-margin_right = 1085.41
-margin_bottom = 1925.41
+margin_top = 333.0
+margin_right = 1086.0
+margin_bottom = 1925.0
 mouse_filter = 2
 texture = SubResource( 5 )
 expand = true
 __meta__ = {
-"_edit_lock_": true,
 "_edit_use_anchors_": false
 }

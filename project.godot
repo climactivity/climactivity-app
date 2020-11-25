@@ -8,9 +8,20 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "Node",
+"class": "SceneTransitionConfig",
+"language": "GDScript",
+"path": "res://SceneManager/SceneTransitionConfig.gd"
+}, {
+"base": "Object",
+"class": "TransitionFactory",
+"language": "GDScript",
+"path": "res://SceneManager/Transitions.gd"
+} ]
 _global_script_class_icons={
-
+"SceneTransitionConfig": "",
+"TransitionFactory": ""
 }
 
 [application]
@@ -61,6 +72,6 @@ pointing/emulate_touch_from_mouse=true
 quality/driver/driver_name="GLES2"
 vram_compression/import_etc=true
 vram_compression/import_etc2=false
-environment/default_clear_color=Color( 0.482353, 0.8, 0.321569, 1 )
+environment/default_clear_color=Color( 0.898039, 0.898039, 0.898039, 1 )
 quality/filters/msaa=2
 environment/default_environment="res://default_env.tres"
