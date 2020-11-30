@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://UI/SceneBase.tscn" type="PackedScene" id=1]
+[ext_resource path="res://UI/QuizScene.gd" type="Script" id=2]
+
+[node name="Control" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+
+[node name="HTTPRequest" type="HTTPRequest" parent="VBoxContainer" index="3"]
+[connection signal="request_completed" from="VBoxContainer/HTTPRequest" to="." method="_on_HTTPRequest_request_completed"]
