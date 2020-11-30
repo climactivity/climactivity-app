@@ -1,19 +1,28 @@
-[gd_scene format=2]
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://UI/typography/Heading.tres" type="DynamicFont" id=1]
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 1.33484
+margin_top = 1.33484
+margin_right = 1.33484
+margin_bottom = 1.33484
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label" type="Label" parent="."]
-margin_left = 426.355
-margin_top = 106.463
-margin_right = 498.355
-margin_bottom = 120.463
+margin_left = 371.0
+margin_top = 363.0
+margin_right = 620.0
+margin_bottom = 428.0
 size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "Hello there"
+__meta__ = {
+"_edit_use_anchors_": false
+}

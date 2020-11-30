@@ -9,10 +9,10 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "Node",
-"class": "SceneTransitionConfig",
+"base": "Control",
+"class": "SceneManager",
 "language": "GDScript",
-"path": "res://SceneManager/SceneTransitionConfig.gd"
+"path": "res://SceneManager/SceneManager.gd"
 }, {
 "base": "Object",
 "class": "TransitionFactory",
@@ -20,21 +20,20 @@ _global_script_classes=[ {
 "path": "res://SceneManager/Transitions.gd"
 } ]
 _global_script_class_icons={
-"SceneTransitionConfig": "",
+"SceneManager": "",
 "TransitionFactory": ""
 }
 
 [application]
 
 config/name="Climactivity-app"
-run/main_scene="res://MainScreen.tscn"
+run/main_scene="res://SceneManager/SceneManager.tscn"
 config/icon="res://icon.png"
 
 [autoload]
 
 GameManager="*res://GameManager.gd"
 Transition="*res://UI/Transition.tscn"
-PersistentMenu="*res://UI/PersistentMenu.tscn"
 
 [display]
 
@@ -43,7 +42,7 @@ window/size/height=1920
 window/size/test_width=576
 window/size/test_height=1024
 window/handheld/orientation="portrait"
-window/stretch/mode="viewport"
+window/stretch/mode="2d"
 window/stretch/aspect="keep"
 
 [editor_plugins]

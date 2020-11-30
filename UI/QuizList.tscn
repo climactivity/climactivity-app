@@ -1,0 +1,87 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://UI/typography/Heading.tres" type="DynamicFont" id=1]
+[ext_resource path="res://UI/Quiz_Liste.gd" type="Script" id=2]
+[ext_resource path="res://UI/QuizListView.gd" type="Script" id=3]
+
+[sub_resource type="StyleBoxFlat" id=1]
+content_margin_left = 48.0
+
+[sub_resource type="StyleBoxEmpty" id=2]
+
+[sub_resource type="StyleBoxFlat" id=3]
+
+[node name="Quiz_Liste" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1.33484
+margin_top = 1.33484
+margin_right = 1.33484
+margin_bottom = 1.33484
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GetAvailableQuizzes" type="HTTPRequest" parent="."]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Header" type="HBoxContainer" parent="VBoxContainer"]
+margin_right = 1080.0
+margin_bottom = 71.0
+
+[node name="BackButton" type="Button" parent="VBoxContainer/Header"]
+margin_right = 162.0
+margin_bottom = 71.0
+custom_fonts/font = ExtResource( 1 )
+text = "< Back"
+
+[node name="Label" type="Label" parent="VBoxContainer/Header"]
+margin_left = 166.0
+margin_top = 3.0
+margin_right = 908.0
+margin_bottom = 68.0
+size_flags_horizontal = 3
+custom_styles/normal = SubResource( 1 )
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+text = "Quiz Liste"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VSeparator3" type="VSeparator" parent="VBoxContainer/Header"]
+margin_left = 912.0
+margin_right = 1080.0
+margin_bottom = 71.0
+custom_styles/separator = SubResource( 2 )
+custom_constants/separation = 168
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer"]
+margin_top = 75.0
+margin_right = 1080.0
+margin_bottom = 1920.0
+size_flags_vertical = 3
+custom_styles/bg = SubResource( 3 )
+scroll_horizontal_enabled = false
+scroll_vertical = 26
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ListView" type="VBoxContainer" parent="VBoxContainer/ScrollContainer"]
+margin_right = 1080.0
+margin_bottom = 1845.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource( 3 )
+[connection signal="request_completed" from="GetAvailableQuizzes" to="." method="_on_GetAvailableQuizzes_request_completed"]
+[connection signal="pressed" from="VBoxContainer/Header/BackButton" to="." method="_on_BackButton_pressed"]

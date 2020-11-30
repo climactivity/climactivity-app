@@ -1,12 +1,10 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://ForestCanvas.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Vertical_Gradient.shader" type="Shader" id=2]
 [ext_resource path="res://SM_ForestBG.tres" type="Material" id=3]
 [ext_resource path="res://Assets/Icons/cloud-test.png" type="Texture" id=4]
 [ext_resource path="res://Interactables/Cloud.gd" type="Script" id=5]
-[ext_resource path="res://ForestCanvas.gd" type="Script" id=6]
-
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item; 
@@ -53,22 +51,22 @@ shader_param/shadow_offset = Vector2( 0, 0 )
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 671.488, 391.159 )
 
-[sub_resource type="Gradient" id=6]
+[sub_resource type="Gradient" id=4]
 colors = PoolColorArray( 0.222656, 0.562744, 1, 1, 0.737, 0.898438, 0.883303, 1 )
 
-[sub_resource type="GradientTexture" id=7]
-gradient = SubResource( 6 )
+[sub_resource type="GradientTexture" id=5]
+gradient = SubResource( 4 )
 
-[sub_resource type="ShaderMaterial" id=8]
+[sub_resource type="ShaderMaterial" id=6]
 shader = ExtResource( 2 )
-shader_param/gradient = SubResource( 7 )
+shader_param/gradient = SubResource( 5 )
 
-[sub_resource type="Gradient" id=9]
+[sub_resource type="Gradient" id=7]
 offsets = PoolRealArray( 0, 0.651613, 1 )
 colors = PoolColorArray( 0.162735, 0.514452, 0.925781, 1, 0.378803, 0.639754, 0.944934, 1, 1, 1, 1, 1 )
 
-[sub_resource type="GradientTexture" id=10]
-gradient = SubResource( 9 )
+[sub_resource type="GradientTexture" id=8]
+gradient = SubResource( 7 )
 width = 40
 
 [node name="Forest_Scene" type="Control"]
@@ -94,19 +92,17 @@ script = ExtResource( 5 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactables/Cloud/Area2D"]
 shape = SubResource( 3 )
 
-[node name="ForestCanvas" type="CanvasLayer" parent="." instance=ExtResource( 1 )]
-follow_viewport_enable = true
-script = ExtResource( 6 )
+[node name="ForestCanvas" parent="." instance=ExtResource( 1 )]
 
 [node name="SkyCanvas" type="CanvasLayer" parent="."]
 layer = 2
 
 [node name="Sky_BG" type="TextureRect" parent="SkyCanvas"]
-material = SubResource( 8 )
+material = SubResource( 6 )
 margin_right = 1080.0
 margin_bottom = 350.0
 mouse_filter = 2
-texture = SubResource( 10 )
+texture = SubResource( 8 )
 expand = true
 __meta__ = {
 "_edit_lock_": true,
@@ -123,7 +119,7 @@ margin_top = 333.414
 margin_right = 1085.41
 margin_bottom = 1925.41
 mouse_filter = 2
-texture = SubResource( 10 )
+texture = SubResource( 8 )
 expand = true
 __meta__ = {
 "_edit_lock_": true,
