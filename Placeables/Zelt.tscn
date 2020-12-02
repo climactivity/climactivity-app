@@ -15,25 +15,25 @@ script = ExtResource( 1 )
 tile_size = Vector2( 0, 0 )
 tile_offset = Vector2( 60, 55 )
 
-[node name="Node2D" type="Node2D" parent="."]
+[node name="Zelt" type="Node2D" parent="."]
 script = ExtResource( 3 )
 
-[node name="Sprite" type="Sprite" parent="Node2D"]
+[node name="Sprite" type="Sprite" parent="Zelt"]
 texture = ExtResource( 2 )
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="PickArea" type="Area2D" parent="Node2D"]
+[node name="PickArea" type="Area2D" parent="Zelt"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/PickArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Zelt/PickArea"]
 shape = SubResource( 1 )
 
-[node name="PlaceArea" type="Area2D" parent="Node2D"]
+[node name="PlaceArea" type="Area2D" parent="Zelt"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/PlaceArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Zelt/PlaceArea"]
 position = Vector2( 0, 48.2658 )
 shape = SubResource( 2 )
-[connection signal="area_entered" from="Node2D/PickArea" to="Node2D" method="_on_PickArea_area_entered"]
-[connection signal="area_exited" from="Node2D/PickArea" to="Node2D" method="_on_PickArea_area_exited"]
-[connection signal="input_event" from="Node2D/PickArea" to="Node2D" method="_on_PickArea_input_event"]
+[connection signal="area_entered" from="Zelt/PickArea" to="Zelt" method="_on_PickArea_area_entered"]
+[connection signal="area_exited" from="Zelt/PickArea" to="Zelt" method="_on_PickArea_area_exited"]
+[connection signal="input_event" from="Zelt/PickArea" to="Zelt" method="_on_PickArea_input_event"]

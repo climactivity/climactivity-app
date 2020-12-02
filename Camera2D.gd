@@ -47,14 +47,9 @@ func _unhandled_input(event):
 		if event.button_index == BUTTON_LEFT:
 			pressed = event.pressed
 			var viewport_size = get_viewport_rect().size
-			#print(viewport_size, offset)
 			var cursor_pos =  event.position 
-			#print(cursor_pos)
 			cursor_pos = cursor_pos * zoom + (viewport_size / 2.0) * (1.0 - zoom.x) # apply zoom  
-			#print(cursor_pos)
 			cursor_pos = cursor_pos + offset - initial_offset # reset from initial offset
-			#print(cursor_pos)
-			#print("Cursor: ",cursor_pos, ", Global Mouse; ", get_global_mouse_position(), ", Local Mouse:", get_local_mouse_position(),  ", VP Mouse:", get_viewport().get_mouse_position(), ", event.position: ", event.position, ", event.global_position: ", event.global_position)
 			cursor.position =  cursor_pos
 			cursor.monitoring = event.pressed 
 			cursor.monitorable = event.pressed 
@@ -63,7 +58,8 @@ func _unhandled_input(event):
 			move(-event.relative)
 
 func _on_Cursor_area_entered(area):
-	print( area.get_parent().name if is_instance_valid(area.get_parent()) else area.name)
+	pass
+	#print( area.get_parent().name if is_instance_valid(area.get_parent()) else area.name)
 
 func clear_events():
 	cursor.monitoring = false 

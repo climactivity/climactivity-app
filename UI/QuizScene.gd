@@ -5,6 +5,7 @@ onready var req = $VBoxContainer/HTTPRequest
 var request_str = "%s://%s/infobyte/%s"
 
 func receive_navigation(quiz_data):
+	print("[QuizScene]" ,"recieve nav: ", quiz_data)
 	req.request(request_str % "https" % "localhost" % quiz_data.id )
 
 

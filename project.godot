@@ -35,6 +35,7 @@ config/icon="res://icon.png"
 GameManager="*res://GameManager.gd"
 Transition="*res://UI/Transition.tscn"
 Api="*res://Api.tscn"
+Logger="*res://Logger.gd"
 
 [display]
 

@@ -50,36 +50,34 @@ func push_scene(scene, navigation_data = {}, config = TransitionFactory.MoveOut(
 	if (scene is String): 
 		var new_instance
 		if (scene_map.has(scene)):
-			print("Rehydrating stored scene: ", scene)
+			Logger.print("Rehydrating stored scene: " + scene, self)
+
 			scene = scene_map.get(scene).instance()
 		else:
-			print("Loading new scene: ", scene)
+			Logger.print("Loading new scene: " + scene, self)
 			scene = load(scene).instance()
 	else:
-		print("Reattaching scene: ", scene.name)
+		Logger.print("Reattaching scene: " + scene.name, self)
 	last_scene = current_scene
 	current_scene = scene
-	print("Navigating: ", current_scene.name)
+	Logger.print("Navigating: " + current_scene.name, self)
 	A_viewport.add_child(scene)
 	if ("receive_navigation" in scene && navigation_data != null):
+		Logger.print("Navigation data %s" % str(navigation_data), self)
 		scene.receive_navigation(navigation_data)
 	animation_player.play(config.transition_name)
 
 func pop_scene(config = TransitionFactory.MoveBack()) -> void: 
 	if (is_changing_scene): return
 	if (history.empty()):
-		print("History empty, cannot go back!")
+		Logger.print("History empty, cannot go back!", self)
 		return
-	else:
-		print("history:")
-		for scene in history: 
-			print(scene.name)
 	get_tree().get_root().set_disable_input(true)
 	A_viewport.remove_child(current_scene)
 	B_viewport.add_child(current_scene)
 	_show_B()
 	var scene = history.pop_front()
-	print("Reattaching scene: ", scene.name)
+	Logger.print("Reattaching scene: " + scene.name, self)
 	A_viewport.add_child(scene)
 	last_scene = current_scene
 	current_scene = scene

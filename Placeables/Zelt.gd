@@ -21,7 +21,7 @@ func _on_PickArea_input_event(viewport, event, shape_idx):
 	#		_move_to_sector()
 
 func _on_select():
-	print("entering... ")
+	Logger.print("Moving to %s" % target_sector, self)
 	_move_to_sector()
 
 func _on_PickArea_area_entered(area):
@@ -29,7 +29,6 @@ func _on_PickArea_area_entered(area):
 	if(area.name == "Cursor"): 
 		if (is_instance_valid(GameManager) && is_instance_valid(GameManager.camera)):
 			GameManager.camera.call_deferred("clear_events")
-		print("_on_select ",get_parent().name) 
 		call_deferred("_on_select")
 
 func _on_PickArea_area_exited(area):

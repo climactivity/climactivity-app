@@ -29,7 +29,7 @@ func _ready():
 	if get_parent() is TileMap:
 		var parent: TileMap = get_parent()
 		set_tile_size(parent.cell_size)
-		print(parent.world_to_map(position))
+		#print(parent.world_to_map(position))
 		#set_tile_pos(parent.world_to_map(position + tile_offset))
 
 	_update_position()
