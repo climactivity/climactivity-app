@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://UI/SceneBase.tscn" type="PackedScene" id=1]
 [ext_resource path="res://UI/QuizScene.gd" type="Script" id=2]
@@ -6,8 +6,7 @@
 [ext_resource path="res://Assets/kiko_avatar.png" type="Texture" id=4]
 [ext_resource path="res://UI/Components/NeoMButton.tscn" type="PackedScene" id=7]
 
-[sub_resource type="StyleBoxFlat" id=1]
-bg_color = Color( 0.847059, 0.847059, 0.847059, 1 )
+[sub_resource type="StyleBoxEmpty" id=4]
 
 [sub_resource type="StyleBoxEmpty" id=2]
 
@@ -23,56 +22,54 @@ corner_radius_top_right = 20
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.847059, 0.847059, 0.847059, 1 )
+
 [node name="QuizScene" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 
 [node name="Header" parent="VBoxContainer" index="1"]
 screen_label = "Quiz Kategorie"
 
-[node name="Footer" type="Panel" parent="VBoxContainer/Content" index="0"]
-anchor_top = 1.0
+[node name="VSplitContainer" type="VSplitContainer" parent="VBoxContainer/Content" index="0"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = -349.0
-margin_right = -0.00012207
-custom_styles/panel = SubResource( 1 )
+split_offset = 1165
+dragger_visibility = 2
 __meta__ = {
-"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
-[node name="WeiterButton" parent="VBoxContainer/Content/Footer" index="0" instance=ExtResource( 7 )]
+[node name="ContentHolder" type="PanelContainer" parent="VBoxContainer/Content/VSplitContainer" index="0"]
+margin_right = 1080.0
+margin_bottom = 1165.0
+custom_styles/panel = SubResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control" type="Control" parent="VBoxContainer/Content/VSplitContainer/ContentHolder" index="0"]
+margin_right = 1080.0
+margin_bottom = 1165.0
+
+[node name="WeiterButton3" parent="VBoxContainer/Content/VSplitContainer/ContentHolder/Control" index="0" instance=ExtResource( 7 )]
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_bottom = 0.5
-margin_left = -240.0
-margin_top = -36.5
-margin_right = -36.9999
-margin_bottom = 48.5
+margin_left = -501.685
+margin_top = 305.606
+margin_right = -95.6854
+margin_bottom = 406.606
 custom_styles/panel = SubResource( 2 )
-texture_min_size = 46
+texture_min_size = 49
 font_color = Color( 0.588235, 0.74902, 0.0509804, 1 )
-text = "Weiter"
+text = "Direkt zum Quiz"
 
-[node name="WeiterButton2" parent="VBoxContainer/Content/Footer" index="1" instance=ExtResource( 7 )]
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_bottom = 0.5
-margin_left = -993.212
-margin_top = -34.6123
-margin_right = -790.212
-margin_bottom = 50.3877
-custom_styles/panel = SubResource( 2 )
-icon_left = true
-texture_min_size = 46
-font_color = Color( 0.584314, 0.584314, 0.584314, 1 )
-text = "Zurück"
-
-[node name="kiko_avatar - placeholder" type="Sprite" parent="VBoxContainer/Content" index="1"]
+[node name="kiko_avatar - placeholder" type="Sprite" parent="VBoxContainer/Content/VSplitContainer/ContentHolder" index="1"]
 position = Vector2( 253.156, 230.581 )
 texture = ExtResource( 4 )
 
-[node name="SpeechBubbleHolder" type="Panel" parent="VBoxContainer/Content/kiko_avatar - placeholder" index="0"]
+[node name="SpeechBubbleHolder" type="Panel" parent="VBoxContainer/Content/VSplitContainer/ContentHolder/kiko_avatar - placeholder" index="0"]
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -83,10 +80,10 @@ margin_bottom = -196.0
 custom_styles/panel = SubResource( 3 )
 __meta__ = {
 "_edit_group_": true,
-"_edit_use_anchors_": false
+"_edit_use_anchors_": true
 }
 
-[node name="DialogLine" type="Label" parent="VBoxContainer/Content/kiko_avatar - placeholder/SpeechBubbleHolder" index="0"]
+[node name="DialogLine" type="Label" parent="VBoxContainer/Content/VSplitContainer/ContentHolder/kiko_avatar - placeholder/SpeechBubbleHolder" index="0"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 12.0
@@ -100,6 +97,42 @@ autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Footer" type="Panel" parent="VBoxContainer/Content/VSplitContainer" index="1"]
+margin_top = 1165.0
+margin_right = 1080.0
+margin_bottom = 1639.0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ContinueButton" parent="VBoxContainer/Content/VSplitContainer/Footer" index="0" instance=ExtResource( 7 )]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = -266.428
+margin_top = -36.5
+margin_right = -63.4283
+margin_bottom = 48.5
+custom_styles/panel = SubResource( 2 )
+texture_min_size = 46
+font_color = Color( 0.588235, 0.74902, 0.0509804, 1 )
+text = "Weiter"
+
+[node name="BackButton" parent="VBoxContainer/Content/VSplitContainer/Footer" index="1" instance=ExtResource( 7 )]
+anchor_top = 0.523
+anchor_right = 0.0
+anchor_bottom = 0.523
+margin_left = 86.7882
+margin_top = -42.6393
+margin_right = 289.788
+margin_bottom = 42.3607
+custom_styles/panel = SubResource( 2 )
+icon_left = true
+texture_min_size = 46
+font_color = Color( 0.584314, 0.584314, 0.584314, 1 )
+text = "Zurück"
 
 [node name="HTTPRequest" type="HTTPRequest" parent="VBoxContainer" index="3"]
 [connection signal="request_completed" from="VBoxContainer/HTTPRequest" to="." method="_on_HTTPRequest_request_completed"]

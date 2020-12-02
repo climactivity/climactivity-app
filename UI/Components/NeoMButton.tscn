@@ -11,7 +11,7 @@ corner_radius_top_left = 14
 corner_radius_top_right = 14
 corner_radius_bottom_right = 14
 corner_radius_bottom_left = 14
-shadow_color = Color( 0, 0, 0, 0.054902 )
+shadow_color = Color( 0, 0, 0, 0.12549 )
 shadow_size = 12
 shadow_offset = Vector2( 0, 8 )
 
@@ -21,7 +21,7 @@ corner_radius_top_left = 14
 corner_radius_top_right = 14
 corner_radius_bottom_right = 14
 corner_radius_bottom_left = 14
-shadow_color = Color( 1, 1, 1, 0.196078 )
+shadow_color = Color( 1, 1, 1, 0.121569 )
 shadow_size = 12
 shadow_offset = Vector2( 0, -8 )
 
@@ -83,18 +83,18 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="Panel2/Button/HBoxContainer"]
-margin_right = 351.0
+margin_left = 147.0
+margin_right = 147.0
 margin_bottom = 48.0
 custom_fonts/font = ExtResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Missing Button Text"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="TextureRect" type="TextureRect" parent="Panel2/Button/HBoxContainer"]
-margin_left = 355.0
-margin_right = 403.0
+margin_left = 151.0
+margin_right = 199.0
 margin_bottom = 48.0
 rect_min_size = Vector2( 48, 48 )
 texture = ExtResource( 2 )
