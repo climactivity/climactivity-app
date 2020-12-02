@@ -5,7 +5,9 @@ var loading = true
 onready var list_view = $VBoxContainer/ScrollContainer/ListView
 
 func _ready():
-	$GetAvailableQuizzes.request("http://localhost:3000/infobyte")
+
+	Api.getEndpoint("quiz_list" ,$GetAvailableQuizzes)
+	#$GetAvailableQuizzes.request("http://localhost:3000/infobyte")
 
 func _on_BackButton_pressed():
 	GameManager.scene_manager.pop_scene()

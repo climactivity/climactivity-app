@@ -37,6 +37,10 @@ Transition="*res://UI/Transition.tscn"
 Api="*res://Api.tscn"
 Logger="*res://Logger.gd"
 
+[debug]
+
+settings/network/localhost=true
+
 [display]
 
 window/size/width=1080
@@ -67,6 +71,11 @@ enabled=PoolStringArray( "Radial-progress-bar", "tile_object" )
 [input_devices]
 
 pointing/emulate_touch_from_mouse=true
+
+[logging]
+
+file_logging/enable_file_logging=true
+file_logging/log_path="user://logs/climactivityapp.log"
 
 [rendering]
 
