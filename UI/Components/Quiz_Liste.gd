@@ -14,11 +14,13 @@ func _on_BackButton_pressed():
 func _on_GetAvailableQuizzes_request_completed(result, response_code, headers, body):
 	loading = false
 	var json = JSON.parse(body.get_string_from_utf8())
-	_on_quiz_list(json.result)
+	if(json.error): 
+		print("Server error: ", json.error)
+	else:
+		_on_quiz_list(json.result)
 
 func _on_quiz_list(quiz_list):
 	for quiz in quiz_list:
-		print(quiz.name)
 		if(quiz.name):
 			list_view.add_item(quiz)
 	pass

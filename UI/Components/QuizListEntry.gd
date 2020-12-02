@@ -9,3 +9,4 @@ func set_quiz(new_quiz):
 
 func _on_Button_pressed():
 	print("loading ", quiz.name)
+	GameManager.scene_manager.push_scene("res://UI/QuizScene.tscn", {"quiz": quiz})

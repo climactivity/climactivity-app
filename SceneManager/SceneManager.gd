@@ -4,6 +4,7 @@ extends Control
 # scenes
 export var start_scene = preload("res://MainScreen.tscn")
 var current_scene
+var last_scene
 var history = []
 var scene_map = {
 	"start_scene": preload("res://MainScreen.tscn"), # forest view
@@ -12,6 +13,7 @@ var scene_map = {
 	"aspekt_scene": preload("res://UI/BigPointScreen.tscn"),
 	"quiz_scene": preload("res://UI/BigPointScreen.tscn"),
 }
+
 #loading with progress bar
 export var loading_instance = preload("res://SceneManager/Loading.tscn")
 var loader
@@ -29,6 +31,8 @@ onready var B_viewport = $B/Viewport
 #cool anims
 onready var animation_player = $AnimationPlayer
 
+var is_changing_scene = false
+
 func _ready():
 	GameManager.scene_manager = self
 	_show_A()
@@ -36,7 +40,9 @@ func _ready():
 	A_viewport.add_child(current_scene)
 
 func push_scene(scene, navigation_data = {}, config = TransitionFactory.MoveOut()) -> void: 
+	if (is_changing_scene): return
 	get_tree().get_root().set_disable_input(true)
+	is_changing_scene = true
 	A_viewport.remove_child(current_scene)
 	B_viewport.add_child(current_scene)
 	history.push_front(current_scene)
@@ -51,24 +57,33 @@ func push_scene(scene, navigation_data = {}, config = TransitionFactory.MoveOut(
 			scene = load(scene).instance()
 	else:
 		print("Reattaching scene: ", scene.name)
+	last_scene = current_scene
 	current_scene = scene
+	print("Navigating: ", current_scene.name)
 	A_viewport.add_child(scene)
-	if ("receive_navigation" in scene):
+	if ("receive_navigation" in scene && navigation_data != null):
 		scene.receive_navigation(navigation_data)
 	animation_player.play(config.transition_name)
 
-func pop_scene(config = TransitionFactory.MoveOut()) -> void: 
+func pop_scene(config = TransitionFactory.MoveBack()) -> void: 
+	if (is_changing_scene): return
 	if (history.empty()):
 		print("History empty, cannot go back!")
 		return
+	else:
+		print("history:")
+		for scene in history: 
+			print(scene.name)
 	get_tree().get_root().set_disable_input(true)
-	A_viewport.add_child(current_scene)
-	B_viewport.remove_child(current_scene)
-	_show_A()
+	A_viewport.remove_child(current_scene)
+	B_viewport.add_child(current_scene)
+	_show_B()
 	var scene = history.pop_front()
-	B_viewport.add_child(scene)
+	print("Reattaching scene: ", scene.name)
+	A_viewport.add_child(scene)
+	last_scene = current_scene
 	current_scene = scene
-	animation_player.play_backwards(config.transition_name)
+	animation_player.play("Move_Back")
 
 func _show_A():
 	A.modulate.a = 1
@@ -81,5 +96,7 @@ func _show_B():
 	
 func _on_AnimationPlayer_animation_finished(anim_name):
 	_show_A()
+	B_viewport.remove_child(last_scene)
+	is_changing_scene = false
 	get_tree().get_root().set_disable_input(false)
 	

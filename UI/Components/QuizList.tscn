@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://UI/typography/Heading.tres" type="DynamicFont" id=1]
-[ext_resource path="res://UI/Quiz_Liste.gd" type="Script" id=2]
+[ext_resource path="res://UI/Components/Quiz_Liste.gd" type="Script" id=2]
 [ext_resource path="res://UI/QuizListView.gd" type="Script" id=3]
 
 [sub_resource type="StyleBoxFlat" id=1]

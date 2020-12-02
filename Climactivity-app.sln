@@ -1,0 +1,19 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Climactivity-app", "Climactivity-app.csproj", "{81DE726C-3387-4F86-A170-34353A454151}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+	Debug|Any CPU = Debug|Any CPU
+	ExportDebug|Any CPU = ExportDebug|Any CPU
+	ExportRelease|Any CPU = ExportRelease|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{81DE726C-3387-4F86-A170-34353A454151}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81DE726C-3387-4F86-A170-34353A454151}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81DE726C-3387-4F86-A170-34353A454151}.ExportDebug|Any CPU.ActiveCfg = ExportDebug|Any CPU
+		{81DE726C-3387-4F86-A170-34353A454151}.ExportDebug|Any CPU.Build.0 = ExportDebug|Any CPU
+		{81DE726C-3387-4F86-A170-34353A454151}.ExportRelease|Any CPU.ActiveCfg = ExportRelease|Any CPU
+		{81DE726C-3387-4F86-A170-34353A454151}.ExportRelease|Any CPU.Build.0 = ExportRelease|Any CPU
+	EndGlobalSection
+EndGlobal

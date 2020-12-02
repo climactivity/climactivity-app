@@ -10,6 +10,7 @@ var cursor
 func _ready():
 	initial_offset = offset
 	cursor = get_parent().get_child(0)
+	GameManager.camera = self
 	if (is_instance_valid(GameManager.cloud)): 
 		GameManager.cloud.connect("cloudMoving", self, "_cloud_moving")
 
@@ -62,4 +63,9 @@ func _unhandled_input(event):
 			move(-event.relative)
 
 func _on_Cursor_area_entered(area):
-	print( area.get_parent() if is_instance_valid(area.get_parent()) else area.name)
+	print( area.get_parent().name if is_instance_valid(area.get_parent()) else area.name)
+
+func clear_events():
+	cursor.monitoring = false 
+	cursor.monitorable = false
+	pressed = false 

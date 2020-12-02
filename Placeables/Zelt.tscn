@@ -35,3 +35,5 @@ shape = SubResource( 1 )
 position = Vector2( 0, 48.2658 )
 shape = SubResource( 2 )
 [connection signal="area_entered" from="Node2D/PickArea" to="Node2D" method="_on_PickArea_area_entered"]
+[connection signal="area_exited" from="Node2D/PickArea" to="Node2D" method="_on_PickArea_area_exited"]
+[connection signal="input_event" from="Node2D/PickArea" to="Node2D" method="_on_PickArea_input_event"]
