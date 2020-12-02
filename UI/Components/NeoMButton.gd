@@ -12,7 +12,7 @@ onready var label = $Panel2/Button/HBoxContainer/Label
 onready var icon = $Panel2/Button/HBoxContainer/TextureRect
 
 func _ready(): 
-
+	set_text(text)
 	set_icon_align_left(icon_left)
 	set_icon_textrue(icon_texture)
 	set_font_color(font_color)
@@ -24,10 +24,11 @@ func set_icon_textrue(texture: Texture):
 
 func set_icon_align_left(left):
 	icon_left = left
-	if(icon_left):
-		content_holder.move_child(label,1)
-	else:
-		content_holder.move_child(label,0)
+	if(is_instance_valid(content_holder)):
+		if(icon_left):
+			content_holder.move_child(label,1)
+		else:
+			content_holder.move_child(label,0)
 
 func set_icon_size(new_size):
 	texture_min_size = new_size
