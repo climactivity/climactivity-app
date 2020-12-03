@@ -18,6 +18,7 @@ func receive_navigation(quiz_data):
 func _on_HTTPRequest_request_completed(result, response_code, headers, body):
 	var json = JSON.parse(body.get_string_from_utf8())
 	if(json.error): 
+		has_error = true
 		Logger.error("Server error: "+ json.error, self)
 	else:
 		has_data = true

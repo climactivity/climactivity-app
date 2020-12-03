@@ -1,0 +1,15 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+
+[ext_resource path="res://UI/theme/shimmer.shader" type="Shader" id=1]
+
+[resource]
+shader = ExtResource( 1 )
+shader_param/base_color = Color( 0.760784, 0.760784, 0.760784, 1 )
+shader_param/highlight_color = Color( 1, 1, 1, 1 )
+shader_param/speed = 0.882
+shader_param/direction = -45.0
+shader_param/lower_edge = 0.811
+shader_param/upper_edge = 1.215
+shader_param/period = -1.53
+shader_param/flip = true
+shader_param/u_resolution = Vector2( 600, 600 )
