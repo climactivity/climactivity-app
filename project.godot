@@ -53,7 +53,7 @@ window/stretch/aspect="expand"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "Radial-progress-bar", "tile_object" )
+enabled=PoolStringArray( "Radial-progress-bar", "gut", "tile_object" )
 
 [input]
 

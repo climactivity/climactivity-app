@@ -49,10 +49,10 @@ corner_radius_top_left = 14
 corner_radius_top_right = 14
 corner_radius_bottom_right = 14
 corner_radius_bottom_left = 14
-shadow_color = Color( 0, 0, 0, 0.792157 )
+shadow_color = Color( 0, 0, 0, 0.337255 )
 
 [sub_resource type="StyleBoxFlat" id=5]
-bg_color = Color( 0.509804, 0.509804, 0.509804, 1 )
+bg_color = Color( 0.901961, 0.901961, 0.901961, 1 )
 border_width_left = 1
 border_width_top = 1
 border_width_right = 1
@@ -141,3 +141,4 @@ rect_min_size = Vector2( 48, 48 )
 texture = ExtResource( 2 )
 expand = true
 stretch_mode = 6
+[connection signal="pressed" from="Panel2/Button" to="." method="_on_Button_pressed"]

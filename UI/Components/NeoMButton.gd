@@ -1,6 +1,8 @@
 tool
 extends Panel
 
+signal pressed 
+
 export var icon_left = false setget set_icon_align_left
 export var icon_texture = preload("res://Assets/Icons/Arrow - Right 2.png") setget set_icon_textrue
 export var texture_min_size = 48 setget set_icon_size
@@ -81,3 +83,7 @@ func set_disabled(new_disabled):
 func set_color_icon(new_color_icon):
 	color_icon = new_color_icon
 	_update_colors()
+
+
+func _on_Button_pressed():
+	emit_signal("pressed")
