@@ -2,8 +2,8 @@ extends Panel
 
 onready var req = $VBoxContainer/HTTPRequest
 onready var header = $VBoxContainer/Header
-onready var kiko_dialog = $"VBoxContainer/Content/VSplitContainer/ContentHolder/kiko_avatar - placeholder/SpeechBubbleHolder/DialogLine"
-
+onready var kiko_dialog = $"VBoxContainer/Content/VSplitContainer/ContentHolder/FrontMatter/kiko_avatar - placeholder/SpeechBubbleHolder/DialogLine"
+onready var loading_anim = $"VBoxContainer/Content/VSplitContainer/ContentHolder/Loading"
 var request_str = "%s://%s/infobyte/%s"
 var has_data = false
 var has_error = false
@@ -27,8 +27,8 @@ func _on_HTTPRequest_request_completed(result, response_code, headers, body):
 		_on_quiz_data(quiz_data)
 
 func _on_quiz_data(quiz_data):
-	
 	#print(quiz_data)
 	#update header
 	header.set_screen_label(quiz_data.name)
 	kiko_dialog.text = quiz_data.frontmatter
+	loading_anim.loading_finished()

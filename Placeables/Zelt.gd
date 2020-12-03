@@ -34,4 +34,7 @@ func _on_PickArea_area_entered(area):
 func _on_PickArea_area_exited(area):
 	pass
 
-
+func _unhandled_key_input(event):
+	if event is InputEventKey: #You have to make sure, that a key got pressed
+		if event.scancode == KEY_R:
+			_on_select()

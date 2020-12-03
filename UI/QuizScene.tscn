@@ -1,30 +1,43 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://UI/SceneBase.tscn" type="PackedScene" id=1]
 [ext_resource path="res://UI/QuizScene.gd" type="Script" id=2]
 [ext_resource path="res://UI/typography/Heading.tres" type="DynamicFont" id=3]
 [ext_resource path="res://Assets/kiko_avatar.png" type="Texture" id=4]
-[ext_resource path="res://UI/transition.png" type="Texture" id=5]
-[ext_resource path="res://UI/theme/sm_shimmer.tres" type="Material" id=6]
+[ext_resource path="res://UI/Components/SkeletonUI/Loading.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Assets/Icons/Arrow - Right 2.png" type="Texture" id=6]
 [ext_resource path="res://UI/Components/NeoMButton.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Assets/Icons/AufforstungIcon.png" type="Texture" id=8]
 
-[sub_resource type="StyleBoxEmpty" id=4]
+[sub_resource type="StyleBoxEmpty" id=1]
 
 [sub_resource type="StyleBoxEmpty" id=2]
 
 [sub_resource type="StyleBoxFlat" id=3]
 bg_color = Color( 1, 1, 1, 1 )
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
 border_color = Color( 0.584314, 0.756863, 0.121569, 1 )
 corner_radius_top_left = 20
 corner_radius_top_right = 20
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 
-[sub_resource type="StyleBoxFlat" id=1]
+[sub_resource type="StyleBoxFlat" id=4]
+corner_radius_top_left = 180
+corner_radius_top_right = 180
+corner_radius_bottom_right = 180
+corner_radius_bottom_left = 180
+
+[sub_resource type="StyleBoxFlat" id=5]
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="StyleBoxFlat" id=6]
 bg_color = Color( 0.847059, 0.847059, 0.847059, 1 )
 
 [sub_resource type="StyleBoxFlat" id=7]
@@ -34,6 +47,8 @@ script = ExtResource( 2 )
 
 [node name="Header" parent="VBoxContainer" index="1"]
 screen_label = "Quiz Kategorie"
+icon_texture = ExtResource( 8 )
+color = Color( 0.584314, 0.756863, 0.121569, 1 )
 
 [node name="VSplitContainer" type="VSplitContainer" parent="VBoxContainer/Content" index="0"]
 anchor_right = 1.0
@@ -47,7 +62,7 @@ __meta__ = {
 [node name="ContentHolder" type="PanelContainer" parent="VBoxContainer/Content/VSplitContainer" index="0"]
 margin_right = 1080.0
 margin_bottom = 1165.0
-custom_styles/panel = SubResource( 4 )
+custom_styles/panel = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -65,9 +80,10 @@ margin_top = 305.606
 margin_right = -95.6854
 margin_bottom = 406.606
 custom_styles/panel = SubResource( 2 )
+icon_texture = ExtResource( 6 )
 texture_min_size = 49
-font_color = Color( 0.588235, 0.74902, 0.0509804, 1 )
 text = "Direkt zum Quiz"
+button_disabled = true
 
 [node name="kiko_avatar - placeholder" type="Sprite" parent="VBoxContainer/Content/VSplitContainer/ContentHolder/FrontMatter" index="1"]
 position = Vector2( 253.156, 230.581 )
@@ -102,63 +118,50 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Loading" type="Control" parent="VBoxContainer/Content/VSplitContainer/ContentHolder" index="1"]
-material = ExtResource( 6 )
-margin_right = 1080.0
-margin_bottom = 1165.0
+[node name="Loading" parent="VBoxContainer/Content/VSplitContainer/ContentHolder" index="1" instance=ExtResource( 5 )]
+visible = false
 
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Content/VSplitContainer/ContentHolder/Loading" index="0"]
+[node name="Panel" type="Panel" parent="VBoxContainer/Content/VSplitContainer/ContentHolder/Loading" index="0"]
 use_parent_material = true
-anchor_right = 0.311
-anchor_bottom = 0.292
-margin_left = 130.0
-margin_top = 94.0
-margin_right = 41.12
-margin_bottom = 3.81998
-texture = ExtResource( 5 )
-expand = true
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -438.0
+margin_top = -514.5
+margin_right = -157.0
+margin_bottom = -228.5
+custom_styles/panel = SubResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TextureRect2" type="TextureRect" parent="VBoxContainer/Content/VSplitContainer/ContentHolder/Loading" index="1"]
+[node name="Panel2" type="Panel" parent="VBoxContainer/Content/VSplitContainer/ContentHolder/Loading" index="1"]
 use_parent_material = true
-anchor_right = 0.311
-anchor_bottom = 0.292
-margin_left = 432.0
-margin_top = 87.0
-margin_right = 554.12
-margin_bottom = 14.82
-texture = ExtResource( 5 )
-expand = true
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -132.0
+margin_top = -507.5
+margin_right = 375.0
+margin_bottom = -221.5
+custom_styles/panel = SubResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TextureRect3" type="TextureRect" parent="VBoxContainer/Content/VSplitContainer/ContentHolder/Loading" index="2"]
+[node name="Panel3" type="Panel" parent="VBoxContainer/Content/VSplitContainer/ContentHolder/Loading" index="2"]
 use_parent_material = true
-anchor_right = 0.311
-anchor_bottom = 0.292
-margin_left = 579.0
-margin_top = 886.0
-margin_right = 663.12
-margin_bottom = 647.82
-texture = ExtResource( 5 )
-expand = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TextureRect4" type="TextureRect" parent="VBoxContainer/Content/VSplitContainer/ContentHolder/Loading" index="3"]
-use_parent_material = true
-anchor_right = 0.311
-anchor_bottom = 0.292
-margin_left = 41.0513
-margin_top = 156.225
-margin_right = 641.171
-margin_bottom = 679.045
-texture = ExtResource( 5 )
-expand = true
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 25.0
+margin_top = 290.5
+margin_right = 450.0
+margin_bottom = 416.5
+custom_styles/panel = SubResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -167,7 +170,7 @@ __meta__ = {
 margin_top = 1165.0
 margin_right = 1080.0
 margin_bottom = 1639.0
-custom_styles/panel = SubResource( 1 )
+custom_styles/panel = SubResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -196,8 +199,8 @@ margin_right = -63.4283
 margin_bottom = 48.5
 custom_styles/panel = SubResource( 2 )
 texture_min_size = 46
-font_color = Color( 0.588235, 0.74902, 0.0509804, 1 )
 text = "Weiter"
+color_icon = true
 
 [node name="BackButton" parent="VBoxContainer/Content/VSplitContainer/Footer" index="2" instance=ExtResource( 7 )]
 anchor_top = 0.523
@@ -210,7 +213,6 @@ margin_bottom = 42.3607
 custom_styles/panel = SubResource( 2 )
 icon_left = true
 texture_min_size = 46
-font_color = Color( 0.584314, 0.584314, 0.584314, 1 )
 text = "Zurück"
 
 [node name="HTTPRequest" type="HTTPRequest" parent="VBoxContainer" index="3"]
