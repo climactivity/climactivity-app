@@ -1,6 +1,7 @@
 extends Panel
 
 signal next_infobit
+signal next_question
 
 onready var req = $VBoxContainer/HTTPRequest
 onready var header = $VBoxContainer/Header
@@ -8,7 +9,7 @@ onready var kiko_dialog = $"VBoxContainer/Content/VSplitContainer/ContentHolder/
 onready var loading_anim = $"VBoxContainer/Content/VSplitContainer/ContentHolder/Loading"
 onready var continue_button = $"VBoxContainer/Content/VSplitContainer/Footer/ContinueButton"
 onready var infobit_holder = $"VBoxContainer/Content/VSplitContainer/ContentHolder/Infobits"
-
+onready var anim_player = $AnimationPlayer
 var request_str = "%s://%s/infobyte/%s"
 var has_data = false
 var has_error = false
@@ -29,7 +30,7 @@ enum InfoByteState {
 func _ready():
 	connect("next_infobit", infobit_holder, "next")
 	infobit_holder.connect("finished", self, "_last_infobit")
-
+	loading_anim.connect("finished_loading", self, "_finished_loading")
 func receive_navigation(quiz_data):
 	#req.request(request_str % ["https", "localhost", quiz_data.quiz._id] )
 	header.set_screen_label(quiz_data.quiz.name)
@@ -58,20 +59,24 @@ func _on_quiz_data(quiz_data):
 	header.set_screen_label(quiz_data.name)
 	kiko_dialog.text = quiz_data.frontmatter
 	loading_anim.loading_finished()
+	infobit_holder.set_infobits_data(quiz_data.infobits)
+
+func _finished_loading(): 
+	anim_player.play("show_frontmatter")
 
 func _show_infobits():
 	state = InfoByteState.INFO
-	pass
+	anim_player.play("show_infobit_holder")
+	print("show_info")
 
 func _next_infobit(): 
-	pass
+	emit_signal("next_infobit")
 
 func _show_quiz(): 
 	state = InfoByteState.QUIZ
-	pass
 
 func _next_question():
-	pass
+	emit_signal("next_question")
 	
 func _last_infobit():
 	print("last infobit reached")
