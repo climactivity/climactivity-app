@@ -9,7 +9,7 @@ var current_index = -1
 var current_infobit
 const infobit_container_factory = preload("res://UI/Components/infobits/InfobitContainer.tscn")
 
-onready var infobit_holder = $"InfoBit"
+onready var infobit_holder = $"InfoBit/MarginContainer"
 
 func next():
 	current_index = current_index + 1

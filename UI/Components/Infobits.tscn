@@ -17,24 +17,32 @@ __meta__ = {
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
 [node name="InfoBit" type="ScrollContainer" parent="."]
-anchor_left = 0.5
-anchor_right = 0.5
-margin_left = -490.0
-margin_top = 120.0
-margin_right = 477.0
-margin_bottom = 1090.0
+anchor_right = 1.0
+anchor_bottom = 1.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ContentHolder" type="VBoxContainer" parent="InfoBit"]
-margin_right = 967.0
-margin_bottom = 948.0
+[node name="MarginContainer" type="MarginContainer" parent="InfoBit"]
+margin_right = 1080.0
+margin_bottom = 1165.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/margin_right = 20
+custom_constants/margin_top = 20
+custom_constants/margin_left = 20
+custom_constants/margin_bottom = 20
+
+[node name="ContentHolder" type="VBoxContainer" parent="InfoBit/MarginContainer"]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 1060.0
+margin_bottom = 1145.0
 size_flags_horizontal = 3
 
-[node name="RichTextLabel" type="RichTextLabel" parent="InfoBit/ContentHolder"]
-margin_right = 967.0
-margin_bottom = 234.0
+[node name="RichTextLabel" type="RichTextLabel" parent="InfoBit/MarginContainer/ContentHolder"]
+margin_right = 1040.0
+margin_bottom = 560.0
 rect_clip_content = false
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -49,46 +57,10 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="RichTextLabel2" type="RichTextLabel" parent="InfoBit/ContentHolder"]
-margin_top = 238.0
-margin_right = 967.0
-margin_bottom = 472.0
-rect_clip_content = false
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_fonts/normal_font = ExtResource( 2 )
-custom_colors/default_color = Color( 0, 0, 0, 1 )
-bbcode_enabled = true
-bbcode_text = "Phasellus malesuada ac quam vitae gravida. Nulla vulputate urna vitae turpis condimentum iaculis. Suspendisse potenti. Nullam in urna vitae risus tincidunt posuere id quis justo. Phasellus sollicitudin mauris id orci porta sagittis. Donec ac turpis ac lacus consequat sodales. Suspendisse eu neque et arcu consectetur pellentesque eget et nisl. Nunc id blandit metus. Cras purus quam, dignissim id ex quis, laoreet congue ipsum. "
-text = "Phasellus malesuada ac quam vitae gravida. Nulla vulputate urna vitae turpis condimentum iaculis. Suspendisse potenti. Nullam in urna vitae risus tincidunt posuere id quis justo. Phasellus sollicitudin mauris id orci porta sagittis. Donec ac turpis ac lacus consequat sodales. Suspendisse eu neque et arcu consectetur pellentesque eget et nisl. Nunc id blandit metus. Cras purus quam, dignissim id ex quis, laoreet congue ipsum. "
-fit_content_height = true
-scroll_active = false
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="RichTextLabel3" type="RichTextLabel" parent="InfoBit/ContentHolder"]
-margin_top = 476.0
-margin_right = 967.0
-margin_bottom = 710.0
-rect_clip_content = false
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_fonts/normal_font = ExtResource( 2 )
-custom_colors/default_color = Color( 0, 0, 0, 1 )
-bbcode_enabled = true
-bbcode_text = "Phasellus malesuada ac quam vitae gravida. Nulla vulputate urna vitae turpis condimentum iaculis. Suspendisse potenti. Nullam in urna vitae risus tincidunt posuere id quis justo. Phasellus sollicitudin mauris id orci porta sagittis. Donec ac turpis ac lacus consequat sodales. Suspendisse eu neque et arcu consectetur pellentesque eget et nisl. Nunc id blandit metus. Cras purus quam, dignissim id ex quis, laoreet congue ipsum. "
-text = "Phasellus malesuada ac quam vitae gravida. Nulla vulputate urna vitae turpis condimentum iaculis. Suspendisse potenti. Nullam in urna vitae risus tincidunt posuere id quis justo. Phasellus sollicitudin mauris id orci porta sagittis. Donec ac turpis ac lacus consequat sodales. Suspendisse eu neque et arcu consectetur pellentesque eget et nisl. Nunc id blandit metus. Cras purus quam, dignissim id ex quis, laoreet congue ipsum. "
-fit_content_height = true
-scroll_active = false
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="RichTextLabel4" type="RichTextLabel" parent="InfoBit/ContentHolder"]
-margin_top = 714.0
-margin_right = 967.0
-margin_bottom = 948.0
+[node name="RichTextLabel2" type="RichTextLabel" parent="InfoBit/MarginContainer/ContentHolder"]
+margin_top = 564.0
+margin_right = 1040.0
+margin_bottom = 1125.0
 rect_clip_content = false
 size_flags_horizontal = 3
 size_flags_vertical = 3
