@@ -1,0 +1,57 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://UI/Components/infobits/AnswerPanelButton.gd" type="Script" id=1]
+[ext_resource path="res://UI/typography/Content_Regular.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Assets/Icons/answer_checkbox_correct.png" type="Texture" id=3]
+[ext_resource path="res://UI/Components/infobits/AnswerButtonStyleBox_default.tres" type="StyleBox" id=4]
+
+[node name="PanelContainer" type="PanelContainer"]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = -20.0
+margin_bottom = 20.0
+custom_styles/panel = ExtResource( 4 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+default = ExtResource( 4 )
+answer_text = "Antwort Text"
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+margin_right = 1080.0
+margin_bottom = 90.0
+custom_constants/margin_top = 20
+custom_constants/margin_bottom = 20
+
+[node name="Control2" type="Control" parent="MarginContainer"]
+margin_top = 20.0
+margin_right = 1080.0
+margin_bottom = 70.0
+
+[node name="CheckBox" type="TextureRect" parent="MarginContainer/Control2"]
+margin_left = 905.0
+margin_top = 2.0
+margin_right = 955.0
+margin_bottom = 52.0
+texture = ExtResource( 3 )
+expand = true
+stretch_mode = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="MarginContainer"]
+margin_top = 20.0
+margin_right = 1080.0
+margin_bottom = 70.0
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0.392157, 0.388235, 0.388235, 1 )
+text = "Antwort Text"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="gui_input" from="." to="." method="_on_PanelContainer_gui_input"]

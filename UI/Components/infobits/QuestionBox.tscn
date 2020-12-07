@@ -1,0 +1,99 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://UI/typography/Content_Regular.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Assets/kiko_avatar.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Icons/Arrow - Left W.png" type="Texture" id=3]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 1, 1, 1, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.584314, 0.756863, 0.121569, 1 )
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color( 0, 0, 0, 0.215686 )
+shadow_size = 12
+shadow_offset = Vector2( 0, 8 )
+
+[node name="QuestionBox" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 0.359
+margin_right = 4.0
+margin_bottom = 7.76495
+size_flags_horizontal = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SpeechBubbleHolder" type="PanelContainer" parent="."]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 459.0
+margin_top = -427.0
+margin_right = -77.0
+margin_bottom = -117.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="SpeechBubbleHolder"]
+margin_left = 2.0
+margin_top = 2.0
+margin_right = 546.0
+margin_bottom = 308.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/margin_right = 20
+custom_constants/margin_top = 20
+custom_constants/margin_left = 20
+custom_constants/margin_bottom = 20
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DialogLine" type="Label" parent="SpeechBubbleHolder/MarginContainer"]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 524.0
+margin_bottom = 286.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0.392157, 0.388235, 0.388235, 1 )
+text = "Wieviel der landwirtschaftlichen Nutzfläche verwendet um tierische Nahrung herzustellen?"
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -1.46106
+margin_top = -1.53894
+margin_right = -4.46106
+margin_bottom = 633.461
+grow_horizontal = 0
+grow_vertical = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="kiko_avatar - placeholder2" type="Sprite" parent="."]
+position = Vector2( 261.331, 159.5 )
+texture = ExtResource( 2 )
+
+[node name="Arrow - Left W" type="Sprite" parent="kiko_avatar - placeholder2"]
+position = Vector2( 156.295, -12.9422 )
+scale = Vector2( 0.277457, -0.271261 )
+texture = ExtResource( 3 )

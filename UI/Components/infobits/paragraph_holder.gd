@@ -3,7 +3,7 @@ extends RichTextLabel
 export var data = [] setget on_data
 
 
-#"""TODO
+#"""TODO generate bbcode from parsed json dict
 func _parse_data_object(data) -> String: 
 	var text = ""
 	for paragraph_dict in data: 

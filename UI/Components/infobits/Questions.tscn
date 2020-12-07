@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://UI/Components/infobits/Questions.gd" type="Script" id=1]
+[ext_resource path="res://UI/Components/infobits/QuestionBox.tscn" type="PackedScene" id=2]
+
+[node name="Questions" type="Control"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -540.0
+margin_right = 540.0
+margin_bottom = 1165.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="QuestionBox" parent="." instance=ExtResource( 2 )]
