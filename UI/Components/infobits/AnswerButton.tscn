@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://UI/Components/infobits/AnswerPanelButton.gd" type="Script" id=1]
 [ext_resource path="res://UI/typography/Content_Regular.tres" type="DynamicFont" id=2]
 [ext_resource path="res://Assets/Icons/answer_checkbox_correct.png" type="Texture" id=3]
 [ext_resource path="res://UI/Components/infobits/AnswerButtonStyleBox_default.tres" type="StyleBox" id=4]
+[ext_resource path="res://Assets/Icons/answer_checkbox_selected_correct.png" type="Texture" id=8]
 
 [node name="PanelContainer" type="PanelContainer"]
 anchor_top = 0.5
@@ -16,7 +17,7 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-default = ExtResource( 4 )
+icon_correct = ExtResource( 8 )
 answer_text = "Antwort Text"
 
 [node name="MarginContainer" type="MarginContainer" parent="."]

@@ -1,17 +1,17 @@
 tool
 extends PanelContainer
 
-export (StyleBox) var default setget set_style_default
-export (StyleBox) var selected setget set_style_selected
-export (StyleBox) var selected_correct setget set_style_selected_correct
-export (StyleBox) var correct setget set_style_correct
-export (StyleBox) var wrong setget set_style_wrong
+export (StyleBox) var default = preload("res://UI/Components/infobits/AnswerButtonStyleBox_default.tres") setget set_style_default
+export (StyleBox) var selected = preload("res://UI/Components/infobits/AnswerButtonStyleBox_default.tres") setget set_style_selected
+export (StyleBox) var selected_correct = preload("res://UI/Components/infobits/AnswerButtonStyleBox_default.tres") setget set_style_selected_correct
+export (StyleBox) var correct = preload("res://UI/Components/infobits/AnswerButtonStyleBox_default.tres") setget set_style_correct
+export (StyleBox) var wrong = preload("res://UI/Components/infobits/AnswerButtonStyleBox_default.tres") setget set_style_wrong
 
-export (Texture) var icon_default setget set_icon_style_default
-export (Texture) var icon_selected setget set_icon_style_selected
-export (Texture) var icon_selected_correct setget set_icon_style_selected_correct
-export (Texture) var icon_correct setget set_icon_style_correct
-export (Texture) var icon_wrong setget set_icon_style_wrong
+export (Texture) var icon_default = preload("res://Assets/Icons/answer_checkbox_default.png") setget set_icon_style_default
+export (Texture) var icon_selected = preload("res://Assets/Icons/answer_checkbox_selected.png") setget set_icon_style_selected
+export (Texture) var icon_selected_correct = preload("res://Assets/Icons/answer_checkbox_selected_correct.png") setget set_icon_style_selected_correct
+export (Texture) var icon_correct = preload("res://Assets/Icons/answer_checkbox_correct.png") setget set_icon_style_correct
+export (Texture) var icon_wrong= preload("res://Assets/Icons/answer_checkbox_wrong.png")  setget set_icon_style_wrong
 
 enum AnswerState {DEFAULT, SELECTED, SELECTED_CORRECT, CORRECT, WRONG}
 export(AnswerState) var state setget set_state
@@ -29,6 +29,7 @@ func _ready():
 
 func set_label_text(new_text):
 	answer_text = new_text
+	if (label ==  null): return
 	label.text = answer_text if (answer_text != null) else label.text
 
 func set_style_default(new_style): 
@@ -76,6 +77,7 @@ func set_state(new_state):
 	_set_style()
 
 func _set_style():
+	if (checkbox == null): return
 	match(state): 
 		AnswerState.DEFAULT:
 			set("custom_styles/panel", default)

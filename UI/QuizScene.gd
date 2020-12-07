@@ -13,7 +13,7 @@ onready var continue_button = $"VBoxContainer/Content/VSplitContainer/Footer/Con
 onready var back_button = $"VBoxContainer/Content/VSplitContainer/Footer/BackButton"
 onready var infobit_holder = $"VBoxContainer/Content/VSplitContainer/ContentHolder/Infobits"
 onready var anim_player = $AnimationPlayer
-
+onready var questions_holder = $"VBoxContainer/Content/VSplitContainer/ContentHolder/Quiz/Questions"
 var has_data = false
 var has_error = false
 var quiz_data
@@ -35,11 +35,15 @@ enum InfoByteState {
 func _ready():
 	connect("next_infobit", infobit_holder, "next")
 	connect("prev_infobit", infobit_holder, "prev")
+	
 	infobit_holder.connect("finished", self, "_last_infobit")
 	infobit_holder.connect("anim_finished", self, "_content_anim_finished")
 	infobit_holder.connect("go_back", self, "_reshow_frontmatter")
 	
+	connect("next_question", questions_holder, "next")
+	
 	loading_anim.connect("finished_loading", self, "_finished_loading")
+	
 	header.connect("go_back", self, "_on_back_button")
 	
 func receive_navigation(quiz_data):
@@ -69,6 +73,7 @@ func _on_quiz_data(quiz_data):
 	kiko_dialog.set_text(quiz_data.frontmatter)
 	loading_anim.loading_finished()
 	infobit_holder.set_infobits_data(quiz_data.infobits)
+	questions_holder.on_data(quiz_data.questions)
 
 func _finished_loading(): 
 	anim_player.play("show_frontmatter")
