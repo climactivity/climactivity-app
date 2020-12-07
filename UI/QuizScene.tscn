@@ -451,6 +451,7 @@ __meta__ = {
 }
 
 [node name="FrontMatter" type="Control" parent="VBoxContainer/Content/VSplitContainer/ContentHolder" index="0"]
+visible = false
 margin_right = 1080.0
 margin_bottom = 1165.0
 
@@ -474,6 +475,7 @@ position = Vector2( 236.656, 330.743 )
 text = "Frontmatter missing :("
 
 [node name="Loading" parent="VBoxContainer/Content/VSplitContainer/ContentHolder" index="1" instance=ExtResource( 5 )]
+visible = false
 
 [node name="Panel" type="Panel" parent="VBoxContainer/Content/VSplitContainer/ContentHolder/Loading" index="0"]
 use_parent_material = true
@@ -521,6 +523,7 @@ __meta__ = {
 }
 
 [node name="Infobits" parent="VBoxContainer/Content/VSplitContainer/ContentHolder" index="2" instance=ExtResource( 9 )]
+visible = false
 modulate = Color( 1, 1, 1, 0 )
 anchor_left = 0.0
 anchor_right = 0.0

@@ -20,12 +20,12 @@ export (String) var answer_text setget set_label_text
 export var is_correct = false   
 export var is_checked = false
 
-onready var label = $MarginContainer/Control2/Label
+onready var label = $MarginContainer/Label
 onready var checkbox = $MarginContainer/Control2/CheckBox
 
 func _ready():
 	_set_style()
-	set_label_text(answer_text)
+	$MarginContainer/Label.text = answer_text
 
 func set_label_text(new_text):
 	answer_text = new_text
@@ -36,7 +36,7 @@ func set_style_default(new_style):
 	default = new_style
 	_set_style()
 
-func set_style_selected(new_style): 
+func set_style_selected(new_style): 	
 	selected = new_style
 	_set_style()
 

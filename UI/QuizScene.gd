@@ -86,7 +86,7 @@ func _next_infobit():
 	if reshow:
 		reshow = false
 		return
-	emit_signal("next_infobit")
+	emit_signal("next_infobit") 
 	back_button.set_disabled(false)
 
 func _prev_infobit(): 

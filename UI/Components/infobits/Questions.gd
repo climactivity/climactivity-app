@@ -13,8 +13,8 @@ var correct = 0
 var current_question = -1
 
 var question_box_factory = preload("res://UI/Components/infobits/QuestionBox.tscn")
-onready var current = $Current
-onready var last = $Last
+onready var current = $MarginContainer/Current
+onready var last = $MarginContainer2/Last
 onready var anim_player = $AnimationPlayer
 
 func on_data(new_data):
