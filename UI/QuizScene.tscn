@@ -2,29 +2,16 @@
 
 [ext_resource path="res://UI/SceneBase.tscn" type="PackedScene" id=1]
 [ext_resource path="res://UI/QuizScene.gd" type="Script" id=2]
-[ext_resource path="res://UI/typography/Heading.tres" type="DynamicFont" id=3]
-[ext_resource path="res://Assets/kiko_avatar.png" type="Texture" id=4]
+[ext_resource path="res://UI/Components/kiko_hint.tscn" type="PackedScene" id=3]
 [ext_resource path="res://UI/Components/SkeletonUI/Loading.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Assets/Icons/Arrow - Right 2.png" type="Texture" id=6]
 [ext_resource path="res://UI/Components/NeoMButton.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Assets/Icons/AufforstungIcon.png" type="Texture" id=8]
+[ext_resource path="res://Assets/Icons/Arrow - Left W.png" type="Texture" id=8]
 [ext_resource path="res://UI/Components/Infobits.tscn" type="PackedScene" id=9]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
 [sub_resource type="StyleBoxEmpty" id=2]
-
-[sub_resource type="StyleBoxFlat" id=3]
-bg_color = Color( 1, 1, 1, 1 )
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color( 0.584314, 0.756863, 0.121569, 1 )
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
 
 [sub_resource type="StyleBoxFlat" id=4]
 corner_radius_top_left = 180
@@ -94,8 +81,32 @@ tracks/3/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
+tracks/4/type = "value"
+tracks/4/path = NodePath("VBoxContainer/Content/VSplitContainer/ContentHolder/QuizStart:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("VBoxContainer/Content/VSplitContainer/ContentHolder/Quiz:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=9]
 resource_name = "show_frontmatter"
 length = 0.2
 tracks/0/type = "value"
@@ -146,9 +157,20 @@ tracks/3/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
+tracks/4/type = "value"
+tracks/4/path = NodePath("VBoxContainer/Content/VSplitContainer/ContentHolder/Infobits:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
 
-[sub_resource type="Animation" id=9]
-resource_name = "show_infobit_holder"
+[sub_resource type="Animation" id=10]
 length = 0.573
 tracks/0/type = "value"
 tracks/0/path = NodePath("VBoxContainer/Content/VSplitContainer/ContentHolder/Infobits:visible")
@@ -224,13 +246,176 @@ tracks/5/keys = {
 "method": "_next_infobit"
 } ]
 }
+tracks/6/type = "value"
+tracks/6/path = NodePath("VBoxContainer/Content/VSplitContainer/ContentHolder/QuizStart:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=12]
+resource_name = "show_quiz"
+length = 0.317
+tracks/0/type = "value"
+tracks/0/path = NodePath("VBoxContainer/Content/VSplitContainer/ContentHolder/Quiz:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("VBoxContainer/Content/VSplitContainer/ContentHolder/QuizStart:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("VBoxContainer/Content/VSplitContainer/ContentHolder/QuizStart:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("VBoxContainer/Content/VSplitContainer/ContentHolder/QuizStart:rect_position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( -1080, 0 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("VBoxContainer/Content/VSplitContainer/ContentHolder/Quiz:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("VBoxContainer/Content/VSplitContainer/ContentHolder/Quiz:rect_position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1080, 0 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=11]
+resource_name = "show_quiz_intro"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("VBoxContainer/Content/VSplitContainer/ContentHolder/Infobits:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("VBoxContainer/Content/VSplitContainer/ContentHolder/Infobits:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("VBoxContainer/Content/VSplitContainer/ContentHolder/Infobits:rect_position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( -1080, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("VBoxContainer/Content/VSplitContainer/ContentHolder/QuizStart:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("VBoxContainer/Content/VSplitContainer/ContentHolder/QuizStart:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("VBoxContainer/Content/VSplitContainer/ContentHolder/QuizStart:rect_position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1080, 0 ), Vector2( 0, 0 ) ]
+}
 
 [node name="QuizScene" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 
 [node name="Header" parent="VBoxContainer" index="1"]
 screen_label = "Quiz Kategorie"
-icon_texture = ExtResource( 8 )
 color = Color( 0.584314, 0.756863, 0.121569, 1 )
 
 [node name="VSplitContainer" type="VSplitContainer" parent="VBoxContainer/Content" index="0"]
@@ -251,7 +436,6 @@ __meta__ = {
 }
 
 [node name="FrontMatter" type="Control" parent="VBoxContainer/Content/VSplitContainer/ContentHolder" index="0"]
-visible = false
 margin_right = 1080.0
 margin_bottom = 1165.0
 
@@ -270,38 +454,9 @@ text = "Direkt zum Quiz"
 button_disabled = true
 color_icon = true
 
-[node name="kiko_avatar - placeholder" type="Sprite" parent="VBoxContainer/Content/VSplitContainer/ContentHolder/FrontMatter" index="1"]
-position = Vector2( 253.156, 230.581 )
-texture = ExtResource( 4 )
-
-[node name="SpeechBubbleHolder" type="Panel" parent="VBoxContainer/Content/VSplitContainer/ContentHolder/FrontMatter/kiko_avatar - placeholder" index="0"]
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 180.0
-margin_top = -464.0
-margin_right = 397.0
-margin_bottom = -196.0
-custom_styles/panel = SubResource( 3 )
-__meta__ = {
-"_edit_group_": true,
-"_edit_use_anchors_": true
-}
-
-[node name="DialogLine" type="Label" parent="VBoxContainer/Content/VSplitContainer/ContentHolder/FrontMatter/kiko_avatar - placeholder/SpeechBubbleHolder" index="0"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 12.0
-margin_top = 16.0
-margin_right = -38.0
-margin_bottom = -22.0
-custom_fonts/font = ExtResource( 3 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Nette Ansprache; Warum ist das hier interessant"
-autowrap = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="kiko_avatar - placeholder" parent="VBoxContainer/Content/VSplitContainer/ContentHolder/FrontMatter" index="1" instance=ExtResource( 3 )]
+position = Vector2( 236.656, 330.743 )
+text = "Frontmatter missing :("
 
 [node name="Loading" parent="VBoxContainer/Content/VSplitContainer/ContentHolder" index="1" instance=ExtResource( 5 )]
 
@@ -311,10 +466,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -438.0
-margin_top = -514.5
-margin_right = -157.0
-margin_bottom = -228.5
+margin_left = -430.873
+margin_top = -407.592
+margin_right = -149.873
+margin_bottom = -121.592
 custom_styles/panel = SubResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -326,10 +481,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -132.0
-margin_top = -507.5
-margin_right = 375.0
-margin_bottom = -221.5
+margin_left = -133.782
+margin_top = -407.719
+margin_right = 373.218
+margin_bottom = -121.719
 custom_styles/panel = SubResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -351,12 +506,26 @@ __meta__ = {
 }
 
 [node name="Infobits" parent="VBoxContainer/Content/VSplitContainer/ContentHolder" index="2" instance=ExtResource( 9 )]
-visible = false
 modulate = Color( 1, 1, 1, 0 )
 anchor_left = 0.0
 anchor_right = 0.0
 margin_left = 0.0
 margin_right = 1080.0
+
+[node name="QuizStart" type="Control" parent="VBoxContainer/Content/VSplitContainer/ContentHolder" index="3"]
+visible = false
+margin_right = 1080.0
+margin_bottom = 1165.0
+
+[node name="kiko_avatar - placeholder" parent="VBoxContainer/Content/VSplitContainer/ContentHolder/QuizStart" index="0" instance=ExtResource( 3 )]
+position = Vector2( 236.656, 330.743 )
+text = "Wie wäre es mit einem kurzen Quiz?"
+
+[node name="Quiz" type="Control" parent="VBoxContainer/Content/VSplitContainer/ContentHolder" index="4"]
+visible = false
+margin_right = 1080.0
+margin_bottom = 1165.0
+rect_pivot_offset = Vector2( -537.719, 1703.08 )
 
 [node name="Footer" type="Panel" parent="VBoxContainer/Content/VSplitContainer" index="1"]
 margin_top = 1165.0
@@ -382,25 +551,26 @@ __meta__ = {
 }
 
 [node name="BackButton" parent="VBoxContainer/Content/VSplitContainer/Footer" index="1" instance=ExtResource( 7 )]
-anchor_top = 0.523
+anchor_top = 0.5
 anchor_right = 0.0
-anchor_bottom = 0.523
-margin_left = 86.7882
-margin_top = -42.6393
-margin_right = 289.788
-margin_bottom = 42.3607
-custom_styles/panel = SubResource( 2 )
+anchor_bottom = 0.5
+margin_left = 130.656
+margin_top = -46.0
+margin_right = 406.656
+margin_bottom = 48.0
 icon_left = true
-texture_min_size = 46
+icon_texture = ExtResource( 8 )
 text = "Zurück"
+button_disabled = true
+color_icon = true
 
 [node name="ContinueButton" parent="VBoxContainer/Content/VSplitContainer/Footer" index="2" instance=ExtResource( 7 )]
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_bottom = 0.5
-margin_left = -399.544
+margin_left = -393.544
 margin_top = -46.0
-margin_right = -142.544
+margin_right = -136.544
 margin_bottom = 46.0
 font_color = Color( 0.588235, 0.74902, 0.0509804, 1 )
 text = "Weiter"
@@ -412,7 +582,10 @@ color_icon = true
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1"]
 autoplay = "RESET"
 anims/RESET = SubResource( 8 )
-anims/show_frontmatter = SubResource( 10 )
-anims/show_infobit_holder = SubResource( 9 )
+anims/show_frontmatter = SubResource( 9 )
+anims/show_infobit_holder = SubResource( 10 )
+anims/show_quiz = SubResource( 12 )
+anims/show_quiz_intro = SubResource( 11 )
+[connection signal="pressed" from="VBoxContainer/Content/VSplitContainer/Footer/BackButton" to="." method="_on_BackButton_pressed"]
 [connection signal="pressed" from="VBoxContainer/Content/VSplitContainer/Footer/ContinueButton" to="." method="_on_ContinueButton_pressed"]
 [connection signal="request_completed" from="VBoxContainer/HTTPRequest" to="." method="_on_HTTPRequest_request_completed"]
