@@ -1,6 +1,9 @@
 tool
 extends PanelContainer
 
+signal selected(answer)
+signal unselected(answer)
+
 export (StyleBox) var default = preload("res://UI/Components/infobits/AnswerButtonStyleBox_default.tres") setget set_style_default
 export (StyleBox) var selected = preload("res://UI/Components/infobits/AnswerButtonStyleBox_default.tres") setget set_style_selected
 export (StyleBox) var selected_correct = preload("res://UI/Components/infobits/AnswerButtonStyleBox_default.tres") setget set_style_selected_correct
@@ -23,6 +26,8 @@ export var is_checked = false
 onready var label = $MarginContainer/Label
 onready var checkbox = $MarginContainer/Control2/CheckBox
 
+var can_fire = true
+var answer setget set_answer
 func _ready():
 	_set_style()
 	$MarginContainer/Label.text = answer_text
@@ -31,6 +36,11 @@ func set_label_text(new_text):
 	answer_text = new_text
 	if (label ==  null): return
 	label.text = answer_text if (answer_text != null) else label.text
+
+func set_answer(new_answer): 
+	answer = new_answer
+	is_correct = new_answer.correct
+	set_label_text(new_answer.value)
 
 func set_style_default(new_style): 
 	default = new_style
@@ -88,12 +98,42 @@ func _set_style():
 		AnswerState.SELECTED_CORRECT:
 			set("custom_styles/panel", selected_correct)
 			checkbox.texture = icon_selected_correct
+			if(label): label.set("custom_colors/font_color", Color("#ffffff"))
 		AnswerState.CORRECT:
 			set("custom_styles/panel", correct)
 			checkbox.texture = icon_correct
+			if(label): label.set("custom_colors/font_color", Color("#ffffff"))
 		AnswerState.WRONG:
 			set("custom_styles/panel", wrong)
 			checkbox.texture = icon_wrong
-			
-func _on_PanelContainer_gui_input(event):
-	pass # Replace with function body.
+			if(label): label.set("custom_colors/font_color", Color("#ffffff"))
+
+func check_result():
+	return (state == AnswerState.SELECTED) != is_correct
+
+func _on_MarginContainer_gui_input(event):
+	if(can_fire && event is InputEventMouseButton):
+		#print(event.as_text())
+#		can_fire = false
+		if event.pressed:
+				if(state == AnswerState.DEFAULT):
+					emit_signal("selected", self)
+					#print("selected ", answer_text)
+					set_state(AnswerState.SELECTED)
+				elif(state == AnswerState.SELECTED): 
+					emit_signal("unselected", self)
+					#print("unselected ", answer_text)
+					set_state(AnswerState.DEFAULT)
+#		yield(get_tree().create_timer(1.0), "timeout")
+#		can_fire = true
+
+func lock(): 
+	can_fire = false
+	if state == AnswerState.SELECTED:
+		if is_correct:
+			set_state(AnswerState.SELECTED_CORRECT)
+		else:
+			set_state(AnswerState.WRONG)
+	else:
+		if is_correct:
+			set_state(AnswerState.CORRECT)

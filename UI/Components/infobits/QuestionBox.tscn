@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://UI/typography/Content_Regular.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Assets/kiko_avatar.png" type="Texture" id=2]
 [ext_resource path="res://Assets/Icons/Arrow - Left W.png" type="Texture" id=3]
 [ext_resource path="res://UI/Components/infobits/QuestionBox.gd" type="Script" id=4]
+[ext_resource path="res://UI/Components/infobits/AnswerButton.tscn" type="PackedScene" id=5]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 1, 1, 1, 1 )
@@ -25,6 +26,7 @@ anchor_right = 1.0
 anchor_bottom = 0.359
 margin_right = 4.0
 margin_bottom = 7.76495
+mouse_filter = 2
 size_flags_horizontal = 3
 script = ExtResource( 4 )
 __meta__ = {
@@ -87,10 +89,28 @@ margin_right = -4.46106
 margin_bottom = 633.461
 grow_horizontal = 0
 grow_vertical = 0
+mouse_filter = 2
 custom_constants/separation = 20
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Button" type="Button" parent="VBoxContainer"]
+visible = false
+margin_right = 1081.0
+margin_bottom = 20.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnswerButton" parent="VBoxContainer" instance=ExtResource( 5 )]
+visible = false
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 0.0
+margin_right = 1081.0
+margin_bottom = 90.0
 
 [node name="kiko_avatar - placeholder2" type="Sprite" parent="."]
 position = Vector2( 261.331, 159.5 )

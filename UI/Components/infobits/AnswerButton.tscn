@@ -1,10 +1,44 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://UI/Components/infobits/AnswerPanelButton.gd" type="Script" id=1]
 [ext_resource path="res://UI/typography/Content_Regular.tres" type="DynamicFont" id=2]
-[ext_resource path="res://Assets/Icons/answer_checkbox_correct.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Icons/answer_checkbox_default.png" type="Texture" id=3]
 [ext_resource path="res://UI/Components/infobits/AnswerButtonStyleBox_default.tres" type="StyleBox" id=4]
 [ext_resource path="res://Assets/Icons/answer_checkbox_selected_correct.png" type="Texture" id=8]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 1, 1, 1, 1 )
+corner_radius_top_left = 28
+corner_radius_top_right = 28
+corner_radius_bottom_right = 28
+corner_radius_bottom_left = 28
+shadow_size = 8
+shadow_offset = Vector2( 0, 4 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.584314, 0.756863, 0.121569, 1 )
+corner_radius_top_left = 28
+corner_radius_top_right = 28
+corner_radius_bottom_right = 28
+corner_radius_bottom_left = 28
+shadow_size = 8
+shadow_offset = Vector2( 0, 4 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.584314, 0.756863, 0.121569, 1 )
+corner_radius_top_left = 28
+corner_radius_top_right = 28
+corner_radius_bottom_right = 28
+corner_radius_bottom_left = 28
+shadow_size = 8
+shadow_offset = Vector2( 0, 4 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.898039, 0, 0.27451, 1 )
+corner_radius_top_left = 28
+corner_radius_top_right = 28
+corner_radius_bottom_right = 28
+corner_radius_bottom_left = 28
 
 [node name="AnswerButton" type="PanelContainer"]
 anchor_top = 0.5
@@ -17,6 +51,10 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+selected = SubResource( 1 )
+selected_correct = SubResource( 2 )
+correct = SubResource( 3 )
+wrong = SubResource( 4 )
 icon_correct = ExtResource( 8 )
 answer_text = "Antwort Text"
 
@@ -32,10 +70,13 @@ margin_right = 1080.0
 margin_bottom = 70.0
 
 [node name="CheckBox" type="TextureRect" parent="MarginContainer/Control2"]
-margin_left = 905.0
-margin_top = 2.0
-margin_right = 955.0
-margin_bottom = 52.0
+anchor_left = 0.864
+anchor_top = 0.5
+anchor_right = 0.864
+anchor_bottom = 0.5
+margin_left = -50.0
+margin_top = -25.0
+margin_bottom = 25.0
 texture = ExtResource( 3 )
 expand = true
 stretch_mode = 1
@@ -55,4 +96,5 @@ valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="gui_input" from="." to="." method="_on_PanelContainer_gui_input"]
+[connection signal="gui_input" from="MarginContainer" to="." method="_on_MarginContainer_gui_input"]
+[connection signal="gui_input" from="MarginContainer/Control2" to="." method="_on_MarginContainer_gui_input"]

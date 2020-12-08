@@ -4,6 +4,7 @@ signal next_infobit
 signal next_question
 signal prev_infobit
 signal prev_question
+signal check_answer
 
 onready var req = $VBoxContainer/HTTPRequest
 onready var header = $VBoxContainer/Header
@@ -21,7 +22,7 @@ var error
 var state = InfoByteState.LOADING
 
 var reshow = false
-
+var wait_check = false 
 enum InfoByteState {
 	LOADING,
 	FRONT,
@@ -41,7 +42,10 @@ func _ready():
 	infobit_holder.connect("go_back", self, "_reshow_frontmatter")
 	
 	connect("next_question", questions_holder, "next")
-	
+	connect("check_answer", questions_holder, "check_answer")
+	questions_holder.connect("end_reached", self, "_last_question")
+	questions_holder.connect( "can_check", self, "_can_check")
+	questions_holder.connect( "has_checked" ,self, "_has_checked")
 	loading_anim.connect("finished_loading", self, "_finished_loading")
 	
 	header.connect("go_back", self, "_on_back_button")
@@ -99,17 +103,45 @@ func _last_infobit():
 	
 func _show_quiz(): 
 	state = InfoByteState.QUIZ
+	back_button.set_disabled(true)
+	back_button.visible = false
 	anim_player.play("show_quiz")
 
 func _next_question():
-	emit_signal("next_question")
+	if(wait_check):
+		emit_signal("check_answer")
+	else:
+		emit_signal("next_question")
+		_wait_check()
 
 func _prev_question():
 	emit_signal("prev_question")
+
+func _wait_check():
+	continue_button.set_disabled(true)
+	continue_button.set_text("Wählen")
+	wait_check = true
 	
+func _can_check():
+	continue_button.set_disabled(false)
+	
+func _has_checked(): 
+	wait_check = false
+	continue_button.set_text("Weiter")
+
 func _last_question(): 
 	Logger.print("Completed " + quiz_data.name, self)
-
+	var quiz_result = questions_holder.get_quiz_result()
+	print(quiz_result)
+	var quiz_end_comment = $"VBoxContainer/Content/VSplitContainer/ContentHolder/QuizEnd/kiko_avatar - placeholder"
+	var quiz_end_result_text = $"VBoxContainer/Content/VSplitContainer/ContentHolder/QuizEnd/Label"
+	var quiz_end_collect_button = $"VBoxContainer/Content/VSplitContainer/ContentHolder/QuizEnd/CollectRewardButton"
+	quiz_end_result_text.text = quiz_result.result_string
+	anim_player.play("show_quiz_result")
+	state = InfoByteState.QUIZ_COMPLETE
+	continue_button.set_text("Zur Auswahl")
+	continue_button.set_disabled(false)
+	
 func _content_anim_finished():
 	pass
 	
@@ -132,7 +164,7 @@ func _on_ContinueButton_pressed():
 		InfoByteState.QUIZ:
 			_next_question()
 		InfoByteState.QUIZ_COMPLETE:
-			pass
+			GameManager.scene_manager.pop_scene()
 		InfoByteState.ERROR:
 			pass
 
