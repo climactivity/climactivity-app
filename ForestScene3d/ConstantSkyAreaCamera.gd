@@ -16,6 +16,9 @@ export var max_elevation = 30
 export var min_rotation_deg = -27.5
 export var max_rotation_deg = -45.0
 
+export var nw_bound = Vector2(-15.0,-5.0)
+export var se_bound = Vector2(15.0,5.0)
+
 func _ready():
 	_zoom(0.0)
 
@@ -34,10 +37,17 @@ func _get_rotation_for_y(y: float):
 func _pan(delta: Vector2): 
 	var current_pan_factor = (pan_factor/100.0) * max(get_elevation_percent(),0.05)
 	var pan_by = Vector3(delta.x, 0.0, delta.y) * current_pan_factor
-	print(pan_by, current_pan_factor)
-	global_transform.origin = global_transform.origin + pan_by
-	emit_signal("camera_moved", pan_by)
 
+	var old_origin = global_transform.origin
+	var new_origin = old_origin + pan_by
+	new_origin = Vector3(
+		clamp(new_origin.x, nw_bound.x, se_bound.x),
+		new_origin.y,
+		clamp(new_origin.z, nw_bound.y, se_bound.y)
+	)
+	print(new_origin)
+	global_transform.origin = new_origin
+	emit_signal("camera_moved", new_origin - old_origin)
 
 func _unhandled_input(event):
 	if event is InputEventScreenDrag:

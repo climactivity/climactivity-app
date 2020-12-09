@@ -1,8 +1,4 @@
-[gd_resource type="SpatialMaterial" load_steps=2 format=2]
-
-[sub_resource type="ViewportTexture" id=11]
-viewport_path = NodePath("Viewport")
+[gd_resource type="SpatialMaterial" format=2]
 
 [resource]
 resource_local_to_scene = true
-albedo_texture = SubResource( 11 )
