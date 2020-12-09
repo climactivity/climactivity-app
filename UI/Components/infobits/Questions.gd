@@ -29,10 +29,10 @@ func on_data(new_data):
 func next():
 	if current_question < questions.size() - 1:
 		current_question = current_question + 1
+		Logger.print("Set active question index: " + str(current_question), self)
+		_update_question("forward")
 	else:
 		emit_signal("end_reached")
-	Logger.print("Set active question index: " + str(current_question), self)
-	_update_question("forward")
 
 func _update_question(anim_to_play):
 	for child in last.get_children():

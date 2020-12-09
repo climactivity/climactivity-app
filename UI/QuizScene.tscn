@@ -560,6 +560,7 @@ position = Vector2( 236.656, 330.743 )
 text = "Frontmatter missing :("
 
 [node name="Loading" parent="VBoxContainer/Content/VSplitContainer/ContentHolder" index="1" instance=ExtResource( 5 )]
+visible = false
 
 [node name="Panel" type="Panel" parent="VBoxContainer/Content/VSplitContainer/ContentHolder/Loading" index="0"]
 use_parent_material = true
@@ -640,6 +641,7 @@ margin_right = 0.0
 margin_bottom = 0.0
 
 [node name="QuizEnd" type="Control" parent="VBoxContainer/Content/VSplitContainer/ContentHolder" index="5"]
+visible = false
 margin_right = 1080.0
 margin_bottom = 1165.0
 

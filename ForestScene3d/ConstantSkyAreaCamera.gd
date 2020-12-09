@@ -1,0 +1,54 @@
+tool
+extends Camera
+
+signal camera_moved(position)
+signal camera_roatated(rotation)
+
+# """ exports zoom level
+# """ used to determine distance above origin and tilt
+export var zoom_level = 1.0
+export var zoom_factor = 1.0
+export (float) var pan_factor = 4.0
+
+export var min_elevation = 5.00 
+export var max_elevation = 30
+
+export var min_rotation_deg = -27.5
+export var max_rotation_deg = -45.0
+
+func _ready():
+	_zoom(0.0)
+
+func _zoom(delta: float): 
+	var old_translation = global_transform.origin; 
+	var new_elevation = clamp(old_translation.y + delta * zoom_factor, min_elevation, max_elevation)
+	print(new_elevation)
+	global_transform.origin = Vector3(old_translation.x, new_elevation, old_translation.z)
+	rotation.x = deg2rad(_get_rotation_for_y(global_transform.origin.y))
+
+func _get_rotation_for_y(y: float): 
+	var deg = Util.map_to_range(get_elevation_percent(),0.0,1.0,min_rotation_deg, max_rotation_deg)
+	print(deg)
+	return deg
+	
+func _pan(delta: Vector2): 
+	var current_pan_factor = (pan_factor/100.0) * max(get_elevation_percent(),0.05)
+	var pan_by = Vector3(delta.x, 0.0, delta.y) * current_pan_factor
+	print(pan_by, current_pan_factor)
+	global_transform.origin = global_transform.origin + pan_by
+	emit_signal("camera_moved", pan_by)
+
+
+func _unhandled_input(event):
+	if event is InputEventScreenDrag:
+		_pan(-event.relative)
+	if event is InputEventMouse:
+		if event.is_pressed():
+			var mouse_position = event.position
+			if event.button_index == BUTTON_WHEEL_UP:
+				_zoom(-1.0)
+			else : if event.button_index == BUTTON_WHEEL_DOWN:
+				_zoom(1.0)
+				
+func get_elevation_percent():
+	return Util.map_to_range(global_transform.origin.y,min_elevation, max_elevation, 0.0, 1.0)
