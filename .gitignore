@@ -2,7 +2,8 @@
 .import/
 export.cfg
 export_presets.cfg
-build/
+android
+/build/
 logs/
 # Imported translations (automatically generated from CSV files)
 *.translation
