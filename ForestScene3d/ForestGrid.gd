@@ -1,17 +1,19 @@
 extends Spatial
 
 var HexGrid = preload("./HexGrid.gd").new()
-var template = preload("res://ForestScene3d/EmptyHex.tscn")
+var template = preload("res://ForestScene3d/TestTree3d.tscn")
 
 onready var cursor = $Cursor
 
+func _ready(): 
+	HexGrid.set_hex_scale(Vector2(3,3))
 
 func _on_HexGrid_input_event(_camera, event, click_position, _click_normal, _shape_idx):
 	# It's called click_position, but you don't need to click
 	var plane_coords = self.transform.affine_inverse() * click_position
 	plane_coords = Vector2(plane_coords.x, plane_coords.z)
 	if event is InputEventMouse:
-		if event.is_pressed():
+		if event.is_pressed() &&  event.button_index == BUTTON_RIGHT:
 			# Display the coords used
 			print("Plane coords: ", str(plane_coords))
 			print("Hex coords: ",   str(HexGrid.get_hex_at(plane_coords).axial_coords))

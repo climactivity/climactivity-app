@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+
+[sub_resource type="Shader" id=2]
+code = "shader_type spatial;
+render_mode unshaded; 
+void fragment() {
+    ALBEDO = vec3(UV.x, UV.y, 0.5);
+}"
+
+[resource]
+shader = SubResource( 2 )
