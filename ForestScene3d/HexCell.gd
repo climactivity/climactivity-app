@@ -143,6 +143,14 @@ func get_all_within(distance):
 			cells.append(new_hex(self.axial_coords + Vector2(dx, dy)))
 	return cells
 	
+func get_all_within2(distance):
+	# Returns an array of all HexCell instances within the given distance
+	var cells = Array()
+	for dx in range(-distance, distance+1):
+		for dy in range(max(-distance, -distance + dx), min(distance, distance + dx) + 1):
+			cells.append(new_hex(self.axial_coords + Vector2(dx, dy)))
+	return cells
+	
 func get_ring(distance):
 	# Returns an array of all HexCell instances at the given distance
 	if distance < 1:

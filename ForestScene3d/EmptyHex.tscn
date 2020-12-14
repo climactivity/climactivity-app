@@ -1,15 +1,9 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://ForestScene3d/M_UV_Gradient.tres" type="Material" id=1]
+[ext_resource path="res://ForestScene3d/HexMesh.tres" type="CylinderMesh" id=2]
 
-[sub_resource type="CylinderMesh" id=1]
-top_radius = 0.5
-bottom_radius = 0.5
-height = 0.001
-radial_segments = 6
-rings = 1
-
-[node name="Cursor" type="MeshInstance"]
+[node name="HexTile" type="MeshInstance"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.213, 0 )
-mesh = SubResource( 1 )
+mesh = ExtResource( 2 )
 material/0 = ExtResource( 1 )

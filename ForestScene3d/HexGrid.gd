@@ -70,3 +70,7 @@ func get_hex_center3(hex, y=0):
 	# Returns hex's centre position as a Vector3
 	var coords = get_hex_center(hex)
 	return Vector3(coords.x, y, coords.y)
+
+func get_hex(axial_coords: Vector2):
+	var hex = HexCell.new(axial_coords)
+	return hex
