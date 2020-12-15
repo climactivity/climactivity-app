@@ -2,7 +2,7 @@
 
 [ext_resource path="res://ForestScene3d/HexMesh.tres" type="CylinderMesh" id=1]
 [ext_resource path="res://Assets/Foliage_Retina/foliagePack_006.png" type="Texture" id=2]
-[ext_resource path="res://ForestScene3d/BaseTree.gd" type="Script" id=3]
+[ext_resource path="res://ForestScene3d/TreeTemplates/BaseTree.gd" type="Script" id=3]
 
 [node name="TreeRoot" type="Spatial"]
 script = ExtResource( 3 )

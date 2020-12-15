@@ -7,9 +7,12 @@ var tree_state = {
 	"aspekt": "ernährung/pflanzliche_ernährung" 
 }
 
+func get_state(): 
+	return tree_state
+
 func save(): 
 	return {
 		"name": name,
 		"scene_name": filename,
-		"state": tree_state
+		"state": get_state()
 	}

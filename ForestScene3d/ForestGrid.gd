@@ -8,7 +8,7 @@ var tileMesh = preload("res://ForestScene3d/EmptyHex.tscn")
 var treeScene = preload("res://ForestScene3d/TestTree3d.tscn")
 
 var placeables = {
-	"base_tree": preload("res://ForestScene3d/BaseTree.tscn")
+	"base_tree": preload("res://ForestScene3d/TreeTemplates/BaseTree.tscn")
 }
 
 var placed_objects = {}
