@@ -1,16 +1,16 @@
 extends Node
 
+var player_xp
+var player_coins
+var player_water
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+var player_level
+var unplaced_items = []
 
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func save():
+	return {
+		"player_xp": player_xp,
+		"player_level": player_level,
+		"player_water": player_water,
+		"player_coins": player_coins,
+	}
