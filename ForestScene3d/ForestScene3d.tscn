@@ -1,5 +1,6 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=25 format=2]
 
+[ext_resource path="res://ForestScene3d/Interactables/SeedlingBox.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Vertical_Gradient.shader" type="Shader" id=2]
 [ext_resource path="res://ForestScene3d/ForestScene3d.gd" type="Script" id=3]
 [ext_resource path="res://Assets/mountains.png" type="Texture" id=4]
@@ -7,8 +8,11 @@
 [ext_resource path="res://ForestScene3d/Background.gd" type="Script" id=6]
 [ext_resource path="res://ForestScene3d/ForestGrid.gd" type="Script" id=7]
 [ext_resource path="res://ForestScene3d/EmptyHex.tscn" type="PackedScene" id=8]
+[ext_resource path="res://ForestScene3d/HUD.gd" type="Script" id=9]
+[ext_resource path="res://ForestScene3d/Interactables/Cloud.tscn" type="PackedScene" id=10]
+[ext_resource path="res://ForestScene3d/Interactables/QuestLog.tscn" type="PackedScene" id=11]
 
-[sub_resource type="ProceduralSky" id=14]
+[sub_resource type="ProceduralSky" id=1]
 sky_top_color = Color( 0.105882, 0.231373, 0.301961, 1 )
 sky_horizon_color = Color( 0.0627451, 0.235294, 0.372549, 1 )
 sky_curve = 0.0365513
@@ -16,43 +20,43 @@ ground_bottom_color = Color( 0.105882, 0.231373, 0.301961, 1 )
 ground_horizon_color = Color( 0.0627451, 0.235294, 0.372549, 1 )
 sun_longitude = 180.0
 
-[sub_resource type="Environment" id=1]
+[sub_resource type="Environment" id=2]
 background_mode = 2
-background_sky = SubResource( 14 )
+background_sky = SubResource( 1 )
 background_energy = 16.0
 
-[sub_resource type="SphereShape" id=21]
+[sub_resource type="SphereShape" id=3]
 
-[sub_resource type="BoxShape" id=16]
+[sub_resource type="BoxShape" id=4]
 extents = Vector3( 35, 1, 35 )
 
-[sub_resource type="PlaneMesh" id=18]
+[sub_resource type="PlaneMesh" id=5]
 size = Vector2( 70, 70 )
 
-[sub_resource type="SpatialMaterial" id=25]
+[sub_resource type="SpatialMaterial" id=6]
 flags_world_triplanar = true
 
-[sub_resource type="PlaneMesh" id=26]
+[sub_resource type="PlaneMesh" id=7]
 size = Vector2( 300, 300 )
 
-[sub_resource type="SpatialMaterial" id=19]
+[sub_resource type="SpatialMaterial" id=8]
 flags_unshaded = true
 albedo_color = Color( 0.00392157, 0.607843, 0, 1 )
 
-[sub_resource type="ViewportTexture" id=22]
+[sub_resource type="ViewportTexture" id=9]
 viewport_path = NodePath("Viewport")
 
-[sub_resource type="World" id=4]
+[sub_resource type="World" id=10]
 
-[sub_resource type="Gradient" id=23]
+[sub_resource type="Gradient" id=11]
 colors = PoolColorArray( 0.015625, 0.377075, 1, 1, 0.628906, 0.765167, 1, 1 )
 
-[sub_resource type="GradientTexture" id=24]
-gradient = SubResource( 23 )
+[sub_resource type="GradientTexture" id=12]
+gradient = SubResource( 11 )
 
-[sub_resource type="ShaderMaterial" id=7]
+[sub_resource type="ShaderMaterial" id=13]
 shader = ExtResource( 2 )
-shader_param/gradient = SubResource( 24 )
+shader_param/gradient = SubResource( 12 )
 
 [node name="ForestScene3D" type="Spatial"]
 script = ExtResource( 3 )
@@ -61,7 +65,7 @@ script = ExtResource( 3 )
 transform = Transform( 1, 0, 0, 0, 0.261448, 0.965218, 0, -0.965218, 0.261448, 0, 4.09775, 0 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource( 1 )
+environment = SubResource( 2 )
 
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( 1, 0, 0, 0, 0.716424, 0.697665, 0, -0.697665, 0.716424, 0, 30, 23.3756 )
@@ -72,15 +76,43 @@ max_rotation_deg = -49.406
 nw_bound = Vector2( -20, 0 )
 se_bound = Vector2( 20, 38 )
 
+[node name="HUD" type="Control" parent="Camera"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="QuestLog" parent="Camera/HUD" instance=ExtResource( 11 )]
+margin_left = 120.779
+margin_top = 88.9949
+margin_right = 120.779
+margin_bottom = 88.9949
+
+[node name="SeedlingBox" parent="Camera/HUD" instance=ExtResource( 1 )]
+margin_left = 497.948
+margin_top = 80.5192
+margin_right = 497.948
+margin_bottom = 80.5192
+
+[node name="Cloud" parent="Camera/HUD" instance=ExtResource( 10 )]
+margin_left = 847.571
+margin_top = 161.038
+margin_right = 847.571
+margin_bottom = 161.038
+
 [node name="PositionProbe" type="KinematicBody" parent="Camera"]
 
 [node name="CollisionShape" type="CollisionShape" parent="Camera/PositionProbe"]
-shape = SubResource( 21 )
+shape = SubResource( 3 )
 
 [node name="ForestFloor" type="Spatial" parent="."]
 
 [node name="HexGrid" type="StaticBody" parent="ForestFloor"]
 script = ExtResource( 7 )
+hex_size_override = Vector2( 3, 3 )
 
 [node name="Cursor" parent="ForestFloor/HexGrid" instance=ExtResource( 8 )]
 transform = Transform( 0.25, 0, 0.433013, 0, 0.5, 0, -0.433013, 0, 0.25, 3.87529, 0.238, 0 )
@@ -88,17 +120,17 @@ visible = false
 
 [node name="CollisionShape" type="CollisionShape" parent="ForestFloor/HexGrid"]
 transform = Transform( 1, 0, 0, 0, 0.2, 0, 0, 0, 1, 0, 0, -0.0223198 )
-shape = SubResource( 16 )
+shape = SubResource( 4 )
 
 [node name="CSGMesh2" type="CSGMesh" parent="ForestFloor/HexGrid/CollisionShape"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0223198 )
 visible = false
-mesh = SubResource( 18 )
-material = SubResource( 25 )
+mesh = SubResource( 5 )
+material = SubResource( 6 )
 
 [node name="CSGMesh" type="CSGMesh" parent="ForestFloor"]
-mesh = SubResource( 26 )
-material = SubResource( 19 )
+mesh = SubResource( 7 )
+material = SubResource( 8 )
 
 [node name="Background" type="Spatial" parent="."]
 script = ExtResource( 6 )
@@ -110,7 +142,7 @@ visible = false
 billboard = 2
 transparent = false
 shaded = true
-texture = SubResource( 22 )
+texture = SubResource( 9 )
 
 [node name="Mountain" type="Sprite3D" parent="Background" groups=[
 "Parallax",
@@ -142,13 +174,13 @@ texture = ExtResource( 4 )
 
 [node name="Viewport" type="Viewport" parent="."]
 size = Vector2( 2048, 2048 )
-world = SubResource( 4 )
+world = SubResource( 10 )
 hdr = false
 usage = 0
 render_target_v_flip = true
 
 [node name="ColorRect" type="ColorRect" parent="Viewport"]
-material = SubResource( 7 )
+material = SubResource( 13 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 [connection signal="input_event" from="ForestFloor/HexGrid" to="ForestFloor/HexGrid" method="_on_HexGrid_input_event"]

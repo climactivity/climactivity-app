@@ -1,7 +1,6 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://ForestScene3d/HexMesh.tres" type="CylinderMesh" id=1]
-[ext_resource path="res://Assets/Foliage_Retina/foliagePack_006.png" type="Texture" id=2]
 [ext_resource path="res://ForestScene3d/TreeTemplates/BaseTree.gd" type="Script" id=3]
 
 [node name="TreeRoot" type="Spatial"]
@@ -12,8 +11,8 @@ mesh = ExtResource( 1 )
 material/0 = null
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.07721, 0 )
-billboard = 2
-texture = ExtResource( 2 )
+centered = false
+billboard = 1
+region_rect = Rect2( 123.448, 115.232, 38.423, 44.862 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

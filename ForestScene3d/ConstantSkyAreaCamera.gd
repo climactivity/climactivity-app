@@ -25,13 +25,13 @@ func _ready():
 func _zoom(delta: float): 
 	var old_translation = global_transform.origin; 
 	var new_elevation = clamp(old_translation.y + delta * zoom_factor, min_elevation, max_elevation)
-	print(new_elevation)
+	#print(new_elevation)
 	global_transform.origin = Vector3(old_translation.x, new_elevation, old_translation.z)
 	rotation.x = deg2rad(_get_rotation_for_y(global_transform.origin.y))
 
 func _get_rotation_for_y(y: float): 
 	var deg = Util.map_to_range(get_elevation_percent(),0.0,1.0,min_rotation_deg, max_rotation_deg)
-	print(deg)
+	#print(deg)
 	return deg
 	
 func _pan(delta: Vector2): 
@@ -45,7 +45,7 @@ func _pan(delta: Vector2):
 		new_origin.y,
 		clamp(new_origin.z, nw_bound.y, se_bound.y)
 	)
-	print(new_origin)
+	#print(new_origin)
 	global_transform.origin = new_origin
 	emit_signal("camera_moved", new_origin - old_origin)
 
@@ -62,3 +62,10 @@ func _unhandled_input(event):
 				
 func get_elevation_percent():
 	return Util.map_to_range(global_transform.origin.y,min_elevation, max_elevation, 0.0, 1.0)
+
+func ray_cast(screen_pos):
+	var from = project_ray_origin(screen_pos)
+	var to = from + project_ray_normal(screen_pos) * 10000
+	var space_state = get_world().direct_space_state
+	var result = space_state.intersect_ray(from, to)
+	return result

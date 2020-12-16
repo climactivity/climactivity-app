@@ -37,6 +37,7 @@ Transition="*res://UI/Transition.tscn"
 Api="*res://Api.tscn"
 Logger="*res://Logger.gd"
 Util="*res://Util.gd"
+PlayerController="*res://PlayerController.gd"
 
 [debug]
 

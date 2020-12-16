@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://ForestScene3d/TreeTemplates/Textures/tree0_1.png" type="Texture" id=1]
+[ext_resource path="res://ForestScene3d/Interactables/SeedlingBox.gd" type="Script" id=2]
+
+[node name="SeedlingBox" type="Control"]
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="TextureRect" parent="."]
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
