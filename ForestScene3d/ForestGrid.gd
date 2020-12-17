@@ -26,7 +26,7 @@ func set_scale(new_scale):
 func _ready(): 
 	HexGrid.set_hex_scale(hex_size_override)
 	var centerTile = HexGrid.get_hex_at(Vector2(0.0,0.0))
-	#_tile_area(centerTile, SIZE, tileMesh)
+	_tile_area(centerTile, SIZE, treeScene)
 
 func _tile_area(tile, limit, tileMeshF): 
 	var tiles = tile.get_all_within2(limit)
@@ -75,7 +75,7 @@ func place_object(position, template_name):
 		new_object.translation.x = plane_pos.x
 		new_object.translation.y = y_zero # prevent z-fighting
 		new_object.translation.z = plane_pos.y	
-		new_object.scale = Vector3(hex_size_override.x, hex_size_override.x, hex_size_override.y)
+		#new_object.scale = Vector3(hex_size_override.x, hex_size_override.x, hex_size_override.y)
 		placed_objects[selected_hex.axial_coords] = new_object
 
 func can_place(hex, action): 

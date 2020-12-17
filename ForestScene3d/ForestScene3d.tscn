@@ -41,6 +41,7 @@ size = Vector2( 300, 300 )
 
 [sub_resource type="SpatialMaterial" id=8]
 flags_unshaded = true
+flags_world_triplanar = true
 albedo_color = Color( 0.00392157, 0.607843, 0, 1 )
 
 [sub_resource type="ViewportTexture" id=9]
@@ -112,7 +113,8 @@ shape = SubResource( 3 )
 
 [node name="HexGrid" type="StaticBody" parent="ForestFloor"]
 script = ExtResource( 7 )
-hex_size_override = Vector2( 3, 3 )
+SIZE = 9
+hex_size_override = Vector2( 2, 2 )
 
 [node name="Cursor" parent="ForestFloor/HexGrid" instance=ExtResource( 8 )]
 transform = Transform( 0.25, 0, 0.433013, 0, 0.5, 0, -0.433013, 0, 0.25, 3.87529, 0.238, 0 )
@@ -138,7 +140,6 @@ should_move = true
 
 [node name="Backdrop" type="Sprite3D" parent="Background"]
 transform = Transform( 20, 0, 0, 0, 1.158, 5.30055e-08, 0, -6.13803e-08, 1, 0, 3.695, -49.192 )
-visible = false
 billboard = 2
 transparent = false
 shaded = true

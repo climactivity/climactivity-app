@@ -1,9 +1,9 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://Assets/Foliage_Retina/foliagePack_006.png" type="Texture" id=1]
+[ext_resource path="res://ForestScene3d/TreeTemplates/Textures/Baum_Entwurf_01.png" type="Texture" id=1]
 
 [node name="TreeSprite" type="Sprite3D"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.08, 0 )
+transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0.441048, 0.711763 )
 cast_shadow = 0
 billboard = 1
 texture = ExtResource( 1 )
