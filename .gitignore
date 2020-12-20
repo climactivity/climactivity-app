@@ -16,3 +16,6 @@ data_*/
 #Krita
 *.*~
 /.vscode
+
+# Apple finder bs
+.DS_Store
