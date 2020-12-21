@@ -22,8 +22,9 @@ var textures
 # components
 onready var bill_board = $"Sprite3D"
 onready var anim_player = $"AnimationPlayer"
-
+onready var tile = $MeshInstance
 func _ready():
+	if(!OS.is_debug_build()): tile.visible = false
 	if( stage == null || textures == null ): return
 	bill_board.texture = textures[stage]
 

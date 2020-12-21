@@ -5,7 +5,7 @@ var _base_tree_scene = preload("res://ForestScene3d/TreeTemplates/BaseTree.tscn"
 # preload texture assets from application bundle
 var available_textures = {
 	'tree0': {
-		0: preload("res://ForestScene3d/TreeTemplates/Textures/tree0_1.png"),
+		0: preload("res://ForestScene3d/TreeTemplates/Textures/Baum_Entwurf_01.png"),
 		1: preload("res://ForestScene3d/TreeTemplates/Textures/tree0_2.png"),
 		2: preload("res://ForestScene3d/TreeTemplates/Textures/tree0_3.png"),
 		3: preload("res://ForestScene3d/TreeTemplates/Textures/tree0_4.png"),

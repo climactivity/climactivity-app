@@ -8,13 +8,12 @@
 script = ExtResource( 3 )
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
-visible = false
 mesh = ExtResource( 1 )
 material/0 = null
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.777, 0, 0 )
-centered = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.668395, 0 )
+pixel_size = 0.002
 billboard = 1
 texture = ExtResource( 2 )
 region_rect = Rect2( 123.448, 115.232, 38.423, 44.862 )

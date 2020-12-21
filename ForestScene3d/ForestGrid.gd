@@ -1,6 +1,6 @@
 extends Spatial
 
-const y_zero = 0.002
+const y_zero = 0.02
 
 var HexGrid = preload("./HexGrid.gd").new()
 var template = preload("res://ForestScene3d/EmptyHex.tscn")
@@ -10,7 +10,35 @@ var treeScene = preload("res://ForestScene3d/TestTree3d.tscn")
 var tree_template_factory = preload("res://ForestScene3d/TreeTemplates/TreeTemplateFactory.gd").new()
 
 var placeables = {
-	"base_tree": preload("res://ForestScene3d/TreeTemplates/BaseTree.tscn")
+	"base_tree": preload("res://ForestScene3d/TreeTemplates/BaseTree.tscn"),
+	"tent_scene": preload("res://ForestScene3d/Tents/Tent.tscn")
+}
+
+var fixed_obejcts = {
+	Vector2(1,1): {
+		"scene": placeables["tent_scene"],
+		"params": ["ernährung"]
+	},
+	Vector2(1,0): {
+		"scene": placeables["tent_scene"],
+		"params": ["ernährung"]
+	},
+	Vector2(0,1): {
+		"scene": placeables["tent_scene"],
+		"params": ["ernährung"]
+	},
+	Vector2(-1,-1): {
+		"scene": placeables["tent_scene"],
+		"params": ["ernährung"]
+	},
+	Vector2(-1,0): {
+		"scene": placeables["tent_scene"],
+		"params": ["ernährung"]
+	},
+	Vector2(0,-1): {
+		"scene": placeables["tent_scene"],
+		"params": ["ernährung"]
+	},
 }
 
 var placed_objects = {}
@@ -23,10 +51,18 @@ func set_scale(new_scale):
 	hex_size_override = new_scale
 	HexGrid.set_hex_scale(hex_size_override)
 
+func _place_fixed_objects(): 
+	for axial_coords in fixed_obejcts.keys():
+		var object_data = fixed_obejcts.get(axial_coords)
+		var new_object = object_data.get("scene").instance()
+		new_object.init_at(object_data.get("params"))
+		_place_object_at(axial_coords, new_object, true)
+
 func _ready(): 
 	HexGrid.set_hex_scale(hex_size_override)
 	var centerTile = HexGrid.get_hex_at(Vector2(0.0,0.0))
-	_tile_area(centerTile, SIZE, treeScene)
+	#_tile_area(centerTile, SIZE, treeScene)
+	_place_fixed_objects()
 
 func _tile_area(tile, limit, tileMeshF): 
 	var tiles = tile.get_all_within2(limit)
@@ -42,6 +78,12 @@ func _on_HexGrid_input_event(_camera, event, click_position, _click_normal, _sha
 	var plane_coords = self.transform.affine_inverse() * click_position
 	plane_coords = Vector2(plane_coords.x, plane_coords.z)
 	if event is InputEventMouse:
+		if event.is_pressed() && event.button_index == BUTTON_LEFT:
+			var selected_hex = HexGrid.get_hex_at(plane_coords)
+			if(placed_objects.has(selected_hex.axial_coords)):
+				var interacted_object = placed_objects.get(selected_hex.axial_coords)
+				if(interacted_object.has_method("on_touch")):
+					interacted_object.on_touch()
 		if event.is_pressed() &&  event.button_index == BUTTON_RIGHT:
 			# Display the coords used
 			
@@ -61,6 +103,16 @@ func _on_HexGrid_input_event(_camera, event, click_position, _click_normal, _sha
 				new_object.translation.z = plane_pos.y	
 				placed_objects[selected_hex.axial_coords] = new_object
 
+func _place_object_at(axial_coords, instance, scale = false):
+	Logger.print("Placing " + instance.name + " at " + str(axial_coords), self)
+	var plane_pos = HexGrid.get_hex_center(axial_coords)
+	add_child(instance)
+	instance.translation.x = plane_pos.x
+	instance.translation.y = y_zero # prevent z-fighting
+	instance.translation.z = plane_pos.y	
+	if(scale): instance.scale = Vector3(hex_size_override.x, hex_size_override.x, hex_size_override.y)
+	placed_objects[axial_coords] = instance
+
 func place_object(position, template_name): 
 	var plane_coords = self.transform.affine_inverse() * position
 	plane_coords = Vector2(plane_coords.x, plane_coords.z)
@@ -68,17 +120,10 @@ func place_object(position, template_name):
 	var plane_pos = HexGrid.get_hex_center(HexGrid.get_hex_at(plane_coords))
 	var selected_placeable = template_name
 	if(can_place(selected_hex, selected_placeable)):
-		
-		#var new_object = placeables[selected_placeable].instance()
 		var new_object = tree_template_factory.make_new(template_name)
-		add_child(new_object)
-		new_object.translation.x = plane_pos.x
-		new_object.translation.y = y_zero # prevent z-fighting
-		new_object.translation.z = plane_pos.y	
-		#new_object.scale = Vector3(hex_size_override.x, hex_size_override.x, hex_size_override.y)
-		placed_objects[selected_hex.axial_coords] = new_object
+		_place_object_at(selected_hex.axial_coords, new_object, true)
 
-func can_place(hex, action): 
+func can_place(hex, instance): 
 	var x = hex.axial_coords.x
 	var y = hex.axial_coords.y
 	if x in range(-SIZE, SIZE+1) && y in range(max(-SIZE, -SIZE + x), min(SIZE, SIZE + x) + 1):
