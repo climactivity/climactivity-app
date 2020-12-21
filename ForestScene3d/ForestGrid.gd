@@ -140,8 +140,14 @@ func _3d_to_plane_coords(pos3d):
 	var plane_coords = self.transform.affine_inverse() * pos3d
 	return Vector2(plane_coords.x, plane_coords.z)
 
-func to_json() -> String:
+func to_dict() -> String:
 	var save_dict = {}
 	for key in placed_objects.keys():
-		save_dict[key] = placed_objects.get(key).save()
-	return JSON.print(save_dict, "\t")
+		var object_to_save =  placed_objects.get(key)
+		if( object_to_save.has_method("save")): 
+			var object_data = object_to_save.save()
+			if(object_data):
+				save_dict[key] = object_data
+		else:
+			Logger.error("Object " + object_to_save.name + " has no save method!")
+	return save_dict
