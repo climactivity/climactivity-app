@@ -1,6 +1,7 @@
 extends Node
 
 var _base_tree_scene = preload("res://ForestScene3d/TreeTemplates/BaseTree.tscn")
+onready var http_request = $HTTPRequest
 
 # preload texture assets from application bundle
 var available_textures = {
@@ -34,14 +35,22 @@ var _tree_templates = {
 	"tree0": _example_template
 }
 
+var templates_cache_path = "user://tree-templates.json"
+var persist_templates = true
+
 func _ready():
-	# TODO
 	# load tree templates from fs 
-	# check if stored tree templates are current 
-	# update
-	# set _tree_templates with current values
-	# persist updates
-	pass
+	var templates_cache_file = File.new()
+	if(!templates_cache_file.file_exists(templates_cache_path)):
+		if(templates_cache_file.open(templates_cache_path, File.READ) != 0):
+			var saved_data = JSON.parse(templates_cache_file.get_as_text()).result	
+			if(saved_data != null && saved_data.has("templates")): 
+				_tree_templates = saved_data["templates"]
+			templates_cache_file.close()
+		else:
+			Logger.error("Error opening " + templates_cache_path, self)
+	http_request.connect("request_completed", self, "_on_request_completed")
+	Api.getEndpoint("tree_templates_list", http_request)
 
 func available_templates():
 	return _tree_templates.keys()
@@ -57,3 +66,30 @@ func _make_new(template):
 	new_tree.set_template(template, true)
 	new_tree.set_textures(available_textures[template["texture_name"]])
 	return new_tree
+
+
+func _on_request_completed(result, response_code, headers, body):
+	var json = JSON.parse(body.get_string_from_utf8())
+	if(json.error): 
+		print("Server error: ", json.error)
+	else:
+		# set _tree_templates with current values
+		#print(json.result)
+		for template in json.result:
+			if _tree_templates.has(template.template_name): 
+				Logger.print("Updating " + template.template_name, self)
+				_tree_templates[template.template_name] = template
+			else:
+				Logger.print("Adding " + template.template_name, self)
+				_tree_templates[template.template_name] = template
+		# persist updates
+		var templates_cache_file = File.new()
+		if(templates_cache_file.open(templates_cache_path, File.WRITE) == 0):
+			var save_data = JSON.print({
+				"templates": _tree_templates
+			}, "\t")
+			Logger.print("Persisting in " + templates_cache_file.get_path_absolute(), self)
+			templates_cache_file.store_string(save_data)
+			templates_cache_file.close()
+		else: 
+			Logger.error("Error opening " + templates_cache_path, self)

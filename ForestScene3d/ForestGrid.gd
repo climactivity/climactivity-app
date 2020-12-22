@@ -7,7 +7,7 @@ var template = preload("res://ForestScene3d/EmptyHex.tscn")
 var tileMesh = preload("res://ForestScene3d/EmptyHex.tscn")
 var treeScene = preload("res://ForestScene3d/TestTree3d.tscn")
 
-var tree_template_factory = preload("res://ForestScene3d/TreeTemplates/TreeTemplateFactory.gd").new()
+#var tree_template_factory = preload("res://ForestScene3d/TreeTemplates/TreeTemplateFactory.gd").new()
 
 var placeables = {
 	"base_tree": preload("res://ForestScene3d/TreeTemplates/BaseTree.tscn"),
@@ -43,9 +43,13 @@ var fixed_obejcts = {
 
 var placed_objects = {}
 
+var not_placeable_hexes
+var MIN_RING = 3
 export var SIZE = 34
 export (Vector2) var hex_size_override = Vector2(1.0,1.0) setget set_scale
 onready var cursor = $Cursor
+
+var can_interact
 
 func set_scale(new_scale):
 	hex_size_override = new_scale
@@ -59,11 +63,23 @@ func _place_fixed_objects():
 		_place_object_at(axial_coords, new_object, true)
 
 func _ready(): 
+	#if (is_instance_valid(GameManager) and is_instance_valid(GameManager.camera)): 
+		#GameManager.camera.connect("consuming_gesture", self, "_enable_interaction")
+		#GameManager.camera.connect("release_gesture", self, "_disable_interaction")
 	HexGrid.set_hex_scale(hex_size_override)
 	var centerTile = HexGrid.get_hex_at(Vector2(0.0,0.0))
+	not_placeable_hexes = centerTile.get_all_within2(2)
 	#_tile_area(centerTile, SIZE, treeScene)
 	_place_fixed_objects()
 
+func _enable_interaction(): 
+	#print("camera released focus")
+	can_interact = true
+	
+func _disable_interaction():
+	#print("camera has focus")
+	can_interact = false
+	
 func _tile_area(tile, limit, tileMeshF): 
 	var tiles = tile.get_all_within2(limit)
 	for tile in tiles: 
@@ -77,31 +93,21 @@ func _on_HexGrid_input_event(_camera, event, click_position, _click_normal, _sha
 	# It's called click_position, but you don't need to click
 	var plane_coords = self.transform.affine_inverse() * click_position
 	plane_coords = Vector2(plane_coords.x, plane_coords.z)
-	if event is InputEventMouse:
+	if (event is InputEventScreenDrag):
+		if (event.relative.length() > 2): print(event.relative)
+		can_interact = false
+		return
+	if event is InputEventMouseButton:
+
+		print(can_interact)
 		if event.is_pressed() && event.button_index == BUTTON_LEFT:
+			can_interact = true
+		if !event.is_pressed() && event.button_index == BUTTON_LEFT && can_interact:
 			var selected_hex = HexGrid.get_hex_at(plane_coords)
 			if(placed_objects.has(selected_hex.axial_coords)):
 				var interacted_object = placed_objects.get(selected_hex.axial_coords)
 				if(interacted_object.has_method("on_touch")):
 					interacted_object.on_touch()
-		if event.is_pressed() &&  event.button_index == BUTTON_RIGHT:
-			# Display the coords used
-			
-			var selected_hex = HexGrid.get_hex_at(plane_coords)
-			var plane_pos = HexGrid.get_hex_center(HexGrid.get_hex_at(plane_coords))
-			var selected_placeable = "base_tree"
-			print("Plane coords: ", str(plane_coords))
-			print("Hex coords: ",   str(selected_hex.axial_coords))
-			
-			if(can_place(selected_hex, selected_placeable)):
-				
-				#var new_object = placeables[selected_placeable].instance()
-				var new_object = tree_template_factory.make_new("tree0")
-				add_child(new_object)
-				new_object.translation.x = plane_pos.x
-				new_object.translation.y = y_zero # prevent z-fighting
-				new_object.translation.z = plane_pos.y	
-				placed_objects[selected_hex.axial_coords] = new_object
 
 func _place_object_at(axial_coords, instance, scale = false):
 	Logger.print("Placing " + instance.name + " at " + str(axial_coords), self)
@@ -120,13 +126,20 @@ func place_object(position, template_name):
 	var plane_pos = HexGrid.get_hex_center(HexGrid.get_hex_at(plane_coords))
 	var selected_placeable = template_name
 	if(can_place(selected_hex, selected_placeable)):
-		var new_object = tree_template_factory.make_new(template_name)
+		var new_object = TreeTemplateFactory.make_new(template_name)
 		_place_object_at(selected_hex.axial_coords, new_object, true)
 
 func can_place(hex, instance): 
 	var x = hex.axial_coords.x
 	var y = hex.axial_coords.y
 	if x in range(-SIZE, SIZE+1) && y in range(max(-SIZE, -SIZE + x), min(SIZE, SIZE + x) + 1):
+		if !(abs(x) >= MIN_RING || abs(y) >= MIN_RING): 
+			#print("can't place at: ", x,", ",y, "; ", "Blocked by min dist from center")
+			return false
+		if (placed_objects.has(hex.axial_coords)):
+			print("can't place at: ", x,", ",y, "; ", "Blocked by placed object")
+			return false
+		#print("can place at: ", x,", ",y)
 		return true
 
 func can_drop(pos, action): 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://ForestScene3d/Interactables/SeedlingBox.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Vertical_Gradient.shader" type="Shader" id=2]
@@ -11,6 +11,8 @@
 [ext_resource path="res://ForestScene3d/HUD.gd" type="Script" id=9]
 [ext_resource path="res://ForestScene3d/Interactables/Cloud.tscn" type="PackedScene" id=10]
 [ext_resource path="res://ForestScene3d/Interactables/QuestLog.tscn" type="PackedScene" id=11]
+[ext_resource path="res://ForestScene3d/texture_Boden_01.png" type="Texture" id=12]
+[ext_resource path="res://UI/xp_bar.png" type="Texture" id=13]
 
 [sub_resource type="ProceduralSky" id=1]
 sky_top_color = Color( 0.105882, 0.231373, 0.301961, 1 )
@@ -38,11 +40,16 @@ flags_world_triplanar = true
 
 [sub_resource type="PlaneMesh" id=7]
 size = Vector2( 300, 300 )
+subdivide_width = 7
+subdivide_depth = 6
 
 [sub_resource type="SpatialMaterial" id=8]
 flags_unshaded = true
 flags_world_triplanar = true
-albedo_color = Color( 0.00392157, 0.607843, 0, 1 )
+albedo_texture = ExtResource( 12 )
+uv1_scale = Vector3( 0.02, 0.01, 0.02 )
+uv1_offset = Vector3( 0.751, 0, 0 )
+uv1_triplanar = true
 
 [sub_resource type="ViewportTexture" id=9]
 viewport_path = NodePath("Viewport")
@@ -184,16 +191,31 @@ margin_right = 120.779
 margin_bottom = 88.9949
 
 [node name="SeedlingBox" parent="Camera/HUD" instance=ExtResource( 1 )]
-margin_left = 497.948
-margin_top = 80.5192
-margin_right = 497.948
-margin_bottom = 80.5192
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = 6.35681
+margin_top = 237.32
+margin_right = 6.35681
+margin_bottom = 237.32
 
 [node name="Cloud" parent="Camera/HUD" instance=ExtResource( 10 )]
-margin_left = 847.571
-margin_top = 161.038
-margin_right = 847.571
-margin_bottom = 161.038
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -190.704
+margin_top = 163.157
+margin_right = -190.704
+margin_bottom = 163.157
+
+[node name="xp_bar" type="TextureRect" parent="Camera/HUD"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -268.5
+margin_right = 268.5
+margin_bottom = 52.0
+texture = ExtResource( 13 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="PositionProbe" type="KinematicBody" parent="Camera"]
 

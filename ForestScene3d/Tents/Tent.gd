@@ -39,7 +39,7 @@ func set_sprite(new_texture):
 
 func on_touch(): 
 	Logger.print("Navigating to " + target_scene, self)
-	GameManager.scene_manager.push_scene(target_scene)
+	#GameManager.scene_manager.push_scene(target_scene)
 
 func save():
 	return false

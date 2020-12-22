@@ -5,6 +5,7 @@ var base_url = "app.climactiviy.de/api/v1"
 var endpoints = {
 	"quiz_list": "/infobyte",
 	"quiz_data": "/infobyte/%s",
+	"tree_templates_list": "/tree-template",
 }
 
 func _ready():
@@ -16,9 +17,9 @@ func _ready():
 func getBaseUrl():
 	return "%s://%s" % [protocol, base_url]
 
-func getEndpoint(endpoint,request: HTTPRequest): 
+func getEndpoint(endpoint,request: HTTPRequest, params = []): 
 	if (endpoints.has(endpoint)):	
-		var requestUrl = "%s%s" % [getBaseUrl(), endpoints[endpoint]]
+		var requestUrl = "%s%s" % [getBaseUrl(), endpoints[endpoint]] % params
 		Logger.print( "get " + endpoint + " -> GET " + requestUrl, self)
 		request.request(requestUrl)
 	else:

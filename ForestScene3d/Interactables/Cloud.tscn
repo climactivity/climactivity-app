@@ -10,3 +10,7 @@ __meta__ = {
 }
 
 [node name="Sprite" parent="." instance=ExtResource( 2 )]
+margin_left = -146.053
+margin_top = -84.2694
+margin_right = 145.947
+margin_bottom = 80.7306

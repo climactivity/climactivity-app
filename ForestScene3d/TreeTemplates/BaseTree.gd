@@ -26,7 +26,7 @@ onready var tile = $MeshInstance
 func _ready():
 	if(!OS.is_debug_build()): tile.visible = false
 	if( stage == null || textures == null ): return
-	bill_board.texture = textures[stage]
+	bill_board.set_texture(textures[int(stage)])
 
 
 

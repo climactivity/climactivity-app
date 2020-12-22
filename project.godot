@@ -38,6 +38,7 @@ Api="*res://Api.tscn"
 Logger="*res://Logger.gd"
 Util="*res://Util.gd"
 PlayerController="*res://PlayerController.gd"
+TreeTemplateFactory="*res://ForestScene3d/TreeTemplates/TreeTemplateFactory.tscn"
 
 [debug]
 
