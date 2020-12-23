@@ -9,9 +9,8 @@ var history = []
 var scene_map = {
 	"start_scene": preload("res://MainScreen.tscn"), # forest view
 	"loading_instance": preload("res://SceneManager/Loading.tscn"), # loading screen
-	"big_point_scene": preload("res://UI/BigPointScreen.tscn"),
-	"aspekt_scene": preload("res://UI/BigPointScreen.tscn"),
-	"quiz_scene": preload("res://UI/BigPointScreen.tscn"),
+	"big_point_scene": preload("res://Scenes/BigPointScene.tscn"),
+	"quiz_scene": preload("res://Scenes/QuizScene.tscn"),
 }
 
 #loading with progress bar

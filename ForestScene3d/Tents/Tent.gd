@@ -5,7 +5,7 @@ extends Spatial
 var sectors = {
 	"ernährung": {
 		"texture": preload("res://ForestScene3d/Tents/g1474.png"),
-		"target_scene": "big_point_scene",
+		"target_scene": "res://Scenes/BigPointScene.tscn",
 		"navigation_data": {
 			"sector": "ernährung"
 		}
@@ -13,6 +13,7 @@ var sectors = {
 }
 
 #### Instance vars
+var was_initialized = false
 var sector_name
 var target_scene
 var navigation_data
@@ -28,6 +29,7 @@ func init_at(for_sector = [""]):
 		navigation_data = init_params.get("navigation_data")
 		set_sprite(init_params.get("texture"))
 		name = sector_name + "s Zelt"
+		was_initialized = true
 
 func _ready():
 	if(!OS.is_debug_build()): tile.visible = false
@@ -38,8 +40,16 @@ func set_sprite(new_texture):
 	$Sprite3D.texture = texture
 
 func on_touch(): 
-	Logger.print("Navigating to " + target_scene, self)
-	#GameManager.scene_manager.push_scene(target_scene)
+	print("hi")
+	if not was_initialized: 
+		Logger.error("Not initialized!", self)
+		return
+	#return
+	Logger.print("Navigating to " + str(target_scene) + " with " + str(navigation_data), self)
+	if !(is_instance_valid(GameManager) and is_instance_valid(GameManager.scene_manager)): 
+		Logger.error("App navigation not initialized!", self)
+		return
+	GameManager.scene_manager.push_scene(target_scene, navigation_data)
 
 func save():
 	return false

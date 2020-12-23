@@ -94,12 +94,13 @@ func _on_HexGrid_input_event(_camera, event, click_position, _click_normal, _sha
 	var plane_coords = self.transform.affine_inverse() * click_position
 	plane_coords = Vector2(plane_coords.x, plane_coords.z)
 	if (event is InputEventScreenDrag):
-		if (event.relative.length() > 2): print(event.relative)
-		can_interact = false
+		if (event.relative.length() > 2): 
+			print(event.relative)
+			can_interact = false
 		return
 	if event is InputEventMouseButton:
 
-		print(can_interact)
+		#print(can_interact)
 		if event.is_pressed() && event.button_index == BUTTON_LEFT:
 			can_interact = true
 		if !event.is_pressed() && event.button_index == BUTTON_LEFT && can_interact:
