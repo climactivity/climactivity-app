@@ -8,6 +8,8 @@ var endpoints = {
 	"tree_templates_list": "/tree-template",
 }
 
+onready var ws = $WS
+
 func _ready():
 	if OS.is_debug_build():
 		if ProjectSettings.get_setting("debug/settings/network/localhost"):

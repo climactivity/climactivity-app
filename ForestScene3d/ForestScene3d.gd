@@ -15,7 +15,7 @@ func _input(event):
 	if (event is InputEventKey and event.scancode == KEY_S and event.is_pressed()):
 		GameManager.save_game()
 		#print(save_forest_state())
-		
+
 func save_forest_state():
 	return $ForestFloor/HexGrid.to_dict()
 

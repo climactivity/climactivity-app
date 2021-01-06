@@ -1,5 +1,8 @@
 extends Spatial
 
+# important globally unique id
+var entity_id
+
 # template data
 var _id
 var template_name
@@ -41,6 +44,7 @@ func get_state():
 
 func save(): 
 	return {
+		"entity_id": entity_id,
 		"node_name": name,
 		"scene_name": filename,
 		"instance_data": get_state(),

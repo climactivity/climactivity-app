@@ -39,6 +39,7 @@ func _ready():
 	A_viewport.add_child(current_scene)
 
 func push_scene(scene, navigation_data = {}, config = TransitionFactory.MoveOut()) -> void: 
+	print("hey0")
 	if (is_changing_scene): return
 	get_tree().get_root().set_disable_input(true)
 	is_changing_scene = true
@@ -65,6 +66,7 @@ func push_scene(scene, navigation_data = {}, config = TransitionFactory.MoveOut(
 		Logger.print("Navigation data %s" % str(navigation_data), self)
 		scene.receive_navigation(navigation_data)
 	animation_player.play(config.transition_name)
+	print("hey1")
 
 func pop_scene(config = TransitionFactory.MoveBack()) -> void: 
 	if (is_changing_scene): return
@@ -92,8 +94,11 @@ func _show_B():
 
 	
 func _on_AnimationPlayer_animation_finished(anim_name):
+	print("hey2")
+	if (anim_name == "Reset"): return
 	_show_A()
-	B_viewport.remove_child(last_scene)
+	if B_viewport.get_child_count() > 0:
+		B_viewport.remove_child(last_scene)
 	is_changing_scene = false
 	get_tree().get_root().set_disable_input(false)
 	

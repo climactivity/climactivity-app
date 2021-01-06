@@ -54,6 +54,13 @@ func _ready():
 
 func available_templates():
 	return _tree_templates.keys()
+	
+func get_template(key):
+	if _tree_templates.has(key):
+		return _tree_templates.get(key)
+	else:
+		Logger.error("Entity template for " + str(key) + " not found!", self)
+		return null 
 
 func make_new(template_name: String):
 	if (_tree_templates.has(template_name)):
@@ -61,8 +68,11 @@ func make_new(template_name: String):
 	else:
 		Logger.error("TreeTemplate " + str(template_name) + " not found!", self)
 
-func _make_new(template):
+func _make_new(template, id = null):
+	if id == null:
+		id = Util.uuid_util.v4()
 	var new_tree = _base_tree_scene.instance()
+	new_tree.entity_id = id
 	new_tree.set_template(template, true)
 	new_tree.set_textures(available_textures[template["texture_name"]])
 	return new_tree
