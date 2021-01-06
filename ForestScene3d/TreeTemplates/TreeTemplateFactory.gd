@@ -70,6 +70,9 @@ func _make_new(template):
 
 func _on_request_completed(result, response_code, headers, body):
 	var json = JSON.parse(body.get_string_from_utf8())
+	if (response_code >= 399): 
+		print("Error ", response_code)
+		return
 	if(json.error): 
 		print("Server error: ", json.error)
 	else:
