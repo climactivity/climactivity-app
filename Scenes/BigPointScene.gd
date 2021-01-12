@@ -7,11 +7,6 @@ var bp_aspect_card = preload("res://UI/Components/AspectCard.tscn")
 onready var req = $HTTPRequest
 onready var aspect_list = $VBoxContainer/Content/MarginContainer/AspectList
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
 func _fetch_data(param = null): 
 	if param != null: 
 		Api.getEndpoint("aspects",req, [param])
