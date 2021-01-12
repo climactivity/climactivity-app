@@ -45,7 +45,7 @@ func _closed(was_clean = false):
 func _connected(proto = ""):
 	# This is called on connection, "proto" will be the selected WebSocket
 	# sub-protocol (which is optional)
-	print("Connected with protocol: ", proto)
+	Logger.print("Socket connected", self)
 	_put_greeting()
 
 func _on_data():
