@@ -92,8 +92,10 @@ func _show_B():
 
 	
 func _on_AnimationPlayer_animation_finished(anim_name):
+	if (anim_name == "Reset"): return
 	_show_A()
-	B_viewport.remove_child(last_scene)
+	if B_viewport.get_child_count() > 0:
+		B_viewport.remove_child(last_scene)
 	is_changing_scene = false
 	get_tree().get_root().set_disable_input(false)
 	

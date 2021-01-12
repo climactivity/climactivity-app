@@ -9,8 +9,11 @@ var endpoints = {
 	"aspects": "/aspect?sector=%s"
 }
 
+onready var ws = $WS
+
 func _ready():
 	if OS.is_debug_build():
+		print(OS.get_unique_id())
 		if ProjectSettings.get_setting("debug/settings/network/localhost"):
 			base_url = "localhost:3000"
 			protocol = "http"
