@@ -1,0 +1,79 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://UI/typography/Content_Regular.tres" type="DynamicFont" id=1]
+[ext_resource path="res://UI/Components/AspectCard.gd" type="Script" id=2]
+
+[sub_resource type="StyleBoxFlat" id=1]
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxEmpty" id=2]
+
+[sub_resource type="StyleBoxEmpty" id=3]
+
+[sub_resource type="StyleBoxEmpty" id=4]
+
+[sub_resource type="StyleBoxEmpty" id=5]
+
+[sub_resource type="StyleBoxEmpty" id=6]
+
+[sub_resource type="StyleBoxEmpty" id=7]
+
+[node name="AspectCard" type="PanelContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+margin_right = 1080.0
+margin_bottom = 1920.0
+custom_constants/margin_right = 20
+custom_constants/margin_top = 10
+custom_constants/margin_left = 20
+custom_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+margin_left = 20.0
+margin_top = 10.0
+margin_right = 1060.0
+margin_bottom = 1910.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer"]
+margin_left = 423.0
+margin_top = 925.0
+margin_right = 510.0
+margin_bottom = 975.0
+custom_fonts/font = ExtResource( 1 )
+text = "Hello"
+align = 1
+valign = 1
+
+[node name="VSeparator" type="VSeparator" parent="MarginContainer/HBoxContainer"]
+margin_left = 514.0
+margin_right = 594.0
+margin_bottom = 1900.0
+custom_styles/separator = SubResource( 2 )
+custom_constants/separation = 80
+
+[node name="enter_button" type="Button" parent="MarginContainer/HBoxContainer"]
+margin_left = 598.0
+margin_right = 617.0
+margin_bottom = 1900.0
+custom_styles/hover = SubResource( 3 )
+custom_styles/pressed = SubResource( 4 )
+custom_styles/focus = SubResource( 5 )
+custom_styles/disabled = SubResource( 6 )
+custom_styles/normal = SubResource( 7 )
+custom_fonts/font = ExtResource( 1 )
+text = ">"
+[connection signal="pressed" from="MarginContainer/HBoxContainer/enter_button" to="." method="_on_enter_button_pressed"]

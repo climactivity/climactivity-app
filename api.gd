@@ -6,6 +6,7 @@ var endpoints = {
 	"quiz_list": "/infobyte",
 	"quiz_data": "/infobyte/%s",
 	"tree_templates_list": "/tree-template",
+	"aspects": "/aspect?sector=%s"
 }
 
 func _ready():
