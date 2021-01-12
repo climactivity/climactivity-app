@@ -108,12 +108,12 @@ func _on_HexGrid_input_event(_camera, event, click_position, _click_normal, _sha
 			if(placed_objects.has(selected_hex.axial_coords)):
 				var interacted_object = placed_objects.get(selected_hex.axial_coords)
 				if(interacted_object.has_method("on_touch")):
+					# interacted_object.on_touch()
 					interacted_object.call_deferred("on_touch")
 
 func _input(event):
 	if (event is InputEventKey and event.scancode == KEY_F and event.is_pressed()):
 		placed_objects.get(Vector2(0,1)).on_touch()
-		#GameManager.scene_manager.push_scene("res://Scenes/BigPointScene.tscn", {"sector": "ernährung"})
 
 func _place_object_at(axial_coords, instance, scale = false):
 	Logger.print("Placing " + instance.name + " at " + str(axial_coords), self)

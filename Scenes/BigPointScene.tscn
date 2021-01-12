@@ -42,6 +42,7 @@ margin_right = 1040.0
 margin_bottom = 1599.0
 
 [node name="AspectCard" parent="VBoxContainer/Content/MarginContainer/AspectList" index="0" instance=ExtResource( 5 )]
+visible = false
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 1000.0
