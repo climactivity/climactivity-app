@@ -7,7 +7,9 @@ var sectors = {
 		"texture": preload("res://ForestScene3d/Tents/g1474.png"),
 		"target_scene": "res://Scenes/BigPointScene.tscn",
 		"navigation_data": {
-			"sector": "ernährung"
+			"sector": "ernaehrung",
+			"sector_title": "Zelt der Ernährung",
+			"sector_logo": preload("res://Assets/Icons/sector_icon_ern.png")
 		}
 	}
 }

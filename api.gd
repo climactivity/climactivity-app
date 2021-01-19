@@ -1,12 +1,18 @@
 extends Node
 
+var locale =  {
+	region = "DE", 
+	language = "DE"
+}
+
 var protocol = "https"
 var base_url = "app.climactiviy.de/api/v1"
 var endpoints = {
 	"quiz_list": "/infobyte",
 	"quiz_data": "/infobyte/%s",
 	"tree_templates_list": "/tree-template",
-	"aspects": "/aspect?sector=%s"
+	"aspects": "/aspect?sector=%s",
+	"aspect_for_sector": "/localized-aspect/s/%s"
 }
 
 onready var ws = $WS
@@ -21,9 +27,11 @@ func _ready():
 func getBaseUrl():
 	return "%s://%s" % [protocol, base_url]
 
-func getEndpoint(endpoint,request: HTTPRequest, params = []): 
-	if (endpoints.has(endpoint)):	
-		var requestUrl = "%s%s" % [getBaseUrl(), endpoints[endpoint]] % params
+func getEndpoint(endpoint,request: HTTPRequest, params = [], localize = false): 
+	if (endpoints.has(endpoint)):
+		var requestUrl = "%s%s" % [getBaseUrl(), endpoints[endpoint]] % params 
+		if localize:
+			requestUrl += "?r=%s&l=%s" % [locale.region, locale.language]
 		Logger.print( "get " + endpoint + " -> GET " + requestUrl, self)
 		request.request(requestUrl)
 	else:

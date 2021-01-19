@@ -1,7 +1,6 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://UI/typography/Button_Label.tres" type="DynamicFont" id=1]
-[ext_resource path="res://Assets/Icons/Arrow - Right 2.png" type="Texture" id=2]
 [ext_resource path="res://UI/Components/NeoMButton.gd" type="Script" id=3]
 [ext_resource path="res://UI/theme/rounded_light.tres" type="StyleBox" id=4]
 [ext_resource path="res://Assets/Icons/Arrow - Right W.png" type="Texture" id=5]
@@ -39,19 +38,6 @@ corner_radius_bottom_right = 14
 corner_radius_bottom_left = 14
 
 [sub_resource type="StyleBoxFlat" id=4]
-bg_color = Color( 0.815686, 0.815686, 0.815686, 1 )
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color( 0.517647, 0.662745, 0.117647, 1 )
-corner_radius_top_left = 14
-corner_radius_top_right = 14
-corner_radius_bottom_right = 14
-corner_radius_bottom_left = 14
-shadow_color = Color( 0, 0, 0, 0.337255 )
-
-[sub_resource type="StyleBoxFlat" id=5]
 bg_color = Color( 0.901961, 0.901961, 0.901961, 1 )
 border_width_left = 1
 border_width_top = 1
@@ -95,9 +81,8 @@ margin_top = 1.0
 margin_right = 7.0
 margin_bottom = -2.0
 custom_styles/hover = SubResource( 3 )
-custom_styles/pressed = SubResource( 4 )
 custom_styles/focus = ExtResource( 4 )
-custom_styles/disabled = SubResource( 5 )
+custom_styles/disabled = SubResource( 4 )
 custom_styles/normal = ExtResource( 4 )
 custom_fonts/font = ExtResource( 1 )
 custom_colors/font_color = Color( 0.588235, 0.74902, 0.0509804, 1 )
@@ -123,22 +108,21 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="Panel2/Button/HBoxContainer"]
-margin_left = 40.0
-margin_right = 255.0
+margin_left = 147.0
+margin_right = 147.0
 margin_bottom = 48.0
 custom_fonts/font = ExtResource( 1 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Button Label"
+custom_colors/font_color = Color( 0.3, 0.3, 0.3, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="TextureRect" type="TextureRect" parent="Panel2/Button/HBoxContainer"]
-margin_left = 259.0
-margin_right = 307.0
+margin_left = 151.0
+margin_right = 199.0
 margin_bottom = 48.0
 rect_min_size = Vector2( 48, 48 )
-texture = ExtResource( 2 )
+texture = ExtResource( 5 )
 expand = true
 stretch_mode = 6
 [connection signal="pressed" from="Panel2/Button" to="." method="_on_Button_pressed"]

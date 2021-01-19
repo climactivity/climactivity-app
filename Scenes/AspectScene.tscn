@@ -7,6 +7,9 @@
 [node name="Control" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 
+[node name="Header" parent="VBoxContainer" index="1"]
+screen_label = "Aspect Name"
+
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Content" index="0"]
 anchor_right = 1.0
 anchor_bottom = 1.0
