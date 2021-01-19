@@ -9,7 +9,7 @@ func _ready():
 
 func set_aspect(new_aspect_data): 
 	aspect_data = new_aspect_data
-	title = aspect_data["localizedStrings"][0]["strings"]["title"]
+	title = aspect_data["title"]
 	if label!= null: label.text = title
 
 

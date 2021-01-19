@@ -9,9 +9,9 @@ onready var aspect_list = $VBoxContainer/Content/MarginContainer/AspectList
 
 func _fetch_data(param = null): 
 	if param != null: 
-		Api.getEndpoint("aspects",req, [param])
+		Api.getEndpoint("aspect_for_sector",req, [param], true)
 	else: 
-		Api.getEndpoint("aspects", req)
+		Api.getEndpoint("aspect_for_sector", req, [], true)
 
 
 func receive_navigation(navigation_data): 

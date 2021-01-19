@@ -50,7 +50,6 @@ func _connected(proto = ""):
 
 func _on_data():
 	var _received_data = _get_packet()
-	print("Got data from server: ", _received_data)
 	if _received_data == "connected":
 		return
 	var data = JSON.parse(_received_data)
@@ -92,3 +91,5 @@ func _on_greeting(data):
 	var needs_update = !data["clientSupported"]
 	if needs_update: 
 		Logger.error("Needs update!", self)
+	else:
+		Logger.print("Server supports client version", self)
