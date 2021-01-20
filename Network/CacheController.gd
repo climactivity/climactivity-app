@@ -31,10 +31,11 @@ func _on_update_aspects(result, response_code, headers, body):
 	if(json.error): 
 		print("Server error: ", json.error)
 	else:
+		_save_aspect_data(json.result)
 		$HTTPRequest.disconnect("request_completed", self, "_on_update_aspects")
 		$HTTPRequest.connect("request_completed", self, "_on_update_info")
 		Api.getEndpoint("quiz_list", req, [], true)
-		_save_aspect_data(json.result)
+
 
 func _save_aspect_data(data):
 	for aspect_data in data: 
