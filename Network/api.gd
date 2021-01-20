@@ -1,5 +1,7 @@
 extends Node
 
+signal finished_cache
+
 var locale =  {
 	region = "DE", 
 	language = "DE"
@@ -24,7 +26,8 @@ func _ready():
 		if ProjectSettings.get_setting("debug/settings/network/localhost"):
 			base_url = "localhost:3000"
 			protocol = "http"
-	_update_cache() 
+	update_cache() 
+	if get_tree().has_method("standalone"): print("Got it")
 	
 func getBaseUrl():
 	return "%s://%s" % [protocol, base_url]
@@ -50,6 +53,6 @@ func getQuizData(request, id):
 	request.request(requestUrl)
 
 # run at compile time?
-func _update_cache():
+func update_cache():
 	# get aspects
 	cache.update()
