@@ -16,3 +16,4 @@ func _init():
 	if (is_instance_valid(root.get_node("/root/Api"))): 
 		root.get_node("/root/Api").connect("finished_cache", self, "quit")
 
+	
