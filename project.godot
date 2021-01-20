@@ -28,13 +28,14 @@ _global_script_class_icons={
 
 config/name="Climactivity-app"
 run/main_scene="res://SceneManager/SceneManager.tscn"
+run/low_processor_mode=true
 config/icon="res://icon.png"
 
 [autoload]
 
 GameManager="*res://GameManager.gd"
 Transition="*res://UI/Transition.tscn"
-Api="*res://Api.tscn"
+Api="*res://Network/Api.tscn"
 Logger="*res://Logger.gd"
 Util="*res://Util.gd"
 PlayerController="*res://PlayerController.gd"
