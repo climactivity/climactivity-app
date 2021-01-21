@@ -14,12 +14,15 @@ var endpoints = {
 	"quiz_data": "/infobyte/%s",
 	"tree_templates_list": "/tree-template",
 	"cache-aspects": "/localized-aspect",
-	"aspect_for_sector": "/localized-aspect/s/%s"
+	"aspect_for_sector": "/localized-aspect/s/%s",
+	"cache-check": "/client-cache",
+	"cache-update": "/client-cache/update"
 }
 
 onready var ws = $WS
 onready var req = $HTTPRequest
 onready var cache = $CacheController
+
 func _ready():
 	if OS.is_debug_build():
 		print(OS.get_unique_id())
