@@ -21,7 +21,7 @@ var _example_template = {
 	"ui_name": "Test Baum",
 	"preview_name": "stage2",
 	"coin_value": 0,
-	"bigpoint_available": ["ernährung"],
+	"bigpoint_available": ["ernaehrung"],
 	"initial_state": {
 		"stage": 0,
 		"water": 0.0,
