@@ -21,8 +21,7 @@ func update():
 	Logger.print("Rebuilding Cache...", self)
 	_make_dirs()
 	_make_manifest()
-	change_callback("_on_update_aspects")
-	Api.getEndpoint("cache-aspects", req, [], true)
+	_get_updated_resource_list()
 
 func change_callback(function):
 	if (current_request_callback != null
@@ -53,22 +52,27 @@ func _make_manifest():
 
 func _get_updated_resource_list(): 
 	change_callback("_on_updated_resource_list")
-	Api.getEndpoint("check-cache", req, [], true)
+	Api.getEndpoint("check-cache", req, [], true, HTTPClient.METHOD_POST, _preflight_data())
 
 func _on_updated_resource_list(result, response_code, headers, body):
+	print(response_code)
 	var json = JSON.parse(body.get_string_from_utf8())
 	#do things with resource list
 	_check_manifest()
 	
 func _check_manifest(): 
 	change_callback("_on_new_manifest")
-	Api.getEndpoint("update-cache", req, [], true)
+	Api.getEndpoint("update-cache", req, [], true, HTTPClient.METHOD_POST, _manifest_data())
 
 func _on_new_manifest(result, response_code, headers, body):
 	var json = JSON.parse(body.get_string_from_utf8())
 	#do things to manifest
+	_get_updated_aspects()
+
+func _get_updated_aspects(): 
 	change_callback("_on_update_aspects")
 	Api.getEndpoint("cache-aspects", req, [], true)
+
 
 func _on_update_aspects(result, response_code, headers, body):
 	change_callback("_on_update_aspects")
@@ -86,7 +90,7 @@ func _save_aspect_data(data):
 		var path = fs + "://Network/Cache/Aspects/%s.res" % aspect_data["name"]
 		Logger.print("Saving resource for %s at %s" % [aspect_data["name"], path ], self)
 		var aspect_resource = aspect_resource_type.new(aspect_data)
-		writalbe_cache_manifest.insert(aspect_data["_id"], "RLocalizedAspect")
+		writalbe_cache_manifest.insert(aspect_data["_id"], "RLocalizedAspect", fs)
 		ResourceSaver.save(path, aspect_resource, 32)
 
 func _on_update_info(result, response_code, headers, body):
@@ -99,6 +103,21 @@ func _on_update_info(result, response_code, headers, body):
 		
 func _done(): 
 	var path = fs + "://Network/Cache/manifest.res"
-	Logger.print("Saving manifest")
+	Logger.print("Saving manifest", self)
 	ResourceSaver.save(path, writalbe_cache_manifest, 32)
 	get_parent().emit_signal("finished_cache")
+
+func _newer_manifest() -> bp_cache_manifest: 
+	return writalbe_cache_manifest
+
+func _preflight_data(): 
+	var manifest = _newer_manifest()
+	return {
+		"last_update": manifest.last_update, 
+		"lang": manifest.lang, 
+		"region": manifest.region 
+	}
+	
+func _manifest_data():
+	var manifest = _newer_manifest()
+	return fixed_cache_manifest.update(dynamic_cache_manifest.saved_entities, dynamic_cache_manifest.last_update)

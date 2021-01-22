@@ -15,8 +15,8 @@ var endpoints = {
 	"tree_templates_list": "/tree-template",
 	"cache-aspects": "/localized-aspect",
 	"aspect_for_sector": "/localized-aspect/s/%s",
-	"cache-check": "/client-cache",
-	"cache-update": "/client-cache/update"
+	"check-cache": "/client-cache",
+	"update-cache": "/client-cache/update"
 }
 
 onready var ws = $WS
@@ -35,13 +35,14 @@ func _ready():
 func getBaseUrl():
 	return "%s://%s" % [protocol, base_url]
 
-func getEndpoint(endpoint,request: HTTPRequest, params = [], localize = false): 
+func getEndpoint(endpoint,request: HTTPRequest, params = [], localize = false, method = HTTPClient.METHOD_GET, body = null ): 
+	print(str(body))
 	if (endpoints.has(endpoint)):
 		var requestUrl = "%s%s" % [getBaseUrl(), endpoints[endpoint]] % params 
 		if localize:
 			requestUrl += "?r=%s&l=%s" % [locale.region, locale.language]
 		Logger.print( "get " + endpoint + " -> GET " + requestUrl, self)
-		request.request(requestUrl)
+		request.request(requestUrl, [], true, method, str(body))
 	else:
 		Logger.error("Invald endpoint: " + str(endpoint), self)
 		
