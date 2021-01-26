@@ -19,3 +19,18 @@ func update(new_entities, update):
 
 func update_timestamp():
 	last_update = OS.get_unix_time()
+
+func json(include_data = false): 
+	if (include_data):
+		return JSON.print({
+			"last_update": str(last_update), 
+			"lang": lang, 
+			"region": region,
+			"saved_entities": saved_entities
+		})
+	else:
+		return JSON.print({
+			"last_update": str(last_update), 
+			"lang": lang, 
+			"region": region
+		})
