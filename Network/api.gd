@@ -1,11 +1,14 @@
 extends Node
 
 signal finished_cache
+signal cache_ready
 
 var locale =  {
 	region = "DE", 
 	language = "DE"
 }
+
+var headers = ["User-Agent: climactivity-app", "Content-Type: application/json"]
 
 var protocol = "https"
 var base_url = "app.climactiviy.de/api/v1"
@@ -42,7 +45,7 @@ func getEndpoint(endpoint,request: HTTPRequest, params = [], localize = false, m
 		if localize:
 			requestUrl += "?r=%s&l=%s" % [locale.region, locale.language]
 		Logger.print( "get " + endpoint + " -> GET " + requestUrl, self)
-		request.request(requestUrl, [], true, method, str(body))
+		request.request(requestUrl, headers, true, method, body if body != null else "")
 	else:
 		Logger.error("Invald endpoint: " + str(endpoint), self)
 		
@@ -56,7 +59,13 @@ func getQuizData(request, id):
 	Logger.print("getQuizData, target: " + requestUrl, self)
 	request.request(requestUrl)
 
-# run at compile time?
+# also run at compile time with BuildCache.gd
 func update_cache():
 	# get aspects
 	cache.update()
+
+func get_aspect_data_for_sector(sector): 
+	cache.get_aspect_data_for_sector(sector)
+
+func is_cache_ready():
+	return cache.is_ready()

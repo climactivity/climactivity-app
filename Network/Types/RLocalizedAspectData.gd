@@ -25,28 +25,8 @@ export (String) var message
 export (Dictionary) var tracking
 export (Dictionary) var info_graph
 
-
-
-#func _init(
-#	p_bigpoint = "",
-#	p_name = "",
-#	p_title = "",
-#	p_language = "DE",
-#	p_region = "DE",
-#	p_message = "",
-#	p_tracking = {},
-#	p_info_graph = {}
-#):
-#	bigpoint = p_bigpoint
-#	name = p_name
-#	title = p_title
-#	language = p_language
-#	region = p_region
-#	message = p_message
-#	tracking = p_tracking
-#	info_graph = p_info_graph
-	
-func _init(dict):
+func _init(dict = {}):
+	#if (dict == null): return
 	bigpoint = dict["bigpoint"] if dict.has("bigpoint") else "" # p_bigpoint
 	name = dict["name"] if dict.has("name") else "" # p_name = "",
 	title = dict["title"] if dict.has("title") else "" # p_title = "",
