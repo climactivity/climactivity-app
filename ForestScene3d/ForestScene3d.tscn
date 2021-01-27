@@ -185,12 +185,14 @@ __meta__ = {
 }
 
 [node name="QuestLog" parent="Camera/HUD" instance=ExtResource( 11 )]
+visible = false
 margin_left = 120.779
 margin_top = 88.9949
 margin_right = 120.779
 margin_bottom = 88.9949
 
 [node name="SeedlingBox" parent="Camera/HUD" instance=ExtResource( 1 )]
+visible = false
 anchor_left = 0.5
 anchor_right = 0.5
 margin_left = 6.35681
@@ -199,6 +201,7 @@ margin_right = 6.35681
 margin_bottom = 237.32
 
 [node name="Cloud" parent="Camera/HUD" instance=ExtResource( 10 )]
+visible = false
 anchor_left = 1.0
 anchor_right = 1.0
 margin_left = -190.704
