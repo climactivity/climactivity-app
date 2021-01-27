@@ -2,6 +2,7 @@ extends Spatial
 
 func _ready(): 
 	$Camera.connect("camera_moved", $Background, "move")
+	Api.connect("cache_ready", self, "enter_game")
 	get_tree().get_root().set_disable_input(true)
 	$AnimationPlayer.play("Zoom_To_Clearing")
 	GameManager.forest = self
