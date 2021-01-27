@@ -3,6 +3,8 @@ extends Control
 
 # scenes
 export var start_scene = preload("res://MainScreen.tscn")
+var bigpoint_scene = preload("res://Scenes/BigPointScene.tscn") 
+var sector_data = preload("res://ForestScene3d/Tents/SectorData.gd").new()
 var current_scene
 var last_scene
 var history = []
@@ -11,6 +13,12 @@ var scene_map = {
 	"loading_instance": preload("res://SceneManager/Loading.tscn"), # loading screen
 	"big_point_scene": preload("res://Scenes/BigPointScene.tscn"),
 	"quiz_scene": preload("res://Scenes/QuizScene.tscn"),
+	"big_point_scene_consumption": preload("res://Scenes/BigPointScene.tscn"),
+	"big_point_scene_energy": preload("res://Scenes/BigPointScene.tscn"),
+	"big_point_scene_mobility": preload("res://Scenes/BigPointScene.tscn"),
+	"big_point_scene_indirect_emissions": preload("res://Scenes/BigPointScene.tscn"),
+	"big_point_scene_private_engagement": preload("res://Scenes/BigPointScene.tscn"),
+	"big_point_scene_public_engagement": preload("res://Scenes/BigPointScene.tscn"),
 }
 
 #loading with progress bar
@@ -34,9 +42,23 @@ var is_changing_scene = false
 
 func _ready():
 	GameManager.scene_manager = self
+	_prepare_bigpoint_scenes()
 	_show_A()
 	current_scene = start_scene.instance()
 	A_viewport.add_child(current_scene)
+
+func _prepare_bigpoint_scenes(): 
+	scene_map.big_point_scene_consumption = _prepare_bigpoint_scene("consumption")
+	scene_map.big_point_scene_energy =  _prepare_bigpoint_scene("energy")
+	scene_map.big_point_scene_mobility = _prepare_bigpoint_scene("mobility")
+	scene_map.big_point_scene_indirect_emissions = _prepare_bigpoint_scene("indirect_emissions")
+	scene_map.big_point_scene_private_engagement = _prepare_bigpoint_scene("private_engagement")
+	scene_map.big_point_scene_public_engagement = _prepare_bigpoint_scene("public_engagement")
+
+func _prepare_bigpoint_scene(sector):
+	var new_instance = bigpoint_scene.instance() 
+	new_instance.receive_navigation(sector_data.sector_data[sector])
+	return new_instance
 
 func push_scene(scene, navigation_data = {}, config = TransitionFactory.MoveOut()) -> void: 
 	if (is_changing_scene): return

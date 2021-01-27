@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://UI/Components/TrackingOption.tscn" type="PackedScene" id=1]
 [ext_resource path="res://UI/Components/kiko_hint.tscn" type="PackedScene" id=2]
 [ext_resource path="res://UI/typography/Heading.tres" type="DynamicFont" id=3]
 [ext_resource path="res://Scenes/TrackingSettings.gd" type="Script" id=4]
+[ext_resource path="res://UI/Components/CheckboxController.gd" type="Script" id=5]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.482353, 0.776471, 0.109804, 0.741176 )
@@ -12,10 +13,8 @@ border_width_top = 1
 border_width_right = 1
 border_width_bottom = 1
 border_color = Color( 0.584314, 0.756863, 0.117647, 1 )
-corner_radius_top_left = 14
-corner_radius_top_right = 14
-corner_radius_bottom_right = 14
-corner_radius_bottom_left = 14
+corner_radius_top_left = 32
+corner_radius_bottom_left = 32
 
 [node name="TrackingSettings" type="Control"]
 anchor_right = 1.0
@@ -34,7 +33,7 @@ text = "tracking_question"
 [node name="PanelContainer" type="PanelContainer" parent="."]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -540.0
+margin_left = -490.0
 margin_top = 359.0
 margin_right = 540.0
 margin_bottom = 1528.0
@@ -46,7 +45,7 @@ __meta__ = {
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
 margin_left = 1.0
 margin_top = 1.0
-margin_right = 1079.0
+margin_right = 1029.0
 margin_bottom = 1168.0
 custom_constants/margin_right = 10
 custom_constants/margin_top = 10
@@ -56,12 +55,13 @@ custom_constants/margin_bottom = 10
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
 margin_left = 10.0
 margin_top = 10.0
-margin_right = 1068.0
+margin_right = 1018.0
 margin_bottom = 1157.0
 custom_constants/separation = 178
 alignment = 1
 
 [node name="Heading" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
+visible = false
 margin_top = 22.0
 margin_right = 1058.0
 margin_bottom = 87.0
@@ -71,31 +71,37 @@ align = 1
 valign = 1
 
 [node name="Options" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
-margin_top = 265.0
-margin_right = 1058.0
-margin_bottom = 1125.0
+margin_top = 138.0
+margin_right = 1008.0
+margin_bottom = 1008.0
 custom_constants/separation = 10
 alignment = 1
+script = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Option" parent="PanelContainer/MarginContainer/VBoxContainer/Options" instance=ExtResource( 1 )]
 margin_top = 0.0
-margin_bottom = 164.0
+margin_right = 1008.0
+margin_bottom = 166.0
 
 [node name="Option2" parent="PanelContainer/MarginContainer/VBoxContainer/Options" instance=ExtResource( 1 )]
-margin_top = 174.0
-margin_bottom = 338.0
+margin_top = 176.0
+margin_right = 1008.0
+margin_bottom = 342.0
 
 [node name="Option3" parent="PanelContainer/MarginContainer/VBoxContainer/Options" instance=ExtResource( 1 )]
-margin_top = 348.0
-margin_bottom = 512.0
+margin_top = 352.0
+margin_right = 1008.0
+margin_bottom = 518.0
 
 [node name="Option4" parent="PanelContainer/MarginContainer/VBoxContainer/Options" instance=ExtResource( 1 )]
-margin_top = 522.0
-margin_bottom = 686.0
+margin_top = 528.0
+margin_right = 1008.0
+margin_bottom = 694.0
 
 [node name="Option5" parent="PanelContainer/MarginContainer/VBoxContainer/Options" instance=ExtResource( 1 )]
-margin_top = 696.0
-margin_bottom = 860.0
+margin_top = 704.0
+margin_right = 1008.0
+margin_bottom = 870.0

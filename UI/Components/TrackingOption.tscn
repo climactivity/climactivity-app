@@ -1,11 +1,14 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://UI/typography/Content_Regular.tres" type="DynamicFont" id=1]
 [ext_resource path="res://UI/Components/TrackingOption.gd" type="Script" id=2]
 [ext_resource path="res://UI/theme/rounded_light.tres" type="StyleBox" id=3]
+[ext_resource path="res://UI/Components/Reward.gd" type="Script" id=4]
 
 [sub_resource type="StyleBoxFlat" id=1]
-bg_color = Color( 0.388235, 0.768627, 0.294118, 0.505882 )
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+border_width_top = 2
+border_color = Color( 1, 1, 1, 1 )
 
 [node name="Option" type="PanelContainer"]
 margin_top = 573.0
@@ -18,8 +21,9 @@ __meta__ = {
 }
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
+margin_top = 2.0
 margin_right = 1058.0
-margin_bottom = 164.0
+margin_bottom = 166.0
 custom_constants/margin_right = 30
 custom_constants/margin_top = 30
 custom_constants/margin_left = 30
@@ -57,6 +61,7 @@ margin_right = 263.0
 margin_bottom = 104.0
 custom_fonts/font = ExtResource( 1 )
 text = "Xp 100, Water 1"
+script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
