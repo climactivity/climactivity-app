@@ -139,6 +139,7 @@ func _load_manifest_resources():
 		var entity_resource = load(fs_path)
 		assert(entity_resource != null)
 		entities[entity_description.type].append(entity_resource)
+	is_ready = true
 
 func _newer_manifest() -> bp_cache_manifest: 
 	return writalbe_cache_manifest
@@ -160,7 +161,7 @@ func get_aspect_data_for_sector(sector):
 	var aspects = entities.get("RLocalizedAspect")
 	var out = []
 	for aspect in aspects: 
-		if aspect.sector == sector:
+		if aspect.bigpoint == sector:
 			out.append(aspect)
 	return out
 	

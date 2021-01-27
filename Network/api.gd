@@ -72,7 +72,7 @@ func update_cache():
 	cache.update()
 
 func get_aspect_data_for_sector(sector): 
-	cache.get_aspect_data_for_sector(sector)
+	return cache.get_aspect_data_for_sector(sector)
 
 func is_cache_ready():
 	return cache.is_ready()
