@@ -29,7 +29,7 @@ export (int) var coin_value
 export (PoolStringArray) var bigpoint_available 
 export (TextureArray) var texture_data
 
-func _init(p_dict): 
+func _init(p_dict = {}): 
 	_id =  p_dict["_id"] if p_dict.has("_id") else ""
 	template_name =  p_dict["template_name"] if p_dict.has("template_name") else ""
 	texture_name =  p_dict["texture_name"] if p_dict.has("texture_name") else ""

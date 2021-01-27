@@ -9,7 +9,6 @@ var locale =  {
 }
 
 var headers = ["User-Agent: climactivity-app", "Content-Type: application/json"]
-
 var protocol = "https"
 var base_url = "app.climactiviy.de/api/v1"
 var endpoints = {
@@ -21,6 +20,14 @@ var endpoints = {
 	"check-cache": "/client-cache",
 	"update-cache": "/client-cache/update"
 }
+
+enum network_status_options {
+	CONNECTED_LAN,
+	CONNECTED_WAN,
+	DOWN
+}
+
+var network_status = network_status_options.CONNECTED_LAN setget set_network_status, get_network_status
 
 onready var ws = $WS
 onready var req = $HTTPRequest
@@ -69,3 +76,9 @@ func get_aspect_data_for_sector(sector):
 
 func is_cache_ready():
 	return cache.is_ready()
+
+func set_network_status(new_status):
+	network_status = new_status 
+	
+func get_network_status():
+	return network_status
