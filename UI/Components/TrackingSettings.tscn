@@ -1,10 +1,13 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://UI/Components/TrackingOption.tscn" type="PackedScene" id=1]
 [ext_resource path="res://UI/Components/kiko_hint.tscn" type="PackedScene" id=2]
 [ext_resource path="res://UI/typography/Heading.tres" type="DynamicFont" id=3]
 [ext_resource path="res://Scenes/TrackingSettings.gd" type="Script" id=4]
 [ext_resource path="res://UI/Components/CheckboxController.gd" type="Script" id=5]
+[ext_resource path="res://UI/typography/Button_Label.tres" type="DynamicFont" id=6]
+[ext_resource path="res://UI/theme/ButtonPrimary_Active.stylebox" type="StyleBox" id=7]
+[ext_resource path="res://UI/theme/ButtonPrimary_Inactive.stylebox" type="StyleBox" id=8]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.482353, 0.776471, 0.109804, 0.741176 )
@@ -16,27 +19,50 @@ border_color = Color( 0.584314, 0.756863, 0.117647, 1 )
 corner_radius_top_left = 32
 corner_radius_bottom_left = 32
 
-[node name="TrackingSettings" type="Control"]
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.51992, 0.67, 0.1072, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 1, 1, 1, 1 )
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+expand_margin_left = 240.0
+expand_margin_right = 240.0
+expand_margin_top = 20.0
+expand_margin_bottom = 20.0
+shadow_color = Color( 0, 0, 0, 0.0705882 )
+shadow_size = 32
+shadow_offset = Vector2( 0, 10.141 )
+
+[node name="TrackingSettings" type="VBoxContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+rect_min_size = Vector2( 0, 1200 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
 script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="kiko_avatar - placeholder" parent="." instance=ExtResource( 2 )]
-position = Vector2( 224.556, 189.921 )
-text = "tracking_question"
+anchor_top = 0.0
+anchor_bottom = 0.0
+margin_top = 0.0
+margin_right = 1080.0
+margin_bottom = 400.0
 
 [node name="HTTPRequest" type="HTTPRequest" parent="."]
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
-anchor_left = 0.5
-anchor_right = 0.5
-margin_left = -490.0
-margin_top = 359.0
-margin_right = 540.0
-margin_bottom = 1528.0
+margin_top = 404.0
+margin_right = 1080.0
+margin_bottom = 1719.0
+size_flags_vertical = 3
 custom_styles/panel = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -45,8 +71,8 @@ __meta__ = {
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
 margin_left = 1.0
 margin_top = 1.0
-margin_right = 1029.0
-margin_bottom = 1168.0
+margin_right = 1079.0
+margin_bottom = 1314.0
 custom_constants/margin_right = 10
 custom_constants/margin_top = 10
 custom_constants/margin_left = 10
@@ -55,26 +81,25 @@ custom_constants/margin_bottom = 10
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
 margin_left = 10.0
 margin_top = 10.0
-margin_right = 1018.0
-margin_bottom = 1157.0
-custom_constants/separation = 178
+margin_right = 1068.0
+margin_bottom = 1303.0
+custom_constants/separation = 0
 alignment = 1
 
 [node name="Heading" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
-visible = false
-margin_top = 22.0
 margin_right = 1058.0
-margin_bottom = 87.0
+margin_bottom = 65.0
 custom_fonts/font = ExtResource( 3 )
 text = "Heading"
 align = 1
 valign = 1
 
 [node name="Options" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
-margin_top = 138.0
-margin_right = 1008.0
-margin_bottom = 1008.0
-custom_constants/separation = 10
+margin_top = 65.0
+margin_right = 1058.0
+margin_bottom = 1293.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 alignment = 1
 script = ExtResource( 5 )
 __meta__ = {
@@ -83,25 +108,53 @@ __meta__ = {
 
 [node name="Option" parent="PanelContainer/MarginContainer/VBoxContainer/Options" instance=ExtResource( 1 )]
 margin_top = 0.0
-margin_right = 1008.0
-margin_bottom = 166.0
+margin_bottom = 242.0
 
 [node name="Option2" parent="PanelContainer/MarginContainer/VBoxContainer/Options" instance=ExtResource( 1 )]
-margin_top = 176.0
-margin_right = 1008.0
-margin_bottom = 342.0
+margin_top = 246.0
+margin_bottom = 488.0
 
 [node name="Option3" parent="PanelContainer/MarginContainer/VBoxContainer/Options" instance=ExtResource( 1 )]
-margin_top = 352.0
-margin_right = 1008.0
-margin_bottom = 518.0
+margin_top = 492.0
+margin_bottom = 735.0
 
 [node name="Option4" parent="PanelContainer/MarginContainer/VBoxContainer/Options" instance=ExtResource( 1 )]
-margin_top = 528.0
-margin_right = 1008.0
-margin_bottom = 694.0
+margin_top = 739.0
+margin_bottom = 981.0
 
 [node name="Option5" parent="PanelContainer/MarginContainer/VBoxContainer/Options" instance=ExtResource( 1 )]
-margin_top = 704.0
-margin_right = 1008.0
-margin_bottom = 870.0
+margin_top = 985.0
+margin_bottom = 1228.0
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+margin_top = 1723.0
+margin_right = 1080.0
+margin_bottom = 1920.0
+custom_constants/margin_top = 72
+custom_constants/margin_bottom = 73
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer"]
+margin_top = 72.0
+margin_right = 1080.0
+margin_bottom = 124.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SaveTrackingOptionButton" type="Button" parent="MarginContainer/CenterContainer"]
+margin_left = 451.0
+margin_right = 628.0
+margin_bottom = 52.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/hover = ExtResource( 7 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/disabled = ExtResource( 8 )
+custom_styles/normal = ExtResource( 7 )
+custom_fonts/font = ExtResource( 6 )
+custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+text = "Speichern"
+[connection signal="pressed" from="MarginContainer/CenterContainer/SaveTrackingOptionButton" to="." method="_on_SaveTrackingOptionButton_pressed"]

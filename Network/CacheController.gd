@@ -11,8 +11,8 @@ const type_map = {
 	"RTreeTemplate" : "Network/Cache/TreeTemplates" 
 }
 
-var fixed_cache_manifest = load("res://Network/Cache/manifest.tres")
-var dynamic_cache_manifest = load("user://Network/Cache/manifest.tres")
+var fixed_cache_manifest 
+var dynamic_cache_manifest
 var test = load("res://Network/Cache/Aspects/5ffc7f506fbe077877eb25bd.tres")
 var writalbe_cache_manifest
 var err = OK
@@ -27,7 +27,7 @@ onready var req = $HTTPRequest
 
 func _res_writable(): 
 	var file = File.new()
-	var err = file.open("res://Network/Cache/manifest.%s" % format, File.WRITE)
+	var err = file.open("res://Network/Cache/.is_writable", File.WRITE)
 	return err == OK
 	
 func update():
@@ -38,6 +38,7 @@ func update():
 	Logger.print("Rebuilding Cache...", self)
 	_make_dirs()
 	_make_manifest()
+	_load_manifest_resources()
 	_get_updated_resource_list()
 
 func change_callback(function):
@@ -54,6 +55,8 @@ func _make_dirs():
 		dir.make_dir_recursive("%s://Network/Cache/%s" % [fs,d])
 
 func _make_manifest(): 
+	fixed_cache_manifest = load("res://Network/Cache/manifest.tres")
+	dynamic_cache_manifest = load("user://Network/Cache/manifest.tres")
 	if(dynamic_cache_manifest == null): 
 		dynamic_cache_manifest = bp_cache_manifest.new()
 	writalbe_cache_manifest = dynamic_cache_manifest
@@ -69,7 +72,8 @@ func _get_updated_resource_list():
 func _on_updated_resource_list(result, response_code, headers, body):
 	var json = JSON.parse(body.get_string_from_utf8())
 	if(json.error): 
-		Logger.print("Server error: " + json.error +  "! Got: " + body.get_string_from_utf8(), self)
+		Logger.print("Server error: " + str(json.error) +  "! Got: " + body.get_string_from_utf8(), self)
+		_network_error()
 		return
 	if(json.result.has("should_update")):
 		if(json.result.get("should_update")):
@@ -124,9 +128,16 @@ func _done():
 	var path = fs + "://Network/Cache/manifest.%s" % format
 	Logger.print("Saving manifest", self)
 	ResourceSaver.save(path, writalbe_cache_manifest, 32)
-	get_parent().emit_signal("finished_cache")
+	Api.emit_signal("finished_cache")
 	_load_manifest_resources()
-	get_parent().emit_signal("cache_ready")
+	Api.emit_signal("cache_ready")
+	
+func _network_error():
+	Api.set_network_status(Api.network_status_options.DOWN) 
+	Api.emit_signal("finished_cache")
+	_load_manifest_resources()
+	Api.emit_signal("cache_ready")
+	
 
 func _load_manifest_resources(): 
 	for type in type_map.keys(): 
@@ -141,6 +152,7 @@ func _load_manifest_resources():
 		entities[entity_description.type].append(entity_resource)
 	is_ready = true
 
+	
 func _newer_manifest() -> bp_cache_manifest: 
 	return writalbe_cache_manifest
 
