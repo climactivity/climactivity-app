@@ -1,9 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://UI/typography/Heading.tres" type="DynamicFont" id=1]
-[ext_resource path="res://Assets/kiko_avatar.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Kiko/kiko_avatar.png" type="Texture" id=2]
 [ext_resource path="res://UI/Components/kiko_hint.gd" type="Script" id=3]
-[ext_resource path="res://Assets/Icons/Arrow - Left W.png" type="Texture" id=4]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 1, 1, 1, 1 )
@@ -20,25 +19,38 @@ shadow_color = Color( 0, 0, 0, 0.215686 )
 shadow_size = 12
 shadow_offset = Vector2( 0, 8 )
 
-[node name="kiko_avatar - placeholder" type="Sprite"]
-position = Vector2( 253.156, 230.581 )
-texture = ExtResource( 2 )
+[node name="kiko_avatar - placeholder" type="Control"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_top = -159.0
+margin_right = 1067.0
+margin_bottom = 160.0
+rect_min_size = Vector2( 0, 400 )
 script = ExtResource( 3 )
-text = "Hallo"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Arrow - Left W" type="Sprite" parent="."]
-position = Vector2( 156.295, -12.9422 )
-scale = Vector2( 0.277457, -0.271261 )
-texture = ExtResource( 4 )
+[node name="Control" type="TextureRect" parent="."]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 67.2717
+margin_top = -151.0
+margin_right = 312.272
+margin_bottom = 151.0
+texture = ExtResource( 2 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="SpeechBubbleHolder" type="PanelContainer" parent="."]
-anchor_top = 1.0
+anchor_top = 0.5
 anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 180.0
-margin_top = -464.0
-margin_right = 397.0
-margin_bottom = -196.0
+anchor_bottom = 0.5
+margin_left = 346.0
+margin_top = -162.0
+margin_bottom = 129.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_styles/panel = SubResource( 1 )
@@ -50,8 +62,8 @@ __meta__ = {
 [node name="MarginContainer" type="MarginContainer" parent="SpeechBubbleHolder"]
 margin_left = 2.0
 margin_top = 2.0
-margin_right = 460.0
-margin_bottom = 266.0
+margin_right = 719.0
+margin_bottom = 289.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/margin_right = 20
@@ -65,13 +77,13 @@ __meta__ = {
 [node name="DialogLine" type="Label" parent="SpeechBubbleHolder/MarginContainer"]
 margin_left = 20.0
 margin_top = 20.0
-margin_right = 438.0
-margin_bottom = 244.0
+margin_right = 697.0
+margin_bottom = 267.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = ExtResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Nette Ansprache; Warum ist das"
+text = "Hallo"
 autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false

@@ -14,7 +14,7 @@ onready var icon_bg = $BG/BG_Category/BG_Icon
 onready var icon = $BG/BG_Category/BG_Icon/Icon
 
 func _ready():
-	label.text = screen_label
+	label.set_text(screen_label)
 	icon.texture = icon_texture
 
 func _on_BackButton_pressed():
@@ -30,7 +30,7 @@ func update_header(new_label = null, new_texture = null, new_color = null):
 func set_screen_label(new_label): 
 	screen_label = new_label
 	if(is_instance_valid(label)):
-		label.text = screen_label
+		label.set_text(screen_label)
 
 func set_icon_texture(new_texture): 
 	icon_texture = new_texture
