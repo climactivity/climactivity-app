@@ -1,5 +1,5 @@
 tool
-extends Sprite
+extends Control
 
 export var text = "" setget set_text 
 
