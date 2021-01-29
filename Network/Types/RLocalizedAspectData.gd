@@ -18,6 +18,7 @@ extends Resource
 #        message: error
 export (String) var bigpoint
 export (String) var name
+export (String) var _id
 export (String) var title
 export (String) var language
 export (String) var region
@@ -28,6 +29,7 @@ export (Dictionary) var info_graph
 func _init(dict = {}):
 	#if (dict == null): return
 	bigpoint = dict["bigpoint"] if dict.has("bigpoint") else "" # p_bigpoint
+	_id = dict["_id"] if dict.has("_id") else ""
 	name = dict["name"] if dict.has("name") else "" # p_name = "",
 	title = dict["title"] if dict.has("title") else "" # p_title = "",
 	language = dict["forLanguage"] if dict.has("forLanguage") else "" # p_language = "DE",

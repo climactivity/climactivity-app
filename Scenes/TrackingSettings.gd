@@ -59,4 +59,5 @@ func set_option(option):
 func _on_SaveTrackingOptionButton_pressed():
 	select_button.disabled = true
 	select_button.text = "Gespeichert!"
-	emit_signal("emit_option", selected_option)
+	print(get_signal_connection_list("emit_option"))
+	emit_signal("emit_option", selected_option.option_data)

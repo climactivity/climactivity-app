@@ -13,7 +13,6 @@ const type_map = {
 
 var fixed_cache_manifest 
 var dynamic_cache_manifest
-var test = load("res://Network/Cache/Aspects/5ffc7f506fbe077877eb25bd.tres")
 var writalbe_cache_manifest
 var err = OK
 var fs = "user" 
@@ -148,8 +147,8 @@ func _load_manifest_resources():
 		var entity_description = entities_meta[entity_description_key]
 		var fs_path = "%s://%s/%s.%s" % [entity_description.where, type_map.get(entity_description.type), entity_description_key, format]
 		var entity_resource = load(fs_path)
-		assert(entity_resource != null)
-		entities[entity_description.type].append(entity_resource)
+		if (entity_resource != null):
+			entities[entity_description.type].append(entity_resource)
 	is_ready = true
 
 	
