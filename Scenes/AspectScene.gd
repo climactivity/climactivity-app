@@ -10,11 +10,13 @@ onready var quests = $"VBoxContainer/Content/MarginContainer/ScrollContainer/Con
 export (Resource) var aspect_data
 
 func _ready():
+	tracking_settings.connect("emit_option", self, "commit_option")
+	connect("commit_option", AspectTrackingService, "commit_tracking_level")
 	if (aspect_data == null): return
 	tracking_settings.set_tracking_data(aspect_data["localizedTrackingData"])
 	tracking_settings.set_title(aspect_data.title)
-	tracking_settings.connect("emit_option", self, "commit_option")
-	connect("commit_option", AspectTrackingService, "commit_tracking_level")
+
+
 	
 func receive_navigation(navigation_data): 
 	print(navigation_data)
