@@ -8,7 +8,7 @@ var checkox_controller
 onready var label = $MarginContainer/HBoxContainer/VBoxContainer/Label
 onready var reward_label = $MarginContainer/HBoxContainer/VBoxContainer/Reward
 onready var select_button = $"MarginContainer/HBoxContainer/SelectButton"
-
+var preselected = false
 func _ready(): 
 	if option_data == null: return
 	_update_fields()
@@ -37,3 +37,7 @@ func get_checkbox_controller_path():
 
 func selected():
 	emit_signal("selected", self)	
+
+func preselect(): 
+	preselected = true
+	select_button._check()
