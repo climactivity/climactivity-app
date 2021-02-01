@@ -33,7 +33,9 @@ func commit_tracking_level(option, aspect):
 		var new_state = bp_r_tracking_state.new()
 		new_state.bigpoint = aspect["bigpoint"]
 		new_state.aspect = aspect["_id"]
-		new_state.history = [].push_front(new_entry)
+		var  history = []
+		history.push_front(new_entry)
+		new_state.history = history
 		new_state.current = new_entry
 		player_state.tracking_states[aspect._id] = new_state
 	_flush()

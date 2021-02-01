@@ -91,9 +91,9 @@ func _on_new_manifest(result, response_code, headers, body):
 	if (json.result.has("current_aspects")): 
 		_save_aspect_data(json.result.get("current_aspects"))
 	if (json.result.has("current_infobytes")): 
-		pass
+		_save_infobyte_data(json.result.get("current_infobytes"))
 	if (json.result.has("current_tree_templates")): 
-		pass
+		_save_tree_template_data(json.result.get("current_tree_templates"))
 	_done()
 
 func _save_aspect_data(data):
@@ -117,7 +117,7 @@ func _save_infobyte_data(data):
 func _save_tree_template_data(data):
 	for tree_template_data in data: 
 		var path = fs + "://Network/Cache/TreeTemplates/%s.%s" % [tree_template_data["_id"], format]
-		Logger.print("Saving resource for %s at %s" % [tree_template_data["name"], path ], self)
+		Logger.print("Saving resource for %s at %s" % [tree_template_data["ui_name"], path ], self)
 		var tree_template_resource = tree_template_resource_type.new(tree_template_data)
 		tree_template_resource.take_over_path(path)
 		writalbe_cache_manifest.insert(tree_template_data["_id"], "RTreeTemplate", fs)
@@ -176,4 +176,6 @@ func get_aspect_data_for_sector(sector):
 			out.append(aspect)
 	return out
 	
-
+func get_tree_templates(): 
+	if !is_ready(): return null
+	return entities.get("RTreeTemplate")
