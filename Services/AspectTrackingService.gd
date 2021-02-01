@@ -40,6 +40,17 @@ func commit_tracking_level(option, aspect):
 		player_state.tracking_states[aspect._id] = new_state
 	_flush()
 
+func get_current_tracking_level(aspect): 
+	var id
+	if aspect is String: 
+		id = aspect
+	else:
+		id = aspect._id
+	if player_state.tracking_states.has(id):
+		return player_state.tracking_states[id].current
+	else: 
+		return null
+
 func init_tacking_state():
 	player_state = bp_r_tracking_states.new()
 	player_state.take_over_path(tracking_states_path)
