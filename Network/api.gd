@@ -74,6 +74,9 @@ func update_cache():
 func get_aspect_data_for_sector(sector): 
 	return cache.get_aspect_data_for_sector(sector)
 
+func get_tree_templates():
+	return cache.get_tree_templates()
+
 func is_cache_ready():
 	return cache.is_ready()
 

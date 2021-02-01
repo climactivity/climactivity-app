@@ -23,18 +23,19 @@ extends Resource
 export (String) var _id 
 export (String) var template_name 
 export (String) var texture_name
-export (PoolStringArray) var ui_name
+export (String) var ui_name
 export (String) var preview_name 
 export (int) var coin_value 
-export (PoolStringArray) var bigpoint_available 
+export (Array) var bigpoint_available 
 export (TextureArray) var texture_data
+
 
 func _init(p_dict = {}): 
 	_id =  p_dict["_id"] if p_dict.has("_id") else ""
 	template_name =  p_dict["template_name"] if p_dict.has("template_name") else ""
 	texture_name =  p_dict["texture_name"] if p_dict.has("texture_name") else ""
-	ui_name =  p_dict["ui_name"] if p_dict.has("ui_name") else []
+	ui_name =  p_dict["ui_name"] if p_dict.has("ui_name") else ""
 	preview_name =  p_dict["preview_name"] if p_dict.has("preview_name") else ""
 	coin_value =  p_dict["coin_value"] if p_dict.has("coin_value") else ""
-	bigpoint_available =  p_dict["bigpoint_available"] if p_dict.has("bigpoint_available") else {}
+	bigpoint_available =  p_dict["bigpoint_available"] if p_dict.has("bigpoint_available") else []
 	texture_data =  p_dict["texture_data"] if p_dict.has("texture_data") else {}
