@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scenes/SceneBase.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/AspectScene.gd" type="Script" id=2]
 [ext_resource path="res://UI/Components/TrackingSettings.tscn" type="PackedScene" id=3]
 [ext_resource path="res://SM_Screen.tres" type="Material" id=4]
+[ext_resource path="res://UI/typography/Button_Label.tres" type="DynamicFont" id=5]
 [ext_resource path="res://UI/placeholder_stylebox.tres" type="StyleBox" id=6]
 
 [node name="Control" instance=ExtResource( 1 )]
@@ -41,6 +42,7 @@ size_flags_vertical = 3
 alignment = 1
 
 [node name="TrackingSettings" parent="VBoxContainer/Content/MarginContainer/ScrollContainer/Control" index="0" instance=ExtResource( 3 )]
+visible = false
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 1060.0
@@ -64,4 +66,12 @@ rect_min_size = Vector2( 0, 500 )
 size_flags_vertical = 2
 custom_styles/panel = ExtResource( 6 )
 
+[node name="Button" type="Button" parent="VBoxContainer/Content/MarginContainer/ScrollContainer/Control" index="3"]
+margin_top = 772.0
+margin_right = 1060.0
+margin_bottom = 826.0
+custom_fonts/font = ExtResource( 5 )
+text = "Go to tracking settings"
+
 [node name="HTTPRequest" type="HTTPRequest" parent="." index="1"]
+[connection signal="pressed" from="VBoxContainer/Content/MarginContainer/ScrollContainer/Control/Button" to="." method="_on_Button_pressed"]
