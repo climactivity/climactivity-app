@@ -7,9 +7,30 @@ var bp_r_reward = preload("res://Network/Types/RReward.gd")
 var tracking_states_path = "user://AspectTracking.tres"
 var player_state = load(tracking_states_path)
 
+var last_update = OS.get_unix_time()
+var interval = 60 * 60 * 2 # minutue * hour * 2 -> update every 2 hours
+
 func _init():
 	if player_state == null: 
 		init_tacking_state()
+	if OS.is_debug_build(): 
+		interval = 60 # update every minute in debug builds
+
+func _process(delta):
+	if OS.get_unix_time() - last_update > interval:
+		var now = OS.get_unix_time() 
+		do_update(now, last_update, OS.get_unix_time() - last_update, delta) 
+		last_update = OS.get_unix_time()
+
+func do_update(now, last_update, absolute_delta, frame_delta): 
+	Logger.print(
+		"Aspect tracking update at %s, last update %s, update delta %s, frame time %s"
+		% [
+			str(OS.get_datetime_from_unix_time(now)),
+			str(OS.get_datetime_from_unix_time(last_update)),
+			str(absolute_delta),
+			str(frame_delta)
+		], self)
 
 func commit_tracking_level(option, aspect): 
 	Logger.print("Commit %s for aspect %s" % [option["level"], aspect._id], self)

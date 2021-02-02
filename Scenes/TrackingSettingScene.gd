@@ -13,7 +13,7 @@ func _ready():
 
 	
 func receive_navigation(navigation_data): 
-	print(navigation_data)
+	#print(navigation_data)
 	aspect_data = navigation_data["aspect"]
 	header.update_header(aspect_data["title"])
 	if tracking_settings != null:

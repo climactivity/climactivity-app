@@ -35,7 +35,7 @@ onready var cache = $CacheController
 
 func _ready():
 	if OS.is_debug_build():
-		print(OS.get_unique_id())
+		#print(OS.get_unique_id())
 		if ProjectSettings.get_setting("debug/settings/network/localhost"):
 			base_url = "localhost:3000"
 			protocol = "http"
@@ -46,7 +46,6 @@ func getBaseUrl():
 	return "%s://%s" % [protocol, base_url]
 
 func getEndpoint(endpoint,request: HTTPRequest, params = [], localize = false, method = HTTPClient.METHOD_GET, body = null ): 
-	print(str(body))
 	if (endpoints.has(endpoint)):
 		var requestUrl = "%s%s" % [getBaseUrl(), endpoints[endpoint]] % params 
 		if localize:

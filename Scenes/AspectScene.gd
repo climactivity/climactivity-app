@@ -3,14 +3,14 @@ extends Panel
 signal commit_option(option, aspect)
 
 onready var header = $VBoxContainer/Header
-onready var tracking_settings = $"VBoxContainer/Content/MarginContainer/ScrollContainer/Control/TrackingSettings"
+
 onready var info_graph = $"VBoxContainer/Content/MarginContainer/ScrollContainer/Control/InfoGraph"
 onready var quests = $"VBoxContainer/Content/MarginContainer/ScrollContainer/Control/Aufgaben"
 
 onready var tracking_question = $"VBoxContainer/Content/MarginContainer/ScrollContainer/Control/TrackingPreview/TrackingQuestion"
-onready var tracking_options_label = $"VBoxContainer/Content/MarginContainer/ScrollContainer/Control/TrackingPreview/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/CurrentTrackingSetting/Label"
-onready var tracking_level = $"VBoxContainer/Content/MarginContainer/ScrollContainer/Control/TrackingPreview/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/CurrentTrackingSetting/OptionValueLabel"
-onready var go_to_tracking_button = $"VBoxContainer/Content/MarginContainer/ScrollContainer/Control/TrackingPreview/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/CenterContainer/MarginContainer/Button"
+onready var tracking_options_label = $"VBoxContainer/Content/MarginContainer/ScrollContainer/Control/TrackingPreview/MarginContainer/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer/CurrentTrackingSetting/Label"
+onready var tracking_level = $"VBoxContainer/Content/MarginContainer/ScrollContainer/Control/TrackingPreview/MarginContainer/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer/CurrentTrackingSetting/OptionValueLabel"
+onready var go_to_tracking_button = $"VBoxContainer/Content/MarginContainer/ScrollContainer/Control/TrackingPreview/MarginContainer/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer/CenterContainer/MarginContainer/Button"
 
 export (Resource) var aspect_data
 
@@ -31,8 +31,7 @@ func receive_navigation(navigation_data):
 
 func _show_data(): 
 	if (aspect_data == null): return
-	tracking_settings.set_tracking_data(aspect_data.tracking, aspect_data)
-	tracking_settings.set_title(aspect_data.title)
+
 	tracking_question.set_text(aspect_data.tracking.question)
 	
 	tracking_options_label.text = tr("current_tracking_level_label")
