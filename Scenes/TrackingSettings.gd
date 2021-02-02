@@ -45,7 +45,6 @@ func _get_current_tracking_level():
 		selected_option.preselect()
 	
 func _show_data(): 
-
 	if tracking_data == null: 
 		Logger.print("Aspect missing data!", self)
 		return
