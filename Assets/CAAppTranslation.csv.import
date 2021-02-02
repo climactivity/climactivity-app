@@ -1,0 +1,16 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+
+[deps]
+
+files=[ "res://Assets/CAAppTranslation.de.translation", "res://Assets/CAAppTranslation.en.translation" ]
+
+source_file="res://Assets/CAAppTranslation.csv"
+dest_files=[ "res://Assets/CAAppTranslation.de.translation", "res://Assets/CAAppTranslation.en.translation" ]
+
+[params]
+
+compress=true
+delimiter=0
