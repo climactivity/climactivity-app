@@ -79,9 +79,13 @@ pointing/emulate_touch_from_mouse=true
 
 [locale]
 
+test="de, en"
+fallback="de"
 translation_remaps={
 
 }
+translations=PoolStringArray( "res://Assets/CAAppTranslation.en.translation", "res://Assets/CAAppTranslation.de.translation" )
+locale_filter=[ 0, [ "de", "en" ] ]
 
 [logging]
 

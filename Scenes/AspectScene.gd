@@ -34,6 +34,7 @@ func _show_data():
 	tracking_settings.set_tracking_data(aspect_data.tracking, aspect_data)
 	tracking_settings.set_title(aspect_data.title)
 	tracking_question.set_text(aspect_data.tracking.question)
+	
 	tracking_options_label.text = tr("current_tracking_level_label")
 	var current_tracking_level = AspectTrackingService.get_current_tracking_level(aspect_data)
 	var current_option = aspect_data.get_option_for_level(current_tracking_level.level)
