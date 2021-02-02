@@ -37,3 +37,12 @@ func _init(dict = {}):
 	message = dict["message"] if dict.has("message") else "" # p_message = "",
 	tracking = dict["localizedTrackingData"] if dict.has("localizedTrackingData") else {} # p_tracking = {},
 	info_graph = dict["infoGraph"] if dict.has("infoGraph") else {} # p_info_graph = {}
+
+func get_option_for_level(level): 
+	if tracking == {}: return null
+	if tracking.has("options"):
+		var options = tracking.get("options")
+		if options is Array:
+			if options.size() > level as int:
+				return options[level as int]
+	return null

@@ -16,6 +16,7 @@ func _ready():
 	if checkox_controller != null:
 		checkox_controller.register(select_button)
 		select_button.connect("pressed", self, "selected")
+	if select_button != null and preselected: select_button._check()
 
 	
 func set_tracking_option_data(new_option_data): 
@@ -40,4 +41,4 @@ func selected():
 
 func preselect(): 
 	preselected = true
-	select_button._check()
+	if select_button != null: select_button._check()
