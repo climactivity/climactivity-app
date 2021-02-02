@@ -77,6 +77,12 @@ enabled=PoolStringArray( "Radial-progress-bar", "gut", "tile_object" )
 
 pointing/emulate_touch_from_mouse=true
 
+[locale]
+
+translation_remaps={
+
+}
+
 [logging]
 
 file_logging/enable_file_logging=true
