@@ -4,7 +4,7 @@ export (String) var bigpoint
 export (String) var aspect
 export (Resource) var current
 export (Array) var history
-
+export (Resource) var water_tank
 ##example value 
 #{
 #	"bigpoint": bigpoint,

@@ -18,12 +18,12 @@ func _init():
 		interval = 60 # update every minute in debug builds
 
 func _ready():
-	if Api.is_cache_ready():
+	if Api.is_cache_ready(): # don't update if aspects aren't loaded yet, it might cause problems
 		do_update(OS.get_unix_time(), player_state.last_update, OS.get_unix_time() - player_state.last_update, 0.0)
-	Api.connect("cache_ready", self, "do_update")
+	Api.connect("cache_ready", self, "do_update") # update when cache changes to get updates to rewards as quickly as possible
 	
 func _process(delta):
-	if OS.get_unix_time() - player_state.last_update > interval:
+	if OS.get_unix_time() - player_state.last_update >= interval:
 		var now = OS.get_unix_time() 
 		do_update(now,player_state. last_update, OS.get_unix_time() - player_state.last_update, delta) 
 
@@ -31,6 +31,14 @@ func _process(delta):
 # update all tracked aspects with current rewards based on tracking level and passed time
 # should be invariant to call rate 
 func do_update(now, last_update, absolute_delta, frame_delta): 
+	# handle initialization of player state when no updates have happended yet 
+	if player_state.last_update == 0: 
+		# just set the current time when the app is first started
+		# there cannot be anything to track yet
+		player_state.last_update = OS.get_unix_time()
+		Logger.print("Aspect tracking initialized at %s!" % Util.date_as_RFC1123(OS.get_datetime_from_unix_time(now)), self)
+		_flush()
+		return
 	Logger.print(
 		"Aspect tracking update at %s, last update %s, update delta %s s, frame time %s s"
 		% [
@@ -41,17 +49,9 @@ func do_update(now, last_update, absolute_delta, frame_delta):
 		], self)
 	var aspect_ids = get_tracked_aspects()
 	
-	if player_state.last_update == 0: 
-		# just set the current time when the app is first started
-		# there cannot be anything to track yet
-		player_state.last_update = OS.get_unix_time()
-		_flush()
-		return
-		
+	#finalize
 	player_state.last_update = OS.get_unix_time()
 	_flush()
-	
-	
 
 func get_tracked_aspects(): 
 	var out = []
