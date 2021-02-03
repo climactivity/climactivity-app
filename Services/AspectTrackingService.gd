@@ -4,10 +4,11 @@ var bp_r_tracking_states = preload("res://Network/Types/RTrackingStates.gd")
 var bp_r_tracking_state = preload("res://Network/Types/RTrackingState.gd") 
 var bp_r_tracking_entry = preload("res://Network/Types/RTrackingEntry.gd") 
 var bp_r_reward = preload("res://Network/Types/RReward.gd") 
+var br_r_tracking_update = preload("res://Network/Types/RTrackingUpdate.gd")
 var tracking_states_path = "user://AspectTracking.tres"
 var player_state = load(tracking_states_path)
 
-var last_update = OS.get_unix_time()
+#var last_update = OS.get_unix_time()
 var interval = 60 * 60 * 2 # minutue * hour * 2 -> update every 2 hours
 
 func _init():
@@ -16,21 +17,47 @@ func _init():
 	if OS.is_debug_build(): 
 		interval = 60 # update every minute in debug builds
 
+func _ready():
+	if Api.is_cache_ready():
+		do_update(OS.get_unix_time(), player_state.last_update, OS.get_unix_time() - player_state.last_update, 0.0)
+	Api.connect("cache_ready", self, "do_update")
+	
 func _process(delta):
-	if OS.get_unix_time() - last_update > interval:
+	if OS.get_unix_time() - player_state.last_update > interval:
 		var now = OS.get_unix_time() 
-		do_update(now, last_update, OS.get_unix_time() - last_update, delta) 
-		last_update = OS.get_unix_time()
+		do_update(now,player_state. last_update, OS.get_unix_time() - player_state.last_update, delta) 
 
+
+# update all tracked aspects with current rewards based on tracking level and passed time
+# should be invariant to call rate 
 func do_update(now, last_update, absolute_delta, frame_delta): 
 	Logger.print(
-		"Aspect tracking update at %s, last update %s, update delta %s, frame time %s"
+		"Aspect tracking update at %s, last update %s, update delta %s s, frame time %s s"
 		% [
-			str(OS.get_datetime_from_unix_time(now)),
-			str(OS.get_datetime_from_unix_time(last_update)),
+			Util.date_as_RFC1123(OS.get_datetime_from_unix_time(now)),
+			Util.date_as_RFC1123(OS.get_datetime_from_unix_time(last_update)),
 			str(absolute_delta),
 			str(frame_delta)
 		], self)
+	var aspect_ids = get_tracked_aspects()
+	
+	if player_state.last_update == 0: 
+		# just set the current time when the app is first started
+		# there cannot be anything to track yet
+		player_state.last_update = OS.get_unix_time()
+		_flush()
+		return
+		
+	player_state.last_update = OS.get_unix_time()
+	_flush()
+	
+	
+
+func get_tracked_aspects(): 
+	var out = []
+	for aspect_id in player_state.tracking_states.keys(): 
+		out.append(aspect_id)
+	return out
 
 func commit_tracking_level(option, aspect): 
 	Logger.print("Commit %s for aspect %s" % [option["level"], aspect._id], self)
