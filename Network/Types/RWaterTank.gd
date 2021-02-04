@@ -1,10 +1,10 @@
 extends Resource
-
-export (Resource) var for_aspect
-export (float) var max_value
+export (String) var for_aspect
+export (float) var max_value = 100
 export (float) var current_value
 
 func add_water(water: float): 
+	Logger.print("Added %2.4f water for %s" % [water, for_aspect], "RWaterTank")
 	current_value = min(max_value, current_value + water)
 
 func get_remaining_fill_time(fill_rate: float):
@@ -21,3 +21,6 @@ func to_dict():
 func _to_string():
 	return str(to_dict())
 
+func initialize(aspect_id,run_time): 
+	for_aspect = aspect_id
+	max_value *= run_time

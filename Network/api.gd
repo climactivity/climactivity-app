@@ -65,6 +65,12 @@ func getQuizData(request, id):
 	Logger.print("getQuizData, target: " + requestUrl, self)
 	request.request(requestUrl)
 
+func push_tracking_state(state):
+	if network_status == network_status_options.CONNECTED_LAN:
+		# TODO sync on tracking update if possible
+		pass
+	pass
+
 # also run at compile time with BuildCache.gd
 func update_cache():
 	# get aspects
