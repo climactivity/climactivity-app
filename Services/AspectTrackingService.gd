@@ -4,7 +4,8 @@ var bp_r_tracking_states = preload("res://Network/Types/RTrackingStates.gd")
 var bp_r_tracking_state = preload("res://Network/Types/RTrackingState.gd") 
 var bp_r_tracking_entry = preload("res://Network/Types/RTrackingEntry.gd") 
 var bp_r_reward = preload("res://Network/Types/RReward.gd") 
-var br_r_tracking_update = preload("res://Network/Types/RTrackingUpdate.gd")
+var bp_r_tracking_update = preload("res://Network/Types/RTrackingUpdate.gd")
+var bp_r_water_tank = preload("res://Network/Types/RWaterTank.gd")
 var tracking_states_path = "user://AspectTracking.tres"
 var player_state = load(tracking_states_path)
 
@@ -45,24 +46,31 @@ func do_update():
 		_flush()
 		return
 	Logger.print(
-		"Aspect tracking update at %s, last update %s, update delta %s s"
+		"Aspect tracking update at %s, last update %s, update delta %ss"
 		% [
 			Util.date_as_RFC1123(OS.get_datetime_from_unix_time(now)),
 			Util.date_as_RFC1123(OS.get_datetime_from_unix_time(last_update)),
 			str(absolute_delta)
 		], self)			
-	var tracking_update = br_r_tracking_update.new()
+	var tracking_update = bp_r_tracking_update.new()
 	tracking_update.set_time(now, absolute_delta)
+	var total_reward = bp_r_reward.new()
 	for aspect_id in levels: 
 		var tracking_state = levels[aspect_id]
 		var reward = tracking_state.get_reward_for_time_interval_from_now(absolute_delta)
+		if tracking_state.water_tank == null:
+			tracking_state.water_tank = bp_r_water_tank.new()
+			tracking_state.water_tank.initialize(aspect_id, tracking_state.run_time)
+		tracking_state.water_tank.add_water(reward.water)
 		# add update to stats
 		tracking_update.add_reward(aspect_id, reward)
-	player_state.tracking_updates.push_front(tracking_update)
+		total_reward.merge(reward)
+	player_state.add_tracking_update(tracking_update, total_reward)
 	#finalize
 	player_state.last_update = OS.get_unix_time()
-	Logger.print(player_state.to_json(), self)
+	#Logger.print(player_state.to_json(), self)
 	_flush()
+	Api.push_tracking_state(player_state)
 
 func get_tracked_aspects(): 
 	var out = []
