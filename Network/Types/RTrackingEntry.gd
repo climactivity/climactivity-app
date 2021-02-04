@@ -16,10 +16,22 @@ export (Resource) var reward
 func get_reward_for_time_interval(seconds) -> Resource:
 	var new_reward = r_reward.new() 
 	if seconds <= 0:
-		Logger.error("Can only track aspects for positive time intervals!", self)
+		Logger.error("Can only track aspects for positive time intervals!")
 		return new_reward
 	var factor =  float(seconds) / reward_base_length
 	new_reward.xp = reward.xp * factor
 	new_reward.coins = reward.coins * factor
 	new_reward.water = reward.water * factor
 	return new_reward 
+
+func to_dict():
+	return {
+		"aspect": aspect,
+		"time_stamp": time_stamp,
+		"level": level,
+		"value": value,
+		"reward": reward.to_dict()
+	}
+
+func _to_string():
+	return str(to_dict())
