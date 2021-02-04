@@ -3,6 +3,9 @@ extends Spatial
 # important globally unique id
 var entity_id
 
+var template_resource 
+var instance_resource
+
 # template data
 var _id
 var template_name
@@ -51,7 +54,8 @@ func save():
 		"template_name": template_name
 	}
 
-func set_template(template, use_initial_state):
+func set_template(template):
+	template_resource = template
 	_id = template["_id"]	
 	template_name = template["template_name"]
 	texture_name = template["texture_name"]
@@ -59,8 +63,6 @@ func set_template(template, use_initial_state):
 	preview_name = template["preview_name"]
 	coin_value = template["coin_value"]
 	bigpoint_available = template["bigpoint_available"]
-	if(use_initial_state):
-		set_state(template["initial_state"])
 
 func set_state(state):
 	stage = state["stage"]

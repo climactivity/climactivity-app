@@ -8,16 +8,7 @@
 [ext_resource path="res://UI/typography/Button_Label.tres" type="DynamicFont" id=6]
 [ext_resource path="res://UI/theme/ButtonPrimary_Active.stylebox" type="StyleBox" id=7]
 [ext_resource path="res://UI/theme/ButtonPrimary_Inactive.stylebox" type="StyleBox" id=8]
-
-[sub_resource type="StyleBoxFlat" id=1]
-bg_color = Color( 0.482353, 0.776471, 0.109804, 0.741176 )
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color( 0.584314, 0.756863, 0.117647, 1 )
-corner_radius_top_left = 32
-corner_radius_bottom_left = 32
+[ext_resource path="res://UI/theme/TransparentGreen.tres" type="StyleBox" id=9]
 
 [sub_resource type="StyleBoxFlat" id=2]
 bg_color = Color( 0.51992, 0.67, 0.1072, 1 )
@@ -63,7 +54,7 @@ margin_top = 404.0
 margin_right = 1080.0
 margin_bottom = 1719.0
 size_flags_vertical = 3
-custom_styles/panel = SubResource( 1 )
+custom_styles/panel = ExtResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

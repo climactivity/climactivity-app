@@ -8,7 +8,7 @@ var checkox_controller
 onready var label = $MarginContainer/HBoxContainer/VBoxContainer/Label
 onready var reward_label = $MarginContainer/HBoxContainer/VBoxContainer/Reward
 onready var select_button = $"MarginContainer/HBoxContainer/SelectButton"
-
+var preselected = false
 func _ready(): 
 	if option_data == null: return
 	_update_fields()
@@ -16,6 +16,7 @@ func _ready():
 	if checkox_controller != null:
 		checkox_controller.register(select_button)
 		select_button.connect("pressed", self, "selected")
+	if select_button != null and preselected: select_button._check()
 
 	
 func set_tracking_option_data(new_option_data): 
@@ -37,3 +38,7 @@ func get_checkbox_controller_path():
 
 func selected():
 	emit_signal("selected", self)	
+
+func preselect(): 
+	preselected = true
+	if select_button != null: select_button._check()
