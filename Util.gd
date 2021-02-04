@@ -22,3 +22,24 @@ static func date_as_RFC1123(date_time):
 	var minute= date_time["minute"]             #   0-59
 	var second= date_time["second"]             #   0-59
 	return "%s, %02d %s %d %02d:%02d:%02d GMT" % [nameweekday[dayofweek], day, namemonth[month-1], year, hour, minute, second]
+
+static func flatten_dict(dict):
+	var out = {}
+	for key in dict.keys():
+		var res = dict.get(key)
+		if(res is Dictionary):
+			out[key] = Util.flatten_dict(res) 
+		elif (res.has_method("to_dict")):
+			out[key] = res.to_dict() 
+		else:
+			out[key] = str(res)
+	return out
+
+static func flatten_array(arr):
+	var out = []
+	for res in arr:
+		if (res.has_method("to_dict")):
+			out.push_back(res.to_dict()) 
+		else:
+			out.push_back(str(res)) 
+	return out

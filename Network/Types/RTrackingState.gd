@@ -47,3 +47,20 @@ func make_tracking_state(new_entry, new_run_time):
 	current = new_entry
 	run_time = new_run_time
 	# TODO make water tank
+
+func _to_string():
+	return str(to_dict())
+
+func to_dict(): 
+	var out = {
+
+	  "bigpoint" : bigpoint,
+	  "aspect" : aspect,
+	  "current" : current.to_dict(),
+	  "history" : Util.flatten_array(history),
+	  "water_tank" : water_tank,
+	  "run_time" : run_time, # in days
+	}
+	#Logger.print(out)
+	return out
+

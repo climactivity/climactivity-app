@@ -35,12 +35,13 @@ func _show_data():
 	tracking_question.set_text(aspect_data.tracking.question)
 	
 	tracking_options_label.text = tr("current_tracking_level_label")
+	tracking_level.text = tr("current_tracking_level_unset")
 	var current_tracking_level = AspectTrackingService.get_current_tracking_level(aspect_data)
+	if current_tracking_level == null: return
 	var current_option = aspect_data.get_option_for_level(current_tracking_level.level)
 	if current_option != null:
 		tracking_level.text = current_option.option
-	else:
-		tracking_level.text = tr("current_tracking_level_unset")
+
 
 func _on_Button_pressed():
 	GameManager.scene_manager.push_scene("res://Scenes/TrackingSettingScene.tscn", {"aspect": aspect_data})

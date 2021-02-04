@@ -19,18 +19,21 @@ func _init():
 
 func _ready():
 	if Api.is_cache_ready(): # don't update if aspects aren't loaded yet, it might cause problems
-		do_update(OS.get_unix_time(), player_state.last_update, OS.get_unix_time() - player_state.last_update, 0.0)
+		do_update()
 	Api.connect("cache_ready", self, "do_update") # update when cache changes to get updates to rewards as quickly as possible
 	
 func _process(delta):
 	if OS.get_unix_time() - player_state.last_update >= interval:
 		var now = OS.get_unix_time() 
-		do_update(now,player_state. last_update, OS.get_unix_time() - player_state.last_update, delta) 
+		do_update() 
 
 
 # update all tracked aspects with current rewards based on tracking level and passed time
 # should be invariant to call rate 
-func do_update(now, last_update, absolute_delta, frame_delta): 
+func do_update(): 
+	var now = OS.get_unix_time()
+	var last_update = player_state.last_update
+	var absolute_delta = OS.get_unix_time() - player_state.last_update
 	# handle initialization of player state when no updates have happended yet 
 	var levels = player_state.tracking_states
 	# break if no aspects are tracked or the app is started for the first time
@@ -42,12 +45,11 @@ func do_update(now, last_update, absolute_delta, frame_delta):
 		_flush()
 		return
 	Logger.print(
-		"Aspect tracking update at %s, last update %s, update delta %s s, frame time %s s"
+		"Aspect tracking update at %s, last update %s, update delta %s s"
 		% [
 			Util.date_as_RFC1123(OS.get_datetime_from_unix_time(now)),
 			Util.date_as_RFC1123(OS.get_datetime_from_unix_time(last_update)),
-			str(absolute_delta),
-			str(frame_delta)
+			str(absolute_delta)
 		], self)			
 	var tracking_update = br_r_tracking_update.new()
 	tracking_update.set_time(now, absolute_delta)
@@ -59,6 +61,7 @@ func do_update(now, last_update, absolute_delta, frame_delta):
 	player_state.tracking_updates.push_front(tracking_update)
 	#finalize
 	player_state.last_update = OS.get_unix_time()
+	Logger.print(player_state.to_json(), self)
 	_flush()
 
 func get_tracked_aspects(): 
