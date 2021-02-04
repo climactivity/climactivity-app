@@ -100,6 +100,7 @@ func commit_tracking_level(option, aspect):
 		var new_state = bp_r_tracking_state.new()
 		new_state.bigpoint = aspect["bigpoint"]
 		new_state.aspect = aspect["_id"]
+		new_state.run_time = 1
 		var  history = []
 		history.push_front(new_entry)
 		new_state.history = history

@@ -4,5 +4,4 @@
 
 [resource]
 script = ExtResource( 1 )
-growth_period = 0
 water_factor = 0
