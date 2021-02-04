@@ -9,7 +9,7 @@ export (Resource) var inventory
 
 func _init(): 
 	if inventory == null: 
-		inventory = load("res://res://Network/Types/RInventory.gd").new()
+		inventory = load("res://Network/Types/RInventory.gd").new()
 
 func from_dict(dict): 
 	Logger.error("from_dict not impemented!", self)
@@ -38,6 +38,5 @@ func _to_string():
 
 func add_tracking_update(tracking_update, reward):
 	tracking_updates.push_front(tracking_update)
-	inventory
-	print(reward)
+	inventory.add_reward(reward)
 
