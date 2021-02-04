@@ -32,7 +32,9 @@ func _process(delta):
 # should be invariant to call rate 
 func do_update(now, last_update, absolute_delta, frame_delta): 
 	# handle initialization of player state when no updates have happended yet 
-	if player_state.last_update == 0: 
+	var levels = player_state.tracking_states
+	# break if no aspects are tracked or the app is started for the first time
+	if player_state.last_update == 0 or levels.size() == 0: 
 		# just set the current time when the app is first started
 		# there cannot be anything to track yet
 		player_state.last_update = OS.get_unix_time()
@@ -46,9 +48,15 @@ func do_update(now, last_update, absolute_delta, frame_delta):
 			Util.date_as_RFC1123(OS.get_datetime_from_unix_time(last_update)),
 			str(absolute_delta),
 			str(frame_delta)
-		], self)
-	var aspect_ids = get_tracked_aspects()
-	
+		], self)			
+	var tracking_update = br_r_tracking_update.new()
+	tracking_update.set_time(now, absolute_delta)
+	for aspect_id in levels: 
+		var tracking_state = levels[aspect_id]
+		var reward = tracking_state.get_reward_for_time_interval_from_now(absolute_delta)
+		# add update to stats
+		tracking_update.add_reward(aspect_id, reward)
+	player_state.tracking_updates.push_front(tracking_update)
 	#finalize
 	player_state.last_update = OS.get_unix_time()
 	_flush()

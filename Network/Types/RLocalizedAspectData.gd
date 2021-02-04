@@ -23,7 +23,7 @@ export (String) var title
 export (String) var language
 export (String) var region
 export (String) var message
-export (Dictionary) var tracking
+export (Dictionary) var tracking # tracking options show reward for one day (which is how long the first board entity is active), later entities are active for longer and the ui should reflect that
 export (Dictionary) var info_graph
 
 func _init(dict = {}):

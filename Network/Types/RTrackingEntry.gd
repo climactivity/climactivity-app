@@ -1,5 +1,8 @@
 extends Resource
 
+const r_reward = preload("res://Network/Types/RReward.gd")
+const reward_base_length: float = float(24*60*60) # day  
+
 export (String) var aspect
 export (int) var time_stamp 
 export (float) var level 
@@ -9,3 +12,14 @@ export (Resource) var reward
 #"level?": level, # <- int falls discrete werte, float(0,1) falls contiuum
 #"reward": reward,
 #"value?": value
+
+func get_reward_for_time_interval(seconds) -> Resource:
+	var new_reward = r_reward.new() 
+	if seconds <= 0:
+		Logger.error("Can only track aspects for positive time intervals!", self)
+		return new_reward
+	var factor =  float(seconds) / reward_base_length
+	new_reward.xp = reward.xp * factor
+	new_reward.coins = reward.coins * factor
+	new_reward.water = reward.water * factor
+	return new_reward 
