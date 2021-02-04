@@ -8,7 +8,7 @@ extends CanvasLayer
 
 
 func move(offset: Vector2) -> void: 
-	print("Move by ", offset)
+	#print("Move by ", offset)
 	transform.origin += offset
 
 

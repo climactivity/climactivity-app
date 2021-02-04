@@ -42,7 +42,7 @@ func set_sprite(new_texture):
 	$Sprite3D.texture = texture
 
 func on_touch(): 
-	print("hi")
+	#
 	if not was_initialized: 
 		Logger.error("Not initialized!", self)
 		return

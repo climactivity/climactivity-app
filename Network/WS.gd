@@ -39,7 +39,7 @@ func _ready():
 func _closed(was_clean = false):
 	# was_clean will tell you if the disconnection was correctly notified
 	# by the remote peer before closing the socket.
-	print("Closed, clean: ", was_clean)
+	Logger.print("Closed, clean: %s" % str(was_clean), self)
 	set_process(false)
 
 func _connected(proto = ""):
@@ -50,7 +50,7 @@ func _connected(proto = ""):
 
 func _on_data():
 	var _received_data = _get_packet()
-	print("Got data from server: ", _received_data)
+	Logger.print("Got data from server: %s" % _received_data, self)
 	if _received_data == "connected":
 		return
 	var data = JSON.parse(_received_data)

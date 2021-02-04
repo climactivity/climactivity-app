@@ -35,7 +35,7 @@ onready var cache = $CacheController
 
 func _ready():
 	if OS.is_debug_build():
-		print(OS.get_unique_id())
+		#print(OS.get_unique_id())
 		if ProjectSettings.get_setting("debug/settings/network/localhost"):
 			base_url = "localhost:3000"
 			protocol = "http"
@@ -46,7 +46,6 @@ func getBaseUrl():
 	return "%s://%s" % [protocol, base_url]
 
 func getEndpoint(endpoint,request: HTTPRequest, params = [], localize = false, method = HTTPClient.METHOD_GET, body = null ): 
-	print(str(body))
 	if (endpoints.has(endpoint)):
 		var requestUrl = "%s%s" % [getBaseUrl(), endpoints[endpoint]] % params 
 		if localize:
@@ -66,6 +65,12 @@ func getQuizData(request, id):
 	Logger.print("getQuizData, target: " + requestUrl, self)
 	request.request(requestUrl)
 
+func push_tracking_state(state):
+	if network_status == network_status_options.CONNECTED_LAN:
+		# TODO sync on tracking update if possible
+		pass
+	pass
+
 # also run at compile time with BuildCache.gd
 func update_cache():
 	# get aspects
@@ -73,6 +78,9 @@ func update_cache():
 
 func get_aspect_data_for_sector(sector): 
 	return cache.get_aspect_data_for_sector(sector)
+
+func get_tree_templates():
+	return cache.get_tree_templates()
 
 func is_cache_ready():
 	return cache.is_ready()
