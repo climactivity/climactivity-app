@@ -49,6 +49,6 @@ func to_dict():
 		"last_seen_xp": last_seen_xp, 
 		"last_seen_coins": last_seen_coins,
 		"last_seen_level": last_seen_level, 
-        "uncollected_rewards": Util.flatten_array(uncollected_rewards)
-        "unplaced_items": Util.flatten_array(unplaced_items)
+		"uncollected_rewards": Util.flatten_array(uncollected_rewards),
+		"unplaced_items": Util.flatten_array(unplaced_items)
 	}
