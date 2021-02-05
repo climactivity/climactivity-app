@@ -6,6 +6,7 @@ func _ready():
 	get_tree().get_root().set_disable_input(true)
 	$AnimationPlayer.play("Zoom_To_Clearing")
 	GameManager.forest = self
+	$Camera/HUD/DebugMenu.connect("free_place", $ForestFloor/HexGrid, "set_free_place")
 
 func _input(event):
 	if (!OS.is_debug_build()): return

@@ -1,7 +1,8 @@
 extends Spatial
 
 const y_zero = 0.02
-
+var free_place = false
+var last_plane_coords = null
 var HexGrid = preload("./HexGrid.gd").new()
 var template = preload("res://ForestScene3d/EmptyHex.tscn")
 var tileMesh = preload("res://ForestScene3d/EmptyHex.tscn")
@@ -12,6 +13,12 @@ var treeScene = preload("res://ForestScene3d/TestTree3d.tscn")
 var placeables = {
 	"base_tree": preload("res://ForestScene3d/TreeTemplates/BaseTree.tscn"),
 	"tent_scene": preload("res://ForestScene3d/Tents/Tent.tscn")
+}
+
+var DEBUG_placeables = {
+	KEY_1: preload("res://ForestScene3d/TreeTemplates/TestScenes/Test1.tscn"),
+	KEY_2: preload("res://ForestScene3d/TreeTemplates/TestScenes/Test2.tscn"),
+	KEY_3: preload("res://ForestScene3d/TreeTemplates/TestScenes/Test3.tscn")
 }
 
 var fixed_obejcts = {
@@ -92,6 +99,7 @@ func _tile_area(tile, limit, tileMeshF):
 func _on_HexGrid_input_event(_camera, event, click_position, _click_normal, _shape_idx):
 	# It's called click_position, but you don't need to click
 	var plane_coords = self.transform.affine_inverse() * click_position
+	last_plane_coords = plane_coords
 	plane_coords = Vector2(plane_coords.x, plane_coords.z)
 	if (event is InputEventScreenDrag):
 		if (event.relative.length() > 2): 
@@ -111,9 +119,13 @@ func _on_HexGrid_input_event(_camera, event, click_position, _click_normal, _sha
 					# interacted_object.on_touch()
 					interacted_object.call_deferred("on_touch")
 
+func set_free_place(b):
+	free_place = b
+
 func _input(event):
-	if (event is InputEventKey and event.scancode == KEY_F and event.is_pressed()):
-		placed_objects.get(Vector2(0,1)).on_touch()
+	if !free_place || last_plane_coords == null: return 
+	if (event is InputEventKey and DEBUG_placeables.has(event.scancode) and event.is_pressed()):
+		_place_object(last_plane_coords, DEBUG_placeables.get(event.scancode))
 
 func _place_object_at(axial_coords, instance, scale = false):
 	Logger.print("Placing " + instance.name + " at " + str(axial_coords), self)
@@ -125,6 +137,12 @@ func _place_object_at(axial_coords, instance, scale = false):
 	if(scale): instance.scale = Vector3(hex_size_override.x, hex_size_override.x, hex_size_override.y)
 	placed_objects[axial_coords] = instance
 
+func _place_object(position, prefab):
+	var plane_coords = self.transform.affine_inverse() * position
+	plane_coords = Vector2(plane_coords.x, plane_coords.z)
+	var selected_hex = HexGrid.get_hex_at(plane_coords)
+	_place_object_at(selected_hex.axial_coords, prefab.instance(), true)
+	
 func place_object(position, template_name): 
 	var plane_coords = self.transform.affine_inverse() * position
 	plane_coords = Vector2(plane_coords.x, plane_coords.z)
