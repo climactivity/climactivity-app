@@ -78,6 +78,7 @@ func get_tracked_aspects():
 		out.append(aspect_id)
 	return out
 
+# TODO move construction logic to builder methods
 func commit_tracking_level(option, aspect): 
 	Logger.print("Commit %s for aspect %s" % [option["level"], aspect._id], self)
 	var new_reward = bp_r_reward.new()
@@ -98,24 +99,38 @@ func commit_tracking_level(option, aspect):
 		player_state.tracking_states[aspect._id].current = new_entry
 	else:
 		var new_state = bp_r_tracking_state.new()
-		new_state.bigpoint = aspect["bigpoint"]
-		new_state.aspect = aspect["_id"]
-		new_state.run_time = 1
-		var  history = []
-		history.push_front(new_entry)
-		new_state.history = history
-		new_state.current = new_entry
+		new_state.make_tracking_state(aspect["bigpoint"], aspect["_id"], new_entry, 1)
+#		new_state.bigpoint = aspect["bigpoint"]
+#		new_state.aspect = aspect["_id"]
+#		new_state.run_time = 1
+#		var  history = []
+#		history.push_front(new_entry)
+#		new_state.history = history
+#		new_state.current = new_entry
 		player_state.tracking_states[aspect._id] = new_state
 	_flush()
 
-func get_current_tracking_level(aspect): 
+func get_tracking_state(aspect):
 	var id
 	if aspect is String: 
 		id = aspect
 	else:
 		id = aspect._id
 	if player_state.tracking_states.has(id):
-		return player_state.tracking_states[id].current
+		return player_state.tracking_states[id]
+	else: 
+		return null
+
+func has_seedling_available(aspect):
+	var current_state = get_tracking_state(aspect)
+	if current_state != null: 
+		return current_state.new_seedling_available
+	else: 
+		return false
+func get_current_tracking_level(aspect): 
+	var current_state = get_tracking_state(aspect)
+	if current_state != null: 
+		return current_state.current
 	else: 
 		return null
 

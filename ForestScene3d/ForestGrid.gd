@@ -18,7 +18,8 @@ var placeables = {
 var DEBUG_placeables = {
 	KEY_1: preload("res://ForestScene3d/TreeTemplates/TestScenes/Test1.tscn"),
 	KEY_2: preload("res://ForestScene3d/TreeTemplates/TestScenes/Test2.tscn"),
-	KEY_3: preload("res://ForestScene3d/TreeTemplates/TestScenes/Test3.tscn")
+	KEY_3: preload("res://ForestScene3d/TreeTemplates/TestScenes/Test3.tscn"),
+	KEY_4: preload("res://ForestScene3d/TreeTemplates/TestScenes/Test4.tscn"),
 }
 
 var fixed_obejcts = {

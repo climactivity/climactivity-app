@@ -6,18 +6,9 @@ export (Resource) var current
 export (Array) var history
 export (Resource) var water_tank
 export (int) var run_time # in days
-
-##example value 
-#{
-#	"bigpoint": bigpoint,
-#	"current": history[0],
-#	"history": [{
-#		"set_at": time_stamp,
-#		"level?": level, # <- int falls discrete werte, float(0,1) falls contiuum
-#		"reward": reward,
-#		"value?": value
-#	}]
-#}
+export (Resource) var current_entity
+export (Array) var entity_list
+export (bool) var new_seedling_available = false
 
 func get_reward_for_time_interval_from_now(seconds) -> Resource:
 	var current_state_since = OS.get_unix_time() - current.time_stamp
@@ -41,12 +32,17 @@ func get_reward_for_time_interval_from_now(seconds) -> Resource:
 		
 
 # cannot go into _init() because resources need to have a no args constructor to deserialize properly
-func make_tracking_state(new_entry, new_run_time): 
+func make_tracking_state(new_bigpoint, new_aspect, new_entry, new_run_time): 
+	bigpoint = new_bigpoint
+	aspect = new_aspect
 	history = []
 	history.push_front(new_entry)
 	current = new_entry
 	run_time = new_run_time
 	# TODO make water tank
+	if current_entity == null: 
+		new_seedling_available = true
+
 
 func _to_string():
 	return str(to_dict())
