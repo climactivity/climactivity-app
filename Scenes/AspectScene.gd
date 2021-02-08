@@ -15,10 +15,11 @@ onready var tracking_preview = $"VBoxContainer/Content/MarginContainer/ScrollCon
 export (Resource) var aspect_data
 
 var ready = false
-
+var should_animate = false
 func _ready():
 	#tracking_settings.connect("emit_option", self, "commit_option")
 	#connect("commit_option", AspectTrackingService, "commit_tracking_level")
+	GameManager.scene_manager.connect("current_transition_finished", self, "anim_start")
 	ready = true
 	_show_data()
 	
@@ -42,7 +43,11 @@ func _show_data():
 	if current_option != null:
 		tracking_level.text = current_option.option
 	if AspectTrackingService.has_seedling_available(aspect_data):
-		tracking_preview.show_shop_button()
+		should_animate = true
+		#tracking_preview.show_shop_button()
+
+func anim_start(): 
+		tracking_preview.show_shop_button(aspect_data)
 
 func _on_Button_pressed():
 	GameManager.scene_manager.push_scene("res://Scenes/TrackingSettingScene.tscn", {"aspect": aspect_data})

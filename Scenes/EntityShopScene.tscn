@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scenes/SceneBase.tscn" type="PackedScene" id=1]
 [ext_resource path="res://SM_Screen.tres" type="Material" id=2]
+[ext_resource path="res://UI/Components/SelectEntityCard.tscn" type="PackedScene" id=3]
+[ext_resource path="res://UI/typography/Button_Label.tres" type="DynamicFont" id=4]
 
 [node name="EntityShopScene" instance=ExtResource( 1 )]
 material = ExtResource( 2 )
@@ -9,3 +11,105 @@ use_parent_material = true
 
 [node name="Header" parent="VBoxContainer" index="1"]
 screen_label = "entity_shop_scene"
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Content" index="0"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 90
+custom_constants/margin_top = 64
+custom_constants/margin_left = 90
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Content/MarginContainer" index="0"]
+margin_left = 90.0
+margin_top = 64.0
+margin_right = 990.0
+margin_bottom = 1639.0
+
+[node name="Label" type="Label" parent="VBoxContainer/Content/MarginContainer/VBoxContainer" index="0"]
+margin_right = 900.0
+margin_bottom = 48.0
+custom_fonts/font = ExtResource( 4 )
+text = "coins_pill"
+align = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/Content/MarginContainer/VBoxContainer" index="1"]
+margin_top = 52.0
+margin_right = 900.0
+margin_bottom = 1571.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+follow_focus = true
+scroll_horizontal_enabled = false
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer/Content/MarginContainer/VBoxContainer/ScrollContainer" index="0"]
+margin_right = 810.0
+margin_bottom = 1846.0
+custom_constants/vseparation = 10
+custom_constants/hseparation = 10
+columns = 2
+
+[node name="Card" parent="VBoxContainer/Content/MarginContainer/VBoxContainer/ScrollContainer/GridContainer" index="0" instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 400.0
+margin_bottom = 454.0
+
+[node name="Card2" parent="VBoxContainer/Content/MarginContainer/VBoxContainer/ScrollContainer/GridContainer" index="1" instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 410.0
+margin_right = 810.0
+margin_bottom = 454.0
+
+[node name="Card3" parent="VBoxContainer/Content/MarginContainer/VBoxContainer/ScrollContainer/GridContainer" index="2" instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 464.0
+margin_right = 400.0
+margin_bottom = 918.0
+
+[node name="Card4" parent="VBoxContainer/Content/MarginContainer/VBoxContainer/ScrollContainer/GridContainer" index="3" instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 410.0
+margin_top = 464.0
+margin_right = 810.0
+margin_bottom = 918.0
+
+[node name="Card5" parent="VBoxContainer/Content/MarginContainer/VBoxContainer/ScrollContainer/GridContainer" index="4" instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 928.0
+margin_right = 400.0
+margin_bottom = 1382.0
+
+[node name="Card6" parent="VBoxContainer/Content/MarginContainer/VBoxContainer/ScrollContainer/GridContainer" index="5" instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 410.0
+margin_top = 928.0
+margin_right = 810.0
+margin_bottom = 1382.0
+
+[node name="Card7" parent="VBoxContainer/Content/MarginContainer/VBoxContainer/ScrollContainer/GridContainer" index="6" instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 1392.0
+margin_right = 400.0
+margin_bottom = 1846.0
+
+[node name="Card8" parent="VBoxContainer/Content/MarginContainer/VBoxContainer/ScrollContainer/GridContainer" index="7" instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 410.0
+margin_top = 1392.0
+margin_right = 810.0
+margin_bottom = 1846.0
+
+[node name="CenterContainer" type="CenterContainer" parent="VBoxContainer/Content/MarginContainer/VBoxContainer" index="2"]
+margin_top = 1575.0
+margin_right = 900.0
+margin_bottom = 1575.0
