@@ -15,13 +15,14 @@ material/0 = null
 [node name="ContactShadow" parent="." instance=ExtResource( 5 )]
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.016155, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0769513, -0.148906, 0.0172743 )
 centered = false
 offset = Vector2( -1123.5, 0 )
-pixel_size = 0.000355366
+pixel_size = 0.000482587
 billboard = 1
 texture = ExtResource( 2 )
 region_rect = Rect2( 123.448, 115.232, 38.423, 44.862 )
 script = ExtResource( 4 )
+_unit_factor = 1.358
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

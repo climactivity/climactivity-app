@@ -1,6 +1,8 @@
 class_name SceneManager
 extends Control
 
+signal current_transition_finished
+
 # scenes
 export var start_scene = preload("res://MainScreen.tscn")
 var bigpoint_scene = preload("res://Scenes/BigPointScene.tscn") 
@@ -120,4 +122,4 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 		B_viewport.remove_child(last_scene)
 	is_changing_scene = false
 	get_tree().get_root().set_disable_input(false)
-	
+	emit_signal("current_transition_finished")

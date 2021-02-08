@@ -79,7 +79,7 @@ pointing/emulate_touch_from_mouse=true
 
 [locale]
 
-test="de, en"
+test="de"
 fallback="de"
 translation_remaps={
 
