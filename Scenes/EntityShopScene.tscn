@@ -45,8 +45,8 @@ follow_focus = true
 scroll_horizontal_enabled = false
 
 [node name="GridContainer" type="GridContainer" parent="VBoxContainer/Content/MarginContainer/VBoxContainer/ScrollContainer" index="0"]
-margin_right = 810.0
-margin_bottom = 1846.0
+margin_right = 774.0
+margin_bottom = 2550.0
 custom_constants/vseparation = 10
 custom_constants/hseparation = 10
 columns = 2
@@ -54,60 +54,60 @@ columns = 2
 [node name="Card" parent="VBoxContainer/Content/MarginContainer/VBoxContainer/ScrollContainer/GridContainer" index="0" instance=ExtResource( 3 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 400.0
-margin_bottom = 454.0
+margin_right = 382.0
+margin_bottom = 630.0
 
 [node name="Card2" parent="VBoxContainer/Content/MarginContainer/VBoxContainer/ScrollContainer/GridContainer" index="1" instance=ExtResource( 3 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 410.0
-margin_right = 810.0
-margin_bottom = 454.0
+margin_left = 392.0
+margin_right = 774.0
+margin_bottom = 630.0
 
 [node name="Card3" parent="VBoxContainer/Content/MarginContainer/VBoxContainer/ScrollContainer/GridContainer" index="2" instance=ExtResource( 3 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 464.0
-margin_right = 400.0
-margin_bottom = 918.0
+margin_top = 640.0
+margin_right = 382.0
+margin_bottom = 1270.0
 
 [node name="Card4" parent="VBoxContainer/Content/MarginContainer/VBoxContainer/ScrollContainer/GridContainer" index="3" instance=ExtResource( 3 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 410.0
-margin_top = 464.0
-margin_right = 810.0
-margin_bottom = 918.0
+margin_left = 392.0
+margin_top = 640.0
+margin_right = 774.0
+margin_bottom = 1270.0
 
 [node name="Card5" parent="VBoxContainer/Content/MarginContainer/VBoxContainer/ScrollContainer/GridContainer" index="4" instance=ExtResource( 3 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 928.0
-margin_right = 400.0
-margin_bottom = 1382.0
+margin_top = 1280.0
+margin_right = 382.0
+margin_bottom = 1910.0
 
 [node name="Card6" parent="VBoxContainer/Content/MarginContainer/VBoxContainer/ScrollContainer/GridContainer" index="5" instance=ExtResource( 3 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 410.0
-margin_top = 928.0
-margin_right = 810.0
-margin_bottom = 1382.0
+margin_left = 392.0
+margin_top = 1280.0
+margin_right = 774.0
+margin_bottom = 1910.0
 
 [node name="Card7" parent="VBoxContainer/Content/MarginContainer/VBoxContainer/ScrollContainer/GridContainer" index="6" instance=ExtResource( 3 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 1392.0
-margin_right = 400.0
-margin_bottom = 1846.0
+margin_top = 1920.0
+margin_right = 382.0
+margin_bottom = 2550.0
 
 [node name="Card8" parent="VBoxContainer/Content/MarginContainer/VBoxContainer/ScrollContainer/GridContainer" index="7" instance=ExtResource( 3 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 410.0
-margin_top = 1392.0
-margin_right = 810.0
-margin_bottom = 1846.0
+margin_left = 392.0
+margin_top = 1920.0
+margin_right = 774.0
+margin_bottom = 2550.0
 
 [node name="CenterContainer" type="CenterContainer" parent="VBoxContainer/Content/MarginContainer/VBoxContainer" index="2"]
 margin_top = 1575.0

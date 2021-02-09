@@ -28,7 +28,7 @@ export (String) var preview_name
 export (int) var coin_value 
 export (Array) var bigpoint_available 
 export (TextureArray) var texture_data
-
+export (Texture) var preview_texture
 
 func _init(p_dict = {}): 
 	_id =  p_dict["_id"] if p_dict.has("_id") else ""
