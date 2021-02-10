@@ -36,11 +36,14 @@ config/icon="res://icon.png"
 GameManager="*res://GameManager.gd"
 Transition="*res://UI/Transition.tscn"
 Api="*res://Network/Api.tscn"
+PSS="*res://Services/PlayerStateSyncronizationService.gd"
 Logger="*res://Logger.gd"
 Util="*res://Util.gd"
 PlayerController="*res://PlayerController.gd"
 TreeTemplateFactory="*res://ForestScene3d/TreeTemplates/TreeTemplateFactory.tscn"
 AspectTrackingService="*res://Services/AspectTrackingService.gd"
+RewardService="*res://Services/RewardService.gd"
+BoardEntityService="*res://Services/BoardEntityService.gd"
 
 [debug]
 

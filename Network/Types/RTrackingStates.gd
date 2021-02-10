@@ -40,3 +40,6 @@ func add_tracking_update(tracking_update, reward):
 	tracking_updates.push_front(tracking_update)
 	inventory.add_reward(reward)
 
+func add_reward(reward):
+	inventory.add_reward(reward)
+
