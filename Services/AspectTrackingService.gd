@@ -7,14 +7,13 @@ var bp_r_reward = preload("res://Network/Types/RReward.gd")
 var bp_r_tracking_update = preload("res://Network/Types/RTrackingUpdate.gd")
 var bp_r_water_tank = preload("res://Network/Types/RWaterTank.gd")
 var tracking_states_path = "user://AspectTracking.tres"
-var player_state = load(tracking_states_path)
+var player_state 
 
 #var last_update = OS.get_unix_time()
 var interval = 60 * 60 * 2 # minutue * hour * 2 -> update every 2 hours
 
 func _init():
-	if player_state == null: 
-		init_tacking_state()
+	player_state = PSS.get_player_state_ref()
 	if OS.is_debug_build(): 
 		interval = 60 # update every minute in debug builds
 
@@ -134,10 +133,5 @@ func get_current_tracking_level(aspect):
 	else: 
 		return null
 
-func init_tacking_state():
-	player_state = bp_r_tracking_states.new()
-	player_state.take_over_path(tracking_states_path)
-	_flush()
-
 func _flush(): 
-	ResourceSaver.save(tracking_states_path, player_state)
+	PSS.flush()

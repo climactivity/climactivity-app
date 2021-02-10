@@ -10,7 +10,7 @@ var ready = false
 
 func _ready():
 	ready = true
-	_show_data()
+	#_show_data()
 
 func set_entity(new_entity_resource): 
 	entity = new_entity_resource
