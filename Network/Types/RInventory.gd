@@ -9,8 +9,8 @@ export (float) var last_seen_xp
 export (float) var last_seen_coins
 export (float) var last_seen_level 
 
-export (Array) var uncollected_rewards 
-export (Array) var unplaced_items
+export (Array) var uncollected_rewards = []
+export (Array) var unplaced_items = []
 
 func add_reward(reward):
 	xp += reward.xp
@@ -22,6 +22,8 @@ func update():
 	last_seen_coins = coins
 	last_seen_level = level
 
+func add_item(item): 
+	unplaced_items.push_back(item)
 	
 func show_progress(): 
 	return {

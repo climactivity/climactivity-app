@@ -126,6 +126,19 @@ func has_seedling_available(aspect):
 		return current_state.new_seedling_available
 	else: 
 		return false
+
+func award_seedling(aspect): 
+	var current_state = get_tracking_state(aspect)
+	if current_state != null: 
+		current_state.new_seedling_available = true
+
+func consume_seedling(aspect_id): 
+	if has_seedling_available(aspect_id) || OS.is_debug_build():
+		#var current_state = get_tracking_state(aspect)
+		player_state.tracking_states[aspect_id].new_seedling_available = false
+		#current_state.new_seedling_available = false
+		_flush()
+
 func get_current_tracking_level(aspect): 
 	var current_state = get_tracking_state(aspect)
 	if current_state != null: 

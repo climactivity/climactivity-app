@@ -49,7 +49,10 @@ var fixed_obejcts = {
 	},
 }
 
-var placed_objects = {}
+
+var placed_objects = {} 
+# references player state 
+var player_objects = BoardEntityService.get_placed_objects()
 
 var not_placeable_hexes
 var MIN_RING = 3
@@ -79,7 +82,14 @@ func _ready():
 	not_placeable_hexes = centerTile.get_all_within2(2)
 	#_tile_area(centerTile, SIZE, treeScene)
 	_place_fixed_objects()
-
+	_place_dynamic_objects()
+	
+	#restore placed entites from player state at restart of scene
+func _place_dynamic_objects():
+	for axial_coords in player_objects.keys():
+		var object_instance = player_objects.get(axial_coords)
+		_place_object_at(axial_coords, object_instance, true)
+		
 func _enable_interaction(): 
 	#print("camera released focus")
 	can_interact = true

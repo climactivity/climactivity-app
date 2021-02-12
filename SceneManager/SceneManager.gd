@@ -4,14 +4,15 @@ extends Control
 signal current_transition_finished
 
 # scenes
-export var start_scene = preload("res://MainScreen.tscn")
+export var start_scene = preload("res://ForestScene3d/ForestScene3d.tscn")
+var home_scene
 var bigpoint_scene = preload("res://Scenes/BigPointScene.tscn") 
 var sector_data = preload("res://ForestScene3d/Tents/SectorData.gd").new()
 var current_scene
 var last_scene
 var history = []
 var scene_map = {
-	"start_scene": preload("res://MainScreen.tscn"), # forest view
+	"start_scene": start_scene, # forest view
 	"loading_instance": preload("res://SceneManager/Loading.tscn"), # loading screen
 	"big_point_scene": preload("res://Scenes/BigPointScene.tscn"),
 	"quiz_scene": preload("res://Scenes/QuizScene.tscn"),
@@ -37,6 +38,9 @@ onready var A_viewport = $A/Viewport
 onready var B = $B
 onready var B_viewport = $B/Viewport
 
+onready var overlay = $Overlay
+onready var overlay_viewport = $Overlay/Viewport
+
 #cool anims
 onready var animation_player = $AnimationPlayer
 
@@ -47,6 +51,7 @@ func _ready():
 	_prepare_bigpoint_scenes()
 	_show_A()
 	current_scene = start_scene.instance()
+	home_scene = current_scene
 	A_viewport.add_child(current_scene)
 
 func _prepare_bigpoint_scenes(): 
@@ -61,6 +66,9 @@ func _prepare_bigpoint_scene(sector):
 	var new_instance = bigpoint_scene.instance() 
 	new_instance.receive_navigation(sector_data.sector_data[sector])
 	return new_instance
+
+func go_home(): 
+	push_scene(home_scene)
 
 func push_scene(scene, navigation_data = {}, config = TransitionFactory.MoveOut()) -> void: 
 	if (is_changing_scene): return
