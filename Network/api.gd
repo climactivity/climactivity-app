@@ -18,7 +18,8 @@ var endpoints = {
 	"cache-aspects": "/localized-aspect",
 	"aspect_for_sector": "/localized-aspect/s/%s",
 	"check-cache": "/client-cache",
-	"update-cache": "/client-cache/update"
+	"update-cache": "/client-cache/update",
+	"sync-player-state": "/player-state/sync"
 }
 
 enum network_status_options {
@@ -28,6 +29,8 @@ enum network_status_options {
 }
 
 var network_status = network_status_options.CONNECTED_LAN setget set_network_status, get_network_status
+
+var enqueued_tasks = []
 
 onready var ws = $WS
 onready var req = $HTTPRequest
@@ -90,3 +93,17 @@ func set_network_status(new_status):
 	
 func get_network_status():
 	return network_status
+
+func sync_player_state(immediate = false): 
+	if get_network_status() == network_status_options.CONNECTED_LAN: 
+		_sync_player_state()
+	elif get_network_status() == network_status_options.CONNECTED_WAN:
+		if immediate:
+			_sync_player_state()
+	else: 
+		enqueued_tasks.push_back("_sync_player_state")
+
+func _sync_player_state(): 
+	return 
+	#getEndpoint("sync-player-state", req, [], false, HTTPClient.METHOD_GET)
+	#PSS.update()

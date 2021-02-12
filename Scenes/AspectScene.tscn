@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Scenes/SceneBase.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/AspectScene.gd" type="Script" id=2]
+[ext_resource path="res://Scenes/TrackingPreview.gd" type="Script" id=3]
 [ext_resource path="res://SM_Screen.tres" type="Material" id=4]
 [ext_resource path="res://UI/typography/Button_Label.tres" type="DynamicFont" id=5]
 [ext_resource path="res://UI/placeholder_stylebox.tres" type="StyleBox" id=6]
@@ -10,6 +11,45 @@
 [ext_resource path="res://UI/theme/TransparentGreen.tres" type="StyleBox" id=9]
 [ext_resource path="res://UI/theme/ButtonPrimary_Inactive.stylebox" type="StyleBox" id=10]
 [ext_resource path="res://UI/theme/ButtonPrimary_Active.stylebox" type="StyleBox" id=11]
+
+[sub_resource type="Animation" id=1]
+resource_name = "ShowShopButton"
+tracks/0/type = "value"
+tracks/0/path = NodePath("shop_button_container:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("shop_button_container:rect_scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1e-05 ), Vector2( 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("shop_button_container:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
 
 [node name="Control" instance=ExtResource( 1 )]
 material = ExtResource( 4 )
@@ -47,6 +87,7 @@ size_flags_vertical = 3
 [node name="TrackingPreview" type="VBoxContainer" parent="VBoxContainer/Content/MarginContainer/ScrollContainer/Control" index="0"]
 margin_right = 1048.0
 margin_bottom = 628.0
+script = ExtResource( 3 )
 
 [node name="TrackingQuestion" parent="VBoxContainer/Content/MarginContainer/ScrollContainer/Control/TrackingPreview" index="0" instance=ExtResource( 7 )]
 anchor_top = 0.0
@@ -139,6 +180,34 @@ custom_styles/normal = ExtResource( 11 )
 custom_fonts/font = ExtResource( 5 )
 text = "go_to_tracking_settings"
 
+[node name="shop_button_container" type="MarginContainer" parent="VBoxContainer/Content/MarginContainer/ScrollContainer/Control/TrackingPreview" index="2"]
+visible = false
+modulate = Color( 1, 1, 1, 0 )
+margin_top = 632.0
+margin_right = 1048.0
+margin_bottom = 764.0
+rect_scale = Vector2( 1, 1e-05 )
+custom_constants/margin_top = 40
+custom_constants/margin_bottom = 40
+
+[node name="entity_shop_button" type="Button" parent="VBoxContainer/Content/MarginContainer/ScrollContainer/Control/TrackingPreview/shop_button_container" index="0"]
+margin_top = 40.0
+margin_right = 1048.0
+margin_bottom = 92.0
+custom_styles/hover = ExtResource( 11 )
+custom_styles/pressed = ExtResource( 11 )
+custom_styles/focus = ExtResource( 11 )
+custom_styles/disabled = ExtResource( 10 )
+custom_styles/normal = ExtResource( 11 )
+custom_fonts/font = ExtResource( 5 )
+text = "new_seedling_available_button"
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="VBoxContainer/Content/MarginContainer/ScrollContainer/Control/TrackingPreview" index="3"]
+anims/ShowShopButton = SubResource( 1 )
+
 [node name="InfoGraph" type="Panel" parent="VBoxContainer/Content/MarginContainer/ScrollContainer/Control" index="1"]
 margin_top = 632.0
 margin_right = 1048.0
@@ -160,3 +229,4 @@ custom_styles/panel = ExtResource( 6 )
 
 [node name="HTTPRequest" type="HTTPRequest" parent="." index="1"]
 [connection signal="pressed" from="VBoxContainer/Content/MarginContainer/ScrollContainer/Control/TrackingPreview/MarginContainer/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer/CenterContainer/MarginContainer/Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Content/MarginContainer/ScrollContainer/Control/TrackingPreview/shop_button_container/entity_shop_button" to="VBoxContainer/Content/MarginContainer/ScrollContainer/Control/TrackingPreview" method="_on_entity_shop_button_pressed"]

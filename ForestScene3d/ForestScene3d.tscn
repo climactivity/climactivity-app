@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://ForestScene3d/Interactables/SeedlingBox.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Vertical_Gradient.shader" type="Shader" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://ForestScene3d/Interactables/QuestLog.tscn" type="PackedScene" id=11]
 [ext_resource path="res://ForestScene3d/texture_Boden_01.png" type="Texture" id=12]
 [ext_resource path="res://UI/xp_bar.png" type="Texture" id=13]
+[ext_resource path="res://ForestScene3d/DebugMenu.gd" type="Script" id=14]
 
 [sub_resource type="ProceduralSky" id=1]
 sky_top_color = Color( 0.105882, 0.231373, 0.301961, 1 )
@@ -171,6 +172,12 @@ transform = Transform( 1, 0, 0, 0, 0.768652, 0.639667, 0, -0.639667, 0.768652, -
 current = true
 size = 44.73
 script = ExtResource( 5 )
+zoom_level = 1.0
+zoom_factor = 1.0
+pan_factor = 4.0
+min_elevation = 5.0
+max_elevation = 30
+min_rotation_deg = -27.5
 max_rotation_deg = -49.406
 nw_bound = Vector2( -20, 0 )
 se_bound = Vector2( 20, 38 )
@@ -219,6 +226,47 @@ texture = ExtResource( 13 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="DebugMenu" type="PanelContainer" parent="Camera/HUD"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -142.0
+margin_top = -40.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource( 14 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBox" type="VBoxContainer" parent="Camera/HUD/DebugMenu"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 135.0
+margin_bottom = 33.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Camera/HUD/DebugMenu/VBox"]
+margin_right = 128.0
+margin_bottom = 24.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Camera/HUD/DebugMenu/VBox/HBoxContainer"]
+margin_top = 5.0
+margin_right = 100.0
+margin_bottom = 19.0
+text = "Free placement"
+
+[node name="CheckBox" type="CheckBox" parent="Camera/HUD/DebugMenu/VBox/HBoxContainer"]
+margin_left = 104.0
+margin_right = 128.0
+margin_bottom = 24.0
 
 [node name="PositionProbe" type="KinematicBody" parent="Camera"]
 
@@ -305,5 +353,6 @@ anchor_bottom = 1.0
 autoplay = "RESET"
 anims/RESET = SubResource( 14 )
 anims/Zoom_To_Clearing = SubResource( 15 )
+[connection signal="toggled" from="Camera/HUD/DebugMenu/VBox/HBoxContainer/CheckBox" to="Camera/HUD/DebugMenu" method="_set_free_placement_mode"]
 [connection signal="input_event" from="ForestFloor/HexGrid" to="ForestFloor/HexGrid" method="_on_HexGrid_input_event"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
