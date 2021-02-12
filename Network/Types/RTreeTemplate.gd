@@ -27,8 +27,8 @@ export (String) var ui_name
 export (String) var preview_name 
 export (int) var coin_value 
 export (Array) var bigpoint_available 
-export (TextureArray) var texture_data
-
+export (Dictionary) var texture_data
+export (Texture) var preview_texture
 
 func _init(p_dict = {}): 
 	_id =  p_dict["_id"] if p_dict.has("_id") else ""
@@ -39,3 +39,9 @@ func _init(p_dict = {}):
 	coin_value =  p_dict["coin_value"] if p_dict.has("coin_value") else ""
 	bigpoint_available =  p_dict["bigpoint_available"] if p_dict.has("bigpoint_available") else []
 	texture_data =  p_dict["texture_data"] if p_dict.has("texture_data") else {}
+
+func save_texture_assignment(): 
+	ResourceSaver.save(get_path(), self)
+
+func _save(): 
+	pass
