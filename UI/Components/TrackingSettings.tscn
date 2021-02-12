@@ -10,7 +10,7 @@
 [ext_resource path="res://UI/theme/ButtonPrimary_Inactive.stylebox" type="StyleBox" id=8]
 [ext_resource path="res://UI/theme/TransparentGreen.tres" type="StyleBox" id=9]
 
-[sub_resource type="StyleBoxFlat" id=2]
+[sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.51992, 0.67, 0.1072, 1 )
 border_width_left = 2
 border_width_top = 2
@@ -139,7 +139,7 @@ margin_bottom = 52.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_styles/hover = ExtResource( 7 )
-custom_styles/pressed = SubResource( 2 )
+custom_styles/pressed = SubResource( 1 )
 custom_styles/disabled = ExtResource( 8 )
 custom_styles/normal = ExtResource( 7 )
 custom_fonts/font = ExtResource( 6 )

@@ -30,7 +30,7 @@ margin_top = 64.0
 margin_right = 990.0
 margin_bottom = 1639.0
 
-[node name="Label" type="Label" parent="VBoxContainer/Content/MarginContainer/VBoxContainer" index="0"]
+[node name="coin_display" type="Label" parent="VBoxContainer/Content/MarginContainer/VBoxContainer" index="0"]
 margin_right = 900.0
 margin_bottom = 48.0
 custom_fonts/font = ExtResource( 4 )
