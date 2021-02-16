@@ -48,6 +48,7 @@ BoardEntityService="*res://Services/BoardEntityService.gd"
 [debug]
 
 settings/network/localhost=true
+settings/game_logic/cheat_seedlings=false
 
 [display]
 

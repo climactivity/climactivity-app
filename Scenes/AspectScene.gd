@@ -47,7 +47,7 @@ func _show_data():
 		#tracking_preview.show_shop_button()
 
 func anim_start(): 
-	if should_animate || OS.is_debug_build():
+	if should_animate or ProjectSettings.get_setting("debug/settings/game_logic/cheat_seedlings"):# || OS.is_debug_build():
 		tracking_preview.show_shop_button(aspect_data)
 
 func _on_Button_pressed():

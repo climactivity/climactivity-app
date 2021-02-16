@@ -1,6 +1,6 @@
 extends Resource
 export (String) var for_aspect
-export (float) var max_value = 100
+export (float) var max_value = 100.0
 export (float) var current_value
 
 func add_water(water: float): 
@@ -8,7 +8,7 @@ func add_water(water: float):
 	current_value = min(max_value, current_value + water)
 
 func get_remaining_fill_time(fill_rate: float):
-	if fill_rate == 0: return INF #that should settle that debate
+	if fill_rate == 0: return INF 
 	return (max_value - current_value)/fill_rate
 	
 func to_dict():
@@ -24,3 +24,13 @@ func _to_string():
 func initialize(aspect_id,run_time): 
 	for_aspect = aspect_id
 	max_value *= run_time
+
+func get_water_amount():
+	return current_value
+
+func consume_water_amount(amount):
+	if (current_value < amount):
+		Logger.error("Could not consume %d of %d" % [amount, current_value], self)
+		return -1
+	current_value -= amount
+	return current_value

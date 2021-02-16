@@ -1,5 +1,7 @@
 extends Node
 
+signal tracking_updated
+
 var bp_r_tracking_states = preload("res://Network/Types/RTrackingStates.gd") 
 var bp_r_tracking_state = preload("res://Network/Types/RTrackingState.gd") 
 var bp_r_tracking_entry = preload("res://Network/Types/RTrackingEntry.gd") 
@@ -70,6 +72,7 @@ func do_update():
 	#Logger.print(player_state.to_json(), self)
 	_flush()
 	Api.push_tracking_state(player_state)
+	emit_signal("tracking_updated")
 
 func get_tracked_aspects(): 
 	var out = []
@@ -133,11 +136,13 @@ func award_seedling(aspect):
 		current_state.new_seedling_available = true
 
 func consume_seedling(aspect_id): 
-	if has_seedling_available(aspect_id) || OS.is_debug_build():
+	if has_seedling_available(aspect_id) or ProjectSettings.get_setting("debug/settings/game_logic/cheat_seedlings"):
 		#var current_state = get_tracking_state(aspect)
 		player_state.tracking_states[aspect_id].new_seedling_available = false
 		#current_state.new_seedling_available = false
 		_flush()
+		return true
+	return false
 
 func get_current_tracking_level(aspect): 
 	var current_state = get_tracking_state(aspect)
@@ -145,6 +150,13 @@ func get_current_tracking_level(aspect):
 		return current_state.current
 	else: 
 		return null
+
+func has_water_available(): 
+	var has_water = 0.0
+	for tracking_state_key in player_state.tracking_states: 
+		var tracking_state = player_state.tracking_states[tracking_state_key]
+		has_water += tracking_state.get_water_available()
+	return has_water > 0
 
 func _flush(): 
 	PSS.flush()

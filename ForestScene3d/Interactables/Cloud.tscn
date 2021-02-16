@@ -14,3 +14,4 @@ margin_left = -146.053
 margin_top = -84.2694
 margin_right = 145.947
 margin_bottom = 80.7306
+[connection signal="gui_input" from="." to="." method="_on_Cloud_gui_input"]

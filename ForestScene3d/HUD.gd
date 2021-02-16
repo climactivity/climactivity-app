@@ -1,6 +1,8 @@
 extends Control
 
 onready var seedling_box = $SeedlingBox
+onready var cloud_widget  = $Cloud
+
 
 func _ready():
 	seedling_box.connect("dragging", self, "_disable_input")
@@ -8,6 +10,7 @@ func _ready():
 
 func update_hud():
 	_show_seedling_box()
+	_show_cloud()
 	
 func can_drop_data(_pos, data):
 	var result = get_parent().ray_cast(_pos)
@@ -33,5 +36,12 @@ func _show_seedling_box():
 		seedling_box.set_entity(BoardEntityService.get_placeable_entity())
 	else:
 		seedling_box.visible = false
+
+func _show_cloud(): 
+	if AspectTrackingService.has_water_available(): 
+		cloud_widget.visible = true
+	else: 
+		cloud_widget.visible = false
+		
 func _entity_placed():
 	_show_seedling_box()
