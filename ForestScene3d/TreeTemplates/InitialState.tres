@@ -4,4 +4,13 @@
 
 [resource]
 script = ExtResource( 1 )
-water_factor = 0
+entity_id = ""
+_id = ""
+last_sync = ""
+stage = ""
+growth_period = 0
+water_applied = 0.0
+base_water_required = 0.0
+water_required = 0.0
+axial_coords = Vector3( 0, 0, 0 )
+center_offset = Vector2( 0, 0 )

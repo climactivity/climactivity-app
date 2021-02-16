@@ -28,7 +28,8 @@ func _show_data():
 	
 func _on_select_button_pressed():
 	Logger.print( "Added a %s to inventory" % entity.ui_name, self)
-	AspectTrackingService.consume_seedling(aspect._id)
-	var new_entity = TreeTemplateFactory._make_new(entity)
-	PSS.add_item_to_inventory(new_entity)
-	GameManager.scene_manager.go_home()
+	var err = BoardEntityService.add_entity(entity, aspect)
+	if err == OK: 
+		GameManager.scene_manager.go_home()
+	else: 
+		Logger.error(err)

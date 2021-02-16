@@ -96,6 +96,8 @@ func push_scene(scene, navigation_data = {}, config = TransitionFactory.MoveOut(
 	if (scene.has_method("receive_navigation") && navigation_data != null):
 		Logger.print("Navigation data %s" % str(navigation_data), self)
 		scene.receive_navigation(navigation_data)
+	if (scene.has_method("_restored")): 
+		scene._restored()
 	animation_player.play(config.transition_name)
 
 func pop_scene(config = TransitionFactory.MoveBack()) -> void: 
