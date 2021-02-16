@@ -22,6 +22,7 @@ var scene_map = {
 	"big_point_scene_indirect_emissions": preload("res://Scenes/BigPointScene.tscn"),
 	"big_point_scene_private_engagement": preload("res://Scenes/BigPointScene.tscn"),
 	"big_point_scene_public_engagement": preload("res://Scenes/BigPointScene.tscn"),
+	"water_collection_scene": preload("res://Scenes/WaterCollectionScene.tscn")
 }
 
 #loading with progress bar
@@ -49,6 +50,7 @@ var is_changing_scene = false
 func _ready():
 	GameManager.scene_manager = self
 	_prepare_bigpoint_scenes()
+	scene_map.water_collection_scene = preload("res://Scenes/WaterCollectionScene.tscn").instance()
 	_show_A()
 	current_scene = start_scene.instance()
 	home_scene = current_scene
@@ -82,8 +84,10 @@ func push_scene(scene, navigation_data = {}, config = TransitionFactory.MoveOut(
 		var new_instance
 		if (scene_map.has(scene)):
 			Logger.print("Rehydrating stored scene: " + scene, self)
-
-			scene = scene_map.get(scene).instance()
+			if scene is PackedScene:
+				scene = scene_map.get(scene).instance()
+			else: 
+				scene = scene_map.get(scene)
 		else:
 			Logger.print("Loading new scene: " + scene, self)
 			scene = load(scene).instance()

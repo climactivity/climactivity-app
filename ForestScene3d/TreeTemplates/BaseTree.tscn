@@ -20,10 +20,11 @@ material/0 = null
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.016155, 0 )
 centered = false
 offset = Vector2( -281, 0 )
-pixel_size = 0.00151515
+pixel_size = 0.00266364
 billboard = 1
 texture = ExtResource( 2 )
 region_rect = Rect2( 123.448, 115.232, 38.423, 44.862 )
 script = ExtResource( 4 )
+_unit_factor = 1.758
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

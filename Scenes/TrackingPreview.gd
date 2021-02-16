@@ -12,6 +12,5 @@ func show_shop_button(new_aspect_data):
 	anim_player.play("ShowShopButton")
 
 func _on_entity_shop_button_pressed():
-	print("hi")
 	GameManager.scene_manager.push_scene("res://Scenes/EntityShopScene.tscn", {"aspect": aspect_data})
 
