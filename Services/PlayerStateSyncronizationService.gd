@@ -32,7 +32,7 @@ func update_from_json(document):
 
 func add_item_to_inventory(entity):
 	player_state.inventory.add_item(entity)
-
+	flush()
 func _notification(what):
 	## TODO flush when engine is about to shut down?
 	if flush_on.find(what) != -1: 

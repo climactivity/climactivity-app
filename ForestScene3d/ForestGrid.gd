@@ -1,5 +1,7 @@
 extends Spatial
 
+signal placed_entity
+
 const y_zero = 0.02
 var free_place = false
 var last_plane_coords = null
@@ -87,8 +89,8 @@ func _ready():
 	#restore placed entites from player state at restart of scene
 func _place_dynamic_objects():
 	for axial_coords in player_objects.keys():
-		var object_instance = player_objects.get(axial_coords)
-		_place_object_at(axial_coords, object_instance, true)
+		var entity_resource = player_objects.get(axial_coords)
+		_place_object_at(axial_coords, TreeTemplateFactory.rehydrate(entity_resource), true)
 		
 func _enable_interaction(): 
 	#print("camera released focus")
@@ -164,6 +166,16 @@ func place_object(position, template_name):
 		var new_object = TreeTemplateFactory.make_new(template_name)
 		_place_object_at(selected_hex.axial_coords, new_object, true)
 
+func place_entity(position, entity): 
+	var plane_coords = self.transform.affine_inverse() * position
+	plane_coords = Vector2(plane_coords.x, plane_coords.z)
+	var selected_hex = HexGrid.get_hex_at(plane_coords)
+	var plane_pos = HexGrid.get_hex_center(HexGrid.get_hex_at(plane_coords))
+	if(can_place(selected_hex, entity)):
+		var new_object = BoardEntityService.place_entity(entity, selected_hex.axial_coords)
+		emit_signal("placed_entity")
+		_place_object_at(selected_hex.axial_coords, new_object, true)
+		
 func can_place(hex, instance): 
 	var x = hex.axial_coords.x
 	var y = hex.axial_coords.y

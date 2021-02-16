@@ -2,6 +2,7 @@ extends Node
 
 var _base_tree_scene = preload("res://ForestScene3d/TreeTemplates/BaseTree.tscn")
 var initial_state = preload("res://ForestScene3d/TreeTemplates/InitialState.tres")
+
 onready var http_request = $HTTPRequest
 
 # preload texture assets from application bundle
@@ -72,20 +73,13 @@ func get_template(key):
 		Logger.error("Entity template for " + str(key) + " not found!", self)
 		return null 
 
-func make_new(template_name: String):
-	if (_tree_templates.has(template_name)):
-		return _make_new(_tree_templates.get(template_name))
-	else:
-		Logger.error("TreeTemplate " + str(template_name) + " not found!", self)
-
-func _make_new(template, id = null):
-	if id == null:
-		id = Util.uuid_util.v4()
+func _make_new(resource):
 	var new_tree = _base_tree_scene.instance()
-	new_tree.entity_id = id
-	new_tree.set_template(template)
-	new_tree.set_state(initial_state)
+	new_tree.set_state(resource)
 	#new_tree.set_textures(available_textures[template["texture_name"]])
 	return new_tree
 
-
+# used to generate scenes from entity resources
+func rehydrate(entity): 
+	var new_tree = _make_new(entity)
+	return new_tree
