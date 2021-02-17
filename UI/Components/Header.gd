@@ -10,12 +10,12 @@ export (bool) var back_button_override = false
 
 onready var back_button = $BG/BackButton
 onready var label = $BG/Label
-onready var icon_bg = $BG/BG_Category/BG_Icon
-onready var icon = $BG/BG_Category/BG_Icon/Icon
+onready var icon = $BG/BG_Category
 
 func _ready():
 	label.set_text(screen_label)
-	icon.texture = icon_texture
+	icon.set_icon(icon_texture)
+	icon.set_bg(color)
 
 func _on_BackButton_pressed():
 	emit_signal("go_back")
@@ -39,5 +39,5 @@ func set_icon_texture(new_texture):
 
 func set_color(new_color): 
 	color = new_color
-	if(is_instance_valid(icon_bg)):
-		icon_bg.set("custom_styles/panel/bg_color", color)
+	if(is_instance_valid(icon)):
+		icon.set_bg(color)
