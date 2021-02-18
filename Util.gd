@@ -49,3 +49,9 @@ static func flatten_array(arr):
 		else:
 			out.push_back(str(res)) 
 	return out
+
+static func clear(node: Node):
+	if node.get_child_count() == 0:
+		return
+	for child in node.get_children(): 
+		node.remove_child(child)

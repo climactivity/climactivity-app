@@ -16,7 +16,7 @@ func _ready():
 	label.set_text(screen_label)
 	icon.set_icon(icon_texture)
 	icon.set_bg(color)
-
+	#icon.set_border(color)
 func _on_BackButton_pressed():
 	emit_signal("go_back")
 	if (!back_button_override): 
@@ -35,7 +35,7 @@ func set_screen_label(new_label):
 func set_icon_texture(new_texture): 
 	icon_texture = new_texture
 	if(is_instance_valid(label)):
-		icon.texture = icon_texture
+		icon.set_icon(icon_texture)
 
 func set_color(new_color): 
 	color = new_color

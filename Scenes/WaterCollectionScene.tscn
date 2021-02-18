@@ -5,14 +5,15 @@
 [ext_resource path="res://UI/Components/kiko_hint.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Assets/Wolke.png" type="Texture" id=4]
 [ext_resource path="res://UI/Components/KineticScrollContainer.gd" type="Script" id=5]
-[ext_resource path="res://UI/typography/Heading.tres" type="DynamicFont" id=6]
+[ext_resource path="res://UI/Components/SectorHolder.tscn" type="PackedScene" id=6]
 [ext_resource path="res://UI/typography/italic_ligt.tres" type="DynamicFont" id=7]
-[ext_resource path="res://UI/typography/Content_Regular.tres" type="DynamicFont" id=8]
-[ext_resource path="res://UI/Components/IconCapsule.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Assets/TestData/Sprite-0005.png" type="Texture" id=10]
+[ext_resource path="res://UI/typography/Heading.tres" type="DynamicFont" id=8]
+[ext_resource path="res://Assets/TestData/Sprite-0002.png" type="Texture" id=11]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.392157, 0.65098, 0.886275, 1 )
+
+[sub_resource type="StyleBoxEmpty" id=3]
 
 [sub_resource type="StyleBoxFlat" id=2]
 bg_color = Color( 0.584314, 0.729412, 0.894118, 1 )
@@ -31,9 +32,18 @@ corner_radius_bottom_left = 20
 custom_styles/panel = SubResource( 1 )
 script = ExtResource( 2 )
 
+[node name="Header" parent="VBoxContainer" index="1"]
+icon_texture = ExtResource( 11 )
+color = Color( 1, 0.0470588, 0.627451, 1 )
+
+[node name="Content" parent="VBoxContainer" index="2"]
+show_behind_parent = true
+
 [node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/Content" index="0"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_top = -284.0
+margin_right = 6.0
 scroll_horizontal_enabled = false
 script = ExtResource( 5 )
 __meta__ = {
@@ -42,143 +52,152 @@ __meta__ = {
 scrollDirection = "Vertical"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Content/ScrollContainer" index="0"]
-margin_right = 1080.0
-margin_bottom = 1379.0
+margin_right = 1074.0
+margin_bottom = 2874.0
 size_flags_horizontal = 3
+custom_constants/separation = -1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CloudHolder" type="MarginContainer" parent="VBoxContainer/Content/ScrollContainer/VBoxContainer" index="0"]
-margin_right = 1080.0
-margin_bottom = 343.0
+[node name="Panel" type="PanelContainer" parent="VBoxContainer/Content/ScrollContainer/VBoxContainer" index="0"]
+margin_right = 1074.0
+margin_bottom = 338.0
+custom_styles/panel = SubResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer/Content/ScrollContainer/VBoxContainer/Panel" index="0"]
+margin_right = 1074.0
+margin_bottom = 338.0
+custom_constants/separation = 338
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CloudHolder" type="MarginContainer" parent="VBoxContainer/Content/ScrollContainer/VBoxContainer" index="1"]
+margin_top = 337.0
+margin_right = 1074.0
+margin_bottom = 680.0
 grow_horizontal = 0
 grow_vertical = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/margin_top = 49
-custom_constants/margin_left = 518
 
-[node name="CloudPreview" type="TextureRect" parent="VBoxContainer/Content/ScrollContainer/VBoxContainer/CloudHolder" index="0"]
-margin_left = 518.0
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Content/ScrollContainer/VBoxContainer/CloudHolder" index="0"]
 margin_top = 49.0
-margin_right = 1080.0
+margin_right = 1074.0
 margin_bottom = 343.0
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Content/ScrollContainer/VBoxContainer/CloudHolder/HBoxContainer" index="0"]
+margin_right = 558.0
+margin_bottom = 294.0
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Content/ScrollContainer/VBoxContainer/CloudHolder/HBoxContainer/MarginContainer" index="0"]
+margin_right = 558.0
+margin_bottom = 294.0
+
+[node name="Label" type="Label" parent="VBoxContainer/Content/ScrollContainer/VBoxContainer/CloudHolder/HBoxContainer/MarginContainer/VBoxContainer" index="0"]
+margin_right = 558.0
+margin_bottom = 65.0
+custom_fonts/font = ExtResource( 8 )
+text = "water_percent_collected"
+
+[node name="CloudPreview" type="TextureRect" parent="VBoxContainer/Content/ScrollContainer/VBoxContainer/CloudHolder/HBoxContainer" index="1"]
+margin_left = 562.0
+margin_right = 1074.0
+margin_bottom = 294.0
 texture = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="KikoHintHolder" type="MarginContainer" parent="VBoxContainer/Content/ScrollContainer/VBoxContainer" index="1"]
-margin_top = 347.0
-margin_right = 1080.0
-margin_bottom = 747.0
+[node name="KikoHintHolder" type="MarginContainer" parent="VBoxContainer/Content/ScrollContainer/VBoxContainer" index="2"]
+visible = false
+margin_top = 342.0
+margin_right = 1068.0
+margin_bottom = 742.0
 custom_constants/margin_right = 77
 
 [node name="kiko_avatar - placeholder" parent="VBoxContainer/Content/ScrollContainer/VBoxContainer/KikoHintHolder" index="0" instance=ExtResource( 3 )]
 anchor_top = 0.0
 anchor_bottom = 0.0
 margin_top = 0.0
-margin_right = 1003.0
+margin_right = 991.0
 margin_bottom = 400.0
 
-[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/Content/ScrollContainer/VBoxContainer" index="2"]
-margin_top = 751.0
-margin_right = 1080.0
-margin_bottom = 1028.0
+[node name="SectorHolder" parent="VBoxContainer/Content/ScrollContainer/VBoxContainer" index="3" instance=ExtResource( 6 )]
+margin_top = 679.0
+margin_right = 1074.0
+margin_bottom = 988.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Content/ScrollContainer/VBoxContainer/PanelContainer" index="0"]
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 1073.0
-margin_bottom = 270.0
+[node name="SectorHolder2" parent="VBoxContainer/Content/ScrollContainer/VBoxContainer" index="4" instance=ExtResource( 6 )]
+margin_top = 987.0
+margin_right = 1074.0
+margin_bottom = 1296.0
+colors = {
+"ernaehrung": {
+"bg_color": Color( 0.835294, 0.835294, 0.835294, 1 ),
+"font_color": Color( 0.980392, 0.980392, 0.980392, 1 ),
+"sector_color": Color( 0.364706, 0.364706, 0.364706, 1 )
+}
+}
 
-[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/Content/ScrollContainer/VBoxContainer/PanelContainer/VBoxContainer" index="0"]
-margin_right = 1066.0
-margin_bottom = 99.0
+[node name="SectorHolder3" parent="VBoxContainer/Content/ScrollContainer/VBoxContainer" index="5" instance=ExtResource( 6 )]
+margin_top = 1295.0
+margin_right = 1074.0
+margin_bottom = 1604.0
+colors = {
+"ernaehrung": {
+"bg_color": Color( 0.835294, 0.835294, 0.835294, 1 ),
+"font_color": Color( 0.980392, 0.980392, 0.980392, 1 ),
+"sector_color": Color( 0.364706, 0.364706, 0.364706, 1 )
+}
+}
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Content/ScrollContainer/VBoxContainer/PanelContainer/VBoxContainer/PanelContainer" index="0"]
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 1059.0
-margin_bottom = 92.0
-custom_constants/margin_right = 10
-custom_constants/margin_top = 10
-custom_constants/margin_left = 10
-custom_constants/margin_bottom = 10
+[node name="SectorHolder4" parent="VBoxContainer/Content/ScrollContainer/VBoxContainer" index="6" instance=ExtResource( 6 )]
+margin_top = 1603.0
+margin_right = 1074.0
+margin_bottom = 1912.0
+colors = {
+"ernaehrung": {
+"bg_color": Color( 0.835294, 0.835294, 0.835294, 1 ),
+"font_color": Color( 0.980392, 0.980392, 0.980392, 1 ),
+"sector_color": Color( 0.364706, 0.364706, 0.364706, 1 )
+}
+}
 
-[node name="Label" type="Label" parent="VBoxContainer/Content/ScrollContainer/VBoxContainer/PanelContainer/VBoxContainer/PanelContainer/MarginContainer" index="0"]
-margin_left = 10.0
-margin_top = 10.0
-margin_right = 1042.0
-margin_bottom = 75.0
-custom_fonts/font = ExtResource( 6 )
-custom_colors/font_color = Color( 1, 1, 1, 1 )
-text = "sector_heading"
+[node name="SectorHolder5" parent="VBoxContainer/Content/ScrollContainer/VBoxContainer" index="7" instance=ExtResource( 6 )]
+margin_top = 1911.0
+margin_right = 1074.0
+margin_bottom = 2220.0
+colors = {
+"ernaehrung": {
+"bg_color": Color( 0.835294, 0.835294, 0.835294, 1 ),
+"font_color": Color( 0.980392, 0.980392, 0.980392, 1 ),
+"sector_color": Color( 0.364706, 0.364706, 0.364706, 1 )
+}
+}
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Content/ScrollContainer/VBoxContainer/PanelContainer/VBoxContainer" index="1"]
-margin_top = 103.0
-margin_right = 1066.0
-margin_bottom = 263.0
+[node name="SectorHolder6" parent="VBoxContainer/Content/ScrollContainer/VBoxContainer" index="8" instance=ExtResource( 6 )]
+margin_top = 2219.0
+margin_right = 1074.0
+margin_bottom = 2528.0
+colors = {
+"ernaehrung": {
+"bg_color": Color( 0.835294, 0.835294, 0.835294, 1 ),
+"font_color": Color( 0.980392, 0.980392, 0.980392, 1 ),
+"sector_color": Color( 0.364706, 0.364706, 0.364706, 1 )
+}
+}
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Content/ScrollContainer/VBoxContainer/PanelContainer/VBoxContainer/VBoxContainer" index="0"]
-margin_right = 1066.0
-margin_bottom = 160.0
-custom_constants/margin_right = 87
-custom_constants/margin_left = 84
-
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Content/ScrollContainer/VBoxContainer/PanelContainer/VBoxContainer/VBoxContainer/MarginContainer" index="0"]
-margin_left = 84.0
-margin_right = 979.0
-margin_bottom = 160.0
-alignment = 1
-
-[node name="BG_Category2" parent="VBoxContainer/Content/ScrollContainer/VBoxContainer/PanelContainer/VBoxContainer/VBoxContainer/MarginContainer/HBoxContainer" index="0" instance=ExtResource( 9 )]
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_right = 160.0
-margin_bottom = 160.0
-size_flags_horizontal = 1
-size_flags_vertical = 3
-border_color = Color( 0, 0, 0, 0 )
-
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Content/ScrollContainer/VBoxContainer/PanelContainer/VBoxContainer/VBoxContainer/MarginContainer/HBoxContainer" index="1"]
-margin_left = 164.0
-margin_right = 731.0
-margin_bottom = 160.0
-size_flags_horizontal = 3
-alignment = 1
-
-[node name="Label" type="Label" parent="VBoxContainer/Content/ScrollContainer/VBoxContainer/PanelContainer/VBoxContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer" index="0"]
-margin_top = 28.0
-margin_right = 567.0
-margin_bottom = 78.0
-custom_fonts/font = ExtResource( 8 )
-text = "aspect_title"
-align = 1
-
-[node name="Label2" type="Label" parent="VBoxContainer/Content/ScrollContainer/VBoxContainer/PanelContainer/VBoxContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer" index="1"]
-margin_top = 82.0
-margin_right = 567.0
-margin_bottom = 132.0
-custom_fonts/font = ExtResource( 8 )
-text = "aspect_decription"
-align = 1
-
-[node name="BG_Category" parent="VBoxContainer/Content/ScrollContainer/VBoxContainer/PanelContainer/VBoxContainer/VBoxContainer/MarginContainer/HBoxContainer" index="2" instance=ExtResource( 9 )]
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 735.0
-margin_right = 895.0
-margin_bottom = 160.0
-icon_texture = ExtResource( 10 )
-
-[node name="UsageHintHolder" type="MarginContainer" parent="VBoxContainer/Content/ScrollContainer/VBoxContainer" index="3"]
-margin_top = 1032.0
-margin_right = 1080.0
-margin_bottom = 1379.0
+[node name="UsageHintHolder" type="MarginContainer" parent="VBoxContainer/Content/ScrollContainer/VBoxContainer" index="9"]
+margin_top = 2527.0
+margin_right = 1074.0
+margin_bottom = 2874.0
 custom_constants/margin_right = 40
 custom_constants/margin_top = 40
 custom_constants/margin_left = 40
@@ -187,20 +206,20 @@ custom_constants/margin_bottom = 40
 [node name="CenterContainer" type="CenterContainer" parent="VBoxContainer/Content/ScrollContainer/VBoxContainer/UsageHintHolder" index="0"]
 margin_left = 40.0
 margin_top = 40.0
-margin_right = 1040.0
+margin_right = 1034.0
 margin_bottom = 307.0
 
 [node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/Content/ScrollContainer/VBoxContainer/UsageHintHolder" index="1"]
 margin_left = 40.0
 margin_top = 40.0
-margin_right = 1040.0
+margin_right = 1034.0
 margin_bottom = 307.0
 custom_styles/panel = SubResource( 2 )
 
 [node name="Label" type="Label" parent="VBoxContainer/Content/ScrollContainer/VBoxContainer/UsageHintHolder/PanelContainer" index="0"]
 margin_left = 20.0
 margin_top = 20.0
-margin_right = 980.0
+margin_right = 974.0
 margin_bottom = 247.0
 custom_fonts/font = ExtResource( 7 )
 text = "Hole dein Wasser regelmäßig ab, bevor die Tanks volllaufen und sich kein Wasser mehr sammeln kann.Je höher deine eingestellte Stufe in den Aspekten, umso mehr Wasser sammelst du. Tippe auf einen obigen Aspekt, um deine Stufe zu ändern."
