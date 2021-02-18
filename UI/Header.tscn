@@ -43,6 +43,7 @@ script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+color = Color( 0.670588, 0.839216, 0.219608, 1 )
 
 [node name="BG" type="Panel" parent="."]
 anchor_top = 0.5

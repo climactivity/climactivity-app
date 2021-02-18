@@ -1,0 +1,61 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://UI/Components/AspectWaterTankCard.tscn" type="PackedScene" id=1]
+[ext_resource path="res://UI/Components/SectorWaterTanksHoider.gd" type="Script" id=2]
+[ext_resource path="res://UI/typography/Heading.tres" type="DynamicFont" id=3]
+
+[sub_resource type="StyleBoxFlat" id=1]
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 1, 1, 1, 1 )
+
+[node name="SectorHolder" type="PanelContainer"]
+margin_top = 751.0
+margin_right = 1080.0
+margin_bottom = 1020.0
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AspectHolder" type="VBoxContainer" parent="."]
+margin_right = 1080.0
+margin_bottom = 309.0
+
+[node name="SectorHeadingPanel" type="PanelContainer" parent="AspectHolder"]
+margin_right = 1080.0
+margin_bottom = 85.0
+custom_styles/panel = SubResource( 2 )
+
+[node name="MarginContainer" type="MarginContainer" parent="AspectHolder/SectorHeadingPanel"]
+margin_right = 1080.0
+margin_bottom = 85.0
+custom_constants/margin_right = 10
+custom_constants/margin_top = 10
+custom_constants/margin_left = 43
+custom_constants/margin_bottom = 10
+
+[node name="SectorHeadingLabel" type="Label" parent="AspectHolder/SectorHeadingPanel/MarginContainer"]
+margin_left = 43.0
+margin_top = 10.0
+margin_right = 1070.0
+margin_bottom = 75.0
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "sector_heading"
+
+[node name="MarginContainer" type="MarginContainer" parent="AspectHolder"]
+margin_top = 89.0
+margin_right = 1080.0
+margin_bottom = 309.0
+custom_constants/margin_top = 20
+custom_constants/margin_bottom = 20
+
+[node name="AspectWaterTankHolder" type="VBoxContainer" parent="AspectHolder/MarginContainer"]
+margin_top = 20.0
+margin_right = 1080.0
+margin_bottom = 200.0
+
+[node name="AspectCard" parent="AspectHolder/MarginContainer/AspectWaterTankHolder" instance=ExtResource( 1 )]
+margin_right = 1080.0

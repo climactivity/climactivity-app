@@ -1,0 +1,97 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://UI/Components/IconCapsule.tscn" type="PackedScene" id=2]
+[ext_resource path="res://UI/typography/Content_Regular.tres" type="DynamicFont" id=3]
+[ext_resource path="res://Assets/TestData/Sprite-0005.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Theme/Fonts/RobotoCondensed-Bold.ttf" type="DynamicFontData" id=5]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 1, 1, 1, 1 )
+border_color = Color( 1, 1, 1, 1 )
+corner_radius_top_left = 1024
+corner_radius_top_right = 1000
+corner_radius_bottom_right = 1000
+corner_radius_bottom_left = 1000
+
+[sub_resource type="DynamicFont" id=2]
+size = 42
+use_filter = true
+font_data = ExtResource( 5 )
+
+[node name="AspectCard" type="MarginContainer"]
+margin_right = 1066.0
+margin_bottom = 180.0
+custom_constants/margin_right = 87
+custom_constants/margin_top = 10
+custom_constants/margin_left = 84
+custom_constants/margin_bottom = 10
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+margin_left = 84.0
+margin_top = 10.0
+margin_right = 979.0
+margin_bottom = 170.0
+custom_constants/margin_right = 83
+custom_constants/margin_top = 23
+custom_constants/margin_left = 85
+custom_constants/margin_bottom = 25
+
+[node name="Panel" type="Panel" parent="MarginContainer"]
+margin_left = 85.0
+margin_top = 23.0
+margin_right = 812.0
+margin_bottom = 135.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_left = 84.0
+margin_top = 10.0
+margin_right = 979.0
+margin_bottom = 170.0
+alignment = 1
+
+[node name="AspectIcon" parent="HBoxContainer" instance=ExtResource( 2 )]
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 160.0
+margin_bottom = 160.0
+size_flags_vertical = 3
+custom_styles/panel = SubResource( 1 )
+border_color = Color( 0, 0, 0, 0 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+margin_left = 164.0
+margin_right = 731.0
+margin_bottom = 160.0
+size_flags_horizontal = 3
+custom_constants/separation = 5
+alignment = 1
+
+[node name="tracking_label" type="Label" parent="HBoxContainer/VBoxContainer"]
+margin_top = 27.0
+margin_right = 567.0
+margin_bottom = 77.0
+custom_fonts/font = SubResource( 2 )
+text = "aspect_tracking_name"
+align = 1
+
+[node name="selected_level" type="Label" parent="HBoxContainer/VBoxContainer"]
+margin_top = 82.0
+margin_right = 567.0
+margin_bottom = 132.0
+custom_fonts/font = ExtResource( 3 )
+text = "selected_tracking_level"
+align = 1
+
+[node name="WaterTankUI" parent="HBoxContainer" instance=ExtResource( 2 )]
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 735.0
+margin_right = 895.0
+margin_bottom = 160.0
+custom_styles/panel = SubResource( 1 )
+icon_texture = ExtResource( 4 )
