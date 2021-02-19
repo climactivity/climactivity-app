@@ -6,8 +6,8 @@ var templates = []
 var bp_entity_card = preload("res://UI/Components/SelectEntityCard.tscn")
 
 onready var header = $VBoxContainer/Header
-onready var card_holder = $"VBoxContainer/Content/MarginContainer/VBoxContainer/ScrollContainer/GridContainer"
-onready var coin_displayer = $"VBoxContainer/Content/MarginContainer/VBoxContainer/coin_display"
+onready var card_holder = $"ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/VBoxContainer/ScrollContainer/GridContainer"
+onready var coin_displayer = $"ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/VBoxContainer/coin_display"
 
 func _ready(): 
 	ready = true

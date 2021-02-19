@@ -53,6 +53,7 @@ margin_bottom = 170.0
 alignment = 1
 
 [node name="AspectIcon" parent="HBoxContainer" instance=ExtResource( 2 )]
+self_modulate = Color( 0, 0, 0, 0 )
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0

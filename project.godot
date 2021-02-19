@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Panel",
+"class": "SceneBase",
+"language": "GDScript",
+"path": "res://Scenes/SceneBase.gd"
+}, {
 "base": "Control",
 "class": "SceneManager",
 "language": "GDScript",
@@ -20,6 +25,7 @@ _global_script_classes=[ {
 "path": "res://SceneManager/Transitions.gd"
 } ]
 _global_script_class_icons={
+"SceneBase": "",
 "SceneManager": "",
 "TransitionFactory": ""
 }

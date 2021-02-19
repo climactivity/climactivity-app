@@ -8,13 +8,13 @@ signal check_answer
 
 onready var req = $VBoxContainer/HTTPRequest
 onready var header = $VBoxContainer/Header
-onready var kiko_dialog = $"VBoxContainer/Content/VSplitContainer/ContentHolder/FrontMatter/kiko_avatar - placeholder"
-onready var loading_anim = $"VBoxContainer/Content/VSplitContainer/ContentHolder/Loading"
-onready var continue_button = $"VBoxContainer/Content/VSplitContainer/Footer/ContinueButton"
-onready var back_button = $"VBoxContainer/Content/VSplitContainer/Footer/BackButton"
-onready var infobit_holder = $"VBoxContainer/Content/VSplitContainer/ContentHolder/Infobits"
+onready var kiko_dialog = $"ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/VSplitContainer/ContentHolder/FrontMatter/kiko_avatar - placeholder"
+onready var loading_anim = $"ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/VSplitContainer/ContentHolder/Loading"
+onready var continue_button = $"ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/VSplitContainer/Footer/ContinueButton"
+onready var back_button = $"ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/VSplitContainer/Footer/BackButton"
+onready var infobit_holder = $"ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/VSplitContainer/ContentHolder/Infobits"
 onready var anim_player = $AnimationPlayer
-onready var questions_holder = $"VBoxContainer/Content/VSplitContainer/ContentHolder/Quiz/Questions"
+onready var questions_holder = $"ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/VSplitContainer/ContentHolder/Quiz/Questions"
 var has_data = false
 var has_error = false
 var quiz_data
@@ -133,9 +133,9 @@ func _last_question():
 	Logger.print("Completed " + quiz_data.name, self)
 	var quiz_result = questions_holder.get_quiz_result()
 	print(quiz_result)
-	var quiz_end_comment = $"VBoxContainer/Content/VSplitContainer/ContentHolder/QuizEnd/kiko_avatar - placeholder"
-	var quiz_end_result_text = $"VBoxContainer/Content/VSplitContainer/ContentHolder/QuizEnd/Label"
-	var quiz_end_collect_button = $"VBoxContainer/Content/VSplitContainer/ContentHolder/QuizEnd/CollectRewardButton"
+	var quiz_end_comment = $"ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/VSplitContainer/ContentHolder/QuizEnd/kiko_avatar - placeholder"
+	var quiz_end_result_text = $"ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/VSplitContainer/ContentHolder/QuizEnd/Label"
+	var quiz_end_collect_button = $"ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/VSplitContainer/ContentHolder/QuizEnd/CollectRewardButton"
 	quiz_end_result_text.text = quiz_result.result_string
 	anim_player.play("show_quiz_result")
 	state = InfoByteState.QUIZ_COMPLETE
