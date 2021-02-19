@@ -83,7 +83,6 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = ExtResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Hallo"
 autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false

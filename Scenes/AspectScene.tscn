@@ -1,9 +1,8 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Scenes/SceneBase.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/AspectScene.gd" type="Script" id=2]
 [ext_resource path="res://Scenes/TrackingPreview.gd" type="Script" id=3]
-[ext_resource path="res://SM_Screen.tres" type="Material" id=4]
 [ext_resource path="res://UI/typography/Button_Label.tres" type="DynamicFont" id=5]
 [ext_resource path="res://UI/placeholder_stylebox.tres" type="StyleBox" id=6]
 [ext_resource path="res://UI/Components/kiko_hint.tscn" type="PackedScene" id=7]
@@ -51,116 +50,90 @@ tracks/2/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[node name="Control" instance=ExtResource( 1 )]
-material = ExtResource( 4 )
+[node name="AspectScene" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 
-[node name="Header" parent="VBoxContainer" index="1"]
-screen_label = "Aspect Name"
-
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Content" index="0"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-custom_constants/margin_top = 20
-custom_constants/margin_left = 20
-custom_constants/margin_bottom = 20
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/Content/MarginContainer" index="0"]
-margin_left = 20.0
-margin_top = 20.0
-margin_right = 1080.0
-margin_bottom = 1619.0
-scroll_horizontal_enabled = false
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Control" type="VBoxContainer" parent="VBoxContainer/Content/MarginContainer/ScrollContainer" index="0"]
-margin_right = 1048.0
+[node name="ContentMain" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer" index="0"]
+margin_right = 1068.0
 margin_bottom = 1636.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
 
-[node name="TrackingPreview" type="VBoxContainer" parent="VBoxContainer/Content/MarginContainer/ScrollContainer/Control" index="0"]
-margin_right = 1048.0
+[node name="TrackingPreview" type="VBoxContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="0"]
+margin_right = 1068.0
 margin_bottom = 628.0
 script = ExtResource( 3 )
 
-[node name="TrackingQuestion" parent="VBoxContainer/Content/MarginContainer/ScrollContainer/Control/TrackingPreview" index="0" instance=ExtResource( 7 )]
+[node name="TrackingQuestion" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview" index="0" instance=ExtResource( 7 )]
 anchor_top = 0.0
 anchor_bottom = 0.0
 margin_top = 0.0
-margin_right = 1048.0
+margin_right = 1068.0
 margin_bottom = 400.0
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Content/MarginContainer/ScrollContainer/Control/TrackingPreview" index="1"]
+[node name="MarginContainer" type="MarginContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview" index="1"]
 margin_top = 404.0
-margin_right = 1048.0
+margin_right = 1068.0
 margin_bottom = 628.0
 
-[node name="CenterContainer" type="CenterContainer" parent="VBoxContainer/Content/MarginContainer/ScrollContainer/Control/TrackingPreview/MarginContainer" index="0"]
-margin_right = 1048.0
+[node name="CenterContainer" type="CenterContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview/MarginContainer" index="0"]
+margin_right = 1068.0
 margin_bottom = 224.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/Content/MarginContainer/ScrollContainer/Control/TrackingPreview/MarginContainer" index="1"]
-margin_right = 1048.0
+[node name="PanelContainer" type="PanelContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview/MarginContainer" index="1"]
+margin_right = 1068.0
 margin_bottom = 224.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_styles/panel = ExtResource( 9 )
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Content/MarginContainer/ScrollContainer/Control/TrackingPreview/MarginContainer/PanelContainer" index="0"]
+[node name="HBoxContainer" type="HBoxContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview/MarginContainer/PanelContainer" index="0"]
 margin_left = 1.0
 margin_top = 1.0
-margin_right = 1047.0
+margin_right = 1067.0
 margin_bottom = 223.0
 alignment = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Content/MarginContainer/ScrollContainer/Control/TrackingPreview/MarginContainer/PanelContainer/HBoxContainer" index="0"]
-margin_left = 278.0
-margin_right = 767.0
+[node name="MarginContainer" type="MarginContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview/MarginContainer/PanelContainer/HBoxContainer" index="0"]
+margin_left = 288.0
+margin_right = 777.0
 margin_bottom = 222.0
 custom_constants/margin_top = 40
 custom_constants/margin_left = 40
 custom_constants/margin_bottom = 40
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Content/MarginContainer/ScrollContainer/Control/TrackingPreview/MarginContainer/PanelContainer/HBoxContainer/MarginContainer" index="0"]
+[node name="VBoxContainer" type="VBoxContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview/MarginContainer/PanelContainer/HBoxContainer/MarginContainer" index="0"]
 margin_left = 40.0
 margin_top = 40.0
 margin_right = 489.0
 margin_bottom = 182.0
 size_flags_horizontal = 3
 
-[node name="CurrentTrackingSetting" type="HBoxContainer" parent="VBoxContainer/Content/MarginContainer/ScrollContainer/Control/TrackingPreview/MarginContainer/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer" index="0"]
+[node name="CurrentTrackingSetting" type="HBoxContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview/MarginContainer/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer" index="0"]
 margin_right = 449.0
 margin_bottom = 50.0
 size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="VBoxContainer/Content/MarginContainer/ScrollContainer/Control/TrackingPreview/MarginContainer/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer/CurrentTrackingSetting" index="0"]
+[node name="Label" type="Label" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview/MarginContainer/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer/CurrentTrackingSetting" index="0"]
 margin_right = 235.0
 margin_bottom = 50.0
 custom_fonts/font = ExtResource( 8 )
 text = "Aktueller Wert"
 
-[node name="OptionValueLabel" type="Label" parent="VBoxContainer/Content/MarginContainer/ScrollContainer/Control/TrackingPreview/MarginContainer/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer/CurrentTrackingSetting" index="1"]
+[node name="OptionValueLabel" type="Label" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview/MarginContainer/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer/CurrentTrackingSetting" index="1"]
 margin_left = 239.0
 margin_right = 449.0
 margin_bottom = 50.0
 custom_fonts/font = ExtResource( 8 )
 text = "option_value"
 
-[node name="CenterContainer" type="CenterContainer" parent="VBoxContainer/Content/MarginContainer/ScrollContainer/Control/TrackingPreview/MarginContainer/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer" index="1"]
+[node name="CenterContainer" type="CenterContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview/MarginContainer/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer" index="1"]
 margin_top = 54.0
 margin_right = 449.0
 margin_bottom = 142.0
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Content/MarginContainer/ScrollContainer/Control/TrackingPreview/MarginContainer/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer/CenterContainer" index="0"]
+[node name="MarginContainer" type="MarginContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview/MarginContainer/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer/CenterContainer" index="0"]
 margin_left = 14.0
 margin_right = 435.0
 margin_bottom = 88.0
@@ -168,7 +141,7 @@ custom_constants/margin_top = 36
 custom_constants/margin_left = 0
 custom_constants/margin_bottom = 0
 
-[node name="Button" type="Button" parent="VBoxContainer/Content/MarginContainer/ScrollContainer/Control/TrackingPreview/MarginContainer/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer/CenterContainer/MarginContainer" index="0"]
+[node name="Button" type="Button" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview/MarginContainer/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer/CenterContainer/MarginContainer" index="0"]
 margin_top = 36.0
 margin_right = 421.0
 margin_bottom = 88.0
@@ -180,7 +153,7 @@ custom_styles/normal = ExtResource( 11 )
 custom_fonts/font = ExtResource( 5 )
 text = "go_to_tracking_settings"
 
-[node name="shop_button_container" type="MarginContainer" parent="VBoxContainer/Content/MarginContainer/ScrollContainer/Control/TrackingPreview" index="2"]
+[node name="shop_button_container" type="MarginContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview" index="2"]
 visible = false
 modulate = Color( 1, 1, 1, 0 )
 margin_top = 632.0
@@ -190,7 +163,7 @@ rect_scale = Vector2( 1, 1e-05 )
 custom_constants/margin_top = 40
 custom_constants/margin_bottom = 40
 
-[node name="entity_shop_button" type="Button" parent="VBoxContainer/Content/MarginContainer/ScrollContainer/Control/TrackingPreview/shop_button_container" index="0"]
+[node name="entity_shop_button" type="Button" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview/shop_button_container" index="0"]
 margin_top = 40.0
 margin_right = 1048.0
 margin_bottom = 92.0
@@ -205,28 +178,31 @@ __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="VBoxContainer/Content/MarginContainer/ScrollContainer/Control/TrackingPreview" index="3"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview" index="3"]
 anims/ShowShopButton = SubResource( 1 )
 
-[node name="InfoGraph" type="Panel" parent="VBoxContainer/Content/MarginContainer/ScrollContainer/Control" index="1"]
+[node name="InfoGraph" type="Panel" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="1"]
 margin_top = 632.0
-margin_right = 1048.0
+margin_right = 1068.0
 margin_bottom = 1132.0
 rect_min_size = Vector2( 0, 500 )
 size_flags_vertical = 3
 custom_styles/panel = ExtResource( 6 )
 
-[node name="kiko_avatar - placeholder" parent="VBoxContainer/Content/MarginContainer/ScrollContainer/Control/InfoGraph" index="0" instance=ExtResource( 7 )]
+[node name="kiko_avatar - placeholder" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/InfoGraph" index="0" instance=ExtResource( 7 )]
 text = "Infos here"
 
-[node name="Aufgaben" type="Panel" parent="VBoxContainer/Content/MarginContainer/ScrollContainer/Control" index="2"]
+[node name="Aufgaben" type="Panel" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="2"]
 margin_top = 1136.0
-margin_right = 1048.0
+margin_right = 1068.0
 margin_bottom = 1636.0
 rect_min_size = Vector2( 0, 500 )
 size_flags_vertical = 2
 custom_styles/panel = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="HTTPRequest" type="HTTPRequest" parent="." index="1"]
-[connection signal="pressed" from="VBoxContainer/Content/MarginContainer/ScrollContainer/Control/TrackingPreview/MarginContainer/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer/CenterContainer/MarginContainer/Button" to="." method="_on_Button_pressed"]
-[connection signal="pressed" from="VBoxContainer/Content/MarginContainer/ScrollContainer/Control/TrackingPreview/shop_button_container/entity_shop_button" to="VBoxContainer/Content/MarginContainer/ScrollContainer/Control/TrackingPreview" method="_on_entity_shop_button_pressed"]
+[connection signal="pressed" from="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview/MarginContainer/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer/CenterContainer/MarginContainer/Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview/shop_button_container/entity_shop_button" to="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview" method="_on_entity_shop_button_pressed"]

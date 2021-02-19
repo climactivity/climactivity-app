@@ -1,8 +1,8 @@
 extends Panel
 
-onready var tracking_settings = $"VBoxContainer/Content/MarginContainer/ScrollContainer/TrackingSettings"
+onready var tracking_settings = $"ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingSettings"
 export (Resource) var aspect_data
-onready var header = $VBoxContainer/Header
+onready var header = $HeaderContainer/Header
 func _ready():
 	#tracking_settings.connect("emit_option", self, "commit_option")
 	#connect("commit_option", AspectTrackingService, "commit_tracking_level")

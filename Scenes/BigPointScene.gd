@@ -7,7 +7,7 @@ var navigation_data = {}
 var aspect_resources = []
 
 onready var req = $HTTPRequest
-onready var aspect_list = $VBoxContainer/Content/MarginContainer/AspectList
+onready var aspect_list = $"ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/AspectList"
 
 #func _fetch_data(param = null): 
 #	if param != null: 
@@ -44,6 +44,7 @@ func receive_navigation(new_navigation_data):
 
 func render_resources():
 	if aspect_list == null: return
+	Util.clear(aspect_list)
 	for aspect in aspect_resources : 
 		var aspect_card = bp_aspect_card.instance()
 		aspect_card.set_aspect(aspect)

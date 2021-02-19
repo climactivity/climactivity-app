@@ -18,7 +18,7 @@ border_width_left = 1024
 border_width_top = 1024
 border_width_right = 1024
 border_width_bottom = 1024
-border_color = Color( 0.819608, 0.819608, 0.819608, 1 )
+border_color = Color( 1, 1, 1, 1 )
 corner_radius_top_left = 1024
 corner_radius_top_right = 1024
 corner_radius_bottom_right = 1024
@@ -43,6 +43,7 @@ __meta__ = {
 }
 
 [node name="BG_Icon" type="Panel" parent="."]
+self_modulate = Color( 0.721569, 0.721569, 0.721569, 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 18.0

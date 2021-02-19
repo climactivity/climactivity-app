@@ -1,3 +1,4 @@
+tool
 extends Panel
 
 const default_texture = preload("res://Assets/TestData/checkered.png")
@@ -31,5 +32,5 @@ func set_icon(tex):
 func _redraw(): 
 	if (panel != null && icon != null):
 		icon.texture = icon_texture if icon_texture != null else default_texture
-		panel.get_stylebox("panel").set("border_color", bg_color)
-		get_stylebox("panel").set("bg_color", border_color)
+		panel.self_modulate = bg_color
+		self_modulate = border_color
