@@ -24,7 +24,7 @@ corner_radius_top_right = 20
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 
-[node name="Control" instance=ExtResource( 1 )]
+[node name="WaterCollectionScene" instance=ExtResource( 1 )]
 custom_styles/panel = SubResource( 1 )
 script = ExtResource( 2 )
 
