@@ -158,5 +158,24 @@ func has_water_available():
 		has_water += tracking_state.get_water_available()
 	return has_water > 0
 
+func get_tracked_aspects_for_sector(sector): 
+	var sector_name
+	if sector is String:
+		sector_name = sector
+	else:
+		sector_name = sector.sector
+	var aspects = []
+	for tracking_state_key in player_state.tracking_states: 
+		var tracking_state = player_state.tracking_states[tracking_state_key]
+		if tracking_state.bigpoint == sector_name:
+			aspects.append(tracking_state)
+	return aspects
+
+func get_total_water_for_sector(sector):
+	pass
+
+func get_water_for_aspect(aspect): 
+	pass
+
 func _flush(): 
 	PSS.flush()

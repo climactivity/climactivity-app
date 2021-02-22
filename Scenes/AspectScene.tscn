@@ -54,11 +54,10 @@ tracks/2/keys = {
 script = ExtResource( 2 )
 
 [node name="ContentMain" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer" index="0"]
-margin_right = 1068.0
 margin_bottom = 1636.0
 
 [node name="TrackingPreview" type="VBoxContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="0"]
-margin_right = 1068.0
+margin_right = 1080.0
 margin_bottom = 628.0
 script = ExtResource( 3 )
 
@@ -66,23 +65,23 @@ script = ExtResource( 3 )
 anchor_top = 0.0
 anchor_bottom = 0.0
 margin_top = 0.0
-margin_right = 1068.0
+margin_right = 1080.0
 margin_bottom = 400.0
 
 [node name="MarginContainer" type="MarginContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview" index="1"]
 margin_top = 404.0
-margin_right = 1068.0
+margin_right = 1080.0
 margin_bottom = 628.0
 
 [node name="CenterContainer" type="CenterContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview/MarginContainer" index="0"]
-margin_right = 1068.0
+margin_right = 1080.0
 margin_bottom = 224.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="PanelContainer" type="PanelContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview/MarginContainer" index="1"]
-margin_right = 1068.0
+margin_right = 1080.0
 margin_bottom = 224.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -91,13 +90,13 @@ custom_styles/panel = ExtResource( 9 )
 [node name="HBoxContainer" type="HBoxContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview/MarginContainer/PanelContainer" index="0"]
 margin_left = 1.0
 margin_top = 1.0
-margin_right = 1067.0
+margin_right = 1079.0
 margin_bottom = 223.0
 alignment = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview/MarginContainer/PanelContainer/HBoxContainer" index="0"]
-margin_left = 288.0
-margin_right = 777.0
+margin_left = 294.0
+margin_right = 783.0
 margin_bottom = 222.0
 custom_constants/margin_top = 40
 custom_constants/margin_left = 40
@@ -183,7 +182,7 @@ anims/ShowShopButton = SubResource( 1 )
 
 [node name="InfoGraph" type="Panel" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="1"]
 margin_top = 632.0
-margin_right = 1068.0
+margin_right = 1080.0
 margin_bottom = 1132.0
 rect_min_size = Vector2( 0, 500 )
 size_flags_vertical = 3
@@ -194,7 +193,7 @@ text = "Infos here"
 
 [node name="Aufgaben" type="Panel" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="2"]
 margin_top = 1136.0
-margin_right = 1068.0
+margin_right = 1080.0
 margin_bottom = 1636.0
 rect_min_size = Vector2( 0, 500 )
 size_flags_vertical = 2
