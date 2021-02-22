@@ -66,3 +66,6 @@ func get_water_available():
 
 func get_water_percent_available(): 
 	return water_tank.get_water_amount() / water_tank.max_value
+
+func get_aspect_data():
+	AspectTrackingService.
