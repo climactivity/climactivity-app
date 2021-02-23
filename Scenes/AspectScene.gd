@@ -34,7 +34,6 @@ func _show_data():
 	if (aspect_data == null): return
 
 	tracking_question.set_text(aspect_data.tracking.question)
-	
 	tracking_options_label.text = tr("current_tracking_level_label")
 	tracking_level.text = tr("current_tracking_level_unset")
 	var current_tracking_level = AspectTrackingService.get_current_tracking_level(aspect_data)

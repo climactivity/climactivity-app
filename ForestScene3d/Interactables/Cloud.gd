@@ -15,6 +15,7 @@ func _ready():
 
 func update_water_available():
 	water_available = AspectTrackingService.has_water_available()
+	has_water = AspectTrackingService.get_water_collected() != []
 	if sprite != null: 
 		if has_water: 
 			sprite.texture = tex_has_water
