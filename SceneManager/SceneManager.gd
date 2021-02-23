@@ -57,7 +57,7 @@ func _ready():
 	A_viewport.add_child(current_scene)
 
 func _prepare_bigpoint_scenes(): 
-	scene_map.big_point_scene_consumption = _prepare_bigpoint_scene("consumption")
+	scene_map.big_point_scene_consumption = _prepare_bigpoint_scene("ernaehrung")
 	scene_map.big_point_scene_energy =  _prepare_bigpoint_scene("energy")
 	scene_map.big_point_scene_mobility = _prepare_bigpoint_scene("mobility")
 	scene_map.big_point_scene_indirect_emissions = _prepare_bigpoint_scene("indirect_emissions")

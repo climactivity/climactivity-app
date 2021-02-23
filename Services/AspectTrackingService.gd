@@ -13,7 +13,7 @@ var player_state
 
 #var last_update = OS.get_unix_time()
 var interval = 60 * 60 * 2 # minutue * hour * 2 -> update every 2 hours
-
+var water_collected_for = []
 func _init():
 	player_state = PSS.get_player_state_ref()
 	if OS.is_debug_build(): 
@@ -172,10 +172,18 @@ func get_tracked_aspects_for_sector(sector):
 	return aspects
 
 func get_total_water_for_sector(sector):
+	var aspect_data = get_tracked_aspects_for_sector(sector)
+	var total 
 	pass
 
-func get_water_for_aspect(aspect): 
-	pass
+func water_collected(aspect): 
+	water_collected_for.append(aspect)
+
+func get_water_collected(): 
+	return  water_collected_for
+
+func water_used(aspect):
+	water_collected_for.erase(aspect)
 
 func _flush(): 
 	PSS.flush()

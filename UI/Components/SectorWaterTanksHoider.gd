@@ -15,36 +15,40 @@ export var colors = {
 	},
 }
 
-export var sector_title = "MISSING_SECTOR_TITLE"
+export var sector_title = "MISSING_SECTOR_TITLE" setget set_title
 
 var aspects = [] setget set_aspects
 const aspect_card = preload("res://UI/Components/AspectWaterTankCard.tscn")
 
 onready var sector_title_label = $"AspectHolder/SectorHeadingPanel/MarginContainer/SectorHeadingLabel"
-onready var aspects_holder = $"VBoxContainer/AspectHolder"
-
-func _init(): 
-	if colors.has(sector_key):
-		var _colors = colors.get(sector_key)
-		sector_color = _colors.sector_color
-		bg_color = _colors.bg_color
-		font_color= _colors.font_color
+onready var aspects_holder = $"AspectHolder/MarginContainer/AspectWaterTankHolder"
 
 func _ready():
+	sector_title_label.text = sector_title
 	_render_aspects()
-
 func set_aspects(aspects_data):
 	aspects = aspects_data
 	_render_aspects()
 	
 func _render_aspects():
+	if colors.has(sector_key):
+		var _colors = colors.get(sector_key)
+		sector_color = _colors.sector_color
+		bg_color = _colors.bg_color
+		font_color= _colors.font_color
+		self_modulate = bg_color
 	if aspects_holder == null: return
 	Util.clear(aspects_holder)
 	_sort_aspects()	
 	for aspect in aspects:
 		var instance = aspect_card.instance()
-		instance.set_aspect(aspect)
+		instance.set_aspect_data(aspect)
+		instance.set_color(sector_color)
 		aspects_holder.add_child(instance)
+
+func set_title(title):
+	sector_title = title
+	if sector_title_label != null: sector_title_label.text = sector_title
 
 func _sort_aspects():
 	pass

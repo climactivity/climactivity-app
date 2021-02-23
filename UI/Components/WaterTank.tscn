@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://UI/Components/CircleCutout.shader" type="Shader" id=1]
 [ext_resource path="res://UI/Components/IconCapsule.gd" type="Script" id=2]
-[ext_resource path="res://Assets/TestData/checkered.png" type="Texture" id=3]
+[ext_resource path="res://Assets/drop.png" type="Texture" id=3]
+[ext_resource path="res://UI/Components/MWaterTank.tres" type="Material" id=4]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 1, 1, 1, 1 )
@@ -12,7 +13,7 @@ corner_radius_top_right = 1000
 corner_radius_bottom_right = 1000
 corner_radius_bottom_left = 1000
 
-[sub_resource type="StyleBoxFlat" id=2]
+[sub_resource type="StyleBoxFlat" id=4]
 bg_color = Color( 1, 1, 1, 1 )
 border_width_left = 1024
 border_width_top = 1024
@@ -25,7 +26,7 @@ corner_radius_bottom_right = 1024
 corner_radius_bottom_left = 1024
 corner_detail = 20
 
-[sub_resource type="ShaderMaterial" id=3]
+[sub_resource type="ShaderMaterial" id=5]
 shader = ExtResource( 1 )
 shader_param/radius = 0.495
 
@@ -41,9 +42,13 @@ script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": true
 }
+bg_color = Color( 0.0156863, 0.152941, 0.345098, 1 )
+icon_texture = ExtResource( 3 )
+percent = 0.31
 
 [node name="BG_Icon" type="Panel" parent="."]
-self_modulate = Color( 0.654902, 0.654902, 0.654902, 1 )
+self_modulate = Color( 0.12549, 0.376471, 0.729412, 1 )
+material = ExtResource( 4 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 18.0
@@ -53,13 +58,13 @@ margin_bottom = -18.0
 rect_clip_content = true
 size_flags_horizontal = 0
 size_flags_vertical = 0
-custom_styles/panel = SubResource( 2 )
+custom_styles/panel = SubResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Icon" type="TextureRect" parent="BG_Icon"]
-material = SubResource( 3 )
+material = SubResource( 5 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 texture = ExtResource( 3 )
@@ -68,3 +73,4 @@ stretch_mode = 6
 __meta__ = {
 "_edit_use_anchors_": false
 }
+[connection signal="gui_input" from="BG_Icon/Icon" to="." method="_on_Icon_gui_input"]
