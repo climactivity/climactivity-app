@@ -2,7 +2,7 @@ extends SceneBase
 
 signal commit_option(option, aspect)
 
-onready var header = $"HeaderContainer/Header"
+#onready var header = $"HeaderContainer/Header"
 
 onready var info_graph = $"ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/InfoGraph"
 onready var quests = $"ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/Aufgaben"
@@ -14,7 +14,7 @@ onready var go_to_tracking_button = $"ContentContainer/Content/VBoxContainer/Mar
 onready var tracking_preview = $"ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview"
 export (Resource) var aspect_data
 
-var ready = false
+#var ready = false
 var should_animate = false
 func _ready():
 	#tracking_settings.connect("emit_option", self, "commit_option")

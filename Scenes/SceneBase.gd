@@ -26,4 +26,4 @@ func _set_accent_color():
 
 func set_screen_title(label):
 	screen_title = label
-	header.set_screen_label(screen_title)
+	if header != null: header.set_screen_label(screen_title)

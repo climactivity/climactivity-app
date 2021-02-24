@@ -54,11 +54,12 @@ tracks/2/keys = {
 script = ExtResource( 2 )
 
 [node name="ContentMain" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer" index="0"]
-margin_bottom = 1636.0
+margin_bottom = 1986.0
 
-[node name="TrackingPreview" type="VBoxContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="0"]
+[node name="TrackingPreview" type="VBoxContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="1"]
+margin_top = 350.0
 margin_right = 1080.0
-margin_bottom = 628.0
+margin_bottom = 978.0
 script = ExtResource( 3 )
 
 [node name="TrackingQuestion" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview" index="0" instance=ExtResource( 7 )]
@@ -180,10 +181,10 @@ __meta__ = {
 [node name="AnimationPlayer" type="AnimationPlayer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview" index="3"]
 anims/ShowShopButton = SubResource( 1 )
 
-[node name="InfoGraph" type="Panel" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="1"]
-margin_top = 632.0
+[node name="InfoGraph" type="Panel" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="2"]
+margin_top = 982.0
 margin_right = 1080.0
-margin_bottom = 1132.0
+margin_bottom = 1482.0
 rect_min_size = Vector2( 0, 500 )
 size_flags_vertical = 3
 custom_styles/panel = ExtResource( 6 )
@@ -191,10 +192,10 @@ custom_styles/panel = ExtResource( 6 )
 [node name="kiko_avatar - placeholder" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/InfoGraph" index="0" instance=ExtResource( 7 )]
 text = "Infos here"
 
-[node name="Aufgaben" type="Panel" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="2"]
-margin_top = 1136.0
+[node name="Aufgaben" type="Panel" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="3"]
+margin_top = 1486.0
 margin_right = 1080.0
-margin_bottom = 1636.0
+margin_bottom = 1986.0
 rect_min_size = Vector2( 0, 500 )
 size_flags_vertical = 2
 custom_styles/panel = ExtResource( 6 )
