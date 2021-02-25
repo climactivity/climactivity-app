@@ -70,6 +70,28 @@ func get_water_percent_available():
 func get_water_tank_size(): 
 	return water_tank.max_value
 
+func _empty_water_tank():
+	water_tank.reset()
+
 func get_aspect_data():
 	return Api.get_aspect_by_name(aspect)
+
+func add_entity(entity): 
+	current_entity = entity
+	entity_list.append(current_entity)
+
+func get_current_entity(): 
+	if current_entity != null: 
+		return current_entity
+	else:
+		if is_instance_valid(Logger): Logger.print("No current active entity for %s:%s" % [aspect, bigpoint], self)
+
+func apply_water(): 
+	var current_water = get_water_available()
+	if current_entity.has_method("consume_water"): 
+		current_entity.consume_water(current_water)
 	
+func show_waiting_for_water(): 
+	if current_entity == null: return 
+	if current_entity.has_method("alert_can_water"): 
+		current_entity.alert_can_water() 

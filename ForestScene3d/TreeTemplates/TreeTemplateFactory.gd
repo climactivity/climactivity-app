@@ -76,6 +76,7 @@ func get_template(key):
 func _make_new(resource):
 	var new_tree = _base_tree_scene.instance()
 	new_tree.set_state(resource)
+	resource.node = new_tree
 	#new_tree.set_textures(available_textures[template["texture_name"]])
 	return new_tree
 

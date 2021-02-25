@@ -40,4 +40,6 @@ func set_textures(new_textures):
 func add_water(amount): 
 	pass
 
+func alert_can_water(): 
+	Logger.print("show can be watered alert", self)
 

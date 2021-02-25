@@ -8,6 +8,8 @@ func _ready():
 	GameManager.forest = self
 	$Camera/HUD/DebugMenu.connect("free_place", $ForestFloor/HexGrid, "set_free_place")
 	connect("update_hud", $Camera/HUD, "update_hud")
+	connect("update_hud", $Camera/HUD/Cloud, "update_water_available")
+	if is_instance_valid(AspectTrackingService): connect("update_hud", AspectTrackingService, "notify_watered_aspects")
 	$ForestFloor/HexGrid.connect("placed_entity", $Camera/HUD, "update_hud")
 func _input(event):
 	if (!OS.is_debug_build()): return
@@ -30,4 +32,5 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 			return
 
 func _restored():
+	Logger.print("_restored", self)
 	emit_signal("update_hud")

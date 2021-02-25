@@ -118,6 +118,8 @@ func pop_scene(config = TransitionFactory.MoveBack()) -> void:
 	A_viewport.add_child(scene)
 	last_scene = current_scene
 	current_scene = scene
+	if (scene.has_method("_restored")): 
+		scene._restored()
 	animation_player.play("Move_Back")
 
 func _show_A():

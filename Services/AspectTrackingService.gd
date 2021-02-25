@@ -135,10 +135,11 @@ func award_seedling(aspect):
 	if current_state != null: 
 		current_state.new_seedling_available = true
 
-func consume_seedling(aspect_id): 
+func consume_seedling(aspect_id, entity): 
 	if has_seedling_available(aspect_id) or ProjectSettings.get_setting("debug/settings/game_logic/cheat_seedlings"):
-		#var current_state = get_tracking_state(aspect)
-		player_state.tracking_states[aspect_id].new_seedling_available = false
+		var current_state = player_state.tracking_states[aspect_id]
+		current_state.new_seedling_available = false
+		current_state.add_entity(entity)
 		#current_state.new_seedling_available = false
 		_flush()
 		return true
@@ -184,6 +185,10 @@ func get_water_collected():
 
 func water_used(aspect):
 	water_collected_for.erase(aspect)
+
+func notify_watered_aspects():
+	for aspect_tracking_state in water_collected_for: 
+		aspect_tracking_state.show_waiting_for_water()
 
 func _flush(): 
 	PSS.flush()

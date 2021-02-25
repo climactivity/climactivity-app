@@ -105,4 +105,3 @@ bg_color = Color( 0.294118, 0.407843, 0.839216, 1 )
 percent = 0.19
 
 [node name="Tween" type="Tween" parent="."]
-[connection signal="tween_step" from="Tween" to="." method="_on_Tween_tween_step"]
