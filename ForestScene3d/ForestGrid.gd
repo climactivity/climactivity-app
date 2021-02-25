@@ -116,7 +116,7 @@ func _on_HexGrid_input_event(_camera, event, click_position, _click_normal, _sha
 	plane_coords = Vector2(plane_coords.x, plane_coords.z)
 	if (event is InputEventScreenDrag):
 		if (event.relative.length() > 2): 
-			print(event.relative)
+			#print(event.relative)
 			can_interact = false
 		return
 	if event is InputEventMouseButton:

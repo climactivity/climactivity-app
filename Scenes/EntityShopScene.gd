@@ -5,9 +5,11 @@ var ready = false
 var templates = []
 var bp_entity_card = preload("res://UI/Components/SelectEntityCard.tscn")
 
-onready var header = $VBoxContainer/Header
-onready var card_holder = $"ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/VBoxContainer/ScrollContainer/GridContainer"
-onready var coin_displayer = $"ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/VBoxContainer/coin_display"
+#	$HeaderContainer/Header.screen_label = "Tracking"
+#	$HeaderContainer/Header.set_color(Color('#64A6E2'))
+onready var header = $HeaderContainer/Header
+onready var card_holder = $"ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ScrollContainer/GridContainer"
+onready var coin_displayer = $"ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/coin_display"
 
 func _ready(): 
 	ready = true
