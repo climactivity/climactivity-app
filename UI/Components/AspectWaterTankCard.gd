@@ -42,6 +42,7 @@ func set_color(color):
 func collect_water():
 	if aspect_tracking_data == null: return
 	emit_signal("collect", aspect_tracking_data)
+	if is_instance_valid(AspectTrackingService): AspectTrackingService.water_collected(aspect_tracking_data)
 	var start = aspect_tracking_data.get_water_percent_available()
 	$Tween.interpolate_property(water_tank, "percent", start,
 		0.0, 0.4,Tween.TRANS_CUBIC, Tween.EASE_IN_OUT)

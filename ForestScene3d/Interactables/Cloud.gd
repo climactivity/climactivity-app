@@ -12,8 +12,10 @@ onready var sprite = $"Sprite"
 func _ready():
 	update_water_available()
 	AspectTrackingService.connect("tracking_updated", self, "update_water_available")
+	
 
 func update_water_available():
+	Logger.print("update water available", self)
 	water_available = AspectTrackingService.has_water_available()
 	has_water = AspectTrackingService.get_water_collected() != []
 	if sprite != null: 
@@ -38,6 +40,7 @@ func get_drag_data(_pos):
 		"action": "water",
 		"current_water_amount": 0.0
 	}
+	
 
 
 func _on_Cloud_gui_input(event):

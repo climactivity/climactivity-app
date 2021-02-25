@@ -19,9 +19,9 @@ func get_placed_objects():
 
 
 func add_entity(template, aspect):
-	AspectTrackingService.consume_seedling(aspect._id)
 	var new_entity = _new_board_entity_resource(template, aspect)
 	PSS.add_item_to_inventory(new_entity)
+	AspectTrackingService.consume_seedling(aspect._id, new_entity)
 	return OK
 
 func _new_board_entity_resource(template, aspect): 
