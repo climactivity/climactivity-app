@@ -23,7 +23,7 @@ func update():
 	last_seen_level = level
 
 func add_item(item): 
-	print("added %s" % item.name)
+	print("added %s" % item.entity_id)
 	unplaced_items.push_back(item)
 	
 func show_progress(): 
