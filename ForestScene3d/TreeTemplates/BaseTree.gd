@@ -10,8 +10,11 @@ var instance_resource # RBoardEntity
 onready var bill_board = $"Sprite3D"
 onready var anim_player = $"AnimationPlayer"
 onready var tile = $MeshInstance
+onready var ui_alert = $"Sprite3D/SpatialUIPanel"
+
 func _ready():
 	if(!OS.is_debug_build()): tile.visible = false
+	ui_alert.visible = false
 	update_view()
 
 func update_view():
@@ -42,4 +45,4 @@ func add_water(amount):
 
 func alert_can_water(): 
 	Logger.print("show can be watered alert", self)
-
+	ui_alert.visible = true

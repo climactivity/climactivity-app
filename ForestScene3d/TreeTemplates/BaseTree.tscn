@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://ForestScene3d/HexMesh.tres" type="CylinderMesh" id=1]
 [ext_resource path="res://ForestScene3d/TreeTemplates/Textures/Baum_Entwurf_01.png" type="Texture" id=2]
 [ext_resource path="res://ForestScene3d/TreeTemplates/BaseTree.gd" type="Script" id=3]
 [ext_resource path="res://ForestScene3d/TreeTemplates/FixedGroundPos.gd" type="Script" id=4]
 [ext_resource path="res://ForestScene3d/TreeTemplates/ContactShadow.tscn" type="PackedScene" id=5]
+[ext_resource path="res://ForestScene3d/SpatialUIPanel.tscn" type="PackedScene" id=6]
 
 [node name="TreeRoot" type="Spatial"]
 script = ExtResource( 3 )
@@ -26,5 +27,8 @@ texture = ExtResource( 2 )
 region_rect = Rect2( 123.448, 115.232, 38.423, 44.862 )
 script = ExtResource( 4 )
 _unit_factor = 1.758
+
+[node name="SpatialUIPanel" parent="Sprite3D" instance=ExtResource( 6 )]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 1, 0, -0.162614, 0 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
