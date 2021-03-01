@@ -12,7 +12,6 @@ mesh = ExtResource( 1 )
 material/0 = null
 
 [node name="ContactShadow" parent="." instance=ExtResource( 5 )]
-visible = false
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.016155, 0 )
