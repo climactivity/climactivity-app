@@ -82,7 +82,7 @@ func _ready():
 	HexGrid.set_hex_scale(hex_size_override)
 	var centerTile = HexGrid.get_hex_at(Vector2(0.0,0.0))
 	not_placeable_hexes = centerTile.get_all_within2(2)
-	#_tile_area(centerTile, SIZE, treeScene)
+	_tile_area(centerTile, SIZE, preload("res://ForestScene3d/TreeTemplates/TestScenes/TestHex.tscn"))
 	_place_fixed_objects()
 	_place_dynamic_objects()
 	

@@ -8,8 +8,10 @@ var ui_initial_transform
 var tex_size = Vector2(0.0,0)
 
 func _ready():
-	ui_initial_transform = ui_panel.transform
+
 	_offset_and_scale()
+	if ui_panel == null: return
+	ui_initial_transform = ui_panel.transform
 	if GameManager != null and GameManager.camera != null: 
 		GameManager.camera.connect("camera_rotated", self, "_layout_ui")
 		_layout_ui(GameManager.camera.rotation.x)
@@ -32,4 +34,4 @@ func _layout_ui(phi):
 	if ui_panel == null: return
 	ui_panel.transform.origin = ui_initial_transform.origin + Vector3(0.0, tex_size.y * pixel_size, 0.0)
 	ui_panel.transform.origin = ui_panel.transform.origin.rotated(Vector3.RIGHT, phi)
-	ui_panel.rotation.x = phi - deg2rad(-27.5)
+	ui_panel.rotation.x = phi # - deg2rad(-27.5)

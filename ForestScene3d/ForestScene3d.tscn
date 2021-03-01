@@ -11,7 +11,7 @@
 [ext_resource path="res://ForestScene3d/HUD.gd" type="Script" id=9]
 [ext_resource path="res://ForestScene3d/Interactables/Cloud.tscn" type="PackedScene" id=10]
 [ext_resource path="res://ForestScene3d/Interactables/QuestLog.tscn" type="PackedScene" id=11]
-[ext_resource path="res://ForestScene3d/texture_Boden_01.png" type="Texture" id=12]
+[ext_resource path="res://Assets/sketch/floortex_TILED.png" type="Texture" id=12]
 [ext_resource path="res://UI/xp_bar.png" type="Texture" id=13]
 [ext_resource path="res://ForestScene3d/DebugMenu.gd" type="Script" id=14]
 
