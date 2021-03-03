@@ -1,54 +1,137 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Assets/Icons/chart-line-solid.svg" type="Texture" id=1]
 [ext_resource path="res://Assets/Icons/bell-solid.svg" type="Texture" id=2]
 [ext_resource path="res://Assets/Icons/project-diagram-solid.svg" type="Texture" id=3]
-[ext_resource path="res://Assets/Icons/tree-solid.svg" type="Texture" id=4]
+[ext_resource path="res://Assets/Icons/wtree-solid.svg" type="Texture" id=4]
 [ext_resource path="res://Assets/Icons/user-solid.svg" type="Texture" id=5]
+[ext_resource path="res://UI/MainMenu.gd" type="Script" id=6]
+[ext_resource path="res://UI/sm_white.tres" type="Material" id=7]
 
-[sub_resource type="StyleBoxFlat" id=4]
-bg_color = Color( 1, 1, 1, 1 )
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.866667, 0.866667, 0.862745, 1 )
 corner_radius_top_left = 40
 corner_radius_top_right = 40
-corner_radius_bottom_right = 40
-corner_radius_bottom_left = 40
 shadow_color = Color( 0, 0, 0, 0.168627 )
 shadow_size = 10
 shadow_offset = Vector2( 0, 5 )
 
-[sub_resource type="StyleBoxEmpty" id=5]
+[sub_resource type="StyleBoxEmpty" id=2]
+
+[sub_resource type="Animation" id=3]
+resource_name = "Hide"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 1920 ), Vector2( 0, 2050 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "RESET"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 1920 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "Show"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 2050 ), Vector2( 0, 1920 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 
 [node name="MainMenu" type="Control"]
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = -300.0
+margin_top = 0.00012207
+margin_bottom = 0.00012207
+script = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 10.0
-margin_top = 85.0
-margin_right = -10.0
-margin_bottom = -10.0
+margin_top = -130.0
+size_flags_horizontal = 2
+size_flags_vertical = 0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
-margin_left = 255.0
-margin_top = 37.0
-margin_right = 805.0
-margin_bottom = 167.0
-size_flags_horizontal = 4
-size_flags_vertical = 4
-custom_styles/panel = SubResource( 4 )
+margin_right = 1080.0
+margin_bottom = 130.0
+size_flags_horizontal = 3
+size_flags_vertical = 0
+custom_styles/panel = SubResource( 1 )
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer"]
-margin_right = 550.0
+margin_right = 1080.0
 margin_bottom = 130.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -62,21 +145,24 @@ custom_constants/margin_bottom = 40
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer"]
 margin_left = 40.0
 margin_top = 40.0
-margin_right = 510.0
+margin_right = 1040.0
 margin_bottom = 90.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="VSeparator" type="VSeparator" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer"]
+visible = false
 margin_bottom = 3.0
-size_flags_horizontal = 0
+size_flags_horizontal = 2
 size_flags_vertical = 0
-custom_styles/separator = SubResource( 5 )
+custom_styles/separator = SubResource( 2 )
 custom_constants/separation = -1361
 
-[node name="TextureButton" type="TextureButton" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer"]
-margin_left = 4.0
-margin_right = 54.0
+[node name="HomeButton" type="TextureButton" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer"]
+material = ExtResource( 7 )
+margin_right = 50.0
 margin_bottom = 50.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -88,15 +174,16 @@ expand = true
 stretch_mode = 5
 
 [node name="VSeparator2" type="VSeparator" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer"]
-margin_left = 58.0
-margin_right = 103.0
+margin_left = 54.0
+margin_right = 233.0
 margin_bottom = 50.0
-custom_styles/separator = SubResource( 5 )
-custom_constants/separation = 45
+size_flags_horizontal = 3
+custom_styles/separator = SubResource( 2 )
 
-[node name="TextureButton2" type="TextureButton" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer"]
-margin_left = 107.0
-margin_right = 157.0
+[node name="NotificationButton" type="TextureButton" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer"]
+material = ExtResource( 7 )
+margin_left = 237.0
+margin_right = 287.0
 margin_bottom = 50.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -107,15 +194,16 @@ texture_normal = ExtResource( 2 )
 expand = true
 
 [node name="VSeparator3" type="VSeparator" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer"]
-margin_left = 161.0
-margin_right = 206.0
+margin_left = 291.0
+margin_right = 471.0
 margin_bottom = 50.0
-custom_styles/separator = SubResource( 5 )
-custom_constants/separation = 45
+size_flags_horizontal = 3
+custom_styles/separator = SubResource( 2 )
 
-[node name="TextureButton3" type="TextureButton" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer"]
-margin_left = 210.0
-margin_right = 260.0
+[node name="StatsButton" type="TextureButton" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer"]
+material = ExtResource( 7 )
+margin_left = 475.0
+margin_right = 525.0
 margin_bottom = 50.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -126,15 +214,16 @@ texture_normal = ExtResource( 1 )
 expand = true
 
 [node name="VSeparator4" type="VSeparator" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer"]
-margin_left = 264.0
-margin_right = 309.0
+margin_left = 529.0
+margin_right = 708.0
 margin_bottom = 50.0
-custom_styles/separator = SubResource( 5 )
-custom_constants/separation = 45
+size_flags_horizontal = 3
+custom_styles/separator = SubResource( 2 )
 
-[node name="TextureButton4" type="TextureButton" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer"]
-margin_left = 313.0
-margin_right = 363.0
+[node name="SocialButton" type="TextureButton" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer"]
+material = ExtResource( 7 )
+margin_left = 712.0
+margin_right = 762.0
 margin_bottom = 50.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -145,15 +234,16 @@ texture_normal = ExtResource( 3 )
 expand = true
 
 [node name="VSeparator5" type="VSeparator" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer"]
-margin_left = 367.0
-margin_right = 412.0
+margin_left = 766.0
+margin_right = 946.0
 margin_bottom = 50.0
-custom_styles/separator = SubResource( 5 )
-custom_constants/separation = 45
+size_flags_horizontal = 3
+custom_styles/separator = SubResource( 2 )
 
-[node name="TextureButton5" type="TextureButton" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer"]
-margin_left = 416.0
-margin_right = 466.0
+[node name="SettingsButton" type="TextureButton" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer"]
+material = ExtResource( 7 )
+margin_left = 950.0
+margin_right = 1000.0
 margin_bottom = 50.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -164,10 +254,22 @@ texture_normal = ExtResource( 5 )
 expand = true
 
 [node name="VSeparator6" type="VSeparator" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer"]
-margin_left = 470.0
-margin_right = 470.0
+visible = false
+margin_left = 857.0
+margin_right = 857.0
 margin_bottom = 3.0
-size_flags_horizontal = 0
+size_flags_horizontal = 2
 size_flags_vertical = 0
-custom_styles/separator = SubResource( 5 )
+custom_styles/separator = SubResource( 2 )
 custom_constants/separation = -1361
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "RESET"
+anims/Hide = SubResource( 3 )
+anims/RESET = SubResource( 4 )
+anims/Show = SubResource( 5 )
+[connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/HomeButton" to="." method="_on_HomeButton_pressed"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/NotificationButton" to="." method="_on_NotificationButton_pressed"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/StatsButton" to="." method="_on_StatsButton_pressed"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/SocialButton" to="." method="_on_SocialButton_pressed"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/SettingsButton" to="." method="_on_SettingsButton_pressed"]

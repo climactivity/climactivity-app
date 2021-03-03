@@ -29,7 +29,7 @@ var DEBUG_placeables = {
 var fixed_obejcts = {
 	Vector2(1,1): {
 		"scene": placeables["tent_scene"],
-		"params": ["ernährung"]
+		"params": ["mobility"]
 	},
 	Vector2(1,0): {
 		"scene": placeables["tent_scene"],
@@ -37,19 +37,19 @@ var fixed_obejcts = {
 	},
 	Vector2(0,1): {
 		"scene": placeables["tent_scene"],
-		"params": ["mobility"]
+		"params": ["energy"]
 	},
 	Vector2(-1,-1): {
 		"scene": placeables["tent_scene"],
-		"params": ["indirect_emissions"]
+		"params": ["ernährung"]
 	},
 	Vector2(-1,0): {
 		"scene": placeables["tent_scene"],
-		"params": ["energy"]
+		"params": ["public_engagement"]
 	},
 	Vector2(0,-1): {
 		"scene": placeables["tent_scene"],
-		"params": ["public_engagement"]
+		"params": ["indirect_emissions"]
 	},
 	Vector2(0.0,0.0): {
 		"scene": placeables["bonfire_scene"],
