@@ -9,9 +9,54 @@ var sectors = {
 		"navigation_data": {
 			"sector": "ernaehrung",
 			"sector_title": "Zelt der Ernährung",
+			"sector_logo": preload("res://Assets/Icons/sector_icon_ern.png"),
+		}
+	},
+	"energy": {
+		"texture": preload("res://Assets/sketch/zelt_rückseite_blau.png"),
+		"target_scene": "res://Scenes/BigPointScene.tscn",
+		"navigation_data": {
+			"sector": "energy",
+			"sector_title": "Zelt der energy",
 			"sector_logo": preload("res://Assets/Icons/sector_icon_ern.png")
 		}
-	}
+	},
+	"mobility": {
+		"texture": preload("res://Assets/sketch/zelt_gelb.png"),
+		"target_scene": "res://Scenes/BigPointScene.tscn",
+		"navigation_data": {
+			"sector": "mobility",
+			"sector_title": "Zelt der mobility",
+			"sector_logo": preload("res://Assets/Icons/sector_icon_ern.png")
+		}
+	},
+	"indirect_emissions": {
+		"texture": preload("res://Assets/sketch/zelt_rückseite_rot.png"),
+		"target_scene": "res://Scenes/BigPointScene.tscn",
+		"navigation_data": {
+			"sector": "indirect_emissions",
+			"sector_title": "Zelt der indirect_emissions",
+			"sector_logo": preload("res://Assets/Icons/sector_icon_ern.png")
+		}
+	},
+	"private_engagement": {
+		"texture": preload("res://Assets/sketch/zelt_front_rot.png"),
+		"target_scene": "res://Scenes/BigPointScene.tscn",
+		"navigation_data": {
+			"sector": "private_engagement",
+			"sector_title": "Zelt der private_engagement",
+			"sector_logo": preload("res://Assets/Icons/sector_icon_ern.png")
+		}
+	},
+	"public_engagement": {
+		"texture": preload("res://Assets/sketch/zelt_front_rot.png"),
+		"target_scene": "res://Scenes/BigPointScene.tscn",
+		"navigation_data": {
+			"sector": "public_engagement",
+			"sector_title": "Zelt der public_engagement",
+			"sector_logo": preload("res://Assets/Icons/sector_icon_ern.png")
+		}
+	},
 }
 
 #### Instance vars

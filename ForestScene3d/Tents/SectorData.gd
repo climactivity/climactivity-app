@@ -3,7 +3,7 @@ export var sector_data = {
 		"sector": "ernaehrung",
 		"sector_title": "Zelt der Ernährung",
 		"sector_logo": preload("res://Assets/Icons/sector_icon_ern.png"),
-		"sector_color": Color('#B2E280')  
+		"sector_color": Color('#97e831')  
 	},
 	"energy": {
 		"sector": "energy",

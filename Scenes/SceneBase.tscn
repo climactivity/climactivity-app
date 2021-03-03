@@ -11,9 +11,9 @@ bg_color = Color( 0.972549, 0.972549, 0.972549, 1 )
 
 [sub_resource type="StyleBoxEmpty" id=2]
 
-[sub_resource type="StyleBoxEmpty" id=8]
+[sub_resource type="StyleBoxEmpty" id=3]
 
-[sub_resource type="Shader" id=3]
+[sub_resource type="Shader" id=4]
 code = "shader_type canvas_item; 
 
 uniform sampler2D gradient; 
@@ -23,18 +23,18 @@ void fragment() {
 	//COLOR = vec4(UV.y,0,0,1);
 }"
 
-[sub_resource type="Gradient" id=4]
+[sub_resource type="Gradient" id=5]
 offsets = PoolRealArray( 0.77709, 1 )
 colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
 
-[sub_resource type="GradientTexture" id=5]
-gradient = SubResource( 4 )
+[sub_resource type="GradientTexture" id=6]
+gradient = SubResource( 5 )
 
-[sub_resource type="ShaderMaterial" id=6]
-shader = SubResource( 3 )
-shader_param/gradient = SubResource( 5 )
+[sub_resource type="ShaderMaterial" id=7]
+shader = SubResource( 4 )
+shader_param/gradient = SubResource( 6 )
 
-[sub_resource type="StyleBoxFlat" id=7]
+[sub_resource type="StyleBoxFlat" id=8]
 bg_color = Color( 1, 1, 1, 1 )
 
 [sub_resource type="StyleBoxEmpty" id=9]
@@ -106,7 +106,7 @@ size_flags_vertical = 3
 [node name="HSeparator" type="HSeparator" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain"]
 margin_right = 1080.0
 margin_bottom = 346.0
-custom_styles/separator = SubResource( 8 )
+custom_styles/separator = SubResource( 3 )
 custom_constants/separation = 346
 __meta__ = {
 "_edit_use_anchors_": false
@@ -114,9 +114,9 @@ __meta__ = {
 
 [node name="HeaderBG" type="PanelContainer" parent="ContentContainer/Content"]
 self_modulate = Color( 0.592157, 0.909804, 0.192157, 1 )
-material = SubResource( 6 )
+material = SubResource( 7 )
 anchor_right = 1.0
-custom_styles/panel = SubResource( 7 )
+custom_styles/panel = SubResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -124,7 +124,7 @@ __meta__ = {
 [node name="HSeparator2" type="HSeparator" parent="ContentContainer/Content/HeaderBG"]
 margin_right = 1080.0
 margin_bottom = 331.0
-custom_styles/separator = SubResource( 8 )
+custom_styles/separator = SubResource( 3 )
 custom_constants/separation = 331
 __meta__ = {
 "_edit_use_anchors_": false

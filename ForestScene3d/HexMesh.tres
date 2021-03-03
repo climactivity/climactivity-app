@@ -1,6 +1,11 @@
-[gd_resource type="CylinderMesh" format=2]
+[gd_resource type="CylinderMesh" load_steps=2 format=2]
+
+[sub_resource type="SpatialMaterial" id=1]
+flags_do_not_receive_shadows = true
+albedo_color = Color( 0.647059, 0.776471, 0.290196, 1 )
 
 [resource]
+material = SubResource( 1 )
 top_radius = 0.9
 height = 0.005
 radial_segments = 6

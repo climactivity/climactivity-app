@@ -20,7 +20,21 @@ var available_textures = {
 		2: preload("res://Assets/TestData/Sprite-0003.png"),
 		3: preload("res://Assets/TestData/Sprite-0004.png"),
 		4: preload("res://Assets/TestData/Sprite-0005.png"),
-	}
+	},
+	'jasmin-00': {
+		0: preload("res://Assets/sketch/setzling.png"),
+		1: preload("res://Assets/sketch/baum_jung.png"),
+		2: preload("res://Assets/sketch/baum_jung01.png"),
+		3: preload("res://Assets/sketch/baum_erwachsen.png"),
+		4: preload("res://Assets/sketch/baum_blüten.png"),
+		'sizes': {
+			0: 0.4,
+			1: 0.6,
+			2: 0.8,
+			3: 1.0,
+			4: 1.0
+		}
+	},
 }
 
 var _example_template = {
