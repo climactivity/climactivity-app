@@ -1,7 +1,7 @@
 tool
 extends Sprite3D
 
-export (float) var _unit_factor = 1.0 setget _set_unit_factor
+export (float) var _unit_factor = 1.0 setget set_unit_factor
 
 onready var ui_panel = $SpatialUIPanel
 var ui_initial_transform 
@@ -20,8 +20,12 @@ func set_texture(new_texture):
 	texture = new_texture
 	_offset_and_scale()
 
-func _set_unit_factor(new_factor):
+func set_unit_factor(new_factor):
 	_unit_factor = new_factor
+	_offset_and_scale()
+	
+func apply_scaling_factor(factor):
+	_unit_factor *= factor
 	_offset_and_scale()
 	
 func _offset_and_scale():

@@ -16,7 +16,7 @@ func _input(event):
 	if (event is InputEventKey and event.scancode == KEY_R and event.is_pressed()):
 		GameManager.scene_manager.push_scene("res://UI/Components/QuizList.tscn")
 	if (event is InputEventKey and event.scancode == KEY_D and event.is_pressed()):
-		pass # todo add debug menu
+		$ForestFloor/HexGrid.show_grid(!$ForestFloor/HexGrid.is_showing_grid())
 	if (event is InputEventKey and event.scancode == KEY_S and event.is_pressed()):
 		GameManager.save_game()
 		#print(save_forest_state())
