@@ -21,6 +21,7 @@ script = ExtResource( 4 )
 
 [node name="ContactShadow" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.132716, 0.74908, -0.39862 )
+visible = false
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform( 1.107, 0, 0, 0, 1.013, 0, 0, 0, 1, -0.00741866, -0.0638984, -0.0534337 )
