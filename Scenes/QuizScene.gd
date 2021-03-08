@@ -7,7 +7,7 @@ signal prev_question
 signal check_answer
 
 onready var req = $VBoxContainer/HTTPRequest
-onready var header = $VBoxContainer/Header
+onready var header = $HeaderContainer/Header
 onready var kiko_dialog = $"ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/VSplitContainer/ContentHolder/FrontMatter/kiko_avatar - placeholder"
 onready var loading_anim = $"ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/VSplitContainer/ContentHolder/Loading"
 onready var continue_button = $"ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/VSplitContainer/Footer/ContinueButton"
@@ -53,30 +53,31 @@ func _ready():
 func receive_navigation(quiz_data):
 	#req.request(request_str % ["https", "localhost", quiz_data.quiz._id] )
 	header.set_screen_label(quiz_data.quiz.name)
-	Api.getQuizData(req, quiz_data.quiz._id)
+	_on_quiz_data(quiz_data.quiz)
+	#Api.getQuizData(req, quiz_data.quiz._id)
 
 
-func _on_HTTPRequest_request_completed(result, response_code, headers, body):
-	var json = JSON.parse(body.get_string_from_utf8())
-	if(json.error): 
-		has_error = true
-		error = json.error
-		state = InfoByteState.ERROR
-		continue_button.set_disabled(true)
-		Logger.error("Server error: "+ json.error, self)
-	else:
-		has_data = true
-		quiz_data = json.result
-		state = InfoByteState.FRONT
-		continue_button.set_disabled(false)
-		Logger.print("Loaded " + quiz_data.name, self)
-		_on_quiz_data(quiz_data)
+#func _on_HTTPRequest_request_completed(result, response_code, headers, body):
+#	var json = JSON.parse(body.get_string_from_utf8())
+#	if(json.error): 
+#		has_error = true
+#		error = json.error
+#		state = InfoByteState.ERROR
+#		continue_button.set_disabled(true)
+#		Logger.error("Server error: "+ json.error, self)
+#	else:
+#		has_data = true
+#		quiz_data = json.result
+#		state = InfoByteState.FRONT
+#		continue_button.set_disabled(false)
+#		Logger.print("Loaded " + quiz_data.name, self)
+#		_on_quiz_data(quiz_data)
 
 func _on_quiz_data(quiz_data):
 	header.set_screen_label(quiz_data.name)
 	kiko_dialog.set_text(quiz_data.frontmatter)
 	loading_anim.loading_finished()
-	infobit_holder.set_infobits_data(quiz_data.infobits)
+	infobit_holder.set_infobits_data(quiz_data.info_bits)
 	questions_holder.on_data(quiz_data.questions)
 
 func _finished_loading(): 

@@ -527,21 +527,19 @@ __meta__ = {
 [node name="FrontMatter" type="Control" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/VSplitContainer/ContentHolder" index="0"]
 visible = false
 margin_right = 1080.0
-margin_bottom = 1165.0
 
 [node name="WeiterButton3" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/VSplitContainer/ContentHolder/FrontMatter" index="0" instance=ExtResource( 7 )]
 anchor_left = 1.0
 anchor_top = 0.5
+anchor_right = 1.0
 anchor_bottom = 0.5
 margin_left = -501.685
 margin_top = 305.606
 margin_right = -95.6854
 margin_bottom = 406.606
 custom_styles/panel = SubResource( 3 )
-icon_left = false
 icon_texture = ExtResource( 6 )
 texture_min_size = 49
-font_color_disabled = Color( 0.3, 0.3, 0.3, 1 )
 text = "Direkt zum Quiz"
 button_disabled = true
 color_icon = true
@@ -551,6 +549,7 @@ text = "Frontmatter missing :("
 
 [node name="Loading" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/VSplitContainer/ContentHolder" index="1" instance=ExtResource( 5 )]
 visible = false
+margin_bottom = 0.0
 
 [node name="Panel" type="Panel" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/VSplitContainer/ContentHolder/Loading" index="0"]
 use_parent_material = true
@@ -604,12 +603,12 @@ anchor_left = 0.0
 anchor_right = 0.0
 margin_left = 0.0
 margin_right = 1080.0
+margin_bottom = 0.0
 
 [node name="QuizStart" type="Control" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/VSplitContainer/ContentHolder" index="3"]
 visible = false
 modulate = Color( 1, 1, 1, 0 )
-margin_left = -1080.0
-margin_bottom = 1165.0
+margin_right = 1080.0
 
 [node name="kiko_avatar - placeholder" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/VSplitContainer/ContentHolder/QuizStart" index="0" instance=ExtResource( 3 )]
 text = "Wie wäre es mit einem kurzen Quiz?"
@@ -690,12 +689,8 @@ margin_left = -376.5
 margin_top = 295.084
 margin_right = 376.5
 margin_bottom = 442.084
-icon_left = false
-texture_min_size = 48
 font_color = Color( 0.588235, 0.74902, 0.0509804, 1 )
-font_color_disabled = Color( 0.3, 0.3, 0.3, 1 )
 text = "Sammeln"
-button_disabled = false
 color_icon = true
 
 [node name="Footer" type="Panel" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/VSplitContainer" index="1"]
@@ -721,7 +716,6 @@ __meta__ = {
 
 [node name="BackButton" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/VSplitContainer/Footer" index="1" instance=ExtResource( 7 )]
 anchor_top = 0.5
-anchor_right = 0.0
 anchor_bottom = 0.5
 margin_left = 130.656
 margin_top = -46.0
@@ -729,8 +723,6 @@ margin_right = 406.656
 margin_bottom = 48.0
 icon_left = true
 icon_texture = ExtResource( 8 )
-texture_min_size = 48
-font_color_disabled = Color( 0.3, 0.3, 0.3, 1 )
 text = "Zurück"
 button_disabled = true
 color_icon = true
@@ -738,15 +730,13 @@ color_icon = true
 [node name="ContinueButton" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/VSplitContainer/Footer" index="2" instance=ExtResource( 7 )]
 anchor_left = 1.0
 anchor_top = 0.5
+anchor_right = 1.0
 anchor_bottom = 0.5
 margin_left = -393.544
 margin_top = -46.0
 margin_right = -136.544
 margin_bottom = 46.0
-icon_left = false
-texture_min_size = 48
 font_color = Color( 0.588235, 0.74902, 0.0509804, 1 )
-font_color_disabled = Color( 0.3, 0.3, 0.3, 1 )
 text = "Weiter"
 button_disabled = true
 color_icon = true
