@@ -56,18 +56,31 @@ func _on_SettingsButton_pressed():
 func set_navigation_state(new_state): 
 	navigation_state = new_state
 	for button in buttons: 
-		button.self_modulate = Color.cornflower
+		button.self_modulate = Color.gray
 	match navigation_state:
 		Navigation_states.HOME:
-			home_button.self_modulate = Color.springgreen
+			home_button.self_modulate = Color.cornflower
 		Navigation_states.NOTIFICATIONS:
-			notification_button.self_modulate = Color.springgreen
+			notification_button.self_modulate = Color.cornflower
 		Navigation_states.SOCIAL:
-			social_button.self_modulate = Color.springgreen
+			social_button.self_modulate = Color.cornflower
 		Navigation_states.STATS:
-			stats_button.self_modulate = Color.springgreen
+			stats_button.self_modulate = Color.cornflower
 		Navigation_states.SETTINGS:
-			settings_button.self_modulate = Color.springgreen
+			settings_button.self_modulate = Color.cornflower
 		_:
 			pass
-		
+
+func _navigate_home(): 
+	pass
+func _navigate_notifications(): 
+	pass
+
+func _navigate_social(): 
+	pass
+
+func _navigate_stats(): 
+	pass
+
+func _navigate_settings(): 
+	pass

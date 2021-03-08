@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Scenes/SceneBase.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/AspectScene.gd" type="Script" id=2]
 [ext_resource path="res://Scenes/TrackingPreview.gd" type="Script" id=3]
+[ext_resource path="res://UI/Components/InfoGraphCapsule.gd" type="Script" id=4]
 [ext_resource path="res://UI/typography/Button_Label.tres" type="DynamicFont" id=5]
 [ext_resource path="res://UI/placeholder_stylebox.tres" type="StyleBox" id=6]
 [ext_resource path="res://UI/Components/kiko_hint.tscn" type="PackedScene" id=7]
@@ -10,6 +11,49 @@
 [ext_resource path="res://UI/theme/TransparentGreen.tres" type="StyleBox" id=9]
 [ext_resource path="res://UI/theme/ButtonPrimary_Inactive.stylebox" type="StyleBox" id=10]
 [ext_resource path="res://UI/theme/ButtonPrimary_Active.stylebox" type="StyleBox" id=11]
+[ext_resource path="res://UI/Components/IconCapsule.tscn" type="PackedScene" id=12]
+[ext_resource path="res://UI/Components/NeoMButton.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Assets/Icons/Arrow - Right 2.png" type="Texture" id=14]
+[ext_resource path="res://UI/Components/CySidePanel.tscn" type="PackedScene" id=15]
+[ext_resource path="res://UI/Components/Reward.gd" type="Script" id=16]
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.584314, 0.756863, 0.121569, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 1, 1, 1, 1 )
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+expand_margin_left = 240.0
+expand_margin_right = 240.0
+expand_margin_top = 20.0
+expand_margin_bottom = 20.0
+shadow_color = Color( 0, 0, 0, 0.0705882 )
+shadow_size = 32
+shadow_offset = Vector2( 0, 10.141 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 1, 1, 1, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.588235, 0.74902, 0.0509804, 1 )
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+expand_margin_left = 10.0
+expand_margin_right = 10.0
+expand_margin_top = 10.0
+expand_margin_bottom = 10.0
+shadow_color = Color( 0, 0, 0, 0.0705882 )
+shadow_size = 32
+shadow_offset = Vector2( 0, 10.261 )
 
 [sub_resource type="Animation" id=1]
 resource_name = "ShowShopButton"
@@ -53,13 +97,10 @@ tracks/2/keys = {
 [node name="AspectScene" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 
-[node name="ContentMain" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer" index="0"]
-margin_bottom = 1986.0
-
 [node name="TrackingPreview" type="VBoxContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="1"]
 margin_top = 350.0
 margin_right = 1080.0
-margin_bottom = 978.0
+margin_bottom = 1033.0
 script = ExtResource( 3 )
 
 [node name="TrackingQuestion" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview" index="0" instance=ExtResource( 7 )]
@@ -69,91 +110,137 @@ margin_top = 0.0
 margin_right = 1080.0
 margin_bottom = 400.0
 
-[node name="MarginContainer" type="MarginContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview" index="1"]
+[node name="CySidePanel" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview" index="1" instance=ExtResource( 15 )]
+anchor_right = 0.0
 margin_top = 404.0
 margin_right = 1080.0
-margin_bottom = 628.0
-
-[node name="CenterContainer" type="CenterContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview/MarginContainer" index="0"]
-margin_right = 1080.0
-margin_bottom = 224.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="PanelContainer" type="PanelContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview/MarginContainer" index="1"]
-margin_right = 1080.0
-margin_bottom = 224.0
-size_flags_horizontal = 3
+margin_bottom = 404.0
+size_flags_horizontal = 1
 size_flags_vertical = 3
-custom_styles/panel = ExtResource( 9 )
+top_left = Vector2( 291.785, 35.114 )
 
-[node name="HBoxContainer" type="HBoxContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview/MarginContainer/PanelContainer" index="0"]
-margin_left = 1.0
-margin_top = 1.0
-margin_right = 1079.0
-margin_bottom = 223.0
+[node name="HBoxContainer" type="HBoxContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview/CySidePanel" index="1"]
+margin_left = 291.785
+margin_top = 35.114
+margin_right = 1030.0
+margin_bottom = 233.114
+size_flags_vertical = 3
+custom_constants/separation = 51
 alignment = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview/MarginContainer/PanelContainer/HBoxContainer" index="0"]
-margin_left = 294.0
-margin_right = 783.0
-margin_bottom = 222.0
-custom_constants/margin_top = 40
+[node name="MarginContainer" type="MarginContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview/CySidePanel/HBoxContainer" index="0"]
+margin_left = 8.0
+margin_right = 258.0
+margin_bottom = 198.0
+custom_constants/margin_top = 54
 custom_constants/margin_left = 40
 custom_constants/margin_bottom = 40
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview/MarginContainer/PanelContainer/HBoxContainer/MarginContainer" index="0"]
+[node name="VBoxContainer" type="VBoxContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview/CySidePanel/HBoxContainer/MarginContainer" index="0"]
 margin_left = 40.0
-margin_top = 40.0
-margin_right = 489.0
-margin_bottom = 182.0
+margin_top = 54.0
+margin_right = 250.0
+margin_bottom = 158.0
 size_flags_horizontal = 3
+alignment = 1
 
-[node name="CurrentTrackingSetting" type="HBoxContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview/MarginContainer/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer" index="0"]
-margin_right = 449.0
+[node name="CurrentTrackingSetting" type="HBoxContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview/CySidePanel/HBoxContainer/MarginContainer/VBoxContainer" index="0"]
+margin_right = 210.0
 margin_bottom = 50.0
 size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview/MarginContainer/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer/CurrentTrackingSetting" index="0"]
+[node name="Label" type="Label" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview/CySidePanel/HBoxContainer/MarginContainer/VBoxContainer/CurrentTrackingSetting" index="0"]
+visible = false
 margin_right = 235.0
 margin_bottom = 50.0
 custom_fonts/font = ExtResource( 8 )
 text = "Aktueller Wert"
 
-[node name="OptionValueLabel" type="Label" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview/MarginContainer/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer/CurrentTrackingSetting" index="1"]
-margin_left = 239.0
-margin_right = 449.0
+[node name="OptionValueLabel" type="Label" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview/CySidePanel/HBoxContainer/MarginContainer/VBoxContainer/CurrentTrackingSetting" index="1"]
+margin_right = 210.0
 margin_bottom = 50.0
 custom_fonts/font = ExtResource( 8 )
 text = "option_value"
 
-[node name="CenterContainer" type="CenterContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview/MarginContainer/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer" index="1"]
+[node name="CurrentTrackingSetting2" type="HBoxContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview/CySidePanel/HBoxContainer/MarginContainer/VBoxContainer" index="1"]
 margin_top = 54.0
-margin_right = 449.0
-margin_bottom = 142.0
+margin_right = 210.0
+margin_bottom = 104.0
+size_flags_horizontal = 3
 
-[node name="MarginContainer" type="MarginContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview/MarginContainer/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer/CenterContainer" index="0"]
-margin_left = 14.0
-margin_right = 435.0
-margin_bottom = 88.0
-custom_constants/margin_top = 36
+[node name="Label" type="Label" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview/CySidePanel/HBoxContainer/MarginContainer/VBoxContainer/CurrentTrackingSetting2" index="0"]
+visible = false
+margin_right = 235.0
+margin_bottom = 50.0
+custom_fonts/font = ExtResource( 8 )
+text = "Aktueller Wert"
+
+[node name="OptionRewardLabel" type="Label" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview/CySidePanel/HBoxContainer/MarginContainer/VBoxContainer/CurrentTrackingSetting2" index="1"]
+margin_right = 210.0
+margin_bottom = 50.0
+custom_fonts/font = ExtResource( 8 )
+text = "option_value"
+script = ExtResource( 16 )
+
+[node name="MarginContainer2" type="MarginContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview/CySidePanel/HBoxContainer" index="1"]
+margin_left = 309.0
+margin_right = 730.0
+margin_bottom = 198.0
+custom_constants/margin_top = 53
 custom_constants/margin_left = 0
-custom_constants/margin_bottom = 0
+custom_constants/margin_bottom = 33
 
-[node name="Button" type="Button" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview/MarginContainer/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer/CenterContainer/MarginContainer" index="0"]
-margin_top = 36.0
+[node name="Panel" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview/CySidePanel/HBoxContainer/MarginContainer2" index="0" instance=ExtResource( 13 )]
+visible = false
+margin_top = 53.0
 margin_right = 421.0
-margin_bottom = 88.0
-custom_styles/hover = ExtResource( 11 )
+margin_bottom = 165.0
+icon_texture = ExtResource( 14 )
+texture_min_size = 79
+font_color = Color( 0.588235, 0.74902, 0.0509804, 1 )
+font_color_disabled = Color( 0.301961, 0.301961, 0.301961, 1 )
+text = "go_to_tracking_settings"
+
+[node name="Button" type="Button" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview/CySidePanel/HBoxContainer/MarginContainer2" index="1"]
+margin_top = 53.0
+margin_right = 421.0
+margin_bottom = 165.0
+custom_styles/hover = SubResource( 2 )
 custom_styles/pressed = ExtResource( 11 )
 custom_styles/focus = ExtResource( 11 )
 custom_styles/disabled = ExtResource( 10 )
-custom_styles/normal = ExtResource( 11 )
+custom_styles/normal = SubResource( 3 )
 custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color = Color( 0.588235, 0.74902, 0.0509804, 1 )
 text = "go_to_tracking_settings"
 
-[node name="shop_button_container" type="MarginContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview" index="2"]
+[node name="MarginContainer" type="MarginContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview" index="2"]
+margin_top = 408.0
+margin_right = 1080.0
+margin_bottom = 683.0
+mouse_filter = 2
+custom_constants/margin_top = 275
+
+[node name="CenterContainer" type="CenterContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview/MarginContainer" index="0"]
+margin_top = 275.0
+margin_right = 1080.0
+margin_bottom = 275.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PanelContainer" type="PanelContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview/MarginContainer" index="1"]
+visible = false
+margin_top = 275.0
+margin_right = 1080.0
+margin_bottom = 277.0
+mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/panel = ExtResource( 9 )
+
+[node name="shop_button_container" type="MarginContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview" index="3"]
 visible = false
 modulate = Color( 1, 1, 1, 0 )
 margin_top = 632.0
@@ -178,21 +265,71 @@ __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview" index="3"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview" index="4"]
 anims/ShowShopButton = SubResource( 1 )
 
 [node name="InfoGraph" type="Panel" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="2"]
-margin_top = 982.0
+visible = false
+margin_top = 764.0
 margin_right = 1080.0
-margin_bottom = 1482.0
+margin_bottom = 1920.0
 rect_min_size = Vector2( 0, 500 )
+mouse_filter = 1
 size_flags_vertical = 3
 custom_styles/panel = ExtResource( 6 )
 
-[node name="kiko_avatar - placeholder" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/InfoGraph" index="0" instance=ExtResource( 7 )]
+[node name="VBoxContainer" type="VBoxContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/InfoGraph" index="0"]
+anchor_right = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/InfoGraph/VBoxContainer" index="0"]
+margin_right = 1080.0
+margin_bottom = 400.0
+
+[node name="kiko_avatar - placeholder" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/InfoGraph/VBoxContainer/MarginContainer" index="0" instance=ExtResource( 7 )]
+anchor_top = 0.0
+anchor_bottom = 0.0
+margin_top = 0.0
+margin_right = 1080.0
+margin_bottom = 400.0
 text = "Infos here"
 
+[node name="MarginContainer2" type="MarginContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/InfoGraph/VBoxContainer" index="1"]
+margin_top = 404.0
+margin_right = 1080.0
+margin_bottom = 564.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/InfoGraph/VBoxContainer/MarginContainer2" index="0"]
+margin_right = 1080.0
+margin_bottom = 160.0
+
+[node name="CenterContainer" type="CenterContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/InfoGraph/VBoxContainer/MarginContainer2/VBoxContainer" index="0"]
+margin_right = 1080.0
+margin_bottom = 160.0
+mouse_filter = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/InfoGraph/VBoxContainer/MarginContainer2/VBoxContainer/CenterContainer" index="0"]
+margin_left = 460.0
+margin_right = 620.0
+margin_bottom = 160.0
+
+[node name="MarginContainer" type="MarginContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/InfoGraph/VBoxContainer/MarginContainer2/VBoxContainer/CenterContainer/HBoxContainer" index="0"]
+margin_right = 160.0
+margin_bottom = 160.0
+mouse_filter = 1
+script = ExtResource( 4 )
+
+[node name="Capsule" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/InfoGraph/VBoxContainer/MarginContainer2/VBoxContainer/CenterContainer/HBoxContainer/MarginContainer" index="0" instance=ExtResource( 12 )]
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 160.0
+margin_bottom = 160.0
+
 [node name="Aufgaben" type="Panel" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="3"]
+visible = false
 margin_top = 1486.0
 margin_right = 1080.0
 margin_bottom = 1986.0
@@ -204,5 +341,7 @@ __meta__ = {
 }
 
 [node name="HTTPRequest" type="HTTPRequest" parent="." index="1"]
-[connection signal="pressed" from="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview/MarginContainer/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer/CenterContainer/MarginContainer/Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview/CySidePanel/HBoxContainer/MarginContainer2/Panel" to="." method="_on_Panel_pressed"]
+[connection signal="pressed" from="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview/CySidePanel/HBoxContainer/MarginContainer2/Button" to="." method="_on_Button_pressed"]
 [connection signal="pressed" from="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview/shop_button_container/entity_shop_button" to="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview" method="_on_entity_shop_button_pressed"]
+[connection signal="clicked" from="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/InfoGraph/VBoxContainer/MarginContainer2/VBoxContainer/CenterContainer/HBoxContainer/MarginContainer/Capsule" to="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/InfoGraph/VBoxContainer/MarginContainer2/VBoxContainer/CenterContainer/HBoxContainer/MarginContainer" method="_on_Capsule_clicked"]

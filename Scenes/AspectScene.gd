@@ -8,10 +8,11 @@ onready var info_graph = $"ContentContainer/Content/VBoxContainer/MarginContaine
 onready var quests = $"ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/Aufgaben"
 
 onready var tracking_question = $"ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview/TrackingQuestion"
-onready var tracking_options_label = $"ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview/MarginContainer/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer/CurrentTrackingSetting/Label"
-onready var tracking_level = $"ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview/MarginContainer/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer/CurrentTrackingSetting/OptionValueLabel"
+onready var tracking_options_label = $"ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview/CySidePanel/HBoxContainer/MarginContainer/VBoxContainer/CurrentTrackingSetting/Label"
+onready var tracking_level =  $"ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview/CySidePanel/HBoxContainer/MarginContainer/VBoxContainer/CurrentTrackingSetting/OptionValueLabel"
 onready var go_to_tracking_button = $"ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview/MarginContainer/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer/CenterContainer/MarginContainer/Button"
 onready var tracking_preview = $"ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview"
+onready var tracking_reward = $ "ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview/CySidePanel/HBoxContainer/MarginContainer/VBoxContainer/CurrentTrackingSetting2/OptionRewardLabel"
 export (Resource) var aspect_data
 
 #var ready = false
@@ -41,6 +42,7 @@ func _show_data():
 	var current_option = aspect_data.get_option_for_level(current_tracking_level.level)
 	if current_option != null:
 		tracking_level.text = current_option.option
+		tracking_reward.set_reward(current_option.reward)
 	if AspectTrackingService.has_seedling_available(aspect_data):
 		should_animate = true
 		#tracking_preview.show_shop_button()
@@ -55,3 +57,7 @@ func _on_Button_pressed():
 func _enter_tree():
 	if ready:
 		_show_data()
+
+
+func _on_Panel_pressed():
+	GameManager.scene_manager.push_scene("res://Scenes/TrackingSettingScene.tscn", {"aspect": aspect_data})
