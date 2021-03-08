@@ -8,13 +8,13 @@ signal check_answer
 
 onready var req = $VBoxContainer/HTTPRequest
 onready var header = $HeaderContainer/Header
-onready var kiko_dialog = $"ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/VSplitContainer/ContentHolder/FrontMatter/kiko_avatar - placeholder"
-onready var loading_anim = $"ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/VSplitContainer/ContentHolder/Loading"
-onready var continue_button = $"ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/VSplitContainer/Footer/ContinueButton"
-onready var back_button = $"ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/VSplitContainer/Footer/BackButton"
-onready var infobit_holder = $"ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/VSplitContainer/ContentHolder/Infobits"
+onready var kiko_dialog = $"ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/ContentHolder/FrontMatter/kiko_avatar - placeholder"
+onready var loading_anim = $"ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/ContentHolder/Loading"
+onready var continue_button = $"ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/Footer/ContinueButton"
+onready var back_button = $"ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/Footer/BackButton"
+onready var infobit_holder = $"ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/ContentHolder/Infobits"
 onready var anim_player = $AnimationPlayer
-onready var questions_holder = $"ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/VSplitContainer/ContentHolder/Quiz/Questions"
+onready var questions_holder = $"ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/ContentHolder/Quiz/Questions"
 var has_data = false
 var has_error = false
 var quiz_data
