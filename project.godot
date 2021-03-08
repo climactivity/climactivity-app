@@ -9,6 +9,26 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Resource",
+"class": "RInfoByte",
+"language": "GDScript",
+"path": "res://Network/Types/InfoBytes/RInfoByte.gd"
+}, {
+"base": "Resource",
+"class": "RInfoGraphEntry",
+"language": "GDScript",
+"path": "res://Network/Types/InfoBytes/RInfoGraphEntry.gd"
+}, {
+"base": "Resource",
+"class": "RMultipleChoiceAnwers",
+"language": "GDScript",
+"path": "res://Network/Types/InfoBytes/RMultipleChoiceAnswers.gd"
+}, {
+"base": "Resource",
+"class": "RQuestion",
+"language": "GDScript",
+"path": "res://Network/Types/InfoBytes/RQuestion.gd"
+}, {
 "base": "Panel",
 "class": "SceneBase",
 "language": "GDScript",
@@ -25,6 +45,10 @@ _global_script_classes=[ {
 "path": "res://SceneManager/Transitions.gd"
 } ]
 _global_script_class_icons={
+"RInfoByte": "",
+"RInfoGraphEntry": "",
+"RMultipleChoiceAnwers": "",
+"RQuestion": "",
 "SceneBase": "",
 "SceneManager": "",
 "TransitionFactory": ""
