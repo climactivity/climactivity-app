@@ -220,5 +220,6 @@ margin_bottom = 3237.0
 self_modulate = Color( 0.392157, 0.65098, 0.886275, 1 )
 
 [node name="Header" parent="HeaderContainer" index="1"]
+screen_label = "water_collection_screen"
 icon_texture = ExtResource( 4 )
 color = Color( 0.392157, 0.65098, 0.886275, 1 )

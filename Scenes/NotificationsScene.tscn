@@ -30,6 +30,9 @@ accent_color = Color( 0.501961, 0.501961, 0.501961, 1 )
 icon = ExtResource( 2 )
 screen_title = "notifications_screen"
 
+[node name="ContentMain" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer" index="0"]
+show_menu_bar = true
+
 [node name="HeaderBG" parent="ContentContainer/Content" index="1"]
 self_modulate = Color( 0.501961, 0.501961, 0.501961, 1 )
 
