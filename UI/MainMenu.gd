@@ -1,5 +1,5 @@
 extends Control
-
+class_name MainMenu
 enum Navigation_states {
 	HOME,
 	NOTIFICATIONS,
@@ -19,7 +19,7 @@ onready var settings_button = $MarginContainer/PanelContainer/MarginContainer/HB
 var buttons
 func _ready():
 	buttons = [home_button, notification_button, stats_button, social_button, settings_button]
-	set_navigation_state(navigation_state)
+	set_navigation_state(navigation_state, true)
 	if GameManager != null:
 		GameManager.menu = self
 
@@ -53,34 +53,45 @@ func _on_SettingsButton_pressed():
 	Logger.print("SettingsButton pressed", self)
 	set_navigation_state(Navigation_states.SETTINGS)
 	
-func set_navigation_state(new_state): 
+func set_navigation_state(new_state, stay = false): 
 	navigation_state = new_state
 	for button in buttons: 
 		button.self_modulate = Color.gray
 	match navigation_state:
 		Navigation_states.HOME:
 			home_button.self_modulate = Color.cornflower
+			if !stay: _navigate_home()
 		Navigation_states.NOTIFICATIONS:
 			notification_button.self_modulate = Color.cornflower
+			if !stay: _navigate_notifications()
 		Navigation_states.SOCIAL:
 			social_button.self_modulate = Color.cornflower
+			if !stay: _navigate_social()
 		Navigation_states.STATS:
 			stats_button.self_modulate = Color.cornflower
+			if !stay: _navigate_stats()
 		Navigation_states.SETTINGS:
 			settings_button.self_modulate = Color.cornflower
+			if !stay: _navigate_settings()
 		_:
 			pass
 
 func _navigate_home(): 
-	pass
+	if GameManager == null or GameManager.scene_manager == null: return
+	GameManager.scene_manager.go_home()
+	
 func _navigate_notifications(): 
-	pass
-
+	if GameManager == null or GameManager.scene_manager == null: return
+	GameManager.scene_manager.push_scene("notifications_scene")
+	
 func _navigate_social(): 
-	pass
-
+	if GameManager == null or GameManager.scene_manager == null: return
+	GameManager.scene_manager.push_scene("social_scene")
+	
 func _navigate_stats(): 
-	pass
-
+	if GameManager == null or GameManager.scene_manager == null: return
+	GameManager.scene_manager.push_scene("stats_scene")
+	
 func _navigate_settings(): 
-	pass
+	if GameManager == null or GameManager.scene_manager == null: return
+	GameManager.scene_manager.push_scene("settings_scene")
