@@ -27,6 +27,9 @@ shader_param/gradient = SubResource( 3 )
 material = SubResource( 4 )
 screen_title = "social_screen"
 
+[node name="ContentMain" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer" index="0"]
+show_menu_bar = true
+
 [node name="Header" parent="HeaderContainer" index="1"]
 screen_label = "social_screen"
 color = Color( 0.592157, 0.909804, 0.192157, 1 )

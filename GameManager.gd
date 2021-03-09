@@ -6,6 +6,7 @@ var camera
 var scene_manager: SceneManager
 var forest
 var menu
+var overlay
 
 func save_game(): 
 	var save_data = {

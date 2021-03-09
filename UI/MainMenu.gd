@@ -1,15 +1,15 @@
 extends Control
 class_name MainMenu
 enum Navigation_states {
-	HOME,
-	NOTIFICATIONS,
-	SOCIAL,
-	STATS,
-	SETTINGS
+	HOME = 0,
+	NOTIFICATIONS = 1,
+	SOCIAL = 3,
+	STATS = 2,
+	SETTINGS = 4
 }
 
 var navigation_state = Navigation_states.HOME setget set_navigation_state
-
+var last_navigation_state = Navigation_states.HOME
 onready var anim_player = $AnimationPlayer
 onready var home_button = $MarginContainer/PanelContainer/MarginContainer/HBoxContainer/HomeButton
 onready var notification_button = $MarginContainer/PanelContainer/MarginContainer/HBoxContainer/NotificationButton
@@ -54,6 +54,7 @@ func _on_SettingsButton_pressed():
 	set_navigation_state(Navigation_states.SETTINGS)
 	
 func set_navigation_state(new_state, stay = false): 
+	last_navigation_state = navigation_state
 	navigation_state = new_state
 	for button in buttons: 
 		button.self_modulate = Color.gray
@@ -81,17 +82,18 @@ func _navigate_home():
 	GameManager.scene_manager.go_home()
 	
 func _navigate_notifications(): 
-	if GameManager == null or GameManager.scene_manager == null: return
-	GameManager.scene_manager.push_scene("notifications_scene")
-	
+	_navigate("notifications_scene")
+
 func _navigate_social(): 
-	if GameManager == null or GameManager.scene_manager == null: return
-	GameManager.scene_manager.push_scene("social_scene")
+	_navigate("social_scene")
 	
 func _navigate_stats(): 
-	if GameManager == null or GameManager.scene_manager == null: return
-	GameManager.scene_manager.push_scene("stats_scene")
-	
+	_navigate("stats_scene")
+
 func _navigate_settings(): 
+	_navigate("settings_scene")
+
+func _navigate(scene):
 	if GameManager == null or GameManager.scene_manager == null: return
-	GameManager.scene_manager.push_scene("settings_scene")
+	GameManager.scene_manager.push_scene(scene, {},
+	 TransitionFactory.MoveOut() if last_navigation_state <= navigation_state else TransitionFactory.MoveBack())
