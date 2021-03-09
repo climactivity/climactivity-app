@@ -18,6 +18,7 @@ func _ready():
 	if(!OS.is_debug_build()): tile.visible = false
 	ui_alert.visible = false
 	update_view()
+	ui_alert.connect("clicked", self, "on_click")
 
 func update_view():
 	if( template_resource == null || instance_resource == null || bill_board == null): return
@@ -55,6 +56,17 @@ func set_textures(new_textures):
 func add_water(amount): 
 	pass
 
+func alert_has_water_avaialble():
+	pass
+
 func alert_can_water(): 
 	Logger.print("show can be watered alert", self)
 	ui_alert.visible = true
+	bill_board.layout_ui()
+
+func on_click():
+	print("click")
+
+func _on_Collider_input_event(camera, event, click_position, click_normal, shape_idx):
+	if event is InputEventMouseButton and event.pressed: 
+		on_click()

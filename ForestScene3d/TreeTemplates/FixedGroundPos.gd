@@ -34,6 +34,9 @@ func _offset_and_scale():
 	offset = Vector2( -texture.get_size().x / 2.0,0.0)
 	#print("_offset_and_scale %s %s" % [str(pixel_size), str(offset)])
 
+func layout_ui():
+	_layout_ui(GameManager.camera.rotation.x)
+
 func _layout_ui(phi):
 	if ui_panel == null: return
 	ui_panel.transform.origin = ui_initial_transform.origin + Vector3(0.0, tex_size.y * pixel_size, 0.0)
