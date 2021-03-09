@@ -5,6 +5,11 @@ signal current_transition_finished
 
 # scenes
 export var start_scene = preload("res://ForestScene3d/ForestScene3d.tscn")
+export var _settings_scene = preload("res://Scenes/SettingsScene.tscn")
+export var _notification_scene = preload("res://Scenes/NotificationsScene.tscn")
+export var _social_scene = preload("res://Scenes/SocialScene.tscn")
+export var _stats_scene = preload("res://Scenes/StatsScene.tscn")
+
 var home_scene
 var bigpoint_scene = preload("res://Scenes/BigPointScene.tscn") 
 var sector_data = preload("res://ForestScene3d/Tents/SectorData.gd").new()
@@ -50,11 +55,18 @@ var is_changing_scene = false
 func _ready():
 	GameManager.scene_manager = self
 	_prepare_bigpoint_scenes()
+	_prepare_fixed_scenes()
 	scene_map.water_collection_scene = preload("res://Scenes/WaterCollectionScene.tscn").instance()
 	_show_A()
 	current_scene = start_scene.instance()
 	home_scene = current_scene
 	A_viewport.add_child(current_scene)
+
+func _prepare_fixed_scenes():
+	scene_map["settings_scene"] = _settings_scene.instance()
+	scene_map["notifications_scene"] =  _notification_scene.instance()
+	scene_map["social_scene"] =  _social_scene.instance()
+	scene_map["stats_scene"] = _stats_scene.instance()
 
 func _prepare_bigpoint_scenes(): 
 	scene_map.big_point_scene_consumption = _prepare_bigpoint_scene("ernaehrung")
@@ -73,7 +85,7 @@ func go_home():
 	push_scene(home_scene)
 
 func push_scene(scene, navigation_data = {}, config = TransitionFactory.MoveOut()) -> void: 
-	if (is_changing_scene): return
+	if (is_changing_scene or _is_current_focus(scene)): return
 	get_tree().get_root().set_disable_input(true)
 	is_changing_scene = true
 	A_viewport.remove_child(current_scene)
@@ -103,6 +115,10 @@ func push_scene(scene, navigation_data = {}, config = TransitionFactory.MoveOut(
 	if (scene.has_method("_restored")): 
 		scene._restored()
 	animation_player.play(config.transition_name)
+
+func _is_current_focus(scene):
+	
+	return false
 
 func pop_scene(config = TransitionFactory.MoveBack()) -> void: 
 	if (is_changing_scene): return

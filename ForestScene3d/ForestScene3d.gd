@@ -34,3 +34,7 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 func _restored():
 	Logger.print("_restored", self)
 	emit_signal("update_hud")
+	if GameManager != null: 
+		GameManager.menu.show_menu()
+		GameManager.menu.set_navigation_state( MainMenu.Navigation_states.HOME ,true)
+

@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Scenes/SceneBase.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Assets/Icons/bell-solid.svg" type="Texture" id=2]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item; 
+
+uniform sampler2D gradient; 
+
+void fragment() {
+	COLOR = texture(gradient, vec2(UV.y, 0));
+	//COLOR = vec4(UV.y,0,0,1);
+}"
+
+[sub_resource type="Gradient" id=2]
+offsets = PoolRealArray( 0.213622, 1 )
+colors = PoolColorArray( 0.501961, 0.501961, 0.501961, 1, 1, 1, 1, 1 )
+
+[sub_resource type="GradientTexture" id=3]
+gradient = SubResource( 2 )
+
+[sub_resource type="ShaderMaterial" id=4]
+shader = SubResource( 1 )
+shader_param/gradient = SubResource( 3 )
+
+[node name="NotificationsScene" instance=ExtResource( 1 )]
+material = SubResource( 4 )
+accent_color = Color( 0.501961, 0.501961, 0.501961, 1 )
+icon = ExtResource( 2 )
+screen_title = "notifications_screen"
+
+[node name="HeaderBG" parent="ContentContainer/Content" index="1"]
+self_modulate = Color( 0.501961, 0.501961, 0.501961, 1 )
+
+[node name="Header" parent="HeaderContainer" index="1"]
+screen_label = "notifications_screen"
+icon_texture = ExtResource( 2 )
+color = Color( 0.501961, 0.501961, 0.501961, 1 )

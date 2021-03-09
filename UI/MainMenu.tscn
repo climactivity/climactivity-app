@@ -9,12 +9,10 @@
 [ext_resource path="res://UI/sm_white.tres" type="Material" id=7]
 
 [sub_resource type="StyleBoxFlat" id=1]
-bg_color = Color( 0.866667, 0.866667, 0.862745, 1 )
-corner_radius_top_left = 40
-corner_radius_top_right = 40
+bg_color = Color( 1, 1, 1, 1 )
 shadow_color = Color( 0, 0, 0, 0.168627 )
 shadow_size = 10
-shadow_offset = Vector2( 0, 5 )
+shadow_offset = Vector2( 0, -5 )
 
 [sub_resource type="StyleBoxEmpty" id=2]
 

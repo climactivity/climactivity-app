@@ -11,9 +11,9 @@
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.392157, 0.65098, 0.886275, 1 )
 
-[sub_resource type="StyleBoxEmpty" id=8]
+[sub_resource type="StyleBoxEmpty" id=2]
 
-[sub_resource type="StyleBoxFlat" id=2]
+[sub_resource type="StyleBoxFlat" id=3]
 bg_color = Color( 0.584314, 0.729412, 0.894118, 1 )
 border_width_left = 20
 border_width_top = 20
@@ -46,7 +46,7 @@ __meta__ = {
 [node name="HSeparator" type="HSeparator" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/VBoxContainer" index="0"]
 margin_right = 1080.0
 margin_bottom = 346.0
-custom_styles/separator = SubResource( 8 )
+custom_styles/separator = SubResource( 2 )
 custom_constants/separation = 346
 __meta__ = {
 "_edit_use_anchors_": false
@@ -201,7 +201,7 @@ margin_left = 40.0
 margin_top = 40.0
 margin_right = 1040.0
 margin_bottom = 307.0
-custom_styles/panel = SubResource( 2 )
+custom_styles/panel = SubResource( 3 )
 
 [node name="Label" type="Label" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/VBoxContainer/UsageHintHolder/PanelContainer" index="0"]
 margin_left = 20.0
