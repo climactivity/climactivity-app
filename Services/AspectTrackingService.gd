@@ -186,6 +186,9 @@ func get_water_collected():
 func water_used(aspect):
 	water_collected_for.erase(aspect)
 
+func water_used_for(entity_id):
+	#_get_tracking_state_for
+	pass
 func notify_watered_aspects():
 	for aspect_tracking_state in water_collected_for: 
 		aspect_tracking_state.show_waiting_for_water()
