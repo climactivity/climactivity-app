@@ -34,3 +34,6 @@ func consume_water_amount(amount):
 		return -1
 	current_value -= amount
 	return current_value
+
+func reset(): 
+	current_value = 0.0

@@ -1,13 +1,16 @@
 extends Panel
 
-
+var _sector_data = preload("res://ForestScene3d/Tents/SectorData.gd").new().sector_data
+var sector_data = null
 var loading = true
 var bp_aspect_card = preload("res://UI/Components/AspectCard.tscn")
 var navigation_data = {}
 var aspect_resources = []
 
+var gradient = null
+
 onready var req = $HTTPRequest
-onready var aspect_list = $VBoxContainer/Content/MarginContainer/AspectList
+onready var aspect_list = $"ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/AspectList"
 
 #func _fetch_data(param = null): 
 #	if param != null: 
@@ -16,7 +19,9 @@ onready var aspect_list = $VBoxContainer/Content/MarginContainer/AspectList
 #		Api.getEndpoint("aspect_for_sector", req, [], true)
 
 func _ready(): 
-	if loading: return
+
+	material = material.duplicate(true)
+	gradient = material.get_shader_param("gradient")
 	render_resources() 
 
 func load_from_cache(): 
@@ -32,6 +37,7 @@ func _load_from_cache():
 	aspect_resources = Api.get_aspect_data_for_sector(navigation_data.sector)
 	Logger.print("Loaded bigpoint scene for %s, loaded %d aspects" % [navigation_data.sector, aspect_resources.size()], self)
 	loading = false
+	sector_data = _sector_data[navigation_data.sector]
 	render_resources()
 
 func receive_navigation(new_navigation_data): 
@@ -43,11 +49,18 @@ func receive_navigation(new_navigation_data):
 #		_fetch_data()
 
 func render_resources():
+	if loading: return
 	if aspect_list == null: return
-	for aspect in aspect_resources : 
+	Util.clear(aspect_list)
+	for aspect in aspect_resources: 
 		var aspect_card = bp_aspect_card.instance()
 		aspect_card.set_aspect(aspect)
 		aspect_list.add_child(aspect_card)
+	$HeaderContainer/Header.update_header(sector_data["sector_title"], sector_data["sector_logo"], sector_data["sector_color"])
+	if gradient != null:
+		gradient.gradient.set_color(0, sector_data["sector_color"])
+		material.set_shader_param("gradient", gradient)
+	$"ContentContainer/Content/HeaderBG".self_modulate = sector_data["sector_color"]
 #func render_aspects(aspect_data): 
 #	for aspect in aspect_data:
 #		var aspect_card = bp_aspect_card.instance()

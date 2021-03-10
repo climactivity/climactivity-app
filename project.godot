@@ -10,6 +10,36 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Control",
+"class": "MainMenu",
+"language": "GDScript",
+"path": "res://UI/MainMenu.gd"
+}, {
+"base": "Resource",
+"class": "RInfoByte",
+"language": "GDScript",
+"path": "res://Network/Types/InfoBytes/RInfoByte.gd"
+}, {
+"base": "Resource",
+"class": "RInfoGraphEntry",
+"language": "GDScript",
+"path": "res://Network/Types/InfoBytes/RInfoGraphEntry.gd"
+}, {
+"base": "Resource",
+"class": "RMultipleChoiceAnwers",
+"language": "GDScript",
+"path": "res://Network/Types/InfoBytes/RMultipleChoiceAnswers.gd"
+}, {
+"base": "Resource",
+"class": "RQuestion",
+"language": "GDScript",
+"path": "res://Network/Types/InfoBytes/RQuestion.gd"
+}, {
+"base": "Panel",
+"class": "SceneBase",
+"language": "GDScript",
+"path": "res://Scenes/SceneBase.gd"
+}, {
+"base": "Control",
 "class": "SceneManager",
 "language": "GDScript",
 "path": "res://SceneManager/SceneManager.gd"
@@ -20,6 +50,12 @@ _global_script_classes=[ {
 "path": "res://SceneManager/Transitions.gd"
 } ]
 _global_script_class_icons={
+"MainMenu": "",
+"RInfoByte": "",
+"RInfoGraphEntry": "",
+"RMultipleChoiceAnwers": "",
+"RQuestion": "",
+"SceneBase": "",
 "SceneManager": "",
 "TransitionFactory": ""
 }
@@ -40,6 +76,7 @@ PSS="*res://Services/PlayerStateSyncronizationService.gd"
 Logger="*res://Logger.gd"
 Util="*res://Util.gd"
 PlayerController="*res://PlayerController.gd"
+SectorService="*res://Services/SectorService.gd"
 TreeTemplateFactory="*res://ForestScene3d/TreeTemplates/TreeTemplateFactory.tscn"
 AspectTrackingService="*res://Services/AspectTrackingService.gd"
 RewardService="*res://Services/RewardService.gd"

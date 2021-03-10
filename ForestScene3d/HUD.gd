@@ -6,6 +6,7 @@ onready var cloud_widget  = $Cloud
 
 func _ready():
 	seedling_box.connect("dragging", self, "_disable_input")
+	cloud_widget.connect("dragging", self, "_disable_input")
 	_show_seedling_box()
 
 func update_hud():
@@ -13,16 +14,42 @@ func update_hud():
 	_show_cloud()
 	
 func can_drop_data(_pos, data):
+	if data.has("entity"):
+		_can_drop_seedling(_pos, data)
+	else:
+		_can_drop_cloud(_pos, data)
+
+func _can_drop_seedling(_pos, data):
 	var result = get_parent().ray_cast(_pos)
 	var can_drop = result != null && result.has("collider") && result.collider.has_method("place_entity")
 	if (can_drop): 
 		result.collider.can_drop(result.position, data["entity"])
 	return can_drop
+	
+func _can_drop_cloud(_pos, data):
+	var result = get_parent().ray_cast(_pos)
+	var can_drop = result != null && result.has("collider") && result.collider.has_method("water")
+	if (can_drop): 
+		result.collider.can_drop(result.position, data["water"])
+	return can_drop
 
-func drop_data(_pos, data):
+func drop_data(_pos, data): 
+	if data.has("entity"):
+		_drop_data_seedling(_pos, data)
+	else:
+		_drop_data_cloud(_pos, data)
+
+func _drop_data_seedling(_pos, data):
 	var result = get_parent().ray_cast(_pos)
 	if (result.collider.has_method("place_entity")): 
 		result.collider.place_entity(result.position, data["entity"])
+	Logger.print("Input released", self)
+	mouse_filter = MOUSE_FILTER_IGNORE
+
+func _drop_data_cloud(_pos, data):
+	var result = get_parent().ray_cast(_pos)
+	if (result.collider.has_method("water")): 
+		result.collider.place_entity(result.position, data["water"])
 	Logger.print("Input released", self)
 	mouse_filter = MOUSE_FILTER_IGNORE
 

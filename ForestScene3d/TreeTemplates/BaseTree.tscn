@@ -1,18 +1,64 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://ForestScene3d/HexMesh.tres" type="CylinderMesh" id=1]
 [ext_resource path="res://ForestScene3d/TreeTemplates/Textures/Baum_Entwurf_01.png" type="Texture" id=2]
 [ext_resource path="res://ForestScene3d/TreeTemplates/BaseTree.gd" type="Script" id=3]
 [ext_resource path="res://ForestScene3d/TreeTemplates/FixedGroundPos.gd" type="Script" id=4]
 [ext_resource path="res://ForestScene3d/TreeTemplates/ContactShadow.tscn" type="PackedScene" id=5]
+[ext_resource path="res://ForestScene3d/SpatialUIPanel.tscn" type="PackedScene" id=6]
+[ext_resource path="res://ForestScene3d/TreeTemplates/TreeWaterReceiver.gd" type="Script" id=7]
+
+[sub_resource type="CylinderShape" id=1]
+radius = 0.315774
+height = 1.99314
+
+[sub_resource type="Animation" id=2]
+resource_name = "RESET"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite3D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "happy"
+length = 0.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite3D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 1, 1, 1 ), Vector3( 1.2, 1.2, 1.2 ), Vector3( 1, 1, 1 ) ]
+}
 
 [node name="TreeRoot" type="Spatial"]
 script = ExtResource( 3 )
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
 visible = false
 mesh = ExtResource( 1 )
 material/0 = null
+
+[node name="Collider" type="StaticBody" parent="."]
+script = ExtResource( 7 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Collider"]
+shape = SubResource( 1 )
 
 [node name="ContactShadow" parent="." instance=ExtResource( 5 )]
 
@@ -27,4 +73,11 @@ region_rect = Rect2( 123.448, 115.232, 38.423, 44.862 )
 script = ExtResource( 4 )
 _unit_factor = 1.758
 
+[node name="SpatialUIPanel" parent="Sprite3D" instance=ExtResource( 6 )]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 1, 0, 0.489229, 0 )
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "RESET"
+anims/RESET = SubResource( 2 )
+anims/happy = SubResource( 3 )
+[connection signal="input_event" from="Collider" to="." method="_on_Collider_input_event"]

@@ -3,9 +3,9 @@ extends VBoxContainer
 signal emit_option(option, aspect)
 
 onready var http_request = $HTTPRequest
-onready var question = $"kiko_avatar - placeholder"
-onready var heading = $"PanelContainer/MarginContainer/VBoxContainer/Heading"
-onready var options_holder = $"PanelContainer/MarginContainer/VBoxContainer/Options"
+onready var question = $"MarginContainer2/kiko_avatar - placeholder"
+onready var heading = $"CySidePanel"
+onready var options_holder = $"CySidePanel/Options"
 onready var select_button = $"MarginContainer/CenterContainer/SaveTrackingOptionButton"
 
 var bp_option = preload("res://UI/Components/TrackingOption.tscn")
@@ -24,12 +24,12 @@ func set_tracking_data(new_tracking_data, new_aspect):
 	
 func set_title(new_title): 
 	title = new_title
-	if ready: heading.set_text(title)
+	if ready: heading.set_heading(title)
 	
 func _ready(): 
 	ready = true
 	_show_data()
-	heading.set_text(title)
+	heading.set_heading(title)
 	select_button.disabled = selected_option == null
 	connect("emit_option", AspectTrackingService, "commit_tracking_level")
 	#get saved option

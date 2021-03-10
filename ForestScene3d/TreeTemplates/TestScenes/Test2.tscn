@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://ForestScene3d/HexMesh.tres" type="CylinderMesh" id=1]
-[ext_resource path="res://Assets/tree_hard edge.png" type="Texture" id=2]
+[ext_resource path="res://Assets/sketch/baum_erwachsen.png" type="Texture" id=2]
 [ext_resource path="res://ForestScene3d/TreeTemplates/FixedGroundPos.gd" type="Script" id=4]
 [ext_resource path="res://ForestScene3d/TreeTemplates/ContactShadow.tscn" type="PackedScene" id=5]
 
@@ -15,14 +15,13 @@ material/0 = null
 [node name="ContactShadow" parent="." instance=ExtResource( 5 )]
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0769513, -0.148906, 0.0172743 )
+transform = Transform( 1, -0.00020944, 0, 0.00020944, 1, 0, 0, 0, 1, 0.0769513, -0.0022309, 0.0172743 )
 centered = false
-offset = Vector2( -1123.5, 0 )
-pixel_size = 0.000482587
+offset = Vector2( -1215, 0 )
+pixel_size = 0.000318776
 billboard = 1
 texture = ExtResource( 2 )
 region_rect = Rect2( 123.448, 115.232, 38.423, 44.862 )
 script = ExtResource( 4 )
-_unit_factor = 1.358
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

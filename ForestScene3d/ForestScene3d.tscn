@@ -11,7 +11,7 @@
 [ext_resource path="res://ForestScene3d/HUD.gd" type="Script" id=9]
 [ext_resource path="res://ForestScene3d/Interactables/Cloud.tscn" type="PackedScene" id=10]
 [ext_resource path="res://ForestScene3d/Interactables/QuestLog.tscn" type="PackedScene" id=11]
-[ext_resource path="res://ForestScene3d/texture_Boden_01.png" type="Texture" id=12]
+[ext_resource path="res://Assets/sketch/floortex_TILED.png" type="Texture" id=12]
 [ext_resource path="res://UI/xp_bar.png" type="Texture" id=13]
 [ext_resource path="res://ForestScene3d/DebugMenu.gd" type="Script" id=14]
 
@@ -48,7 +48,7 @@ subdivide_depth = 6
 flags_unshaded = true
 flags_world_triplanar = true
 albedo_texture = ExtResource( 12 )
-uv1_scale = Vector3( 0.02, 0.01, 0.02 )
+uv1_scale = Vector3( 0.1, 0.109, 0.1 )
 uv1_offset = Vector3( 0.751, 0, 0 )
 uv1_triplanar = true
 
@@ -172,12 +172,6 @@ transform = Transform( 1, 0, 0, 0, 0.768652, 0.639667, 0, -0.639667, 0.768652, -
 current = true
 size = 44.73
 script = ExtResource( 5 )
-zoom_level = 1.0
-zoom_factor = 1.0
-pan_factor = 4.0
-min_elevation = 5.0
-max_elevation = 30
-min_rotation_deg = -27.5
 max_rotation_deg = -49.406
 nw_bound = Vector2( -20, 0 )
 se_bound = Vector2( 20, 38 )
@@ -280,6 +274,9 @@ script = ExtResource( 7 )
 SIZE = 9
 hex_size_override = Vector2( 2, 2 )
 
+[node name="MapHolder" type="Spatial" parent="ForestFloor/HexGrid"]
+visible = false
+
 [node name="Cursor" parent="ForestFloor/HexGrid" instance=ExtResource( 8 )]
 transform = Transform( 0.25, 0, 0.433013, 0, 0.5, 0, -0.433013, 0, 0.25, 3.87529, 0.238, 0 )
 visible = false
@@ -327,6 +324,7 @@ texture = ExtResource( 4 )
 "Parallax2",
 ]]
 transform = Transform( 3, 0, 0, 0, 3, 5.30055e-08, 0, -1.59016e-07, 1, -18.61, 2.603, -47.813 )
+flip_h = true
 billboard = 2
 texture = ExtResource( 4 )
 
