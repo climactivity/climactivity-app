@@ -38,10 +38,10 @@ func get_drag_data(_pos):
 	emit_signal("dragging", self)
 	return {
 		"action": "water",
-		"current_water_amount": 0.0
+		"water": {
+			"current_water_amount": 0.0,
+		}
 	}
-	
-
 
 func _on_Cloud_gui_input(event):
 	if event is InputEventScreenTouch:
