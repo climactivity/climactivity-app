@@ -13,7 +13,7 @@ var player_state
 
 #var last_update = OS.get_unix_time()
 var interval = 60 * 60 * 2 # minutue * hour * 2 -> update every 2 hours
-
+var water_collected_for = []
 func _init():
 	player_state = PSS.get_player_state_ref()
 	if OS.is_debug_build(): 
@@ -135,10 +135,11 @@ func award_seedling(aspect):
 	if current_state != null: 
 		current_state.new_seedling_available = true
 
-func consume_seedling(aspect_id): 
+func consume_seedling(aspect_id, entity): 
 	if has_seedling_available(aspect_id) or ProjectSettings.get_setting("debug/settings/game_logic/cheat_seedlings"):
-		#var current_state = get_tracking_state(aspect)
-		player_state.tracking_states[aspect_id].new_seedling_available = false
+		var current_state = player_state.tracking_states[aspect_id]
+		current_state.new_seedling_available = false
+		current_state.add_entity(entity)
 		#current_state.new_seedling_available = false
 		_flush()
 		return true
@@ -157,6 +158,40 @@ func has_water_available():
 		var tracking_state = player_state.tracking_states[tracking_state_key]
 		has_water += tracking_state.get_water_available()
 	return has_water > 0
+
+func get_tracked_aspects_for_sector(sector): 
+	var sector_name
+	if sector is String:
+		sector_name = sector
+	else:
+		sector_name = sector.sector
+	var aspects = []
+	for tracking_state_key in player_state.tracking_states: 
+		var tracking_state = player_state.tracking_states[tracking_state_key]
+		if tracking_state.bigpoint == sector_name:
+			aspects.append(tracking_state)
+	return aspects
+
+func get_total_water_for_sector(sector):
+	var aspect_data = get_tracked_aspects_for_sector(sector)
+	var total 
+	pass
+
+func water_collected(aspect): 
+	water_collected_for.append(aspect)
+
+func get_water_collected(): 
+	return  water_collected_for
+
+func water_used(aspect):
+	water_collected_for.erase(aspect)
+
+func water_used_for(entity_id):
+	#_get_tracking_state_for
+	pass
+func notify_watered_aspects():
+	for aspect_tracking_state in water_collected_for: 
+		aspect_tracking_state.show_waiting_for_water()
 
 func _flush(): 
 	PSS.flush()

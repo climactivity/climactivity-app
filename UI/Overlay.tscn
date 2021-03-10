@@ -1,0 +1,142 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://UI/typography/Heading.tres" type="DynamicFont" id=1]
+[ext_resource path="res://UI/MainMenu.tscn" type="PackedScene" id=2]
+[ext_resource path="res://UI/Overlay.gd" type="Script" id=3]
+[ext_resource path="res://Assets/Icons/Arrow - Left Square W.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Icons/Arrow - Left Square.png" type="Texture" id=5]
+
+[sub_resource type="Animation" id=1]
+resource_name = "RESET"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Popup:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Popup:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.317647 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "ShowPopupLayer"
+length = 0.492
+tracks/0/type = "value"
+tracks/0/path = NodePath("Popup:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Popup:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.1, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.317647 ) ]
+}
+
+[node name="Overlay" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="XPBar" type="Control" parent="."]
+anchor_right = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MainMenu" parent="." instance=ExtResource( 2 )]
+margin_top = 0.0
+margin_bottom = 0.0
+
+[node name="Popup" type="Panel" parent="."]
+visible = false
+self_modulate = Color( 1, 1, 1, 0.317647 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="Popup"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 222.0
+custom_constants/margin_right = 64
+custom_constants/margin_left = 64
+custom_constants/margin_bottom = 64
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Close_Button" type="TextureButton" parent="Popup"]
+margin_left = 24.0
+margin_top = 24.0
+margin_right = 205.0
+margin_bottom = 211.0
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 5 )
+texture_hover = ExtResource( 4 )
+texture_disabled = ExtResource( 4 )
+texture_focused = ExtResource( 4 )
+expand = true
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "RESET"
+anims/RESET = SubResource( 1 )
+anims/ShowPopupLayer = SubResource( 2 )
+
+[node name="Label" type="Label" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -205.0
+margin_top = -32.5
+margin_right = 205.0
+margin_bottom = 32.5
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 1, 0, 0.913725, 1 )
+text = "Work in Progress!"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="gui_input" from="Popup" to="." method="_on_Popup_gui_input"]
+[connection signal="pressed" from="Popup/Close_Button" to="." method="_on_Close_Button_pressed"]

@@ -14,7 +14,7 @@ func set_entity(new_entity):
 	_update_preview()
 	
 func _update_preview(): 
-	if (sprite != null && entity != null):
+	if (sprite != null && entity != null && entity.get("tree_template") != null):
 		sprite.texture = entity.tree_template.preview_texture
 		
 func get_drag_data(_pos):

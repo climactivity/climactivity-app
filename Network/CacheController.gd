@@ -1,7 +1,7 @@
 extends Node
 
 const aspect_resource_type = preload("res://Network/Types/RLocalizedAspectData.gd") 
-const infobyte_resource_type = preload("res://Network/Types/RLocalizedInfobyte.gd") 
+const infobyte_resource_type = preload("res://Network/Types/InfoBytes/RInfoByte.gd")
 const tree_template_resource_type = preload("res://Network/Types/RTreeTemplate.gd") 
 const bp_cache_manifest = preload("res://Network/Types/CacheManifest.gd")
 
@@ -179,3 +179,11 @@ func get_aspect_data_for_sector(sector):
 func get_tree_templates(): 
 	if !is_ready(): return null
 	return entities.get("RTreeTemplate")
+
+func get_aspect_by_name(name):
+	if !is_ready(): return null
+	var aspects = entities.get("RLocalizedAspect")
+	for aspect in aspects:
+		if aspect._id == name:
+			return aspect
+	return null

@@ -2,7 +2,7 @@ tool
 extends Camera
 
 signal camera_moved(position)
-signal camera_roatated(rotation)
+signal camera_rotated(rotation)
 signal consuming_gesture()
 signal release_gesture()
 # """ exports zoom level
@@ -31,7 +31,7 @@ func _zoom(delta: float):
 	#print(new_elevation)
 	global_transform.origin = Vector3(old_translation.x, new_elevation, old_translation.z)
 	rotation.x = deg2rad(_get_rotation_for_y(global_transform.origin.y))
-	emit_signal("camera_roatated", rotation.x)
+	emit_signal("camera_rotated", rotation.x)
 
 func _get_rotation_for_y(y: float): 
 	var deg = Util.map_to_range(get_elevation_percent(),0.0,1.0,min_rotation_deg, max_rotation_deg)

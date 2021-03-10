@@ -14,7 +14,9 @@ var treeScene = preload("res://ForestScene3d/TestTree3d.tscn")
 
 var placeables = {
 	"base_tree": preload("res://ForestScene3d/TreeTemplates/BaseTree.tscn"),
-	"tent_scene": preload("res://ForestScene3d/Tents/Tent.tscn")
+	"tent_scene": preload("res://ForestScene3d/Tents/Tent.tscn"),
+	"bonfire_scene": preload("res://ForestScene3d/Tents/Bonfire.tscn")
+	
 }
 
 var DEBUG_placeables = {
@@ -27,15 +29,15 @@ var DEBUG_placeables = {
 var fixed_obejcts = {
 	Vector2(1,1): {
 		"scene": placeables["tent_scene"],
-		"params": ["ernährung"]
+		"params": ["mobility"]
 	},
 	Vector2(1,0): {
 		"scene": placeables["tent_scene"],
-		"params": ["ernährung"]
+		"params": ["private_engagement"]
 	},
 	Vector2(0,1): {
 		"scene": placeables["tent_scene"],
-		"params": ["ernährung"]
+		"params": ["energy"]
 	},
 	Vector2(-1,-1): {
 		"scene": placeables["tent_scene"],
@@ -43,12 +45,16 @@ var fixed_obejcts = {
 	},
 	Vector2(-1,0): {
 		"scene": placeables["tent_scene"],
-		"params": ["ernährung"]
+		"params": ["public_engagement"]
 	},
 	Vector2(0,-1): {
 		"scene": placeables["tent_scene"],
-		"params": ["ernährung"]
+		"params": ["indirect_emissions"]
 	},
+	Vector2(0.0,0.0): {
+		"scene": placeables["bonfire_scene"],
+		"params": []
+	}
 }
 
 
@@ -82,7 +88,7 @@ func _ready():
 	HexGrid.set_hex_scale(hex_size_override)
 	var centerTile = HexGrid.get_hex_at(Vector2(0.0,0.0))
 	not_placeable_hexes = centerTile.get_all_within2(2)
-	#_tile_area(centerTile, SIZE, treeScene)
+	_tile_area(centerTile, SIZE, preload("res://ForestScene3d/TreeTemplates/TestScenes/TestHex.tscn"))
 	_place_fixed_objects()
 	_place_dynamic_objects()
 	
@@ -101,13 +107,20 @@ func _disable_interaction():
 	can_interact = false
 	
 func _tile_area(tile, limit, tileMeshF): 
+	var holder = $MapHolder
 	var tiles = tile.get_all_within2(limit)
 	for tile in tiles: 
 		var plane_pos = HexGrid.get_hex_center(tile)
 		var hex_mesh = tileMeshF.instance()
-		add_child(hex_mesh)
+		holder.add_child(hex_mesh)
 		hex_mesh.translation.x = plane_pos.x
 		hex_mesh.translation.z = plane_pos.y	
+
+func show_grid(b): 
+	$MapHolder.visible = b
+
+func is_showing_grid():
+	return $MapHolder.visible
 
 func _on_HexGrid_input_event(_camera, event, click_position, _click_normal, _shape_idx):
 	# It's called click_position, but you don't need to click
@@ -116,7 +129,7 @@ func _on_HexGrid_input_event(_camera, event, click_position, _click_normal, _sha
 	plane_coords = Vector2(plane_coords.x, plane_coords.z)
 	if (event is InputEventScreenDrag):
 		if (event.relative.length() > 2): 
-			print(event.relative)
+			#print(event.relative)
 			can_interact = false
 		return
 	if event is InputEventMouseButton:

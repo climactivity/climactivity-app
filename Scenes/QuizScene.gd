@@ -7,14 +7,14 @@ signal prev_question
 signal check_answer
 
 onready var req = $VBoxContainer/HTTPRequest
-onready var header = $VBoxContainer/Header
-onready var kiko_dialog = $"VBoxContainer/Content/VSplitContainer/ContentHolder/FrontMatter/kiko_avatar - placeholder"
-onready var loading_anim = $"VBoxContainer/Content/VSplitContainer/ContentHolder/Loading"
-onready var continue_button = $"VBoxContainer/Content/VSplitContainer/Footer/ContinueButton"
-onready var back_button = $"VBoxContainer/Content/VSplitContainer/Footer/BackButton"
-onready var infobit_holder = $"VBoxContainer/Content/VSplitContainer/ContentHolder/Infobits"
+onready var header = $HeaderContainer/Header
+onready var kiko_dialog = $"ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/ContentHolder/FrontMatter/kiko_avatar - placeholder"
+onready var loading_anim = $"ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/ContentHolder/Loading"
+onready var continue_button = $"ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/Footer/ContinueButton"
+onready var back_button = $"ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/Footer/BackButton"
+onready var infobit_holder = $"ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/ContentHolder/Infobits"
 onready var anim_player = $AnimationPlayer
-onready var questions_holder = $"VBoxContainer/Content/VSplitContainer/ContentHolder/Quiz/Questions"
+onready var questions_holder = $"ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/ContentHolder/Quiz/Questions"
 var has_data = false
 var has_error = false
 var quiz_data
@@ -53,30 +53,31 @@ func _ready():
 func receive_navigation(quiz_data):
 	#req.request(request_str % ["https", "localhost", quiz_data.quiz._id] )
 	header.set_screen_label(quiz_data.quiz.name)
-	Api.getQuizData(req, quiz_data.quiz._id)
+	_on_quiz_data(quiz_data.quiz)
+	#Api.getQuizData(req, quiz_data.quiz._id)
 
 
-func _on_HTTPRequest_request_completed(result, response_code, headers, body):
-	var json = JSON.parse(body.get_string_from_utf8())
-	if(json.error): 
-		has_error = true
-		error = json.error
-		state = InfoByteState.ERROR
-		continue_button.set_disabled(true)
-		Logger.error("Server error: "+ json.error, self)
-	else:
-		has_data = true
-		quiz_data = json.result
-		state = InfoByteState.FRONT
-		continue_button.set_disabled(false)
-		Logger.print("Loaded " + quiz_data.name, self)
-		_on_quiz_data(quiz_data)
+#func _on_HTTPRequest_request_completed(result, response_code, headers, body):
+#	var json = JSON.parse(body.get_string_from_utf8())
+#	if(json.error): 
+#		has_error = true
+#		error = json.error
+#		state = InfoByteState.ERROR
+#		continue_button.set_disabled(true)
+#		Logger.error("Server error: "+ json.error, self)
+#	else:
+#		has_data = true
+#		quiz_data = json.result
+#		state = InfoByteState.FRONT
+#		continue_button.set_disabled(false)
+#		Logger.print("Loaded " + quiz_data.name, self)
+#		_on_quiz_data(quiz_data)
 
 func _on_quiz_data(quiz_data):
 	header.set_screen_label(quiz_data.name)
 	kiko_dialog.set_text(quiz_data.frontmatter)
 	loading_anim.loading_finished()
-	infobit_holder.set_infobits_data(quiz_data.infobits)
+	infobit_holder.set_infobits_data(quiz_data.info_bits)
 	questions_holder.on_data(quiz_data.questions)
 
 func _finished_loading(): 
@@ -133,9 +134,9 @@ func _last_question():
 	Logger.print("Completed " + quiz_data.name, self)
 	var quiz_result = questions_holder.get_quiz_result()
 	print(quiz_result)
-	var quiz_end_comment = $"VBoxContainer/Content/VSplitContainer/ContentHolder/QuizEnd/kiko_avatar - placeholder"
-	var quiz_end_result_text = $"VBoxContainer/Content/VSplitContainer/ContentHolder/QuizEnd/Label"
-	var quiz_end_collect_button = $"VBoxContainer/Content/VSplitContainer/ContentHolder/QuizEnd/CollectRewardButton"
+	var quiz_end_comment = $"ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/VSplitContainer/ContentHolder/QuizEnd/kiko_avatar - placeholder"
+	var quiz_end_result_text = $"ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/VSplitContainer/ContentHolder/QuizEnd/Label"
+	var quiz_end_collect_button = $"ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/VSplitContainer/ContentHolder/QuizEnd/CollectRewardButton"
 	quiz_end_result_text.text = quiz_result.result_string
 	anim_player.play("show_quiz_result")
 	state = InfoByteState.QUIZ_COMPLETE

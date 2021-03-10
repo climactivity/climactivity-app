@@ -3,14 +3,27 @@ extends Control
 
 signal current_transition_finished
 
+enum LifecycleType {
+	NEVER_CLOSE,
+	ALWAYS_REINSTANCE,
+	DEFAULT
+}
+
 # scenes
 export var start_scene = preload("res://ForestScene3d/ForestScene3d.tscn")
+export var _settings_scene = preload("res://Scenes/SettingsScene.tscn")
+export var _notification_scene = preload("res://Scenes/NotificationsScene.tscn")
+export var _social_scene = preload("res://Scenes/SocialScene.tscn")
+export var _stats_scene = preload("res://Scenes/StatsScene.tscn")
+
 var home_scene
 var bigpoint_scene = preload("res://Scenes/BigPointScene.tscn") 
 var sector_data = preload("res://ForestScene3d/Tents/SectorData.gd").new()
 var current_scene
 var last_scene
 var history = []
+var path_history = []
+var current_path = ''
 var scene_map = {
 	"start_scene": start_scene, # forest view
 	"loading_instance": preload("res://SceneManager/Loading.tscn"), # loading screen
@@ -23,6 +36,11 @@ var scene_map = {
 	"big_point_scene_private_engagement": preload("res://Scenes/BigPointScene.tscn"),
 	"big_point_scene_public_engagement": preload("res://Scenes/BigPointScene.tscn"),
 	"water_collection_scene": preload("res://Scenes/WaterCollectionScene.tscn")
+}
+
+var lifecycle_data = {
+	"start_scene": [LifecycleType.NEVER_CLOSE],
+	"quiz_scene": [LifecycleType.ALWAYS_REINSTANCE]
 }
 
 #loading with progress bar
@@ -50,14 +68,21 @@ var is_changing_scene = false
 func _ready():
 	GameManager.scene_manager = self
 	_prepare_bigpoint_scenes()
+	_prepare_fixed_scenes()
 	scene_map.water_collection_scene = preload("res://Scenes/WaterCollectionScene.tscn").instance()
 	_show_A()
 	current_scene = start_scene.instance()
 	home_scene = current_scene
 	A_viewport.add_child(current_scene)
 
+func _prepare_fixed_scenes():
+	scene_map["settings_scene"] = _settings_scene.instance()
+	scene_map["notifications_scene"] =  _notification_scene.instance()
+	scene_map["social_scene"] =  _social_scene.instance()
+	scene_map["stats_scene"] = _stats_scene.instance()
+
 func _prepare_bigpoint_scenes(): 
-	scene_map.big_point_scene_consumption = _prepare_bigpoint_scene("consumption")
+	scene_map.big_point_scene_consumption = _prepare_bigpoint_scene("ernaehrung")
 	scene_map.big_point_scene_energy =  _prepare_bigpoint_scene("energy")
 	scene_map.big_point_scene_mobility = _prepare_bigpoint_scene("mobility")
 	scene_map.big_point_scene_indirect_emissions = _prepare_bigpoint_scene("indirect_emissions")
@@ -69,21 +94,24 @@ func _prepare_bigpoint_scene(sector):
 	new_instance.receive_navigation(sector_data.sector_data[sector])
 	return new_instance
 
-func go_home(): 
-	push_scene(home_scene)
+func go_home(config = TransitionFactory.MoveBack()): 
+	push_scene(home_scene, {}, config)
 
 func push_scene(scene, navigation_data = {}, config = TransitionFactory.MoveOut()) -> void: 
-	if (is_changing_scene): return
+	if (is_changing_scene or _is_current_focus(scene)): return
 	get_tree().get_root().set_disable_input(true)
 	is_changing_scene = true
 	A_viewport.remove_child(current_scene)
 	B_viewport.add_child(current_scene)
 	history.push_front(current_scene)
+	path_history.push_front(current_path)
 	_show_B()
 	if (scene is String): 
 		var new_instance
+		current_path = scene
 		if (scene_map.has(scene)):
 			Logger.print("Rehydrating stored scene: " + scene, self)
+
 			if scene is PackedScene:
 				scene = scene_map.get(scene).instance()
 			else: 
@@ -92,6 +120,7 @@ func push_scene(scene, navigation_data = {}, config = TransitionFactory.MoveOut(
 			Logger.print("Loading new scene: " + scene, self)
 			scene = load(scene).instance()
 	else:
+		current_path = ''
 		Logger.print("Reattaching scene: " + scene.name, self)
 	last_scene = current_scene
 	current_scene = scene
@@ -102,10 +131,31 @@ func push_scene(scene, navigation_data = {}, config = TransitionFactory.MoveOut(
 		scene.receive_navigation(navigation_data)
 	if (scene.has_method("_restored")): 
 		scene._restored()
+	_update_menu_position()
 	animation_player.play(config.transition_name)
+
+func _update_menu_position(): 
+	match current_path:
+		"settings_scene": 
+			GameManager.menu.set_navigation_state( MainMenu.Navigation_states.SETTINGS ,true)
+		"notifications_scene":
+			GameManager.menu.set_navigation_state( MainMenu.Navigation_states.NOTIFICATIONS ,true)
+		"social_scene":
+			GameManager.menu.set_navigation_state( MainMenu.Navigation_states.SOCIAL ,true)
+		"stats_scene":
+			GameManager.menu.set_navigation_state( MainMenu.Navigation_states.STATS ,true)
+		_:
+			return
+	
+func _is_current_focus(scene):
+	if (scene is String): 
+		return scene == current_path
+	else:
+		return scene == current_scene
 
 func pop_scene(config = TransitionFactory.MoveBack()) -> void: 
 	if (is_changing_scene): return
+
 	if (history.empty()):
 		Logger.print("History empty, cannot go back!", self)
 		return
@@ -114,10 +164,14 @@ func pop_scene(config = TransitionFactory.MoveBack()) -> void:
 	B_viewport.add_child(current_scene)
 	_show_B()
 	var scene = history.pop_front()
+	current_path = path_history.pop_front()
+	_update_menu_position()
 	Logger.print("Reattaching scene: " + scene.name, self)
 	A_viewport.add_child(scene)
 	last_scene = current_scene
 	current_scene = scene
+	if (scene.has_method("_restored")): 
+		scene._restored()
 	animation_player.play("Move_Back")
 
 func _show_A():
