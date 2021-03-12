@@ -9,12 +9,13 @@ export (float) var last_seen_xp
 export (float) var last_seen_coins
 export (float) var last_seen_level 
 
-export (Array) var uncollected_rewards = []
-export (Array) var unplaced_items = []
+export (Array) var uncollected_rewards
+export (Array) var unplaced_items
 
 func add_reward(reward):
 	xp += reward.xp
 	coins += reward.coins
+	if uncollected_rewards == null: uncollected_rewards = []
 	uncollected_rewards.push_back(reward)
 
 func update():
@@ -24,6 +25,8 @@ func update():
 
 func add_item(item): 
 	print("added %s" % item.entity_id)
+	assert(item.entity_id != null)
+	if unplaced_items == null: unplaced_items = []
 	unplaced_items.push_back(item)
 	
 func show_progress(): 

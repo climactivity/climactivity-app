@@ -50,7 +50,7 @@ func _drop_data_seedling(_pos, data):
 func _drop_data_cloud(_pos, data):
 	var result = get_parent().ray_cast(_pos)
 	if (result.collider.has_method("water")): 
-		result.collider.place_entity(result.position, data["water"])
+		result.collider.water(result.position, data["water"])
 	Logger.print("Input released", self)
 	mouse_filter = MOUSE_FILTER_IGNORE
 
