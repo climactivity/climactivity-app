@@ -166,6 +166,7 @@ __meta__ = {
 }
 
 [node name="B" type="ViewportContainer" parent="."]
+modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
@@ -184,10 +185,7 @@ audio_listener_enable_2d = true
 [node name="A" type="ViewportContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -1080.0
-margin_top = -1.7818
-margin_right = -1080.0
-margin_bottom = -1.78174
+margin_bottom = 0.00012207
 mouse_filter = 2
 stretch = true
 __meta__ = {

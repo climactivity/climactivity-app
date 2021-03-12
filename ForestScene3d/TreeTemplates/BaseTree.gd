@@ -1,5 +1,6 @@
 extends Spatial
 
+export var offset_scale = .2
 # important globally unique id
 var entity_id
 
@@ -20,6 +21,7 @@ func _ready():
 	update_view()
 	ui_alert.connect("clicked", self, "on_click")
 	collider.connect("getting_watered", self, "add_water")
+	bill_board.translate_object_local(Vector3(instance_resource.center_offset.x, 0.0, instance_resource.center_offset.y) * offset_scale )
 
 func update_view():
 	if( template_resource == null || instance_resource == null || bill_board == null): return

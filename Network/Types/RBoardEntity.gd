@@ -15,12 +15,14 @@ export (float) var water_required
 export (Resource) var tree_template
 export (Vector3) var axial_coords
 export (Vector2) var center_offset # in AABB (1.0,1.0),(-1.0,1-.0), how much the scene is acutally shifted is controlled by presentation layer
+export (String) var aspect_id
 
-func make_new(template, new_entity_id, initial_stage = 0, new_growth_period = 1 * Util.DAY): 
+func make_new(template, new_entity_id, new_aspect_id, initial_stage = 0, new_growth_period = 1 * Util.DAY): 
 	tree_template = template
 	entity_id = new_entity_id
 	stage = initial_stage
 	growth_period = new_growth_period
+	aspect_id = new_aspect_id
 	_calculate_offset()
 
 func last_sync():
