@@ -184,8 +184,11 @@ func get_water_collected():
 	return  water_collected_for
 
 func water_used(aspect):
-	water_collected_for.erase(aspect)
-
+	for tracking_state in water_collected_for:
+		if tracking_state.aspect == aspect._id:
+			water_collected_for.erase(tracking_state)
+			tracking_state.apply_water()
+			
 func water_used_for(entity_id):
 	#_get_tracking_state_for
 	pass
