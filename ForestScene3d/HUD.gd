@@ -15,15 +15,16 @@ func update_hud():
 	
 func can_drop_data(_pos, data):
 	if data.has("entity"):
-		_can_drop_seedling(_pos, data)
+		return _can_drop_seedling(_pos, data)
 	else:
-		_can_drop_cloud(_pos, data)
+		return _can_drop_cloud(_pos, data)
 
 func _can_drop_seedling(_pos, data):
 	var result = get_parent().ray_cast(_pos)
 	var can_drop = result != null && result.has("collider") && result.collider.has_method("place_entity")
 	if (can_drop): 
 		result.collider.can_drop(result.position, data["entity"])
+
 	return can_drop
 	
 func _can_drop_cloud(_pos, data):
