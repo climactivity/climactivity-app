@@ -57,9 +57,15 @@ func set_textures(new_textures):
 	update_view()
 
 func add_water(water): 
-	$AnimationPlayer.play("happy")
+	#$AnimationPlayer.play("happy")
 	#AspectTrackingService.water_used(AspectTrackingService.water_collected_for[0])
 	instance_resource.consume_water(water.current_water_amount)
+	_add_water(2.0)
+	
+func _add_water(timeout): 
+	if (timeout <= 0.0): return
+	$AnimationPlayer.play("happy")
+	$AnimationPlayer.connect("animation_finished", self, "_add_water", [timeout-0.5])
 
 func alert_has_water_avaialble():
 	pass
