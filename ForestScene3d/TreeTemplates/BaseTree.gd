@@ -60,15 +60,14 @@ var getting_watered = false
 
 func add_water(water): 
 	if getting_watered: return
+	print(water)
 	#$AnimationPlayer.play("happy")
 	AspectTrackingService.water_used(instance_resource.aspect_id)
-	instance_resource.consume_water(water.current_water_amount)
 	getting_watered = true
-	_add_water(null,2.0)
+	_add_water(null,instance_resource.current_water/10.0)
 	
 func _add_water( anim ,timeout): 
 	$AnimationPlayer.disconnect("animation_finished", self, "_add_water")
-	print (anim, timeout)
 	if (timeout <= 0.0):
 		getting_watered = false
 		return
@@ -85,7 +84,7 @@ func alert_can_water():
 	bill_board.layout_ui()
 
 func on_click():
-	print("click")
+	pass
 
 func _on_Collider_input_event(camera, event, click_position, click_normal, shape_idx):
 	if event is InputEventMouseButton and event.pressed: 
