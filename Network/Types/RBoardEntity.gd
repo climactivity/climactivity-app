@@ -17,6 +17,8 @@ export (Vector3) var axial_coords
 export (Vector2) var center_offset # in AABB (1.0,1.0),(-1.0,1-.0), how much the scene is acutally shifted is controlled by presentation layer
 export (String) var aspect_id
 
+var current_water = 0.0
+
 func make_new(template, new_entity_id, new_aspect_id, initial_stage = 0, new_growth_period = 1 * Util.DAY): 
 	tree_template = template
 	entity_id = new_entity_id
@@ -37,7 +39,9 @@ func _calculate_offset():
 func consume_water(amount: float):
 	var old_water = water_applied
 	water_applied += amount
+	current_water = amount
 	emit_signal("getting_watered", old_water, water_applied)
+	Logger.print( "Added %2.4f water to %s" % [amount, entity_id], self)
 
 func alert_can_water(): 
 	if node == null: return
