@@ -1,5 +1,6 @@
 extends Spatial
 
+export var offset_scale = .2
 # important globally unique id
 var entity_id
 
@@ -20,6 +21,7 @@ func _ready():
 	update_view()
 	ui_alert.connect("clicked", self, "on_click")
 	collider.connect("getting_watered", self, "add_water")
+	bill_board.translate_object_local(Vector3(instance_resource.center_offset.x, 0.0, instance_resource.center_offset.y) * offset_scale )
 
 func update_view():
 	if( template_resource == null || instance_resource == null || bill_board == null): return
@@ -54,10 +56,25 @@ func set_textures(new_textures):
 	template_resource.texture_data = new_textures
 	update_view()
 
+var getting_watered = false
+
 func add_water(water): 
-	$AnimationPlayer.play("happy")
-	#AspectTrackingService.water_used(AspectTrackingService.water_collected_for[0])
+	if getting_watered: return
+	#$AnimationPlayer.play("happy")
+	AspectTrackingService.water_used(instance_resource.aspect_id)
 	instance_resource.consume_water(water.current_water_amount)
+	getting_watered = true
+	_add_water(null,2.0)
+	
+func _add_water( anim ,timeout): 
+	$AnimationPlayer.disconnect("animation_finished", self, "_add_water")
+	print (anim, timeout)
+	if (timeout <= 0.0):
+		getting_watered = false
+		return
+	timeout -= 0.5
+	$AnimationPlayer.play("happy")
+	$AnimationPlayer.connect("animation_finished", self, "_add_water", [timeout])
 
 func alert_has_water_avaialble():
 	pass

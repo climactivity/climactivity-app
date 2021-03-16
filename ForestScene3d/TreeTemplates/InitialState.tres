@@ -14,3 +14,4 @@ base_water_required = 0.0
 water_required = 0.0
 axial_coords = Vector3( 0, 0, 0 )
 center_offset = Vector2( 0, 0 )
+aspect_id = ""
