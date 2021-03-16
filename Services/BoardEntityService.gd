@@ -27,7 +27,7 @@ func add_entity(template, aspect):
 func _new_board_entity_resource(template, aspect): 
 	var id = Util.uuid_util.v4()
 	var resource = r_bp_tree_instance.new()
-	resource.make_new(template, id )
+	resource.make_new(template, id, aspect )
 	return resource
 
 func add_object():
