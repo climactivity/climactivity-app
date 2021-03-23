@@ -4,7 +4,7 @@ extends Spatial
 
 var sectors = {
 	"ernährung": {
-		"texture": preload("res://Assets/sketch/zelt_neu/zelt_rückseite_rot.png"),
+		"texture": preload("res://Assets/sketch/zelt_neu/zelt_rot_ZU.png"),
 		"target_scene": "res://Scenes/BigPointScene.tscn",
 		"navigation_data": {
 			"sector": "ernaehrung",
@@ -31,7 +31,7 @@ var sectors = {
 		}
 	},
 	"indirect_emissions": {
-		"texture": preload("res://Assets/sketch/zelt_neu/zelt_rückseite_grün.png"),
+		"texture": preload("res://Assets/sketch/zelt_neu/zelt_grün_ZU.png"),
 		"target_scene": "res://Scenes/BigPointScene.tscn",
 		"navigation_data": {
 			"sector": "indirect_emissions",

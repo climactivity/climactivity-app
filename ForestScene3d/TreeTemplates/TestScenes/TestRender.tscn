@@ -1,0 +1,140 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://ForestScene3d/HexMesh.tres" type="CylinderMesh" id=1]
+[ext_resource path="res://Assets/sketch/baum_blüten.png" type="Texture" id=2]
+[ext_resource path="res://ForestScene3d/TreeTemplates/TestScenes/TestRender.gd" type="Script" id=3]
+[ext_resource path="res://ForestScene3d/TreeTemplates/FixedGroundPos.gd" type="Script" id=4]
+[ext_resource path="res://ForestScene3d/TreeTemplates/ContactShadow.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Assets/sketch/baum/baum_erwachsen.png" type="Texture" id=6]
+
+[sub_resource type="ParticlesMaterial" id=2]
+direction = Vector3( 0, 0, -1 )
+spread = 78.56
+flatness = 0.36
+initial_velocity = 15.92
+initial_velocity_random = 0.15
+scale = 0.02
+hue_variation = 0.17
+hue_variation_random = 0.06
+
+[sub_resource type="SpatialMaterial" id=3]
+flags_unshaded = true
+albedo_color = Color( 0.988235, 0.858824, 0.156863, 1 )
+
+[sub_resource type="SphereMesh" id=4]
+material = SubResource( 3 )
+
+[sub_resource type="Animation" id=1]
+resource_name = "grow"
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("Sprite3D:_unit_factor")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 0.85, -0.25, 0, 0.25, 0, 1.049, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite3D2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("Sprite3D:opacity")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.8, 1 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("Sprite3D2:opacity")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( -0.00866477, -0.25, 0, 0.0222269, 0.541601, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0.8, 1 )
+}
+tracks/4/type = "bezier"
+tracks/4/path = NodePath("Sprite3D2:_unit_factor")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"points": PoolRealArray( 0.85, -0.25, 0, 0.25, 0, 1.049, -0.25, 0, 0.25, 0, 1.049, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1, 1.001 )
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Particles:emitting")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[node name="TestRender" type="Spatial"]
+script = ExtResource( 3 )
+texture = ExtResource( 6 )
+sf = 0.85
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+visible = false
+mesh = ExtResource( 1 )
+material/0 = null
+
+[node name="ContactShadow" parent="." instance=ExtResource( 5 )]
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.016, 0 )
+centered = false
+offset = Vector2( -1240, 0 )
+pixel_size = 0.000242303
+billboard = 1
+texture = ExtResource( 6 )
+region_rect = Rect2( 123.448, 115.232, 38.423, 44.862 )
+script = ExtResource( 4 )
+_unit_factor = 0.85
+
+[node name="Sprite3D2" type="Sprite3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.016155, 0 )
+centered = false
+offset = Vector2( -1156.5, 0 )
+opacity = -0.00866477
+pixel_size = 0.000277687
+billboard = 1
+texture = ExtResource( 2 )
+region_rect = Rect2( 123.448, 115.232, 38.423, 44.862 )
+script = ExtResource( 4 )
+_unit_factor = 0.85
+
+[node name="Particles" type="Particles" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.390032, 0.562882, 0 )
+emitting = false
+amount = 1859
+lifetime = 117.7
+explosiveness = 1.0
+visibility_aabb = AABB( -4, -4, -3.88161, 8, 8, 7.76322 )
+process_material = SubResource( 2 )
+draw_pass_1 = SubResource( 4 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/grow = SubResource( 1 )

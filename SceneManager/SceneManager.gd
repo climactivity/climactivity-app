@@ -10,7 +10,7 @@ enum LifecycleType {
 }
 
 # scenes
-export var start_scene = preload("res://ForestScene3d/ForestScene3d.tscn")
+export (PackedScene) var start_scene 
 export var _settings_scene = preload("res://Scenes/SettingsScene.tscn")
 export var _notification_scene = preload("res://Scenes/NotificationsScene.tscn")
 export var _social_scene = preload("res://Scenes/SocialScene.tscn")
