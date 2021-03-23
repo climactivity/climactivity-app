@@ -180,7 +180,7 @@ text = "Aktueller Wert"
 margin_right = 210.0
 margin_bottom = 50.0
 custom_fonts/font = ExtResource( 8 )
-text = "option_value"
+text = "Coins: 0 Xp: 0 Water: 0"
 script = ExtResource( 16 )
 
 [node name="MarginContainer2" type="MarginContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview/CySidePanel/HBoxContainer" index="1"]
