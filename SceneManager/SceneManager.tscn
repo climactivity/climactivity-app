@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://SceneManager/SceneManager.gd" type="Script" id=1]
 [ext_resource path="res://UI/Overlay.tscn" type="PackedScene" id=2]
+[ext_resource path="res://ForestScene3d/ForestScene3d.tscn" type="PackedScene" id=3]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Move_Back"
@@ -164,6 +165,7 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+start_scene = ExtResource( 3 )
 
 [node name="B" type="ViewportContainer" parent="."]
 modulate = Color( 1, 1, 1, 0 )

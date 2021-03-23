@@ -2,9 +2,9 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/busch.png-6b0270de3b19eb64f1b386af9c17f2bc.s3tc.stex"
-path.etc2="res://.import/busch.png-6b0270de3b19eb64f1b386af9c17f2bc.etc2.stex"
-path.etc="res://.import/busch.png-6b0270de3b19eb64f1b386af9c17f2bc.etc.stex"
+path.s3tc="res://.import/spark.png-cdb58eaf9bf233d3915fc45c522cd4b3.s3tc.stex"
+path.etc2="res://.import/spark.png-cdb58eaf9bf233d3915fc45c522cd4b3.etc2.stex"
+path.etc="res://.import/spark.png-cdb58eaf9bf233d3915fc45c522cd4b3.etc.stex"
 metadata={
 "imported_formats": [ "s3tc", "etc2", "etc" ],
 "vram_texture": true
@@ -12,8 +12,8 @@ metadata={
 
 [deps]
 
-source_file="res://Assets/sketch/busch/busch.png"
-dest_files=[ "res://.import/busch.png-6b0270de3b19eb64f1b386af9c17f2bc.s3tc.stex", "res://.import/busch.png-6b0270de3b19eb64f1b386af9c17f2bc.etc2.stex", "res://.import/busch.png-6b0270de3b19eb64f1b386af9c17f2bc.etc.stex" ]
+source_file="res://Assets/sketch/spark.png"
+dest_files=[ "res://.import/spark.png-cdb58eaf9bf233d3915fc45c522cd4b3.s3tc.stex", "res://.import/spark.png-cdb58eaf9bf233d3915fc45c522cd4b3.etc2.stex", "res://.import/spark.png-cdb58eaf9bf233d3915fc45c522cd4b3.etc.stex" ]
 
 [params]
 
