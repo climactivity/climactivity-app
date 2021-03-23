@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://Scenes/SceneBase.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/QuizScene.gd" type="Script" id=2]
@@ -7,8 +7,10 @@
 [ext_resource path="res://UI/Components/SkeletonUI/Loading.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Assets/Icons/Arrow - Right 2.png" type="Texture" id=6]
 [ext_resource path="res://UI/Components/NeoMButton.tscn" type="PackedScene" id=7]
+[ext_resource path="res://UI/Components/Reward.gd" type="Script" id=8]
 [ext_resource path="res://UI/Components/Infobits.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Assets/Theme/Fonts/RobotoSlab-Bold.ttf" type="DynamicFontData" id=10]
+[ext_resource path="res://Scenes/QuizEnd.gd" type="Script" id=11]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.972549, 0.972549, 0.972549, 1 )
@@ -629,9 +631,9 @@ margin_right = 0.0
 margin_bottom = 0.0
 
 [node name="QuizEnd" type="Control" parent="ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/ContentHolder" index="5"]
-visible = false
 margin_right = 1080.0
-margin_bottom = 1165.0
+margin_bottom = 1300.0
+script = ExtResource( 11 )
 
 [node name="kiko_avatar - placeholder" parent="ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/ContentHolder/QuizEnd" index="0" instance=ExtResource( 3 )]
 text = "Frontmatter missing :("
@@ -641,9 +643,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -223.0
+margin_left = -225.245
 margin_top = 94.3341
-margin_right = 223.0
+margin_right = 220.755
 margin_bottom = 199.334
 custom_styles/panel = SubResource( 6 )
 __meta__ = {
@@ -651,13 +653,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label2" type="Label" parent="ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/ContentHolder/QuizEnd/Panel" index="0"]
+[node name="RewardLabel" type="Label" parent="ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/ContentHolder/QuizEnd/Panel" index="0"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_fonts/font = SubResource( 7 )
-text = "Reward Icon"
+text = "Coins: 0 Xp: 0 Water: 0"
 align = 1
 valign = 1
+script = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

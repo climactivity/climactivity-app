@@ -142,6 +142,8 @@ func _last_question():
 	var quiz_end_comment = $"ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/ContentHolder/QuizEnd/kiko_avatar - placeholder"
 	var quiz_end_result_text = $"ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/ContentHolder/QuizEnd/Label"
 	var quiz_end_collect_button = $"ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/ContentHolder/QuizEnd/CollectRewardButton"
+	var quiz_reward_label = $"ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/ContentHolder/QuizEnd/Panel/RewardLabel"
+	quiz_reward_label.set_reward(quiz_data.reward)
 	quiz_end_result_text.text = quiz_result.result_string
 	anim_player.play("show_quiz_result")
 	state = InfoByteState.QUIZ_COMPLETE
