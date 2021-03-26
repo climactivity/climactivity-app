@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://UI/theme/Button_Important.tres" type="StyleBox" id=1]
 [ext_resource path="res://UI/theme/Button_Important_Down.tres" type="StyleBox" id=2]
 [ext_resource path="res://UI/typography/Heading.tres" type="DynamicFont" id=3]
+[ext_resource path="res://UI/Components/TreeDetails.gd" type="Script" id=4]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
@@ -10,6 +11,7 @@
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_styles/panel = SubResource( 1 )
+script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -34,3 +36,4 @@ custom_styles/normal = ExtResource( 1 )
 custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "return_button"
+[connection signal="pressed" from="MarginContainer/Button" to="." method="_on_Button_pressed"]

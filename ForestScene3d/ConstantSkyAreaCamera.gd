@@ -44,7 +44,8 @@ func unfocus_entity():
 	if focused_entity == null:
 		set_process_input(true) 
 	focused_entity = null 
-	target_position = saved_position
+	focused = false
+	current_position = Transform(global_transform) 
 	$"../AnimationPlayer".play("HideEntityDetails")
 
 func _entity_unfocused():
@@ -66,7 +67,7 @@ func _physics_process(delta):
 			t = 0.0
 			_entity_unfocused()
 		else:
-			global_transform = current_position.interpolate_with(target_position, t)
+			global_transform = current_position.interpolate_with(saved_position, t)
 
 func _ready():
 	if is_instance_valid(GameManager):
@@ -126,3 +127,8 @@ func ray_cast(screen_pos):
 	var space_state = get_world().direct_space_state
 	var result = space_state.intersect_ray(from, to)
 	return result
+
+
+func _on_DetailsBG_gui_input(event):
+	if event is InputEventMouseButton and event.pressed:
+		unfocus_entity()
