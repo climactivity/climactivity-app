@@ -33,6 +33,9 @@ func focus_entity(entity):
 		current_position = Transform(global_transform) 
 		target_position = Transform( entity.focus_entity().global_transform )
 		set_process_input(false)
+		if entity.has_method("get_details_widget"):
+			$"HUD/EntityDetails/MarginContainer/PanelContainer/MountPoint".add_child(entity.get_details_widget())
+		$"../AnimationPlayer".play("ShowEntityDetails")
 
 func _entity_focused(): 
 	focused = true
@@ -42,7 +45,12 @@ func unfocus_entity():
 		set_process_input(true) 
 	focused_entity = null 
 	target_position = saved_position
+	$"../AnimationPlayer".play("HideEntityDetails")
 
+func _entity_unfocused():
+	set_process_input(true) 
+	target_position = null
+	Util.clear($"HUD/EntityDetails/MarginContainer/PanelContainer/MountPoint")
 
 func _physics_process(delta):
 	if focused_entity != null and not focused:
@@ -50,6 +58,13 @@ func _physics_process(delta):
 		if t > 1.0: 
 			t = 0.0
 			_entity_focused()
+		else:
+			global_transform = current_position.interpolate_with(target_position, t)
+	elif focused_entity == null and not focused and target_position != null:
+		t += delta
+		if t > 1.0: 
+			t = 0.0
+			_entity_unfocused()
 		else:
 			global_transform = current_position.interpolate_with(target_position, t)
 
