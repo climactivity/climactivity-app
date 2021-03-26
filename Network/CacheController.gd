@@ -187,3 +187,12 @@ func get_aspect_by_name(name):
 		if aspect._id == name:
 			return aspect
 	return null
+
+func _get_infobytes_for_aspect(aspect): 
+	if !is_ready(): return null
+	var infobytes = entities.get("RInfoByte")
+
+	
+func get_infobytes_for_factor(factor, aspect):
+	pass
+	

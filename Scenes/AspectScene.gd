@@ -13,6 +13,7 @@ onready var tracking_level =  $"ContentContainer/Content/VBoxContainer/MarginCon
 onready var go_to_tracking_button = $"ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview/MarginContainer/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer/CenterContainer/MarginContainer/Button"
 onready var tracking_preview = $"ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview"
 onready var tracking_reward = $ "ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview/CySidePanel/HBoxContainer/MarginContainer/VBoxContainer/CurrentTrackingSetting2/OptionRewardLabel"
+onready var factor_holder = $"ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/InfoGraph/VBoxContainer/MarginContainer2/VBoxContainer/CenterContainer/HBoxContainer/MarginContainer/VBoxContainer"
 export (Resource) var aspect_data
 
 #var ready = false
@@ -33,7 +34,7 @@ func receive_navigation(navigation_data):
 
 func _show_data(): 
 	if (aspect_data == null): return
-
+	factor_holder.set_factors(aspect_data.factors, aspect_data)
 	tracking_question.set_text(aspect_data.tracking.question)
 	tracking_options_label.text = tr("current_tracking_level_label")
 	tracking_level.text = tr("current_tracking_level_unset")

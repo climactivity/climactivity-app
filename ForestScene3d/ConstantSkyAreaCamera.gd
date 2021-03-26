@@ -20,6 +20,11 @@ export var max_rotation_deg = -45.0
 export var nw_bound = Vector2(-15.0,-5.0)
 export var se_bound = Vector2(15.0,5.0)
 
+var saved_position 
+
+#func focus_entity(entity):
+#	if (entity.has_method()) 
+
 func _ready():
 	if is_instance_valid(GameManager):
 		GameManager.camera = self

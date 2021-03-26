@@ -11,12 +11,15 @@ export var top_align = 200
 
 export var icon = preload("res://Assets/Icons/AufforstungIcon.png")
 
+export (NodePath) var navigation_dispatcher 
+var _navigation_data
+
 onready var header_bg = $"ContentContainer/Content/HeaderBG"
 onready var header = $"HeaderContainer/Header"
 onready var content_main = $"ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain"
 export var screen_title = "Screen_Title" setget set_screen_title
 var ready = false 
-
+ 
 var gradient
 
 func _ready(): 
@@ -25,6 +28,7 @@ func _ready():
 	header.set_screen_label(screen_title)
 	material = material.duplicate(true)
 	gradient = material.get_shader_param("gradient")
+	dispatch_nav_data()
 func set_accent_color(color): 
 	accent_color = color 
 	if header_bg != null: _set_vars()
@@ -40,3 +44,15 @@ func set_screen_title(label):
 	screen_title = label
 	if header != null: _set_vars()
 
+func receive_navigation(navigation_data): 
+	_navigation_data = navigation_data
+	dispatch_nav_data()
+func dispatch_nav_data():
+	if _navigation_data == null: return
+	if navigation_dispatcher == null: return
+	var dispatcher =  self.get_node(navigation_dispatcher)
+	if dispatcher == null:
+		 return 
+	else:
+		if dispatcher.has_method("receive_navigation"):
+			dispatcher.receive_navigation(_navigation_data)
