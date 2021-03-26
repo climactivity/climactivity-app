@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://ForestScene3d/Interactables/SeedlingBox.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Vertical_Gradient.shader" type="Shader" id=2]
@@ -28,6 +28,8 @@ sun_longitude = 180.0
 background_mode = 2
 background_sky = SubResource( 1 )
 background_energy = 16.0
+
+[sub_resource type="StyleBoxEmpty" id=18]
 
 [sub_resource type="SphereShape" id=3]
 
@@ -107,6 +109,18 @@ tracks/2/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath("Camera/HUD/DetailsBG:mouse_filter")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 2 ]
+}
 
 [sub_resource type="Animation" id=14]
 resource_name = "RESET"
@@ -174,6 +188,18 @@ tracks/2/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Camera/HUD/DetailsBG:mouse_filter")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 2, 0 ]
 }
 
 [sub_resource type="Animation" id=15]
@@ -343,6 +369,15 @@ margin_left = 104.0
 margin_right = 128.0
 margin_bottom = 24.0
 
+[node name="DetailsBG" type="Panel" parent="Camera/HUD"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+custom_styles/panel = SubResource( 18 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="EntityDetails" type="Control" parent="Camera/HUD"]
 visible = false
 modulate = Color( 1, 1, 1, 0 )
@@ -473,5 +508,6 @@ anims/RESET = SubResource( 14 )
 anims/ShowEntityDetails = SubResource( 17 )
 anims/Zoom_To_Clearing = SubResource( 15 )
 [connection signal="toggled" from="Camera/HUD/DebugMenu/VBox/HBoxContainer/CheckBox" to="Camera/HUD/DebugMenu" method="_set_free_placement_mode"]
+[connection signal="gui_input" from="Camera/HUD/DetailsBG" to="Camera" method="_on_DetailsBG_gui_input"]
 [connection signal="input_event" from="ForestFloor/HexGrid" to="ForestFloor/HexGrid" method="_on_HexGrid_input_event"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
