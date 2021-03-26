@@ -81,7 +81,14 @@ anims/RESET = SubResource( 2 )
 anims/happy = SubResource( 3 )
 
 [node name="CameraZoomTarget" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6, 0.538, 7.194 )
+transform = Transform( 1, 0, 0, 0, 0.832061, 0.554685, 0, -0.554685, 0.832061, 0.675, 2.45, 3.363 )
 
 [node name="Camera" type="Camera" parent="CameraZoomTarget"]
+
+[node name="DetailsWidget" type="PanelContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="input_event" from="Collider" to="." method="_on_Collider_input_event"]

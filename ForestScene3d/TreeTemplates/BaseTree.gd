@@ -50,8 +50,14 @@ func set_state(state):
 	entity_id = instance_resource.entity_id
 	update_view()
 
+func focus_entity() -> Spatial:
+	return $CameraZoomTarget as Spatial
 
-	
+func on_touch():
+	print("focus")
+	if is_instance_valid(GameManager) and GameManager.camera != null: 
+		GameManager.camera.focus_entity(self)
+
 func set_textures(new_textures):
 	template_resource.texture_data = new_textures
 	update_view()
@@ -84,9 +90,8 @@ func alert_can_water():
 	ui_alert.visible = true
 	bill_board.layout_ui()
 
-func on_click():
-	pass
+
 
 func _on_Collider_input_event(camera, event, click_position, click_normal, shape_idx):
 	if event is InputEventMouseButton and event.pressed: 
-		on_click()
+		on_touch()
