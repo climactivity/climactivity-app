@@ -79,4 +79,9 @@ transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 1, 0, 0.489229, 0 )
 autoplay = "RESET"
 anims/RESET = SubResource( 2 )
 anims/happy = SubResource( 3 )
+
+[node name="CameraZoomTarget" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6, 0.538, 7.194 )
+
+[node name="Camera" type="Camera" parent="CameraZoomTarget"]
 [connection signal="input_event" from="Collider" to="." method="_on_Collider_input_event"]

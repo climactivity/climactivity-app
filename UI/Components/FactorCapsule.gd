@@ -3,6 +3,9 @@ extends Panel
 
 signal clicked
 
+var factor
+var aspect
+
 const default_texture = preload("res://Assets/TestData/checkered.png")
 
 export var bg_color = Color('#a7a7a7') setget set_bg
@@ -39,6 +42,17 @@ func set_percent(new_percent):
 	_redraw()
 
 
+func set_factor(_factor, _aspect):
+	factor = _factor
+	aspect = _aspect
+	
+	if factor.has("icon"):
+		set_icon(factor.icon)
+	
+	if ProjectSettings.get_setting("debug/settings/game_logic/show_factor_names"):
+		$Label.text = factor.name
+	
+	_redraw()
 
 func _redraw(): 
 	if (panel != null && icon != null):
@@ -51,3 +65,5 @@ func _redraw():
 func _on_Icon_gui_input(event):
 	if event is InputEventMouseButton and event.pressed:
 		emit_signal("clicked")
+		if is_instance_valid(GameManager): 
+			GameManager.scene_manager.push_scene("res://Scenes/GesichtspunktScreen.tscn", {"factor": factor, "aspect": aspect})

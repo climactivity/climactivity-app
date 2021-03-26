@@ -188,6 +188,7 @@ func water_used(aspect):
 		if tracking_state.aspect == aspect._id:
 			water_collected_for.erase(tracking_state)
 			tracking_state.apply_water()
+	emit_signal("tracking_updated")
 	_flush()
 			
 func water_used_for(entity_id):

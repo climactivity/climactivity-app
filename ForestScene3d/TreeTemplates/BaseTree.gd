@@ -70,6 +70,7 @@ func _add_water( anim ,timeout):
 	$AnimationPlayer.disconnect("animation_finished", self, "_add_water")
 	if (timeout <= 0.0):
 		getting_watered = false
+		ui_alert.visible = false
 		return
 	timeout -= 0.5
 	$AnimationPlayer.play("happy")

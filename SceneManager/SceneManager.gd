@@ -118,7 +118,9 @@ func push_scene(scene, navigation_data = {}, config = TransitionFactory.MoveOut(
 				scene = scene_map.get(scene)
 		else:
 			Logger.print("Loading new scene: " + scene, self)
-			scene = load(scene).instance()
+			var _scene = load(scene)
+			scene = _scene.instance()
+
 	else:
 		current_path = ''
 		Logger.print("Reattaching scene: " + scene.name, self)
