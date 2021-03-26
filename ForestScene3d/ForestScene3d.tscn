@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://ForestScene3d/Interactables/SeedlingBox.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Vertical_Gradient.shader" type="Shader" id=2]
@@ -15,7 +15,6 @@
 [ext_resource path="res://UI/xp_bar.png" type="Texture" id=13]
 [ext_resource path="res://ForestScene3d/DebugMenu.gd" type="Script" id=14]
 [ext_resource path="res://UI/theme/TransparentGreen.tres" type="StyleBox" id=15]
-[ext_resource path="res://Assets/baer.png" type="Texture" id=16]
 
 [sub_resource type="ProceduralSky" id=1]
 sky_top_color = Color( 0.105882, 0.231373, 0.301961, 1 )
@@ -69,6 +68,46 @@ gradient = SubResource( 11 )
 shader = ExtResource( 2 )
 shader_param/gradient = SubResource( 12 )
 
+[sub_resource type="Animation" id=16]
+resource_name = "HideEntityDetails"
+length = 0.479
+tracks/0/type = "value"
+tracks/0/path = NodePath("Camera/HUD/EntityDetails:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Camera/HUD/EntityDetails:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 408, 244 ), Vector2( 1000, 244 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Camera/HUD/EntityDetails:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
 [sub_resource type="Animation" id=14]
 resource_name = "RESET"
 length = 0.1
@@ -95,6 +134,46 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Vector3( -39.767, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=17]
+resource_name = "ShowEntityDetails"
+length = 0.479
+tracks/0/type = "value"
+tracks/0/path = NodePath("Camera/HUD/EntityDetails:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Camera/HUD/EntityDetails:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1000, 244 ), Vector2( 408, 244 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Camera/HUD/EntityDetails:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
 [sub_resource type="Animation" id=15]
@@ -264,17 +343,20 @@ margin_left = 104.0
 margin_right = 128.0
 margin_bottom = 24.0
 
-[node name="TreeDetails" type="Control" parent="Camera/HUD"]
-visible = false
+[node name="EntityDetails" type="Control" parent="Camera/HUD"]
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
 margin_left = -672.0
 margin_top = -716.0
+margin_right = 0.00109863
 margin_bottom = 586.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="MarginContainer" type="MarginContainer" parent="Camera/HUD/TreeDetails"]
+[node name="MarginContainer" type="MarginContainer" parent="Camera/HUD/EntityDetails"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 85.0
@@ -282,12 +364,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="PanelContainer" type="PanelContainer" parent="Camera/HUD/TreeDetails/MarginContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="Camera/HUD/EntityDetails/MarginContainer"]
 margin_right = 587.0
 margin_bottom = 1302.0
 custom_styles/panel = ExtResource( 15 )
 
-[node name="MountPoint" type="MarginContainer" parent="Camera/HUD/TreeDetails/MarginContainer/PanelContainer"]
+[node name="MountPoint" type="MarginContainer" parent="Camera/HUD/EntityDetails/MarginContainer/PanelContainer"]
 margin_left = 1.0
 margin_top = 1.0
 margin_right = 586.0
@@ -296,15 +378,6 @@ custom_constants/margin_right = 32
 custom_constants/margin_top = 32
 custom_constants/margin_left = 32
 custom_constants/margin_bottom = 32
-
-[node name="TextureRect" type="TextureRect" parent="Camera/HUD/TreeDetails/MarginContainer/PanelContainer/MountPoint"]
-margin_left = 32.0
-margin_top = 32.0
-margin_right = 553.0
-margin_bottom = 1268.0
-texture = ExtResource( 16 )
-expand = true
-stretch_mode = 6
 
 [node name="PositionProbe" type="KinematicBody" parent="Camera"]
 
@@ -393,7 +466,9 @@ anchor_bottom = 1.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "RESET"
+anims/HideEntityDetails = SubResource( 16 )
 anims/RESET = SubResource( 14 )
+anims/ShowEntityDetails = SubResource( 17 )
 anims/Zoom_To_Clearing = SubResource( 15 )
 [connection signal="toggled" from="Camera/HUD/DebugMenu/VBox/HBoxContainer/CheckBox" to="Camera/HUD/DebugMenu" method="_set_free_placement_mode"]
 [connection signal="input_event" from="ForestFloor/HexGrid" to="ForestFloor/HexGrid" method="_on_HexGrid_input_event"]

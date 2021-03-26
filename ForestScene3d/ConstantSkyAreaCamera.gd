@@ -21,9 +21,37 @@ export var nw_bound = Vector2(-15.0,-5.0)
 export var se_bound = Vector2(15.0,5.0)
 
 var saved_position 
+var current_position
+var target_position
+var focused_entity
+var t = 0.0
+var focused = false
+func focus_entity(entity):
+	if (entity.has_method("focus_entity")): 
+		focused_entity = entity
+		saved_position = Transform(global_transform) 
+		current_position = Transform(global_transform) 
+		target_position = Transform( entity.focus_entity().global_transform )
+		set_process_input(false)
 
-#func focus_entity(entity):
-#	if (entity.has_method()) 
+func _entity_focused(): 
+	focused = true
+	
+func unfocus_entity():
+	if focused_entity == null:
+		set_process_input(true) 
+	focused_entity = null 
+	target_position = saved_position
+
+
+func _physics_process(delta):
+	if focused_entity != null and not focused:
+		t += delta
+		if t > 1.0: 
+			t = 0.0
+			_entity_focused()
+		else:
+			global_transform = current_position.interpolate_with(target_position, t)
 
 func _ready():
 	if is_instance_valid(GameManager):
