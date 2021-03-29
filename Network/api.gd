@@ -110,3 +110,7 @@ func _sync_player_state():
 	return 
 	#getEndpoint("sync-player-state", req, [], false, HTTPClient.METHOD_GET)
 	#PSS.update()
+
+
+func get_infobytes_for_factor(factor, aspect):
+	return cache.get_infobytes_for_factor(factor, aspect)

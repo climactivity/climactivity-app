@@ -29,25 +29,25 @@ background_mode = 2
 background_sky = SubResource( 1 )
 background_energy = 16.0
 
-[sub_resource type="StyleBoxEmpty" id=18]
+[sub_resource type="StyleBoxEmpty" id=3]
 
-[sub_resource type="SphereShape" id=3]
+[sub_resource type="SphereShape" id=4]
 
-[sub_resource type="BoxShape" id=4]
+[sub_resource type="BoxShape" id=5]
 extents = Vector3( 35, 1, 35 )
 
-[sub_resource type="PlaneMesh" id=5]
+[sub_resource type="PlaneMesh" id=6]
 size = Vector2( 70, 70 )
 
-[sub_resource type="SpatialMaterial" id=6]
+[sub_resource type="SpatialMaterial" id=7]
 flags_world_triplanar = true
 
-[sub_resource type="PlaneMesh" id=7]
+[sub_resource type="PlaneMesh" id=8]
 size = Vector2( 300, 300 )
 subdivide_width = 7
 subdivide_depth = 6
 
-[sub_resource type="SpatialMaterial" id=8]
+[sub_resource type="SpatialMaterial" id=9]
 flags_unshaded = true
 flags_world_triplanar = true
 albedo_texture = ExtResource( 12 )
@@ -55,22 +55,22 @@ uv1_scale = Vector3( 0.1, 0.109, 0.1 )
 uv1_offset = Vector3( 0.751, 0, 0 )
 uv1_triplanar = true
 
-[sub_resource type="ViewportTexture" id=9]
+[sub_resource type="ViewportTexture" id=10]
 viewport_path = NodePath("Viewport")
 
-[sub_resource type="World" id=10]
+[sub_resource type="World" id=11]
 
-[sub_resource type="Gradient" id=11]
+[sub_resource type="Gradient" id=12]
 colors = PoolColorArray( 0.015625, 0.377075, 1, 1, 0.628906, 0.765167, 1, 1 )
 
-[sub_resource type="GradientTexture" id=12]
-gradient = SubResource( 11 )
+[sub_resource type="GradientTexture" id=13]
+gradient = SubResource( 12 )
 
-[sub_resource type="ShaderMaterial" id=13]
+[sub_resource type="ShaderMaterial" id=14]
 shader = ExtResource( 2 )
-shader_param/gradient = SubResource( 12 )
+shader_param/gradient = SubResource( 13 )
 
-[sub_resource type="Animation" id=16]
+[sub_resource type="Animation" id=15]
 resource_name = "HideEntityDetails"
 length = 0.479
 tracks/0/type = "value"
@@ -122,8 +122,7 @@ tracks/3/keys = {
 "values": [ 2 ]
 }
 
-[sub_resource type="Animation" id=14]
-resource_name = "RESET"
+[sub_resource type="Animation" id=16]
 length = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("Camera:translation")
@@ -202,8 +201,7 @@ tracks/3/keys = {
 "values": [ 2, 0 ]
 }
 
-[sub_resource type="Animation" id=15]
-resource_name = "Zoom_To_Clearing"
+[sub_resource type="Animation" id=18]
 tracks/0/type = "bezier"
 tracks/0/path = NodePath("Camera:translation:x")
 tracks/0/interp = 1
@@ -373,7 +371,7 @@ margin_bottom = 24.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
-custom_styles/panel = SubResource( 18 )
+custom_styles/panel = SubResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -419,7 +417,7 @@ custom_constants/margin_bottom = 32
 [node name="PositionProbe" type="KinematicBody" parent="Camera"]
 
 [node name="CollisionShape" type="CollisionShape" parent="Camera/PositionProbe"]
-shape = SubResource( 3 )
+shape = SubResource( 4 )
 
 [node name="ForestFloor" type="Spatial" parent="."]
 
@@ -437,17 +435,17 @@ visible = false
 
 [node name="CollisionShape" type="CollisionShape" parent="ForestFloor/HexGrid"]
 transform = Transform( 1, 0, 0, 0, 0.2, 0, 0, 0, 1, 0, 0, -0.0223198 )
-shape = SubResource( 4 )
+shape = SubResource( 5 )
 
 [node name="CSGMesh2" type="CSGMesh" parent="ForestFloor/HexGrid/CollisionShape"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0223198 )
 visible = false
-mesh = SubResource( 5 )
-material = SubResource( 6 )
+mesh = SubResource( 6 )
+material = SubResource( 7 )
 
 [node name="CSGMesh" type="CSGMesh" parent="ForestFloor"]
-mesh = SubResource( 7 )
-material = SubResource( 8 )
+mesh = SubResource( 8 )
+material = SubResource( 9 )
 
 [node name="Background" type="Spatial" parent="."]
 script = ExtResource( 6 )
@@ -458,7 +456,7 @@ transform = Transform( 20, 0, 0, 0, 1.158, 5.30055e-08, 0, -6.13803e-08, 1, 0, 3
 billboard = 2
 transparent = false
 shaded = true
-texture = SubResource( 9 )
+texture = SubResource( 10 )
 
 [node name="Mountain" type="Sprite3D" parent="Background" groups=[
 "Parallax",
@@ -491,22 +489,22 @@ texture = ExtResource( 4 )
 
 [node name="Viewport" type="Viewport" parent="."]
 size = Vector2( 2048, 2048 )
-world = SubResource( 10 )
+world = SubResource( 11 )
 hdr = false
 usage = 0
 render_target_v_flip = true
 
 [node name="ColorRect" type="ColorRect" parent="Viewport"]
-material = SubResource( 13 )
+material = SubResource( 14 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "RESET"
-anims/HideEntityDetails = SubResource( 16 )
-anims/RESET = SubResource( 14 )
+anims/HideEntityDetails = SubResource( 15 )
+anims/RESET = SubResource( 16 )
 anims/ShowEntityDetails = SubResource( 17 )
-anims/Zoom_To_Clearing = SubResource( 15 )
+anims/Zoom_To_Clearing = SubResource( 18 )
 [connection signal="toggled" from="Camera/HUD/DebugMenu/VBox/HBoxContainer/CheckBox" to="Camera/HUD/DebugMenu" method="_set_free_placement_mode"]
 [connection signal="gui_input" from="Camera/HUD/DetailsBG" to="Camera" method="_on_DetailsBG_gui_input"]
 [connection signal="input_event" from="ForestFloor/HexGrid" to="ForestFloor/HexGrid" method="_on_HexGrid_input_event"]

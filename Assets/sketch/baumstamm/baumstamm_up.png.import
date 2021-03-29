@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/baumstamm02.png-c51f275ff13be409c8440d31e2321b6d.stex"
+path="res://.import/baumstamm_up.png-e38903c307126aee120cc5b09b5498d4.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/sketch/baumstamm02.png"
-dest_files=[ "res://.import/baumstamm02.png-c51f275ff13be409c8440d31e2321b6d.stex" ]
+source_file="res://Assets/sketch/baumstamm/baumstamm_up.png"
+dest_files=[ "res://.import/baumstamm_up.png-e38903c307126aee120cc5b09b5498d4.stex" ]
 
 [params]
 

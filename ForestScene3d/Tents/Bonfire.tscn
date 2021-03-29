@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://ForestScene3d/TreeTemplates/ContactShadow.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/sketch/lagerfeuer/lagerfeuer_holz.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://ForestScene3d/Tents/Bonfire.gd" type="Script" id=4]
 [ext_resource path="res://Assets/sketch/lagerfeuer/lagerfeuer_boden.png" type="Texture" id=5]
 [ext_resource path="res://Assets/sketch/lagerfeuer/lagerfeuer_flamme_gross.png" type="Texture" id=6]
+[ext_resource path="res://ForestScene3d/Tents/LogScene.tscn" type="PackedScene" id=7]
 
 [sub_resource type="QuadMesh" id=1]
 
@@ -131,3 +132,25 @@ material/0 = SubResource( 3 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "flicker"
 anims/flicker = SubResource( 4 )
+
+[node name="Spatial" parent="." instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.910245, 0, -0.295859 )
+
+[node name="Spatial2" parent="." instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.925239, 0, -0.415874 )
+facing = 1
+
+[node name="Spatial5" parent="." instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.884693, 0, 0.712207 )
+
+[node name="Spatial6" parent="." instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.824605, 0, 0.696424 )
+facing = 1
+
+[node name="Spatial3" parent="." instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0227464, 4.76837e-07, -0.868712 )
+facing = 3
+
+[node name="Spatial4" parent="." instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0168432, 0, 0.987334 )
+facing = 3

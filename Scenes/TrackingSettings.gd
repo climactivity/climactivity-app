@@ -53,6 +53,8 @@ func _show_data():
 	for child in options_holder.get_children(): 
 		options_holder.remove_child(child)
 	#show options
+	if tracking_data.options == null: 
+		return
 	for option_data in tracking_data.options: 
 		var new_option_instance = bp_option.instance()
 		new_option_instance.set_checkbox_controller_path(options_holder.get_path())
