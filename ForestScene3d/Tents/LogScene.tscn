@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://Assets/sketch/baumstamm.png" type="Texture" id=1]
+[ext_resource path="res://Assets/sketch/baumstamm/baumstamm.png" type="Texture" id=1]
 [ext_resource path="res://ForestScene3d/Tents/LogScene.gd" type="Script" id=2]
 [ext_resource path="res://ForestScene3d/TreeTemplates/ContactShadow.tscn" type="PackedScene" id=3]
 

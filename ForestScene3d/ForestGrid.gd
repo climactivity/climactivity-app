@@ -57,30 +57,30 @@ var fixed_obejcts = {
 		"scene": placeables["bonfire_scene"],
 		"params": []
 	},
-	Vector2(1,1): {
-		"scene": placeables["log"],
-		"params": [Vector2(1,1)]
-	},
-	Vector2(1,0): {
-		"scene": placeables["log"],
-		"params": [Vector2(1,0)]
-	},
-	Vector2(0,1): {
-		"scene": placeables["log"],
-		"params": [Vector2(0,1)]
-	},
-	Vector2(-1,-1): {
-		"scene": placeables["log"],
-		"params": [Vector2(-1,-1)]
-	},
-	Vector2(-1,0): {
-		"scene": placeables["log"],
-		"params": [Vector2(-1,0)]
-	},
-	Vector2(0,-1): {
-		"scene": placeables["log"],
-		"params": [Vector2(0,-1)]
-	},
+#	Vector2(1,1): {
+#		"scene": placeables["log"],
+#		"params": [Vector2(1,1)]
+#	},
+#	Vector2(1,0): {
+#		"scene": placeables["log"],
+#		"params": [Vector2(1,0)]
+#	},
+#	Vector2(0,1): {
+#		"scene": placeables["log"],
+#		"params": [Vector2(0,1)]
+#	},
+#	Vector2(-1,-1): {
+#		"scene": placeables["log"],
+#		"params": [Vector2(-1,-1)]
+#	},
+#	Vector2(-1,0): {
+#		"scene": placeables["log"],
+#		"params": [Vector2(-1,0)]
+#	},
+#	Vector2(0,-1): {
+#		"scene": placeables["log"],
+#		"params": [Vector2(0,-1)]
+#	},
 
 	
 }
