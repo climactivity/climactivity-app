@@ -13,3 +13,5 @@ func set_texture(new_tex):
 func _set_texture():
 	texture = tex
 	
+func show_pot(b):
+	$Pot.visible = b

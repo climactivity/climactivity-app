@@ -1,4 +1,4 @@
-"""
+	"""
 Based on https://github.com/romlok/godot-gdhexgrid
 """
 extends Resource
