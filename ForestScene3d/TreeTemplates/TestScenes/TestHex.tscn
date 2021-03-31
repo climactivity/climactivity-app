@@ -1,28 +1,149 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://ForestScene3d/HexMesh.tres" type="CylinderMesh" id=1]
-[ext_resource path="res://Assets/tree_gradient.png" type="Texture" id=2]
-[ext_resource path="res://ForestScene3d/TreeTemplates/FixedGroundPos.gd" type="Script" id=4]
-[ext_resource path="res://ForestScene3d/TreeTemplates/ContactShadow.tscn" type="PackedScene" id=5]
+[ext_resource path="res://ForestScene3d/TreeTemplates/TestScenes/TestHex.gd" type="Script" id=2]
 
-[node name="TreeRoot" type="Spatial"]
+[sub_resource type="SpatialMaterial" id=1]
+flags_transparent = true
+flags_unshaded = true
+flags_do_not_receive_shadows = true
+albedo_color = Color( 0.647059, 0.776471, 0.290196, 0.501961 )
 
-[node name="MeshInstance" type="MeshInstance" parent="."]
+[sub_resource type="CylinderMesh" id=2]
+material = SubResource( 1 )
+top_radius = 0.9
+height = 0.005
+radial_segments = 6
+rings = 1
+
+[sub_resource type="Animation" id=3]
+resource_name = "Hide"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Grid:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Preview:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "RESET"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Grid:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Preview:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "ShowGrid"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Preview:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Grid:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "ShowPreview"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Preview:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Grid:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[node name="Hex" type="Spatial"]
+script = ExtResource( 2 )
+
+[node name="Preview" type="MeshInstance" parent="."]
+visible = false
 mesh = ExtResource( 1 )
 material/0 = null
 
-[node name="ContactShadow" parent="." instance=ExtResource( 5 )]
-
-[node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.016155, 0 )
+[node name="Grid" type="MeshInstance" parent="."]
 visible = false
-centered = false
-offset = Vector2( -1123.5, 0 )
-pixel_size = 0.000267591
-billboard = 1
-texture = ExtResource( 2 )
-region_rect = Rect2( 123.448, 115.232, 38.423, 44.862 )
-script = ExtResource( 4 )
-_unit_factor = 0.753
+mesh = SubResource( 2 )
+material/0 = null
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "RESET"
+anims/Hide = SubResource( 3 )
+anims/RESET = SubResource( 6 )
+anims/ShowGrid = SubResource( 4 )
+anims/ShowPreview = SubResource( 5 )

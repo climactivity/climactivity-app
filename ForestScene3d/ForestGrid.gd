@@ -144,11 +144,15 @@ func _tile_area(tile, limit, tileMeshF):
 		var hex_mesh = tileMeshF.instance()
 		holder.add_child(hex_mesh)
 		hex_mesh.translation.x = plane_pos.x
-		hex_mesh.translation.z = plane_pos.y	
+		hex_mesh.translation.z = plane_pos.y
+		hex_mesh.plane_coordinates = plane_pos
+		print(tile.axial_coords)
+		hex_mesh.name = str(tile.axial_coords.x) +','+ str(tile.axial_coords.y)
 
 func show_grid(b): 
 	$MapHolder.visible = b
-
+	$MapHolder.show_sector("ernaehrung")
+	
 func is_showing_grid():
 	return $MapHolder.visible
 

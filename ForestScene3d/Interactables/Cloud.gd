@@ -90,7 +90,7 @@ func _on_Cloud_gui_input(event):
 				Logger.print("Moving to WaterCollectionScene", self)
 				GameManager.scene_manager.push_scene("water_collection_scene")
 			else: 
-				if cloud_state == Cloud_States.READY: start_drag() 
+				if cloud_state == Cloud_States.READY: return
 				
 
 func start_drag(): 
