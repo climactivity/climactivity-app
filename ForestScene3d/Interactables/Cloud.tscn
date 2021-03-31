@@ -36,16 +36,17 @@ scale = Vector2( 0.244428, 0.243653 )
 texture = ExtResource( 3 )
 script = ExtResource( 7 )
 
+[node name="Particles2D" type="Particles2D" parent="CloudSprite"]
+position = Vector2( -12.9886, 294.804 )
+scale = Vector2( 4.09118, 4.10419 )
+emitting = false
+amount = 25
+process_material = ExtResource( 8 )
+texture = ExtResource( 6 )
+
 [node name="Droplet" type="Sprite" parent="CloudSprite"]
 visible = false
 position = Vector2( 2.03407, 1.31012 )
 scale = Vector2( 2.65486, 2.65486 )
-texture = ExtResource( 6 )
-
-[node name="Particles2D" type="Particles2D" parent="."]
-position = Vector2( -3.1748, 72.2268 )
-emitting = false
-amount = 25
-process_material = ExtResource( 8 )
 texture = ExtResource( 6 )
 [connection signal="gui_input" from="." to="." method="_on_Cloud_gui_input"]

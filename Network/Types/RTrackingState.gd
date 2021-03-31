@@ -90,6 +90,7 @@ func apply_water():
 	var current_water = get_water_available()
 	if current_entity.has_method("consume_water"): 
 		current_entity.consume_water(current_water)
+		_empty_water_tank()
 	
 func show_waiting_for_water(): 
 	if current_entity == null: return 

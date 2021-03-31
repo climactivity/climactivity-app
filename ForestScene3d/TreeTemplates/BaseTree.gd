@@ -94,7 +94,7 @@ func alert_can_water():
 	Logger.print("show can be watered alert", self)
 	ui_alert.visible = true
 	bill_board.layout_ui()
-
+	$Collider/CollisionShape.disabled = false
 
 
 func _on_Collider_input_event(camera, event, click_position, click_normal, shape_idx):

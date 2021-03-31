@@ -29,10 +29,11 @@ func _can_drop_seedling(_pos, data):
 func _can_drop_cloud(_pos, data):
 	var result = get_parent().ray_cast(_pos)
 	var can_drop = result != null && result.has("collider") && result.collider.has_method("water")
-	if result.has("collider"): print(_pos, result.collider.name, can_drop)
+#	if result.has("collider"): print(_pos, result.collider.name, can_drop)
 	if (can_drop): 
 		result.collider.can_drop(result.position, data["water"])
-	return can_drop
+		return result.collider
+	return false
 
 func drop_data(_pos, data): 
 	if data.has("entity"):
