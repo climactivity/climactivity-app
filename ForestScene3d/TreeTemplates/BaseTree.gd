@@ -23,6 +23,8 @@ func _ready():
 	ui_alert.connect("clicked", self, "on_click")
 	collider.connect("getting_watered", self, "add_water")
 	bill_board.translate_object_local(Vector3(instance_resource.center_offset.x, 0.0, instance_resource.center_offset.y) * offset_scale )
+	if instance_resource.just_planted:
+		_planted()
 	if _details_widget != null: details_widget = _details_widget.instance()
 	
 func get_details_widget(): 
@@ -87,6 +89,30 @@ func _add_water( anim ,timeout):
 	$AnimationPlayer.play("happy")
 	$AnimationPlayer.connect("animation_finished", self, "_add_water", [timeout])
 
+func _after_water():
+	_flush()
+	if instance_resource.water_applied > instance_resource.water_required: 
+		instance_resource.water_applied -= instance_resource.water_applied
+		instance_resource.stage += 1 
+		_update_stage()
+
+func _update_stage(): 
+	update_view()
+	_flush()
+	
+func DEBUG_add_stage(): 
+	instance_resource.stage += 1 
+	_update_stage()
+	
+func DEBUG_sub_stage(): 
+	instance_resource.stage -= 1 
+	_update_stage()
+
+	
+func _planted(): 
+	$AnimationPlayer.play("planted")
+	instance_resource.just_planted = false
+	_flush()
 func alert_has_water_avaialble():
 	pass
 
@@ -100,3 +126,7 @@ func alert_can_water():
 func _on_Collider_input_event(camera, event, click_position, click_normal, shape_idx):
 	if event is InputEventMouseButton and event.pressed: 
 		on_touch()
+
+func _flush(): 
+	if PSS != null:
+		PSS.flush()

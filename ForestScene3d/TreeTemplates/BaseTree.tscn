@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://ForestScene3d/HexMesh.tres" type="CylinderMesh" id=1]
 [ext_resource path="res://ForestScene3d/TreeTemplates/Textures/Baum_Entwurf_01.png" type="Texture" id=2]
@@ -45,6 +45,22 @@ tracks/0/keys = {
 "values": [ Vector3( 1, 1, 1 ), Vector3( 1.2, 1.2, 1.2 ), Vector3( 1, 1, 1 ) ]
 }
 
+[sub_resource type="Animation" id=4]
+resource_name = "planted"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite3D:_unit_factor")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.4 ]
+}
+
 [node name="TreeRoot" type="Spatial"]
 script = ExtResource( 3 )
 _details_widget = ExtResource( 8 )
@@ -81,6 +97,7 @@ transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 1, 0, 0.489229, 0 )
 autoplay = "RESET"
 anims/RESET = SubResource( 2 )
 anims/happy = SubResource( 3 )
+anims/planted = SubResource( 4 )
 
 [node name="CameraZoomTarget" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 0.832061, 0.554685, 0, -0.554685, 0.832061, 0.675, 2.45, 3.363 )
