@@ -26,8 +26,10 @@ func _ready():
 	if instance_resource.just_planted:
 		_planted()
 	if _details_widget != null: details_widget = _details_widget.instance()
+	details_widget.set_entity(self)
 	
 func get_details_widget(): 
+	details_widget.show_entity()
 	return details_widget
 
 func update_view():
@@ -84,6 +86,7 @@ func _add_water( anim ,timeout):
 	if (timeout <= 0.0):
 		getting_watered = false
 		ui_alert.visible = false
+		_after_water()
 		return
 	timeout -= 0.5
 	$AnimationPlayer.play("happy")
@@ -97,6 +100,7 @@ func _after_water():
 		_update_stage()
 
 func _update_stage(): 
+	Logger.print("Current stage %s" % str(instance_resource.stage), self)
 	update_view()
 	_flush()
 	

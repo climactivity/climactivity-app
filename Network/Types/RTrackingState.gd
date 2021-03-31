@@ -64,6 +64,10 @@ func get_water_available():
 	if water_tank == null: return 0.0
 	return water_tank.get_water_amount()
 
+func add_starter_water():
+	if water_tank == null: return 0.0
+	return water_tank.add_water(50.0)
+
 func get_water_percent_available(): 
 	return water_tank.get_water_amount() / water_tank.max_value
 

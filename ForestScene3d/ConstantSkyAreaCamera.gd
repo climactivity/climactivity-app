@@ -36,6 +36,7 @@ func focus_entity(entity):
 		if entity.has_method("get_details_widget"):
 			$"HUD/EntityDetails/MarginContainer/PanelContainer/MountPoint".add_child(entity.get_details_widget())
 		$"../AnimationPlayer".play("ShowEntityDetails")
+		
 
 func _entity_focused(): 
 	focused = true
