@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=41 format=2]
 
 [ext_resource path="res://ForestScene3d/Interactables/SeedlingBox.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Vertical_Gradient.shader" type="Shader" id=2]
@@ -16,6 +16,11 @@
 [ext_resource path="res://ForestScene3d/DebugMenu.gd" type="Script" id=14]
 [ext_resource path="res://UI/theme/TransparentGreen.tres" type="StyleBox" id=15]
 [ext_resource path="res://ForestScene3d/MapHolder.gd" type="Script" id=16]
+[ext_resource path="res://UI/typography/Content_Regular.tres" type="DynamicFont" id=17]
+[ext_resource path="res://UI/typography/Button_Label.tres" type="DynamicFont" id=18]
+[ext_resource path="res://UI/theme/Button_Important.tres" type="StyleBox" id=19]
+[ext_resource path="res://UI/theme/Button_Important_Down.tres" type="StyleBox" id=20]
+[ext_resource path="res://ForestScene3d/PlaceHereDialog.gd" type="Script" id=21]
 
 [sub_resource type="ProceduralSky" id=1]
 sky_top_color = Color( 0.105882, 0.231373, 0.301961, 1 )
@@ -31,6 +36,19 @@ background_sky = SubResource( 1 )
 background_energy = 16.0
 
 [sub_resource type="StyleBoxEmpty" id=3]
+
+[sub_resource type="StyleBoxFlat" id=19]
+bg_color = Color( 0.482353, 0.776471, 0.109804, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.584314, 0.756863, 0.117647, 1 )
+corner_radius_top_left = 64
+corner_radius_top_right = 64
+corner_radius_bottom_right = 64
+corner_radius_bottom_left = 64
+corner_detail = 20
 
 [sub_resource type="SphereShape" id=4]
 
@@ -278,6 +296,12 @@ transform = Transform( 1, 0, 0, 0, 0.768652, 0.639667, 0, -0.639667, 0.768652, -
 current = true
 size = 44.73
 script = ExtResource( 5 )
+zoom_level = 1.0
+zoom_factor = 1.0
+pan_factor = 4.0
+min_elevation = 5.0
+max_elevation = 30
+min_rotation_deg = -27.5
 max_rotation_deg = -49.406
 nw_bound = Vector2( -20, 0 )
 se_bound = Vector2( 20, 38 )
@@ -300,13 +324,11 @@ margin_bottom = 88.9949
 
 [node name="SeedlingBox" parent="Camera/HUD" instance=ExtResource( 1 )]
 anchor_left = 0.5
-anchor_top = 0.0
 anchor_right = 0.5
-anchor_bottom = 0.0
 margin_left = -92.0
 margin_top = 103.0
 margin_right = 92.0
-margin_bottom = 391.0
+margin_bottom = 226.68
 
 [node name="Cloud" parent="Camera/HUD" instance=ExtResource( 10 )]
 visible = false
@@ -416,6 +438,91 @@ custom_constants/margin_top = 32
 custom_constants/margin_left = 32
 custom_constants/margin_bottom = 32
 
+[node name="PlaceHereDialog" type="Control" parent="Camera/HUD"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.083
+anchor_right = 0.502
+anchor_bottom = 0.098
+margin_left = -457.0
+margin_top = -127.36
+margin_right = 461.84
+margin_bottom = 177.84
+script = ExtResource( 21 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PanelContainer" type="PanelContainer" parent="Camera/HUD/PlaceHereDialog"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = SubResource( 19 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="Camera/HUD/PlaceHereDialog/PanelContainer"]
+margin_left = 1.0
+margin_top = 1.0
+margin_right = 920.0
+margin_bottom = 333.0
+custom_constants/margin_right = 40
+custom_constants/margin_left = 40
+custom_constants/margin_bottom = 115
+
+[node name="Label" type="Label" parent="Camera/HUD/PlaceHereDialog/PanelContainer/MarginContainer"]
+margin_left = 40.0
+margin_top = 83.0
+margin_right = 879.0
+margin_bottom = 133.0
+custom_fonts/font = ExtResource( 17 )
+text = "Möchtest du deinen Setzling hier platzieren?"
+align = 1
+
+[node name="PlantButton" type="Button" parent="Camera/HUD/PlaceHereDialog"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -325.646
+margin_top = 49.8912
+margin_right = -80.6464
+margin_bottom = 107.891
+custom_styles/hover = ExtResource( 19 )
+custom_styles/pressed = ExtResource( 20 )
+custom_styles/focus = ExtResource( 19 )
+custom_styles/disabled = ExtResource( 19 )
+custom_styles/normal = ExtResource( 19 )
+custom_fonts/font = ExtResource( 18 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 0.321569, 0.321569, 0.321569, 1 )
+text = "Hier pflanzen"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Abbrechen" type="Button" parent="Camera/HUD/PlaceHereDialog"]
+anchor_top = 0.507545
+anchor_bottom = 0.507545
+margin_left = 92.2548
+margin_top = 49.8912
+margin_right = 337.255
+margin_bottom = 107.891
+custom_styles/hover = ExtResource( 19 )
+custom_styles/pressed = ExtResource( 20 )
+custom_styles/focus = ExtResource( 19 )
+custom_styles/disabled = ExtResource( 19 )
+custom_styles/normal = ExtResource( 19 )
+custom_fonts/font = ExtResource( 18 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 0.321569, 0.321569, 0.321569, 1 )
+text = "Abbrechen"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="PositionProbe" type="KinematicBody" parent="Camera"]
 
 [node name="CollisionShape" type="CollisionShape" parent="Camera/PositionProbe"]
@@ -429,6 +536,7 @@ SIZE = 9
 hex_size_override = Vector2( 2, 2 )
 
 [node name="MapHolder" type="Spatial" parent="ForestFloor/HexGrid"]
+visible = false
 script = ExtResource( 16 )
 
 [node name="Cursor" parent="ForestFloor/HexGrid" instance=ExtResource( 8 )]
@@ -507,7 +615,12 @@ anims/HideEntityDetails = SubResource( 15 )
 anims/RESET = SubResource( 16 )
 anims/ShowEntityDetails = SubResource( 17 )
 anims/Zoom_To_Clearing = SubResource( 18 )
+[connection signal="cancle" from="Camera/HUD/SeedlingBox" to="Camera/HUD/PlaceHereDialog" method="_on_SeedlingBox_cancle"]
+[connection signal="placed" from="Camera/HUD/SeedlingBox" to="Camera/HUD/PlaceHereDialog" method="_on_SeedlingBox_placed"]
+[connection signal="trying_to_place" from="Camera/HUD/SeedlingBox" to="Camera/HUD/PlaceHereDialog" method="_on_SeedlingBox_trying_to_place"]
 [connection signal="toggled" from="Camera/HUD/DebugMenu/VBox/HBoxContainer/CheckBox" to="Camera/HUD/DebugMenu" method="_set_free_placement_mode"]
 [connection signal="gui_input" from="Camera/HUD/DetailsBG" to="Camera" method="_on_DetailsBG_gui_input"]
+[connection signal="pressed" from="Camera/HUD/PlaceHereDialog/PlantButton" to="Camera/HUD/SeedlingBox" method="_on_PlantButton_pressed"]
+[connection signal="pressed" from="Camera/HUD/PlaceHereDialog/Abbrechen" to="Camera/HUD/SeedlingBox" method="_on_Abbrechen_pressed"]
 [connection signal="input_event" from="ForestFloor/HexGrid" to="ForestFloor/HexGrid" method="_on_HexGrid_input_event"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

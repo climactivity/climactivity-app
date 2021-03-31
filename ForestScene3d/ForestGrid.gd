@@ -1,4 +1,4 @@
-tool 
+#tool 
 extends Spatial
 
 signal placed_entity
@@ -150,6 +150,7 @@ func _tile_area(tile, limit, tileMeshF):
 		hex_mesh.name = str(tile.axial_coords.x) +','+ str(tile.axial_coords.y)
 
 func show_grid(b): 
+	print(b)
 	$MapHolder.visible = b
 	$MapHolder.show_sector("ernaehrung")
 	
@@ -213,7 +214,9 @@ func place_object(position, template_name):
 		var new_object = TreeTemplateFactory.make_new(template_name)
 		_place_object_at(selected_hex.axial_coords, new_object, true)
 
-func place_entity(position, entity): 
+func place_entity(position, entity):
+	if position is Vector2:
+		position = get_node("../../Camera").ray_cast(position).position  
 	var plane_coords = self.transform.affine_inverse() * position
 	plane_coords = Vector2(plane_coords.x, plane_coords.z)
 	var selected_hex = HexGrid.get_hex_at(plane_coords)
@@ -229,18 +232,32 @@ func can_place(hex, instance):
 	if x in range(-SIZE, SIZE+1) && y in range(max(-SIZE, -SIZE + x), min(SIZE, SIZE + x) + 1):
 		if !(abs(x) >= MIN_RING || abs(y) >= MIN_RING): 
 			#print("can't place at: ", x,", ",y, "; ", "Blocked by min dist from center")
+			last_hex = null
 			return false
 		if (placed_objects.has(hex.axial_coords)):
 			print("can't place at: ", x,", ",y, "; ", "Blocked by placed object")
+			last_hex = null
 			return false
 		#print("can place at: ", x,", ",y)
 		return true
 		
-
-		
+var last_hex = null
 func can_drop(pos, action): 
 	var plane_coords = _3d_to_plane_coords(pos)
-	can_place(_plane_to_hex(plane_coords), action)
+	var current_hex = _plane_to_hex(plane_coords)
+	if last_hex != null and current_hex.axial_coords != last_hex.axial_coords:
+		$MapHolder.grid(last_hex.axial_coords)
+	if can_place(current_hex, action):
+#		if !is_showing_grid(): 
+#			show_grid(true)
+		$MapHolder.highlight(current_hex.axial_coords)
+		last_hex = current_hex
+		return true
+	else:
+#		if is_showing_grid(): 
+#			show_grid(false)
+		return false
+		
 
 func _plane_to_hex(pos):
 	return HexGrid.get_hex_at(pos)

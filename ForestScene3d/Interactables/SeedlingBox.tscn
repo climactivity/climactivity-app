@@ -34,6 +34,7 @@ __meta__ = {
 [node name="Seedling" parent="." instance=ExtResource( 3 )]
 position = Vector2( 93.6567, 72.4475 )
 scale = Vector2( 0.164756, 0.164756 )
+texture = ExtResource( 1 )
 tex = ExtResource( 1 )
 
 [node name="Tween" type="Tween" parent="."]

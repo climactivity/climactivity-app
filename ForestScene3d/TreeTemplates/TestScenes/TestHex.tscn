@@ -44,7 +44,7 @@ tracks/1/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=4]
 resource_name = "RESET"
 length = 0.1
 tracks/0/type = "value"
@@ -72,8 +72,7 @@ tracks/1/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=4]
-resource_name = "ShowGrid"
+[sub_resource type="Animation" id=5]
 length = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("Preview:visible")
@@ -100,8 +99,7 @@ tracks/1/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=5]
-resource_name = "ShowPreview"
+[sub_resource type="Animation" id=6]
 length = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("Preview:visible")
@@ -144,6 +142,6 @@ material/0 = null
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "RESET"
 anims/Hide = SubResource( 3 )
-anims/RESET = SubResource( 6 )
-anims/ShowGrid = SubResource( 4 )
-anims/ShowPreview = SubResource( 5 )
+anims/RESET = SubResource( 4 )
+anims/ShowGrid = SubResource( 5 )
+anims/ShowPreview = SubResource( 6 )
