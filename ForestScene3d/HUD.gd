@@ -14,6 +14,7 @@ func update_hud():
 	_show_cloud()
 	
 func can_drop_data(_pos, data):
+	if !data: return
 	if data.has("entity"):
 		return _can_drop_seedling(_pos, data)
 	else:

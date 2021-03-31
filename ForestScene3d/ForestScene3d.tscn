@@ -323,6 +323,7 @@ margin_right = 120.779
 margin_bottom = 88.9949
 
 [node name="SeedlingBox" parent="Camera/HUD" instance=ExtResource( 1 )]
+visible = false
 anchor_left = 0.5
 anchor_right = 0.5
 margin_left = -92.0

@@ -70,18 +70,18 @@ func update_water_available():
 
 var prewiew = preload("res://ForestScene3d/Interactables/Wolke_preview.tscn")
 
-func get_drag_data(_pos):
-	if !has_water: return false
-	var preview = prewiew.instance()
-	#preview.texture = sprite.texture
-	set_drag_preview(preview)
-	emit_signal("dragging", self)
-	return {
-		"action": "water",
-		"water": {
-			"current_water_amount": 0.0,
-		}
-	}
+#func get_drag_data(_pos):
+#	if !has_water: return false
+#	var preview = prewiew.instance()
+#	#preview.texture = sprite.texture
+#	#set_drag_preview(preview)
+#	emit_signal("dragging", self)
+#	return {
+#		"action": "water",
+#		"water": {
+#			"current_water_amount": 0.0,
+#		}
+#	}
 
 func _on_Cloud_gui_input(event):
 	if event is InputEventScreenTouch:
