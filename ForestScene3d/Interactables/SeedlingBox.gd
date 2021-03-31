@@ -46,11 +46,14 @@ func reset():
 
 func _reset_done(): 
 	seedling.show_pot(true)
-
+	if hud != null and hud.has_method("_enable_input"):
+			hud._enable_input()
 func place_entity(): 
 	emit_signal("dragging", false)
 	trying_to_place = false
 	emit_signal("placed", last_pos, entity)
+	if hud != null and hud.has_method("_enable_input"):
+		hud._enable_input()
 
 func dropped_entity():
 	emit_signal("dragging", false)

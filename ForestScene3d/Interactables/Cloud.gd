@@ -138,7 +138,6 @@ func _watering(other):
 	print( start_position,", initial: " , initial_position,  ", other: ", other.get_global_transform().origin, ", unprojected: ",target_position, ", fixed:", _target_position)
 	var duration = .5
 	$Tween.interpolate_property($CloudSprite, "position", start_position, _target_position, duration,Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-
 	$Tween.interpolate_callback(self, duration, "_watering_progress")
 	$Tween.start()
 

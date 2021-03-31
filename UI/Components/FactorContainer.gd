@@ -14,6 +14,8 @@ func set_factors(new_factors, new_aspect):
 func _update_display():
 
 	Util.clear(self) 
+	if factors == null: 
+		return
 	for factor in factors: 
 		var factor_capsule = s_capsule.instance()
 		add_child(factor_capsule)
