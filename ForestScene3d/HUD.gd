@@ -24,12 +24,12 @@ func _can_drop_seedling(_pos, data):
 	var can_drop = result != null && result.has("collider") && result.collider.has_method("place_entity")
 	if (can_drop): 
 		result.collider.can_drop(result.position, data["entity"])
-
 	return can_drop
 	
 func _can_drop_cloud(_pos, data):
 	var result = get_parent().ray_cast(_pos)
 	var can_drop = result != null && result.has("collider") && result.collider.has_method("water")
+	if result.has("collider"): print(_pos, result.collider.name, can_drop)
 	if (can_drop): 
 		result.collider.can_drop(result.position, data["water"])
 	return can_drop
@@ -51,12 +51,15 @@ func _drop_data_cloud(_pos, data):
 	var result = get_parent().ray_cast(_pos)
 	if (result.collider.has_method("water")): 
 		result.collider.water(result.position, data["water"])
-	Logger.print("Input released", self)
-	mouse_filter = MOUSE_FILTER_IGNORE
+	_enable_input()
 
 func _disable_input(_any):
 	Logger.print("Input captured", self)
 	mouse_filter = MOUSE_FILTER_STOP
+
+func _enable_input(): 
+	Logger.print("Input released", self)
+	mouse_filter = MOUSE_FILTER_IGNORE
 
 func _show_seedling_box(): 
 	if BoardEntityService.has_placeable_entity(): 
