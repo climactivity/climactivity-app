@@ -24,6 +24,7 @@
 [ext_resource path="res://Assets/sketch/baum/baum_jung.png" type="Texture" id=22]
 [ext_resource path="res://Assets/sketch/baum/baum_jung01.png" type="Texture" id=23]
 [ext_resource path="res://ForestScene3d/plop.gd" type="Script" id=24]
+[ext_resource path="res://ForestScene3d/PM_RainDrops.tres" type="Material" id=25]
 
 [sub_resource type="ProceduralSky" id=1]
 sky_top_color = Color( 0.105882, 0.231373, 0.301961, 1 )
@@ -37,18 +38,6 @@ sun_longitude = 180.0
 background_mode = 2
 background_sky = SubResource( 1 )
 background_energy = 16.0
-
-[sub_resource type="ParticlesMaterial" id=19]
-emission_shape = 2
-emission_box_extents = Vector3( 78.123, 1, 1 )
-flag_disable_z = true
-direction = Vector3( 0, 1, 0 )
-spread = 0.0
-gravity = Vector3( 0, 98, 0 )
-initial_velocity = 212.84
-orbit_velocity = 0.0
-orbit_velocity_random = 0.0
-scale = 0.1
 
 [sub_resource type="SphereShape" id=3]
 
@@ -89,7 +78,7 @@ gradient = SubResource( 11 )
 shader = ExtResource( 2 )
 shader_param/gradient = SubResource( 12 )
 
-[sub_resource type="Animation" id=16]
+[sub_resource type="Animation" id=14]
 resource_name = "Cloud_Drag"
 length = 1.809
 tracks/0/type = "bezier"
@@ -125,8 +114,7 @@ tracks/2/keys = {
 "values": [ false, true, false ]
 }
 
-[sub_resource type="Animation" id=14]
-resource_name = "RESET"
+[sub_resource type="Animation" id=15]
 length = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("Camera:translation")
@@ -173,7 +161,7 @@ tracks/3/keys = {
 "times": PoolRealArray( 0 )
 }
 
-[sub_resource type="Animation" id=17]
+[sub_resource type="Animation" id=16]
 resource_name = "Tree_Anim"
 tracks/0/type = "bezier"
 tracks/0/path = NodePath("Camera/HUD/TextureRect:rect_position:x")
@@ -210,7 +198,7 @@ tracks/2/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=18]
+[sub_resource type="Animation" id=17]
 resource_name = "Zoom_Out"
 length = 3.0
 tracks/0/type = "value"
@@ -290,8 +278,7 @@ tracks/5/keys = {
 "values": [ Vector3( -2.447, 0.578, -5.221 ), Vector3( -3.144, 0.578, -5.221 ) ]
 }
 
-[sub_resource type="Animation" id=15]
-resource_name = "Zoom_To_Clearing"
+[sub_resource type="Animation" id=18]
 tracks/0/type = "bezier"
 tracks/0/path = NodePath("Camera:translation:x")
 tracks/0/interp = 1
@@ -453,7 +440,7 @@ position = Vector2( 261.626, 642.172 )
 emitting = false
 amount = 5
 lifetime = 0.4
-process_material = SubResource( 19 )
+process_material = ExtResource( 25 )
 texture = ExtResource( 15 )
 
 [node name="TextureRect" type="TextureRect" parent="Camera/HUD"]
@@ -803,11 +790,11 @@ anchor_bottom = 1.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "RESET"
-anims/Cloud_Drag = SubResource( 16 )
-anims/RESET = SubResource( 14 )
-anims/Tree_Anim = SubResource( 17 )
-anims/Zoom_Out = SubResource( 18 )
-anims/Zoom_To_Clearing = SubResource( 15 )
+anims/Cloud_Drag = SubResource( 14 )
+anims/RESET = SubResource( 15 )
+anims/Tree_Anim = SubResource( 16 )
+anims/Zoom_Out = SubResource( 17 )
+anims/Zoom_To_Clearing = SubResource( 18 )
 [connection signal="toggled" from="Camera/HUD/DebugMenu/VBox/HBoxContainer/CheckBox" to="Camera/HUD/DebugMenu" method="_set_free_placement_mode"]
 [connection signal="input_event" from="ForestFloor/HexGrid" to="ForestFloor/HexGrid" method="_on_HexGrid_input_event"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
