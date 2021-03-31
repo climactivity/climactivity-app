@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://ForestScene3d/Interactables/SeedlingBox.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Vertical_Gradient.shader" type="Shader" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://UI/xp_bar.png" type="Texture" id=13]
 [ext_resource path="res://ForestScene3d/DebugMenu.gd" type="Script" id=14]
 [ext_resource path="res://UI/theme/TransparentGreen.tres" type="StyleBox" id=15]
+[ext_resource path="res://ForestScene3d/MapHolder.gd" type="Script" id=16]
 
 [sub_resource type="ProceduralSky" id=1]
 sky_top_color = Color( 0.105882, 0.231373, 0.301961, 1 )
@@ -298,13 +299,14 @@ margin_right = 120.779
 margin_bottom = 88.9949
 
 [node name="SeedlingBox" parent="Camera/HUD" instance=ExtResource( 1 )]
-visible = false
 anchor_left = 0.5
+anchor_top = 0.0
 anchor_right = 0.5
-margin_left = 6.35681
-margin_top = 237.32
-margin_right = 6.35681
-margin_bottom = 237.32
+anchor_bottom = 0.0
+margin_left = -92.0
+margin_top = 103.0
+margin_right = 92.0
+margin_bottom = 391.0
 
 [node name="Cloud" parent="Camera/HUD" instance=ExtResource( 10 )]
 visible = false
@@ -427,7 +429,7 @@ SIZE = 9
 hex_size_override = Vector2( 2, 2 )
 
 [node name="MapHolder" type="Spatial" parent="ForestFloor/HexGrid"]
-visible = false
+script = ExtResource( 16 )
 
 [node name="Cursor" parent="ForestFloor/HexGrid" instance=ExtResource( 8 )]
 transform = Transform( 0.25, 0, 0.433013, 0, 0.5, 0, -0.433013, 0, 0.25, 3.87529, 0.238, 0 )
