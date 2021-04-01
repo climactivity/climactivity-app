@@ -2,13 +2,13 @@ tool
 extends Sprite3D
 
 export (float) var _unit_factor = 1.0 setget set_unit_factor
-
+var _unit_factor_base
 onready var ui_panel = $SpatialUIPanel
 var ui_initial_transform 
 var tex_size = Vector2(0.0,0)
 
 func _ready():
-
+	_unit_factor_base = _unit_factor
 	_offset_and_scale()
 	if ui_panel == null: return
 	ui_initial_transform = ui_panel.transform
@@ -22,10 +22,11 @@ func set_texture(new_texture):
 
 func set_unit_factor(new_factor):
 	_unit_factor = new_factor
+	_unit_factor_base = _unit_factor
 	_offset_and_scale()
 	
 func apply_scaling_factor(factor):
-	_unit_factor *= factor
+	_unit_factor = factor * _unit_factor_base
 	_offset_and_scale()
 	
 func _offset_and_scale():

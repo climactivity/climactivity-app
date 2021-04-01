@@ -1,5 +1,8 @@
 extends PanelContainer
 
+signal DEBUG_add_stage()
+signal DEBUG_sub_stage()
+
 var focused_entity setget set_entity
 var ready = false
 func _on_Button_pressed():
@@ -23,3 +26,12 @@ func show_entity():
 		values_holder.get_node("value_stage").text = str(instance_resource.stage)
 		values_holder.get_node("value_water_applied").text = str(instance_resource.water_applied)
 		values_holder.get_node("value_water_required").text = str(instance_resource.water_required)
+
+
+
+func _on_sub_stage_pressed():
+	emit_signal("DEBUG_sub_stage")
+
+
+func _on_add_stage_pressed():
+	emit_signal("DEBUG_add_stage")
