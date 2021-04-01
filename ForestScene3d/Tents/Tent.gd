@@ -4,7 +4,7 @@ extends Spatial
 
 var sectors = {
 	"ernährung": {
-		"texture": preload("res://ForestScene3d/Tents/g1474.png"),
+		"texture": preload("res://Assets/sketch/zelt_neu/zelt_rot_ZU.png"),
 		"target_scene": "res://Scenes/BigPointScene.tscn",
 		"navigation_data": {
 			"sector": "ernaehrung",
@@ -13,7 +13,7 @@ var sectors = {
 		}
 	},
 	"energy": {
-		"texture": preload("res://Assets/sketch/zelt_rückseite_blau.png"),
+		"texture": preload("res://Assets/sketch/zelt_neu/zelt_lila_ZU.png"),
 		"target_scene": "res://Scenes/BigPointScene.tscn",
 		"navigation_data": {
 			"sector": "energy",
@@ -22,7 +22,7 @@ var sectors = {
 		}
 	},
 	"mobility": {
-		"texture": preload("res://Assets/sketch/zelt_gelb.png"),
+		"texture": preload("res://Assets/sketch/zelt_neu/zelt_dunkelblau_ZU.png"),
 		"target_scene": "res://Scenes/BigPointScene.tscn",
 		"navigation_data": {
 			"sector": "mobility",
@@ -31,7 +31,7 @@ var sectors = {
 		}
 	},
 	"indirect_emissions": {
-		"texture": preload("res://Assets/sketch/zelt_rückseite_rot.png"),
+		"texture": preload("res://Assets/sketch/zelt_neu/zelt_grün_ZU.png"),
 		"target_scene": "res://Scenes/BigPointScene.tscn",
 		"navigation_data": {
 			"sector": "indirect_emissions",
@@ -40,7 +40,7 @@ var sectors = {
 		}
 	},
 	"private_engagement": {
-		"texture": preload("res://Assets/sketch/zelt_front_rot.png"),
+		"texture": preload("res://Assets/sketch/zelt_neu/zelt_hellblau_ZU.png"),
 		"target_scene": "res://Scenes/BigPointScene.tscn",
 		"navigation_data": {
 			"sector": "private_engagement",
@@ -49,7 +49,7 @@ var sectors = {
 		}
 	},
 	"public_engagement": {
-		"texture": preload("res://Assets/sketch/zelt_front_rot.png"),
+		"texture": preload("res://Assets/sketch/zelt_neu/zelt_gelb_ZU.png"),
 		"target_scene": "res://Scenes/BigPointScene.tscn",
 		"navigation_data": {
 			"sector": "public_engagement",

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/baumstamm.png-325bd77c8ac1a90d2f4099e534a15bba.stex"
+path="res://.import/dachs.png-83c0911e6f285f19d0873cf6db26acb8.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/sketch/baumstamm.png"
-dest_files=[ "res://.import/baumstamm.png-325bd77c8ac1a90d2f4099e534a15bba.stex" ]
+source_file="res://Assets/sketch/Tiere/dachs.png"
+dest_files=[ "res://.import/dachs.png-83c0911e6f285f19d0873cf6db26acb8.stex" ]
 
 [params]
 

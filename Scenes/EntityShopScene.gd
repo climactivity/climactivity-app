@@ -14,6 +14,7 @@ onready var coin_displayer = $"ContentContainer/Content/VBoxContainer/MarginCont
 func _ready(): 
 	ready = true
 	if aspect_data != null: show_data()
+	$HeaderContainer/Header.update_header("Shop")
 
 func receive_navigation(navigation_data): 
 	if navigation_data.has("aspect"):

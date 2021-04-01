@@ -35,6 +35,146 @@ var available_textures = {
 			4: 1.0
 		}
 	},
+	'birke': {
+		0: preload("res://Assets/sketch/baum/Birke/Birke_01.png"),
+		1: preload("res://Assets/sketch/baum/Birke/Birke_02.png"),
+		2: preload("res://Assets/sketch/baum/Birke/Birke_03.png"),
+		3: preload("res://Assets/sketch/baum/Birke/Birke_04.png"),
+		4: preload("res://Assets/sketch/baum/Birke/Birke_05.png"),
+		'sizes': {
+			0: 0.4,
+			1: 0.6,
+			2: 0.8,
+			3: 1.0,
+			4: 1.0
+		}
+	},
+	'esche': {
+		0: preload("res://Assets/sketch/baum/Esche/esche_01.png"),
+		1: preload("res://Assets/sketch/baum/Esche/esche_02.png"),
+		2: preload("res://Assets/sketch/baum/Esche/esche_03.png"),
+		3: preload("res://Assets/sketch/baum/Esche/esche_04.png"),
+		4: preload("res://Assets/sketch/baum/Esche/esche_05.png"),
+		'sizes': {
+			0: 0.4,
+			1: 0.6,
+			2: 0.8,
+			3: 1.0,
+			4: 1.0
+		}
+	},
+	'fichte': {
+		0: preload("res://Assets/sketch/baum/Fichte/Fichte_01.png"),
+		1: preload("res://Assets/sketch/baum/Fichte/Fichte_02.png"),
+		2: preload("res://Assets/sketch/baum/Fichte/Fichte_03.png"),
+		3: preload("res://Assets/sketch/baum/Fichte/Fichte_04.png"),
+		4: preload("res://Assets/sketch/baum/Fichte/Fichte_05.png"),
+		'sizes': {
+			0: 0.4,
+			1: 0.6,
+			2: 0.8,
+			3: 1.0,
+			4: 1.0
+		}
+	},
+	'kastanie': {
+		0: preload("res://Assets/sketch/baum/Kastanie/kastanie_01.png"),
+		1: preload("res://Assets/sketch/baum/Kastanie/kastanie_02.png"),
+		2: preload("res://Assets/sketch/baum/Kastanie/kastanie_03.png"),
+		3: preload("res://Assets/sketch/baum/Kastanie/kastanie_04.png"),
+		4: preload("res://Assets/sketch/baum/Kastanie/kastanie_05.png"),
+		'sizes': {
+			0: 0.4,
+			1: 0.6,
+			2: 0.8,
+			3: 1.0,
+			4: 1.0
+		}
+	},
+	'pappel': {
+		0: preload("res://Assets/sketch/baum/Pappel/Pappel_01.png"),
+		1: preload("res://Assets/sketch/baum/Pappel/Pappel_02.png"),
+		2: preload("res://Assets/sketch/baum/Pappel/Pappel_03.png"),
+		3: preload("res://Assets/sketch/baum/Pappel/Pappel_04.png"),
+		4: preload("res://Assets/sketch/baum/Pappel/Pappel_05.png"),
+		'sizes': {
+			0: 0.4,
+			1: 0.6,
+			2: 0.8,
+			3: 1.0,
+			4: 1.0
+		}
+	},
+	'tanne': {
+		0: preload("res://Assets/sketch/baum/Tanne/tanne_01.png"),
+		1: preload("res://Assets/sketch/baum/Tanne/tanne_02.png"),
+		2: preload("res://Assets/sketch/baum/Tanne/tanne_03.png"),
+		3: preload("res://Assets/sketch/baum/Tanne/tanne_04.png"),
+		4: preload("res://Assets/sketch/baum/Tanne/tanne_05.png"),
+		'sizes': {
+			0: 0.4,
+			1: 0.6,
+			2: 0.8,
+			3: 1.0,
+			4: 1.0
+		}
+	},
+	'weide': {
+		0: preload("res://Assets/sketch/baum/Weide/Weide_01.png"),
+		1: preload("res://Assets/sketch/baum/Weide/Weide_02.png"),
+		2: preload("res://Assets/sketch/baum/Weide/Weide_03.png"),
+		3: preload("res://Assets/sketch/baum/Weide/Weide_04.png"),
+		4: preload("res://Assets/sketch/baum/Weide/Weide_05.png"),
+		'sizes': {
+			0: 0.4,
+			1: 0.6,
+			2: 0.8,
+			3: 1.0,
+			4: 1.0
+		}
+	},
+	'busch': {
+		0: preload("res://Assets/sketch/busch/busch_setzling.png"),
+		1: preload("res://Assets/sketch/busch/busch_jung01.png"),
+		2: preload("res://Assets/sketch/busch/busch_jung02.png"),
+		3: preload("res://Assets/sketch/busch/busch.png"),
+		4: preload("res://Assets/sketch/busch/busch_berries.png"),
+		'sizes': {
+			0: 0.4,
+			1: 0.6,
+			2: 0.8,
+			3: 1.0,
+			4: 1.0
+		}
+	},
+	'heckenrose': {
+		0: preload("res://Assets/sketch/busch/busch_setzling.png"),
+		1: preload("res://Assets/sketch/busch/Heckenrose/Heckenrose_02.png"),
+		2: preload("res://Assets/sketch/busch/Heckenrose/Heckenrose_03.png"),
+		3: preload("res://Assets/sketch/busch/Heckenrose/Heckenrose_04.png"),
+		4: preload("res://Assets/sketch/busch/Heckenrose/Heckenrose_05.png"),
+		'sizes': {
+			0: 0.4,
+			1: 0.6,
+			2: 0.8,
+			3: 1.0,
+			4: 1.0
+		}
+	},
+	'wacholder': {
+		0: preload("res://Assets/sketch/busch/busch_setzling.png"),
+		1: preload("res://Assets/sketch/busch/Wacholder/Wacholder_02.png"),
+		2: preload("res://Assets/sketch/busch/Wacholder/Wacholder_03.png"),
+		3: preload("res://Assets/sketch/busch/Wacholder/Wacholder_04.png"),
+		4: preload("res://Assets/sketch/busch/Wacholder/Wacholder_05.png"),
+		'sizes': {
+			0: 0.4,
+			1: 0.6,
+			2: 0.8,
+			3: 1.0,
+			4: 1.0
+		}
+	},
 }
 
 var _example_template = {

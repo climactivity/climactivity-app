@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=41 format=2]
 
 [ext_resource path="res://ForestScene3d/Interactables/SeedlingBox.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Vertical_Gradient.shader" type="Shader" id=2]
@@ -14,6 +14,13 @@
 [ext_resource path="res://Assets/sketch/floortex_TILED.png" type="Texture" id=12]
 [ext_resource path="res://UI/xp_bar.png" type="Texture" id=13]
 [ext_resource path="res://ForestScene3d/DebugMenu.gd" type="Script" id=14]
+[ext_resource path="res://UI/theme/TransparentGreen.tres" type="StyleBox" id=15]
+[ext_resource path="res://ForestScene3d/MapHolder.gd" type="Script" id=16]
+[ext_resource path="res://UI/typography/Content_Regular.tres" type="DynamicFont" id=17]
+[ext_resource path="res://UI/typography/Button_Label.tres" type="DynamicFont" id=18]
+[ext_resource path="res://UI/theme/Button_Important.tres" type="StyleBox" id=19]
+[ext_resource path="res://UI/theme/Button_Important_Down.tres" type="StyleBox" id=20]
+[ext_resource path="res://ForestScene3d/PlaceHereDialog.gd" type="Script" id=21]
 
 [sub_resource type="ProceduralSky" id=1]
 sky_top_color = Color( 0.105882, 0.231373, 0.301961, 1 )
@@ -28,23 +35,38 @@ background_mode = 2
 background_sky = SubResource( 1 )
 background_energy = 16.0
 
-[sub_resource type="SphereShape" id=3]
+[sub_resource type="StyleBoxEmpty" id=3]
 
-[sub_resource type="BoxShape" id=4]
+[sub_resource type="StyleBoxFlat" id=19]
+bg_color = Color( 0.482353, 0.776471, 0.109804, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.584314, 0.756863, 0.117647, 1 )
+corner_radius_top_left = 64
+corner_radius_top_right = 64
+corner_radius_bottom_right = 64
+corner_radius_bottom_left = 64
+corner_detail = 20
+
+[sub_resource type="SphereShape" id=4]
+
+[sub_resource type="BoxShape" id=5]
 extents = Vector3( 35, 1, 35 )
 
-[sub_resource type="PlaneMesh" id=5]
+[sub_resource type="PlaneMesh" id=6]
 size = Vector2( 70, 70 )
 
-[sub_resource type="SpatialMaterial" id=6]
+[sub_resource type="SpatialMaterial" id=7]
 flags_world_triplanar = true
 
-[sub_resource type="PlaneMesh" id=7]
+[sub_resource type="PlaneMesh" id=8]
 size = Vector2( 300, 300 )
 subdivide_width = 7
 subdivide_depth = 6
 
-[sub_resource type="SpatialMaterial" id=8]
+[sub_resource type="SpatialMaterial" id=9]
 flags_unshaded = true
 flags_world_triplanar = true
 albedo_texture = ExtResource( 12 )
@@ -52,23 +74,74 @@ uv1_scale = Vector3( 0.1, 0.109, 0.1 )
 uv1_offset = Vector3( 0.751, 0, 0 )
 uv1_triplanar = true
 
-[sub_resource type="ViewportTexture" id=9]
+[sub_resource type="ViewportTexture" id=10]
 viewport_path = NodePath("Viewport")
 
-[sub_resource type="World" id=10]
+[sub_resource type="World" id=11]
 
-[sub_resource type="Gradient" id=11]
+[sub_resource type="Gradient" id=12]
 colors = PoolColorArray( 0.015625, 0.377075, 1, 1, 0.628906, 0.765167, 1, 1 )
 
-[sub_resource type="GradientTexture" id=12]
-gradient = SubResource( 11 )
+[sub_resource type="GradientTexture" id=13]
+gradient = SubResource( 12 )
 
-[sub_resource type="ShaderMaterial" id=13]
+[sub_resource type="ShaderMaterial" id=14]
 shader = ExtResource( 2 )
-shader_param/gradient = SubResource( 12 )
+shader_param/gradient = SubResource( 13 )
 
-[sub_resource type="Animation" id=14]
-resource_name = "RESET"
+[sub_resource type="Animation" id=15]
+resource_name = "HideEntityDetails"
+length = 0.479
+tracks/0/type = "value"
+tracks/0/path = NodePath("Camera/HUD/EntityDetails:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Camera/HUD/EntityDetails:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 408, 244 ), Vector2( 1000, 244 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Camera/HUD/EntityDetails:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Camera/HUD/DetailsBG:mouse_filter")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 2 ]
+}
+
+[sub_resource type="Animation" id=16]
 length = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("Camera:translation")
@@ -95,8 +168,59 @@ tracks/1/keys = {
 "values": [ Vector3( -39.767, 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=15]
-resource_name = "Zoom_To_Clearing"
+[sub_resource type="Animation" id=17]
+resource_name = "ShowEntityDetails"
+length = 0.479
+tracks/0/type = "value"
+tracks/0/path = NodePath("Camera/HUD/EntityDetails:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Camera/HUD/EntityDetails:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1000, 244 ), Vector2( 408, 244 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Camera/HUD/EntityDetails:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Camera/HUD/DetailsBG:mouse_filter")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 2, 0 ]
+}
+
+[sub_resource type="Animation" id=18]
 tracks/0/type = "bezier"
 tracks/0/path = NodePath("Camera:translation:x")
 tracks/0/interp = 1
@@ -196,10 +320,10 @@ margin_bottom = 88.9949
 visible = false
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = 6.35681
-margin_top = 237.32
-margin_right = 6.35681
-margin_bottom = 237.32
+margin_left = -92.0
+margin_top = 103.0
+margin_right = 92.0
+margin_bottom = 226.68
 
 [node name="Cloud" parent="Camera/HUD" instance=ExtResource( 10 )]
 visible = false
@@ -262,10 +386,142 @@ margin_left = 104.0
 margin_right = 128.0
 margin_bottom = 24.0
 
+[node name="DetailsBG" type="Panel" parent="Camera/HUD"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+custom_styles/panel = SubResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EntityDetails" type="Control" parent="Camera/HUD"]
+visible = false
+modulate = Color( 1, 1, 1, 0 )
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -79.9999
+margin_top = -716.0
+margin_right = 592.001
+margin_bottom = 586.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="Camera/HUD/EntityDetails"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 85.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PanelContainer" type="PanelContainer" parent="Camera/HUD/EntityDetails/MarginContainer"]
+margin_right = 587.0
+margin_bottom = 1302.0
+custom_styles/panel = ExtResource( 15 )
+
+[node name="MountPoint" type="MarginContainer" parent="Camera/HUD/EntityDetails/MarginContainer/PanelContainer"]
+margin_left = 1.0
+margin_top = 1.0
+margin_right = 586.0
+margin_bottom = 1301.0
+custom_constants/margin_right = 32
+custom_constants/margin_top = 32
+custom_constants/margin_left = 32
+custom_constants/margin_bottom = 32
+
+[node name="PlaceHereDialog" type="Control" parent="Camera/HUD"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.083
+anchor_right = 0.502
+anchor_bottom = 0.098
+margin_left = -457.0
+margin_top = -127.36
+margin_right = 461.84
+margin_bottom = 177.84
+script = ExtResource( 21 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PanelContainer" type="PanelContainer" parent="Camera/HUD/PlaceHereDialog"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = SubResource( 19 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="Camera/HUD/PlaceHereDialog/PanelContainer"]
+margin_left = 1.0
+margin_top = 1.0
+margin_right = 920.0
+margin_bottom = 333.0
+custom_constants/margin_right = 40
+custom_constants/margin_left = 40
+custom_constants/margin_bottom = 115
+
+[node name="Label" type="Label" parent="Camera/HUD/PlaceHereDialog/PanelContainer/MarginContainer"]
+margin_left = 40.0
+margin_top = 83.0
+margin_right = 879.0
+margin_bottom = 133.0
+custom_fonts/font = ExtResource( 17 )
+text = "Möchtest du deinen Setzling hier platzieren?"
+align = 1
+
+[node name="PlantButton" type="Button" parent="Camera/HUD/PlaceHereDialog"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -325.646
+margin_top = 49.8912
+margin_right = -80.6464
+margin_bottom = 107.891
+custom_styles/hover = ExtResource( 19 )
+custom_styles/pressed = ExtResource( 20 )
+custom_styles/focus = ExtResource( 19 )
+custom_styles/disabled = ExtResource( 19 )
+custom_styles/normal = ExtResource( 19 )
+custom_fonts/font = ExtResource( 18 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 0.321569, 0.321569, 0.321569, 1 )
+text = "Hier pflanzen"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Abbrechen" type="Button" parent="Camera/HUD/PlaceHereDialog"]
+anchor_top = 0.507545
+anchor_bottom = 0.507545
+margin_left = 92.2548
+margin_top = 49.8912
+margin_right = 337.255
+margin_bottom = 107.891
+custom_styles/hover = ExtResource( 19 )
+custom_styles/pressed = ExtResource( 20 )
+custom_styles/focus = ExtResource( 19 )
+custom_styles/disabled = ExtResource( 19 )
+custom_styles/normal = ExtResource( 19 )
+custom_fonts/font = ExtResource( 18 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 0.321569, 0.321569, 0.321569, 1 )
+text = "Abbrechen"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="PositionProbe" type="KinematicBody" parent="Camera"]
 
 [node name="CollisionShape" type="CollisionShape" parent="Camera/PositionProbe"]
-shape = SubResource( 3 )
+shape = SubResource( 4 )
 
 [node name="ForestFloor" type="Spatial" parent="."]
 
@@ -276,6 +532,7 @@ hex_size_override = Vector2( 2, 2 )
 
 [node name="MapHolder" type="Spatial" parent="ForestFloor/HexGrid"]
 visible = false
+script = ExtResource( 16 )
 
 [node name="Cursor" parent="ForestFloor/HexGrid" instance=ExtResource( 8 )]
 transform = Transform( 0.25, 0, 0.433013, 0, 0.5, 0, -0.433013, 0, 0.25, 3.87529, 0.238, 0 )
@@ -283,17 +540,17 @@ visible = false
 
 [node name="CollisionShape" type="CollisionShape" parent="ForestFloor/HexGrid"]
 transform = Transform( 1, 0, 0, 0, 0.2, 0, 0, 0, 1, 0, 0, -0.0223198 )
-shape = SubResource( 4 )
+shape = SubResource( 5 )
 
 [node name="CSGMesh2" type="CSGMesh" parent="ForestFloor/HexGrid/CollisionShape"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0223198 )
 visible = false
-mesh = SubResource( 5 )
-material = SubResource( 6 )
+mesh = SubResource( 6 )
+material = SubResource( 7 )
 
 [node name="CSGMesh" type="CSGMesh" parent="ForestFloor"]
-mesh = SubResource( 7 )
-material = SubResource( 8 )
+mesh = SubResource( 8 )
+material = SubResource( 9 )
 
 [node name="Background" type="Spatial" parent="."]
 script = ExtResource( 6 )
@@ -304,7 +561,7 @@ transform = Transform( 20, 0, 0, 0, 1.158, 5.30055e-08, 0, -6.13803e-08, 1, 0, 3
 billboard = 2
 transparent = false
 shaded = true
-texture = SubResource( 9 )
+texture = SubResource( 10 )
 
 [node name="Mountain" type="Sprite3D" parent="Background" groups=[
 "Parallax",
@@ -337,20 +594,28 @@ texture = ExtResource( 4 )
 
 [node name="Viewport" type="Viewport" parent="."]
 size = Vector2( 2048, 2048 )
-world = SubResource( 10 )
+world = SubResource( 11 )
 hdr = false
 usage = 0
 render_target_v_flip = true
 
 [node name="ColorRect" type="ColorRect" parent="Viewport"]
-material = SubResource( 13 )
+material = SubResource( 14 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "RESET"
-anims/RESET = SubResource( 14 )
-anims/Zoom_To_Clearing = SubResource( 15 )
+anims/HideEntityDetails = SubResource( 15 )
+anims/RESET = SubResource( 16 )
+anims/ShowEntityDetails = SubResource( 17 )
+anims/Zoom_To_Clearing = SubResource( 18 )
+[connection signal="cancle" from="Camera/HUD/SeedlingBox" to="Camera/HUD/PlaceHereDialog" method="_on_SeedlingBox_cancle"]
+[connection signal="placed" from="Camera/HUD/SeedlingBox" to="Camera/HUD/PlaceHereDialog" method="_on_SeedlingBox_placed"]
+[connection signal="trying_to_place" from="Camera/HUD/SeedlingBox" to="Camera/HUD/PlaceHereDialog" method="_on_SeedlingBox_trying_to_place"]
 [connection signal="toggled" from="Camera/HUD/DebugMenu/VBox/HBoxContainer/CheckBox" to="Camera/HUD/DebugMenu" method="_set_free_placement_mode"]
+[connection signal="gui_input" from="Camera/HUD/DetailsBG" to="Camera" method="_on_DetailsBG_gui_input"]
+[connection signal="pressed" from="Camera/HUD/PlaceHereDialog/PlantButton" to="Camera/HUD/SeedlingBox" method="_on_PlantButton_pressed"]
+[connection signal="pressed" from="Camera/HUD/PlaceHereDialog/Abbrechen" to="Camera/HUD/SeedlingBox" method="_on_Abbrechen_pressed"]
 [connection signal="input_event" from="ForestFloor/HexGrid" to="ForestFloor/HexGrid" method="_on_HexGrid_input_event"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

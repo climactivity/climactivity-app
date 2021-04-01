@@ -1,5 +1,6 @@
 extends Spatial
-
+export (PackedScene) var _details_widget 
+var details_widget setget , get_details_widget
 export var offset_scale = .2
 # important globally unique id
 var entity_id
@@ -22,6 +23,15 @@ func _ready():
 	ui_alert.connect("clicked", self, "on_click")
 	collider.connect("getting_watered", self, "add_water")
 	bill_board.translate_object_local(Vector3(instance_resource.center_offset.x, 0.0, instance_resource.center_offset.y) * offset_scale )
+	if instance_resource.just_planted:
+		_planted()
+	if _details_widget != null: details_widget = _details_widget.instance()
+	details_widget.set_entity(self)
+	details_widget.connect("DEBUG_add_stage", self, "DEBUG_add_stage")
+	details_widget.connect("DEBUG_sub_stage", self, "DEBUG_sub_stage")
+func get_details_widget(): 
+	details_widget.show_entity()
+	return details_widget
 
 func update_view():
 	if( template_resource == null || instance_resource == null || bill_board == null): return
@@ -50,8 +60,14 @@ func set_state(state):
 	entity_id = instance_resource.entity_id
 	update_view()
 
+func focus_entity() -> Spatial:
+	return $CameraZoomTarget as Spatial
 
-	
+func on_touch():
+	print("focus")
+	if is_instance_valid(GameManager) and GameManager.camera != null: 
+		GameManager.camera.focus_entity(self)
+
 func set_textures(new_textures):
 	template_resource.texture_data = new_textures
 	update_view()
@@ -60,22 +76,48 @@ var getting_watered = false
 
 func add_water(water): 
 	if getting_watered: return
+	print(water)
 	#$AnimationPlayer.play("happy")
 	AspectTrackingService.water_used(instance_resource.aspect_id)
-	instance_resource.consume_water(water.current_water_amount)
 	getting_watered = true
-	_add_water(null,2.0)
+	_add_water(null,instance_resource.current_water/10.0)
 	
 func _add_water( anim ,timeout): 
 	$AnimationPlayer.disconnect("animation_finished", self, "_add_water")
-	print (anim, timeout)
 	if (timeout <= 0.0):
 		getting_watered = false
+		ui_alert.visible = false
+		_after_water()
 		return
 	timeout -= 0.5
 	$AnimationPlayer.play("happy")
 	$AnimationPlayer.connect("animation_finished", self, "_add_water", [timeout])
 
+func _after_water():
+	_flush()
+	if instance_resource.water_applied > instance_resource.water_required: 
+		instance_resource.water_applied -= instance_resource.water_applied
+		instance_resource.stage += 1 
+		_update_stage()
+
+func _update_stage(): 
+	Logger.print("Current stage %s" % str(instance_resource.stage), self)
+	update_view()
+	_flush()
+	
+func DEBUG_add_stage(): 
+	instance_resource.stage += 1 
+	_update_stage()
+	
+func DEBUG_sub_stage(): 
+	instance_resource.stage -= 1 
+	_update_stage()
+
+	
+func _planted(): 
+	$AnimationPlayer.play("planted")
+	instance_resource.just_planted = false
+	_flush()
 func alert_has_water_avaialble():
 	pass
 
@@ -83,10 +125,13 @@ func alert_can_water():
 	Logger.print("show can be watered alert", self)
 	ui_alert.visible = true
 	bill_board.layout_ui()
+	$Collider/CollisionShape.disabled = false
 
-func on_click():
-	print("click")
 
 func _on_Collider_input_event(camera, event, click_position, click_normal, shape_idx):
 	if event is InputEventMouseButton and event.pressed: 
-		on_click()
+		on_touch()
+
+func _flush(): 
+	if PSS != null:
+		PSS.flush()

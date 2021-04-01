@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://UI/Components/Infobits.gd" type="Script" id=1]
 [ext_resource path="res://UI/typography/Content_Regular.tres" type="DynamicFont" id=2]
+[ext_resource path="res://UI/theme/rounded_light.tres" type="StyleBox" id=3]
 
 [sub_resource type="Animation" id=1]
 resource_name = "RESET"
@@ -103,7 +104,7 @@ tracks/7/keys = {
 "values": [ Vector2( 1080, 1165 ) ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 resource_name = "backward"
 length = 0.3
 tracks/0/type = "value"
@@ -179,8 +180,7 @@ tracks/5/keys = {
 "values": [ Vector2( -1080, 0 ), Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "forward"
+[sub_resource type="Animation" id=3]
 length = 0.3
 tracks/0/type = "value"
 tracks/0/path = NodePath("Old_Infobit:visible")
@@ -258,10 +258,31 @@ tracks/5/keys = {
 [node name="Infobits" type="Control"]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -540.0
-margin_right = 540.0
-margin_bottom = 1165.0
+margin_left = -497.0
+margin_top = 40.0
+margin_right = 495.0
+margin_bottom = 1122.0
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 20
+custom_constants/margin_top = 0
+custom_constants/margin_left = 20
+custom_constants/margin_bottom = 40
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="MarginContainer"]
+margin_left = 20.0
+margin_right = 972.0
+margin_bottom = 1042.0
+custom_styles/panel = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -269,8 +290,8 @@ __meta__ = {
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "RESET"
 anims/RESET = SubResource( 1 )
-anims/backward = SubResource( 3 )
-anims/forward = SubResource( 2 )
+anims/backward = SubResource( 2 )
+anims/forward = SubResource( 3 )
 
 [node name="InfoBit" type="ScrollContainer" parent="."]
 anchor_right = 1.0
@@ -280,8 +301,8 @@ __meta__ = {
 }
 
 [node name="MarginContainer" type="MarginContainer" parent="InfoBit"]
-margin_right = 1080.0
-margin_bottom = 1165.0
+margin_right = 992.0
+margin_bottom = 1082.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/margin_right = 50
@@ -292,8 +313,8 @@ custom_constants/margin_bottom = 20
 [node name="ContentHolder" type="VBoxContainer" parent="InfoBit/MarginContainer"]
 margin_left = 50.0
 margin_top = 100.0
-margin_right = 1030.0
-margin_bottom = 1145.0
+margin_right = 942.0
+margin_bottom = 1062.0
 size_flags_horizontal = 3
 
 [node name="RichTextLabel" type="RichTextLabel" parent="InfoBit/MarginContainer/ContentHolder"]
@@ -342,8 +363,8 @@ __meta__ = {
 }
 
 [node name="MarginContainer" type="MarginContainer" parent="Old_Infobit"]
-margin_right = 1080.0
-margin_bottom = 1165.0
+margin_right = 992.0
+margin_bottom = 1082.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/margin_right = 50
@@ -354,7 +375,7 @@ custom_constants/margin_bottom = 20
 [node name="ContentHolder" type="VBoxContainer" parent="Old_Infobit/MarginContainer"]
 margin_left = 50.0
 margin_top = 100.0
-margin_right = 1030.0
-margin_bottom = 1145.0
+margin_right = 942.0
+margin_bottom = 1062.0
 size_flags_horizontal = 3
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

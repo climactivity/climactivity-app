@@ -10,7 +10,7 @@ enum LifecycleType {
 }
 
 # scenes
-export var start_scene = preload("res://ForestScene3d/ForestScene3d.tscn")
+export (PackedScene) var start_scene 
 export var _settings_scene = preload("res://Scenes/SettingsScene.tscn")
 export var _notification_scene = preload("res://Scenes/NotificationsScene.tscn")
 export var _social_scene = preload("res://Scenes/SocialScene.tscn")
@@ -118,7 +118,9 @@ func push_scene(scene, navigation_data = {}, config = TransitionFactory.MoveOut(
 				scene = scene_map.get(scene)
 		else:
 			Logger.print("Loading new scene: " + scene, self)
-			scene = load(scene).instance()
+			var _scene = load(scene)
+			scene = _scene.instance()
+
 	else:
 		current_path = ''
 		Logger.print("Reattaching scene: " + scene.name, self)

@@ -9,6 +9,8 @@ func _ready():
 	$Camera/HUD/DebugMenu.connect("free_place", $ForestFloor/HexGrid, "set_free_place")
 	connect("update_hud", $Camera/HUD, "update_hud")
 	connect("update_hud", $Camera/HUD/Cloud, "update_water_available")
+	$Camera/HUD/SeedlingBox.connect("dragging", $ForestFloor/HexGrid, "show_grid")
+	$Camera/HUD/SeedlingBox.connect("placed", $ForestFloor/HexGrid, "place_entity")
 	if is_instance_valid(AspectTrackingService): connect("update_hud", AspectTrackingService, "notify_watered_aspects")
 	$ForestFloor/HexGrid.connect("placed_entity", $Camera/HUD, "update_hud")
 func _input(event):

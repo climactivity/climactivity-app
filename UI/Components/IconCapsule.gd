@@ -39,6 +39,7 @@ func set_percent(new_percent):
 	_redraw()
 
 
+
 func _redraw(): 
 	if (panel != null && icon != null):
 		icon.texture = icon_texture if icon_texture != null else default_texture

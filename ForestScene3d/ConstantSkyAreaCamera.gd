@@ -20,6 +20,56 @@ export var max_rotation_deg = -45.0
 export var nw_bound = Vector2(-15.0,-5.0)
 export var se_bound = Vector2(15.0,5.0)
 
+var saved_position 
+var current_position
+var target_position
+var focused_entity
+var t = 0.0
+var focused = false
+func focus_entity(entity):
+	if (entity.has_method("focus_entity")): 
+		focused_entity = entity
+		saved_position = Transform(global_transform) 
+		current_position = Transform(global_transform) 
+		target_position = Transform( entity.focus_entity().global_transform )
+		set_process_input(false)
+		if entity.has_method("get_details_widget"):
+			$"HUD/EntityDetails/MarginContainer/PanelContainer/MountPoint".add_child(entity.get_details_widget())
+		$"../AnimationPlayer".play("ShowEntityDetails")
+		
+
+func _entity_focused(): 
+	focused = true
+	
+func unfocus_entity():
+	if focused_entity == null:
+		set_process_input(true) 
+	focused_entity = null 
+	focused = false
+	current_position = Transform(global_transform) 
+	$"../AnimationPlayer".play("HideEntityDetails")
+
+func _entity_unfocused():
+	set_process_input(true) 
+	target_position = null
+	Util.clear($"HUD/EntityDetails/MarginContainer/PanelContainer/MountPoint")
+
+func _physics_process(delta):
+	if focused_entity != null and not focused:
+		t += delta
+		if t > 1.0: 
+			t = 0.0
+			_entity_focused()
+		else:
+			global_transform = current_position.interpolate_with(target_position, t)
+	elif focused_entity == null and not focused and target_position != null:
+		t += delta
+		if t > 1.0: 
+			t = 0.0
+			_entity_unfocused()
+		else:
+			global_transform = current_position.interpolate_with(saved_position, t)
+
 func _ready():
 	if is_instance_valid(GameManager):
 		GameManager.camera = self
@@ -78,3 +128,8 @@ func ray_cast(screen_pos):
 	var space_state = get_world().direct_space_state
 	var result = space_state.intersect_ray(from, to)
 	return result
+
+
+func _on_DetailsBG_gui_input(event):
+	if event is InputEventMouseButton and event.pressed:
+		unfocus_entity()

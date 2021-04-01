@@ -1,7 +1,13 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://ForestScene3d/Interactables/Cloud.gd" type="Script" id=1]
 [ext_resource path="res://ForestScene3d/Interactables/Wolke_preview.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Assets/sketch/wolke_outline.png" type="Texture" id=3]
+[ext_resource path="res://ForestScene3d/Interactables/SM_Cloud.tres" type="Material" id=4]
+[ext_resource path="res://Assets/sketch/wolke_mask.png" type="Texture" id=5]
+[ext_resource path="res://Assets/droplet.png" type="Texture" id=6]
+[ext_resource path="res://ForestScene3d/Interactables/CloudSprite.gd" type="Script" id=7]
+[ext_resource path="res://ForestScene3d/PM_RainDrops.tres" type="Material" id=8]
 
 [node name="Cloud" type="Control"]
 script = ExtResource( 1 )
@@ -9,9 +15,38 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Sprite" parent="." instance=ExtResource( 2 )]
-margin_left = -146.053
-margin_top = -84.2694
-margin_right = 145.947
-margin_bottom = 80.7306
+[node name="Tween" type="Tween" parent="."]
+
+[node name="preview" parent="." instance=ExtResource( 2 )]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -219.0
+margin_top = -124.0
+margin_right = 219.0
+margin_bottom = 124.0
+texture = ExtResource( 5 )
+stretch_mode = 6
+
+[node name="CloudSprite" type="Sprite" parent="."]
+material = ExtResource( 4 )
+position = Vector2( -1.00136e-05, 0.396821 )
+scale = Vector2( 0.244428, 0.243653 )
+texture = ExtResource( 3 )
+script = ExtResource( 7 )
+
+[node name="Particles2D" type="Particles2D" parent="CloudSprite"]
+position = Vector2( -12.9886, 294.804 )
+scale = Vector2( 4.09118, 4.10419 )
+emitting = false
+amount = 25
+process_material = ExtResource( 8 )
+texture = ExtResource( 6 )
+
+[node name="Droplet" type="Sprite" parent="CloudSprite"]
+visible = false
+position = Vector2( 2.03407, 1.31012 )
+scale = Vector2( 2.65486, 2.65486 )
+texture = ExtResource( 6 )
 [connection signal="gui_input" from="." to="." method="_on_Cloud_gui_input"]

@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://SceneManager/SceneManager.gd" type="Script" id=1]
 [ext_resource path="res://UI/Overlay.tscn" type="PackedScene" id=2]
+[ext_resource path="res://ForestScene3d/ForestScene3d.tscn" type="PackedScene" id=3]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Move_Back"
@@ -164,6 +165,7 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+start_scene = ExtResource( 3 )
 
 [node name="B" type="ViewportContainer" parent="."]
 modulate = Color( 1, 1, 1, 0 )
@@ -201,6 +203,10 @@ physics_object_picking = true
 [node name="Overlay" type="ViewportContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = -2.0
+margin_top = -2.0
+margin_right = -2.0
+margin_bottom = -2.0
 mouse_filter = 2
 stretch = true
 __meta__ = {

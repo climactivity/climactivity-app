@@ -12,7 +12,7 @@ export (String) var frontmatter
 export (String) var locale
 export (String) var lang
 export (String) var aspect
-
+export (int) var factor
 func _init(dict = {}):
 	_id = dict["_id"] if dict.has("_id") else ""
 	name = dict["name"] if dict.has("name") else ""
@@ -24,3 +24,4 @@ func _init(dict = {}):
 	reward =  dict["reward"] if dict.has("reward") else null
 	difficulty =  dict["difficulty"] if dict.has("difficulty") else 0
 	aspect =  dict["aspect"] if dict.has("aspect") else "pool"
+	factor = dict["factor"] if dict.has("factor") else 0
