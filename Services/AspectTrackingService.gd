@@ -62,6 +62,7 @@ func do_update():
 		if tracking_state.water_tank == null:
 			tracking_state.water_tank = bp_r_water_tank.new()
 			tracking_state.water_tank.initialize(aspect_id, tracking_state.run_time)
+			tracking_state.water_tank.add_water(100.0)
 		tracking_state.water_tank.add_water(reward.water)
 		# add update to stats
 		tracking_update.add_reward(aspect_id, reward)
@@ -140,6 +141,7 @@ func consume_seedling(aspect_id, entity):
 		var current_state = player_state.tracking_states[aspect_id]
 		current_state.new_seedling_available = false
 		current_state.add_entity(entity)
+		do_update()
 		#current_state.new_seedling_available = false
 		_flush()
 		return true
@@ -188,6 +190,8 @@ func water_used(aspect):
 		if tracking_state.aspect == aspect._id:
 			water_collected_for.erase(tracking_state)
 			tracking_state.apply_water()
+	emit_signal("tracking_updated")
+	_flush()
 			
 func water_used_for(entity_id):
 	#_get_tracking_state_for

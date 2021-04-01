@@ -1,3 +1,4 @@
+#tool 
 extends Spatial
 
 signal placed_entity
@@ -15,7 +16,8 @@ var treeScene = preload("res://ForestScene3d/TestTree3d.tscn")
 var placeables = {
 	"base_tree": preload("res://ForestScene3d/TreeTemplates/BaseTree.tscn"),
 	"tent_scene": preload("res://ForestScene3d/Tents/Tent.tscn"),
-	"bonfire_scene": preload("res://ForestScene3d/Tents/Bonfire.tscn")
+	"bonfire_scene": preload("res://ForestScene3d/Tents/Bonfire.tscn"),
+	"log": preload("res://ForestScene3d/Tents/LogScene.tscn")
 	
 }
 
@@ -27,40 +29,66 @@ var DEBUG_placeables = {
 }
 
 var fixed_obejcts = {
-	Vector2(1,1): {
+	Vector2(2,2): {
 		"scene": placeables["tent_scene"],
 		"params": ["mobility"]
 	},
-	Vector2(1,0): {
+	Vector2(2,0): {
 		"scene": placeables["tent_scene"],
 		"params": ["private_engagement"]
 	},
-	Vector2(0,1): {
+	Vector2(0,2): {
 		"scene": placeables["tent_scene"],
 		"params": ["energy"]
 	},
-	Vector2(-1,-1): {
+	Vector2(-2,-2): {
 		"scene": placeables["tent_scene"],
 		"params": ["ernährung"]
 	},
-	Vector2(-1,0): {
+	Vector2(-2,0): {
 		"scene": placeables["tent_scene"],
 		"params": ["public_engagement"]
 	},
-	Vector2(0,-1): {
+	Vector2(0,-2): {
 		"scene": placeables["tent_scene"],
 		"params": ["indirect_emissions"]
 	},
 	Vector2(0.0,0.0): {
 		"scene": placeables["bonfire_scene"],
 		"params": []
-	}
+	},
+#	Vector2(1,1): {
+#		"scene": placeables["log"],
+#		"params": [Vector2(1,1)]
+#	},
+#	Vector2(1,0): {
+#		"scene": placeables["log"],
+#		"params": [Vector2(1,0)]
+#	},
+#	Vector2(0,1): {
+#		"scene": placeables["log"],
+#		"params": [Vector2(0,1)]
+#	},
+#	Vector2(-1,-1): {
+#		"scene": placeables["log"],
+#		"params": [Vector2(-1,-1)]
+#	},
+#	Vector2(-1,0): {
+#		"scene": placeables["log"],
+#		"params": [Vector2(-1,0)]
+#	},
+#	Vector2(0,-1): {
+#		"scene": placeables["log"],
+#		"params": [Vector2(0,-1)]
+#	},
+
+	
 }
 
 
 var placed_objects = {} 
 # references player state 
-var player_objects = BoardEntityService.get_placed_objects()
+var player_objects = {}
 
 var not_placeable_hexes
 var MIN_RING = 3
@@ -89,8 +117,10 @@ func _ready():
 	var centerTile = HexGrid.get_hex_at(Vector2(0.0,0.0))
 	not_placeable_hexes = centerTile.get_all_within2(2)
 	_tile_area(centerTile, SIZE, preload("res://ForestScene3d/TreeTemplates/TestScenes/TestHex.tscn"))
-	_place_fixed_objects()
-	_place_dynamic_objects()
+	_place_fixed_objects() 
+	if !Engine.is_editor_hint(): 
+		player_objects = BoardEntityService.get_placed_objects()
+		_place_dynamic_objects()
 	
 	#restore placed entites from player state at restart of scene
 func _place_dynamic_objects():
@@ -114,11 +144,16 @@ func _tile_area(tile, limit, tileMeshF):
 		var hex_mesh = tileMeshF.instance()
 		holder.add_child(hex_mesh)
 		hex_mesh.translation.x = plane_pos.x
-		hex_mesh.translation.z = plane_pos.y	
+		hex_mesh.translation.z = plane_pos.y
+		hex_mesh.plane_coordinates = plane_pos
+		print(tile.axial_coords)
+		hex_mesh.name = str(tile.axial_coords.x) +','+ str(tile.axial_coords.y)
 
 func show_grid(b): 
+	print(b)
 	$MapHolder.visible = b
-
+	$MapHolder.show_sector("ernaehrung")
+	
 func is_showing_grid():
 	return $MapHolder.visible
 
@@ -179,7 +214,9 @@ func place_object(position, template_name):
 		var new_object = TreeTemplateFactory.make_new(template_name)
 		_place_object_at(selected_hex.axial_coords, new_object, true)
 
-func place_entity(position, entity): 
+func place_entity(position, entity):
+	if position is Vector2:
+		position = get_node("../../Camera").ray_cast(position).position  
 	var plane_coords = self.transform.affine_inverse() * position
 	plane_coords = Vector2(plane_coords.x, plane_coords.z)
 	var selected_hex = HexGrid.get_hex_at(plane_coords)
@@ -195,18 +232,32 @@ func can_place(hex, instance):
 	if x in range(-SIZE, SIZE+1) && y in range(max(-SIZE, -SIZE + x), min(SIZE, SIZE + x) + 1):
 		if !(abs(x) >= MIN_RING || abs(y) >= MIN_RING): 
 			#print("can't place at: ", x,", ",y, "; ", "Blocked by min dist from center")
+			last_hex = null
 			return false
 		if (placed_objects.has(hex.axial_coords)):
 			print("can't place at: ", x,", ",y, "; ", "Blocked by placed object")
+			last_hex = null
 			return false
 		#print("can place at: ", x,", ",y)
 		return true
 		
-
-		
+var last_hex = null
 func can_drop(pos, action): 
 	var plane_coords = _3d_to_plane_coords(pos)
-	can_place(_plane_to_hex(plane_coords), action)
+	var current_hex = _plane_to_hex(plane_coords)
+	if last_hex != null and current_hex.axial_coords != last_hex.axial_coords:
+		$MapHolder.grid(last_hex.axial_coords)
+	if can_place(current_hex, action):
+#		if !is_showing_grid(): 
+#			show_grid(true)
+		$MapHolder.highlight(current_hex.axial_coords)
+		last_hex = current_hex
+		return true
+	else:
+#		if is_showing_grid(): 
+#			show_grid(false)
+		return false
+		
 
 func _plane_to_hex(pos):
 	return HexGrid.get_hex_at(pos)

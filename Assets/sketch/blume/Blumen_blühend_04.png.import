@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/baumstamm02.png-c51f275ff13be409c8440d31e2321b6d.stex"
+path="res://.import/Blumen_blühend_04.png-13fd95eb3c9765fef864ecf226aabe2b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/sketch/baumstamm02.png"
-dest_files=[ "res://.import/baumstamm02.png-c51f275ff13be409c8440d31e2321b6d.stex" ]
+source_file="res://Assets/sketch/blume/Blumen_blühend_04.png"
+dest_files=[ "res://.import/Blumen_blühend_04.png-13fd95eb3c9765fef864ecf226aabe2b.stex" ]
 
 [params]
 

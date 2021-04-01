@@ -64,6 +64,10 @@ func get_water_available():
 	if water_tank == null: return 0.0
 	return water_tank.get_water_amount()
 
+func add_starter_water():
+	if water_tank == null: return 0.0
+	return water_tank.add_water(50.0)
+
 func get_water_percent_available(): 
 	return water_tank.get_water_amount() / water_tank.max_value
 
@@ -90,6 +94,7 @@ func apply_water():
 	var current_water = get_water_available()
 	if current_entity.has_method("consume_water"): 
 		current_entity.consume_water(current_water)
+		_empty_water_tank()
 	
 func show_waiting_for_water(): 
 	if current_entity == null: return 

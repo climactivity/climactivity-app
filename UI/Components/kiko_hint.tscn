@@ -50,6 +50,7 @@ anchor_right = 1.0
 anchor_bottom = 0.5
 margin_left = 346.0
 margin_top = -162.0
+margin_right = -131.0
 margin_bottom = 129.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -62,7 +63,7 @@ __meta__ = {
 [node name="MarginContainer" type="MarginContainer" parent="SpeechBubbleHolder"]
 margin_left = 2.0
 margin_top = 2.0
-margin_right = 719.0
+margin_right = 588.0
 margin_bottom = 289.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -77,7 +78,7 @@ __meta__ = {
 [node name="DialogLine" type="Label" parent="SpeechBubbleHolder/MarginContainer"]
 margin_left = 20.0
 margin_top = 20.0
-margin_right = 697.0
+margin_right = 566.0
 margin_bottom = 267.0
 size_flags_horizontal = 3
 size_flags_vertical = 3

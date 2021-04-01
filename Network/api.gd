@@ -10,7 +10,7 @@ var locale =  {
 
 var headers = ["User-Agent: climactivity-app", "Content-Type: application/json"]
 var protocol = "https"
-var base_url = "app.climactiviy.de/api/v1"
+var base_url = "app.climactivity.de/api"
 var endpoints = {
 	"quiz_list": "/infobyte",
 	"quiz_data": "/infobyte/%s",
@@ -110,3 +110,7 @@ func _sync_player_state():
 	return 
 	#getEndpoint("sync-player-state", req, [], false, HTTPClient.METHOD_GET)
 	#PSS.update()
+
+
+func get_infobytes_for_factor(factor, aspect):
+	return cache.get_infobytes_for_factor(factor, aspect)

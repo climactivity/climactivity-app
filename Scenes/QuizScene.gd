@@ -49,11 +49,14 @@ func _ready():
 	loading_anim.connect("finished_loading", self, "_finished_loading")
 	
 	header.connect("go_back", self, "_on_back_button")
-	
-func receive_navigation(quiz_data):
+
+func receive_navigation(_quiz_data):
+	quiz_data = _quiz_data.quiz
 	#req.request(request_str % ["https", "localhost", quiz_data.quiz._id] )
-	header.set_screen_label(quiz_data.quiz.name)
-	_on_quiz_data(quiz_data.quiz)
+	header.set_screen_label(quiz_data.name)
+	if is_instance_valid(Logger):
+		Logger.print( "Loaded quiz %s" % [quiz_data.name], self)
+	_on_quiz_data(quiz_data)
 	#Api.getQuizData(req, quiz_data.quiz._id)
 
 
@@ -82,6 +85,7 @@ func _on_quiz_data(quiz_data):
 
 func _finished_loading(): 
 	anim_player.play("show_frontmatter")
+	state = InfoByteState.FRONT
 
 func _show_infobits():
 	state = InfoByteState.INFO
@@ -134,9 +138,12 @@ func _last_question():
 	Logger.print("Completed " + quiz_data.name, self)
 	var quiz_result = questions_holder.get_quiz_result()
 	print(quiz_result)
-	var quiz_end_comment = $"ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/VSplitContainer/ContentHolder/QuizEnd/kiko_avatar - placeholder"
-	var quiz_end_result_text = $"ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/VSplitContainer/ContentHolder/QuizEnd/Label"
-	var quiz_end_collect_button = $"ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/VSplitContainer/ContentHolder/QuizEnd/CollectRewardButton"
+	var quiz_end_node = $"ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/ContentHolder/QuizEnd"
+	var quiz_end_comment = $"ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/ContentHolder/QuizEnd/kiko_avatar - placeholder"
+	var quiz_end_result_text = $"ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/ContentHolder/QuizEnd/Label"
+	var quiz_end_collect_button = $"ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/ContentHolder/QuizEnd/CollectRewardButton"
+	var quiz_reward_label = $"ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/ContentHolder/QuizEnd/Panel/RewardLabel"
+	quiz_reward_label.set_reward(quiz_data.reward)
 	quiz_end_result_text.text = quiz_result.result_string
 	anim_player.play("show_quiz_result")
 	state = InfoByteState.QUIZ_COMPLETE
@@ -149,8 +156,8 @@ func _content_anim_finished():
 func _reshow_frontmatter(): 
 	state = InfoByteState.FRONT
 	anim_player.play("RESET")
-	anim_player.call_deferred("play", "show_frontmatter")
-	infobit_holder.set_infobits_data(quiz_data.infobits)
+	anim_player.queue("show_frontmatter")
+	#infobit_holder.set_infobits_data(quiz_data.infobits)
 	
 func _on_ContinueButton_pressed():
 	match(state):

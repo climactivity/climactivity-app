@@ -86,6 +86,8 @@ BoardEntityService="*res://Services/BoardEntityService.gd"
 
 settings/network/localhost=true
 settings/game_logic/cheat_seedlings=false
+settings/game_logic/show_factor_names=true
+settings/game_logic/use_res_for_cache=false
 
 [display]
 

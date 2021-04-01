@@ -25,9 +25,12 @@ var is_ready = false setget , is_ready
 onready var req = $HTTPRequest
 
 func _res_writable(): 
-	var file = File.new()
-	var err = file.open("res://Network/Cache/.is_writable", File.WRITE)
-	return err == OK
+	if ProjectSettings.get_setting("debug/settings/game_logic/use_res_for_cache"):
+		var file = File.new()
+		var err = file.open("res://Network/Cache/.is_writable", File.WRITE)
+		return err == OK
+	else:
+		return false
 	
 func update():
 	res_writable = _res_writable()
@@ -187,3 +190,21 @@ func get_aspect_by_name(name):
 		if aspect._id == name:
 			return aspect
 	return null
+
+func _get_infobytes_for_aspect(aspect): 
+	if !is_ready(): return null
+	var infobytes = entities.get("RLocalizedInfobyte")
+	var selected = []
+	for infobyte in infobytes:
+		if infobyte.aspect == aspect._id:
+			selected.push_back(infobyte)
+	return selected
+	
+func get_infobytes_for_factor(factor, aspect):
+	if !is_ready(): return null
+	var candidates = _get_infobytes_for_aspect(aspect)
+	var selected = []
+	for infobyte in candidates:
+		if factor.id == infobyte.factor: 
+			selected.push_back(infobyte)
+	return selected
