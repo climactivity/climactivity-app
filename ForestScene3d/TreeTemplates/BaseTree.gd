@@ -29,6 +29,7 @@ func _ready():
 	details_widget.set_entity(self)
 	details_widget.connect("DEBUG_add_stage", self, "DEBUG_add_stage")
 	details_widget.connect("DEBUG_sub_stage", self, "DEBUG_sub_stage")
+
 func get_details_widget(): 
 	details_widget.show_entity()
 	return details_widget
@@ -65,6 +66,7 @@ func focus_entity() -> Spatial:
 
 func on_touch():
 	print("focus")
+	details_widget.set_entity(self)
 	if is_instance_valid(GameManager) and GameManager.camera != null: 
 		GameManager.camera.focus_entity(self)
 
@@ -97,6 +99,8 @@ func _after_water():
 	_flush()
 	if instance_resource.water_applied > instance_resource.water_required: 
 		instance_resource.water_applied -= instance_resource.water_applied
+		if instance_resource.stage >= 4:
+			return
 		instance_resource.stage += 1 
 		_update_stage()
 
@@ -106,10 +110,14 @@ func _update_stage():
 	_flush()
 	
 func DEBUG_add_stage(): 
+	if instance_resource.stage >= 4:
+			return
 	instance_resource.stage += 1 
 	_update_stage()
 	
 func DEBUG_sub_stage(): 
+	if instance_resource.stage <= 0:
+		return
 	instance_resource.stage -= 1 
 	_update_stage()
 

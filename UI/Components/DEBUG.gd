@@ -1,4 +1,4 @@
-extends VBoxContainer
+extends Node
 
 
 # Declare member variables here. Examples:

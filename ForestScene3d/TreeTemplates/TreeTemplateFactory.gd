@@ -23,8 +23,8 @@ var available_textures = {
 	},
 	'jasmin-00': {
 		0: preload("res://Assets/sketch/setzling.png"),
-		1: preload("res://Assets/sketch/baum_jung.png"),
-		2: preload("res://Assets/sketch/baum_jung01.png"),
+		1: preload("res://Assets/sketch/baum_jung01.png"),
+		2: preload("res://Assets/sketch/baum_jung.png"),
 		3: preload("res://Assets/sketch/baum_erwachsen.png"),
 		4: preload("res://Assets/sketch/baum_blüten.png"),
 		'sizes': {
