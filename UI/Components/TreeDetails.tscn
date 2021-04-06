@@ -239,5 +239,5 @@ custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "return_button"
 [connection signal="pressed" from="VBoxContainer/DEBUG/add_stage" to="." method="_on_add_stage_pressed"]
 [connection signal="pressed" from="VBoxContainer/DEBUG/sub_stage" to="." method="_on_sub_stage_pressed"]
-[connection signal="pressed" from="VBoxContainer/MarginContainer2/show_tracking_button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="VBoxContainer/MarginContainer2/show_tracking_button" to="." method="_on_show_tracking_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/MarginContainer/ReturnButton" to="." method="_on_Button_pressed"]

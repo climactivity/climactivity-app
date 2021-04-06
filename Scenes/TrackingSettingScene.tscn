@@ -29,4 +29,5 @@ margin_bottom = 1920.0
 
 [node name="Header" parent="HeaderContainer" index="1"]
 icon_texture = ExtResource( 4 )
+color = Color( 0.592157, 0.909804, 0.192157, 1 )
 back_button_override = false
