@@ -36,7 +36,7 @@ func _remaining_growth_period_label(instance_resource) -> String:
 	return "%d / %d Tage" % [time_remaining ,instance_resource.growth_period/Util.DAY]
 	
 func _height_label(instance_resource) -> String: 
-	return "%1d (%2d" % [instance_resource.stage, 100*instance_resource.water_applied/instance_resource.water_required] + "%) von 5"
+	return "%1d (%2d" % [instance_resource.stage + 1, 100*instance_resource.water_applied/instance_resource.water_required] + "%) von 5"
 
 func _aspect_label(instance_resource) -> String: 
 	return instance_resource.aspect_id.title
@@ -62,3 +62,7 @@ func _on_sub_stage_pressed():
 
 func _on_add_stage_pressed():
 	emit_signal("DEBUG_add_stage")
+
+
+func _on_show_tracking_button_pressed():
+	GameManager.scene_manager.push_scene("res://Scenes/AspectScene.tscn", {"aspect": focused_entity.instance_resource.aspect_id})

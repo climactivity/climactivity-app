@@ -12,3 +12,9 @@ social_screen,Freunde,Friends
 settings_scene,Einstellungen,Settings
 button_label_buy,Auswählen,Select
 new_seedling_avaliable_button,Neuen Setzling auswählen,select new seedling
+label_kind,Gattung,Kind
+label_stage,Höhe,Height
+label_age,Alter,Age
+label_aspect,Aspekt,Aspect
+show_tracking_button,Zum Aspekt,Go to Aspect
+return_button,Schließen,Close

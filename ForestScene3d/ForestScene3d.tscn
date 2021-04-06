@@ -333,6 +333,7 @@ margin_right = -190.704
 margin_bottom = 163.157
 
 [node name="xp_bar" type="TextureRect" parent="Camera/HUD"]
+visible = false
 anchor_left = 0.5
 anchor_right = 0.5
 margin_left = -268.5
