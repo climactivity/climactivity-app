@@ -62,7 +62,7 @@ func do_update():
 		if tracking_state.water_tank == null:
 			tracking_state.water_tank = bp_r_water_tank.new()
 			tracking_state.water_tank.initialize(aspect_id, tracking_state.run_time)
-			tracking_state.water_tank.add_water(100.0)
+			#tracking_state.water_tank.add_water(100.0)
 		tracking_state.water_tank.add_water(reward.water)
 		# add update to stats
 		tracking_update.add_reward(aspect_id, reward)
@@ -175,8 +175,9 @@ func get_tracked_aspects_for_sector(sector):
 	return aspects
 
 func get_total_water_for_sector(sector):
+	# TODO
 	var aspect_data = get_tracked_aspects_for_sector(sector)
-	var total 
+	var total
 	pass
 
 func water_collected(aspect): 

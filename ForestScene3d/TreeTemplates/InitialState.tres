@@ -9,6 +9,7 @@ _id = ""
 last_sync = ""
 stage = ""
 growth_period = 0
+planted_at = 0
 water_applied = 0.0
 base_water_required = 0.0
 water_required = 0.0
