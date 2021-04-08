@@ -93,6 +93,7 @@ margin_bottom = 132.0
 custom_fonts/font = ExtResource( 3 )
 text = "selected_tracking_level"
 align = 1
+autowrap = true
 
 [node name="WaterTank" parent="HBoxContainer" instance=ExtResource( 4 )]
 anchor_top = 0.0

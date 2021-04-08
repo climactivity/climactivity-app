@@ -14,7 +14,7 @@ dest_files=[ "res://.import/Sprite-0001.png-c0642c28a5e80a8330bc1b8c0c0812be.ste
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0

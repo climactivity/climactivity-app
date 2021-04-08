@@ -14,7 +14,7 @@ dest_files=[ "res://.import/Blumen_blühend_05.png-3986decdb6b29e3ffb491d88d6cfa
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0

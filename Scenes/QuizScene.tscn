@@ -547,6 +547,7 @@ button_disabled = true
 color_icon = true
 
 [node name="kiko_avatar - placeholder" parent="ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/ContentHolder/FrontMatter" index="1" instance=ExtResource( 3 )]
+visible = false
 text = "Frontmatter missing :("
 
 [node name="Loading" parent="ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/ContentHolder" index="1" instance=ExtResource( 5 )]

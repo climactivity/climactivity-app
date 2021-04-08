@@ -28,7 +28,7 @@ func make_new(template, new_entity_id, new_aspect_id, initial_stage = 0, new_gro
 	growth_period = new_growth_period
 	planted_at = OS.get_unix_time()
 	aspect_id = new_aspect_id
-	base_water_required = 100
+	base_water_required = 12
 	water_required = base_water_required * (new_growth_period / Util.DAY)
 	just_planted = true
 	_calculate_offset()

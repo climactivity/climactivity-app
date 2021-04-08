@@ -22,11 +22,12 @@ func set_reward(reward):
 	_show_reward()
 	
 func _show_reward():
-	if _reward.xp > 0and xp_panel != null:
+	if _reward.xp > 0 and xp_panel != null:
 		xp_panel.visible = true
 		xp_label.text = "+ %d XP" % _reward.xp
 	if _reward.coins > 0 and coin_panel != null:
 		coin_panel.visible = true
 		coin_label.text = "+ %d Taler" % _reward.coins
+		
 func _on_AcceptButton_pressed():
 	emit_signal("close")

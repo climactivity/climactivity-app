@@ -2,22 +2,19 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/busch.png-bd91ffacaa886dd9299da1d86c78314f.s3tc.stex"
-path.etc2="res://.import/busch.png-bd91ffacaa886dd9299da1d86c78314f.etc2.stex"
-path.etc="res://.import/busch.png-bd91ffacaa886dd9299da1d86c78314f.etc.stex"
+path="res://.import/busch.png-bd91ffacaa886dd9299da1d86c78314f.stex"
 metadata={
-"imported_formats": [ "s3tc", "etc2", "etc" ],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://Assets/busch.png"
-dest_files=[ "res://.import/busch.png-bd91ffacaa886dd9299da1d86c78314f.s3tc.stex", "res://.import/busch.png-bd91ffacaa886dd9299da1d86c78314f.etc2.stex", "res://.import/busch.png-bd91ffacaa886dd9299da1d86c78314f.etc.stex" ]
+dest_files=[ "res://.import/busch.png-bd91ffacaa886dd9299da1d86c78314f.stex" ]
 
 [params]
 
-compress/mode=2
+compress/mode=1
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0

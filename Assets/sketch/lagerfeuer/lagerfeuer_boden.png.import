@@ -2,22 +2,19 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/lagerfeuer_boden.png-c987ea41d62de1c6e019a26ea708bbce.s3tc.stex"
-path.etc2="res://.import/lagerfeuer_boden.png-c987ea41d62de1c6e019a26ea708bbce.etc2.stex"
-path.etc="res://.import/lagerfeuer_boden.png-c987ea41d62de1c6e019a26ea708bbce.etc.stex"
+path="res://.import/lagerfeuer_boden.png-c987ea41d62de1c6e019a26ea708bbce.stex"
 metadata={
-"imported_formats": [ "s3tc", "etc2", "etc" ],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://Assets/sketch/lagerfeuer/lagerfeuer_boden.png"
-dest_files=[ "res://.import/lagerfeuer_boden.png-c987ea41d62de1c6e019a26ea708bbce.s3tc.stex", "res://.import/lagerfeuer_boden.png-c987ea41d62de1c6e019a26ea708bbce.etc2.stex", "res://.import/lagerfeuer_boden.png-c987ea41d62de1c6e019a26ea708bbce.etc.stex" ]
+dest_files=[ "res://.import/lagerfeuer_boden.png-c987ea41d62de1c6e019a26ea708bbce.stex" ]
 
 [params]
 
-compress/mode=2
+compress/mode=1
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0

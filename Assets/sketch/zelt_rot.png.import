@@ -14,7 +14,7 @@ dest_files=[ "res://.import/zelt_rot.png-d9229234844e25624e5385db3c1bf7bf.stex" 
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0

@@ -7,6 +7,7 @@ var scene_manager: SceneManager
 var forest
 var menu
 var overlay
+var xp_bar
 
 func save_game(): 
 	var save_data = {

@@ -103,7 +103,16 @@ func _pan(delta: Vector2):
 	global_transform.origin = new_origin
 	emit_signal("camera_moved", new_origin - old_origin)
 
+var events = {}
+var last_drag_distance = 0
+var zoom_sensitivity = 10
+var zoom_speed = 0.05
 func _unhandled_input(event):
+	if event is InputEventScreenTouch:
+		if event.pressed:
+			events[event.index] = event
+		else:
+			events.erase(event.index)
 	if event is InputEventMouse:
 		if event.is_pressed():
 			var mouse_position = event.position
@@ -114,7 +123,15 @@ func _unhandled_input(event):
 
 	if event is InputEventScreenDrag:
 		emit_signal("consuming_gesture")
-		_pan(-event.relative)
+		events[event.index] = event
+		if events.size() == 1:
+			_pan(-event.relative)
+		elif events.size() == 2: 
+			var drag_distance = events[0].position.distance_to(events[1].position)
+			if abs(drag_distance - last_drag_distance) > zoom_sensitivity:
+				var zoom = (1 + zoom_speed) if drag_distance < last_drag_distance else (1 - zoom_speed)
+				_zoom(zoom)
+				last_drag_distance = drag_distance
 	else: 
 		emit_signal("release_gesture")
 

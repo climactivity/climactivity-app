@@ -2,22 +2,19 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/tree0_2.png-73181fe9ff87afbe8bab36d002c7e703.s3tc.stex"
-path.etc2="res://.import/tree0_2.png-73181fe9ff87afbe8bab36d002c7e703.etc2.stex"
-path.etc="res://.import/tree0_2.png-73181fe9ff87afbe8bab36d002c7e703.etc.stex"
+path="res://.import/tree0_2.png-73181fe9ff87afbe8bab36d002c7e703.stex"
 metadata={
-"imported_formats": [ "s3tc", "etc2", "etc" ],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://ForestScene3d/TreeTemplates/Textures/tree0_2.png"
-dest_files=[ "res://.import/tree0_2.png-73181fe9ff87afbe8bab36d002c7e703.s3tc.stex", "res://.import/tree0_2.png-73181fe9ff87afbe8bab36d002c7e703.etc2.stex", "res://.import/tree0_2.png-73181fe9ff87afbe8bab36d002c7e703.etc.stex" ]
+dest_files=[ "res://.import/tree0_2.png-73181fe9ff87afbe8bab36d002c7e703.stex" ]
 
 [params]
 
-compress/mode=2
+compress/mode=1
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0

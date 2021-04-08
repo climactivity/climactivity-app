@@ -14,7 +14,7 @@ dest_files=[ "res://.import/Heckenrose_05.png-cd9ef2379987d83aa21cf05f7cb54a36.s
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0

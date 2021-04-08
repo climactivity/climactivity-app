@@ -14,7 +14,7 @@ dest_files=[ "res://.import/Wacholder_05.png-f1a4b02ce167b34857b81e8db6d4bd6a.st
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0

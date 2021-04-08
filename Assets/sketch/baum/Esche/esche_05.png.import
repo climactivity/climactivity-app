@@ -14,7 +14,7 @@ dest_files=[ "res://.import/esche_05.png-2c99d0a15acc87824a6d22785aa8f02a.stex" 
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0

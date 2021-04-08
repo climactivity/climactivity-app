@@ -14,7 +14,7 @@ dest_files=[ "res://.import/tanne_05.png-b1fc2402f625d345b79b4a0ff7be6dc2.stex" 
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0

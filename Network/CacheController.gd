@@ -100,7 +100,11 @@ func _on_new_manifest(result, response_code, headers, body):
 	_done()
 
 var DEBUG_aspect_icons = {
-	"pflanzliche_ernährung": preload("res://Assets/Icons/sector_icon_ern.png")
+	"pflanzliche_ernährung": preload("res://Assets/Icons/sector_icon_ern.png"),
+	"Fußabdruck der Mobilität zu Lande": preload("res://Assets/Icons/mobility-abzeichen.png"),
+	"Abkehr vom Auto-Vorrang": preload("res://Assets/Icons/mobility-abzeichen2.png"),
+	"Bewusst Konsumieren": preload("res://Assets/Icons/kaufen-nutzen-abzeichen.png"),
+	"Dingen ein zweites Leben schenken": preload("res://Assets/Icons/recyceln-abzeichen.png"), # nur echt mit dem Schreibfehler	
 }
 
 
