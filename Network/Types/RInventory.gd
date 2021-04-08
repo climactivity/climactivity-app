@@ -17,8 +17,8 @@ func add_reward(reward):
 		reward = RewardService.DEBUG_default_reward()
 	xp += reward.xp
 	coins += reward.coins
-	if uncollected_rewards == null: uncollected_rewards = []
-	uncollected_rewards.push_back(reward)
+	# if uncollected_rewards == null: uncollected_rewards = []
+	# uncollected_rewards.push_back(reward)
 
 func update():
 	last_seen_xp = xp 

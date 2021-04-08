@@ -99,11 +99,19 @@ func _on_new_manifest(result, response_code, headers, body):
 		_save_tree_template_data(json.result.get("current_tree_templates"))
 	_done()
 
+var DEBUG_aspect_icons = {
+	"pflanzliche_ernährung": preload("res://Assets/Icons/sector_icon_ern.png")
+}
+
+
 func _save_aspect_data(data):
 	for aspect_data in data: 
 		var path = fs + "://Network/Cache/Aspects/%s.%s" % [aspect_data["_id"], format]
 		Logger.print("Saving resource for %s at %s" % [aspect_data["name"], path ], self)
 		var aspect_resource = aspect_resource_type.new(aspect_data)
+		if ProjectSettings.get_setting("debug/settings/game_logic/use_fixed_icons"): 
+			if DEBUG_aspect_icons.has(aspect_resource.name):
+				aspect_resource.icon = DEBUG_aspect_icons.get(aspect_resource.name)
 		writalbe_cache_manifest.insert(aspect_data["_id"], "RLocalizedAspect", fs)
 		#aspect_resource.take_over_path(path)
 		ResourceSaver.save(path, aspect_resource, 32)
@@ -169,6 +177,7 @@ func _manifest_data():
 
 func is_ready():
 	return is_ready
+
 
 func get_aspect_data_for_sector(sector):
 	if !is_ready(): return null

@@ -8,7 +8,7 @@ var entity_id
 var template_resource # RTreeTemplate
 var instance_resource # RBoardEntity
 
-var scale_factor = 1.0
+var scale_factor = 1.71
 var can_water = false
 # components
 onready var bill_board = $"Sprite3D"
@@ -55,7 +55,7 @@ func update_view(animate = false):
 					_animate_update(current_texture, current_size, old_texture, old_size)
 				else:
 					bill_board.set_texture(current_texture)
-					bill_board.set_unit_factor(sizes[texture_key])
+					bill_board.apply_scaling_factor(sizes[texture_key])
 			else:
 				Logger.error("Missing factor in sizes!", self)
 		else:
@@ -65,9 +65,9 @@ func update_view(animate = false):
 
 func _animate_update(new_texture, new_size, old_texture, old_size): 
 	bill_board.set_texture(new_texture)
-	bill_board.set_unit_factor(new_size)
+	bill_board.apply_scaling_factor(new_size)
 	$AnimationTarget.set_texture(old_texture)
-	$AnimationTarget.set_unit_factor(old_size)
+	$AnimationTarget.apply_scaling_factor(old_size)
 	var anim = $AnimationPlayer.get_animation("stage_inc")
 	var track = anim.find_track("AnimationTarget:_unit_factor")
 	anim.track_set_key_value(track, 0, old_size)
