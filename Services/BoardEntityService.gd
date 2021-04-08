@@ -17,6 +17,16 @@ func _init():
 func get_placed_objects():
 	return player_state.board_entites
 
+func _ready():
+	AspectTrackingService.connect("tracking_updated", self, "_update_new_trees")
+
+func _update_new_trees(): 
+	var objects = get_placed_objects()
+	for key in objects: 
+		var object = objects[key]
+		if object.is_mature():
+			AspectTrackingService.award_seedling(object.aspect_id)
+			
 
 func add_entity(template, aspect):
 	var new_entity = _new_board_entity_resource(template, aspect)
@@ -27,7 +37,9 @@ func add_entity(template, aspect):
 func _new_board_entity_resource(template, aspect): 
 	var id = Util.uuid_util.v4()
 	var resource = r_bp_tree_instance.new()
-	resource.make_new(template, id, aspect )
+	var tracking_state = AspectTrackingService.get_tracking_state(aspect)
+	var next_growth_period = tracking_state.get_next_growth_period()
+	resource.make_new(template, id, aspect, 0, next_growth_period)
 	return resource
 
 func add_object():

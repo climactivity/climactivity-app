@@ -9,7 +9,7 @@ var template_resource # RTreeTemplate
 var instance_resource # RBoardEntity
 
 var scale_factor = 1.0
-
+var can_water = false
 # components
 onready var bill_board = $"Sprite3D"
 onready var anim_player = $"AnimationPlayer"
@@ -23,6 +23,8 @@ func _ready():
 	ui_alert.connect("clicked", self, "on_click")
 	collider.connect("getting_watered", self, "add_water")
 	bill_board.translate_object_local(Vector3(instance_resource.center_offset.x, 0.0, instance_resource.center_offset.y) * offset_scale )
+	$AnimationTarget.translate_object_local(Vector3(instance_resource.center_offset.x, 0.0, instance_resource.center_offset.y) * offset_scale )
+	
 	if instance_resource.just_planted:
 		_planted()
 	if _details_widget != null: details_widget = _details_widget.instance()
@@ -34,16 +36,26 @@ func get_details_widget():
 	details_widget.show_entity()
 	return details_widget
 
-func update_view():
+func update_view(animate = false):
 	if( template_resource == null || instance_resource == null || bill_board == null): return
 	var texture_key = int(instance_resource.stage)
+	var old_texture = bill_board.texture
+	var old_size = bill_board._unit_factor
+	var current_texture
+	var current_size
 	if template_resource.texture_data.has(texture_key): 
-		var current_texture = template_resource.texture_data.get(texture_key)
-		bill_board.set_texture(current_texture)
+		current_texture = template_resource.texture_data.get(texture_key)
+		#bill_board.set_texture(current_texture)
 		if template_resource.texture_data.has("sizes"):
 			var sizes = template_resource.texture_data.get("sizes") 
 			if sizes.has(texture_key):
-				bill_board.apply_scaling_factor(sizes[texture_key])
+				current_size = sizes[texture_key]
+				#bill_board.set_unit_factor(sizes[texture_key])
+				if animate:
+					_animate_update(current_texture, current_size, old_texture, old_size)
+				else:
+					bill_board.set_texture(current_texture)
+					bill_board.set_unit_factor(sizes[texture_key])
 			else:
 				Logger.error("Missing factor in sizes!", self)
 		else:
@@ -51,6 +63,17 @@ func update_view():
 	else: 
 		Logger.error("Missing key %s in %s from %s" % [texture_key, template_resource._id, instance_resource._id], self)
 
+func _animate_update(new_texture, new_size, old_texture, old_size): 
+	bill_board.set_texture(new_texture)
+	bill_board.set_unit_factor(new_size)
+	$AnimationTarget.set_texture(old_texture)
+	$AnimationTarget.set_unit_factor(old_size)
+	var anim = $AnimationPlayer.get_animation("stage_inc")
+	var track = anim.find_track("AnimationTarget:_unit_factor")
+	anim.track_set_key_value(track, 0, old_size)
+	anim.track_set_key_value(track, 1, new_size)
+	$AnimationPlayer.play("stage_inc")
+	
 func get_state(): 
 	return instance_resource
 
@@ -97,6 +120,7 @@ func _add_water( anim ,timeout):
 
 func _after_water():
 	_flush()
+	can_water = false
 	if instance_resource.water_applied > instance_resource.water_required: 
 		instance_resource.water_applied -= instance_resource.water_applied
 		if instance_resource.stage >= 4:
@@ -106,7 +130,7 @@ func _after_water():
 
 func _update_stage(): 
 	Logger.print("Current stage %s" % str(instance_resource.stage), self)
-	update_view()
+	update_view(true)
 	_flush()
 	
 func DEBUG_add_stage(): 
@@ -134,7 +158,7 @@ func alert_can_water():
 	ui_alert.visible = true
 	bill_board.layout_ui()
 	$Collider/CollisionShape.disabled = false
-
+	can_water = true
 
 func _on_Collider_input_event(camera, event, click_position, click_normal, shape_idx):
 	if event is InputEventMouseButton and event.pressed: 
@@ -143,3 +167,6 @@ func _on_Collider_input_event(camera, event, click_position, click_normal, shape
 func _flush(): 
 	if PSS != null:
 		PSS.flush()
+
+func can_water():
+	return can_water

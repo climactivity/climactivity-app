@@ -11,5 +11,8 @@ func water(pos, water):
 	emit_signal("cloud_dropped")
 
 func can_drop(position, water_amount):
+	if !get_parent().can_water():
+		return false
 	emit_signal("getting_watered", water_amount)
 	$CollisionShape.disabled = true
+	return true

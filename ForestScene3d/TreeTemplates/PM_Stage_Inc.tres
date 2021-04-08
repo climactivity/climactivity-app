@@ -1,0 +1,11 @@
+[gd_resource type="ParticlesMaterial" format=2]
+
+[resource]
+direction = Vector3( 0, 0, -1 )
+spread = 78.56
+flatness = 0.36
+initial_velocity = 15.92
+initial_velocity_random = 0.15
+scale = 0.02
+hue_variation = 0.17
+hue_variation_random = 0.06
