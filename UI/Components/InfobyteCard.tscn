@@ -19,7 +19,6 @@ __meta__ = {
 anchor_right = 0.0
 margin_left = 64.0
 margin_right = 1080.0
-mouse_filter = 2
 size_flags_horizontal = 1
 top_left = Vector2( 250, 167.191 )
 heading_text = "Infobyte"

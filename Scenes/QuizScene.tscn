@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://Scenes/SceneBase.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/QuizScene.gd" type="Script" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://UI/Components/Infobits.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Assets/Theme/Fonts/RobotoSlab-Bold.ttf" type="DynamicFontData" id=10]
 [ext_resource path="res://Scenes/QuizEnd.gd" type="Script" id=11]
+[ext_resource path="res://Assets/Icons/AufforstungIcon.png" type="Texture" id=12]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.972549, 0.972549, 0.972549, 1 )
@@ -636,6 +637,10 @@ margin_bottom = 1300.0
 script = ExtResource( 11 )
 
 [node name="kiko_avatar - placeholder" parent="ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/ContentHolder/QuizEnd" index="0" instance=ExtResource( 3 )]
+margin_left = 7.55957
+margin_top = -567.215
+margin_right = 1074.56
+margin_bottom = -167.215
 text = "Frontmatter missing :("
 
 [node name="Panel" type="Panel" parent="ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/ContentHolder/QuizEnd" index="1"]
@@ -643,10 +648,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -225.245
-margin_top = 94.3341
-margin_right = 220.755
-margin_bottom = 199.334
+margin_left = -350.992
+margin_top = -42.0714
+margin_right = 413.008
+margin_bottom = 62.9286
 custom_styles/panel = SubResource( 6 )
 __meta__ = {
 "_edit_group_": true,
@@ -670,10 +675,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -174.682
-margin_top = -52.557
-margin_right = 176.318
-margin_bottom = 43.443
+margin_left = -167.122
+margin_top = -460.772
+margin_right = 183.878
+margin_bottom = -364.772
 custom_fonts/font = SubResource( 7 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "5/5 richtig"
@@ -688,10 +693,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -376.5
-margin_top = 295.084
-margin_right = 376.5
-margin_bottom = 442.084
+margin_left = -351.302
+margin_top = 267.366
+margin_right = 401.698
+margin_bottom = 414.366
 font_color = Color( 0.588235, 0.74902, 0.0509804, 1 )
 text = "Sammeln"
 color_icon = true
@@ -748,5 +753,10 @@ anims/show_infobit_holder = SubResource( 12 )
 anims/show_quiz = SubResource( 13 )
 anims/show_quiz_intro = SubResource( 14 )
 anims/show_quiz_result = SubResource( 15 )
+
+[node name="Header" parent="HeaderContainer" index="1"]
+icon_texture = ExtResource( 12 )
+back_button_override = false
+[connection signal="pressed" from="ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/ContentHolder/QuizEnd/CollectRewardButton" to="." method="_on_CollectRewardButton_pressed"]
 [connection signal="pressed" from="ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/Footer/BackButton" to="." method="_on_BackButton_pressed"]
 [connection signal="pressed" from="ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/Footer/ContinueButton" to="." method="_on_ContinueButton_pressed"]
