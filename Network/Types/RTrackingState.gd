@@ -30,6 +30,19 @@ func get_reward_for_time_interval_from_now(seconds) -> Resource:
 				break
 		return reward
 
+func get_next_growth_period(): 
+	var next_entity_count = entity_list.size()
+	
+	match(next_entity_count):
+		0:
+			return 1 * Util.DAY
+		1: 
+			return 2  * Util.DAY
+		2:
+			return 4 * Util.DAY
+		_:
+			return 7 * Util.DAY
+
 func get_water_for_time_interval_from_now(seconds) -> float:
 	var current_state_since = OS.get_unix_time() - current.time_stamp
 	if seconds <= current_state_since:	
