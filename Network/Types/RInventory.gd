@@ -13,6 +13,8 @@ export (Array) var uncollected_rewards
 export (Array) var unplaced_items
 
 func add_reward(reward):
+	if reward == null:
+		reward = RewardService.DEBUG_default_reward()
 	xp += reward.xp
 	coins += reward.coins
 	if uncollected_rewards == null: uncollected_rewards = []

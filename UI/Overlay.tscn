@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://UI/typography/Heading.tres" type="DynamicFont" id=1]
 [ext_resource path="res://UI/MainMenu.tscn" type="PackedScene" id=2]
@@ -6,8 +6,9 @@
 [ext_resource path="res://Assets/Icons/Arrow - Left Square W.png" type="Texture" id=4]
 [ext_resource path="res://Assets/Icons/Arrow - Left Square.png" type="Texture" id=5]
 [ext_resource path="res://UI/XPBar.tscn" type="PackedScene" id=6]
+[ext_resource path="res://UI/PopupController.gd" type="Script" id=7]
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=1]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Popup:visible")
 tracks/0/interp = 1
@@ -33,7 +34,7 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 0.317647 ) ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=2]
 length = 0.492
 tracks/0/type = "value"
 tracks/0/path = NodePath("Popup:visible")
@@ -81,6 +82,7 @@ self_modulate = Color( 1, 1, 1, 0.317647 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 1
+script = ExtResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -114,8 +116,8 @@ __meta__ = {
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "RESET"
-anims/RESET = SubResource( 5 )
-anims/ShowPopupLayer = SubResource( 6 )
+anims/RESET = SubResource( 1 )
+anims/ShowPopupLayer = SubResource( 2 )
 
 [node name="Label" type="Label" parent="."]
 visible = false

@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scenes/SceneBase.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Assets/Icons/AufforstungIcon.png" type="Texture" id=2]
 [ext_resource path="res://Scenes/GesichtspunktScreenNavigation.gd" type="Script" id=3]
 
 [sub_resource type="Shader" id=1]
@@ -41,4 +42,6 @@ self_modulate = Color( 0.690011, 0.839844, 0.321503, 1 )
 
 [node name="Header" parent="HeaderContainer" index="1"]
 screen_label = "Gesichtpunkte"
+icon_texture = ExtResource( 2 )
 color = Color( 0.690011, 0.839844, 0.321503, 1 )
+back_button_override = false

@@ -81,6 +81,7 @@ TreeTemplateFactory="*res://ForestScene3d/TreeTemplates/TreeTemplateFactory.tscn
 AspectTrackingService="*res://Services/AspectTrackingService.gd"
 RewardService="*res://Services/RewardService.gd"
 BoardEntityService="*res://Services/BoardEntityService.gd"
+InfobyteService="*res://Services/InfobyteService.gd"
 
 [debug]
 

@@ -5,6 +5,7 @@ export (Array) var tracking_updates = []
 export (int) var last_update = 0
 export (Dictionary) var board_entites = {}
 export (Resource) var inventory
+export (Dictionary) var completed_infobytes = {}
 #export (Dictionary) var level = {}
 
 func _init(): 
@@ -22,6 +23,7 @@ func to_dict():
 		"last_update": last_update,
 		"board_entites": Util.flatten_dict(board_entites),
 		"inventory": Util.flatten_dict(inventory),
+		"completed_infobytes": Util.flatten_dict(completed_infobytes)
 	#	"level": Util.flatten_dict(level)
 	}
 	#Logger.print(out)

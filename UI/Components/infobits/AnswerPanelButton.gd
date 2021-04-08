@@ -92,9 +92,11 @@ func _set_style():
 		AnswerState.DEFAULT:
 			set("custom_styles/panel", default)
 			checkbox.texture = icon_default
+			if(label): label.set("custom_colors/font_color", Color("#646363"))
 		AnswerState.SELECTED:
 			set("custom_styles/panel", selected)
 			checkbox.texture = icon_selected
+			if(label): label.set("custom_colors/font_color", Color("#646363"))
 		AnswerState.SELECTED_CORRECT:
 			set("custom_styles/panel", selected_correct)
 			checkbox.texture = icon_selected_correct
@@ -137,3 +139,7 @@ func lock():
 	else:
 		if is_correct:
 			set_state(AnswerState.CORRECT)
+
+func unlock():
+	can_fire = true
+	set_state(AnswerState.DEFAULT)
