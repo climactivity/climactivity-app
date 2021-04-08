@@ -14,7 +14,7 @@ dest_files=[ "res://.import/zelt_rückseite_rot.png-20699c28a1340c57a8205de338f5
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0

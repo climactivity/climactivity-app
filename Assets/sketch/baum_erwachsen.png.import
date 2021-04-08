@@ -2,22 +2,19 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/baum_erwachsen.png-59027046f006675cb8c6daad8f7194dc.s3tc.stex"
-path.etc2="res://.import/baum_erwachsen.png-59027046f006675cb8c6daad8f7194dc.etc2.stex"
-path.etc="res://.import/baum_erwachsen.png-59027046f006675cb8c6daad8f7194dc.etc.stex"
+path="res://.import/baum_erwachsen.png-59027046f006675cb8c6daad8f7194dc.stex"
 metadata={
-"imported_formats": [ "s3tc", "etc2", "etc" ],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://Assets/sketch/baum_erwachsen.png"
-dest_files=[ "res://.import/baum_erwachsen.png-59027046f006675cb8c6daad8f7194dc.s3tc.stex", "res://.import/baum_erwachsen.png-59027046f006675cb8c6daad8f7194dc.etc2.stex", "res://.import/baum_erwachsen.png-59027046f006675cb8c6daad8f7194dc.etc.stex" ]
+dest_files=[ "res://.import/baum_erwachsen.png-59027046f006675cb8c6daad8f7194dc.stex" ]
 
 [params]
 
-compress/mode=2
+compress/mode=1
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0

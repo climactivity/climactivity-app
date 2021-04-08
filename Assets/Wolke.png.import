@@ -14,7 +14,7 @@ dest_files=[ "res://.import/Wolke.png-2f88d1f25a4bbec9dbf7ba8e041b99c1.stex" ]
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0

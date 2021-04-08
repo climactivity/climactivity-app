@@ -14,7 +14,7 @@ dest_files=[ "res://.import/Birke_01.png-a5b7a1ee9f87dedbe5432bbb5f0d7911.stex" 
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0

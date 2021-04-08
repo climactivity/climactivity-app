@@ -2,22 +2,19 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/baumstamm_mirror.png-fba9ab8f272b49c4fda3499901125b91.s3tc.stex"
-path.etc2="res://.import/baumstamm_mirror.png-fba9ab8f272b49c4fda3499901125b91.etc2.stex"
-path.etc="res://.import/baumstamm_mirror.png-fba9ab8f272b49c4fda3499901125b91.etc.stex"
+path="res://.import/baumstamm_mirror.png-fba9ab8f272b49c4fda3499901125b91.stex"
 metadata={
-"imported_formats": [ "s3tc", "etc2", "etc" ],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://Assets/sketch/baumstamm/baumstamm_mirror.png"
-dest_files=[ "res://.import/baumstamm_mirror.png-fba9ab8f272b49c4fda3499901125b91.s3tc.stex", "res://.import/baumstamm_mirror.png-fba9ab8f272b49c4fda3499901125b91.etc2.stex", "res://.import/baumstamm_mirror.png-fba9ab8f272b49c4fda3499901125b91.etc.stex" ]
+dest_files=[ "res://.import/baumstamm_mirror.png-fba9ab8f272b49c4fda3499901125b91.stex" ]
 
 [params]
 
-compress/mode=2
+compress/mode=1
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0

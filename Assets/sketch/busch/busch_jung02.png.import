@@ -14,7 +14,7 @@ dest_files=[ "res://.import/busch_jung02.png-f8c7d84e757ca4100db8811061af1cbd.st
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0

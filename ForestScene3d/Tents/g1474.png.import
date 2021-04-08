@@ -2,22 +2,19 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/g1474.png-37a2662fe2187dc6a2ac0b663ecbaba4.s3tc.stex"
-path.etc2="res://.import/g1474.png-37a2662fe2187dc6a2ac0b663ecbaba4.etc2.stex"
-path.etc="res://.import/g1474.png-37a2662fe2187dc6a2ac0b663ecbaba4.etc.stex"
+path="res://.import/g1474.png-37a2662fe2187dc6a2ac0b663ecbaba4.stex"
 metadata={
-"imported_formats": [ "s3tc", "etc2", "etc" ],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://ForestScene3d/Tents/g1474.png"
-dest_files=[ "res://.import/g1474.png-37a2662fe2187dc6a2ac0b663ecbaba4.s3tc.stex", "res://.import/g1474.png-37a2662fe2187dc6a2ac0b663ecbaba4.etc2.stex", "res://.import/g1474.png-37a2662fe2187dc6a2ac0b663ecbaba4.etc.stex" ]
+dest_files=[ "res://.import/g1474.png-37a2662fe2187dc6a2ac0b663ecbaba4.stex" ]
 
 [params]
 
-compress/mode=2
+compress/mode=1
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0

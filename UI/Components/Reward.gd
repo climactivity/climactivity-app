@@ -8,7 +8,7 @@ func _ready():
 		set_reward(_reward)
 
 func set_reward(reward):
-	if reward == null:
+	if reward == null or !reward is Resource:
 		text = "Coins: 0 Xp: 0 Water: 0" 
 		return
 	_reward = reward

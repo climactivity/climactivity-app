@@ -14,7 +14,7 @@ dest_files=[ "res://.import/kastanie_01.png-3e29d650162ec8649cd287c52ff1c689.ste
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0

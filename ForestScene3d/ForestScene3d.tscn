@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=2]
+[gd_scene load_steps=48 format=2]
 
 [ext_resource path="res://ForestScene3d/Interactables/SeedlingBox.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Vertical_Gradient.shader" type="Shader" id=2]
@@ -21,6 +21,11 @@
 [ext_resource path="res://UI/theme/Button_Important.tres" type="StyleBox" id=19]
 [ext_resource path="res://UI/theme/Button_Important_Down.tres" type="StyleBox" id=20]
 [ext_resource path="res://ForestScene3d/PlaceHereDialog.gd" type="Script" id=21]
+[ext_resource path="res://Assets/logo.png" type="Texture" id=22]
+[ext_resource path="res://Assets/BG/01.png" type="Texture" id=23]
+[ext_resource path="res://Assets/BG/03.png" type="Texture" id=24]
+[ext_resource path="res://Assets/BG/02.png" type="Texture" id=25]
+[ext_resource path="res://Assets/BG/00.png" type="Texture" id=26]
 
 [sub_resource type="ProceduralSky" id=1]
 sky_top_color = Color( 0.105882, 0.231373, 0.301961, 1 )
@@ -36,6 +41,32 @@ background_sky = SubResource( 1 )
 background_energy = 16.0
 
 [sub_resource type="StyleBoxEmpty" id=3]
+
+[sub_resource type="StyleBoxFlat" id=20]
+bg_color = Color( 1, 1, 1, 1 )
+
+[sub_resource type="StyleBoxFlat" id=21]
+corner_radius_top_left = 1024
+corner_radius_top_right = 1024
+corner_radius_bottom_right = 1024
+corner_radius_bottom_left = 1024
+
+[sub_resource type="Animation" id=22]
+resource_name = "loading"
+length = 0.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Panel:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0.9, 0.9 ), Vector2( 1, 1 ) ]
+}
 
 [sub_resource type="StyleBoxFlat" id=4]
 bg_color = Color( 0.482353, 0.776471, 0.109804, 1 )
@@ -73,9 +104,6 @@ albedo_texture = ExtResource( 12 )
 uv1_scale = Vector3( 0.1, 0.109, 0.1 )
 uv1_offset = Vector3( 0.751, 0, 0 )
 uv1_triplanar = true
-
-[sub_resource type="ViewportTexture" id=11]
-viewport_path = NodePath("Viewport")
 
 [sub_resource type="World" id=12]
 
@@ -141,7 +169,7 @@ tracks/3/keys = {
 }
 
 [sub_resource type="Animation" id=17]
-length = 0.1
+length = 0.001
 tracks/0/type = "value"
 tracks/0/path = NodePath("Camera:translation")
 tracks/0/interp = 1
@@ -279,6 +307,46 @@ tracks/5/keys = {
 "points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0, 1 )
 }
+tracks/6/type = "value"
+tracks/6/path = NodePath("Camera/HUD/Loading:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/7/type = "method"
+tracks/7/path = NodePath("Camera/HUD/Loading")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0.3 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "queue_free"
+} ]
+}
+tracks/8/type = "method"
+tracks/8/path = NodePath(".")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0.3 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "show_overlay"
+} ]
+}
 
 [node name="ForestScene3D" type="Spatial"]
 script = ExtResource( 3 )
@@ -393,6 +461,57 @@ custom_styles/panel = SubResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Loading" type="Panel" parent="Camera/HUD"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+custom_styles/panel = SubResource( 20 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="Camera/HUD/Loading"]
+anchor_right = 1.0
+margin_bottom = 814.0
+custom_constants/margin_right = 100
+custom_constants/margin_top = 100
+custom_constants/margin_left = 100
+custom_constants/margin_bottom = 100
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="Camera/HUD/Loading/MarginContainer"]
+margin_left = 100.0
+margin_top = 100.0
+margin_right = 980.0
+margin_bottom = 714.0
+texture = ExtResource( 22 )
+expand = true
+stretch_mode = 6
+
+[node name="Panel" type="Panel" parent="Camera/HUD/Loading"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -90.7158
+margin_top = -87.86
+margin_right = 89.2842
+margin_bottom = 92.14
+grow_horizontal = 2
+grow_vertical = 2
+rect_scale = Vector2( 0.926607, 0.926607 )
+rect_pivot_offset = Vector2( 90, 90 )
+custom_styles/panel = SubResource( 21 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Camera/HUD/Loading"]
+autoplay = "loading"
+anims/loading = SubResource( 22 )
 
 [node name="EntityDetails" type="Control" parent="Camera/HUD"]
 visible = false
@@ -560,7 +679,7 @@ transform = Transform( 20, 0, 0, 0, 1.158, 5.30055e-08, 0, -6.13803e-08, 1, 0, 3
 billboard = 2
 transparent = false
 shaded = true
-texture = SubResource( 11 )
+texture = ExtResource( 26 )
 
 [node name="Mountain" type="Sprite3D" parent="Background" groups=[
 "Parallax",
@@ -590,6 +709,86 @@ texture = ExtResource( 4 )
 transform = Transform( 4.593, 0, 0, 0, 4.498, 0, 0, -2.38419e-07, 1, 27.336, 3.88545, -47.167 )
 billboard = 2
 texture = ExtResource( 4 )
+
+[node name="01" type="Sprite3D" parent="Background" groups=[
+"Parallax",
+]]
+transform = Transform( 4.593, 0, 0, 0, 4.498, 0, 0, -2.38419e-07, 1, 27.336, 3.88545, -47.167 )
+visible = false
+billboard = 2
+texture = ExtResource( 23 )
+
+[node name="02" type="Sprite3D" parent="Background" groups=[
+"Parallax",
+]]
+transform = Transform( 4.593, 0, 0, 0, 4.498, 0, 0, -2.38419e-07, 1, 27.336, 3.88545, -47.167 )
+visible = false
+billboard = 2
+texture = ExtResource( 25 )
+
+[node name="03" type="Sprite3D" parent="Background" groups=[
+"Parallax",
+]]
+transform = Transform( 4.593, 0, 0, 0, 4.498, 0, 0, -2.38419e-07, 1, 27.336, 3.88545, -47.167 )
+visible = false
+billboard = 2
+texture = ExtResource( 24 )
+
+[node name="04" type="Sprite3D" parent="Background" groups=[
+"Parallax",
+]]
+transform = Transform( 4.593, 0, 0, 0, 4.498, 0, 0, -2.38419e-07, 1, 27.336, 3.88545, -47.167 )
+visible = false
+billboard = 2
+texture = ExtResource( 23 )
+
+[node name="05" type="Sprite3D" parent="Background" groups=[
+"Parallax",
+]]
+transform = Transform( 4.593, 0, 0, 0, 4.498, 0, 0, -2.38419e-07, 1, 27.336, 3.88545, -47.167 )
+visible = false
+billboard = 2
+texture = ExtResource( 23 )
+
+[node name="06" type="Sprite3D" parent="Background" groups=[
+"Parallax",
+]]
+transform = Transform( 4.593, 0, 0, 0, 4.498, 0, 0, -2.38419e-07, 1, 27.336, 3.88545, -47.167 )
+visible = false
+billboard = 2
+texture = ExtResource( 23 )
+
+[node name="07" type="Sprite3D" parent="Background" groups=[
+"Parallax",
+]]
+transform = Transform( 4.593, 0, 0, 0, 4.498, 0, 0, -2.38419e-07, 1, 27.336, 3.88545, -47.167 )
+visible = false
+billboard = 2
+texture = ExtResource( 23 )
+
+[node name="08" type="Sprite3D" parent="Background" groups=[
+"Parallax",
+]]
+transform = Transform( 4.593, 0, 0, 0, 4.498, 0, 0, -2.38419e-07, 1, 27.336, 3.88545, -47.167 )
+visible = false
+billboard = 2
+texture = ExtResource( 23 )
+
+[node name="09" type="Sprite3D" parent="Background" groups=[
+"Parallax",
+]]
+transform = Transform( 4.593, 0, 0, 0, 4.498, 0, 0, -2.38419e-07, 1, 27.336, 3.88545, -47.167 )
+visible = false
+billboard = 2
+texture = ExtResource( 23 )
+
+[node name="10" type="Sprite3D" parent="Background" groups=[
+"Parallax",
+]]
+transform = Transform( 4.593, 0, 0, 0, 4.498, 0, 0, -2.38419e-07, 1, 27.336, 3.88545, -47.167 )
+visible = false
+billboard = 2
+texture = ExtResource( 23 )
 
 [node name="Viewport" type="Viewport" parent="."]
 size = Vector2( 2048, 2048 )

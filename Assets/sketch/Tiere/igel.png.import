@@ -14,7 +14,7 @@ dest_files=[ "res://.import/igel.png-4b6658d8c830eff72ec2698689fc3fdc.stex" ]
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0

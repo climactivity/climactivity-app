@@ -14,7 +14,7 @@ dest_files=[ "res://.import/speech_bubble.png-b1b99fc1f62901517d43e670aed65cd2.s
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0

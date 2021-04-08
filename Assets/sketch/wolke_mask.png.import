@@ -14,7 +14,7 @@ dest_files=[ "res://.import/wolke_mask.png-e5dae75b88300afab9b4babdf53a0501.stex
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0

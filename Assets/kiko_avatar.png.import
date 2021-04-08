@@ -14,7 +14,7 @@ dest_files=[ "res://.import/kiko_avatar.png-29d36a8d35320fd885168e7a605eea47.ste
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0

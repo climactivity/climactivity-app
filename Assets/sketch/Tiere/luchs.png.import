@@ -14,7 +14,7 @@ dest_files=[ "res://.import/luchs.png-27a008ea0c85ef0fecc302356c2c848c.stex" ]
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0

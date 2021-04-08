@@ -6,7 +6,7 @@ signal reward_added(reward)
 
 func _ready(): 
 	player_state = PSS.get_player_state_ref()
-	
+	update_xp_vals()
 func add_reward(reward, show = false):
 	if reward == null:
 		reward = DEBUG_default_reward()
@@ -16,6 +16,14 @@ func add_reward(reward, show = false):
 func DEBUG_default_reward():
 	Logger.print("Generated default reward", self)
 	var r =  reward.new()
-	r.coins = 100
-	r.xp = 100
+	r.coins = 20
+	r.xp = 200
 	return r
+
+func level_frag(xp):
+	return fmod(xp, 500)/500
+
+func update_xp_vals(): 
+	var inventory = player_state.inventory	
+	inventory.level = floor(inventory.xp / 500.0)
+	

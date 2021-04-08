@@ -14,7 +14,7 @@ dest_files=[ "res://.import/baer_iso_shad.png-268a9fbcfebb8c5fdf7b0424016923a1.s
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
