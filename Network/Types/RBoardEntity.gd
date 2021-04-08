@@ -53,3 +53,6 @@ func alert_can_water():
 	if node == null: return
 	if node.has_method("alert_can_water"):
 		node.alert_can_water() 
+
+func is_mature(): 
+	return OS.get_unix_time() > planted_at + growth_period

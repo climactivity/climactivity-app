@@ -1,7 +1,6 @@
 extends Node
 
 var _base_tree_scene = preload("res://ForestScene3d/TreeTemplates/BaseTree.tscn")
-var initial_state = preload("res://ForestScene3d/TreeTemplates/InitialState.tres")
 
 onready var http_request = $HTTPRequest
 

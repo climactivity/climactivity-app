@@ -446,10 +446,10 @@ texture = ExtResource( 15 )
 [node name="TextureRect" type="TextureRect" parent="Camera/HUD"]
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -360.027
-margin_top = 88.4058
-margin_right = -58.0317
-margin_bottom = 277.406
+margin_left = -922.985
+margin_top = 490.926
+margin_right = -620.99
+margin_bottom = 679.926
 texture = ExtResource( 9 )
 expand = true
 stretch_mode = 6

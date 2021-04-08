@@ -6,26 +6,16 @@
 [ext_resource path="res://ForestScene3d/TreeTemplates/FixedGroundPos.gd" type="Script" id=4]
 [ext_resource path="res://ForestScene3d/TreeTemplates/ContactShadow.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Assets/sketch/baum/baum_erwachsen.png" type="Texture" id=6]
+[ext_resource path="res://ForestScene3d/TreeTemplates/PM_Stage_Inc.tres" type="Material" id=7]
 
-[sub_resource type="ParticlesMaterial" id=2]
-direction = Vector3( 0, 0, -1 )
-spread = 78.56
-flatness = 0.36
-initial_velocity = 15.92
-initial_velocity_random = 0.15
-scale = 0.02
-hue_variation = 0.17
-hue_variation_random = 0.06
-
-[sub_resource type="SpatialMaterial" id=3]
+[sub_resource type="SpatialMaterial" id=2]
 flags_unshaded = true
 albedo_color = Color( 0.988235, 0.858824, 0.156863, 1 )
 
-[sub_resource type="SphereMesh" id=4]
-material = SubResource( 3 )
+[sub_resource type="SphereMesh" id=3]
+material = SubResource( 2 )
 
-[sub_resource type="Animation" id=1]
-resource_name = "grow"
+[sub_resource type="Animation" id=4]
 tracks/0/type = "bezier"
 tracks/0/path = NodePath("Sprite3D:_unit_factor")
 tracks/0/interp = 1
@@ -133,8 +123,8 @@ amount = 1859
 lifetime = 117.7
 explosiveness = 1.0
 visibility_aabb = AABB( -4, -4, -3.88161, 8, 8, 7.76322 )
-process_material = SubResource( 2 )
-draw_pass_1 = SubResource( 4 )
+process_material = ExtResource( 7 )
+draw_pass_1 = SubResource( 3 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/grow = SubResource( 1 )
+anims/grow = SubResource( 4 )
