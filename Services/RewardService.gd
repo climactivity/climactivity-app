@@ -8,9 +8,14 @@ func _ready():
 	player_state = PSS.get_player_state_ref()
 	
 func add_reward(reward, show = false):
+	if reward == null:
+		reward = DEBUG_default_reward()
 	player_state.add_reward(reward)
 	if show: emit_signal("reward_added", reward)
 
 func DEBUG_default_reward():
 	Logger.print("Generated default reward", self)
-	return reward.new()
+	var r =  reward.new()
+	r.coins = 100
+	r.xp = 100
+	return r

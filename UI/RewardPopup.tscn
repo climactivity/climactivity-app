@@ -1,0 +1,151 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://UI/RewardPopup.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Icons/XP.png" type="Texture" id=2]
+[ext_resource path="res://UI/typography/Heading.tres" type="DynamicFont" id=3]
+[ext_resource path="res://Assets/Icons/coins-stack.png" type="Texture" id=4]
+[ext_resource path="res://UI/theme/Button_Important.tres" type="StyleBox" id=5]
+[ext_resource path="res://UI/theme/Button_Important_Down.tres" type="StyleBox" id=6]
+[ext_resource path="res://UI/Popup_BG.tres" type="StyleBox" id=7]
+
+[node name="RewardPopup" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 145.0
+margin_bottom = -1281.0
+script = ExtResource( 1 )
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+anchor_right = 1.0
+margin_bottom = 494.0
+custom_styles/panel = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+margin_right = 1080.0
+margin_bottom = 364.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer"]
+margin_right = 1080.0
+margin_bottom = 364.0
+rect_min_size = Vector2( 0, 364 )
+
+[node name="XP_Display" type="VBoxContainer" parent="VBoxContainer/MarginContainer/HBoxContainer"]
+visible = false
+margin_right = 538.0
+margin_bottom = 364.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer/HBoxContainer/XP_Display"]
+margin_right = 538.0
+margin_bottom = 180.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/MarginContainer/HBoxContainer/XP_Display/MarginContainer"]
+margin_right = 538.0
+margin_bottom = 180.0
+rect_min_size = Vector2( 256, 0 )
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 6
+
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/MarginContainer/HBoxContainer/XP_Display"]
+margin_top = 184.0
+margin_right = 538.0
+margin_bottom = 364.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="CenterContainer" type="CenterContainer" parent="VBoxContainer/MarginContainer/HBoxContainer/XP_Display/MarginContainer2"]
+margin_right = 538.0
+margin_bottom = 180.0
+
+[node name="XP_Label" type="Label" parent="VBoxContainer/MarginContainer/HBoxContainer/XP_Display/MarginContainer2/CenterContainer"]
+margin_left = 170.0
+margin_top = 57.0
+margin_right = 368.0
+margin_bottom = 122.0
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "+ 400 XP"
+
+[node name="Coin_Display" type="VBoxContainer" parent="VBoxContainer/MarginContainer/HBoxContainer"]
+visible = false
+margin_right = 1080.0
+margin_bottom = 364.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/MarginContainer/HBoxContainer/Coin_Display"]
+margin_right = 1080.0
+margin_bottom = 180.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/margin_right = 40
+custom_constants/margin_top = 40
+custom_constants/margin_left = 40
+custom_constants/margin_bottom = 40
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/MarginContainer/HBoxContainer/Coin_Display/MarginContainer2"]
+margin_left = 40.0
+margin_top = 40.0
+margin_right = 1040.0
+margin_bottom = 140.0
+rect_min_size = Vector2( 256, 0 )
+texture = ExtResource( 4 )
+expand = true
+stretch_mode = 6
+
+[node name="MarginContainer3" type="MarginContainer" parent="VBoxContainer/MarginContainer/HBoxContainer/Coin_Display"]
+margin_top = 184.0
+margin_right = 1080.0
+margin_bottom = 364.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="CenterContainer2" type="CenterContainer" parent="VBoxContainer/MarginContainer/HBoxContainer/Coin_Display/MarginContainer3"]
+margin_right = 1080.0
+margin_bottom = 180.0
+
+[node name="Coin_Label" type="Label" parent="VBoxContainer/MarginContainer/HBoxContainer/Coin_Display/MarginContainer3/CenterContainer2"]
+margin_left = 414.0
+margin_top = 57.0
+margin_right = 665.0
+margin_bottom = 122.0
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "+ 400 Taler"
+
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer"]
+margin_top = 368.0
+margin_right = 1080.0
+margin_bottom = 443.0
+
+[node name="CenterContainer" type="CenterContainer" parent="VBoxContainer/MarginContainer2"]
+margin_right = 1080.0
+margin_bottom = 75.0
+
+[node name="AcceptButton" type="Button" parent="VBoxContainer/MarginContainer2/CenterContainer"]
+margin_left = 244.0
+margin_right = 836.0
+margin_bottom = 75.0
+custom_styles/hover = ExtResource( 5 )
+custom_styles/pressed = ExtResource( 6 )
+custom_styles/focus = ExtResource( 5 )
+custom_styles/disabled = ExtResource( 5 )
+custom_styles/normal = ExtResource( 5 )
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "ack_reward_button_label"
+[connection signal="pressed" from="VBoxContainer/MarginContainer2/CenterContainer/AcceptButton" to="." method="_on_AcceptButton_pressed"]

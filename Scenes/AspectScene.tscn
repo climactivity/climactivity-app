@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Scenes/SceneBase.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/AspectScene.gd" type="Script" id=2]
@@ -17,7 +17,6 @@
 [ext_resource path="res://UI/Components/Reward.gd" type="Script" id=16]
 [ext_resource path="res://UI/Components/FactorCapsule.gd" type="Script" id=17]
 [ext_resource path="res://UI/theme/Button_Important.tres" type="StyleBox" id=18]
-[ext_resource path="res://Assets/Icons/AufforstungIcon.png" type="Texture" id=19]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 1, 1, 1, 1 )
@@ -99,7 +98,6 @@ anchor_bottom = 0.0
 margin_top = 0.0
 margin_right = 1080.0
 margin_bottom = 400.0
-text = ""
 
 [node name="CySidePanel" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview" index="1" instance=ExtResource( 15 )]
 anchor_right = 0.0
@@ -172,7 +170,6 @@ margin_bottom = 50.0
 custom_fonts/font = ExtResource( 8 )
 text = "Coins: 0 Xp: 0 Water: 0"
 script = ExtResource( 16 )
-_reward = null
 
 [node name="MarginContainer2" type="MarginContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview/CySidePanel/HBoxContainer" index="1"]
 margin_left = 469.0
@@ -187,14 +184,11 @@ visible = false
 margin_top = 53.0
 margin_right = 427.0
 margin_bottom = 165.0
-icon_left = false
 icon_texture = ExtResource( 14 )
 texture_min_size = 79
 font_color = Color( 0.588235, 0.74902, 0.0509804, 1 )
 font_color_disabled = Color( 0.301961, 0.301961, 0.301961, 1 )
 text = "go_to_tracking_settings"
-button_disabled = false
-color_icon = false
 
 [node name="Button" type="Button" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview/CySidePanel/HBoxContainer/MarginContainer2" index="1"]
 margin_top = 53.0
@@ -355,10 +349,6 @@ __meta__ = {
 }
 
 [node name="HTTPRequest" type="HTTPRequest" parent="." index="1"]
-
-[node name="Header" parent="HeaderContainer" index="1"]
-icon_texture = ExtResource( 19 )
-back_button_override = false
 [connection signal="pressed" from="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview/CySidePanel/HBoxContainer/MarginContainer2/Panel" to="." method="_on_Panel_pressed"]
 [connection signal="pressed" from="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview/CySidePanel/HBoxContainer/MarginContainer2/Button" to="." method="_on_Button_pressed"]
 [connection signal="pressed" from="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview/shop_button_container/entity_shop_button" to="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview" method="_on_entity_shop_button_pressed"]

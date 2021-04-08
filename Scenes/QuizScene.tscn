@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://Scenes/SceneBase.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/QuizScene.gd" type="Script" id=2]
@@ -11,7 +11,6 @@
 [ext_resource path="res://UI/Components/Infobits.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Assets/Theme/Fonts/RobotoSlab-Bold.ttf" type="DynamicFontData" id=10]
 [ext_resource path="res://Scenes/QuizEnd.gd" type="Script" id=11]
-[ext_resource path="res://Assets/Icons/AufforstungIcon.png" type="Texture" id=12]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.972549, 0.972549, 0.972549, 1 )
@@ -753,10 +752,6 @@ anims/show_infobit_holder = SubResource( 12 )
 anims/show_quiz = SubResource( 13 )
 anims/show_quiz_intro = SubResource( 14 )
 anims/show_quiz_result = SubResource( 15 )
-
-[node name="Header" parent="HeaderContainer" index="1"]
-icon_texture = ExtResource( 12 )
-back_button_override = false
 [connection signal="pressed" from="ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/ContentHolder/QuizEnd/CollectRewardButton" to="." method="_on_CollectRewardButton_pressed"]
 [connection signal="pressed" from="ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/Footer/BackButton" to="." method="_on_BackButton_pressed"]
 [connection signal="pressed" from="ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/Footer/ContinueButton" to="." method="_on_ContinueButton_pressed"]
