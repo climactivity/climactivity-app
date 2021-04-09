@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Blumen_blühend_06.png-d9200ec1e6bcd520fd0a29fc5bd5d183.stex"
+path="res://.import/Blumen_bluehend_04.png-a11efc18fd97efd7a2bc573c74a8f76e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/sketch/blume/Blumen_blühend_06.png"
-dest_files=[ "res://.import/Blumen_blühend_06.png-d9200ec1e6bcd520fd0a29fc5bd5d183.stex" ]
+source_file="res://Assets/sketch/blume/Blumen_bluehend_04.png"
+dest_files=[ "res://.import/Blumen_bluehend_04.png-a11efc18fd97efd7a2bc573c74a8f76e.stex" ]
 
 [params]
 

@@ -2,19 +2,19 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/ernährung.png-72fe67b8d64334e0ad938dcb9cf98c23.stex"
+path="res://.import/Blumen_bluehend_01.png-0c2b55987d9f990ebd76306d03ba194a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Icons/ernährung.png"
-dest_files=[ "res://.import/ernährung.png-72fe67b8d64334e0ad938dcb9cf98c23.stex" ]
+source_file="res://Assets/sketch/blume/Blumen_bluehend_01.png"
+dest_files=[ "res://.import/Blumen_bluehend_01.png-0c2b55987d9f990ebd76306d03ba194a.stex" ]
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0

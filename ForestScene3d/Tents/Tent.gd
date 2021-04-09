@@ -4,7 +4,7 @@ extends Spatial
 
 var sectors = {
 	"ernährung": {
-		"texture": preload("res://Assets/sketch/zelt_neu/zelt_grün_ZU.png"),
+		"texture": preload("res://Assets/sketch/zelt_neu/zelt_gruen_ZU.png"),
 		"target_scene": "res://Scenes/BigPointScene.tscn",
 		"navigation_data": {
 			"sector": "ernaehrung",

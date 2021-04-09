@@ -2,19 +2,19 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Blumen_blühend_05.png-3986decdb6b29e3ffb491d88d6cfacc7.stex"
+path="res://.import/ernaehrung.png-1cec9439635965064e644bceda3c600f.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/sketch/blume/Blumen_blühend_05.png"
-dest_files=[ "res://.import/Blumen_blühend_05.png-3986decdb6b29e3ffb491d88d6cfacc7.stex" ]
+source_file="res://Assets/Icons/ernaehrung.png"
+dest_files=[ "res://.import/ernaehrung.png-1cec9439635965064e644bceda3c600f.stex" ]
 
 [params]
 
-compress/mode=1
+compress/mode=0
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0

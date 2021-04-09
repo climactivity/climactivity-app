@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/zelt_rückseite_blau.png-4f46a3a47435b073967a01028f5d2def.stex"
+path="res://.import/Blumen_bluehend.png-481e3bab2bf3fc0167483afcc37defc5.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/sketch/zelt_rückseite_blau.png"
-dest_files=[ "res://.import/zelt_rückseite_blau.png-4f46a3a47435b073967a01028f5d2def.stex" ]
+source_file="res://Assets/sketch/blume/Blumen_bluehend.png"
+dest_files=[ "res://.import/Blumen_bluehend.png-481e3bab2bf3fc0167483afcc37defc5.stex" ]
 
 [params]
 

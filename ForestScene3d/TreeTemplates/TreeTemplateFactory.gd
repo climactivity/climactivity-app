@@ -25,7 +25,7 @@ var available_textures = {
 		1: preload("res://Assets/sketch/baum_jung01.png"),
 		2: preload("res://Assets/sketch/baum_jung.png"),
 		3: preload("res://Assets/sketch/baum_erwachsen.png"),
-		4: preload("res://Assets/sketch/baum_blüten.png"),
+		4: preload("res://Assets/sketch/baum_blueten.png"),
 		'sizes': {
 			0: 0.4,
 			1: 0.6,

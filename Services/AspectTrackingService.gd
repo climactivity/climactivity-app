@@ -86,12 +86,20 @@ func commit_tracking_level(option, aspect):
 	Logger.print("Commit %s for aspect %s" % [option["level"], aspect._id], self)
 	var new_reward = bp_r_reward.new()
 	new_reward._id = "-1"
-	new_reward.coins = option["reward"]["coins"]
+	if option["reward"].has("coins"):
+		new_reward.coins = option["reward"]["coins"]
+	else:
+		new_reward.coins = 0
 	if option["reward"].has("xp"):
 		new_reward.xp = option["reward"]["xp"]
 	else:
 		new_reward.xp = 0.0
-	new_reward.water =  option["reward"]["water"]
+	if option["reward"].has("water"):
+		new_reward.water =  option["reward"]["water"]
+	elif option["waterFactor"] != 0:
+		 new_reward.water = option["waterFactor"]
+	else:
+		new_reward.water = 0
 	var new_entry = bp_r_tracking_entry.new()
 	new_entry.aspect = aspect._id
 	new_entry.time_stamp = OS.get_unix_time()

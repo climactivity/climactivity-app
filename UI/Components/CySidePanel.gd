@@ -12,14 +12,17 @@ func _ready():
 	heading.text = heading_text
 
 func _notification(what):
+	var y_size = rect_size.y
 	if what == NOTIFICATION_SORT_CHILDREN:
 		for child in get_children(): 
-			#content_holder.add_child(child)
+			content_holder.add_child(child)
 			if (chrome_holder != null  and child != chrome_holder):
 				fit_child_in_rect( child, Rect2( top_left, content_holder.rect_size - top_left) )
 			else: 
 				fit_child_in_rect( child, Rect2( Vector2(), rect_size ) )
-			
+			y_size += child.rect_size.y
+	#rect_size.y = y_size
+	#queue_sort()
 func set_topleft_offset(vec2: Vector2):
 	top_left = vec2
 	queue_sort()
@@ -27,3 +30,5 @@ func set_topleft_offset(vec2: Vector2):
 func set_heading(text):
 	heading_text = text
 	if heading != null: heading.text = heading_text
+
+

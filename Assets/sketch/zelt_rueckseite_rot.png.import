@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Blumen_blühend_03.png-96e1be719cbc570f0860c5a166f5be9e.stex"
+path="res://.import/zelt_rueckseite_rot.png-028ababbd29327d5a5ab7c3933bbc8e3.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/sketch/blume/Blumen_blühend_03.png"
-dest_files=[ "res://.import/Blumen_blühend_03.png-96e1be719cbc570f0860c5a166f5be9e.stex" ]
+source_file="res://Assets/sketch/zelt_rueckseite_rot.png"
+dest_files=[ "res://.import/zelt_rueckseite_rot.png-028ababbd29327d5a5ab7c3933bbc8e3.stex" ]
 
 [params]
 
