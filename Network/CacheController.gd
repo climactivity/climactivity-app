@@ -57,14 +57,15 @@ func _make_dirs():
 		dir.make_dir_recursive("%s://Network/Cache/%s" % [fs,d])
 
 func _make_manifest(): 
-	fixed_cache_manifest = load("res://Network/Cache/manifest.tres")
+	fixed_cache_manifest = load("user://Network/Cache/fmanifest.tres")
 	dynamic_cache_manifest = load("user://Network/Cache/manifest.tres")
 	if(dynamic_cache_manifest == null): 
 		dynamic_cache_manifest = bp_cache_manifest.new()
+		dynamic_cache_manifest.take_over_path("user://Network/Cache/manifest.tres")
 	writalbe_cache_manifest = dynamic_cache_manifest
+	if(fixed_cache_manifest == null): 
+		fixed_cache_manifest = bp_cache_manifest.new()
 	if (res_writable):
-		if(fixed_cache_manifest == null): 
-			fixed_cache_manifest = bp_cache_manifest.new()
 		writalbe_cache_manifest = fixed_cache_manifest
 
 func _get_updated_resource_list(): 
@@ -73,6 +74,7 @@ func _get_updated_resource_list():
 
 func _on_updated_resource_list(result, response_code, headers, body):
 	var json = JSON.parse(body.get_string_from_utf8())
+	print("-------------------------------------- hello --------------------------------------")
 	if(json.error): 
 		Logger.print("Server error: " + str(json.error) +  "! Got: " + body.get_string_from_utf8(), self)
 		_network_error()
@@ -157,6 +159,7 @@ func _load_manifest_resources():
 	for type in type_map.keys(): 
 		entities[type] = []
 	fixed_cache_manifest.update(dynamic_cache_manifest.saved_entities, dynamic_cache_manifest.last_update)
+	#fixed_cache_manifest = dynamic_cache_manifest
 	var entities_meta = fixed_cache_manifest.saved_entities
 	for entity_description_key in entities_meta.keys(): 
 		var entity_description = entities_meta[entity_description_key]
