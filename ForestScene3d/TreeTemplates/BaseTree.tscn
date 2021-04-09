@@ -14,16 +14,15 @@
 radius = 0.315774
 height = 1.99314
 
-[sub_resource type="SpatialMaterial" id=6]
+[sub_resource type="SpatialMaterial" id=2]
 flags_transparent = true
 flags_unshaded = true
 albedo_color = Color( 0.541176, 0.964706, 0.517647, 1 )
 
-[sub_resource type="SphereMesh" id=7]
-material = SubResource( 6 )
+[sub_resource type="SphereMesh" id=3]
+material = SubResource( 2 )
 
-[sub_resource type="Animation" id=2]
-resource_name = "RESET"
+[sub_resource type="Animation" id=4]
 length = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite3D:scale")
@@ -74,8 +73,7 @@ tracks/3/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "happy"
+[sub_resource type="Animation" id=5]
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite3D:scale")
@@ -90,8 +88,7 @@ tracks/0/keys = {
 "values": [ Vector3( 1, 1, 1 ), Vector3( 1.2, 1.2, 1.2 ), Vector3( 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=4]
-resource_name = "planted"
+[sub_resource type="Animation" id=6]
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite3D:_unit_factor")
@@ -106,8 +103,7 @@ tracks/0/keys = {
 "values": [ 0.0, 0.4 ]
 }
 
-[sub_resource type="Animation" id=5]
-resource_name = "stage_inc"
+[sub_resource type="Animation" id=7]
 tracks/0/type = "value"
 tracks/0/path = NodePath("AnimationTarget:visible")
 tracks/0/interp = 1
@@ -181,7 +177,7 @@ amount = 128
 one_shot = true
 explosiveness = 1.0
 process_material = ExtResource( 9 )
-draw_pass_1 = SubResource( 7 )
+draw_pass_1 = SubResource( 3 )
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.016155, 0 )
@@ -215,10 +211,10 @@ visible = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "RESET"
-anims/RESET = SubResource( 2 )
-anims/happy = SubResource( 3 )
-anims/planted = SubResource( 4 )
-anims/stage_inc = SubResource( 5 )
+anims/RESET = SubResource( 4 )
+anims/happy = SubResource( 5 )
+anims/planted = SubResource( 6 )
+anims/stage_inc = SubResource( 7 )
 
 [node name="CameraZoomTarget" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 0.832061, 0.554685, 0, -0.554685, 0.832061, 1.09, 2.45, 3.363 )

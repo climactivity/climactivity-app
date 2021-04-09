@@ -1,12 +1,13 @@
 [gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://ForestScene3d/HexMesh.tres" type="CylinderMesh" id=1]
-[ext_resource path="res://Assets/sketch/baum_blüten.png" type="Texture" id=2]
+[ext_resource path="res://Assets/sketch/baum_blueten.png" type="Texture" id=2]
 [ext_resource path="res://ForestScene3d/TreeTemplates/TestScenes/TestRender.gd" type="Script" id=3]
 [ext_resource path="res://ForestScene3d/TreeTemplates/FixedGroundPos.gd" type="Script" id=4]
 [ext_resource path="res://ForestScene3d/TreeTemplates/ContactShadow.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Assets/sketch/baum/baum_erwachsen.png" type="Texture" id=6]
 [ext_resource path="res://ForestScene3d/TreeTemplates/PM_Stage_Inc.tres" type="Material" id=7]
+
 
 [sub_resource type="SpatialMaterial" id=2]
 flags_unshaded = true

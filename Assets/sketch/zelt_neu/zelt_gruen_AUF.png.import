@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/zelt_rückseite_grün.png-e2f2a7f498f3b4057429f76455764f31.stex"
+path="res://.import/zelt_gruen_AUF.png-43fd5a893150215661cb2daae6d552c0.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/sketch/zelt_neu/zelt_rückseite_grün.png"
-dest_files=[ "res://.import/zelt_rückseite_grün.png-e2f2a7f498f3b4057429f76455764f31.stex" ]
+source_file="res://Assets/sketch/zelt_neu/zelt_gruen_AUF.png"
+dest_files=[ "res://.import/zelt_gruen_AUF.png-43fd5a893150215661cb2daae6d552c0.stex" ]
 
 [params]
 

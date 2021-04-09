@@ -104,10 +104,8 @@ anchor_right = 0.0
 margin_top = 404.0
 margin_right = 1080.0
 margin_bottom = 660.0
-size_flags_horizontal = 1
 size_flags_vertical = 3
 top_left = Vector2( 291.785, 35.114 )
-heading_text = ""
 
 [node name="HBoxContainer" type="HBoxContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview/CySidePanel" index="1"]
 margin_left = 291.785
@@ -146,10 +144,14 @@ custom_fonts/font = ExtResource( 8 )
 text = "Aktueller Wert"
 
 [node name="OptionValueLabel" type="Label" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview/CySidePanel/HBoxContainer/MarginContainer/VBoxContainer/CurrentTrackingSetting" index="1"]
-margin_right = 210.0
+margin_right = 378.0
 margin_bottom = 50.0
+rect_min_size = Vector2( 378, 0 )
+size_flags_horizontal = 3
+size_flags_vertical = 1
 custom_fonts/font = ExtResource( 8 )
 text = "option_value"
+autowrap = true
 
 [node name="CurrentTrackingSetting2" type="HBoxContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview/CySidePanel/HBoxContainer/MarginContainer/VBoxContainer" index="1"]
 margin_top = 54.0

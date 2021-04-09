@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Blumen_blühend_04.png-13fd95eb3c9765fef864ecf226aabe2b.stex"
+path="res://.import/baum_blueten.png-774f45973b5d326e1504171ad8239473.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/sketch/blume/Blumen_blühend_04.png"
-dest_files=[ "res://.import/Blumen_blühend_04.png-13fd95eb3c9765fef864ecf226aabe2b.stex" ]
+source_file="res://Assets/sketch/baum/baum_blueten.png"
+dest_files=[ "res://.import/baum_blueten.png-774f45973b5d326e1504171ad8239473.stex" ]
 
 [params]
 
@@ -19,16 +19,16 @@ compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
-flags/repeat=0
+flags/repeat=true
 flags/filter=true
-flags/mipmaps=false
+flags/mipmaps=true
 flags/anisotropic=false
-flags/srgb=2
+flags/srgb=1
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
 process/invert_color=false
 stream=false
 size_limit=0
-detect_3d=true
+detect_3d=false
 svg/scale=1.0

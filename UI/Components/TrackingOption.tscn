@@ -13,9 +13,6 @@ border_color = Color( 1, 1, 1, 1 )
 [node name="Option" type="PanelContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_bottom = -1748.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
 custom_styles/panel = SubResource( 1 )
 script = ExtResource( 2 )
 __meta__ = {
@@ -25,44 +22,42 @@ __meta__ = {
 [node name="MarginContainer" type="MarginContainer" parent="."]
 margin_top = 2.0
 margin_right = 1080.0
-margin_bottom = 172.0
+margin_bottom = 1920.0
+size_flags_horizontal = 3
+custom_constants/margin_right = 30
+custom_constants/margin_top = 4
+custom_constants/margin_left = 30
+custom_constants/margin_bottom = 4
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer"]
+margin_left = 30.0
+margin_top = 4.0
+margin_right = 1050.0
+margin_bottom = 1914.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/MarginContainer2"]
+margin_right = 1020.0
+margin_bottom = 1910.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_constants/margin_right = 30
-custom_constants/margin_top = 64
-custom_constants/margin_left = 30
-custom_constants/margin_bottom = 64
-
-[node name="HBoxContainer" type="Control" parent="MarginContainer"]
-margin_left = 30.0
-margin_top = 64.0
-margin_right = 1050.0
-margin_bottom = 106.0
-size_flags_vertical = 3
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
-anchor_top = 0.5
-anchor_bottom = 0.5
-margin_top = -52.0
-margin_right = 263.0
-margin_bottom = 52.0
-size_flags_vertical = 3
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer"]
-margin_right = 263.0
+[node name="Label" type="Label" parent="MarginContainer/MarginContainer2/VBoxContainer"]
+margin_right = 1020.0
 margin_bottom = 50.0
+size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 1 )
 text = "Option0"
+autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Reward" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="Reward" type="Label" parent="MarginContainer/MarginContainer2/VBoxContainer"]
 margin_top = 54.0
-margin_right = 263.0
+margin_right = 1020.0
 margin_bottom = 104.0
 custom_fonts/font = ExtResource( 1 )
 text = "Xp 100, Water 1"
@@ -71,6 +66,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="HBoxContainer" type="Control" parent="MarginContainer"]
+margin_left = 30.0
+margin_top = 4.0
+margin_right = 1050.0
+margin_bottom = 1914.0
+
 [node name="SelectButton" parent="MarginContainer/HBoxContainer" instance=ExtResource( 3 )]
 anchor_left = 1.0
 anchor_top = 0.5
@@ -78,5 +79,3 @@ anchor_bottom = 0.5
 margin_left = -38.0
 margin_top = -52.0
 margin_bottom = 52.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
