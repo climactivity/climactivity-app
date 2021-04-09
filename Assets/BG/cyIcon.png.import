@@ -2,33 +2,33 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/10.png-07dd1f22e0dba7523b7c2343a2af5a1c.stex"
+path="res://.import/cyIcon.png-2bbe4464485d34d6a2b5b88449d310af.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/BG/10.png"
-dest_files=[ "res://.import/10.png-07dd1f22e0dba7523b7c2343a2af5a1c.stex" ]
+source_file="res://Assets/BG/cyIcon.png"
+dest_files=[ "res://.import/cyIcon.png-2bbe4464485d34d6a2b5b88449d310af.stex" ]
 
 [params]
 
-compress/mode=1
+compress/mode=0
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
-flags/repeat=true
+flags/repeat=0
 flags/filter=true
-flags/mipmaps=true
+flags/mipmaps=false
 flags/anisotropic=false
-flags/srgb=1
+flags/srgb=2
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
 process/invert_color=false
 stream=false
 size_limit=0
-detect_3d=false
+detect_3d=true
 svg/scale=1.0
