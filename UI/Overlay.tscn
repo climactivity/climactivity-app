@@ -1,13 +1,14 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://UI/typography/Heading.tres" type="DynamicFont" id=1]
 [ext_resource path="res://UI/MainMenu.tscn" type="PackedScene" id=2]
 [ext_resource path="res://UI/Overlay.gd" type="Script" id=3]
 [ext_resource path="res://Assets/Icons/Arrow - Left Square W.png" type="Texture" id=4]
 [ext_resource path="res://Assets/Icons/Arrow - Left Square.png" type="Texture" id=5]
+[ext_resource path="res://UI/XPBar.tscn" type="PackedScene" id=6]
+[ext_resource path="res://UI/PopupController.gd" type="Script" id=7]
 
 [sub_resource type="Animation" id=1]
-resource_name = "RESET"
 tracks/0/type = "value"
 tracks/0/path = NodePath("Popup:visible")
 tracks/0/interp = 1
@@ -34,7 +35,6 @@ tracks/1/keys = {
 }
 
 [sub_resource type="Animation" id=2]
-resource_name = "ShowPopupLayer"
 length = 0.492
 tracks/0/type = "value"
 tracks/0/path = NodePath("Popup:visible")
@@ -70,22 +70,18 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="XPBar" type="Control" parent="."]
-anchor_right = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="XPBar" parent="." instance=ExtResource( 6 )]
 
 [node name="MainMenu" parent="." instance=ExtResource( 2 )]
-margin_top = 0.0
 margin_bottom = 0.0
 
 [node name="Popup" type="Panel" parent="."]
 visible = false
-self_modulate = Color( 1, 1, 1, 0.317647 )
+self_modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 1
+script = ExtResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

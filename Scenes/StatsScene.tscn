@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scenes/SceneBase.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/Icons/chart-line-solid.svg" type="Texture" id=2]
+[ext_resource path="res://UI/typography/Heading.tres" type="DynamicFont" id=3]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item; 
@@ -33,6 +34,23 @@ screen_title = "stats_screen"
 [node name="ContentMain" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer" index="0"]
 show_menu_bar = true
 
+[node name="MarginContainer" type="MarginContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="1"]
+margin_top = 350.0
+margin_right = 1080.0
+margin_bottom = 585.0
+custom_constants/margin_top = 103
+
+[node name="Label" type="RichTextLabel" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer" index="0"]
+margin_top = 103.0
+margin_right = 1080.0
+margin_bottom = 235.0
+custom_fonts/bold_font = ExtResource( 3 )
+custom_fonts/normal_font = ExtResource( 3 )
+bbcode_enabled = true
+bbcode_text = "[center] Statistik kommt in der nächsten Version, sorry :( [/center]"
+text = " Statistik kommt in der nächsten Version, sorry :( "
+fit_content_height = true
+
 [node name="HeaderBG" parent="ContentContainer/Content" index="1"]
 self_modulate = Color( 0.494118, 0.533333, 0.964706, 1 )
 
@@ -40,3 +58,4 @@ self_modulate = Color( 0.494118, 0.533333, 0.964706, 1 )
 screen_label = "stats_screen"
 icon_texture = ExtResource( 2 )
 color = Color( 0.494118, 0.533333, 0.964706, 1 )
+back_button_override = false

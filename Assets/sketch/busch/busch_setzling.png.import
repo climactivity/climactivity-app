@@ -14,7 +14,7 @@ dest_files=[ "res://.import/busch_setzling.png-a5f2f783759b24553301d2707ee2aa8a.
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0

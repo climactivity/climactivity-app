@@ -47,6 +47,7 @@ func set_state(state):
 			visible = true
 		Cloud_States.READY:
 			sprite.texture = tex_water_available
+			cloud.set_fill_state(1.0)
 			visible = true
 		Cloud_States.RESETING:
 			pass

@@ -21,3 +21,4 @@ func _on_Close_Button_pressed():
 
 func _close_popup(): 
 	anim_player.play_backwards("ShowPopupLayer")
+	$Popup.clear()

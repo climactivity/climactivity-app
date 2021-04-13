@@ -2,22 +2,19 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/Baum_Entwurf_01.png-520a1023669deca5e95030f6f46bcc0e.s3tc.stex"
-path.etc2="res://.import/Baum_Entwurf_01.png-520a1023669deca5e95030f6f46bcc0e.etc2.stex"
-path.etc="res://.import/Baum_Entwurf_01.png-520a1023669deca5e95030f6f46bcc0e.etc.stex"
+path="res://.import/Baum_Entwurf_01.png-520a1023669deca5e95030f6f46bcc0e.stex"
 metadata={
-"imported_formats": [ "s3tc", "etc2", "etc" ],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://ForestScene3d/TreeTemplates/Textures/Baum_Entwurf_01.png"
-dest_files=[ "res://.import/Baum_Entwurf_01.png-520a1023669deca5e95030f6f46bcc0e.s3tc.stex", "res://.import/Baum_Entwurf_01.png-520a1023669deca5e95030f6f46bcc0e.etc2.stex", "res://.import/Baum_Entwurf_01.png-520a1023669deca5e95030f6f46bcc0e.etc.stex" ]
+dest_files=[ "res://.import/Baum_Entwurf_01.png-520a1023669deca5e95030f6f46bcc0e.stex" ]
 
 [params]
 
-compress/mode=2
+compress/mode=1
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0

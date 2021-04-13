@@ -4,8 +4,9 @@ func _ready():
 	$Camera.connect("camera_moved", $Background, "move")
 	Api.connect("cache_ready", self, "enter_game")
 	get_tree().get_root().set_disable_input(true)
-	$AnimationPlayer.play("Zoom_To_Clearing")
+	#$AnimationPlayer.play("Zoom_To_Clearing")
 	GameManager.forest = self
+	if GameManager.menu != null: GameManager.menu.hide_menu()
 	$Camera/HUD/DebugMenu.connect("free_place", $ForestFloor/HexGrid, "set_free_place")
 	connect("update_hud", $Camera/HUD, "update_hud")
 	connect("update_hud", $Camera/HUD/Cloud, "update_water_available")
@@ -40,3 +41,9 @@ func _restored():
 		GameManager.menu.show_menu()
 		GameManager.menu.set_navigation_state( MainMenu.Navigation_states.HOME ,true)
 
+func enter_game():
+	$AnimationPlayer.play("Zoom_To_Clearing")
+
+func show_overlay(): 
+	if GameManager.menu != null: GameManager.menu.show_menu()
+	if GameManager.xp_bar != null: GameManager.xp_bar.show()

@@ -151,8 +151,7 @@ facing = 1
 
 [node name="Spatial3" parent="." instance=ExtResource( 7 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0227464, 4.76837e-07, -0.868712 )
-facing = 3
+show_person = true
 
 [node name="Spatial4" parent="." instance=ExtResource( 7 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0168432, 0, 0.987334 )
-facing = 3

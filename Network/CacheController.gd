@@ -57,14 +57,15 @@ func _make_dirs():
 		dir.make_dir_recursive("%s://Network/Cache/%s" % [fs,d])
 
 func _make_manifest(): 
-	fixed_cache_manifest = load("res://Network/Cache/manifest.tres")
+	fixed_cache_manifest = load("user://Network/Cache/fmanifest.tres")
 	dynamic_cache_manifest = load("user://Network/Cache/manifest.tres")
 	if(dynamic_cache_manifest == null): 
 		dynamic_cache_manifest = bp_cache_manifest.new()
+		dynamic_cache_manifest.take_over_path("user://Network/Cache/manifest.tres")
 	writalbe_cache_manifest = dynamic_cache_manifest
+	if(fixed_cache_manifest == null): 
+		fixed_cache_manifest = bp_cache_manifest.new()
 	if (res_writable):
-		if(fixed_cache_manifest == null): 
-			fixed_cache_manifest = bp_cache_manifest.new()
 		writalbe_cache_manifest = fixed_cache_manifest
 
 func _get_updated_resource_list(): 
@@ -73,6 +74,7 @@ func _get_updated_resource_list():
 
 func _on_updated_resource_list(result, response_code, headers, body):
 	var json = JSON.parse(body.get_string_from_utf8())
+	print("-------------------------------------- hello --------------------------------------")
 	if(json.error): 
 		Logger.print("Server error: " + str(json.error) +  "! Got: " + body.get_string_from_utf8(), self)
 		_network_error()
@@ -99,11 +101,23 @@ func _on_new_manifest(result, response_code, headers, body):
 		_save_tree_template_data(json.result.get("current_tree_templates"))
 	_done()
 
+var DEBUG_aspect_icons = {
+	"pflanzliche_ernährung": preload("res://Assets/Icons/sector_icon_ern.png"),
+	"Fußabdruck der Mobilität zu Lande": preload("res://Assets/Icons/mobility-abzeichen.png"),
+	"Abkehr vom Auto-Vorrang": preload("res://Assets/Icons/mobility-abzeichen2.png"),
+	"Bewusst Konsumieren": preload("res://Assets/Icons/kaufen-nutzen-abzeichen.png"),
+	"Dingen ein zweites Leben schenken": preload("res://Assets/Icons/recyceln-abzeichen.png"), # nur echt mit dem Schreibfehler	
+}
+
+
 func _save_aspect_data(data):
 	for aspect_data in data: 
 		var path = fs + "://Network/Cache/Aspects/%s.%s" % [aspect_data["_id"], format]
 		Logger.print("Saving resource for %s at %s" % [aspect_data["name"], path ], self)
 		var aspect_resource = aspect_resource_type.new(aspect_data)
+		if ProjectSettings.get_setting("debug/settings/game_logic/use_fixed_icons"): 
+			if DEBUG_aspect_icons.has(aspect_resource.name):
+				aspect_resource.icon = DEBUG_aspect_icons.get(aspect_resource.name)
 		writalbe_cache_manifest.insert(aspect_data["_id"], "RLocalizedAspect", fs)
 		#aspect_resource.take_over_path(path)
 		ResourceSaver.save(path, aspect_resource, 32)
@@ -145,6 +159,7 @@ func _load_manifest_resources():
 	for type in type_map.keys(): 
 		entities[type] = []
 	fixed_cache_manifest.update(dynamic_cache_manifest.saved_entities, dynamic_cache_manifest.last_update)
+	#fixed_cache_manifest = dynamic_cache_manifest
 	var entities_meta = fixed_cache_manifest.saved_entities
 	for entity_description_key in entities_meta.keys(): 
 		var entity_description = entities_meta[entity_description_key]
@@ -169,6 +184,7 @@ func _manifest_data():
 
 func is_ready():
 	return is_ready
+
 
 func get_aspect_data_for_sector(sector):
 	if !is_ready(): return null

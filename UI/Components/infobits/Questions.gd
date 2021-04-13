@@ -29,18 +29,41 @@ func on_data(new_data):
 func next():
 	if current_question < questions.size() - 1:
 		current_question = current_question + 1
+		if questions[current_question].get_result() == 0.0:
+			Logger.print("Set active question index: " + str(current_question), self)
+			_update_question("forward")
+			return
+	var next_index = get_next_incorrect()
+	if next_index != -1:
+		if next_index == current_question:
+			Logger.print("Reset active question: " + str(current_question), self)
+			questions[current_question].clear_selected()
+			return
+		current_question = next_index
 		Logger.print("Set active question index: " + str(current_question), self)
 		_update_question("forward")
 	else:
 		emit_signal("end_reached")
 
+
+func get_next_incorrect(): 
+	var results = []
+	for question_box in questions:
+		var result = question_box.get_result()
+		results.push_back(result)
+	if results.empty():
+		return -1
+	var next_index = results.find(0.0,0)
+	return next_index
+	
 func _update_question(anim_to_play):
 	for child in last.get_children():
 		last.remove_child(child)
 	for child in current.get_children():
-		last.add_child(child)
 		current.remove_child(child)
+		last.add_child(child)
 	current.add_child(questions[current_question])
+	questions[current_question].clear_selected()
 	anim_player.play(anim_to_play)
 
 func _can_check(): 

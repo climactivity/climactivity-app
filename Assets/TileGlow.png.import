@@ -14,7 +14,7 @@ dest_files=[ "res://.import/TileGlow.png-0888e45ad13c9a211038773e77689d32.stex" 
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0

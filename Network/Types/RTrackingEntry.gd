@@ -19,9 +19,9 @@ func get_reward_for_time_interval(seconds) -> Resource:
 		Logger.error("Can only track aspects for positive time intervals!")
 		return new_reward
 	var factor =  float(seconds) / reward_base_length
-	new_reward.xp = reward.xp * factor
-	new_reward.coins = reward.coins * factor
-	new_reward.water = reward.water * factor
+	new_reward.xp = float(reward.xp) * factor
+	new_reward.coins = float(reward.coins) * factor
+	new_reward.water = float(reward.water) * factor
 	return new_reward 
 
 func to_dict():

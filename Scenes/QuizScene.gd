@@ -144,7 +144,7 @@ func _last_question():
 	var quiz_end_collect_button = $"ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/ContentHolder/QuizEnd/CollectRewardButton"
 	var quiz_reward_label = $"ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/ContentHolder/QuizEnd/Panel/RewardLabel"
 	quiz_reward_label.set_reward(quiz_data.reward)
-	quiz_end_result_text.text = quiz_result.result_string
+	quiz_end_result_text.text = tr("quiz_end_message")
 	anim_player.play("show_quiz_result")
 	state = InfoByteState.QUIZ_COMPLETE
 	continue_button.set_text("Zur Auswahl")
@@ -172,7 +172,8 @@ func _on_ContinueButton_pressed():
 		InfoByteState.QUIZ:
 			_next_question()
 		InfoByteState.QUIZ_COMPLETE:
-			GameManager.scene_manager.pop_scene()
+			if can_exit:
+				GameManager.scene_manager.pop_scene()
 		InfoByteState.ERROR:
 			pass
 
@@ -200,3 +201,12 @@ func _on_back_button():
 # passed of to extra function so the header back button can hook in even if the local back button is disabled
 func _on_BackButton_pressed():
 	_on_back_button()
+
+var can_exit = false
+func _on_CollectRewardButton_pressed():
+	if can_exit: 
+		return
+	InfobyteService.complete_infobyte(quiz_data._id)
+	RewardService.add_reward(quiz_data.reward, true)
+	can_exit = true
+	$"ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/ContentHolder/QuizEnd/CollectRewardButton".set_disabled(true)

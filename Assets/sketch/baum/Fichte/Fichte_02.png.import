@@ -14,7 +14,7 @@ dest_files=[ "res://.import/Fichte_02.png-45f82cd85688f371802a9c850cf525d4.stex"
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0

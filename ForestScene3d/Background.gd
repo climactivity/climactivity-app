@@ -7,16 +7,21 @@ export var parallax2_factor = 2.0
 # some backdrop elements can be really annoying in editor, so they are hidden in engine.
 # get reenabled when the game starts
 func _ready():
-	for child in get_children(): 
-		child.visible = true
-
+#	for child in get_children(): 
+#		child.visible = true
+	pass
 # move backdrop with camera, offset based on which layer the element belongs to
 func move(delta):
 	if(!should_move): return
 	self.global_translate(delta)
+	var factor = parallax1_factor
 	for child in get_children(): 
 	#	child.translate(Vector3(0.0,0.0,delta.z*-0.05))
-		if child.is_in_group("Parallax"):
-			child.translate(Vector3(parallax1_factor * (delta.x/child.transform.origin.z),0.0,0.0))
-		elif child.is_in_group("Parallax2"):
-			child.translate(Vector3(parallax2_factor * (delta.x/child.transform.origin.z),0.0,0.0))
+		var index = int(child.name)
+		print(index)
+		child.translate(Vector3(factor * (delta.x/child.transform.origin.z),0.0,0.0))
+#		if child.is_in_group("Parallax"):
+#			child.translate(Vector3(parallax1_factor * (delta.x/child.transform.origin.z),0.0,0.0))
+#		elif child.is_in_group("Parallax2"):
+#			child.translate(Vector3(parallax2_factor * (delta.x/child.transform.origin.z),0.0,0.0))
+		factor += parallax2_factor

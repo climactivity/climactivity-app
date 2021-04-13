@@ -19,7 +19,7 @@
 [ext_resource path="res://Assets/sketch/busch/busch_jung02.png" type="Texture" id=17]
 [ext_resource path="res://Assets/baer.png" type="Texture" id=18]
 [ext_resource path="res://Assets/sketch/busch/busch.png" type="Texture" id=19]
-[ext_resource path="res://Assets/sketch/baum/baum_blüten.png" type="Texture" id=20]
+[ext_resource path="res://Assets/sketch/baum/baum_blueten.png" type="Texture" id=20]
 [ext_resource path="res://Assets/sketch/busch/busch_berries.png" type="Texture" id=21]
 [ext_resource path="res://Assets/sketch/baum/baum_jung.png" type="Texture" id=22]
 [ext_resource path="res://Assets/sketch/baum/baum_jung01.png" type="Texture" id=23]
@@ -354,7 +354,8 @@ transform = Transform( 1, 0, 0, 0, 0.887011, 0.461749, 0, -0.461749, 0.887011, 0
 current = true
 size = 44.73
 script = ExtResource( 5 )
-max_rotation_deg = -49.406
+max_elevation = 10
+max_rotation_deg = -32.0
 nw_bound = Vector2( -20, 0 )
 se_bound = Vector2( 20, 38 )
 
@@ -437,7 +438,6 @@ margin_bottom = 24.0
 
 [node name="Particles2D" type="Particles2D" parent="Camera/HUD"]
 position = Vector2( 261.626, 642.172 )
-emitting = false
 amount = 5
 lifetime = 0.4
 process_material = ExtResource( 25 )
@@ -446,10 +446,10 @@ texture = ExtResource( 15 )
 [node name="TextureRect" type="TextureRect" parent="Camera/HUD"]
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -360.027
-margin_top = 88.4058
-margin_right = -58.0317
-margin_bottom = 277.406
+margin_left = -922.985
+margin_top = 490.926
+margin_right = -620.99
+margin_bottom = 679.926
 texture = ExtResource( 9 )
 expand = true
 stretch_mode = 6

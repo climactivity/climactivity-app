@@ -14,7 +14,7 @@ dest_files=[ "res://.import/Pappel_05.png-2b19187de66da370332b0e2f745b9ccf.stex"
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0

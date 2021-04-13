@@ -14,7 +14,7 @@ dest_files=[ "res://.import/jasmin_01.png-63e842095c3d557570f70e1f43e50d5c.stex"
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0

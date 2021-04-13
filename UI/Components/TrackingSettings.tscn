@@ -31,9 +31,11 @@ shadow_size = 32
 shadow_offset = Vector2( 0, 10.141 )
 
 [node name="TrackingSettings" type="VBoxContainer"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-rect_min_size = Vector2( 0, 1200 )
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -540.0
+margin_right = 540.0
+margin_bottom = 1918.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource( 4 )
@@ -59,8 +61,7 @@ margin_bottom = 400.0
 anchor_right = 0.0
 margin_top = 404.0
 margin_right = 1080.0
-margin_bottom = 1719.0
-size_flags_horizontal = 3
+margin_bottom = 1717.0
 size_flags_vertical = 3
 top_left = Vector2( 142, 256.222 )
 
@@ -68,9 +69,8 @@ top_left = Vector2( 142, 256.222 )
 margin_left = 142.0
 margin_top = 256.222
 margin_right = 1030.0
-margin_bottom = 922.222
+margin_bottom = 1069.0
 size_flags_horizontal = 3
-size_flags_vertical = 3
 script = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -80,35 +80,35 @@ __meta__ = {
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 888.0
-margin_bottom = 130.0
+margin_bottom = 114.0
 
 [node name="Option2" parent="CySidePanel/Options" instance=ExtResource( 1 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 134.0
+margin_top = 118.0
 margin_right = 888.0
-margin_bottom = 264.0
+margin_bottom = 232.0
 
 [node name="Option3" parent="CySidePanel/Options" instance=ExtResource( 1 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 268.0
+margin_top = 236.0
 margin_right = 888.0
-margin_bottom = 398.0
+margin_bottom = 350.0
 
 [node name="Option4" parent="CySidePanel/Options" instance=ExtResource( 1 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 402.0
+margin_top = 354.0
 margin_right = 888.0
-margin_bottom = 532.0
+margin_bottom = 468.0
 
 [node name="Option5" parent="CySidePanel/Options" instance=ExtResource( 1 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 536.0
+margin_top = 472.0
 margin_right = 888.0
-margin_bottom = 666.0
+margin_bottom = 586.0
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 visible = false
@@ -149,9 +149,9 @@ align = 1
 valign = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
-margin_top = 1723.0
+margin_top = 1721.0
 margin_right = 1080.0
-margin_bottom = 1920.0
+margin_bottom = 1918.0
 custom_constants/margin_right = 149
 custom_constants/margin_top = 72
 custom_constants/margin_bottom = 73

@@ -14,7 +14,7 @@ dest_files=[ "res://.import/pilze_boden.png-60dfbf69e1fddc5edfad7460cf2f7ebb.ste
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0

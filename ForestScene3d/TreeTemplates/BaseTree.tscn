@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://ForestScene3d/HexMesh.tres" type="CylinderMesh" id=1]
 [ext_resource path="res://ForestScene3d/TreeTemplates/Textures/Baum_Entwurf_01.png" type="Texture" id=2]
@@ -8,13 +8,21 @@
 [ext_resource path="res://ForestScene3d/SpatialUIPanel.tscn" type="PackedScene" id=6]
 [ext_resource path="res://ForestScene3d/TreeTemplates/TreeWaterReceiver.gd" type="Script" id=7]
 [ext_resource path="res://UI/Components/TreeDetails.tscn" type="PackedScene" id=8]
+[ext_resource path="res://ForestScene3d/TreeTemplates/PM_Stage_Inc.tres" type="Material" id=9]
 
 [sub_resource type="CylinderShape" id=1]
 radius = 0.315774
 height = 1.99314
 
-[sub_resource type="Animation" id=2]
-resource_name = "RESET"
+[sub_resource type="SpatialMaterial" id=2]
+flags_transparent = true
+flags_unshaded = true
+albedo_color = Color( 0.541176, 0.964706, 0.517647, 1 )
+
+[sub_resource type="SphereMesh" id=3]
+material = SubResource( 2 )
+
+[sub_resource type="Animation" id=4]
 length = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite3D:scale")
@@ -28,9 +36,44 @@ tracks/0/keys = {
 "update": 0,
 "values": [ Vector3( 1, 1, 1 ) ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite3D:_unit_factor")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite3D:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("AnimationTarget:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
 
-[sub_resource type="Animation" id=3]
-resource_name = "happy"
+[sub_resource type="Animation" id=5]
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite3D:scale")
@@ -45,8 +88,7 @@ tracks/0/keys = {
 "values": [ Vector3( 1, 1, 1 ), Vector3( 1.2, 1.2, 1.2 ), Vector3( 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=4]
-resource_name = "planted"
+[sub_resource type="Animation" id=6]
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite3D:_unit_factor")
@@ -59,6 +101,56 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ 0.0, 0.4 ]
+}
+
+[sub_resource type="Animation" id=7]
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimationTarget:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.9, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite3D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.9, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, false, true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("AnimationTarget:_unit_factor")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 0.594604, 1.62451 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Particles:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
 }
 
 [node name="TreeRoot" type="Spatial"]
@@ -79,28 +171,53 @@ shape = SubResource( 1 )
 
 [node name="ContactShadow" parent="." instance=ExtResource( 5 )]
 
+[node name="Particles" type="Particles" parent="."]
+emitting = false
+amount = 128
+one_shot = true
+explosiveness = 1.0
+process_material = ExtResource( 9 )
+draw_pass_1 = SubResource( 3 )
+
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.016155, 0 )
 centered = false
 offset = Vector2( -281, 0 )
-pixel_size = 0.00266364
+pixel_size = 0.00259091
 billboard = 1
 texture = ExtResource( 2 )
 region_rect = Rect2( 123.448, 115.232, 38.423, 44.862 )
 script = ExtResource( 4 )
-_unit_factor = 1.758
+_unit_factor = 1.71
 
 [node name="SpatialUIPanel" parent="Sprite3D" instance=ExtResource( 6 )]
 transform = Transform( 0.15, 0, 0, 0, 0.15, 0, 0, 0, 1, 0, 0.097, 0 )
 
+[node name="AnimationTarget" type="Sprite3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.016155, 0 )
+visible = false
+centered = false
+offset = Vector2( -281, 0 )
+pixel_size = 0.0
+billboard = 1
+texture = ExtResource( 2 )
+region_rect = Rect2( 123.448, 115.232, 38.423, 44.862 )
+script = ExtResource( 4 )
+_unit_factor = 0.0
+
+[node name="SpatialUIPanel" parent="AnimationTarget" instance=ExtResource( 6 )]
+transform = Transform( 0.15, 0, 0, 0, 0.15, 0, 0, 0, 1, 0, 0.097, 0 )
+visible = false
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "RESET"
-anims/RESET = SubResource( 2 )
-anims/happy = SubResource( 3 )
-anims/planted = SubResource( 4 )
+anims/RESET = SubResource( 4 )
+anims/happy = SubResource( 5 )
+anims/planted = SubResource( 6 )
+anims/stage_inc = SubResource( 7 )
 
 [node name="CameraZoomTarget" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 0.832061, 0.554685, 0, -0.554685, 0.832061, 0.824, 2.45, 3.363 )
+transform = Transform( 1, 0, 0, 0, 0.832061, 0.554685, 0, -0.554685, 0.832061, 1.09, 2.45, 3.363 )
 
 [node name="Camera" type="Camera" parent="CameraZoomTarget"]
 [connection signal="input_event" from="Collider" to="." method="_on_Collider_input_event"]
