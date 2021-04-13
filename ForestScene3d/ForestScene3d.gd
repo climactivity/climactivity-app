@@ -6,7 +6,7 @@ func _ready():
 	get_tree().get_root().set_disable_input(true)
 	#$AnimationPlayer.play("Zoom_To_Clearing")
 	GameManager.forest = self
-	GameManager.menu.hide_menu()
+	if GameManager.menu != null: GameManager.menu.hide_menu()
 	$Camera/HUD/DebugMenu.connect("free_place", $ForestFloor/HexGrid, "set_free_place")
 	connect("update_hud", $Camera/HUD, "update_hud")
 	connect("update_hud", $Camera/HUD/Cloud, "update_water_available")
@@ -45,5 +45,5 @@ func enter_game():
 	$AnimationPlayer.play("Zoom_To_Clearing")
 
 func show_overlay(): 
-	GameManager.menu.show_menu()
-	GameManager.xp_bar.show()
+	if GameManager.menu != null: GameManager.menu.show_menu()
+	if GameManager.xp_bar != null: GameManager.xp_bar.show()

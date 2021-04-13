@@ -14,7 +14,7 @@ dest_files=[ "res://.import/answer_checkbox_correct.png-204dd6b647ed8e296d393900
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0

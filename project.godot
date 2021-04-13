@@ -106,6 +106,29 @@ window/stretch/aspect="keep_width"
 
 enabled=PoolStringArray( "Radial-progress-bar", "gut", "tile_object" )
 
+[importer_defaults]
+
+texture={
+"compress/bptc_ldr": 0,
+"compress/hdr_mode": 0,
+"compress/lossy_quality": 0.7,
+"compress/mode": 1,
+"compress/normal_map": 0,
+"detect_3d": false,
+"flags/anisotropic": false,
+"flags/filter": true,
+"flags/mipmaps": true,
+"flags/repeat": true,
+"flags/srgb": 2,
+"process/HDR_as_SRGB": false,
+"process/fix_alpha_border": true,
+"process/invert_color": false,
+"process/premult_alpha": false,
+"size_limit": 0,
+"stream": false,
+"svg/scale": 1.0
+}
+
 [input]
 
 "Zoom In"={
@@ -143,6 +166,7 @@ file_logging/log_path="user://logs/climactivityapp.log"
 quality/driver/driver_name="GLES2"
 quality/driver/fallback_to_gles2=true
 vram_compression/import_etc=true
+vram_compression/import_pvrtc=true
 environment/default_clear_color=Color( 0.898039, 0.898039, 0.898039, 1 )
 quality/filters/msaa=2
 environment/default_environment="res://default_env.tres"
