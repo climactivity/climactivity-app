@@ -4,7 +4,7 @@
 [ext_resource path="res://Assets/Icons/coins-stack.png" type="Texture" id=2]
 [ext_resource path="res://UI/XPBar.gd" type="Script" id=3]
 
-[sub_resource type="StyleBoxFlat" id=4]
+[sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0, 0, 0, 0.741176 )
 border_width_left = 1
 border_width_top = 1
@@ -15,14 +15,14 @@ corner_radius_top_right = 64
 corner_radius_bottom_right = 64
 corner_detail = 20
 
-[sub_resource type="StyleBoxFlat" id=1]
+[sub_resource type="StyleBoxFlat" id=2]
 bg_color = Color( 0.592157, 0.909804, 0.192157, 1 )
 corner_radius_top_left = 1024
 corner_radius_top_right = 1024
 corner_radius_bottom_right = 1024
 corner_radius_bottom_left = 1024
 
-[sub_resource type="StyleBoxFlat" id=2]
+[sub_resource type="StyleBoxFlat" id=3]
 bg_color = Color( 0.901961, 0.901961, 0.901961, 1 )
 corner_radius_top_left = 1024
 corner_radius_top_right = 1024
@@ -32,7 +32,7 @@ shadow_color = Color( 0, 0, 0, 0.14902 )
 shadow_size = 9
 shadow_offset = Vector2( 0, 2.77 )
 
-[sub_resource type="StyleBoxFlat" id=3]
+[sub_resource type="StyleBoxFlat" id=4]
 bg_color = Color( 0, 0, 0, 0.741176 )
 border_width_left = 1
 border_width_top = 1
@@ -92,14 +92,14 @@ custom_constants/margin_right = 25
 [node name="PanelContainer" type="PanelContainer" parent="MarginContainer/HBoxContainer/Level"]
 margin_right = 186.0
 margin_bottom = 45.0
-custom_styles/panel = SubResource( 4 )
+custom_styles/panel = SubResource( 1 )
 
 [node name="LevelLabel" type="Label" parent="MarginContainer/HBoxContainer/Level"]
 margin_top = 1.0
 margin_right = 186.0
 margin_bottom = 44.0
 custom_fonts/font = ExtResource( 1 )
-text = "Level"
+text = "Level 14"
 align = 1
 valign = 2
 
@@ -117,10 +117,11 @@ margin_bottom = 32.0
 rect_min_size = Vector2( 0, 32 )
 size_flags_vertical = 3
 size_flags_stretch_ratio = 3.0
-custom_styles/fg = SubResource( 1 )
-custom_styles/bg = SubResource( 2 )
-max_value = 1.0
-step = 0.0
+custom_styles/fg = SubResource( 2 )
+custom_styles/bg = SubResource( 3 )
+max_value = 100.0
+step = 0.01
+value = 45.0
 rounded = true
 percent_visible = false
 
@@ -139,7 +140,7 @@ margin_bottom = 45.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.3
-custom_styles/panel = SubResource( 3 )
+custom_styles/panel = SubResource( 4 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/MarginContainer3/PanelContainer"]
 margin_left = 1.0

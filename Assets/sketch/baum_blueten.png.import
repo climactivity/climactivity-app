@@ -15,7 +15,7 @@ dest_files=[ "res://.import/baum_blueten.png-db389ade37be0409a768dae342873155.st
 [params]
 
 compress/mode=1
-compress/lossy_quality=0.7
+compress/lossy_quality=0.64
 compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0

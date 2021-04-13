@@ -557,7 +557,7 @@ __meta__ = {
 }
 
 [node name="PanelContainer" type="PanelContainer" parent="Camera/HUD/EntityDetails/MarginContainer"]
-margin_right = 669.0
+margin_right = 670.0
 margin_bottom = 1302.0
 custom_styles/panel = ExtResource( 15 )
 
