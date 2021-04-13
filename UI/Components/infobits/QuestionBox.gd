@@ -41,6 +41,13 @@ func _on_answer_selected(answer):
 		selected_answers.push_back(answer)
 		_can_check()
 
+func clear_selected():
+	if(question_mode == "radio_buttons"): 
+		selected_answers.clear()
+		for answer in answers:
+			answer.unlock()
+		
+
 func _on_answer_unselected(answer):
 	var index = selected_answers.find(answer)
 	if (index != -1): selected_answers.remove(index)

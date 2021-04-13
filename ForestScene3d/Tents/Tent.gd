@@ -4,7 +4,7 @@ extends Spatial
 
 var sectors = {
 	"ernährung": {
-		"texture": preload("res://Assets/sketch/zelt_neu/zelt_rot_ZU.png"),
+		"texture": preload("res://Assets/sketch/zelt_neu/zelt_gruen_ZU.png"),
 		"target_scene": "res://Scenes/BigPointScene.tscn",
 		"navigation_data": {
 			"sector": "ernaehrung",
@@ -13,47 +13,47 @@ var sectors = {
 		}
 	},
 	"energy": {
-		"texture": preload("res://Assets/sketch/zelt_neu/zelt_lila_ZU.png"),
+		"texture": preload("res://Assets/sketch/zelt_neu/zelt_rot_ZU.png"),
 		"target_scene": "res://Scenes/BigPointScene.tscn",
 		"navigation_data": {
 			"sector": "energy",
-			"sector_title": "Zelt der energy",
+			"sector_title": "Zelt der Energie",
 			"sector_logo": preload("res://Assets/Icons/sector_icon_ern.png")
 		}
 	},
 	"mobility": {
-		"texture": preload("res://Assets/sketch/zelt_neu/zelt_dunkelblau_ZU.png"),
+		"texture": preload("res://Assets/sketch/zelt_neu/zelt_hellblau_ZU.png"),
 		"target_scene": "res://Scenes/BigPointScene.tscn",
 		"navigation_data": {
 			"sector": "mobility",
-			"sector_title": "Zelt der mobility",
+			"sector_title": "Zelt der Mobilität",
 			"sector_logo": preload("res://Assets/Icons/sector_icon_ern.png")
 		}
 	},
 	"indirect_emissions": {
-		"texture": preload("res://Assets/sketch/zelt_neu/zelt_grün_ZU.png"),
+		"texture": preload("res://Assets/sketch/zelt_neu/zelt_lila_ZU.png"),
 		"target_scene": "res://Scenes/BigPointScene.tscn",
 		"navigation_data": {
 			"sector": "indirect_emissions",
-			"sector_title": "Zelt der indirect_emissions",
+			"sector_title": "Zelt des Konsums",
 			"sector_logo": preload("res://Assets/Icons/sector_icon_ern.png")
 		}
 	},
 	"private_engagement": {
-		"texture": preload("res://Assets/sketch/zelt_neu/zelt_hellblau_ZU.png"),
+		"texture": preload("res://Assets/sketch/zelt_neu/zelt_gelb_ZU.png"),
 		"target_scene": "res://Scenes/BigPointScene.tscn",
 		"navigation_data": {
 			"sector": "private_engagement",
-			"sector_title": "Zelt der private_engagement",
+			"sector_title": "Zelt der privaten Aktivität",
 			"sector_logo": preload("res://Assets/Icons/sector_icon_ern.png")
 		}
 	},
 	"public_engagement": {
-		"texture": preload("res://Assets/sketch/zelt_neu/zelt_gelb_ZU.png"),
+		"texture": preload("res://Assets/sketch/zelt_neu/zelt_dunkelblau_ZU.png"),
 		"target_scene": "res://Scenes/BigPointScene.tscn",
 		"navigation_data": {
 			"sector": "public_engagement",
-			"sector_title": "Zelt der public_engagement",
+			"sector_title": "Zelt der gesellschaftlichen Aktivität",
 			"sector_logo": preload("res://Assets/Icons/sector_icon_ern.png")
 		}
 	},

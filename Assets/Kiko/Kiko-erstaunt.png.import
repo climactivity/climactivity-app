@@ -14,7 +14,7 @@ dest_files=[ "res://.import/Kiko-erstaunt.png-5eb1471e4c089edd52312eeb5b5b104a.s
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0

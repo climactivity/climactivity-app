@@ -14,7 +14,7 @@ dest_files=[ "res://.import/droplet.png-f8ceebede94e1eed1a6c7b2a0c4f78bd.stex" ]
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0

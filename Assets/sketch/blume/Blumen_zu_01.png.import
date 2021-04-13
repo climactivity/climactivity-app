@@ -14,7 +14,7 @@ dest_files=[ "res://.import/Blumen_zu_01.png-12df5a6c7016e7b2584caec5176123f9.st
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0

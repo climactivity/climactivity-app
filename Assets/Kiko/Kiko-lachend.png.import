@@ -14,7 +14,7 @@ dest_files=[ "res://.import/Kiko-lachend.png-0bad48d2db4ba90ffa5eb02c2375947e.st
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0

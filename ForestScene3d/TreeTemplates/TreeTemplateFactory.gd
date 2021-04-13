@@ -1,7 +1,6 @@
 extends Node
 
 var _base_tree_scene = preload("res://ForestScene3d/TreeTemplates/BaseTree.tscn")
-var initial_state = preload("res://ForestScene3d/TreeTemplates/InitialState.tres")
 
 onready var http_request = $HTTPRequest
 
@@ -23,10 +22,10 @@ var available_textures = {
 	},
 	'jasmin-00': {
 		0: preload("res://Assets/sketch/setzling.png"),
-		1: preload("res://Assets/sketch/baum_jung.png"),
-		2: preload("res://Assets/sketch/baum_jung01.png"),
+		1: preload("res://Assets/sketch/baum_jung01.png"),
+		2: preload("res://Assets/sketch/baum_jung.png"),
 		3: preload("res://Assets/sketch/baum_erwachsen.png"),
-		4: preload("res://Assets/sketch/baum_blüten.png"),
+		4: preload("res://Assets/sketch/baum_blueten.png"),
 		'sizes': {
 			0: 0.4,
 			1: 0.6,
@@ -216,8 +215,9 @@ func available_templates():
 func templates_in_sector(sector_name): 
 	var out = []
 	for template in _tree_templates:
-		if template.bigpoint_available.find(sector_name) != -1:
-			out.push_back(template)
+		#if template.bigpoint_available.find(sector_name) != -1:
+		#if template.archetype == "tree":
+		out.push_back(template)
 	return out
 	
 func get_template(key):

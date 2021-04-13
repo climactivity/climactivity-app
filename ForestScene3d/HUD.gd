@@ -32,8 +32,8 @@ func _can_drop_cloud(_pos, data):
 	var can_drop = result != null && result.has("collider") && result.collider.has_method("water")
 #	if result.has("collider"): print(_pos, result.collider.name, can_drop)
 	if (can_drop): 
-		result.collider.can_drop(result.position, data["water"])
-		return result.collider
+		if result.collider.can_drop(result.position, data["water"]):
+			return result.collider
 	return false
 
 func drop_data(_pos, data): 

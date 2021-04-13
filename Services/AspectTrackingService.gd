@@ -62,7 +62,7 @@ func do_update():
 		if tracking_state.water_tank == null:
 			tracking_state.water_tank = bp_r_water_tank.new()
 			tracking_state.water_tank.initialize(aspect_id, tracking_state.run_time)
-			tracking_state.water_tank.add_water(100.0)
+			#tracking_state.water_tank.add_water(100.0)
 		tracking_state.water_tank.add_water(reward.water)
 		# add update to stats
 		tracking_update.add_reward(aspect_id, reward)
@@ -86,9 +86,20 @@ func commit_tracking_level(option, aspect):
 	Logger.print("Commit %s for aspect %s" % [option["level"], aspect._id], self)
 	var new_reward = bp_r_reward.new()
 	new_reward._id = "-1"
-	new_reward.coins = option["reward"]["coins"]
-	new_reward.xp = option["reward"]["xp"]	
-	new_reward.water = option["reward"]["water"]
+	if option["reward"].has("coins"):
+		new_reward.coins = option["reward"]["coins"]
+	else:
+		new_reward.coins = 0
+	if option["reward"].has("xp"):
+		new_reward.xp = option["reward"]["xp"]
+	else:
+		new_reward.xp = 0.0
+	if option["reward"].has("water"):
+		new_reward.water =  option["reward"]["water"]
+	elif option["waterFactor"] != 0:
+		 new_reward.water = option["waterFactor"]
+	else:
+		new_reward.water = 0
 	var new_entry = bp_r_tracking_entry.new()
 	new_entry.aspect = aspect._id
 	new_entry.time_stamp = OS.get_unix_time()
@@ -175,8 +186,9 @@ func get_tracked_aspects_for_sector(sector):
 	return aspects
 
 func get_total_water_for_sector(sector):
+	# TODO
 	var aspect_data = get_tracked_aspects_for_sector(sector)
-	var total 
+	var total
 	pass
 
 func water_collected(aspect): 

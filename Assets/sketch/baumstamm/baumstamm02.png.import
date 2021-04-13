@@ -2,22 +2,19 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/baumstamm02.png-6ee7d9cbb2d6cd7ec270269c5662c758.s3tc.stex"
-path.etc2="res://.import/baumstamm02.png-6ee7d9cbb2d6cd7ec270269c5662c758.etc2.stex"
-path.etc="res://.import/baumstamm02.png-6ee7d9cbb2d6cd7ec270269c5662c758.etc.stex"
+path="res://.import/baumstamm02.png-6ee7d9cbb2d6cd7ec270269c5662c758.stex"
 metadata={
-"imported_formats": [ "s3tc", "etc2", "etc" ],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://Assets/sketch/baumstamm/baumstamm02.png"
-dest_files=[ "res://.import/baumstamm02.png-6ee7d9cbb2d6cd7ec270269c5662c758.s3tc.stex", "res://.import/baumstamm02.png-6ee7d9cbb2d6cd7ec270269c5662c758.etc2.stex", "res://.import/baumstamm02.png-6ee7d9cbb2d6cd7ec270269c5662c758.etc.stex" ]
+dest_files=[ "res://.import/baumstamm02.png-6ee7d9cbb2d6cd7ec270269c5662c758.stex" ]
 
 [params]
 
-compress/mode=2
+compress/mode=1
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0

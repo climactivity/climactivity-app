@@ -1,0 +1,969 @@
+[gd_scene load_steps=75 format=2]
+
+[ext_resource path="res://ForestScene3d/Interactables/SeedlingBox.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Vertical_Gradient.shader" type="Shader" id=2]
+[ext_resource path="res://ForestScene3d/ForestScene3d.gd" type="Script" id=3]
+[ext_resource path="res://ForestScene3d/TargetRenderForestGrid.gd" type="Script" id=4]
+[ext_resource path="res://ForestScene3d/ConstantSkyAreaCamera.gd" type="Script" id=5]
+[ext_resource path="res://ForestScene3d/Background.gd" type="Script" id=6]
+[ext_resource path="res://ForestScene3d/TreeTemplates/TestScenes/TestRender.tscn" type="PackedScene" id=7]
+[ext_resource path="res://ForestScene3d/EmptyHex.tscn" type="PackedScene" id=8]
+[ext_resource path="res://ForestScene3d/HUD.gd" type="Script" id=9]
+[ext_resource path="res://ForestScene3d/Interactables/Cloud.tscn" type="PackedScene" id=10]
+[ext_resource path="res://ForestScene3d/Interactables/QuestLog.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Assets/sketch/floortex_TILED.png" type="Texture" id=12]
+[ext_resource path="res://UI/xp_bar.png" type="Texture" id=13]
+[ext_resource path="res://ForestScene3d/DebugMenu.gd" type="Script" id=14]
+[ext_resource path="res://UI/theme/TransparentGreen.tres" type="StyleBox" id=15]
+[ext_resource path="res://ForestScene3d/MapHolder.gd" type="Script" id=16]
+[ext_resource path="res://UI/typography/Content_Regular.tres" type="DynamicFont" id=17]
+[ext_resource path="res://UI/typography/Button_Label.tres" type="DynamicFont" id=18]
+[ext_resource path="res://UI/theme/Button_Important.tres" type="StyleBox" id=19]
+[ext_resource path="res://UI/theme/Button_Important_Down.tres" type="StyleBox" id=20]
+[ext_resource path="res://ForestScene3d/PlaceHereDialog.gd" type="Script" id=21]
+[ext_resource path="res://Assets/logo.png" type="Texture" id=22]
+[ext_resource path="res://Assets/BG/01.png" type="Texture" id=23]
+[ext_resource path="res://Assets/BG/03.png" type="Texture" id=24]
+[ext_resource path="res://Assets/BG/02.png" type="Texture" id=25]
+[ext_resource path="res://Assets/BG/07.png" type="Texture" id=26]
+[ext_resource path="res://Assets/BG/06.png" type="Texture" id=27]
+[ext_resource path="res://Assets/BG/08.png" type="Texture" id=28]
+[ext_resource path="res://Assets/BG/04.png" type="Texture" id=29]
+[ext_resource path="res://Assets/BG/09.png" type="Texture" id=30]
+[ext_resource path="res://Assets/BG/05.png" type="Texture" id=31]
+[ext_resource path="res://Assets/BG/10.png" type="Texture" id=32]
+[ext_resource path="res://Assets/sketch/baum/Esche/esche_05.png" type="Texture" id=33]
+[ext_resource path="res://Assets/sketch/baum/Fichte/Fichte_04.png" type="Texture" id=34]
+[ext_resource path="res://Assets/sketch/baum/Kastanie/kastanie_04.png" type="Texture" id=35]
+[ext_resource path="res://Assets/sketch/baum/Pappel/Pappel_03.png" type="Texture" id=36]
+[ext_resource path="res://Assets/sketch/baum/Kastanie/kastanie_05.png" type="Texture" id=37]
+[ext_resource path="res://Assets/sketch/baum/Weide/Weide_02.png" type="Texture" id=38]
+[ext_resource path="res://Assets/sketch/baum/Birke/Birke_03.png" type="Texture" id=39]
+[ext_resource path="res://Assets/sketch/baum/Esche/esche_02.png" type="Texture" id=40]
+[ext_resource path="res://Assets/sketch/baum/Fichte/Fichte_05.png" type="Texture" id=41]
+[ext_resource path="res://Assets/sketch/baum/Tanne/tanne_05.png" type="Texture" id=42]
+[ext_resource path="res://Assets/sketch/baum/Weide/Weide_05.png" type="Texture" id=43]
+[ext_resource path="res://Assets/sketch/busch/Heckenrose/Heckenrose_03.png" type="Texture" id=44]
+[ext_resource path="res://Assets/sketch/busch/Wacholder/Wacholder_05.png" type="Texture" id=45]
+[ext_resource path="res://Assets/sketch/busch/Wacholder/Wacholder_03.png" type="Texture" id=46]
+[ext_resource path="res://Assets/sketch/busch/Heckenrose/Heckenrose_05.png" type="Texture" id=47]
+[ext_resource path="res://Assets/sketch/Tiere/reh_fressend.png" type="Texture" id=48]
+[ext_resource path="res://Assets/sketch/Tiere/fuchs_liegend.png" type="Texture" id=49]
+[ext_resource path="res://Assets/sketch/Tiere/igel_schnueffelnd.png" type="Texture" id=50]
+[ext_resource path="res://Assets/sketch/Tiere/kaninchen_schlafend.png" type="Texture" id=51]
+[ext_resource path="res://Assets/sketch/Tiere/wildschwein.png" type="Texture" id=52]
+
+
+[sub_resource type="ProceduralSky" id=1]
+sky_top_color = Color( 0.105882, 0.231373, 0.301961, 1 )
+sky_horizon_color = Color( 0.0627451, 0.235294, 0.372549, 1 )
+sky_curve = 0.0365513
+ground_bottom_color = Color( 0.105882, 0.231373, 0.301961, 1 )
+ground_horizon_color = Color( 0.0627451, 0.235294, 0.372549, 1 )
+sun_longitude = 180.0
+
+[sub_resource type="Environment" id=2]
+background_mode = 2
+background_sky = SubResource( 1 )
+background_energy = 16.0
+
+[sub_resource type="StyleBoxEmpty" id=3]
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 1, 1, 1, 1 )
+
+[sub_resource type="StyleBoxFlat" id=5]
+corner_radius_top_left = 1024
+corner_radius_top_right = 1024
+corner_radius_bottom_right = 1024
+corner_radius_bottom_left = 1024
+
+[sub_resource type="Animation" id=6]
+resource_name = "loading"
+length = 0.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Panel:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0.9, 0.9 ), Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 0.482353, 0.776471, 0.109804, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.584314, 0.756863, 0.117647, 1 )
+corner_radius_top_left = 64
+corner_radius_top_right = 64
+corner_radius_bottom_right = 64
+corner_radius_bottom_left = 64
+corner_detail = 20
+
+[sub_resource type="SphereShape" id=8]
+
+[sub_resource type="BoxShape" id=9]
+extents = Vector3( 35, 1, 35 )
+
+[sub_resource type="PlaneMesh" id=10]
+size = Vector2( 70, 70 )
+
+[sub_resource type="SpatialMaterial" id=11]
+flags_world_triplanar = true
+
+[sub_resource type="PlaneMesh" id=12]
+size = Vector2( 300, 300 )
+subdivide_width = 7
+subdivide_depth = 6
+
+[sub_resource type="SpatialMaterial" id=13]
+flags_unshaded = true
+flags_world_triplanar = true
+albedo_texture = ExtResource( 12 )
+uv1_scale = Vector3( 0.1, 0.109, 0.1 )
+uv1_offset = Vector3( 0.751, 0, 0 )
+uv1_triplanar = true
+
+[sub_resource type="ViewportTexture" id=14]
+viewport_path = NodePath("Viewport")
+
+[sub_resource type="World" id=15]
+
+[sub_resource type="Gradient" id=16]
+colors = PoolColorArray( 0.015625, 0.377075, 1, 1, 0.628906, 0.765167, 1, 1 )
+
+[sub_resource type="GradientTexture" id=17]
+gradient = SubResource( 16 )
+
+[sub_resource type="ShaderMaterial" id=18]
+shader = ExtResource( 2 )
+shader_param/gradient = SubResource( 17 )
+
+[sub_resource type="Animation" id=19]
+length = 0.479
+tracks/0/type = "value"
+tracks/0/path = NodePath("Camera/HUD/EntityDetails:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Camera/HUD/EntityDetails:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 408, 244 ), Vector2( 1000, 244 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Camera/HUD/EntityDetails:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Camera/HUD/DetailsBG:mouse_filter")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 2 ]
+}
+
+[sub_resource type="Animation" id=20]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Camera:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( -0.321, 19, 18.972 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Camera:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( -39.767, 0, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Camera/HUD/Loading:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=21]
+length = 0.479
+tracks/0/type = "value"
+tracks/0/path = NodePath("Camera/HUD/EntityDetails:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Camera/HUD/EntityDetails:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1000, 244 ), Vector2( 325, 244 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Camera/HUD/EntityDetails:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Camera/HUD/DetailsBG:mouse_filter")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 2, 0 ]
+}
+
+[sub_resource type="Animation" id=22]
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("Camera:translation:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( -0.321, -0.25, 0, 0.25, 0, 0.085, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("Camera:translation:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 19, -0.25, 0, 0.25, 0, 5, -0.587315, 0.3662, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("Camera:translation:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 18.972, -0.25, 0, 0.25, 0, 8.463, -0.517091, 0.711472, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("Camera:rotation_degrees:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( -39.767, -0.25, 0, 0.25, 0, -27.5, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+tracks/4/type = "bezier"
+tracks/4/path = NodePath("Camera:rotation_degrees:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+tracks/5/type = "bezier"
+tracks/5/path = NodePath("Camera:rotation_degrees:z")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Camera/HUD/Loading:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/7/type = "method"
+tracks/7/path = NodePath("Camera/HUD/Loading")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0.3 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "queue_free"
+} ]
+}
+tracks/8/type = "method"
+tracks/8/path = NodePath(".")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0.3 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "show_overlay"
+} ]
+}
+
+[node name="ForestScene3D" type="Spatial"]
+script = ExtResource( 3 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.261448, 0.965218, 0, -0.965218, 0.261448, 0, 4.09775, 0 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 2 )
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.768652, 0.639667, 0, -0.639667, 0.768652, -0.321, 19, 18.972 )
+current = true
+size = 44.73
+script = ExtResource( 5 )
+max_rotation_deg = -49.406
+nw_bound = Vector2( -20, 0 )
+se_bound = Vector2( 20, 38 )
+
+[node name="HUD" type="Control" parent="Camera"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="QuestLog" parent="Camera/HUD" instance=ExtResource( 11 )]
+visible = false
+margin_left = 120.779
+margin_top = 88.9949
+margin_right = 120.779
+margin_bottom = 88.9949
+
+[node name="SeedlingBox" parent="Camera/HUD" instance=ExtResource( 1 )]
+visible = false
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -92.0
+margin_top = 103.0
+margin_right = 92.0
+margin_bottom = 226.68
+
+[node name="Cloud" parent="Camera/HUD" instance=ExtResource( 10 )]
+visible = false
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -190.704
+margin_top = 163.157
+margin_right = -190.704
+margin_bottom = 163.157
+
+[node name="xp_bar" type="TextureRect" parent="Camera/HUD"]
+visible = false
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -268.5
+margin_right = 268.5
+margin_bottom = 52.0
+texture = ExtResource( 13 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DebugMenu" type="PanelContainer" parent="Camera/HUD"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -142.0
+margin_top = -40.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource( 14 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBox" type="VBoxContainer" parent="Camera/HUD/DebugMenu"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 135.0
+margin_bottom = 33.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Camera/HUD/DebugMenu/VBox"]
+margin_right = 128.0
+margin_bottom = 24.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Camera/HUD/DebugMenu/VBox/HBoxContainer"]
+margin_top = 5.0
+margin_right = 100.0
+margin_bottom = 19.0
+text = "Free placement"
+
+[node name="CheckBox" type="CheckBox" parent="Camera/HUD/DebugMenu/VBox/HBoxContainer"]
+margin_left = 104.0
+margin_right = 128.0
+margin_bottom = 24.0
+
+[node name="DetailsBG" type="Panel" parent="Camera/HUD"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+custom_styles/panel = SubResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Loading" type="Panel" parent="Camera/HUD"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+custom_styles/panel = SubResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="Camera/HUD/Loading"]
+anchor_right = 1.0
+margin_bottom = 814.0
+custom_constants/margin_right = 100
+custom_constants/margin_top = 100
+custom_constants/margin_left = 100
+custom_constants/margin_bottom = 100
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="Camera/HUD/Loading/MarginContainer"]
+margin_left = 100.0
+margin_top = 100.0
+margin_right = 980.0
+margin_bottom = 714.0
+texture = ExtResource( 22 )
+expand = true
+stretch_mode = 6
+
+[node name="Panel" type="Panel" parent="Camera/HUD/Loading"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -90.7158
+margin_top = -87.86
+margin_right = 89.2842
+margin_bottom = 92.14
+grow_horizontal = 2
+grow_vertical = 2
+rect_scale = Vector2( 0.926607, 0.926607 )
+rect_pivot_offset = Vector2( 90, 90 )
+custom_styles/panel = SubResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Camera/HUD/Loading"]
+autoplay = "loading"
+anims/loading = SubResource( 6 )
+
+[node name="EntityDetails" type="Control" parent="Camera/HUD"]
+visible = false
+modulate = Color( 1, 1, 1, 0 )
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -80.0
+margin_top = -716.0
+margin_right = 675.0
+margin_bottom = 586.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="Camera/HUD/EntityDetails"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 85.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PanelContainer" type="PanelContainer" parent="Camera/HUD/EntityDetails/MarginContainer"]
+margin_right = 670.0
+margin_bottom = 1302.0
+custom_styles/panel = ExtResource( 15 )
+
+[node name="MountPoint" type="MarginContainer" parent="Camera/HUD/EntityDetails/MarginContainer/PanelContainer"]
+margin_left = 1.0
+margin_top = 1.0
+margin_right = 668.0
+margin_bottom = 1301.0
+custom_constants/margin_right = 32
+custom_constants/margin_top = 32
+custom_constants/margin_left = 32
+custom_constants/margin_bottom = 32
+
+[node name="PlaceHereDialog" type="Control" parent="Camera/HUD"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.083
+anchor_right = 0.502
+anchor_bottom = 0.098
+margin_left = -457.0
+margin_top = -127.36
+margin_right = 461.84
+margin_bottom = 177.84
+script = ExtResource( 21 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PanelContainer" type="PanelContainer" parent="Camera/HUD/PlaceHereDialog"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = SubResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="Camera/HUD/PlaceHereDialog/PanelContainer"]
+margin_left = 1.0
+margin_top = 1.0
+margin_right = 920.0
+margin_bottom = 333.0
+custom_constants/margin_right = 40
+custom_constants/margin_left = 40
+custom_constants/margin_bottom = 115
+
+[node name="Label" type="Label" parent="Camera/HUD/PlaceHereDialog/PanelContainer/MarginContainer"]
+margin_left = 40.0
+margin_top = 83.0
+margin_right = 879.0
+margin_bottom = 133.0
+custom_fonts/font = ExtResource( 17 )
+text = "Möchtest du deinen Setzling hier platzieren?"
+align = 1
+
+[node name="PlantButton" type="Button" parent="Camera/HUD/PlaceHereDialog"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -325.646
+margin_top = 49.8912
+margin_right = -80.6464
+margin_bottom = 107.891
+custom_styles/hover = ExtResource( 19 )
+custom_styles/pressed = ExtResource( 20 )
+custom_styles/focus = ExtResource( 19 )
+custom_styles/disabled = ExtResource( 19 )
+custom_styles/normal = ExtResource( 19 )
+custom_fonts/font = ExtResource( 18 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 0.321569, 0.321569, 0.321569, 1 )
+text = "Hier pflanzen"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Abbrechen" type="Button" parent="Camera/HUD/PlaceHereDialog"]
+anchor_top = 0.507545
+anchor_bottom = 0.507545
+margin_left = 92.2548
+margin_top = 49.8912
+margin_right = 337.255
+margin_bottom = 107.891
+custom_styles/hover = ExtResource( 19 )
+custom_styles/pressed = ExtResource( 20 )
+custom_styles/focus = ExtResource( 19 )
+custom_styles/disabled = ExtResource( 19 )
+custom_styles/normal = ExtResource( 19 )
+custom_fonts/font = ExtResource( 18 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 0.321569, 0.321569, 0.321569, 1 )
+text = "Abbrechen"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PositionProbe" type="KinematicBody" parent="Camera"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Camera/PositionProbe"]
+shape = SubResource( 8 )
+
+[node name="ForestFloor" type="Spatial" parent="."]
+
+[node name="HexGrid" type="StaticBody" parent="ForestFloor"]
+script = ExtResource( 4 )
+SIZE = 9
+hex_size_override = Vector2( 2, 2 )
+
+[node name="MapHolder" type="Spatial" parent="ForestFloor/HexGrid"]
+script = ExtResource( 16 )
+
+[node name="TestRender" parent="ForestFloor/HexGrid/MapHolder" instance=ExtResource( 7 )]
+transform = Transform( 3.5, 0, 0, 0, 3.5, 0, 0, 0, 3.5, -4.173, 0.005, -8.51005 )
+texture = ExtResource( 39 )
+
+[node name="TestRender2" parent="ForestFloor/HexGrid/MapHolder" instance=ExtResource( 7 )]
+transform = Transform( 3.728, 0, 0, 0, 3.687, 0, 0, 0, 3.5, -1.9767, 0.005, -9.08921 )
+texture = ExtResource( 43 )
+
+[node name="TestRender3" parent="ForestFloor/HexGrid/MapHolder" instance=ExtResource( 7 )]
+transform = Transform( 1.7, 0, 0, 0, 1.7, 0, 0, 0, 3.5, -0.66048, 0.005, -6.3455 )
+texture = ExtResource( 40 )
+
+[node name="TestRender4" parent="ForestFloor/HexGrid/MapHolder" instance=ExtResource( 7 )]
+transform = Transform( 3.5, 0, 0, 0, 3.5, 0, 0, 0, 3.5, 1.61674, 0.005, -6.3455 )
+texture = ExtResource( 38 )
+
+[node name="TestRender7" parent="ForestFloor/HexGrid/MapHolder" instance=ExtResource( 7 )]
+transform = Transform( 3.5, 0, 0, 0, 3.5, 0, 0, 0, 3.5, 4.6669, 0.005, -6.3455 )
+texture = ExtResource( 33 )
+
+[node name="TestRender8" parent="ForestFloor/HexGrid/MapHolder" instance=ExtResource( 7 )]
+transform = Transform( 3.5, 0, 0, 0, 3.5, 0, 0, 0, 3.5, 1.6382, 0.005, -10.6265 )
+texture = ExtResource( 41 )
+
+[node name="TestRender9" parent="ForestFloor/HexGrid/MapHolder" instance=ExtResource( 7 )]
+transform = Transform( 3.5, 0, 0, 0, 3.5, 0, 0, 0, 3.5, -2.02887, 0.005, -12.9819 )
+texture = ExtResource( 42 )
+
+[node name="TestRender10" parent="ForestFloor/HexGrid/MapHolder" instance=ExtResource( 7 )]
+transform = Transform( 3.5, 0, 0, 0, 3.5, 0, 0, 0, 3.5, 3.52494, 0.005, -8.70081 )
+texture = ExtResource( 36 )
+
+[node name="TestRender11" parent="ForestFloor/HexGrid/MapHolder" instance=ExtResource( 7 )]
+transform = Transform( 3.5, 0, 0, 0, 3.5, 0, 0, 0, 3.5, 0.692314, 0.005, -8.70081 )
+texture = ExtResource( 33 )
+
+[node name="TestRender12" parent="ForestFloor/HexGrid/MapHolder" instance=ExtResource( 7 )]
+transform = Transform( 3.5, 0, 0, 0, 3.5, 0, 0, 0, 3.5, -4.33616, 0.005, -11.0244 )
+texture = ExtResource( 38 )
+
+[node name="TestRender13" parent="ForestFloor/HexGrid/MapHolder" instance=ExtResource( 7 )]
+transform = Transform( 3.5, 0, 0, 0, 3.5, 0, 0, 0, 3.5, 5.04382, 0.005, -11.0244 )
+texture = ExtResource( 42 )
+
+[node name="TestRender14" parent="ForestFloor/HexGrid/MapHolder" instance=ExtResource( 7 )]
+transform = Transform( 3.5, 0, 0, 0, 3.5, 0, 0, 0, 3.5, 6.59834, 0.005, -3.12222 )
+texture = ExtResource( 37 )
+
+[node name="TestRender15" parent="ForestFloor/HexGrid/MapHolder" instance=ExtResource( 7 )]
+transform = Transform( 2.8, 0, 0, 0, 2.8, 0, 0, 0, 3, 0.220537, 0.005, 5.63686 )
+texture = ExtResource( 43 )
+sf = 2.457
+
+[node name="TestRender16" parent="ForestFloor/HexGrid/MapHolder" instance=ExtResource( 7 )]
+transform = Transform( 3.5, 0, 0, 0, 3.5, 0, 0, 0, 3.5, 3.15995, 0.005, 5.63686 )
+texture = ExtResource( 42 )
+
+[node name="TestRender17" parent="ForestFloor/HexGrid/MapHolder" instance=ExtResource( 7 )]
+transform = Transform( 3.5, 0, 0, 0, 3.5, 0, 0, 0, 3.5, -2.61337, 0.005, 5.62666 )
+texture = ExtResource( 36 )
+
+[node name="TestRender18" parent="ForestFloor/HexGrid/MapHolder" instance=ExtResource( 7 )]
+transform = Transform( 3.5, 0, 0, 0, 3.5, 0, 0, 0, 3.5, -6.72168, 0.00500024, 1.7328 )
+texture = ExtResource( 35 )
+
+[node name="TestRender27" parent="ForestFloor/HexGrid/MapHolder" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.29091, -0.150214, 1.7328 )
+texture = ExtResource( 50 )
+castS = false
+
+[node name="TestRender28" parent="ForestFloor/HexGrid/MapHolder" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.70054, -0.222267, 3.90473 )
+texture = ExtResource( 51 )
+castS = false
+
+[node name="TestRender29" parent="ForestFloor/HexGrid/MapHolder" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.18244, -0.0619272, -5.03064 )
+texture = ExtResource( 48 )
+castS = false
+
+[node name="TestRender30" parent="ForestFloor/HexGrid/MapHolder" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.90745, -0.0619272, -9.28821 )
+texture = ExtResource( 52 )
+castS = false
+
+[node name="TestRender22" parent="ForestFloor/HexGrid/MapHolder" instance=ExtResource( 7 )]
+transform = Transform( 3.5, 0, 0, 0, 3.5, 0, 0, 0, 3.5, -6.72168, 0.00500024, -4.2544 )
+texture = ExtResource( 35 )
+
+[node name="TestRender23" parent="ForestFloor/HexGrid/MapHolder" instance=ExtResource( 7 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, -4.48308, 0.00500024, -5.72543 )
+texture = ExtResource( 47 )
+
+[node name="TestRender24" parent="ForestFloor/HexGrid/MapHolder" instance=ExtResource( 7 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, -2.25447, 0.00500024, -5.72543 )
+texture = ExtResource( 45 )
+
+[node name="TestRender25" parent="ForestFloor/HexGrid/MapHolder" instance=ExtResource( 7 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, -4.55798, 0.00500024, 3.68341 )
+texture = ExtResource( 46 )
+
+[node name="TestRender19" parent="ForestFloor/HexGrid/MapHolder" instance=ExtResource( 7 )]
+transform = Transform( 3.5, 0, 0, 0, 3.5, 0, 0, 0, 3.5, 6.65762, 0.005, 1.7328 )
+texture = ExtResource( 36 )
+
+[node name="TestRender20" parent="ForestFloor/HexGrid/MapHolder" instance=ExtResource( 7 )]
+transform = Transform( 3.5, 0, 0, 0, 3.5, 0, 0, 0, 3.5, 8.21089, 0.005, -1.04039 )
+texture = ExtResource( 42 )
+
+[node name="TestRender21" parent="ForestFloor/HexGrid/MapHolder" instance=ExtResource( 7 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, -5.34651, 0.005, -1.04039 )
+texture = ExtResource( 44 )
+
+[node name="TestRender5" parent="ForestFloor/HexGrid/MapHolder" instance=ExtResource( 7 )]
+transform = Transform( 3.5, 0, 0, 0, 3.5, 0, 0, 0, 3.5, 3.06908, 0.005, -4.79282 )
+texture = ExtResource( 42 )
+
+[node name="TestRender6" parent="ForestFloor/HexGrid/MapHolder" instance=ExtResource( 7 )]
+transform = Transform( 3.5, 0, 0, 0, 3.5, 0, 0, 0, 3.5, 4.72519, 0.005, -3.96451 )
+texture = ExtResource( 34 )
+
+[node name="TestRender26" parent="ForestFloor/HexGrid/MapHolder" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3302, -0.0776263, -6.70119 )
+texture = ExtResource( 49 )
+castS = false
+
+[node name="Cursor" parent="ForestFloor/HexGrid" instance=ExtResource( 8 )]
+transform = Transform( 0.25, 0, 0.433013, 0, 0.5, 0, -0.433013, 0, 0.25, 3.87529, 0.238, 0 )
+visible = false
+
+[node name="CollisionShape" type="CollisionShape" parent="ForestFloor/HexGrid"]
+transform = Transform( 1, 0, 0, 0, 0.2, 0, 0, 0, 1, 0, 0, -0.0223198 )
+shape = SubResource( 9 )
+
+[node name="CSGMesh2" type="CSGMesh" parent="ForestFloor/HexGrid/CollisionShape"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0223198 )
+visible = false
+mesh = SubResource( 10 )
+material = SubResource( 11 )
+
+[node name="CSGMesh" type="CSGMesh" parent="ForestFloor"]
+mesh = SubResource( 12 )
+material = SubResource( 13 )
+
+[node name="Background" type="Spatial" parent="."]
+script = ExtResource( 6 )
+should_move = true
+parallax2_factor = 1.0
+
+[node name="Backdrop" type="Sprite3D" parent="Background"]
+transform = Transform( 20, 0, 0, 0, 1.158, 5.30055e-08, 0, -6.13803e-08, 1, 0, 3.695, -50 )
+billboard = 2
+transparent = false
+shaded = true
+texture = SubResource( 14 )
+
+[node name="01" type="Sprite3D" parent="Background" groups=[
+"Parallax",
+]]
+transform = Transform( 1, 0, 0, 0, 1, 5.30056e-08, 0, -5.30056e-08, 1, -2.63846, -2.94097, -49 )
+billboard = 2
+texture = ExtResource( 23 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 8000, 1024 )
+
+[node name="02" type="Sprite3D" parent="Background" groups=[
+"Parallax",
+]]
+transform = Transform( 1, 0, 0, 0, 1, 5.30056e-08, 0, -5.30056e-08, 1, -0.820302, 2.57403, -48 )
+billboard = 2
+texture = ExtResource( 25 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 8000, 1024 )
+
+[node name="03" type="Sprite3D" parent="Background" groups=[
+"Parallax",
+]]
+transform = Transform( 1, 0, 0, 0, 1, 5.30056e-08, 0, -5.30056e-08, 1, -2.63846, 2.57403, -47 )
+billboard = 2
+texture = ExtResource( 24 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 8000, 1024 )
+
+[node name="04" type="Sprite3D" parent="Background" groups=[
+"Parallax",
+]]
+transform = Transform( 1, 0, 0, 0, 1, 5.30056e-08, 0, -5.30056e-08, 1, -2.63846, 2.57403, -46 )
+billboard = 2
+texture = ExtResource( 29 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 8000, 1024 )
+
+[node name="05" type="Sprite3D" parent="Background" groups=[
+"Parallax",
+]]
+transform = Transform( 1, 0, 0, 0, 1, 5.30056e-08, 0, -5.30056e-08, 1, 3.602, 2.574, -45 )
+billboard = 2
+texture = ExtResource( 31 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 8000, 1024 )
+
+[node name="06" type="Sprite3D" parent="Background" groups=[
+"Parallax",
+]]
+transform = Transform( 1, 0, 0, 0, 1, 5.30056e-08, 0, -5.30056e-08, 1, -2.63846, 2.57403, -44 )
+billboard = 2
+texture = ExtResource( 27 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 8000, 1024 )
+
+[node name="07" type="Sprite3D" parent="Background" groups=[
+"Parallax",
+]]
+transform = Transform( 1, 0, 0, 0, 1, 5.30056e-08, 0, -5.30056e-08, 1, -2.63846, 2.57403, -43 )
+billboard = 2
+texture = ExtResource( 26 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 8000, 1024 )
+
+[node name="08" type="Sprite3D" parent="Background" groups=[
+"Parallax",
+]]
+transform = Transform( 1, 0, 0, 0, 1, 5.30056e-08, 0, -5.30056e-08, 1, -2.63846, 2.57403, -42 )
+billboard = 2
+texture = ExtResource( 28 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 8000, 1024 )
+
+[node name="09" type="Sprite3D" parent="Background" groups=[
+"Parallax",
+]]
+transform = Transform( 1, 0, 0, 0, 1, 5.30056e-08, 0, -5.30056e-08, 1, -2.63846, 2.57403, -41 )
+billboard = 2
+texture = ExtResource( 30 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 8000, 1024 )
+
+[node name="10" type="Sprite3D" parent="Background" groups=[
+"Parallax",
+]]
+transform = Transform( 1, 0, 0, 0, 1, 5.30056e-08, 0, -5.30056e-08, 1, -2.63846, 2.57403, -42.7508 )
+billboard = 2
+texture = ExtResource( 32 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 8000, 1024 )
+
+[node name="Viewport" type="Viewport" parent="."]
+size = Vector2( 2048, 2048 )
+world = SubResource( 15 )
+hdr = false
+usage = 0
+render_target_v_flip = true
+
+[node name="ColorRect" type="ColorRect" parent="Viewport"]
+material = SubResource( 18 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "RESET"
+anims/HideEntityDetails = SubResource( 19 )
+anims/RESET = SubResource( 20 )
+anims/ShowEntityDetails = SubResource( 21 )
+anims/Zoom_To_Clearing = SubResource( 22 )
+[connection signal="cancle" from="Camera/HUD/SeedlingBox" to="Camera/HUD/PlaceHereDialog" method="_on_SeedlingBox_cancle"]
+[connection signal="placed" from="Camera/HUD/SeedlingBox" to="Camera/HUD/PlaceHereDialog" method="_on_SeedlingBox_placed"]
+[connection signal="trying_to_place" from="Camera/HUD/SeedlingBox" to="Camera/HUD/PlaceHereDialog" method="_on_SeedlingBox_trying_to_place"]
+[connection signal="toggled" from="Camera/HUD/DebugMenu/VBox/HBoxContainer/CheckBox" to="Camera/HUD/DebugMenu" method="_set_free_placement_mode"]
+[connection signal="gui_input" from="Camera/HUD/DetailsBG" to="Camera" method="_on_DetailsBG_gui_input"]
+[connection signal="pressed" from="Camera/HUD/PlaceHereDialog/PlantButton" to="Camera/HUD/SeedlingBox" method="_on_PlantButton_pressed"]
+[connection signal="pressed" from="Camera/HUD/PlaceHereDialog/Abbrechen" to="Camera/HUD/SeedlingBox" method="_on_Abbrechen_pressed"]
+[connection signal="input_event" from="ForestFloor/HexGrid" to="ForestFloor/HexGrid" method="_on_HexGrid_input_event"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

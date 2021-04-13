@@ -1,4 +1,4 @@
-
+tool
 extends Spatial
 
 export (Texture) var texture = preload("res://Assets/sketch/baum_erwachsen.png") setget setT

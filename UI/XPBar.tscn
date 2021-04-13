@@ -1,0 +1,182 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://UI/typography/UI_Regular.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Assets/Icons/coins-stack.png" type="Texture" id=2]
+[ext_resource path="res://UI/XPBar.gd" type="Script" id=3]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0, 0, 0, 0.741176 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.584314, 0.756863, 0.117647, 1 )
+corner_radius_top_right = 64
+corner_radius_bottom_right = 64
+corner_detail = 20
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.592157, 0.909804, 0.192157, 1 )
+corner_radius_top_left = 1024
+corner_radius_top_right = 1024
+corner_radius_bottom_right = 1024
+corner_radius_bottom_left = 1024
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.901961, 0.901961, 0.901961, 1 )
+corner_radius_top_left = 1024
+corner_radius_top_right = 1024
+corner_radius_bottom_right = 1024
+corner_radius_bottom_left = 1024
+shadow_color = Color( 0, 0, 0, 0.14902 )
+shadow_size = 9
+shadow_offset = Vector2( 0, 2.77 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0, 0, 0, 0.741176 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.584314, 0.756863, 0.117647, 1 )
+corner_radius_top_left = 64
+corner_radius_bottom_left = 64
+corner_detail = 20
+
+[sub_resource type="Animation" id=5]
+resource_name = "show"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -53.453 ), Vector2( 0, 0 ) ]
+}
+
+[node name="XPBar" type="Control"]
+anchor_right = 1.0
+margin_top = -53.453
+margin_bottom = -53.453
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = 52.0
+custom_constants/margin_top = 10
+custom_constants/margin_bottom = 10
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+margin_top = 10.0
+margin_right = 1080.0
+margin_bottom = 55.0
+
+[node name="Level" type="MarginContainer" parent="MarginContainer/HBoxContainer"]
+margin_right = 211.0
+margin_bottom = 45.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.32
+custom_constants/margin_right = 25
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/HBoxContainer/Level"]
+margin_right = 186.0
+margin_bottom = 45.0
+custom_styles/panel = SubResource( 1 )
+
+[node name="LevelLabel" type="Label" parent="MarginContainer/HBoxContainer/Level"]
+margin_top = 1.0
+margin_right = 186.0
+margin_bottom = 44.0
+custom_fonts/font = ExtResource( 1 )
+text = "Level 14"
+align = 1
+valign = 2
+
+[node name="XPBarHolder" type="MarginContainer" parent="MarginContainer/HBoxContainer"]
+margin_left = 215.0
+margin_top = 6.0
+margin_right = 877.0
+margin_bottom = 38.0
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="XPBar" type="ProgressBar" parent="MarginContainer/HBoxContainer/XPBarHolder"]
+margin_right = 662.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 0, 32 )
+size_flags_vertical = 3
+size_flags_stretch_ratio = 3.0
+custom_styles/fg = SubResource( 2 )
+custom_styles/bg = SubResource( 3 )
+max_value = 100.0
+step = 0.01
+value = 45.0
+rounded = true
+percent_visible = false
+
+[node name="MarginContainer3" type="MarginContainer" parent="MarginContainer/HBoxContainer"]
+margin_left = 881.0
+margin_right = 1080.0
+margin_bottom = 45.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.3
+custom_constants/margin_left = 25
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/HBoxContainer/MarginContainer3"]
+margin_left = 25.0
+margin_right = 199.0
+margin_bottom = 45.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.3
+custom_styles/panel = SubResource( 4 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/MarginContainer3/PanelContainer"]
+margin_left = 1.0
+margin_top = 1.0
+margin_right = 173.0
+margin_bottom = 44.0
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/MarginContainer3/PanelContainer/HBoxContainer"]
+margin_right = 60.0
+margin_bottom = 43.0
+custom_constants/margin_right = 11
+custom_constants/margin_left = 17
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/MarginContainer3/PanelContainer/HBoxContainer/MarginContainer"]
+margin_left = 17.0
+margin_right = 49.0
+margin_bottom = 43.0
+rect_min_size = Vector2( 32, 32 )
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 6
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/HBoxContainer/MarginContainer3/PanelContainer/HBoxContainer"]
+margin_left = 64.0
+margin_right = 139.0
+margin_bottom = 43.0
+custom_constants/margin_right = 21
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/MarginContainer3/PanelContainer/HBoxContainer/MarginContainer2"]
+margin_right = 54.0
+margin_bottom = 43.0
+custom_fonts/font = ExtResource( 1 )
+text = "200"
+align = 2
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/show = SubResource( 5 )

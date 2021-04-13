@@ -14,7 +14,7 @@ dest_files=[ "res://.import/wolke_outline_gestrichelt.png-cc0286c91c14b2aa668ec9
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0

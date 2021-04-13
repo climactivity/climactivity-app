@@ -14,7 +14,7 @@ dest_files=[ "res://.import/zelt_gelb_AUF.png-8c75edd7c23a472280a77dae2bc34cd2.s
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0

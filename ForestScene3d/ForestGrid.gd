@@ -35,7 +35,7 @@ var fixed_obejcts = {
 	},
 	Vector2(2,0): {
 		"scene": placeables["tent_scene"],
-		"params": ["private_engagement"]
+		"params": ["public_engagement"]
 	},
 	Vector2(0,2): {
 		"scene": placeables["tent_scene"],
@@ -43,15 +43,15 @@ var fixed_obejcts = {
 	},
 	Vector2(-2,-2): {
 		"scene": placeables["tent_scene"],
-		"params": ["ernährung"]
+		"params": ["indirect_emissions"]
 	},
 	Vector2(-2,0): {
 		"scene": placeables["tent_scene"],
-		"params": ["public_engagement"]
+		"params": ["private_engagement"]
 	},
 	Vector2(0,-2): {
 		"scene": placeables["tent_scene"],
-		"params": ["indirect_emissions"]
+		"params": ["ernährung"]
 	},
 	Vector2(0.0,0.0): {
 		"scene": placeables["bonfire_scene"],
@@ -146,11 +146,11 @@ func _tile_area(tile, limit, tileMeshF):
 		hex_mesh.translation.x = plane_pos.x
 		hex_mesh.translation.z = plane_pos.y
 		hex_mesh.plane_coordinates = plane_pos
-		print(tile.axial_coords)
+		#print(tile.axial_coords)
 		hex_mesh.name = str(tile.axial_coords.x) +','+ str(tile.axial_coords.y)
 
 func show_grid(b): 
-	print(b)
+	#print(b)
 	$MapHolder.visible = b
 	$MapHolder.show_sector("ernaehrung")
 	

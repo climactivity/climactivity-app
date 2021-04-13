@@ -29,6 +29,8 @@ func receive_navigation(navigation_data):
 	if navigation_data.has("aspect"):
 		aspect_data = navigation_data["aspect"]
 	header.update_header(aspect_data["title"])
+	if aspect_data.icon != null: 
+		header.set_icon_texture(aspect_data.icon)
 	if ready:
 		_show_data()
 
