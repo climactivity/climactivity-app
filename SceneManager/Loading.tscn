@@ -1,11 +1,9 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://SceneManager/Loading.gd" type="Script" id=1]
+[ext_resource path="res://Assets/logo.png" type="Texture" id=2]
 
 [sub_resource type="StyleBoxFlat" id=1]
-bg_color = Color( 0.345098, 0.835294, 0.258824, 1 )
-
-[sub_resource type="StyleBoxFlat" id=2]
 bg_color = Color( 1, 1, 1, 1 )
 
 [node name="Loading" type="Control"]
@@ -17,24 +15,14 @@ __meta__ = {
 }
 
 [node name="Panel" type="Panel" parent="."]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -427.0
-margin_top = -78.5
-margin_right = 427.0
-margin_bottom = 78.5
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ProgressBar" type="ProgressBar" parent="Panel"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-custom_styles/fg = SubResource( 1 )
-custom_styles/bg = SubResource( 2 )
-percent_visible = false
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="logo" type="Sprite" parent="."]
+position = Vector2( 536.708, 386.433 )
+scale = Vector2( 0.618983, 0.63991 )
+texture = ExtResource( 2 )
