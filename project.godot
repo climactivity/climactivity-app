@@ -64,7 +64,8 @@ _global_script_class_icons={
 
 config/name="Climactivity-app"
 run/main_scene="res://SceneManager/SceneManager.tscn"
-boot_splash/image="res://Assets/logo.png"
+boot_splash/image="res://Assets/logo_sm.png"
+boot_splash/fullsize=false
 boot_splash/bg_color=Color( 1, 1, 1, 1 )
 config/icon="res://Assets/BG/cyIcon.png"
 
@@ -151,7 +152,6 @@ pointing/emulate_touch_from_mouse=true
 test="de"
 fallback="de"
 translation_remaps={
-
 }
 translations=PoolStringArray( "res://Assets/CAAppTranslation.en.translation", "res://Assets/CAAppTranslation.de.translation" )
 locale_filter=[ 0, [ "de", "en" ] ]
@@ -167,7 +167,7 @@ quality/driver/driver_name="GLES2"
 quality/driver/fallback_to_gles2=true
 vram_compression/import_etc=true
 vram_compression/import_pvrtc=true
+quality/filters/anisotropic_filter_level=16
 environment/default_clear_color=Color( 0.898039, 0.898039, 0.898039, 1 )
 quality/filters/msaa=2
 environment/default_environment="res://default_env.tres"
-quality/filters/anisotropic_filter_level=16

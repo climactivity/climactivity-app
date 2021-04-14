@@ -71,9 +71,18 @@ func _ready():
 	_prepare_fixed_scenes()
 	scene_map.water_collection_scene = preload("res://Scenes/WaterCollectionScene.tscn").instance()
 	_show_A()
+	loading_instance = loading_instance.instance()
+	A.add_child(loading_instance)
 	current_scene = start_scene.instance()
+	current_scene.connect("ready",self,"_remove_splash")
+#	yield(current_scene, "ready")
+#	A.remove_child(loading_instance)
 	home_scene = current_scene
 	A_viewport.add_child(current_scene)
+
+func _remove_splash(): 
+	Logger.print("Main Scene loaded!", self)
+	A.remove_child(loading_instance)
 
 func _prepare_fixed_scenes():
 	scene_map["settings_scene"] = _settings_scene.instance()

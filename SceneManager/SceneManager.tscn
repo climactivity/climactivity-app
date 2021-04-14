@@ -228,4 +228,5 @@ autoplay = "Reset"
 anims/Move_Back = SubResource( 1 )
 anims/Move_Out = SubResource( 2 )
 anims/Reset = SubResource( 3 )
+
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
