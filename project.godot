@@ -64,6 +64,7 @@ _global_script_class_icons={
 
 config/name="Climactivity-app"
 run/main_scene="res://SceneManager/SceneManager.tscn"
+run/low_processor_mode=true
 boot_splash/image="res://Assets/logo_sm.png"
 boot_splash/fullsize=false
 boot_splash/bg_color=Color( 1, 1, 1, 1 )
@@ -101,7 +102,7 @@ window/size/test_width=720
 window/size/test_height=1280
 window/handheld/orientation="portrait"
 window/stretch/mode="2d"
-window/stretch/aspect="keep_width"
+window/stretch/aspect="expand"
 
 [editor_plugins]
 
@@ -168,6 +169,7 @@ quality/driver/fallback_to_gles2=true
 vram_compression/import_etc=true
 vram_compression/import_pvrtc=true
 quality/filters/anisotropic_filter_level=16
+gles2/compatibility/disable_half_float=true
 environment/default_clear_color=Color( 0.898039, 0.898039, 0.898039, 1 )
 quality/filters/msaa=2
 environment/default_environment="res://default_env.tres"
