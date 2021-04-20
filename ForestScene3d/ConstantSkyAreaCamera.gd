@@ -128,6 +128,7 @@ func _unhandled_input(event):
 			_pan(-event.relative)
 		elif events.size() == 2: 
 			var drag_distance = events[0].position.distance_to(events[1].position)
+			print(drag_distance)
 			if abs(drag_distance - last_drag_distance) > zoom_sensitivity:
 				var zoom = (1 + zoom_speed) if drag_distance < last_drag_distance else (1 - zoom_speed)
 				_zoom(zoom)
