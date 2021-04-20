@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Blumen_bluehend.png-481e3bab2bf3fc0167483afcc37defc5.stex"
+path="res://.import/Icon-App-76x76@1x.png-d59a37fb9015f0cad4732823c91dcdbf.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/sketch/blume/Blumen_bluehend.png"
-dest_files=[ "res://.import/Blumen_bluehend.png-481e3bab2bf3fc0167483afcc37defc5.stex" ]
+source_file="res://Assets/AppIcon/Icon-App-76x76@1x.png"
+dest_files=[ "res://.import/Icon-App-76x76@1x.png-d59a37fb9015f0cad4732823c91dcdbf.stex" ]
 
 [params]
 

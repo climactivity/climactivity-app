@@ -219,5 +219,4 @@ anims/stage_inc = SubResource( 7 )
 transform = Transform( 1, 0, 0, 0, 0.832061, 0.554685, 0, -0.554685, 0.832061, 1.09, 2.45, 3.363 )
 
 [node name="Camera" type="Camera" parent="CameraZoomTarget"]
-
 [connection signal="input_event" from="Collider" to="." method="_on_Collider_input_event"]

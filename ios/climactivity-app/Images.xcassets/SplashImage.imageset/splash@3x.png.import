@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Blumen_bluehend.png-481e3bab2bf3fc0167483afcc37defc5.stex"
+path="res://.import/splash@3x.png-f7b3710d7d8e2ed80eefb8e52588a44b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/sketch/blume/Blumen_bluehend.png"
-dest_files=[ "res://.import/Blumen_bluehend.png-481e3bab2bf3fc0167483afcc37defc5.stex" ]
+source_file="res://ios/climactivity-app/Images.xcassets/SplashImage.imageset/splash@3x.png"
+dest_files=[ "res://.import/splash@3x.png-f7b3710d7d8e2ed80eefb8e52588a44b.stex" ]
 
 [params]
 
