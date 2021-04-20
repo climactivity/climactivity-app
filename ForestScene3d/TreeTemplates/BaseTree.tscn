@@ -172,7 +172,6 @@ shape = SubResource( 1 )
 [node name="ContactShadow" parent="." instance=ExtResource( 5 )]
 
 [node name="Particles" type="Particles" parent="."]
-emitting = false
 amount = 128
 one_shot = true
 explosiveness = 1.0
@@ -220,4 +219,5 @@ anims/stage_inc = SubResource( 7 )
 transform = Transform( 1, 0, 0, 0, 0.832061, 0.554685, 0, -0.554685, 0.832061, 1.09, 2.45, 3.363 )
 
 [node name="Camera" type="Camera" parent="CameraZoomTarget"]
+
 [connection signal="input_event" from="Collider" to="." method="_on_Collider_input_event"]
