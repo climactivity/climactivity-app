@@ -107,6 +107,7 @@ var events = {}
 var last_drag_distance = 0
 export var zoom_sensitivity = 10
 export var zoom_speed = 0.05
+export var zoom_jitter_fix = 10.0
 func _unhandled_input(event):
 	if event is InputEventScreenTouch:
 		if event.pressed:
@@ -134,7 +135,8 @@ func _unhandled_input(event):
 					last_drag_distance = drag_distance
 					return
 				var zoom = (drag_distance - last_drag_distance) * zoom_speed
-				_zoom(zoom)
+				if zoom < zoom_jitter_fix:
+					_zoom(zoom)
 				#print("dd: ", drag_distance, " ld: ", last_drag_distance, " z: ", zoom)
 				last_drag_distance = drag_distance
 
