@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://ForestScene3d/Interactables/Cloud.gd" type="Script" id=1]
 [ext_resource path="res://ForestScene3d/Interactables/Wolke_preview.tscn" type="PackedScene" id=2]
@@ -7,7 +7,6 @@
 [ext_resource path="res://Assets/sketch/wolke_mask.png" type="Texture" id=5]
 [ext_resource path="res://Assets/droplet.png" type="Texture" id=6]
 [ext_resource path="res://ForestScene3d/Interactables/CloudSprite.gd" type="Script" id=7]
-[ext_resource path="res://ForestScene3d/PM_RainDrops.tres" type="Material" id=8]
 
 [node name="Cloud" type="Control"]
 script = ExtResource( 1 )
@@ -36,17 +35,23 @@ scale = Vector2( 0.244428, 0.243653 )
 texture = ExtResource( 3 )
 script = ExtResource( 7 )
 
-[node name="Particles2D" type="Particles2D" parent="CloudSprite"]
+[node name="Particles2D" type="CPUParticles2D" parent="CloudSprite"]
 position = Vector2( -12.9886, 294.804 )
 scale = Vector2( 4.09118, 4.10419 )
 emitting = false
 amount = 25
-process_material = ExtResource( 8 )
 texture = ExtResource( 6 )
+emission_shape = 2
+emission_rect_extents = Vector2( 78.123, 1 )
+direction = Vector2( 0, 1 )
+spread = 0.0
+initial_velocity = 212.84
+scale_amount = 0.1
 
 [node name="Droplet" type="Sprite" parent="CloudSprite"]
 visible = false
 position = Vector2( 2.03407, 1.31012 )
 scale = Vector2( 2.65486, 2.65486 )
 texture = ExtResource( 6 )
+
 [connection signal="gui_input" from="." to="." method="_on_Cloud_gui_input"]

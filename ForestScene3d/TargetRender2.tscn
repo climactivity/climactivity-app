@@ -1,4 +1,4 @@
-[gd_scene load_steps=75 format=2]
+[gd_scene load_steps=76 format=2]
 
 [ext_resource path="res://ForestScene3d/Interactables/SeedlingBox.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Vertical_Gradient.shader" type="Shader" id=2]
@@ -52,7 +52,7 @@
 [ext_resource path="res://Assets/sketch/Tiere/igel_schnueffelnd.png" type="Texture" id=50]
 [ext_resource path="res://Assets/sketch/Tiere/kaninchen_schlafend.png" type="Texture" id=51]
 [ext_resource path="res://Assets/sketch/Tiere/wildschwein.png" type="Texture" id=52]
-
+[ext_resource path="res://Assets/sketch/blume/Blumen_bluehend.png" type="Texture" id=53]
 
 [sub_resource type="ProceduralSky" id=1]
 sky_top_color = Color( 0.105882, 0.231373, 0.301961, 1 )
@@ -743,8 +743,8 @@ transform = Transform( 3.5, 0, 0, 0, 3.5, 0, 0, 0, 3.5, 6.59834, 0.005, -3.12222
 texture = ExtResource( 37 )
 
 [node name="TestRender15" parent="ForestFloor/HexGrid/MapHolder" instance=ExtResource( 7 )]
-transform = Transform( 2.8, 0, 0, 0, 2.8, 0, 0, 0, 3, 0.220537, 0.005, 5.63686 )
-texture = ExtResource( 43 )
+transform = Transform( 2.8, 0, 0, 0, 2.8, 0, 0, 0, 3, 0.220537, -0.0732375, 5.63686 )
+texture = ExtResource( 53 )
 sf = 2.457
 
 [node name="TestRender16" parent="ForestFloor/HexGrid/MapHolder" instance=ExtResource( 7 )]
@@ -958,6 +958,7 @@ anims/HideEntityDetails = SubResource( 19 )
 anims/RESET = SubResource( 20 )
 anims/ShowEntityDetails = SubResource( 21 )
 anims/Zoom_To_Clearing = SubResource( 22 )
+
 [connection signal="cancle" from="Camera/HUD/SeedlingBox" to="Camera/HUD/PlaceHereDialog" method="_on_SeedlingBox_cancle"]
 [connection signal="placed" from="Camera/HUD/SeedlingBox" to="Camera/HUD/PlaceHereDialog" method="_on_SeedlingBox_placed"]
 [connection signal="trying_to_place" from="Camera/HUD/SeedlingBox" to="Camera/HUD/PlaceHereDialog" method="_on_SeedlingBox_trying_to_place"]

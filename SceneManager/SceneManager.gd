@@ -65,6 +65,21 @@ onready var animation_player = $AnimationPlayer
 
 var is_changing_scene = false
 
+## handle back button
+func _notification(what):
+	if what == MainLoop.NOTIFICATION_WM_GO_BACK_REQUEST: # only works on android, ios doesn't have a back button
+		var header = _get_focused_header()
+		if header == null:
+			pop_scene()
+		if header.has_method("_on_BackButton_pressed"):
+			header._on_BackButton_pressed() 
+
+func _get_focused_header():
+	if current_scene != null and current_scene.get("header") != null: 
+		var current_header = current_scene.get("header")
+		return current_header
+	return null
+
 func _ready():
 	GameManager.scene_manager = self
 	_prepare_bigpoint_scenes()

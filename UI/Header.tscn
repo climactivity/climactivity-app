@@ -94,4 +94,5 @@ anchor_right = 1.10945
 anchor_bottom = 1.16919
 bg_color = Color( 0.670588, 0.839216, 0.219608, 1 )
 icon_texture = ExtResource( 6 )
+
 [connection signal="pressed" from="BG/BackButton" to="." method="_on_BackButton_pressed"]
