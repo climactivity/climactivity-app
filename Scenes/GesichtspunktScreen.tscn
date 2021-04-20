@@ -28,7 +28,7 @@ shader_param/gradient = SubResource( 3 )
 material = SubResource( 4 )
 accent_color = Color( 0.690011, 0.839844, 0.321503, 1 )
 navigation_dispatcher = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/VBoxContainer")
-screen_title = "Gesichtpunkte"
+screen_title = "Gesichtspunkte"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="1"]
 margin_top = 350.0
@@ -40,5 +40,5 @@ script = ExtResource( 3 )
 self_modulate = Color( 0.690011, 0.839844, 0.321503, 1 )
 
 [node name="Header" parent="HeaderContainer" index="1"]
-screen_label = "Gesichtpunkte"
+screen_label = "Gesichtspunkte"
 color = Color( 0.690011, 0.839844, 0.321503, 1 )
