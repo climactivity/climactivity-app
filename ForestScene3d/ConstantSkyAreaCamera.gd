@@ -105,8 +105,8 @@ func _pan(delta: Vector2):
 
 var events = {}
 var last_drag_distance = 0
-var zoom_sensitivity = 10
-var zoom_speed = 0.05
+export var zoom_sensitivity = 10
+export var zoom_speed = 0.05
 func _unhandled_input(event):
 	if event is InputEventScreenTouch:
 		if event.pressed:
@@ -128,11 +128,17 @@ func _unhandled_input(event):
 			_pan(-event.relative)
 		elif events.size() == 2: 
 			var drag_distance = events[0].position.distance_to(events[1].position)
-			print(drag_distance)
 			if abs(drag_distance - last_drag_distance) > zoom_sensitivity:
-				var zoom = (1 + zoom_speed) if drag_distance < last_drag_distance else (1 - zoom_speed)
+#				var zoom = 1.0 if drag_distance < last_drag_distance else -1
+				if last_drag_distance == 0: 
+					last_drag_distance = drag_distance
+					return
+				var zoom = (drag_distance - last_drag_distance) * zoom_speed
 				_zoom(zoom)
+				#print("dd: ", drag_distance, " ld: ", last_drag_distance, " z: ", zoom)
 				last_drag_distance = drag_distance
+
+				
 	else: 
 		emit_signal("release_gesture")
 
