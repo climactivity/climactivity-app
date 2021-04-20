@@ -28,3 +28,6 @@ project.*.TMP
 *.zip
 *.a
 *.pck
+
+#bfg
+..bfg-report/
