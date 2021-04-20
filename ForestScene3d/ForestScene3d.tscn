@@ -810,7 +810,6 @@ anims/HideEntityDetails = SubResource( 19 )
 anims/RESET = SubResource( 20 )
 anims/ShowEntityDetails = SubResource( 21 )
 anims/Zoom_To_Clearing = SubResource( 22 )
-
 [connection signal="cancle" from="Camera/HUD/SeedlingBox" to="Camera/HUD/PlaceHereDialog" method="_on_SeedlingBox_cancle"]
 [connection signal="placed" from="Camera/HUD/SeedlingBox" to="Camera/HUD/PlaceHereDialog" method="_on_SeedlingBox_placed"]
 [connection signal="trying_to_place" from="Camera/HUD/SeedlingBox" to="Camera/HUD/PlaceHereDialog" method="_on_SeedlingBox_trying_to_place"]
