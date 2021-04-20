@@ -23,3 +23,8 @@ data_*/
 # Apple finder bs
 .DS_Store
 project.*.TMP
+
+#ios
+*.zip
+*.a
+*.pck
