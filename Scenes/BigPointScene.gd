@@ -42,7 +42,7 @@ func _load_from_cache():
 
 func receive_navigation(new_navigation_data): 
 	navigation_data = new_navigation_data
-	load_from_cache()
+#	load_from_cache()
 #	if navigation_data.has("sector"): 
 #		_fetch_data(navigation_data["sector"])
 #	else: 

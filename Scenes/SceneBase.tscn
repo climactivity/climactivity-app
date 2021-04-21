@@ -118,7 +118,6 @@ margin_bottom = 1920.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource( 5 )
-scrollDirection = "Vertical"
 
 [node name="ContentMain" type="VBoxContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer"]
 margin_right = 1080.0

@@ -42,6 +42,7 @@ func set_state(state):
 	match cloud_state:
 		Cloud_States.EMPTY:
 			sprite.texture = tex_empty
+			visible = true
 		Cloud_States.CAN_COLLECT:
 			sprite.texture = tex_has_water
 			visible = true
@@ -57,9 +58,9 @@ func set_state(state):
 			pass
 			
 func update_water_available():
-	Logger.print("update water available", self)
 	water_available = AspectTrackingService.has_water_available()
 	has_water = AspectTrackingService.get_water_collected() != []
+	Logger.print("Update cloud: %s, %s; ready? %s" % ["water_available" if water_available else "_", "has_water" if has_water else "_", "y" if sprite != null else "n" ], self)
 	if sprite == null: return
 	if cloud_state == Cloud_States.DRAGGING or cloud_state == Cloud_States.WATERING or cloud_state == Cloud_States.RESETING:
 		return 

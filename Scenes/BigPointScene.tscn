@@ -35,4 +35,5 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="HTTPRequest" type="HTTPRequest" parent="." index="1"]
+
 [connection signal="request_completed" from="HTTPRequest" to="." method="_on_HTTPRequest_request_completed"]

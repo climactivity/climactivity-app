@@ -53,4 +53,5 @@ visible = false
 position = Vector2( 2.03407, 1.31012 )
 scale = Vector2( 2.65486, 2.65486 )
 texture = ExtResource( 6 )
+
 [connection signal="gui_input" from="." to="." method="_on_Cloud_gui_input"]

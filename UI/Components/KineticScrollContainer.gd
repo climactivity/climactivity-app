@@ -29,8 +29,8 @@ var swiping = false
 var _swipePoint = null
 var tween
 
-func _ready():
-	set_process_input(kineticScrollEnable)
+#func _ready():
+#	set_process_input(kineticScrollEnable)
 
 func _input(event):
 	
@@ -76,7 +76,7 @@ func _input(event):
 			if (scrollDirection == "Vertical"):
 				var velocity = last_relative.y * last_relative.y * -1.0 if last_relative.y < 0 else 1
 				var time = kineticScrollTime * abs(last_relative.y)/10 
-				print(last_relative.y , "  " , time)
+#				print(last_relative.y , "  " , time)
 				tween.interpolate_method(self, "set_v_scroll", self.get_v_scroll(), 
 					self.get_v_scroll() - kineticScrollBias * velocity, time , 
 					Tween.TRANS_QUAD, Tween.EASE_OUT)
@@ -142,6 +142,6 @@ func _input(event):
 
 
 # The function provides disable/enable kinetic scrolling at runtime
-func setKineticScrollEnable(enable: bool):
-	kineticScrollEnable = enable
-	set_process_input(enable)
+#func setKineticScrollEnable(enable: bool):
+#	kineticScrollEnable = enable
+#	set_process_input(enable)
