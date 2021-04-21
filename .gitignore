@@ -23,3 +23,13 @@ data_*/
 # Apple finder bs
 .DS_Store
 project.*.TMP
+
+
+# bfg
+..bfg-report/
+
+# ios
+
+*.a
+*.pck
+*.zip
