@@ -18,7 +18,7 @@ func move(delta):
 	for child in get_children(): 
 	#	child.translate(Vector3(0.0,0.0,delta.z*-0.05))
 		var index = int(child.name)
-		print(index)
+		#print(index)
 		child.translate(Vector3(factor * (delta.x/child.transform.origin.z),0.0,0.0))
 #		if child.is_in_group("Parallax"):
 #			child.translate(Vector3(parallax1_factor * (delta.x/child.transform.origin.z),0.0,0.0))
