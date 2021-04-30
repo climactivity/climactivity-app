@@ -82,4 +82,5 @@ stretch_mode = 6
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
 [connection signal="gui_input" from="BG_Icon/Icon" to="." method="_on_Icon_gui_input"]

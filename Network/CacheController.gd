@@ -92,7 +92,7 @@ func _check_manifest():
 func _on_new_manifest(result, response_code, headers, body):
 	var json = JSON.parse(body.get_string_from_utf8())
 	if(json.error): 
-		Logger.print("Server error: " + json.error +  "! Got: " + body.get_string_from_utf8(), self)
+		Logger.print("Server error: " + str(json.error) +  "! Got: " + body.get_string_from_utf8(), self)
 	if (json.result.has("current_aspects")): 
 		_save_aspect_data(json.result.get("current_aspects"))
 	if (json.result.has("current_infobytes")): 

@@ -56,3 +56,22 @@ func alert_can_water():
 
 func is_mature(): 
 	return OS.get_unix_time() > planted_at + growth_period
+
+func to_dict(): 
+	var out = {
+		"_id" : _id,
+		"last_sync" : last_sync,
+		"stage" : stage,
+		"growth_period" : growth_period,
+		"planted_at" : planted_at,
+		"water_applied" : water_applied,
+		"base_water_required" : base_water_required,
+		"water_required" : water_required,
+		"tree_template" : tree_template._id,
+		"axial_coords" : axial_coords,
+		"just_planted" :  just_planted,
+		"center_offset" :center_offset,  # in AABB (1.0,1.0),(-1.0,1-.0), how much the scene is acutally shifted is controlled by presentation layer
+		"aspect_id" : aspect_id._id,
+	}
+	#Logger.print(out)
+	return out

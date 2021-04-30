@@ -55,3 +55,14 @@ static func clear(node: Node):
 		return
 	for child in node.get_children(): 
 		node.remove_child(child)
+		
+static func change_callback(req: HTTPRequest, inst: Object, function: String):
+	var current_request_callback 
+	if req.get_signal_connection_list("request_completed") != []: 
+		current_request_callback = req.get_signal_connection_list("request_completed")[0].method
+		
+	if (current_request_callback != null
+		and req.is_connected("request_completed", inst, current_request_callback)):
+		req.disconnect("request_completed", inst, current_request_callback)
+	req.connect("request_completed", inst, function)
+

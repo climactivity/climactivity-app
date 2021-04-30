@@ -22,7 +22,7 @@ func to_dict():
 		"tracking_updates": Util.flatten_array(tracking_updates),
 		"last_update": last_update,
 		"board_entites": Util.flatten_dict(board_entites),
-		"inventory": Util.flatten_dict(inventory),
+		#"inventory": Util.flatten_dict(inventory.to_dict()),
 		"completed_infobytes": Util.flatten_dict(completed_infobytes)
 	#	"level": Util.flatten_dict(level)
 	}

@@ -15,6 +15,10 @@ func _init():
 
 func flush():
 	ResourceSaver.save(player_state_qualifyed_path, player_state)
+	_sync()
+	
+func get_player_state_as_dict(): 
+	return player_state.to_dict()
 
 func get_player_state_ref():
 	return player_state
