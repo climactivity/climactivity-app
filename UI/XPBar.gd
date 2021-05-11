@@ -17,7 +17,7 @@ func _ready():
 	GameManager.xp_bar = self
 	
 func _update(): 
-	return 
+#	return 
 	level = inventory.level
 	coins = inventory.coins
 	current_xp = inventory.xp

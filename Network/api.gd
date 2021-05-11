@@ -115,7 +115,7 @@ func _sync_player_state():
 	#PSS.update()
 
 func _on_player_state_synced(result, response_code, headers, body): 
-	print(result, response_code, headers, body)
+	print(response_code)
 
 func get_infobytes_for_factor(factor, aspect):
 	return cache.get_infobytes_for_factor(factor, aspect)

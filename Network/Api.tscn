@@ -16,5 +16,3 @@ script = ExtResource( 2 )
 script = ExtResource( 3 )
 
 [node name="HTTPRequest" type="HTTPRequest" parent="CacheController"]
-
-[connection signal="request_completed" from="HTTPRequest" to="." method="_on_HTTPRequest_request_completed"]

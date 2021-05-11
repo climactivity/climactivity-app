@@ -15,6 +15,8 @@ export var colors = {
 	},
 }
 
+signal collect(tracking_data)
+
 export var sector_title = "MISSING_SECTOR_TITLE" setget set_title
 
 var aspects = [] setget set_aspects
@@ -26,6 +28,11 @@ onready var aspects_holder = $"AspectHolder/MarginContainer/AspectWaterTankHolde
 func _ready():
 	sector_title_label.text = sector_title
 	_render_aspects()
+	
+
+func _emit(tracking_data): 
+	emit_signal("collect", tracking_data)
+
 func set_aspects(aspects_data):
 	aspects = aspects_data
 	_render_aspects()
