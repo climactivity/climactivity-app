@@ -106,7 +106,7 @@ func _pan(delta: Vector2):
 var events = {}
 var last_drag_distance = 0
 export var zoom_sensitivity = 10
-export var zoom_speed = 0.05
+export var zoom_speed = -0.05
 export var zoom_jitter_fix = 10.0
 func _unhandled_input(event):
 	if event is InputEventScreenTouch:
