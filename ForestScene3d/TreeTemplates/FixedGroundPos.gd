@@ -2,6 +2,7 @@ tool
 extends Sprite3D
 
 export (float) var _unit_factor = 1.0 setget set_unit_factor
+export (float) var scaling_factor = 1.0 setget apply_scaling_factor
 var _unit_factor_base
 onready var ui_panel = $SpatialUIPanel
 var ui_initial_transform 

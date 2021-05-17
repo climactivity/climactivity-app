@@ -25,11 +25,11 @@ func setT(tex):
 
 func setS(s):
 	sf= s
-	#if $Sprite3D != null: $Sprite3D.set_unit_factor(s)
+	if $Sprite3D != null: $Sprite3D.set_unit_factor(s)
 
 func growth_anim():
 	$AnimationPlayer.play("grow")
 
 func plop():
-	visible = true
+	#visible = true
 	$AnimationPlayer.play("plop")

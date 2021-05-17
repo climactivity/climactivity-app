@@ -2,26 +2,26 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Weide_04.png-e03a748a54a5aae4d88bd20c0cb617df.stex"
+path="res://.import/weide_04.png-bcb2ea675c64707d92a05b195088c194.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/sketch/baum/Weide/Weide_04.png"
-dest_files=[ "res://.import/Weide_04.png-e03a748a54a5aae4d88bd20c0cb617df.stex" ]
+source_file="res://Assets/sketch/baum/Weide/weide_04.png"
+dest_files=[ "res://.import/weide_04.png-bcb2ea675c64707d92a05b195088c194.stex" ]
 
 [params]
 
 compress/mode=1
 compress/lossy_quality=0.7
-compress/hdr_mode=0
+compress/hdr_mode=1
 compress/bptc_ldr=0
-compress/normal_map=0
-flags/repeat=0
+compress/normal_map=2
+flags/repeat=true
 flags/filter=true
-flags/mipmaps=false
+flags/mipmaps=true
 flags/anisotropic=false
 flags/srgb=2
 process/fix_alpha_border=true
@@ -30,5 +30,5 @@ process/HDR_as_SRGB=false
 process/invert_color=false
 stream=false
 size_limit=0
-detect_3d=true
+detect_3d=false
 svg/scale=1.0

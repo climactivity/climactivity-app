@@ -52,10 +52,7 @@ var fixed_obejcts = {
 		"scene": placeables["tent_scene"],
 		"params": ["ernährung"]
 	},
-	Vector2(0.0,0.0): {
-		"scene": placeables["bonfire_scene"],
-		"params": []
-	},
+
 }
 
 

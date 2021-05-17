@@ -1,0 +1,702 @@
+[gd_scene load_steps=75 format=2]
+
+[ext_resource path="res://Assets/Theme/Fonts/LovedbytheKing-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Vertical_Gradient.shader" type="Shader" id=2]
+[ext_resource path="res://ForestScene3d/TargetRender.gd" type="Script" id=3]
+[ext_resource path="res://Assets/BG/02.png" type="Texture" id=4]
+[ext_resource path="res://ForestScene3d/ConstantSkyAreaCamera.gd" type="Script" id=5]
+[ext_resource path="res://ForestScene3d/Background.gd" type="Script" id=6]
+[ext_resource path="res://ForestScene3d/TargetRenderForestGrid.gd" type="Script" id=7]
+[ext_resource path="res://ForestScene3d/EmptyHex.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Assets/Theme/Fonts/RobotoSlab-Regular.ttf" type="DynamicFontData" id=9]
+[ext_resource path="res://Assets/BG/06.png" type="Texture" id=10]
+[ext_resource path="res://Assets/logo_sm.png" type="Texture" id=11]
+[ext_resource path="res://Assets/sketch/floortex_TILED.png" type="Texture" id=12]
+[ext_resource path="res://ForestScene3d/up_count.gd" type="Script" id=13]
+[ext_resource path="res://Assets/sketch/blume/07.png" type="Texture" id=14]
+[ext_resource path="res://Assets/sketch/baum/Weide/weide_04.png" type="Texture" id=15]
+[ext_resource path="res://Assets/BG/04.png" type="Texture" id=16]
+[ext_resource path="res://Assets/BG/09.png" type="Texture" id=17]
+[ext_resource path="res://Assets/baer.png" type="Texture" id=18]
+[ext_resource path="res://Assets/BG/05.png" type="Texture" id=19]
+[ext_resource path="res://Assets/BG/01.png" type="Texture" id=20]
+[ext_resource path="res://Assets/BG/03.png" type="Texture" id=21]
+[ext_resource path="res://Assets/BG/07.png" type="Texture" id=22]
+[ext_resource path="res://Assets/BG/08.png" type="Texture" id=23]
+[ext_resource path="res://ForestScene3d/plop.gd" type="Script" id=24]
+[ext_resource path="res://Assets/sketch/Tiere/dachs.png" type="Texture" id=25]
+[ext_resource path="res://Assets/BG/10.png" type="Texture" id=26]
+[ext_resource path="res://ForestScene3d/TreeTemplates/TestScenes/TestRender3.tscn" type="PackedScene" id=27]
+[ext_resource path="res://Assets/sketch/baum/Eiche/eiche_04.png" type="Texture" id=28]
+[ext_resource path="res://ForestScene3d/Tents/Bonfire.tscn" type="PackedScene" id=29]
+[ext_resource path="res://Assets/sketch/Tiere/dachs_schlafend.png" type="Texture" id=30]
+[ext_resource path="res://Assets/sketch/Tiere/igel_zusammengerollt.png" type="Texture" id=31]
+[ext_resource path="res://Assets/sketch/baum/Weide/weide_02.png" type="Texture" id=32]
+[ext_resource path="res://Assets/sketch/baum/Pappel/pappel_05.png" type="Texture" id=33]
+[ext_resource path="res://Assets/sketch/baum/Fichte/fichte_03.png" type="Texture" id=34]
+[ext_resource path="res://Assets/sketch/Tiere/fuchs_sitzend.png" type="Texture" id=35]
+[ext_resource path="res://Assets/sketch/Tiere/wildschwein_schlafend.png" type="Texture" id=36]
+[ext_resource path="res://Assets/sketch/baum/Pappel/pappel_03.png" type="Texture" id=37]
+[ext_resource path="res://Assets/sketch/blume/04.png" type="Texture" id=38]
+[ext_resource path="res://Assets/sketch/baum/Eibe/eibe_03.png" type="Texture" id=39]
+[ext_resource path="res://Assets/sketch/Tiere/igel_schnueffelnd.png" type="Texture" id=40]
+[ext_resource path="res://Assets/sketch/blume/14.png" type="Texture" id=41]
+[ext_resource path="res://Assets/sketch/baum/Fichte/fichte_01.png" type="Texture" id=42]
+[ext_resource path="res://Assets/sketch/Tiere/baer_stehend.png" type="Texture" id=43]
+[ext_resource path="res://Assets/sketch/blume/06.png" type="Texture" id=44]
+[ext_resource path="res://Assets/sketch/Tiere/fuchs_liegend.png" type="Texture" id=45]
+[ext_resource path="res://Assets/sketch/Tiere/kreuzotter_rolle.png" type="Texture" id=46]
+[ext_resource path="res://Assets/sketch/Tiere/kaninchen.png" type="Texture" id=47]
+[ext_resource path="res://Assets/sketch/baum/Birke/birke_05.png" type="Texture" id=48]
+[ext_resource path="res://Assets/sketch/Tiere/reh_fressend.png" type="Texture" id=49]
+[ext_resource path="res://Assets/sketch/Tiere/fasan_pickend.png" type="Texture" id=50]
+[ext_resource path="res://Assets/sketch/Tiere/fasan.png" type="Texture" id=51]
+[ext_resource path="res://Assets/sketch/blume/10.png" type="Texture" id=52]
+[ext_resource path="res://Assets/sketch/baum/Kastanie/kastanie_03.png" type="Texture" id=53]
+
+[sub_resource type="ProceduralSky" id=1]
+sky_top_color = Color( 0.105882, 0.231373, 0.301961, 1 )
+sky_horizon_color = Color( 0.0627451, 0.235294, 0.372549, 1 )
+sky_curve = 0.0365513
+ground_bottom_color = Color( 0.105882, 0.231373, 0.301961, 1 )
+ground_horizon_color = Color( 0.0627451, 0.235294, 0.372549, 1 )
+sun_longitude = 180.0
+
+[sub_resource type="Environment" id=2]
+background_mode = 2
+background_sky = SubResource( 1 )
+background_energy = 16.0
+
+[sub_resource type="StyleBoxFlat" id=19]
+bg_color = Color( 0.823529, 0.823529, 0.823529, 0.627451 )
+border_color = Color( 0, 0, 0, 1 )
+corner_radius_top_left = 64
+corner_radius_top_right = 64
+corner_radius_bottom_right = 64
+corner_radius_bottom_left = 64
+shadow_color = Color( 0, 0, 0, 0.12549 )
+shadow_size = 24
+shadow_offset = Vector2( 0, 8 )
+
+[sub_resource type="DynamicFont" id=20]
+size = 64
+outline_size = 2
+outline_color = Color( 0.0745098, 0.0745098, 0.0745098, 1 )
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=21]
+size = 72
+outline_size = 2
+outline_color = Color( 0.0745098, 0.0745098, 0.0745098, 1 )
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 9 )
+
+[sub_resource type="SphereShape" id=3]
+
+[sub_resource type="BoxShape" id=4]
+extents = Vector3( 35, 1, 35 )
+
+[sub_resource type="PlaneMesh" id=5]
+size = Vector2( 70, 70 )
+
+[sub_resource type="SpatialMaterial" id=6]
+flags_world_triplanar = true
+
+[sub_resource type="PlaneMesh" id=7]
+size = Vector2( 300, 300 )
+subdivide_width = 7
+subdivide_depth = 6
+
+[sub_resource type="SpatialMaterial" id=8]
+flags_unshaded = true
+flags_world_triplanar = true
+albedo_texture = ExtResource( 12 )
+uv1_scale = Vector3( 0.1, 0.109, 0.1 )
+uv1_offset = Vector3( 0.751, 0, 0 )
+uv1_triplanar = true
+
+[sub_resource type="ViewportTexture" id=9]
+viewport_path = NodePath("Viewport")
+
+[sub_resource type="World" id=10]
+
+[sub_resource type="Gradient" id=11]
+colors = PoolColorArray( 0.015625, 0.377075, 1, 1, 0.628906, 0.765167, 1, 1 )
+
+[sub_resource type="GradientTexture" id=12]
+gradient = SubResource( 11 )
+
+[sub_resource type="ShaderMaterial" id=13]
+shader = ExtResource( 2 )
+shader_param/gradient = SubResource( 12 )
+
+[sub_resource type="Animation" id=14]
+resource_name = "Cloud_Drag"
+length = 1.809
+
+[sub_resource type="Animation" id=15]
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Camera:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 7.479, 9.487 ) ]
+}
+
+[sub_resource type="Animation" id=16]
+resource_name = "Tree_Anim"
+
+[sub_resource type="Animation" id=17]
+resource_name = "Zoom_Out"
+length = 15.0
+tracks/0/type = "method"
+tracks/0/path = NodePath("ForestFloor/HexGrid/Plop")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "plop"
+} ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("Camera/HUD/PanelContainer/MarginContainer/VBoxContainer/Label2")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "animate"
+} ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Camera/HUD/PanelContainer:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.1, 0.3, 0.301, 0.302 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=18]
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("Camera:translation:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/keys = {
+"points": PoolRealArray( -0.321, -0.25, 0, 0.25, 0, 0.085, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.013935 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("Camera:translation:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/keys = {
+"points": PoolRealArray( 19, -0.25, 0, 0.25, 0, 5, -0.587315, 0.3662, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.013935 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("Camera:translation:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = false
+tracks/2/keys = {
+"points": PoolRealArray( 18.972, -0.25, 0, 0.25, 0, 8.463, -0.517091, 0.711472, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.013935 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("Camera:rotation_degrees:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = false
+tracks/3/keys = {
+"points": PoolRealArray( -39.767, -0.25, 0, 0.25, 0, -27.5, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.013935 )
+}
+tracks/4/type = "bezier"
+tracks/4/path = NodePath("Camera:rotation_degrees:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = false
+tracks/4/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.013935 )
+}
+tracks/5/type = "bezier"
+tracks/5/path = NodePath("Camera:rotation_degrees:z")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = false
+tracks/5/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.013935 )
+}
+
+[node name="TargetRender" type="Spatial"]
+script = ExtResource( 3 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.261448, 0.965218, 0, -0.965218, 0.261448, 0, 4.09775, 0 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 2 )
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.890419, 0.455141, 0, -0.455141, 0.890419, 0, 7.479, 9.487 )
+current = true
+size = 44.73
+script = ExtResource( 5 )
+max_elevation = 10
+max_rotation_deg = -32.0
+nw_bound = Vector2( -20, 0 )
+se_bound = Vector2( 20, 38 )
+
+[node name="HUD" type="Control" parent="Camera"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PanelContainer" type="PanelContainer" parent="Camera/HUD"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -316.0
+margin_top = 64.0
+margin_right = 320.0
+margin_bottom = 392.0
+custom_styles/panel = SubResource( 19 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="Camera/HUD/PanelContainer"]
+margin_right = 636.0
+margin_bottom = 328.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Camera/HUD/PanelContainer/MarginContainer"]
+margin_right = 636.0
+margin_bottom = 328.0
+alignment = 1
+
+[node name="Label" type="Label" parent="Camera/HUD/PanelContainer/MarginContainer/VBoxContainer"]
+margin_top = 1.0
+margin_right = 636.0
+margin_bottom = 112.0
+custom_fonts/font = SubResource( 20 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Vielen Dank für"
+align = 1
+
+[node name="Label2" type="Label" parent="Camera/HUD/PanelContainer/MarginContainer/VBoxContainer"]
+margin_top = 116.0
+margin_right = 636.0
+margin_bottom = 212.0
+custom_fonts/font = SubResource( 21 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "  0,00 €"
+align = 1
+script = ExtResource( 13 )
+duration = 6.0
+
+[node name="CenterContainer" type="CenterContainer" parent="Camera/HUD/PanelContainer/MarginContainer/VBoxContainer"]
+margin_top = 216.0
+margin_right = 636.0
+margin_bottom = 327.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Camera/HUD/PanelContainer/MarginContainer/VBoxContainer/CenterContainer"]
+margin_left = 164.0
+margin_right = 472.0
+margin_bottom = 111.0
+
+[node name="Label3" type="Label" parent="Camera/HUD/PanelContainer/MarginContainer/VBoxContainer/CenterContainer/HBoxContainer"]
+margin_right = 26.0
+margin_bottom = 111.0
+custom_fonts/font = SubResource( 20 )
+text = "-"
+align = 1
+
+[node name="TextureRect" type="TextureRect" parent="Camera/HUD/PanelContainer/MarginContainer/VBoxContainer/CenterContainer/HBoxContainer"]
+margin_left = 30.0
+margin_right = 308.565
+margin_bottom = 111.0
+rect_min_size = Vector2( 278.565, 100 )
+texture = ExtResource( 11 )
+expand = true
+stretch_mode = 6
+
+[node name="PositionProbe" type="KinematicBody" parent="Camera"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Camera/PositionProbe"]
+shape = SubResource( 3 )
+
+[node name="ForestFloor" type="Spatial" parent="."]
+
+[node name="HexGrid" type="StaticBody" parent="ForestFloor"]
+script = ExtResource( 7 )
+SIZE = 9
+hex_size_override = Vector2( 2, 2 )
+
+[node name="Bonfire" parent="ForestFloor/HexGrid" instance=ExtResource( 29 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.005, 0 )
+
+[node name="Plop" type="Spatial" parent="ForestFloor/HexGrid"]
+script = ExtResource( 24 )
+delay = 0.19
+
+[node name="01-eiche" parent="ForestFloor/HexGrid/Plop" instance=ExtResource( 27 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.828, 0.005, -11.995 )
+texture = ExtResource( 28 )
+sf = 2.5
+
+[node name="02-her_pappel" parent="ForestFloor/HexGrid/Plop" instance=ExtResource( 27 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.07674, 0.016, -16.8127 )
+texture = ExtResource( 37 )
+sf = 2.5
+
+[node name="03-04blume" parent="ForestFloor/HexGrid/Plop" instance=ExtResource( 27 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.29543, 0.0027222, 2.24081 )
+texture = ExtResource( 38 )
+sf = 0.65
+
+[node name="04-hockend_kaninchen" parent="ForestFloor/HexGrid/Plop" instance=ExtResource( 27 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.793308, 0.0027222, -5.47374 )
+texture = ExtResource( 47 )
+sf = 0.622
+
+[node name="05-x_birke" parent="ForestFloor/HexGrid/Plop" instance=ExtResource( 27 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.13308, 0.380773, -9.22875 )
+texture = ExtResource( 48 )
+sf = 2.5
+
+[node name="06-stehend_fasan" parent="ForestFloor/HexGrid/Plop" instance=ExtResource( 27 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.46729, -4.76837e-07, -3.33955 )
+texture = ExtResource( 51 )
+sf = 0.795
+
+[node name="07-junge_eibe" parent="ForestFloor/HexGrid/Plop" instance=ExtResource( 27 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0304166, 0.0027222, -16.523 )
+texture = ExtResource( 39 )
+sf = 2.5
+
+[node name="08-liegend_fuchs" parent="ForestFloor/HexGrid/Plop" instance=ExtResource( 27 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.38994, 0.0027222, -5.98727 )
+texture = ExtResource( 45 )
+sf = 0.535
+
+[node name="09-setzling_fichte" parent="ForestFloor/HexGrid/Plop" instance=ExtResource( 27 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.74189, 0.0027222, -2.61891 )
+texture = ExtResource( 42 )
+sf = 1.167
+
+[node name="10-her_fichte" parent="ForestFloor/HexGrid/Plop" instance=ExtResource( 27 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.62403, 0.0027222, -8.53809 )
+texture = ExtResource( 34 )
+sf = 2.5
+
+[node name="11-schn_igel" parent="ForestFloor/HexGrid/Plop" instance=ExtResource( 27 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.42497, 0.0027222, 4.70608 )
+texture = ExtResource( 40 )
+sf = 0.46
+
+[node name="12-ausg_eiche" parent="ForestFloor/HexGrid/Plop" instance=ExtResource( 27 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.53629, 0.0027222, -13.7595 )
+texture = ExtResource( 28 )
+sf = 2.5
+
+[node name="13-10blume" parent="ForestFloor/HexGrid/Plop" instance=ExtResource( 27 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.103655, 0.0027222, 3.72548 )
+texture = ExtResource( 52 )
+sf = 0.65
+
+[node name="14-x_pappel" parent="ForestFloor/HexGrid/Plop" instance=ExtResource( 27 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.00247, 0.0027222, -5.94992 )
+texture = ExtResource( 33 )
+sf = 2.5
+
+[node name="15-schlafend_dachs" parent="ForestFloor/HexGrid/Plop" instance=ExtResource( 27 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.19426, 0.0027222, 0.264257 )
+texture = ExtResource( 30 )
+sf = 0.688
+
+[node name="16-junge_weide" parent="ForestFloor/HexGrid/Plop" instance=ExtResource( 27 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2586, 0.0027222, -11.3397 )
+texture = ExtResource( 32 )
+sf = 2.5
+
+[node name="17-fressendes_reh" parent="ForestFloor/HexGrid/Plop" instance=ExtResource( 27 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.678503, 0.0027222, -4.75459 )
+texture = ExtResource( 49 )
+sf = 1.118
+
+[node name="18-her_kastanie" parent="ForestFloor/HexGrid/Plop" instance=ExtResource( 27 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.19389, 0.0027222, -5.96826 )
+texture = ExtResource( 53 )
+sf = 2.5
+
+[node name="19-gerollte_kreuzotter" parent="ForestFloor/HexGrid/Plop" instance=ExtResource( 27 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.79395, 0.0027222, -4.80071 )
+texture = ExtResource( 46 )
+sf = 0.363
+
+[node name="20-x_birke" parent="ForestFloor/HexGrid/Plop" instance=ExtResource( 27 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.867, 0.003, -3.851 )
+texture = ExtResource( 48 )
+sf = 2.5
+
+[node name="21-14Blume" parent="ForestFloor/HexGrid/Plop" instance=ExtResource( 27 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.845577, 0.0027222, 3.88514 )
+texture = ExtResource( 41 )
+sf = 0.65
+
+[node name="22-pickend_fasan" parent="ForestFloor/HexGrid/Plop" instance=ExtResource( 27 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.244936, 0.0137793, 2.95688 )
+texture = ExtResource( 50 )
+sf = 0.817
+
+[node name="23-heranwachsende_fichte" parent="ForestFloor/HexGrid/Plop" instance=ExtResource( 27 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.91416, 0.00272268, -10.7931 )
+texture = ExtResource( 34 )
+sf = 2.5
+
+[node name="24-schlafend_igel" parent="ForestFloor/HexGrid/Plop" instance=ExtResource( 27 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.65051, 0.003, 4.64447 )
+texture = ExtResource( 31 )
+sf = 0.497
+
+[node name="25-x_pappel" parent="ForestFloor/HexGrid/Plop" instance=ExtResource( 27 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.59543, 0.003, -8.08814 )
+texture = ExtResource( 33 )
+sf = 2.5
+
+[node name="26-sitzend_fuchs" parent="ForestFloor/HexGrid/Plop" instance=ExtResource( 27 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.82459, 0.0027222, -4.36387 )
+texture = ExtResource( 35 )
+sf = 0.764
+
+[node name="27-her_pappel" parent="ForestFloor/HexGrid/Plop" instance=ExtResource( 27 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.00902, 0.0027222, -9.23837 )
+texture = ExtResource( 37 )
+sf = 2.5
+
+[node name="28-06Blume" parent="ForestFloor/HexGrid/Plop" instance=ExtResource( 27 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.29138, 0.0027222, -1.7539 )
+texture = ExtResource( 44 )
+sf = 0.65
+
+[node name="29-aufrecht_baer" parent="ForestFloor/HexGrid/Plop" instance=ExtResource( 27 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25248, 0.026, -8.09296 )
+texture = ExtResource( 43 )
+sf = 1.834
+
+[node name="30-x_Birke" parent="ForestFloor/HexGrid/Plop" instance=ExtResource( 27 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.34985, -0.377807, -7.35342 )
+texture = ExtResource( 48 )
+sf = 2.5
+
+[node name="31-liegend_wildschwein" parent="ForestFloor/HexGrid/Plop" instance=ExtResource( 27 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.79304, 0.0027222, -7.10288 )
+texture = ExtResource( 36 )
+sf = 1.0
+
+[node name="32-ausg_weide" parent="ForestFloor/HexGrid/Plop" instance=ExtResource( 27 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.04, 0.003, -3.132 )
+texture = ExtResource( 15 )
+sf = 2.5
+
+[node name="33-steh_dachs" parent="ForestFloor/HexGrid/Plop" instance=ExtResource( 27 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.813827, 0.003, 3.80298 )
+texture = ExtResource( 25 )
+sf = 0.688
+
+[node name="34-07schneegl" parent="ForestFloor/HexGrid/Plop" instance=ExtResource( 27 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.79383, 0.003, 4.78554 )
+texture = ExtResource( 14 )
+sf = 0.65
+
+[node name="MapHolder" type="Spatial" parent="ForestFloor/HexGrid"]
+visible = false
+
+[node name="Cursor" parent="ForestFloor/HexGrid" instance=ExtResource( 8 )]
+transform = Transform( 0.25, 0, 0.433013, 0, 0.5, 0, -0.433013, 0, 0.25, 3.87529, 0.238, 0 )
+visible = false
+
+[node name="CollisionShape" type="CollisionShape" parent="ForestFloor/HexGrid"]
+transform = Transform( 1, 0, 0, 0, 0.2, 0, 0, 0, 1, 0, 0, -0.0223198 )
+shape = SubResource( 4 )
+
+[node name="CSGMesh2" type="CSGMesh" parent="ForestFloor/HexGrid/CollisionShape"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0223198 )
+visible = false
+mesh = SubResource( 5 )
+material = SubResource( 6 )
+
+[node name="Sprite3D" type="Sprite3D" parent="ForestFloor/HexGrid"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.52728, 0.578, -5.221 )
+visible = false
+pixel_size = 0.0003
+billboard = 1
+texture = ExtResource( 18 )
+
+[node name="CSGMesh" type="CSGMesh" parent="ForestFloor"]
+mesh = SubResource( 7 )
+material = SubResource( 8 )
+
+[node name="Background2" type="Spatial" parent="."]
+script = ExtResource( 6 )
+should_move = true
+parallax2_factor = 1.0
+
+[node name="Backdrop" type="Sprite3D" parent="Background2"]
+transform = Transform( 20, 0, 0, 0, 1.158, 5.30055e-08, 0, -6.13803e-08, 1, 0, 3.695, -50 )
+billboard = 2
+transparent = false
+shaded = true
+texture = SubResource( 9 )
+
+[node name="01" type="Sprite3D" parent="Background2" groups=[
+"Parallax",
+]]
+transform = Transform( 1, 0, 0, 0, 1, 5.30056e-08, 0, -5.30056e-08, 1, -2.63846, -2.94097, -49 )
+billboard = 2
+texture = ExtResource( 20 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 8000, 1024 )
+
+[node name="02" type="Sprite3D" parent="Background2" groups=[
+"Parallax",
+]]
+transform = Transform( 1, 0, 0, 0, 1, 5.30056e-08, 0, -5.30056e-08, 1, -0.820302, 2.57403, -48 )
+billboard = 2
+texture = ExtResource( 4 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 8000, 1024 )
+
+[node name="03" type="Sprite3D" parent="Background2" groups=[
+"Parallax",
+]]
+transform = Transform( 1, 0, 0, 0, 1, 5.30056e-08, 0, -5.30056e-08, 1, -2.63846, 2.57403, -47 )
+billboard = 2
+texture = ExtResource( 21 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 8000, 1024 )
+
+[node name="04" type="Sprite3D" parent="Background2" groups=[
+"Parallax",
+]]
+transform = Transform( 1, 0, 0, 0, 1, 5.30056e-08, 0, -5.30056e-08, 1, -2.63846, 2.57403, -46 )
+billboard = 2
+texture = ExtResource( 16 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 8000, 1024 )
+
+[node name="05" type="Sprite3D" parent="Background2" groups=[
+"Parallax",
+]]
+transform = Transform( 1, 0, 0, 0, 1, 5.30056e-08, 0, -5.30056e-08, 1, -2.63846, 2.57403, -45 )
+billboard = 2
+texture = ExtResource( 19 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 8000, 1024 )
+
+[node name="06" type="Sprite3D" parent="Background2" groups=[
+"Parallax",
+]]
+transform = Transform( 1, 0, 0, 0, 1, 5.30056e-08, 0, -5.30056e-08, 1, -2.63846, 2.57403, -44 )
+billboard = 2
+texture = ExtResource( 10 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 8000, 1024 )
+
+[node name="07" type="Sprite3D" parent="Background2" groups=[
+"Parallax",
+]]
+transform = Transform( 1, 0, 0, 0, 1, 5.30056e-08, 0, -5.30056e-08, 1, -2.63846, 2.57403, -43 )
+billboard = 2
+texture = ExtResource( 22 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 8000, 1024 )
+
+[node name="08" type="Sprite3D" parent="Background2" groups=[
+"Parallax",
+]]
+transform = Transform( 1, 0, 0, 0, 1, 5.30056e-08, 0, -5.30056e-08, 1, -2.63846, 2.57403, -42 )
+billboard = 2
+texture = ExtResource( 23 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 8000, 1024 )
+
+[node name="09" type="Sprite3D" parent="Background2" groups=[
+"Parallax",
+]]
+transform = Transform( 1, 0, 0, 0, 1, 5.30056e-08, 0, -5.30056e-08, 1, -2.63846, 2.57403, -41 )
+billboard = 2
+texture = ExtResource( 17 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 8000, 1024 )
+
+[node name="10" type="Sprite3D" parent="Background2" groups=[
+"Parallax",
+]]
+transform = Transform( 1, 0, 0, 0, 1, 5.30056e-08, 0, -5.30056e-08, 1, -2.63846, 2.57403, -42.7508 )
+billboard = 2
+texture = ExtResource( 26 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 8000, 1024 )
+
+[node name="Viewport" type="Viewport" parent="."]
+size = Vector2( 2048, 2048 )
+world = SubResource( 10 )
+hdr = false
+usage = 0
+render_target_v_flip = true
+
+[node name="ColorRect" type="ColorRect" parent="Viewport"]
+material = SubResource( 13 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "RESET"
+anims/Cloud_Drag = SubResource( 14 )
+anims/RESET = SubResource( 15 )
+anims/Tree_Anim = SubResource( 16 )
+anims/Zoom_Out = SubResource( 17 )
+anims/Zoom_To_Clearing = SubResource( 18 )
+
+[connection signal="input_event" from="ForestFloor/HexGrid" to="ForestFloor/HexGrid" method="_on_HexGrid_input_event"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

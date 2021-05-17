@@ -77,7 +77,7 @@ margin_bottom = 0.0
 
 [node name="Popup" type="Panel" parent="."]
 visible = false
-self_modulate = Color( 1, 1, 1, 0 )
+self_modulate = Color( 1, 1, 1, 0.317647 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 1

@@ -14,11 +14,11 @@ dest_files=[ "res://.import/cyIcon.png-2bbe4464485d34d6a2b5b88449d310af.stex" ]
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
-compress/normal_map=0
+compress/normal_map=2
 flags/repeat=0
 flags/filter=true
 flags/mipmaps=false

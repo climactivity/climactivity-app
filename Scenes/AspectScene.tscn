@@ -83,6 +83,9 @@ script = ExtResource( 2 )
 [node name="ScrollContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer" index="0"]
 scroll_horizontal_enabled = false
 
+[node name="ContentMain" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer" index="0"]
+margin_bottom = 2160.0
+
 [node name="TrackingPreview" type="VBoxContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="1"]
 margin_top = 350.0
 margin_right = 1080.0
@@ -261,7 +264,7 @@ anims/ShowShopButton = SubResource( 2 )
 [node name="InfoGraph" type="PanelContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="2"]
 margin_top = 1156.0
 margin_right = 1080.0
-margin_bottom = 1920.0
+margin_bottom = 1656.0
 rect_min_size = Vector2( 0, 500 )
 mouse_filter = 1
 size_flags_vertical = 3
@@ -269,7 +272,7 @@ custom_styles/panel = SubResource( 3 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/InfoGraph" index="0"]
 margin_right = 1080.0
-margin_bottom = 764.0
+margin_bottom = 500.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -336,19 +339,16 @@ anchor_bottom = 0.0
 margin_right = 160.0
 margin_bottom = 160.0
 
-[node name="Aufgaben" type="Panel" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="3"]
-visible = false
+[node name="Aufgaben" type="PanelContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="3"]
 margin_top = 1660.0
 margin_right = 1080.0
 margin_bottom = 2160.0
 rect_min_size = Vector2( 0, 500 )
 size_flags_vertical = 2
 custom_styles/panel = ExtResource( 6 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="HTTPRequest" type="HTTPRequest" parent="." index="1"]
+
 [connection signal="pressed" from="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview/CySidePanel/HBoxContainer/MarginContainer2/Panel" to="." method="_on_Panel_pressed"]
 [connection signal="pressed" from="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview/CySidePanel/HBoxContainer/MarginContainer2/Button" to="." method="_on_Button_pressed"]
 [connection signal="pressed" from="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview/shop_button_container/entity_shop_button" to="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview" method="_on_entity_shop_button_pressed"]

@@ -1,5 +1,6 @@
 tool
 extends Panel
+class_name IconCapsule 
 
 signal clicked
 

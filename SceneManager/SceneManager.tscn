@@ -2,7 +2,7 @@
 
 [ext_resource path="res://SceneManager/SceneManager.gd" type="Script" id=1]
 [ext_resource path="res://UI/Overlay.tscn" type="PackedScene" id=2]
-[ext_resource path="res://ForestScene3d/TargetRender2.tscn" type="PackedScene" id=3]
+[ext_resource path="res://ForestScene3d/TargetRender3.tscn" type="PackedScene" id=3]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Move_Back"

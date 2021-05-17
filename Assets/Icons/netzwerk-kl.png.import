@@ -14,11 +14,11 @@ dest_files=[ "res://.import/netzwerk-kl.png-980fa0b73d6d3f5b8f4d2b635b1231dc.ste
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
-compress/normal_map=0
+compress/normal_map=2
 flags/repeat=0
 flags/filter=true
 flags/mipmaps=false

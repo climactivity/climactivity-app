@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Birke_05.png-1a3e296c843616e1320c428e9e4091e8.stex"
+path="res://.import/birke_05.png-ad4937ffcbf95798de3dab3a814b2388.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/sketch/baum/Birke/Birke_05.png"
-dest_files=[ "res://.import/Birke_05.png-1a3e296c843616e1320c428e9e4091e8.stex" ]
+source_file="res://Assets/sketch/baum/Birke/birke_05.png"
+dest_files=[ "res://.import/birke_05.png-ad4937ffcbf95798de3dab3a814b2388.stex" ]
 
 [params]
 
@@ -18,10 +18,10 @@ compress/mode=1
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
-compress/normal_map=0
-flags/repeat=0
+compress/normal_map=2
+flags/repeat=true
 flags/filter=true
-flags/mipmaps=false
+flags/mipmaps=true
 flags/anisotropic=false
 flags/srgb=2
 process/fix_alpha_border=true
@@ -30,5 +30,5 @@ process/HDR_as_SRGB=false
 process/invert_color=false
 stream=false
 size_limit=0
-detect_3d=true
+detect_3d=false
 svg/scale=1.0
