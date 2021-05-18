@@ -240,6 +240,8 @@ func get_infobytes_for_factor(factor, aspect):
 
 func get_quests_for_aspect(aspect): 
 	if !is_ready(): return null
+	if aspect is String:
+		aspect = get_aspect_by_name(aspect)
 	var quests = entities.get("RLocalizedQuest")
 	var selected = []
 	for quest in quests:
