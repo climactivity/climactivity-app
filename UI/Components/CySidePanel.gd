@@ -15,6 +15,7 @@ func _notification(what):
 	var y_size = rect_size.y
 	if what == NOTIFICATION_SORT_CHILDREN:
 		for child in get_children(): 
+#			child.get_parent().remove_child(child)
 			content_holder.add_child(child)
 			if (chrome_holder != null  and child != chrome_holder):
 				fit_child_in_rect( child, Rect2( top_left, content_holder.rect_size - top_left) )

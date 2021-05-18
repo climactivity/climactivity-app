@@ -1,10 +1,19 @@
 extends Resource
+class_name RReward
 
 export (String) var _id
 export (float)  var water
 export (float)  var coins
 export (float)  var xp 
 export (Array)  var trigger = null
+
+static func from_dict(dict): 
+	var _reward = load("res://Network/Types/RReward.gd").new()
+	_reward._id =  dict["_id"] if dict.has("_id") else "-1"
+	_reward.water =  dict["water"]  if dict.has("_id") else 0
+	_reward.coins =  dict["coins"] if dict.has("_id") else 0
+	_reward.xp =  dict["xp"] if dict.has("_id") else 0
+	_reward.trigger =  dict["trigger"] if dict.has("_id") else []
 
 #might kill trigg
 func merge(other_reward):

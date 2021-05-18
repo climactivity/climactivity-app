@@ -3,12 +3,14 @@ extends Node
 const aspect_resource_type = preload("res://Network/Types/RLocalizedAspectData.gd") 
 const infobyte_resource_type = preload("res://Network/Types/InfoBytes/RInfoByte.gd")
 const tree_template_resource_type = preload("res://Network/Types/RTreeTemplate.gd") 
+const quest_resource_type = preload("res://Network/Types/RLocalizedQuest.gd") 
 const bp_cache_manifest = preload("res://Network/Types/CacheManifest.gd")
 
 const type_map = {
 	"RLocalizedAspect": "Network/Cache/Aspects",
 	"RLocalizedInfobyte": "Network/Cache/Infobytes",
-	"RTreeTemplate" : "Network/Cache/TreeTemplates" 
+	"RTreeTemplate" : "Network/Cache/TreeTemplates",
+	"RLocalizedQuest": "Network/Cache/Quests",
 }
 
 var fixed_cache_manifest 
@@ -74,7 +76,7 @@ func _get_updated_resource_list():
 
 func _on_updated_resource_list(result, response_code, headers, body):
 	var json = JSON.parse(body.get_string_from_utf8())
-	print("-------------------------------------- hello --------------------------------------")
+#	print("-------------------------------------- hello --------------------------------------")
 	if(json.error): 
 		Logger.print("Server error: " + str(json.error) +  "! Got: " + body.get_string_from_utf8(), self)
 		_network_error()
@@ -99,6 +101,8 @@ func _on_new_manifest(result, response_code, headers, body):
 		_save_infobyte_data(json.result.get("current_infobytes"))
 	if (json.result.has("current_tree_templates")): 
 		_save_tree_template_data(json.result.get("current_tree_templates"))
+	if (json.result.has("current_user_selecable_quests")): 
+		_save_quest_data(json.result.get("current_user_selecable_quests"))
 	_done()
 
 var DEBUG_aspect_icons = {
@@ -139,6 +143,15 @@ func _save_tree_template_data(data):
 		tree_template_resource.take_over_path(path)
 		writalbe_cache_manifest.insert(tree_template_data["_id"], "RTreeTemplate", fs)
 		ResourceSaver.save(path, tree_template_resource, 32)
+
+func _save_quest_data(data):
+	for quest_data in data: 
+		var path = fs + "://Network/Cache/Quests/%s.%s" % [quest_data["_id"], format]
+		Logger.print("Saving resource for %s at %s" % [quest_data["title"], path ], self)
+		var quest_resource = quest_resource_type.new(quest_data)
+		quest_resource.take_over_path(path)
+		writalbe_cache_manifest.insert(quest_data["_id"], "RLocalizedQuest", fs)
+		ResourceSaver.save(path, quest_resource, 32)
 
 func _done(): 
 	var path = fs + "://Network/Cache/manifest.%s" % format
@@ -223,4 +236,13 @@ func get_infobytes_for_factor(factor, aspect):
 	for infobyte in candidates:
 		if factor.id == infobyte.factor: 
 			selected.push_back(infobyte)
+	return selected
+
+func get_quests_for_aspect(aspect): 
+	if !is_ready(): return null
+	var quests = entities.get("RLocalizedQuest")
+	var selected = []
+	for quest in quests:
+		if quest.alert_tracked_aspect == aspect._id:
+			selected.push_back(quest)
 	return selected

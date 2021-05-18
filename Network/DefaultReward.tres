@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://Network/Types/RReward.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+_id = "-1"
+water = 0.0
+coins = 100.0
+xp = 100.0
+trigger = [  ]

@@ -12,7 +12,7 @@ func set_reward(reward):
 		text = "Coins: 0 Xp: 0 Water: 0" 
 		return
 	_reward = reward
-	var coins_str = ("Coins: %s " % str(reward.coins) ) if reward.get("coins") else ""
-	var xp_str = ("Xp: %s " % str(reward.xp) ) if reward.get("xp") else ""
-	var water_str = ("Water: %s" % str(reward.water)) if reward.get("water") else ""
+	var coins_str = ("Coins: %s " % str(_reward.coins) ) if _reward.get("coins") else ""
+	var xp_str = ("Xp: %s " % str(_reward.xp) ) if _reward.get("xp") else ""
+	var water_str = ("Water: %s" % str(_reward.water)) if _reward.get("water") else ""
 	text = coins_str + xp_str  + water_str
