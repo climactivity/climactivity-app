@@ -15,6 +15,7 @@ func load_for_aspect(aspect):
 func _update():
 	if _quests == [] or !ready: 
 		return
+	Util.clear(quest_list)
 	for quest in _quests: 
 		var quest_card_inst = quest_card.instance()
 		quest_card_inst.set_quest(quest)

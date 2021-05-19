@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Panel",
+"class": "IconCapsule",
+"language": "GDScript",
+"path": "res://UI/Components/IconCapsule.gd"
+}, {
 "base": "Control",
 "class": "MainMenu",
 "language": "GDScript",
@@ -65,6 +70,7 @@ _global_script_classes=[ {
 "path": "res://SceneManager/Transitions.gd"
 } ]
 _global_script_class_icons={
+"IconCapsule": "",
 "MainMenu": "",
 "QuestCard": "",
 "RInfoByte": "",

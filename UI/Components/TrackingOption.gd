@@ -42,3 +42,8 @@ func selected():
 func preselect(): 
 	preselected = true
 	if select_button != null: select_button._check()
+
+
+func _on_Panel_gui_input(event):
+	if event is InputEventScreenTouch and event.pressed:
+		select_button._on_Control_pressed()

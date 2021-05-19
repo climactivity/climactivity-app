@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Fichte_01.png-8fd389e6ef301b30010fb456215a0c32.stex"
+path="res://.import/fichte_01.png-8495e6d1f3aa745b6c1f250f13c7993f.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/sketch/baum/Fichte/Fichte_01.png"
-dest_files=[ "res://.import/Fichte_01.png-8fd389e6ef301b30010fb456215a0c32.stex" ]
+source_file="res://Assets/sketch/baum/Fichte/fichte_01.png"
+dest_files=[ "res://.import/fichte_01.png-8495e6d1f3aa745b6c1f250f13c7993f.stex" ]
 
 [params]
 
