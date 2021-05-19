@@ -71,5 +71,5 @@ func _on_DeleteButton_pressed():
 		
 func _reset_game_state(): 
 	PSS.reset_game_state()
-	get_tree().quit(0)
+	get_tree().reload_current_scene()
 
