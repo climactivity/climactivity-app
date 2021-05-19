@@ -27,6 +27,7 @@ func set_unit_factor(new_factor):
 	_offset_and_scale()
 	
 func apply_scaling_factor(factor):
+	scaling_factor = factor
 	_unit_factor = factor * _unit_factor_base
 	_offset_and_scale()
 	

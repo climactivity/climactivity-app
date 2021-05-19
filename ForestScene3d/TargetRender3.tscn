@@ -67,7 +67,7 @@ background_mode = 2
 background_sky = SubResource( 1 )
 background_energy = 16.0
 
-[sub_resource type="StyleBoxFlat" id=19]
+[sub_resource type="StyleBoxFlat" id=3]
 bg_color = Color( 0.823529, 0.823529, 0.823529, 0.627451 )
 border_color = Color( 0, 0, 0, 1 )
 corner_radius_top_left = 64
@@ -78,7 +78,7 @@ shadow_color = Color( 0, 0, 0, 0.12549 )
 shadow_size = 24
 shadow_offset = Vector2( 0, 8 )
 
-[sub_resource type="DynamicFont" id=20]
+[sub_resource type="DynamicFont" id=4]
 size = 64
 outline_size = 2
 outline_color = Color( 0.0745098, 0.0745098, 0.0745098, 1 )
@@ -86,7 +86,7 @@ use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=21]
+[sub_resource type="DynamicFont" id=5]
 size = 72
 outline_size = 2
 outline_color = Color( 0.0745098, 0.0745098, 0.0745098, 1 )
@@ -94,23 +94,23 @@ use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 9 )
 
-[sub_resource type="SphereShape" id=3]
+[sub_resource type="SphereShape" id=6]
 
-[sub_resource type="BoxShape" id=4]
+[sub_resource type="BoxShape" id=7]
 extents = Vector3( 35, 1, 35 )
 
-[sub_resource type="PlaneMesh" id=5]
+[sub_resource type="PlaneMesh" id=8]
 size = Vector2( 70, 70 )
 
-[sub_resource type="SpatialMaterial" id=6]
+[sub_resource type="SpatialMaterial" id=9]
 flags_world_triplanar = true
 
-[sub_resource type="PlaneMesh" id=7]
+[sub_resource type="PlaneMesh" id=10]
 size = Vector2( 300, 300 )
 subdivide_width = 7
 subdivide_depth = 6
 
-[sub_resource type="SpatialMaterial" id=8]
+[sub_resource type="SpatialMaterial" id=11]
 flags_unshaded = true
 flags_world_triplanar = true
 albedo_texture = ExtResource( 12 )
@@ -118,26 +118,25 @@ uv1_scale = Vector3( 0.1, 0.109, 0.1 )
 uv1_offset = Vector3( 0.751, 0, 0 )
 uv1_triplanar = true
 
-[sub_resource type="ViewportTexture" id=9]
+[sub_resource type="ViewportTexture" id=12]
 viewport_path = NodePath("Viewport")
 
-[sub_resource type="World" id=10]
+[sub_resource type="World" id=13]
 
-[sub_resource type="Gradient" id=11]
+[sub_resource type="Gradient" id=14]
 colors = PoolColorArray( 0.015625, 0.377075, 1, 1, 0.628906, 0.765167, 1, 1 )
 
-[sub_resource type="GradientTexture" id=12]
-gradient = SubResource( 11 )
+[sub_resource type="GradientTexture" id=15]
+gradient = SubResource( 14 )
 
-[sub_resource type="ShaderMaterial" id=13]
+[sub_resource type="ShaderMaterial" id=16]
 shader = ExtResource( 2 )
-shader_param/gradient = SubResource( 12 )
+shader_param/gradient = SubResource( 15 )
 
-[sub_resource type="Animation" id=14]
-resource_name = "Cloud_Drag"
+[sub_resource type="Animation" id=17]
 length = 1.809
 
-[sub_resource type="Animation" id=15]
+[sub_resource type="Animation" id=18]
 length = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("Camera:translation")
@@ -152,11 +151,9 @@ tracks/0/keys = {
 "values": [ Vector3( 0, 7.479, 9.487 ) ]
 }
 
-[sub_resource type="Animation" id=16]
-resource_name = "Tree_Anim"
+[sub_resource type="Animation" id=19]
 
-[sub_resource type="Animation" id=17]
-resource_name = "Zoom_Out"
+[sub_resource type="Animation" id=20]
 length = 15.0
 tracks/0/type = "method"
 tracks/0/path = NodePath("ForestFloor/HexGrid/Plop")
@@ -199,7 +196,7 @@ tracks/2/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=18]
+[sub_resource type="Animation" id=21]
 tracks/0/type = "bezier"
 tracks/0/path = NodePath("Camera:translation:x")
 tracks/0/interp = 1
@@ -295,7 +292,7 @@ margin_left = -316.0
 margin_top = 64.0
 margin_right = 320.0
 margin_bottom = 392.0
-custom_styles/panel = SubResource( 19 )
+custom_styles/panel = SubResource( 3 )
 __meta__ = {
 "_edit_group_": true,
 "_edit_use_anchors_": false
@@ -314,7 +311,7 @@ alignment = 1
 margin_top = 1.0
 margin_right = 636.0
 margin_bottom = 112.0
-custom_fonts/font = SubResource( 20 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Vielen Dank für"
 align = 1
@@ -323,7 +320,7 @@ align = 1
 margin_top = 116.0
 margin_right = 636.0
 margin_bottom = 212.0
-custom_fonts/font = SubResource( 21 )
+custom_fonts/font = SubResource( 5 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "  0,00 €"
 align = 1
@@ -346,7 +343,7 @@ margin_bottom = 111.0
 [node name="Label3" type="Label" parent="Camera/HUD/PanelContainer/MarginContainer/VBoxContainer/CenterContainer/HBoxContainer"]
 margin_right = 26.0
 margin_bottom = 111.0
-custom_fonts/font = SubResource( 20 )
+custom_fonts/font = SubResource( 4 )
 text = "-"
 align = 1
 
@@ -362,7 +359,7 @@ stretch_mode = 6
 [node name="PositionProbe" type="KinematicBody" parent="Camera"]
 
 [node name="CollisionShape" type="CollisionShape" parent="Camera/PositionProbe"]
-shape = SubResource( 3 )
+shape = SubResource( 6 )
 
 [node name="ForestFloor" type="Spatial" parent="."]
 
@@ -557,13 +554,13 @@ visible = false
 
 [node name="CollisionShape" type="CollisionShape" parent="ForestFloor/HexGrid"]
 transform = Transform( 1, 0, 0, 0, 0.2, 0, 0, 0, 1, 0, 0, -0.0223198 )
-shape = SubResource( 4 )
+shape = SubResource( 7 )
 
 [node name="CSGMesh2" type="CSGMesh" parent="ForestFloor/HexGrid/CollisionShape"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0223198 )
 visible = false
-mesh = SubResource( 5 )
-material = SubResource( 6 )
+mesh = SubResource( 8 )
+material = SubResource( 9 )
 
 [node name="Sprite3D" type="Sprite3D" parent="ForestFloor/HexGrid"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.52728, 0.578, -5.221 )
@@ -573,8 +570,8 @@ billboard = 1
 texture = ExtResource( 18 )
 
 [node name="CSGMesh" type="CSGMesh" parent="ForestFloor"]
-mesh = SubResource( 7 )
-material = SubResource( 8 )
+mesh = SubResource( 10 )
+material = SubResource( 11 )
 
 [node name="Background2" type="Spatial" parent="."]
 script = ExtResource( 6 )
@@ -586,7 +583,7 @@ transform = Transform( 20, 0, 0, 0, 1.158, 5.30055e-08, 0, -6.13803e-08, 1, 0, 3
 billboard = 2
 transparent = false
 shaded = true
-texture = SubResource( 9 )
+texture = SubResource( 12 )
 
 [node name="01" type="Sprite3D" parent="Background2" groups=[
 "Parallax",
@@ -680,23 +677,23 @@ region_rect = Rect2( 0, 0, 8000, 1024 )
 
 [node name="Viewport" type="Viewport" parent="."]
 size = Vector2( 2048, 2048 )
-world = SubResource( 10 )
+world = SubResource( 13 )
 hdr = false
 usage = 0
 render_target_v_flip = true
 
 [node name="ColorRect" type="ColorRect" parent="Viewport"]
-material = SubResource( 13 )
+material = SubResource( 16 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "RESET"
-anims/Cloud_Drag = SubResource( 14 )
-anims/RESET = SubResource( 15 )
-anims/Tree_Anim = SubResource( 16 )
-anims/Zoom_Out = SubResource( 17 )
-anims/Zoom_To_Clearing = SubResource( 18 )
+anims/Cloud_Drag = SubResource( 17 )
+anims/RESET = SubResource( 18 )
+anims/Tree_Anim = SubResource( 19 )
+anims/Zoom_Out = SubResource( 20 )
+anims/Zoom_To_Clearing = SubResource( 21 )
 
 [connection signal="input_event" from="ForestFloor/HexGrid" to="ForestFloor/HexGrid" method="_on_HexGrid_input_event"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

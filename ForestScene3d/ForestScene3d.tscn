@@ -284,7 +284,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"points": PoolRealArray( 19, -0.25, 0, 0.25, 0, 5, -0.587315, 0.3662, 0.25, 0 ),
+"points": PoolRealArray( 19, -0.25, 0, 0.25, 0, 7.479, -0.587315, 0.3662, 0.25, 0 ),
 "times": PoolRealArray( 0, 1 )
 }
 tracks/2/type = "bezier"
@@ -294,7 +294,7 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"points": PoolRealArray( 18.972, -0.25, 0, 0.25, 0, 8.463, -0.517091, 0.711472, 0.25, 0 ),
+"points": PoolRealArray( 18.972, -0.25, 0, 0.25, 0, 9.487, -0.517091, 0.711472, 0.25, 0 ),
 "times": PoolRealArray( 0, 1 )
 }
 tracks/3/type = "bezier"
@@ -304,7 +304,7 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"points": PoolRealArray( -39.767, -0.25, 0, 0.25, 0, -27.5, -0.25, 0, 0.25, 0 ),
+"points": PoolRealArray( -39.767, -0.25, 0, 0.25, 0, -27.074, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0, 1 )
 }
 tracks/4/type = "bezier"
@@ -407,7 +407,7 @@ visible = false
 anchor_left = 0.5
 anchor_right = 0.5
 margin_left = -92.0
-margin_top = 103.0
+margin_top = 203.0
 margin_right = 92.0
 margin_bottom = 226.68
 
@@ -416,7 +416,7 @@ visible = false
 anchor_left = 1.0
 anchor_right = 1.0
 margin_left = -190.704
-margin_top = 163.157
+margin_top = 263.0
 margin_right = -190.704
 margin_bottom = 163.157
 
@@ -535,14 +535,13 @@ anims/loading = SubResource( 6 )
 
 [node name="EntityDetails" type="Control" parent="Camera/HUD"]
 visible = false
-modulate = Color( 1, 1, 1, 0 )
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-margin_left = -80.0
+margin_left = -672.0
 margin_top = -716.0
-margin_right = 675.0
+margin_right = 83.0
 margin_bottom = 586.0
 __meta__ = {
 "_edit_use_anchors_": false
@@ -564,7 +563,7 @@ custom_styles/panel = ExtResource( 15 )
 [node name="MountPoint" type="MarginContainer" parent="Camera/HUD/EntityDetails/MarginContainer/PanelContainer"]
 margin_left = 1.0
 margin_top = 1.0
-margin_right = 668.0
+margin_right = 669.0
 margin_bottom = 1301.0
 custom_constants/margin_right = 32
 custom_constants/margin_top = 32
@@ -578,9 +577,8 @@ anchor_top = 0.083
 anchor_right = 0.502
 anchor_bottom = 0.098
 margin_left = -457.0
-margin_top = -127.36
 margin_right = 461.84
-margin_bottom = 177.84
+margin_bottom = 292.0
 script = ExtResource( 21 )
 __meta__ = {
 "_edit_use_anchors_": false

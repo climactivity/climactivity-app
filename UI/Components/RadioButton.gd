@@ -16,6 +16,7 @@ func _check():
 func _uncheck(): 
 	checked = false
 	pressed = false
+	
 func _on_Control_pressed():
 	if controller != null: 
 		controller.toggle_state(self)

@@ -7,12 +7,12 @@ export (NodePath) var checkbox_controller_path setget set_checkbox_controller_pa
 var checkox_controller
 onready var label = $MarginContainer/MarginContainer2/VBoxContainer/Label
 onready var reward_label = $MarginContainer/MarginContainer2/VBoxContainer/Reward
-onready var select_button = $"MarginContainer/HBoxContainer/SelectButton"
+onready var select_button = $MarginContainer/HBoxContainer/SelectButton
 var preselected = false
 func _ready(): 
 	if option_data == null: return
 	_update_fields()
-	checkox_controller = get_node(checkbox_controller_path)
+#	checkox_controller = get_node(checkbox_controller_path)
 	if checkox_controller != null:
 		checkox_controller.register(select_button)
 		select_button.connect("pressed", self, "selected")
@@ -27,6 +27,11 @@ func set_tracking_option_data(new_option_data):
 func _update_fields(): 
 	label.text = option_data.option
 	reward_label.set_reward(option_data.reward) 
+	
+func set_checkbox_controller(controller):
+	checkox_controller = controller
+#	checkox_controller.register(select_button)
+#	select_button.connect("pressed", self, "selected")
 	
 func set_checkbox_controller_path(new_controller_path):
 	checkbox_controller_path = new_controller_path 
@@ -47,3 +52,4 @@ func preselect():
 func _on_Panel_gui_input(event):
 	if event is InputEventScreenTouch and event.pressed:
 		select_button._on_Control_pressed()
+		selected()

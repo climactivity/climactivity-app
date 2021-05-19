@@ -57,7 +57,7 @@ func _show_data():
 		return
 	for option_data in tracking_data.options: 
 		var new_option_instance = bp_option.instance()
-		new_option_instance.set_checkbox_controller_path(options_holder.get_path())
+		new_option_instance.set_checkbox_controller(options_holder)
 		new_option_instance.set_tracking_option_data(option_data)
 		new_option_instance.connect("selected", self, "set_option")
 		options[option_data.level] = new_option_instance

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://ForestScene3d/HexMesh.tres" type="CylinderMesh" id=1]
 [ext_resource path="res://ForestScene3d/TreeTemplates/Textures/Baum_Entwurf_01.png" type="Texture" id=2]
@@ -8,7 +8,6 @@
 [ext_resource path="res://ForestScene3d/SpatialUIPanel.tscn" type="PackedScene" id=6]
 [ext_resource path="res://ForestScene3d/TreeTemplates/TreeWaterReceiver.gd" type="Script" id=7]
 [ext_resource path="res://UI/Components/TreeDetails.tscn" type="PackedScene" id=8]
-[ext_resource path="res://ForestScene3d/TreeTemplates/PM_Stage_Inc.tres" type="Material" id=9]
 
 [sub_resource type="CylinderShape" id=1]
 radius = 0.315774
@@ -41,7 +40,7 @@ tracks/1/path = NodePath("Sprite3D:_unit_factor")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
-tracks/1/enabled = true
+tracks/1/enabled = false
 tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
@@ -171,12 +170,20 @@ shape = SubResource( 1 )
 
 [node name="ContactShadow" parent="." instance=ExtResource( 5 )]
 
-[node name="Particles" type="Particles" parent="."]
+[node name="Particles" type="CPUParticles" parent="."]
+emitting = false
 amount = 128
 one_shot = true
 explosiveness = 1.0
-process_material = ExtResource( 9 )
-draw_pass_1 = SubResource( 3 )
+mesh = SubResource( 3 )
+direction = Vector3( 0, 0, -1 )
+spread = 78.56
+flatness = 0.36
+initial_velocity = 15.92
+initial_velocity_random = 0.15
+scale_amount = 0.02
+hue_variation = 0.17
+hue_variation_random = 0.06
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.016155, 0 )
@@ -219,4 +226,5 @@ anims/stage_inc = SubResource( 7 )
 transform = Transform( 1, 0, 0, 0, 0.832061, 0.554685, 0, -0.554685, 0.832061, 1.09, 2.45, 3.363 )
 
 [node name="Camera" type="Camera" parent="CameraZoomTarget"]
+
 [connection signal="input_event" from="Collider" to="." method="_on_Collider_input_event"]

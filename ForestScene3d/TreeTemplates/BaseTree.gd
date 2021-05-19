@@ -16,6 +16,7 @@ onready var anim_player = $"AnimationPlayer"
 onready var tile = $MeshInstance
 onready var ui_alert = $"Sprite3D/SpatialUIPanel"
 onready var collider = $Collider
+
 func _ready():
 	if(!OS.is_debug_build()): tile.visible = false
 	ui_alert.visible = false
@@ -33,7 +34,7 @@ func _ready():
 	details_widget.connect("DEBUG_sub_stage", self, "DEBUG_sub_stage")
 
 func get_details_widget(): 
-	details_widget.show_entity()
+#	details_widget.show_entity()
 	return details_widget
 
 func update_view(animate = false):
@@ -55,7 +56,7 @@ func update_view(animate = false):
 					_animate_update(current_texture, current_size, old_texture, old_size)
 				else:
 					bill_board.set_texture(current_texture)
-					bill_board.apply_scaling_factor(sizes[texture_key])
+					bill_board.set_unit_factor(sizes[texture_key])
 			else:
 				Logger.error("Missing factor in sizes!", self)
 		else:
