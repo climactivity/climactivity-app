@@ -129,9 +129,9 @@ script = ExtResource( 6 )
 
 [node name="HSeparator" type="HSeparator" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain"]
 margin_right = 1080.0
-margin_bottom = 346.0
+margin_bottom = 446.0
 custom_styles/separator = SubResource( 7 )
-custom_constants/separation = 346
+custom_constants/separation = 446
 __meta__ = {
 "_edit_use_anchors_": false
 }
