@@ -18,6 +18,7 @@ onready var header_bg = $"ContentContainer/Content/HeaderBG"
 onready var header = $"HeaderContainer/Header"
 onready var content_main = $"ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain"
 export var screen_title = "Screen_Title" setget set_screen_title
+onready var delete_button = $"ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/VBoxContainer/DeleteButton"
 var ready = false 
  
 var gradient
@@ -56,3 +57,19 @@ func dispatch_nav_data():
 	else:
 		if dispatcher.has_method("receive_navigation"):
 			dispatcher.receive_navigation(_navigation_data)
+
+
+func _on_Button_pressed():
+	pass # Replace with function body.
+
+var attempts = 5
+func _on_DeleteButton_pressed():
+	attempts = attempts - 1 
+	delete_button.text = str(attempts)
+	if attempts < 0: 
+		_reset_game_state()
+		
+func _reset_game_state(): 
+	PSS.reset_game_state()
+	get_tree().quit(0)
+

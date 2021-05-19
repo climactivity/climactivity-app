@@ -124,6 +124,7 @@ custom_constants/margin_left = 64
 custom_constants/margin_bottom = 64
 
 [node name="RichTextLabel" type="RichTextLabel" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TextContainer/PanelContainer/MarginContainer" index="0"]
+visible = false
 margin_left = 64.0
 margin_top = 64.0
 margin_right = 974.0
