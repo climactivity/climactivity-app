@@ -26,7 +26,7 @@ func make_new(template, new_entity_id, new_aspect_id, initial_stage = 0, new_gro
 	entity_id = new_entity_id
 	stage = initial_stage
 	growth_period = new_growth_period
-	planted_at = OS.get_unix_time()
+	#planted_at = OS.get_unix_time()
 	aspect_id = new_aspect_id
 	base_water_required = 12
 	water_required = base_water_required * (new_growth_period / Util.DAY)
@@ -55,6 +55,8 @@ func alert_can_water():
 		node.alert_can_water() 
 
 func is_mature(): 
+	if !planted_at: 
+		return false 
 	return OS.get_unix_time() > planted_at + growth_period
 
 func to_dict(): 

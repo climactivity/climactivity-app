@@ -15,7 +15,7 @@ var currently_watering
 var has_water = false
 var water_available = false
 var dragging = false
-var initial_position
+var initial_position = Vector2(889.296, 263)
 var initial_stops = 0
 var stops = 0
 enum Cloud_States {
@@ -33,7 +33,7 @@ func _ready():
 	update_water_available()
 	AspectTrackingService.connect("tracking_updated", self, "update_water_available")
 	hud = get_parent()
-	initial_position = rect_position
+	#initial_position = Vector2(rect_position)
 
 func set_state(state): 
 	cloud_state = state
@@ -117,9 +117,10 @@ func start_drag():
 func _reset(): 
 #	resetting = true
 #	t = 0.0
-	var start_offset = $CloudSprite.position
+	var start_offset = Vector2(rect_position)
 	var duration = .5
-	$Tween.interpolate_property($CloudSprite, "position", start_offset, Vector2(0.0,0.0), duration,Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	print(start_offset, " , ", initial_position)
+	$Tween.interpolate_property(self, "rect_position", start_offset, initial_position, duration,Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	$Tween.interpolate_callback(self, duration, "_reset_done")
 	$Tween.start()
 
@@ -130,15 +131,17 @@ func _reset_done():
 	cloud.visible = false
 	update_water_available()
 
-func _watering(other): 
+## hours wasted here (so far): 4
+func _watering(other: Spatial): 
 	set_state(Cloud_States.WATERING)
-	var start_position = $CloudSprite.position
+	#  get_viewport().get_canvas_transform().affine_inverse().xform($CloudSprite.get_position())   
+	var start_position = rect_position
 	var target_position =  GameManager.camera.unproject_position(other.get_global_transform().origin)
 	self.get_global_mouse_position()
-	var _target_position = Vector2(-target_position.x, target_position.y ) + Vector2(initial_position.x, -initial_position.y ) + Vector2(0.0, -300)
-	print( start_position,", initial: " , initial_position,  ", other: ", other.get_global_transform().origin, ", unprojected: ",target_position, ", fixed:", _target_position)
+	var _target_position =   target_position + Vector2(0, -400.0)
+	print( start_position,", initial: " , $CloudSprite.position ,  ", other: ", other.get_global_transform().origin, ", unprojected: ",target_position, ", fixed:", _target_position)
 	var duration = .5
-	$Tween.interpolate_property($CloudSprite, "position", start_position, _target_position, duration,Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	$Tween.interpolate_property(self, "rect_position", start_position, _target_position, duration,Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	$Tween.interpolate_callback(self, duration, "_watering_progress")
 	$Tween.start()
 
@@ -165,7 +168,7 @@ func _input(event):
 			hud._enable_input()
 		return
 	if event is InputEventScreenDrag:
-		cloud.position += event.relative # * (1.0/cloud.transform.get_scale().x)
+		rect_position += event.relative # * (1.0/cloud.transform.get_scale().x)
 		currently_watering = hud.can_drop_data(event.position, drag_data)
 		if currently_watering != null and typeof(currently_watering) == TYPE_OBJECT: 
 			_watering(currently_watering)

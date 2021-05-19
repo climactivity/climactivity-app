@@ -60,6 +60,7 @@ func place_entity(entity, coordinates):
 	# update player state
 	player_state.inventory.unplaced_items.erase(entity)
 	player_state.board_entites[coordinates] = entity
+	entity.planted_at = OS.get_unix_time() 
 	flush()
 	# add scene
 	return TreeTemplateFactory.rehydrate(entity)
