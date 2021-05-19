@@ -22,7 +22,13 @@ func _ready():
 	set_navigation_state(navigation_state, true)
 	if GameManager != null:
 		GameManager.menu = self
-
+	_avoid_screen_cutouts()
+	
+func _avoid_screen_cutouts(): 
+	var safe_area = OS.get_window_safe_area()
+	var container = $MarginContainer/PanelContainer
+	
+	container.margin_top = container.margin_top - safe_area.position.y
 func hide_menu(): 
 	Logger.print("Hiding Menu", self)
 	if visible: 

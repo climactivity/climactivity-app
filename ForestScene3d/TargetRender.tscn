@@ -795,6 +795,7 @@ anims/RESET = SubResource( 15 )
 anims/Tree_Anim = SubResource( 16 )
 anims/Zoom_Out = SubResource( 17 )
 anims/Zoom_To_Clearing = SubResource( 18 )
+
 [connection signal="toggled" from="Camera/HUD/DebugMenu/VBox/HBoxContainer/CheckBox" to="Camera/HUD/DebugMenu" method="_set_free_placement_mode"]
 [connection signal="input_event" from="ForestFloor/HexGrid" to="ForestFloor/HexGrid" method="_on_HexGrid_input_event"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

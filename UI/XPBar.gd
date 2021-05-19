@@ -15,6 +15,11 @@ func _ready():
 	_update()
 	RewardService.connect("reward_added", self, "_update")
 	GameManager.xp_bar = self
+#	_avoid_screen_cutouts()
+	
+func _avoid_screen_cutouts(): 
+	var safe_area = OS.get_window_safe_area()
+	$MarginContainer.margin_top = $MarginContainer.margin_top + safe_area.position.y
 	
 func _update(): 
 #	return 

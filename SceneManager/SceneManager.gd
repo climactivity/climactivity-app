@@ -80,7 +80,19 @@ func _get_focused_header():
 		return current_header
 	return null
 
+func _setup_safe_area(): 
+	var safe_area = OS.get_window_safe_area()
+	OS.get_screen_dpi() * 90
+	self.rect_position = safe_area.position 
+	self.rect_size = safe_area.size * OS.get_screen_dpi() / 115
+	
+	Logger.print(safe_area, self)
+	Logger.print(rect_size, self)
+	Logger.print(rect_position, self)
+
+
 func _ready():
+#	_setup_safe_area()
 	GameManager.scene_manager = self
 	_prepare_bigpoint_scenes()
 	_prepare_fixed_scenes()
