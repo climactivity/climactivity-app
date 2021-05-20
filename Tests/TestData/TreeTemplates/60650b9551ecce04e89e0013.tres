@@ -1,0 +1,33 @@
+[gd_resource type="Resource" load_steps=7 format=2]
+
+[ext_resource path="res://Network/Types/RTreeTemplate.gd" type="Script" id=1]
+[ext_resource path="res://Assets/sketch/baum/Birke/Birke_05.png" type="Texture" id=2]
+[ext_resource path="res://Assets/sketch/baum/Birke/Birke_04.png" type="Texture" id=3]
+[ext_resource path="res://Assets/sketch/baum/Birke/Birke_01.png" type="Texture" id=4]
+[ext_resource path="res://Assets/sketch/baum/Birke/Birke_03.png" type="Texture" id=5]
+[ext_resource path="res://Assets/sketch/baum/Birke/Birke_02.png" type="Texture" id=6]
+
+[resource]
+script = ExtResource( 1 )
+_id = "60650b9551ecce04e89e0013"
+template_name = "birke"
+texture_name = "birke"
+ui_name = "Birke"
+preview_name = ""
+coin_value = 0
+bigpoint_available = [ "ernaehrung" ]
+texture_data = {
+0: ExtResource( 4 ),
+1: ExtResource( 6 ),
+2: ExtResource( 5 ),
+3: ExtResource( 3 ),
+4: ExtResource( 2 ),
+"sizes": {
+0: 0.4,
+1: 0.6,
+2: 0.8,
+3: 1.0,
+4: 1.0
+}
+}
+preview_texture = ExtResource( 2 )

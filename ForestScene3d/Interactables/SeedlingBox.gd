@@ -8,12 +8,12 @@ var entity setget set_entity
 var hud
 var current_tile 
 var drag_data
-var inital_pos = Vector2.ZERO
+var initial_pos = Vector2.ZERO
 onready var seedling = $Seedling
 
 func _ready(): 
 	hud = get_parent()
-	inital_pos = seedling.position
+	initial_pos = seedling.position
 	
 func set_entity(new_entity): 
 	entity = new_entity
@@ -40,7 +40,7 @@ var dragging = false
 func reset():
 	var start_offset = seedling.position
 	var duration = .5
-	$Tween.interpolate_property(seedling, "position", start_offset, inital_pos, duration,Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	$Tween.interpolate_property(seedling, "position", start_offset, initial_pos, duration,Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	$Tween.interpolate_callback(self, duration, "_reset_done")
 	$Tween.start()
 
@@ -48,10 +48,12 @@ func _reset_done():
 	seedling.show_pot(true)
 	if hud != null and hud.has_method("_enable_input"):
 			hud._enable_input()
+
 func place_entity(): 
 	emit_signal("dragging", false)
 	trying_to_place = false
 	emit_signal("placed", last_pos, entity)
+	seedling.position = initial_pos
 	if hud != null and hud.has_method("_enable_input"):
 		hud._enable_input()
 
@@ -67,7 +69,6 @@ func _input(event):
 	if !dragging or trying_to_place: return
 	if event is InputEventScreenTouch and event.index == 0:
 		dragging = false
-
 		if hud.can_drop_data(event.position, drag_data):
 			last_pos = event.position
 			trying_to_place = true

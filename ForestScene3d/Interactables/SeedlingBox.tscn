@@ -38,4 +38,5 @@ texture = ExtResource( 1 )
 tex = ExtResource( 1 )
 
 [node name="Tween" type="Tween" parent="."]
+
 [connection signal="gui_input" from="." to="." method="_on_SeedlingBox_gui_input"]

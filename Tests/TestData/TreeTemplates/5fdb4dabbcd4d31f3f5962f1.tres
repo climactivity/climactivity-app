@@ -1,0 +1,26 @@
+[gd_resource type="Resource" load_steps=7 format=2]
+
+[ext_resource path="res://Network/Types/RTreeTemplate.gd" type="Script" id=1]
+[ext_resource path="res://ForestScene3d/TreeTemplates/Textures/Baum_Entwurf_01.png" type="Texture" id=2]
+[ext_resource path="res://ForestScene3d/TreeTemplates/Textures/tree0_2.png" type="Texture" id=3]
+[ext_resource path="res://ForestScene3d/TreeTemplates/Textures/tree0_4.png" type="Texture" id=4]
+[ext_resource path="res://ForestScene3d/TreeTemplates/Textures/tree0_5.png" type="Texture" id=5]
+[ext_resource path="res://ForestScene3d/TreeTemplates/Textures/tree0_3.png" type="Texture" id=6]
+
+[resource]
+script = ExtResource( 1 )
+_id = "5fdb4dabbcd4d31f3f5962f1"
+template_name = "tree0"
+texture_name = "tree0"
+ui_name = "Test Baum"
+preview_name = ""
+coin_value = 0
+bigpoint_available = [ "tmp" ]
+texture_data = {
+0: ExtResource( 2 ),
+1: ExtResource( 3 ),
+2: ExtResource( 6 ),
+3: ExtResource( 4 ),
+4: ExtResource( 5 )
+}
+preview_texture = ExtResource( 6 )

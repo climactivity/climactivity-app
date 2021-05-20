@@ -1,0 +1,33 @@
+[gd_resource type="Resource" load_steps=7 format=2]
+
+[ext_resource path="res://Network/Types/RTreeTemplate.gd" type="Script" id=1]
+[ext_resource path="res://Assets/sketch/setzling.png" type="Texture" id=2]
+[ext_resource path="res://Assets/sketch/baum_jung01.png" type="Texture" id=3]
+[ext_resource path="res://Assets/sketch/baum_jung.png" type="Texture" id=4]
+[ext_resource path="res://Assets/sketch/baum_blueten.png" type="Texture" id=5]
+[ext_resource path="res://Assets/sketch/baum_erwachsen.png" type="Texture" id=6]
+
+[resource]
+script = ExtResource( 1 )
+_id = "60255d64e1adfc2836a6cd1e"
+template_name = "test"
+texture_name = "jasmin-00"
+ui_name = "Stufen Test"
+preview_name = ""
+coin_value = 0
+bigpoint_available = [ "ernaehrung" ]
+texture_data = {
+0: ExtResource( 2 ),
+1: ExtResource( 3 ),
+2: ExtResource( 4 ),
+3: ExtResource( 6 ),
+4: ExtResource( 5 ),
+"sizes": {
+0: 0.4,
+1: 0.6,
+2: 0.8,
+3: 1.0,
+4: 1.0
+}
+}
+preview_texture = ExtResource( 5 )

@@ -1,0 +1,33 @@
+[gd_resource type="Resource" load_steps=7 format=2]
+
+[ext_resource path="res://Network/Types/RTreeTemplate.gd" type="Script" id=1]
+[ext_resource path="res://Assets/sketch/baum/Tanne/tanne_01.png" type="Texture" id=2]
+[ext_resource path="res://Assets/sketch/baum/Tanne/tanne_03.png" type="Texture" id=3]
+[ext_resource path="res://Assets/sketch/baum/Tanne/tanne_04.png" type="Texture" id=4]
+[ext_resource path="res://Assets/sketch/baum/Tanne/tanne_05.png" type="Texture" id=5]
+[ext_resource path="res://Assets/sketch/baum/Tanne/tanne_02.png" type="Texture" id=6]
+
+[resource]
+script = ExtResource( 1 )
+_id = "60650fbb51ecce04e89e0019"
+template_name = "tanne"
+texture_name = "tanne"
+ui_name = "Tanne"
+preview_name = ""
+coin_value = 0
+bigpoint_available = [ "ernaehrung" ]
+texture_data = {
+0: ExtResource( 2 ),
+1: ExtResource( 6 ),
+2: ExtResource( 3 ),
+3: ExtResource( 4 ),
+4: ExtResource( 5 ),
+"sizes": {
+0: 0.4,
+1: 0.6,
+2: 0.8,
+3: 1.0,
+4: 1.0
+}
+}
+preview_texture = ExtResource( 5 )
