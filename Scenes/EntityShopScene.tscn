@@ -19,23 +19,23 @@ margin_right = 991.0
 
 [node name="ContentMain" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer" index="0"]
 margin_right = 914.0
-margin_bottom = 3020.0
+margin_bottom = 3120.0
 
 [node name="HSeparator" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="0"]
 margin_right = 914.0
 
 [node name="coin_display" type="Label" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="1"]
-margin_top = 350.0
+margin_top = 450.0
 margin_right = 914.0
-margin_bottom = 398.0
+margin_bottom = 498.0
 custom_fonts/font = ExtResource( 4 )
 text = "coins_pill"
 align = 2
 
 [node name="ScrollContainer" type="MarginContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="2"]
-margin_top = 402.0
+margin_top = 502.0
 margin_right = 914.0
-margin_bottom = 2952.0
+margin_bottom = 3052.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
@@ -105,9 +105,9 @@ margin_right = 914.0
 margin_bottom = 2550.0
 
 [node name="MarginContainer" type="MarginContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="3"]
-margin_top = 2956.0
+margin_top = 3056.0
 margin_right = 914.0
-margin_bottom = 3020.0
+margin_bottom = 3120.0
 custom_constants/margin_right = 90
 custom_constants/margin_top = 64
 custom_constants/margin_left = 90

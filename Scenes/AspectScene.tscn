@@ -90,9 +90,9 @@ scroll_horizontal_enabled = false
 custom_constants/separation = 49
 
 [node name="TrackingPreview" type="VBoxContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="1"]
-margin_top = 395.0
+margin_top = 495.0
 margin_right = 1080.0
-margin_bottom = 1197.0
+margin_bottom = 1155.0
 script = ExtResource( 3 )
 
 [node name="TrackingQuestion" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview" index="0" instance=ExtResource( 7 )]
@@ -236,10 +236,12 @@ size_flags_vertical = 3
 custom_styles/panel = ExtResource( 9 )
 
 [node name="shop_button_container" type="MarginContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview" index="3"]
+visible = false
 modulate = Color( 1, 1, 1, 0 )
 margin_top = 664.0
 margin_right = 1080.0
 margin_bottom = 802.0
+rect_scale = Vector2( 1, 1e-05 )
 custom_constants/margin_right = 40
 custom_constants/margin_top = 40
 custom_constants/margin_left = 40
@@ -268,7 +270,7 @@ __meta__ = {
 anims/ShowShopButton = SubResource( 2 )
 
 [node name="InfoGraph" type="PanelContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="2"]
-margin_top = 1246.0
+margin_top = 1204.0
 margin_right = 1080.0
 margin_bottom = 1920.0
 rect_min_size = Vector2( 0, 500 )
@@ -278,7 +280,7 @@ custom_styles/panel = SubResource( 3 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/InfoGraph" index="0"]
 margin_right = 1080.0
-margin_bottom = 674.0
+margin_bottom = 716.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
