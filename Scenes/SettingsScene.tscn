@@ -1,8 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Scenes/SceneBase.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/Icons/cog-solid.svg" type="Texture" id=2]
 [ext_resource path="res://UI/typography/Content_Regular.tres" type="DynamicFont" id=3]
+[ext_resource path="res://UI/Components/AuthenticateBox.gd" type="Script" id=4]
+[ext_resource path="res://UI/typography/UI_Regular.tres" type="DynamicFont" id=5]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item; 
@@ -37,14 +39,14 @@ show_menu_bar = true
 [node name="MarginContainer" type="MarginContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="1"]
 margin_top = 450.0
 margin_right = 1080.0
-margin_bottom = 510.0
+margin_bottom = 823.0
 custom_constants/margin_right = 168
 custom_constants/margin_left = 168
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer" index="0"]
 margin_left = 168.0
 margin_right = 912.0
-margin_bottom = 60.0
+margin_bottom = 373.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/VBoxContainer" index="0"]
 margin_right = 744.0
@@ -65,6 +67,51 @@ margin_bottom = 60.0
 custom_fonts/font = ExtResource( 3 )
 text = "Spielstand löschen"
 
+[node name="PanelContainer" type="PanelContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/VBoxContainer" index="2"]
+margin_top = 64.0
+margin_right = 744.0
+margin_bottom = 373.0
+script = ExtResource( 4 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/VBoxContainer/PanelContainer" index="0"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 737.0
+margin_bottom = 302.0
+custom_constants/separation = 10
+
+[node name="EmailLabel" type="Label" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/VBoxContainer/PanelContainer/VBoxContainer" index="0"]
+margin_right = 730.0
+margin_bottom = 43.0
+custom_fonts/font = ExtResource( 5 )
+text = "Email"
+
+[node name="EmailEdit" type="LineEdit" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/VBoxContainer/PanelContainer/VBoxContainer" index="1"]
+margin_top = 53.0
+margin_right = 730.0
+margin_bottom = 113.0
+custom_fonts/font = ExtResource( 3 )
+
+[node name="PasswordLabel" type="Label" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/VBoxContainer/PanelContainer/VBoxContainer" index="2"]
+margin_top = 123.0
+margin_right = 730.0
+margin_bottom = 166.0
+custom_fonts/font = ExtResource( 5 )
+text = "Password"
+
+[node name="PasswordEdit" type="LineEdit" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/VBoxContainer/PanelContainer/VBoxContainer" index="3"]
+margin_top = 176.0
+margin_right = 730.0
+margin_bottom = 236.0
+custom_fonts/font = ExtResource( 3 )
+
+[node name="AuthButton" type="Button" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/VBoxContainer/PanelContainer/VBoxContainer" index="4"]
+margin_top = 246.0
+margin_right = 730.0
+margin_bottom = 295.0
+custom_fonts/font = ExtResource( 5 )
+text = "Authenticate"
+
 [node name="HeaderBG" parent="ContentContainer/Content" index="1"]
 self_modulate = Color( 0.517647, 0.517647, 0.517647, 1 )
 
@@ -74,3 +121,4 @@ icon_texture = ExtResource( 2 )
 color = Color( 0.517647, 0.517647, 0.517647, 1 )
 
 [connection signal="pressed" from="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/VBoxContainer/DeleteButton" to="." method="_on_DeleteButton_pressed"]
+[connection signal="pressed" from="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/VBoxContainer/PanelContainer/VBoxContainer/AuthButton" to="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/VBoxContainer/PanelContainer" method="_on_AuthButton_pressed"]

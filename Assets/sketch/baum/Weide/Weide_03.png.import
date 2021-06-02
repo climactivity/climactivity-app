@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/weide_03.png-6a2feb4e27bda5c210ce5dcb10eb2bab.stex"
+path="res://.import/Weide_03.png-5042369908e48fd0929acb2e572486eb.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/sketch/baum/Weide/weide_03.png"
-dest_files=[ "res://.import/weide_03.png-6a2feb4e27bda5c210ce5dcb10eb2bab.stex" ]
+source_file="res://Assets/sketch/baum/Weide/Weide_03.png"
+dest_files=[ "res://.import/Weide_03.png-5042369908e48fd0929acb2e572486eb.stex" ]
 
 [params]
 

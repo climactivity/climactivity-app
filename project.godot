@@ -9,15 +9,80 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "Panel",
-"class": "IconCapsule",
-"language": "GDScript",
-"path": "res://UI/Components/IconCapsule.gd"
-}, {
 "base": "Control",
 "class": "MainMenu",
 "language": "GDScript",
 "path": "res://UI/MainMenu.gd"
+}, {
+"base": "Reference",
+"class": "NakamaAPI",
+"language": "GDScript",
+"path": "res://addons/com.heroiclabs.nakama/api/NakamaAPI.gd"
+}, {
+"base": "Reference",
+"class": "NakamaAsyncResult",
+"language": "GDScript",
+"path": "res://addons/com.heroiclabs.nakama/utils/NakamaAsyncResult.gd"
+}, {
+"base": "Reference",
+"class": "NakamaClient",
+"language": "GDScript",
+"path": "res://addons/com.heroiclabs.nakama/client/NakamaClient.gd"
+}, {
+"base": "Reference",
+"class": "NakamaException",
+"language": "GDScript",
+"path": "res://addons/com.heroiclabs.nakama/utils/NakamaException.gd"
+}, {
+"base": "Node",
+"class": "NakamaHTTPAdapter",
+"language": "GDScript",
+"path": "res://addons/com.heroiclabs.nakama/client/NakamaHTTPAdapter.gd"
+}, {
+"base": "Reference",
+"class": "NakamaLogger",
+"language": "GDScript",
+"path": "res://addons/com.heroiclabs.nakama/utils/NakamaLogger.gd"
+}, {
+"base": "NakamaAsyncResult",
+"class": "NakamaRTAPI",
+"language": "GDScript",
+"path": "res://addons/com.heroiclabs.nakama/api/NakamaRTAPI.gd"
+}, {
+"base": "Reference",
+"class": "NakamaRTMessage",
+"language": "GDScript",
+"path": "res://addons/com.heroiclabs.nakama/api/NakamaRTMessage.gd"
+}, {
+"base": "Reference",
+"class": "NakamaSerializer",
+"language": "GDScript",
+"path": "res://addons/com.heroiclabs.nakama/utils/NakamaSerializer.gd"
+}, {
+"base": "NakamaAsyncResult",
+"class": "NakamaSession",
+"language": "GDScript",
+"path": "res://addons/com.heroiclabs.nakama/api/NakamaSession.gd"
+}, {
+"base": "Reference",
+"class": "NakamaSocket",
+"language": "GDScript",
+"path": "res://addons/com.heroiclabs.nakama/socket/NakamaSocket.gd"
+}, {
+"base": "Node",
+"class": "NakamaSocketAdapter",
+"language": "GDScript",
+"path": "res://addons/com.heroiclabs.nakama/socket/NakamaSocketAdapter.gd"
+}, {
+"base": "Reference",
+"class": "NakamaStorageObjectId",
+"language": "GDScript",
+"path": "res://addons/com.heroiclabs.nakama/api/NakamaStorageObjectId.gd"
+}, {
+"base": "Reference",
+"class": "NakamaWriteStorageObject",
+"language": "GDScript",
+"path": "res://addons/com.heroiclabs.nakama/api/NakamaWriteStorageObject.gd"
 }, {
 "base": "PanelContainer",
 "class": "QuestCard",
@@ -70,8 +135,21 @@ _global_script_classes=[ {
 "path": "res://SceneManager/Transitions.gd"
 } ]
 _global_script_class_icons={
-"IconCapsule": "",
 "MainMenu": "",
+"NakamaAPI": "",
+"NakamaAsyncResult": "",
+"NakamaClient": "",
+"NakamaException": "",
+"NakamaHTTPAdapter": "",
+"NakamaLogger": "",
+"NakamaRTAPI": "",
+"NakamaRTMessage": "",
+"NakamaSerializer": "",
+"NakamaSession": "",
+"NakamaSocket": "",
+"NakamaSocketAdapter": "",
+"NakamaStorageObjectId": "",
+"NakamaWriteStorageObject": "",
 "QuestCard": "",
 "RInfoByte": "",
 "RInfoGraphEntry": "",
@@ -88,6 +166,7 @@ _global_script_class_icons={
 
 config/name="Climactivity-app"
 run/main_scene="res://SceneManager/SceneManager.tscn"
+run/low_processor_mode=true
 boot_splash/image="res://Assets/logo_sm.png"
 boot_splash/bg_color=Color( 1, 1, 1, 1 )
 config/icon="res://Assets/BG/cyIcon.png"
@@ -100,9 +179,11 @@ Transition="*res://UI/Transition.tscn"
 Api="*res://Network/Api.tscn"
 PSS="*res://Services/PlayerStateSyncronizationService.gd"
 Logger="*res://Logger.gd"
-Util="*res://Util.gd"
+Nakama="*res://addons/com.heroiclabs.nakama/Nakama.gd"
+NakamaConnection="*res://Network/Nakama.gd"
 PlayerController="*res://PlayerController.gd"
 SectorService="*res://Services/SectorService.gd"
+Util="*res://Util.gd"
 TreeTemplateFactory="*res://ForestScene3d/TreeTemplates/TreeTemplateFactory.tscn"
 AspectTrackingService="*res://Services/AspectTrackingService.gd"
 RewardService="*res://Services/RewardService.gd"
@@ -117,6 +198,7 @@ settings/game_logic/cheat_seedlings=false
 settings/game_logic/show_factor_names=true
 settings/game_logic/use_res_for_cache=false
 settings/game_logic/use_fixed_icons=true
+settings/network/localhost=false
 
 [display]
 
