@@ -87,6 +87,7 @@ script = ExtResource( 2 )
 scroll_horizontal_enabled = false
 
 [node name="ContentMain" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer" index="0"]
+margin_bottom = 2253.0
 custom_constants/separation = 49
 
 [node name="TrackingPreview" type="VBoxContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="1"]
@@ -272,7 +273,7 @@ anims/ShowShopButton = SubResource( 2 )
 [node name="InfoGraph" type="PanelContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="2"]
 margin_top = 1204.0
 margin_right = 1080.0
-margin_bottom = 1920.0
+margin_bottom = 1704.0
 rect_min_size = Vector2( 0, 500 )
 mouse_filter = 1
 size_flags_vertical = 3
@@ -280,7 +281,7 @@ custom_styles/panel = SubResource( 3 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/InfoGraph" index="0"]
 margin_right = 1080.0
-margin_bottom = 716.0
+margin_bottom = 500.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -348,10 +349,9 @@ margin_right = 160.0
 margin_bottom = 160.0
 
 [node name="Aufgaben" type="PanelContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="3"]
-visible = false
-margin_top = 1795.0
+margin_top = 1753.0
 margin_right = 1080.0
-margin_bottom = 2295.0
+margin_bottom = 2253.0
 rect_min_size = Vector2( 0, 500 )
 size_flags_vertical = 2
 custom_styles/panel = SubResource( 4 )

@@ -8,6 +8,7 @@ export (int) var time_stamp
 export (float) var level 
 export (float) var value 
 export (Resource) var reward
+export (float) var water_factor
 #"set_at": time_stamp,
 #"level?": level, # <- int falls discrete werte, float(0,1) falls contiuum
 #"reward": reward,
@@ -24,6 +25,13 @@ func get_reward_for_time_interval(seconds) -> Resource:
 	new_reward.water = float(reward.water) * factor
 	return new_reward 
 
+func get_water_from_factor(seconds) -> float: 
+	if seconds <= 0:
+		Logger.error("Can only track aspects for positive time intervals!")
+		return 0.0
+	var factor =  float(seconds) / reward_base_length
+	return water_factor * factor
+	
 func to_dict():
 	return {
 		"aspect": aspect,

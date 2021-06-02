@@ -412,7 +412,6 @@ margin_right = 92.0
 margin_bottom = 226.68
 
 [node name="Cloud" parent="Camera/HUD" instance=ExtResource( 10 )]
-visible = false
 anchor_left = 1.0
 anchor_right = 1.0
 margin_left = -190.704
