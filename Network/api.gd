@@ -119,3 +119,7 @@ func _on_player_state_synced(result, response_code, headers, body):
 
 func get_infobytes_for_factor(factor, aspect):
 	return cache.get_infobytes_for_factor(factor, aspect)
+
+func get_cache():
+	return $CacheController
+

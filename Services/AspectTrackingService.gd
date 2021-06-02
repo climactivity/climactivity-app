@@ -96,7 +96,7 @@ func commit_tracking_level(option, aspect):
 		new_reward.xp = 0.0
 	if option["reward"].has("water"):
 		new_reward.water =  option["reward"]["water"]
-	elif option["waterFactor"] != 0:
+	elif int(option["waterFactor"]) != 0:
 		 new_reward.water = option["waterFactor"]
 	else:
 		new_reward.water = 0
