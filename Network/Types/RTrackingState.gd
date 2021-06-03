@@ -1,5 +1,5 @@
 extends Resource
-
+class_name RTrackingState
 export (String) var bigpoint
 export (String) var aspect
 export (Resource) var current

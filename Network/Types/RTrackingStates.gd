@@ -1,5 +1,5 @@
 extends Resource
-
+class_name RTrackingStates
 export (Dictionary) var tracking_states = {}
 export (Array) var tracking_updates = []
 export (int) var last_update = 0

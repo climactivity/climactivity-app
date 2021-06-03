@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Panel",
+"class": "IconCapsule",
+"language": "GDScript",
+"path": "res://UI/Components/IconCapsule.gd"
+}, {
 "base": "Control",
 "class": "MainMenu",
 "language": "GDScript",
@@ -114,6 +119,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Network/Types/RReward.gd"
 }, {
+"base": "Resource",
+"class": "RTrackingState",
+"language": "GDScript",
+"path": "res://Network/Types/RTrackingState.gd"
+}, {
+"base": "Resource",
+"class": "RTrackingStates",
+"language": "GDScript",
+"path": "res://Network/Types/RTrackingStates.gd"
+}, {
 "base": "Control",
 "class": "RewardLabel",
 "language": "GDScript",
@@ -135,6 +150,7 @@ _global_script_classes=[ {
 "path": "res://SceneManager/Transitions.gd"
 } ]
 _global_script_class_icons={
+"IconCapsule": "",
 "MainMenu": "",
 "NakamaAPI": "",
 "NakamaAsyncResult": "",
@@ -156,6 +172,8 @@ _global_script_class_icons={
 "RMultipleChoiceAnwers": "",
 "RQuestion": "",
 "RReward": "",
+"RTrackingState": "",
+"RTrackingStates": "",
 "RewardLabel": "",
 "SceneBase": "",
 "SceneManager": "",
@@ -174,16 +192,16 @@ config/quit_on_go_back=false
 
 [autoload]
 
-GameManager="*res://GameManager.gd"
-Transition="*res://UI/Transition.tscn"
-Api="*res://Network/Api.tscn"
-PSS="*res://Services/PlayerStateSyncronizationService.gd"
 Logger="*res://Logger.gd"
+Util="*res://Util.gd"
+Api="*res://Network/Api.tscn"
 Nakama="*res://addons/com.heroiclabs.nakama/Nakama.gd"
 NakamaConnection="*res://Network/Nakama.gd"
+GameManager="*res://GameManager.gd"
+Transition="*res://UI/Transition.tscn"
+PSS="*res://Services/PlayerStateSyncronizationService.gd"
 PlayerController="*res://PlayerController.gd"
 SectorService="*res://Services/SectorService.gd"
-Util="*res://Util.gd"
 TreeTemplateFactory="*res://ForestScene3d/TreeTemplates/TreeTemplateFactory.tscn"
 AspectTrackingService="*res://Services/AspectTrackingService.gd"
 RewardService="*res://Services/RewardService.gd"
@@ -193,12 +211,11 @@ QuestService="*res://Services/QuestService.gd"
 
 [debug]
 
-settings/network/localhost=true
+settings/network/localhost=false
 settings/game_logic/cheat_seedlings=false
 settings/game_logic/show_factor_names=true
 settings/game_logic/use_res_for_cache=false
 settings/game_logic/use_fixed_icons=true
-settings/network/localhost=false
 
 [display]
 

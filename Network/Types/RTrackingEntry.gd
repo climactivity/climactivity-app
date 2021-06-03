@@ -31,14 +31,15 @@ func get_water_from_factor(seconds) -> float:
 		return 0.0
 	var factor =  float(seconds) / reward_base_length
 	return water_factor * factor
-	
+
 func to_dict():
 	return {
 		"aspect": aspect,
 		"time_stamp": time_stamp,
 		"level": level,
 		"value": value,
-		"reward": reward.to_dict()
+		"reward": reward.to_dict(),
+		"water_factor": water_factor
 	}
 
 func _to_string():

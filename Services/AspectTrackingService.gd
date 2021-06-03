@@ -23,7 +23,7 @@ func _ready():
 	if Api.is_cache_ready(): # don't update if aspects aren't loaded yet, it might cause problems
 		do_update()
 	Api.connect("cache_ready", self, "do_update") # update when cache changes to get updates to rewards as quickly as possible
-	
+	_read_tracking_states()
 func _process(delta):
 	if OS.get_unix_time() - player_state.last_update >= interval:
 		var now = OS.get_unix_time() 
@@ -122,7 +122,14 @@ func commit_tracking_level(option, aspect):
 #		new_state.history = history
 #		new_state.current = new_entry
 		player_state.tracking_states[aspect._id] = new_state
+	_save_tracking_state(aspect._id, player_state.tracking_states[aspect._id])
 	_flush()
+
+func _save_tracking_state(aspect_id, tracking_state : RTrackingState): 
+	NakamaConnection.save_var("tracking_states", aspect_id, JSON.print(tracking_state.to_dict()))
+
+func _read_tracking_states():
+	NakamaConnection.read_collection("tracking_states")
 
 func get_tracking_state(aspect):
 	var id

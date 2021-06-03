@@ -35,7 +35,7 @@ static func flatten_dict(dict):
 		var res = dict.get(key)
 		if(res is Dictionary):
 			out[key] = Util.flatten_dict(res) 
-		elif (res.has_method("to_dict")):
+		elif (res is Object and res.has_method("to_dict")):
 			out[key] = res.to_dict() 
 		else:
 			out[key] = str(res)
