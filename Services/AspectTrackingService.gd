@@ -23,7 +23,10 @@ func _ready():
 	if Api.is_cache_ready(): # don't update if aspects aren't loaded yet, it might cause problems
 		do_update()
 	Api.connect("cache_ready", self, "do_update") # update when cache changes to get updates to rewards as quickly as possible
-	_read_tracking_states()
+#	_read_tracking_states()
+ # TODO: reenable this when nakama synchronization is universally supported by resource types
+  
+
 func _process(delta):
 	if OS.get_unix_time() - player_state.last_update >= interval:
 		var now = OS.get_unix_time() 
@@ -129,7 +132,16 @@ func _save_tracking_state(aspect_id, tracking_state : RTrackingState):
 	NakamaConnection.save_var("tracking_states", aspect_id, JSON.print(tracking_state.to_dict()))
 
 func _read_tracking_states():
-	NakamaConnection.read_collection("tracking_states")
+	var states = yield(NakamaConnection.read_collection("tracking_states"), "completed")
+	for state in states: 
+		update_state_from_nk(state)
+
+func update_state_from_nk(state_doc): 
+	var updated_state = RTrackingState.new(state_doc)
+	var aspect_id = updated_state.aspect
+	if updated_state and aspect_id:
+		player_state.tracking_states[aspect_id] = updated_state
+ 
 
 func get_tracking_state(aspect):
 	var id

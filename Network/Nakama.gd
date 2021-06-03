@@ -3,6 +3,7 @@ extends Node
 var client : NakamaClient
 var session : NakamaSession
 signal nk_connected
+signal completed
 func _ready():
 	client = Nakama.create_client("cyserver_BVZ29wCUCJmjh2rcTrECCcDm9WdqsptDpuYyuen8tEC4WBYcYcJdjxwpmycxuxNP", "127.0.0.1", 7350, "http")
 	authenticate_device_uid()

@@ -10,6 +10,26 @@ export (Resource) var current_entity
 export (Array) var entity_list
 export (bool) var new_seedling_available = false
 
+func _init(data = {}):
+	var dict = {}
+	if data is String: 
+		var json = JSON.parse(data)
+		if json.error:
+			Logger.error("invald json: %s" % str(json.error)) 
+			return null
+		dict = json.result
+	else:
+		dict = data
+	if dict is Dictionary and dict != {}:
+		from_dict(dict)
+
+
+func from_dict(dict): 
+	bigpoint = dict["bigpoint"] if dict.has("bigpoint") else "" # p_bigpoint
+	aspect = dict["aspect"] if dict.has("aspect") else "" # p_bigpoint
+	run_time = dict["run_time"] if dict.has("run_time") else 0 # p_bigpoint
+	new_seedling_available = dict["new_seedling_available"] if dict.has("new_seedling_available") else false # p_bigpoint
+
 func get_reward_for_time_interval_from_now(seconds) -> Resource:
 	var current_state_since = OS.get_unix_time() - current.time_stamp
 	if seconds <= current_state_since:	
@@ -92,6 +112,7 @@ func to_dict():
 	}
 	#Logger.print(out)
 	return out
+
 
 func get_water_available():
 	if water_tank == null: return 0.0
