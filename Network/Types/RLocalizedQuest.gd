@@ -1,5 +1,6 @@
 extends Resource
- 
+class_name RLocalizedQuest
+
 export (int) var deadline 
 export (int) var max_duration
 export (int) var start_date

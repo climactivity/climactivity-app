@@ -1,5 +1,5 @@
 extends Resource
-
+class_name RInventory
 export (float) var xp
 export (float) var coins 
 export (float) var level # todo do things with that, also needs a levelup table thing on  the sever 

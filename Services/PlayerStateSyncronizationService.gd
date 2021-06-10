@@ -23,7 +23,7 @@ func reset_game_state():
 func get_player_state_as_dict(): 
 	return player_state.to_dict()
 
-func get_player_state_ref():
+func get_player_state_ref() -> RTrackingStates:
 	return player_state
 
 func init_player_state():

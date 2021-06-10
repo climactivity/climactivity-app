@@ -44,7 +44,9 @@ static func flatten_dict(dict):
 static func flatten_array(arr):
 	var out = []
 	for res in arr:
-		if (res.has_method("to_dict")):
+		if res is Dictionary:
+			out.push_back(res)
+		elif (res.has_method("to_dict")):
 			out.push_back(res.to_dict()) 
 		else:
 			out.push_back(str(res)) 

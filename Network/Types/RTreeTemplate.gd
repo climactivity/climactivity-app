@@ -1,5 +1,5 @@
 extends Resource
-
+class_name RTreeTemplate
 
 
 #var _example_template = {

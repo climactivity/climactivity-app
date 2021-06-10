@@ -3,7 +3,7 @@ extends PanelContainer
 class_name QuestCard
 
 export (Resource) var _quest setget set_quest 
-
+var _is_accepted = false setget set_is_accepted
 onready var title_label = $MarginContainer/HBoxContainer/VBoxContainer/Label
 onready var reward_label = $MarginContainer/HBoxContainer/VBoxContainer/RewardLabel
 onready var icon = $MarginContainer/HBoxContainer/Capsule
@@ -17,7 +17,11 @@ func _ready():
 func set_quest(quest):
 	_quest = quest 
 	_update()
+
+func set_is_accepted(is_accepted): 
+	_is_accepted = is_accepted
 	
+
 func _update(): 
 	if !ready or _quest == null: return
 	title_label.text = _quest.title 

@@ -171,7 +171,7 @@ func _on_HexGrid_input_event(_camera, event, click_position, _click_normal, _sha
 
 		#print(can_interact)
 		if event.is_pressed() && event.button_index == BUTTON_LEFT:
-			can_interact = true
+			can_interact = true 
 		if !event.is_pressed() && event.button_index == BUTTON_LEFT && can_interact:
 			var selected_hex = HexGrid.get_hex_at(plane_coords)
 			if(placed_objects.has(selected_hex.axial_coords)):

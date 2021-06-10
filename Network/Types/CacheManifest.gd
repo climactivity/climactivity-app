@@ -1,5 +1,5 @@
 extends Resource
-
+class_name CacheManifest
 export (int) var last_update # unix_time
 export (String) var lang = "DE"
 export (String) var region = "DE"

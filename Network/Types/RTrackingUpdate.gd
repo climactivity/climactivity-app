@@ -1,4 +1,5 @@
 extends Resource
+class_name RTrackingUpdate
 
 export (int) var updated_at 
 export (int) var time_delta

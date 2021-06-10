@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Resource",
+"class": "CacheManifest",
+"language": "GDScript",
+"path": "res://Network/Types/CacheManifest.gd"
+}, {
 "base": "Panel",
 "class": "IconCapsule",
 "language": "GDScript",
@@ -33,6 +38,11 @@ _global_script_classes=[ {
 "class": "NakamaClient",
 "language": "GDScript",
 "path": "res://addons/com.heroiclabs.nakama/client/NakamaClient.gd"
+}, {
+"base": "Node",
+"class": "NakamaConnection",
+"language": "GDScript",
+"path": "res://Network/Nakama.gd"
 }, {
 "base": "Reference",
 "class": "NakamaException",
@@ -95,6 +105,11 @@ _global_script_classes=[ {
 "path": "res://UI/Components/QuestCard.gd"
 }, {
 "base": "Resource",
+"class": "RBoardEntityx",
+"language": "GDScript",
+"path": "res://Network/Types/RBoardEntity.gd"
+}, {
+"base": "Resource",
 "class": "RInfoByte",
 "language": "GDScript",
 "path": "res://Network/Types/InfoBytes/RInfoByte.gd"
@@ -103,6 +118,21 @@ _global_script_classes=[ {
 "class": "RInfoGraphEntry",
 "language": "GDScript",
 "path": "res://Network/Types/InfoBytes/RInfoGraphEntry.gd"
+}, {
+"base": "Resource",
+"class": "RInventory",
+"language": "GDScript",
+"path": "res://Network/Types/RInventory.gd"
+}, {
+"base": "Resource",
+"class": "RLocalizedAspectData",
+"language": "GDScript",
+"path": "res://Network/Types/RLocalizedAspectData.gd"
+}, {
+"base": "Resource",
+"class": "RLocalizedQuest",
+"language": "GDScript",
+"path": "res://Network/Types/RLocalizedQuest.gd"
 }, {
 "base": "Resource",
 "class": "RMultipleChoiceAnwers",
@@ -120,6 +150,11 @@ _global_script_classes=[ {
 "path": "res://Network/Types/RReward.gd"
 }, {
 "base": "Resource",
+"class": "RTrackingEntry",
+"language": "GDScript",
+"path": "res://Network/Types/RTrackingEntry.gd"
+}, {
+"base": "Resource",
 "class": "RTrackingState",
 "language": "GDScript",
 "path": "res://Network/Types/RTrackingState.gd"
@@ -128,6 +163,21 @@ _global_script_classes=[ {
 "class": "RTrackingStates",
 "language": "GDScript",
 "path": "res://Network/Types/RTrackingStates.gd"
+}, {
+"base": "Resource",
+"class": "RTrackingUpdate",
+"language": "GDScript",
+"path": "res://Network/Types/RTrackingUpdate.gd"
+}, {
+"base": "Resource",
+"class": "RTreeTemplate",
+"language": "GDScript",
+"path": "res://Network/Types/RTreeTemplate.gd"
+}, {
+"base": "Resource",
+"class": "RWaterTank",
+"language": "GDScript",
+"path": "res://Network/Types/RWaterTank.gd"
 }, {
 "base": "Control",
 "class": "RewardLabel",
@@ -150,11 +200,13 @@ _global_script_classes=[ {
 "path": "res://SceneManager/Transitions.gd"
 } ]
 _global_script_class_icons={
+"CacheManifest": "",
 "IconCapsule": "",
 "MainMenu": "",
 "NakamaAPI": "",
 "NakamaAsyncResult": "",
 "NakamaClient": "",
+"NakamaConnection": "",
 "NakamaException": "",
 "NakamaHTTPAdapter": "",
 "NakamaLogger": "",
@@ -167,13 +219,21 @@ _global_script_class_icons={
 "NakamaStorageObjectId": "",
 "NakamaWriteStorageObject": "",
 "QuestCard": "",
+"RBoardEntityx": "",
 "RInfoByte": "",
 "RInfoGraphEntry": "",
+"RInventory": "",
+"RLocalizedAspectData": "",
+"RLocalizedQuest": "",
 "RMultipleChoiceAnwers": "",
 "RQuestion": "",
 "RReward": "",
+"RTrackingEntry": "",
 "RTrackingState": "",
 "RTrackingStates": "",
+"RTrackingUpdate": "",
+"RTreeTemplate": "",
+"RWaterTank": "",
 "RewardLabel": "",
 "SceneBase": "",
 "SceneManager": "",
@@ -184,7 +244,6 @@ _global_script_class_icons={
 
 config/name="Climactivity-app"
 run/main_scene="res://SceneManager/SceneManager.tscn"
-run/low_processor_mode=true
 boot_splash/image="res://Assets/logo_sm.png"
 boot_splash/bg_color=Color( 1, 1, 1, 1 )
 config/icon="res://Assets/BG/cyIcon.png"
@@ -195,8 +254,6 @@ config/quit_on_go_back=false
 Logger="*res://Logger.gd"
 Util="*res://Util.gd"
 Api="*res://Network/Api.tscn"
-Nakama="*res://addons/com.heroiclabs.nakama/Nakama.gd"
-NakamaConnection="*res://Network/Nakama.gd"
 GameManager="*res://GameManager.gd"
 Transition="*res://UI/Transition.tscn"
 PSS="*res://Services/PlayerStateSyncronizationService.gd"
@@ -223,6 +280,7 @@ window/size/width=1080
 window/size/height=1920
 window/size/test_width=720
 window/size/test_height=1280
+window/energy_saving/keep_screen_on=false
 window/handheld/orientation="portrait"
 window/ios/hide_home_indicator=false
 window/stretch/mode="2d"

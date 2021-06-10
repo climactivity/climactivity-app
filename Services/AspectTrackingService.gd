@@ -125,16 +125,16 @@ func commit_tracking_level(option, aspect):
 #		new_state.history = history
 #		new_state.current = new_entry
 		player_state.tracking_states[aspect._id] = new_state
-	_save_tracking_state(aspect._id, player_state.tracking_states[aspect._id])
+#	_save_tracking_state(aspect._id, player_state.tracking_states[aspect._id])
 	_flush()
 
-func _save_tracking_state(aspect_id, tracking_state : RTrackingState): 
-	NakamaConnection.save_var("tracking_states", aspect_id, JSON.print(tracking_state.to_dict()))
-
-func _read_tracking_states():
-	var states = yield(NakamaConnection.read_collection("tracking_states"), "completed")
-	for state in states: 
-		update_state_from_nk(state)
+#func _save_tracking_state(aspect_id, tracking_state : RTrackingState): 
+#	NakamaConnection.save_var("tracking_states", aspect_id, JSON.print(tracking_state.to_dict()))
+#
+#func _read_tracking_states():
+#	var states = yield(NakamaConnection.read_collection("tracking_states"), "completed")
+#	for state in states: 
+#		update_state_from_nk(state)
 
 func update_state_from_nk(state_doc): 
 	var updated_state = RTrackingState.new(state_doc)

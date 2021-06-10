@@ -1,5 +1,5 @@
 extends Resource
-
+class_name RTrackingEntry
 const r_reward = preload("res://Network/Types/RReward.gd")
 const reward_base_length: float = float(24*60*60) # day  
 

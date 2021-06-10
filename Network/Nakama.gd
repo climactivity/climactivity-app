@@ -1,5 +1,5 @@
 extends Node
-
+class_name NakamaConnection
 var client : NakamaClient
 var session : NakamaSession
 signal nk_connected

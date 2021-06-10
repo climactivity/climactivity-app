@@ -1,4 +1,5 @@
 extends Resource
+class_name RWaterTank
 export (String) var for_aspect
 export (float) var max_value = 100.0
 export (float) var current_value

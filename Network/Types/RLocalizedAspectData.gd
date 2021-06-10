@@ -1,21 +1,7 @@
 extends Resource
-#		JSON from server
-#        bigpoint: aspect.bigpoint,
-#        name: aspect.name,
-#        title: aspectLocalizedStrings.strings.title,
-#        forLanguage: aspectLocalizedStrings.language,
-#        forRegion: region,
-#        localizedTrackingData: {
-#          question: localizedTrackingData.strings.question,
-#          options: aspect.trackingData.options.map(option => {
-#            return {
-#              reward: option.reward,
-#              option: localizedTrackingData.strings.options.find(locale => locale.locale_id == option.locale_id).value
-#            }
-#          }
-#          )
-#        },
-#        message: error
+
+class_name RLocalizedAspectData
+
 export (String) var bigpoint
 export (String) var name
 export (String) var _id
