@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://UI/Components/IconCapsule.tscn" type="PackedScene" id=1]
 [ext_resource path="res://UI/typography/Heading.tres" type="DynamicFont" id=2]
 [ext_resource path="res://UI/Components/Reward.gd" type="Script" id=3]
 [ext_resource path="res://UI/Components/QuestCard.gd" type="Script" id=4]
+[ext_resource path="res://UI/typography/Content_Regular.tres" type="DynamicFont" id=5]
+[ext_resource path="res://UI/typography/UI_Regular.tres" type="DynamicFont" id=6]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
@@ -43,20 +45,23 @@ size_flags_horizontal = 3
 custom_constants/separation = 5
 alignment = 1
 
-[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="Label" type="RichTextLabel" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 margin_top = 892.0
 margin_right = 899.0
-margin_bottom = 957.0
-custom_fonts/font = ExtResource( 2 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+margin_bottom = 958.0
+custom_fonts/mono_font = ExtResource( 5 )
+custom_fonts/bold_italics_font = ExtResource( 6 )
+custom_fonts/italics_font = ExtResource( 6 )
+custom_fonts/bold_font = ExtResource( 6 )
+custom_fonts/normal_font = ExtResource( 2 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
 text = "Aufgaben Titel"
-align = 1
-valign = 1
+fit_content_height = true
 
 [node name="RewardLabel" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer"]
-margin_top = 962.0
+margin_top = 963.0
 margin_right = 899.0
-margin_bottom = 1027.0
+margin_bottom = 1028.0
 custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Coins: 0 Xp: 0 Water: 0"

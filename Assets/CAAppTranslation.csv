@@ -19,3 +19,9 @@ label_aspect,Aspekt,Aspect
 show_tracking_button,Zum Aspekt,Go to Aspect
 return_button,Schließen,Close
 tree_growth_done,Ausgewachsen!,done
+quiz_end_message,Du hast es geschafft!,done
+ack_reward_button_label,Yay!,yay
+quest_action_in_progress,Schon vorgenommen,quest_action_in_progress
+quest_action_start,Mach' ich!,quest_action_start
+quest_action_completable,Habe ich geschafft!,quest_action_completable
+quest_action_just_completed,War toll!,quest_action_just_completed

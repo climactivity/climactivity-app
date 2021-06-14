@@ -337,7 +337,7 @@ fallback="de"
 translation_remaps={
 }
 translations=PoolStringArray( "res://Assets/CAAppTranslation.en.translation", "res://Assets/CAAppTranslation.de.translation" )
-locale_filter=[ 0, [ "de", "en" ] ]
+locale_filter=[ 1, [ "de", "en" ] ]
 
 [logging]
 

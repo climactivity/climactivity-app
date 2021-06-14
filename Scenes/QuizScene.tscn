@@ -753,6 +753,7 @@ anims/show_infobit_holder = SubResource( 12 )
 anims/show_quiz = SubResource( 13 )
 anims/show_quiz_intro = SubResource( 14 )
 anims/show_quiz_result = SubResource( 15 )
+
 [connection signal="pressed" from="ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/ContentHolder/QuizEnd/CollectRewardButton" to="." method="_on_CollectRewardButton_pressed"]
 [connection signal="pressed" from="ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/Footer/BackButton" to="." method="_on_BackButton_pressed"]
 [connection signal="pressed" from="ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/Footer/ContinueButton" to="." method="_on_ContinueButton_pressed"]

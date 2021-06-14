@@ -2,10 +2,11 @@ tool
 extends Control
  
 
-var _quest
-var _active_quest = false 
+var _quest : RLocalizedQuest
+var _active_quest = false
+var _quest_status = null 
 var ready = false
-
+var not_reentered = false
 onready var quest_content = $"Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TextContainer/PanelContainer/MarginContainer/Control"
 onready var end_date_label = $"Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/StatusContainer/DatePanel/Label2"
 onready var reward_label = $"Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/StatusContainer/RewardPanel/Label"
@@ -17,15 +18,38 @@ func _ready():
 	
 func _update(): 
 	if !ready or _quest == null: return
-	quest_content.on_data(_quest.text["content"])
-
-func receive_navigation(data): 
-	_quest = data.quest if data.quest else {}
-	_active_quest = data.quest_active if data.quest_active else false
-	if _quest == {}: 
+	_quest_status = QuestService.get_quest_status(_quest._id)
+	_active_quest = _quest_status != null
+	var quest_text = _quest.text["doc"]["content"] if _quest.text.has("doc") else _quest.text["content"]
+	quest_content.on_data(quest_text)
+	if _active_quest:
+		action_button.text = tr("quest_action_in_progress") if not_reentered else tr("quest_action_completable")
+		end_date_label.text = Util.date_as_eu_string(QuestService.get_quest_status(_quest._id)["quest_dead_line"])
+	else: 
+		action_button.text = tr("quest_action_start")
+		if _quest.deadline != 0: 
+			end_date_label.text = Util.date_as_eu_string(_quest.deadline)
+		else: 
+			end_date_label.text = "%d Tage" % [_quest.max_duration / 24]
+	reward_label.set_reward(_quest.reward)
+	print(_quest.reward)
+func receive_navigation(data):
+	not_reentered = false 
+	action_button.disabled = false
+	if !data.quest: 
 		Logger.error("No quest in navigation data!", self)
+		return
+	_quest = data.quest if data.quest else {}
+	
 	_update()
 	
 
 func _on_ActionButton_pressed():
-	QuestService.add_quest(_quest)
+	if _active_quest:
+		if !not_reentered:
+			QuestService.complete_quest(_quest._id)
+	else:
+		QuestService.add_quest(_quest)
+		not_reentered = true
+		action_button.disabled = true
+	_update()

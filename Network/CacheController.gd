@@ -248,3 +248,11 @@ func get_quests_for_aspect(aspect):
 		if quest.alert_tracked_aspect == aspect._id:
 			selected.push_back(quest)
 	return selected
+
+func get_quest_by_id(quest_id): 
+	if !is_ready(): return null
+	var quests = entities.get("RLocalizedQuest")
+	for quest in quests:
+		if quest._id == quest_id:
+			return quest
+	return null

@@ -23,6 +23,13 @@ static func date_as_RFC1123(date_time):
 	var second= date_time["second"]             #   0-59
 	return "%s, %02d %s %d %02d:%02d:%02d GMT" % [nameweekday[dayofweek], day, namemonth[month-1], year, hour, minute, second]
 
+static func date_as_eu_string(unix_time):
+	var date_time = OS.get_datetime_from_unix_time(unix_time)
+	var day = date_time["day"]
+	var month = date_time["month"]
+	var year = date_time["year"]             
+	return "%02d.%d.%d" % [day, month, year]
+
 # idk 
 const MINUTE = 60
 const HOUR = 60 * MINUTE

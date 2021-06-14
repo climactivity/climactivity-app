@@ -7,6 +7,7 @@ export (Dictionary) var board_entites = {}
 export (Resource) var inventory
 export (Dictionary) var completed_infobytes = {}
 export (Array) var current_quests = []
+export (Array) var completed_quests = []
 #export (Dictionary) var level = {}
 
 func _init(): 
@@ -26,7 +27,8 @@ func to_dict():
 		#"inventory": Util.flatten_dict(inventory.to_dict()),
 		"completed_infobytes": Util.flatten_dict(completed_infobytes),
 	#	"level": Util.flatten_dict(level)
-		"current_quests": Util.flatten_array(current_quests)
+		"current_quests": Util.flatten_array(current_quests),
+		"completed_quests": Util.flatten_array(completed_quests)
 	}
 	#Logger.print(out)
 	return out

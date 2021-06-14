@@ -125,4 +125,5 @@ rect_min_size = Vector2( 48, 48 )
 texture = ExtResource( 5 )
 expand = true
 stretch_mode = 6
+
 [connection signal="pressed" from="Panel2/Button" to="." method="_on_Button_pressed"]
