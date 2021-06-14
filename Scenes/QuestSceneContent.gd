@@ -7,6 +7,7 @@ var _active_quest = false
 var _quest_status = null 
 var ready = false
 var not_reentered = false
+var just_completed = false
 onready var quest_content = $"Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TextContainer/PanelContainer/MarginContainer/Control"
 onready var end_date_label = $"Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/StatusContainer/DatePanel/Label2"
 onready var reward_label = $"Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/StatusContainer/RewardPanel/Label"
@@ -26,7 +27,7 @@ func _update():
 		action_button.text = tr("quest_action_in_progress") if not_reentered else tr("quest_action_completable")
 		end_date_label.text = Util.date_as_eu_string(QuestService.get_quest_status(_quest._id)["quest_dead_line"])
 	else: 
-		action_button.text = tr("quest_action_start")
+		action_button.text = tr("quest_action_start") if !just_completed else tr("quest_action_just_completed")
 		if _quest.deadline != 0: 
 			end_date_label.text = Util.date_as_eu_string(_quest.deadline)
 		else: 
@@ -39,8 +40,9 @@ func receive_navigation(data):
 	if !data.quest: 
 		Logger.error("No quest in navigation data!", self)
 		return
-	_quest = data.quest if data.quest else {}
-	
+	_quest = data.quest 
+	if _quest.title != "":
+		get_parent().set_screen_title(_quest.title)
 	_update()
 	
 
@@ -48,6 +50,8 @@ func _on_ActionButton_pressed():
 	if _active_quest:
 		if !not_reentered:
 			QuestService.complete_quest(_quest._id)
+			just_completed = true
+			action_button.disabled = true
 	else:
 		QuestService.add_quest(_quest)
 		not_reentered = true

@@ -1,7 +1,7 @@
 extends Node
 
 signal complete
-
+signal quest_completed(quest_id)
 var _accepted_quests : Array
 var _completed_quest : Array
 
@@ -25,6 +25,8 @@ func complete_quest(quest_id):
 			_completed_quest.append(accepted_quest)
 			_accepted_quests.erase(accepted_quest)
 			_reward_quest(accepted_quest)
+			emit_signal("quest_completed", quest_id)
+			_flush()
 			return
 
 func _reward_quest(acceped_quest):
@@ -33,7 +35,7 @@ func _reward_quest(acceped_quest):
 		Logger.error("Quest % not found" % acceped_quest.quest, self)
 		return 
 	var reward = quest.reward
-	RewardService.add_reward(reward)
+	RewardService.add_reward(reward, true)
 
 func _flush(): 
 	PSS.flush()

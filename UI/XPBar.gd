@@ -13,7 +13,7 @@ onready var xp_progress = $MarginContainer/HBoxContainer/XPBarHolder/XPBar
 
 func _ready(): 
 	_update()
-	RewardService.connect("reward_added", self, "_update")
+	RewardService.connect("xp_bar_update", self, "_update")
 	GameManager.xp_bar = self
 #	_avoid_screen_cutouts()
 	

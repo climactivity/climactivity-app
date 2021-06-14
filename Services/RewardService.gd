@@ -3,7 +3,7 @@ var reward = preload("res://Network/Types/RReward.gd")
 var player_state 
 
 signal reward_added(reward)
-
+signal xp_bar_update
 func _ready(): 
 	player_state = PSS.get_player_state_ref()
 	update_xp_vals()
@@ -11,6 +11,7 @@ func add_reward(reward, show = false):
 	if reward == null:
 		reward = DEBUG_default_reward()
 	player_state.add_reward(reward)
+	emit_signal("xp_bar_update")
 	if show: emit_signal("reward_added", reward)
 
 func DEBUG_default_reward():

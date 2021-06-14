@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://UI/typography/Content_Regular.tres" type="DynamicFont" id=1]
+[ext_resource path="res://ForestScene3d/Interactables/QuestLog.gd" type="Script" id=2]
 
 [sub_resource type="StyleBoxFlat" id=1]
 
@@ -9,6 +10,7 @@ default_font = ExtResource( 1 )
 PanelContainer/styles/panel = SubResource( 1 )
 
 [node name="QuestLog" type="Control"]
+script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -21,7 +23,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Panel" type="Button" parent="VBoxContainer"]
+[node name="ActionButton" type="Button" parent="VBoxContainer"]
 margin_right = 171.0
 margin_bottom = 56.0
 text = "Aufgaben"
+
+[connection signal="pressed" from="VBoxContainer/ActionButton" to="." method="_on_ActionButton_pressed"]

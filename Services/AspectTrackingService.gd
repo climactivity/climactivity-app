@@ -62,6 +62,7 @@ func do_update():
 	for aspect_id in levels: 
 		var tracking_state = levels[aspect_id]
 		var reward = tracking_state.get_reward_for_time_interval_from_now(absolute_delta)
+		reward.coins = 0
 		if tracking_state.water_tank == null:
 			tracking_state.water_tank = bp_r_water_tank.new()
 			tracking_state.water_tank.initialize(aspect_id, tracking_state.run_time)

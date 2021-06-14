@@ -6,6 +6,7 @@ extends Label
 
 var font : DynamicFont
 var origial_size
+export (int) var max_size = 0
 export var min_size = 8
 
 func _enter_tree():
@@ -13,7 +14,7 @@ func _enter_tree():
 	origial_size = font.size
 
 func fit_on_box():
-	font.size = origial_size;
+	font.size = max_size if max_size != 0 else origial_size;
 	if autowrap: 
 		while get_visible_line_count() < get_line_count(): 
 			if !_shrink():

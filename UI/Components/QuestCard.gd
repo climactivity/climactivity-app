@@ -18,10 +18,12 @@ func set_quest(quest):
 	_quest = quest 
 	_update()
 
+func set_quest_id(quest_id):
+	set_quest(QuestService.get_quest_by_id(quest_id))
+
 func set_is_accepted(is_accepted): 
 	_is_accepted = is_accepted
 	
-
 func _update(): 
 	if !ready or _quest == null: return
 	title_label.text = _quest.title 
