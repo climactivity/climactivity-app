@@ -27,7 +27,7 @@ func show_data():
 	if ready: 
 		templates = TreeTemplateFactory.templates_in_sector(aspect_data.bigpoint)
 		for node in card_holder.get_children(): 
-			node.free()
+			node.queue_free()
 		for template in templates: 
 			var card = bp_entity_card.instance()
 			card.set_entity(template)

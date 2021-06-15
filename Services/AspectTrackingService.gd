@@ -51,7 +51,7 @@ func do_update():
 		return
 	Logger.print(
 		"Aspect tracking update at %s, last update %s, update delta %ss"
-		% [
+		% [	
 			Util.date_as_RFC1123(OS.get_datetime_from_unix_time(now)),
 			Util.date_as_RFC1123(OS.get_datetime_from_unix_time(last_update)),
 			str(absolute_delta)

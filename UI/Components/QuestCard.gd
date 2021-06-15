@@ -39,6 +39,10 @@ func _on_Panel_gui_input(event):
 	_on_QuestCard_gui_input(event)
 
 
+#
+#func _on_gui_input(event):
+#	_on_QuestCard_gui_input(event)
 
-func _on_gui_input(event):
-	_on_QuestCard_gui_input(event)
+
+func _on_Panel_pressed():
+	GameManager.scene_manager.push_scene("res://Scenes/QuestScene.tscn",{"quest": _quest})

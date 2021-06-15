@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://UI/Components/IconCapsule.tscn" type="PackedScene" id=1]
 [ext_resource path="res://UI/typography/Heading.tres" type="DynamicFont" id=2]
@@ -8,8 +8,6 @@
 [ext_resource path="res://UI/typography/UI_Regular.tres" type="DynamicFont" id=6]
 
 [sub_resource type="StyleBoxEmpty" id=1]
-
-[sub_resource type="StyleBoxEmpty" id=2]
 
 [node name="QuestCard" type="PanelContainer"]
 anchor_right = 1.0
@@ -69,12 +67,10 @@ align = 1
 valign = 1
 script = ExtResource( 3 )
 
-[node name="Panel" type="Panel" parent="."]
+[node name="Panel" type="TextureButton" parent="."]
 margin_right = 1080.0
 margin_bottom = 1920.0
 mouse_filter = 1
 input_pass_on_modal_close_click = false
-custom_styles/panel = SubResource( 2 )
 
-[connection signal="gui_input" from="." to="." method="_on_QuestCard_gui_input"]
-[connection signal="gui_input" from="Panel" to="." method="_on_Panel_gui_input"]
+[connection signal="pressed" from="Panel" to="." method="_on_Panel_pressed"]
