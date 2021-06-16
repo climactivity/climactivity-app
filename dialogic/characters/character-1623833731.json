@@ -1,0 +1,40 @@
+{
+	"color": "#ff58d31a",
+	"description": "",
+	"display_name": "",
+	"display_name_bool": false,
+	"id": "character-1623833731.json",
+	"mirror_portraits": false,
+	"name": "Kiko",
+	"nickname": "",
+	"nickname_bool": false,
+	"offset_x": 0,
+	"offset_y": 0,
+	"portraits": [
+		{
+			"name": "Default",
+			"path": "res://Assets/Kiko/kiko_avatar.png"
+		},
+		{
+			"name": "Kiko1-lachend",
+			"path": "res://Assets/Kiko/Kiko1-lachend.png"
+		},
+		{
+			"name": "Kiko-erstaunt",
+			"path": "res://Assets/Kiko/Kiko-erstaunt.png"
+		},
+		{
+			"name": "Kiko-lachend2",
+			"path": "res://Assets/Kiko/Kiko-lachend2.png"
+		},
+		{
+			"name": "Kiko-lachend",
+			"path": "res://Assets/Kiko/Kiko-lachend.png"
+		},
+		{
+			"name": "Kiko-mach-mit",
+			"path": "res://Assets/Kiko/Kiko-mach-mit.png"
+		}
+	],
+	"scale": 100
+}

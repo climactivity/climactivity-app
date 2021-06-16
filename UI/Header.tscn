@@ -82,11 +82,13 @@ custom_fonts/font = SubResource( 8 )
 custom_colors/font_color = Color( 0.584314, 0.756863, 0.121569, 1 )
 text = "Screen Label"
 valign = 1
+autowrap = true
 script = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 max_size = 72
+min_size = 36
 
 [node name="BG_Category" parent="BG" instance=ExtResource( 2 )]
 anchor_left = 0.892981

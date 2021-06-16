@@ -1,0 +1,41 @@
+{
+	"events": [
+		{
+			"action": "join",
+			"character": "character-1623833731.json",
+			"event_id": "dialogic_002",
+			"mirror": false,
+			"portrait": "",
+			"position": {
+				"0": false,
+				"1": true,
+				"2": false,
+				"3": false,
+				"4": false
+			}
+		},
+		{
+			"character": "character-1623833731.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Hello"
+		},
+		{
+			"character": "character-1623833731.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Willkommen in der Climactivity App\n\nHier Einleitungstext einfügen... "
+		},
+		{
+			"definition": "1623840219-787",
+			"event_id": "dialogic_014",
+			"operation": "=",
+			"set_value": "true"
+		}
+	],
+	"metadata": {
+		"dialogic-version": "1.2",
+		"file": "timeline-1623775662.json",
+		"name": "Intro"
+	}
+}

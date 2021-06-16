@@ -43,6 +43,9 @@ func _restored():
 
 func enter_game():
 	$AnimationPlayer.play("Zoom_To_Clearing")
+#	if Dialogic.get_variable("IntroPlayed") == "false":
+	yield( $AnimationPlayer, "animation_finished" )
+	GameManager.overlay.show_dialog("Intro")
 
 func show_overlay(): 
 	if GameManager.menu != null: GameManager.menu.show_menu()

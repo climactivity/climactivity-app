@@ -35,5 +35,6 @@ margin_right = 735.0
 margin_bottom = 50.0
 custom_fonts/font = ExtResource( 4 )
 text = "Introsatz wird wieder gelöscht"
+
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]
 [connection signal="gui_input" from="CySidePanel" to="." method="_on_CySidePanel_gui_input"]
