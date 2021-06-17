@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Scenes/SceneBase.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/AspectScene.gd" type="Script" id=2]
@@ -80,6 +80,8 @@ tracks/2/keys = {
 
 [sub_resource type="StyleBoxEmpty" id=4]
 
+[sub_resource type="StyleBoxEmpty" id=5]
+
 [node name="AspectScene" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 
@@ -87,7 +89,7 @@ script = ExtResource( 2 )
 scroll_horizontal_enabled = false
 
 [node name="ContentMain" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer" index="0"]
-margin_bottom = 2253.0
+margin_bottom = 2352.0
 custom_constants/separation = 49
 
 [node name="TrackingPreview" type="VBoxContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="1"]
@@ -390,6 +392,13 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 978.0
 margin_bottom = 160.0
+
+[node name="HSeparator2" type="HSeparator" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="4"]
+margin_top = 2302.0
+margin_right = 1080.0
+margin_bottom = 2352.0
+custom_styles/separator = SubResource( 5 )
+custom_constants/separation = 50
 
 [node name="HTTPRequest" type="HTTPRequest" parent="." index="1"]
 

@@ -74,7 +74,7 @@ func _show_cloud():
 	if AspectTrackingService.has_water_available(): 
 		cloud_widget.visible = true
 	else: 
-		cloud_widget.visible = false
+		cloud_widget.visible = true
 		
 func _entity_placed():
 	_show_seedling_box()

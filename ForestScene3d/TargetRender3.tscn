@@ -4,7 +4,7 @@
 [ext_resource path="res://Vertical_Gradient.shader" type="Shader" id=2]
 [ext_resource path="res://ForestScene3d/TargetRender.gd" type="Script" id=3]
 [ext_resource path="res://Assets/BG/02.png" type="Texture" id=4]
-[ext_resource path="res://ForestScene3d/ConstantSkyAreaCamera.gd" type="Script" id=5]
+[ext_resource path="res://ForestScene3d/TRCam.gd" type="Script" id=5]
 [ext_resource path="res://ForestScene3d/Background.gd" type="Script" id=6]
 [ext_resource path="res://ForestScene3d/TargetRenderForestGrid.gd" type="Script" id=7]
 [ext_resource path="res://ForestScene3d/EmptyHex.tscn" type="PackedScene" id=8]
@@ -272,10 +272,10 @@ transform = Transform( 1, 0, 0, 0, 0.890419, 0.455141, 0, -0.455141, 0.890419, 0
 current = true
 size = 44.73
 script = ExtResource( 5 )
-max_elevation = 10
-max_rotation_deg = -32.0
-nw_bound = Vector2( -20, 0 )
-se_bound = Vector2( 20, 38 )
+min_elevation = 1.0
+min_rotation_deg = -35.0
+nw_bound = Vector2( -50, -50 )
+se_bound = Vector2( 50, 50 )
 
 [node name="HUD" type="Control" parent="Camera"]
 visible = false
@@ -593,7 +593,7 @@ transform = Transform( 1, 0, 0, 0, 1, 5.30056e-08, 0, -5.30056e-08, 1, -2.63846,
 billboard = 2
 texture = ExtResource( 20 )
 region_enabled = true
-region_rect = Rect2( 0, 0, 8000, 1024 )
+region_rect = Rect2( 0, 0, 16000, 1024 )
 
 [node name="02" type="Sprite3D" parent="Background2" groups=[
 "Parallax",
@@ -602,7 +602,7 @@ transform = Transform( 1, 0, 0, 0, 1, 5.30056e-08, 0, -5.30056e-08, 1, -0.820302
 billboard = 2
 texture = ExtResource( 4 )
 region_enabled = true
-region_rect = Rect2( 0, 0, 8000, 1024 )
+region_rect = Rect2( 0, 0, 16000, 1024 )
 
 [node name="03" type="Sprite3D" parent="Background2" groups=[
 "Parallax",
@@ -611,7 +611,7 @@ transform = Transform( 1, 0, 0, 0, 1, 5.30056e-08, 0, -5.30056e-08, 1, -2.63846,
 billboard = 2
 texture = ExtResource( 21 )
 region_enabled = true
-region_rect = Rect2( 0, 0, 8000, 1024 )
+region_rect = Rect2( 0, 0, 4000, 1024 )
 
 [node name="04" type="Sprite3D" parent="Background2" groups=[
 "Parallax",
@@ -620,7 +620,7 @@ transform = Transform( 1, 0, 0, 0, 1, 5.30056e-08, 0, -5.30056e-08, 1, -2.63846,
 billboard = 2
 texture = ExtResource( 16 )
 region_enabled = true
-region_rect = Rect2( 0, 0, 8000, 1024 )
+region_rect = Rect2( 0, 0, 16000, 1024 )
 
 [node name="05" type="Sprite3D" parent="Background2" groups=[
 "Parallax",
@@ -629,7 +629,7 @@ transform = Transform( 1, 0, 0, 0, 1, 5.30056e-08, 0, -5.30056e-08, 1, -2.63846,
 billboard = 2
 texture = ExtResource( 19 )
 region_enabled = true
-region_rect = Rect2( 0, 0, 8000, 1024 )
+region_rect = Rect2( 0, 0, 16000, 1024 )
 
 [node name="06" type="Sprite3D" parent="Background2" groups=[
 "Parallax",
@@ -638,7 +638,7 @@ transform = Transform( 1, 0, 0, 0, 1, 5.30056e-08, 0, -5.30056e-08, 1, -2.63846,
 billboard = 2
 texture = ExtResource( 10 )
 region_enabled = true
-region_rect = Rect2( 0, 0, 8000, 1024 )
+region_rect = Rect2( 0, 0, 16000, 1024 )
 
 [node name="07" type="Sprite3D" parent="Background2" groups=[
 "Parallax",
@@ -647,7 +647,7 @@ transform = Transform( 1, 0, 0, 0, 1, 5.30056e-08, 0, -5.30056e-08, 1, -2.63846,
 billboard = 2
 texture = ExtResource( 22 )
 region_enabled = true
-region_rect = Rect2( 0, 0, 8000, 1024 )
+region_rect = Rect2( 0, 0, 16000, 1024 )
 
 [node name="08" type="Sprite3D" parent="Background2" groups=[
 "Parallax",
@@ -656,7 +656,7 @@ transform = Transform( 1, 0, 0, 0, 1, 5.30056e-08, 0, -5.30056e-08, 1, -2.63846,
 billboard = 2
 texture = ExtResource( 23 )
 region_enabled = true
-region_rect = Rect2( 0, 0, 8000, 1024 )
+region_rect = Rect2( 0, 0, 16000, 1024 )
 
 [node name="09" type="Sprite3D" parent="Background2" groups=[
 "Parallax",
@@ -665,7 +665,7 @@ transform = Transform( 1, 0, 0, 0, 1, 5.30056e-08, 0, -5.30056e-08, 1, -2.63846,
 billboard = 2
 texture = ExtResource( 17 )
 region_enabled = true
-region_rect = Rect2( 0, 0, 8000, 1024 )
+region_rect = Rect2( 0, 0, 16000, 1024 )
 
 [node name="10" type="Sprite3D" parent="Background2" groups=[
 "Parallax",
@@ -674,7 +674,7 @@ transform = Transform( 1, 0, 0, 0, 1, 5.30056e-08, 0, -5.30056e-08, 1, -2.63846,
 billboard = 2
 texture = ExtResource( 26 )
 region_enabled = true
-region_rect = Rect2( 0, 0, 8000, 1024 )
+region_rect = Rect2( 0, 0, 16000, 1024 )
 
 [node name="Viewport" type="Viewport" parent="."]
 size = Vector2( 2048, 2048 )
