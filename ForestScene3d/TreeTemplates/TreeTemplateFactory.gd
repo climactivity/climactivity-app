@@ -35,11 +35,11 @@ var available_textures = {
 		}
 	},
 	'birke': {
-		0: preload("res://Assets/sketch/baum/Birke/Birke_01.png"),
-		1: preload("res://Assets/sketch/baum/Birke/Birke_02.png"),
-		2: preload("res://Assets/sketch/baum/Birke/Birke_03.png"),
-		3: preload("res://Assets/sketch/baum/Birke/Birke_04.png"),
-		4: preload("res://Assets/sketch/baum/Birke/Birke_05.png"),
+		0: preload("res://Assets/sketch/baum/Birke/birke_01.png"),
+		1: preload("res://Assets/sketch/baum/Birke/birke_02.png"),
+		2: preload("res://Assets/sketch/baum/Birke/birke_03.png"),
+		3: preload("res://Assets/sketch/baum/Birke/birke_04.png"),
+		4: preload("res://Assets/sketch/baum/Birke/birke_05.png"),
 		'sizes': {
 			0: 0.4,
 			1: 0.6,
@@ -63,11 +63,11 @@ var available_textures = {
 		}
 	},
 	'fichte': {
-		0: preload("res://Assets/sketch/baum/Fichte/Fichte_01.png"),
-		1: preload("res://Assets/sketch/baum/Fichte/Fichte_02.png"),
-		2: preload("res://Assets/sketch/baum/Fichte/Fichte_03.png"),
-		3: preload("res://Assets/sketch/baum/Fichte/Fichte_04.png"),
-		4: preload("res://Assets/sketch/baum/Fichte/Fichte_05.png"),
+		0: preload("res://Assets/sketch/baum/Fichte/fichte_01.png"),
+		1: preload("res://Assets/sketch/baum/Fichte/fichte_02.png"),
+		2: preload("res://Assets/sketch/baum/Fichte/fichte_03.png"),
+		3: preload("res://Assets/sketch/baum/Fichte/fichte_04.png"),
+		4: preload("res://Assets/sketch/baum/Fichte/fichte_05.png"),
 		'sizes': {
 			0: 0.4,
 			1: 0.6,
@@ -91,11 +91,11 @@ var available_textures = {
 		}
 	},
 	'pappel': {
-		0: preload("res://Assets/sketch/baum/Pappel/Pappel_01.png"),
-		1: preload("res://Assets/sketch/baum/Pappel/Pappel_02.png"),
-		2: preload("res://Assets/sketch/baum/Pappel/Pappel_03.png"),
-		3: preload("res://Assets/sketch/baum/Pappel/Pappel_04.png"),
-		4: preload("res://Assets/sketch/baum/Pappel/Pappel_05.png"),
+		0: preload("res://Assets/sketch/baum/Pappel/pappel_01.png"),
+		1: preload("res://Assets/sketch/baum/Pappel/pappel_02.png"),
+		2: preload("res://Assets/sketch/baum/Pappel/pappel_03.png"),
+		3: preload("res://Assets/sketch/baum/Pappel/pappel_04.png"),
+		4: preload("res://Assets/sketch/baum/Pappel/pappel_05.png"),
 		'sizes': {
 			0: 0.4,
 			1: 0.6,
@@ -119,11 +119,11 @@ var available_textures = {
 		}
 	},
 	'weide': {
-		0: preload("res://Assets/sketch/baum/Weide/Weide_01.png"),
-		1: preload("res://Assets/sketch/baum/Weide/Weide_02.png"),
-		2: preload("res://Assets/sketch/baum/Weide/Weide_03.png"),
-		3: preload("res://Assets/sketch/baum/Weide/Weide_04.png"),
-		4: preload("res://Assets/sketch/baum/Weide/Weide_05.png"),
+		0: preload("res://Assets/sketch/baum/Weide/weide_01.png"),
+		1: preload("res://Assets/sketch/baum/Weide/weide_02.png"),
+		2: preload("res://Assets/sketch/baum/Weide/weide_03.png"),
+		3: preload("res://Assets/sketch/baum/Weide/weide_04.png"),
+		4: preload("res://Assets/sketch/baum/Weide/weide_05.png"),
 		'sizes': {
 			0: 0.4,
 			1: 0.6,
@@ -148,10 +148,10 @@ var available_textures = {
 	},
 	'heckenrose': {
 		0: preload("res://Assets/sketch/busch/busch_setzling.png"),
-		1: preload("res://Assets/sketch/busch/Heckenrose/Heckenrose_02.png"),
-		2: preload("res://Assets/sketch/busch/Heckenrose/Heckenrose_03.png"),
-		3: preload("res://Assets/sketch/busch/Heckenrose/Heckenrose_04.png"),
-		4: preload("res://Assets/sketch/busch/Heckenrose/Heckenrose_05.png"),
+		1: preload("res://Assets/sketch/busch/Heckenrose/heckenrose_02.png"),
+		2: preload("res://Assets/sketch/busch/Heckenrose/heckenrose_03.png"),
+		3: preload("res://Assets/sketch/busch/Heckenrose/heckenrose_04.png"),
+		4: preload("res://Assets/sketch/busch/Heckenrose/heckenrose_05.png"),
 		'sizes': {
 			0: 0.4,
 			1: 0.6,
@@ -162,10 +162,10 @@ var available_textures = {
 	},
 	'wacholder': {
 		0: preload("res://Assets/sketch/busch/busch_setzling.png"),
-		1: preload("res://Assets/sketch/busch/Wacholder/Wacholder_02.png"),
-		2: preload("res://Assets/sketch/busch/Wacholder/Wacholder_03.png"),
-		3: preload("res://Assets/sketch/busch/Wacholder/Wacholder_04.png"),
-		4: preload("res://Assets/sketch/busch/Wacholder/Wacholder_05.png"),
+		1: preload("res://Assets/sketch/busch/Wacholder/wacholder_02.png"),
+		2: preload("res://Assets/sketch/busch/Wacholder/wacholder_03.png"),
+		3: preload("res://Assets/sketch/busch/Wacholder/wacholder_04.png"),
+		4: preload("res://Assets/sketch/busch/Wacholder/wacholder_05.png"),
 		'sizes': {
 			0: 0.4,
 			1: 0.6,
@@ -219,7 +219,14 @@ func templates_in_sector(sector_name):
 		#if template.archetype == "tree":
 		out.push_back(template)
 	return out
-	
+
+func get_available_templates(sector_name: String, type: String) -> Array: 
+	var out = []
+	for template in _tree_templates: 
+		if template.bigpoint_available.find(sector_name) != -1 and template.archetype == "tree":
+			out.push_back(template)
+	return out
+
 func get_template(key):
 	if _tree_templates.has(key):
 		return _tree_templates.get(key)

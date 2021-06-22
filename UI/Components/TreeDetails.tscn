@@ -28,11 +28,11 @@ custom_constants/separation = 34
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 margin_right = 1080.0
-margin_bottom = 212.0
+margin_bottom = 213.0
 
 [node name="Labels" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
 margin_right = 538.0
-margin_bottom = 212.0
+margin_bottom = 213.0
 size_flags_horizontal = 3
 
 [node name="label_kind" type="Label" parent="VBoxContainer/HBoxContainer/Labels"]
@@ -99,7 +99,7 @@ text = "label_water_required"
 [node name="Values" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
 margin_left = 542.0
 margin_right = 1080.0
-margin_bottom = 212.0
+margin_bottom = 213.0
 size_flags_horizontal = 3
 
 [node name="value_kind" type="Label" parent="VBoxContainer/HBoxContainer/Values"]
@@ -124,12 +124,17 @@ margin_bottom = 158.0
 custom_fonts/font = ExtResource( 6 )
 text = "Value"
 
-[node name="value_aspect" type="Label" parent="VBoxContainer/HBoxContainer/Values"]
+[node name="value_aspect" type="RichTextLabel" parent="VBoxContainer/HBoxContainer/Values"]
 margin_top = 162.0
 margin_right = 538.0
-margin_bottom = 212.0
-custom_fonts/font = ExtResource( 6 )
+margin_bottom = 213.0
+custom_fonts/mono_font = ExtResource( 6 )
+custom_fonts/bold_italics_font = ExtResource( 6 )
+custom_fonts/italics_font = ExtResource( 6 )
+custom_fonts/bold_font = ExtResource( 6 )
+custom_fonts/normal_font = ExtResource( 6 )
 text = "Value"
+fit_content_height = true
 
 [node name="value_entity_id" type="Label" parent="VBoxContainer/HBoxContainer/Values"]
 visible = false
@@ -161,17 +166,17 @@ custom_fonts/font = ExtResource( 6 )
 text = "Value"
 
 [node name="value_tracking_option_text" type="RichTextLabel" parent="VBoxContainer"]
-margin_top = 246.0
+margin_top = 247.0
 margin_right = 1080.0
-margin_bottom = 290.0
+margin_bottom = 291.0
 custom_fonts/italics_font = ExtResource( 9 )
 custom_fonts/normal_font = ExtResource( 9 )
 fit_content_height = true
 
 [node name="DEBUG" type="VBoxContainer" parent="VBoxContainer"]
-margin_top = 324.0
+margin_top = 325.0
 margin_right = 1080.0
-margin_bottom = 478.0
+margin_bottom = 479.0
 script = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -203,9 +208,9 @@ custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "stage-"
 
 [node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer"]
-margin_top = 512.0
+margin_top = 513.0
 margin_right = 1080.0
-margin_bottom = 587.0
+margin_bottom = 588.0
 size_flags_vertical = 0
 
 [node name="show_tracking_button" type="Button" parent="VBoxContainer/MarginContainer2"]
@@ -221,9 +226,9 @@ custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "show_tracking_button"
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
-margin_top = 621.0
+margin_top = 622.0
 margin_right = 1080.0
-margin_bottom = 696.0
+margin_bottom = 697.0
 size_flags_vertical = 0
 
 [node name="ReturnButton" type="Button" parent="VBoxContainer/MarginContainer"]
@@ -237,6 +242,7 @@ custom_styles/normal = ExtResource( 1 )
 custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "return_button"
+
 [connection signal="pressed" from="VBoxContainer/DEBUG/add_stage" to="." method="_on_add_stage_pressed"]
 [connection signal="pressed" from="VBoxContainer/DEBUG/sub_stage" to="." method="_on_sub_stage_pressed"]
 [connection signal="pressed" from="VBoxContainer/MarginContainer2/show_tracking_button" to="." method="_on_show_tracking_button_pressed"]

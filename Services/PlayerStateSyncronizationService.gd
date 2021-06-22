@@ -19,6 +19,7 @@ func flush():
 
 func reset_game_state(): 
 	init_player_state()
+	Api.cache.drop_cache()
 
 func get_player_state_as_dict(): 
 	return player_state.to_dict()

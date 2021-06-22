@@ -256,3 +256,7 @@ func get_quest_by_id(quest_id):
 		if quest._id == quest_id:
 			return quest
 	return null
+
+func drop_cache(): 
+	Logger.log("------------ Dropping everything ------------", self)
+	

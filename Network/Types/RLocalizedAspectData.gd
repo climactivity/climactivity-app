@@ -3,6 +3,7 @@ extends Resource
 class_name RLocalizedAspectData
 
 export (String) var bigpoint
+export (String) var type
 export (String) var name
 export (String) var _id
 export (String) var title
@@ -27,6 +28,7 @@ func _init(dict = {}):
 	info_graph = dict["infoGraph"] if dict.has("infoGraph") else {} # p_info_graph = {}
 	factors = dict["localizedFactors"] if dict.has("localizedFactors") else []
 	icon = dict["icon"] if dict.has("icon") else null
+	type = dict["archetype"] if dict.has("archetype") else 'tree'
 	
 func get_option_for_level(level): 
 	if tracking == {}: return null

@@ -3,7 +3,7 @@
 [ext_resource path="res://UI/Components/AspectCard.gd" type="Script" id=2]
 [ext_resource path="res://UI/typography/Heading.tres" type="DynamicFont" id=3]
 
-[sub_resource type="StyleBoxFlat" id=8]
+[sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.8, 0.792157, 0.792157, 0.741176 )
 border_width_left = 1
 border_width_top = 1
@@ -29,7 +29,7 @@ corner_detail = 20
 [node name="AspectCard" type="PanelContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_styles/panel = SubResource( 8 )
+custom_styles/panel = SubResource( 1 )
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -83,5 +83,6 @@ custom_styles/disabled = SubResource( 6 )
 custom_styles/normal = SubResource( 7 )
 custom_fonts/font = ExtResource( 3 )
 text = ">"
+
 [connection signal="gui_input" from="MarginContainer" to="." method="_on_MarginContainer_gui_input"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/enter_button" to="." method="_on_enter_button_pressed"]
