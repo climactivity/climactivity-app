@@ -22,7 +22,7 @@ func DEBUG_default_reward():
 	return r
 
 func level_frag(xp):
-	return fmod(xp, 500)/500
+	return 100.0*fmod(xp, 500)/500
 
 func update_xp_vals(): 
 	var inventory = player_state.inventory	

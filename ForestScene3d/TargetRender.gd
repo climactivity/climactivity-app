@@ -2,8 +2,8 @@ extends Spatial
 
 
 func _ready():
-	GameManager.menu.hide_menu()
-#	GameManager.xp_bar.
+	GameManager.menu.show_menu()
+	GameManager.xp_bar.show()
 	GameManager.menu.set_navigation_state( MainMenu.Navigation_states.HOME ,true)
 
 func _input(event):
@@ -12,7 +12,7 @@ func _input(event):
 	if (event is InputEventScreenTouch and event.is_pressed()):
 		start()
 	if event.is_action_pressed("screenshot"):
-		do_screenshot()
+		do_screenshot(true)
 		
 
 func start(): 
@@ -25,7 +25,7 @@ func start():
 func do_screenshot(show_hud = false):
 	print("click")
 	GameManager.overlay.visible = show_hud
-	var img = get_viewport().get_texture().get_data()
+	var img = get_tree().get_root().get_viewport().get_texture().get_data()
 	img.flip_y()
 
 	yield(get_tree(), "idle_frame")

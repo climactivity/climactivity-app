@@ -19,6 +19,7 @@ func _ready():
 	
 func _avoid_screen_cutouts(): 
 	var safe_area = OS.get_window_safe_area()
+	print (safe_area)
 	$MarginContainer.margin_top = $MarginContainer.margin_top + safe_area.position.y
 	
 func _update(): 
