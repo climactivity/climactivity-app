@@ -1,22 +1,23 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Assets/Icons/chart-line-solid.svg" type="Texture" id=1]
 [ext_resource path="res://Assets/Icons/bell-solid.svg" type="Texture" id=2]
-[ext_resource path="res://Assets/Icons/project-diagram-solid.svg" type="Texture" id=3]
-[ext_resource path="res://Assets/Icons/wtree-solid.svg" type="Texture" id=4]
+[ext_resource path="res://Assets/Icons/cog-solid.svg" type="Texture" id=3]
+[ext_resource path="res://UI/menu_button.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Assets/Icons/user-solid.svg" type="Texture" id=5]
 [ext_resource path="res://UI/MainMenu.gd" type="Script" id=6]
-[ext_resource path="res://UI/sm_white.tres" type="Material" id=7]
 
 [sub_resource type="StyleBoxFlat" id=1]
-bg_color = Color( 1, 1, 1, 1 )
+bg_color = Color( 1, 1, 1, 0.85098 )
 corner_radius_top_left = 64
 corner_radius_top_right = 64
 corner_radius_bottom_right = 64
 corner_radius_bottom_left = 64
-shadow_color = Color( 0, 0, 0, 0.168627 )
+corner_detail = 20
+shadow_color = Color( 0, 0, 0, 0.0862745 )
 shadow_size = 10
 shadow_offset = Vector2( 0, 5 )
+anti_aliasing_size = 4
 
 [sub_resource type="StyleBoxEmpty" id=2]
 
@@ -189,98 +190,66 @@ size_flags_vertical = 0
 custom_styles/separator = SubResource( 2 )
 custom_constants/separation = -1361
 
-[node name="HomeButton" type="TextureButton" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer"]
-material = ExtResource( 7 )
-margin_right = 98.0
-margin_bottom = 100.0
-grow_horizontal = 2
-grow_vertical = 2
-rect_min_size = Vector2( 50, 50 )
-size_flags_horizontal = 3
-size_flags_vertical = 3
-texture_normal = ExtResource( 4 )
-expand = true
-stretch_mode = 5
+[node name="HomeButton" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer" instance=ExtResource( 4 )]
+margin_right = 126.0
+primary_color = Color( 0.988235, 0.988235, 0.988235, 1 )
+menu_label = "home_screen"
 
 [node name="VSeparator2" type="VSeparator" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer"]
-margin_left = 102.0
-margin_right = 201.0
+margin_left = 130.0
+margin_right = 171.0
 margin_bottom = 100.0
 size_flags_horizontal = 3
 custom_styles/separator = SubResource( 2 )
 
-[node name="NotificationButton" type="TextureButton" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer"]
-material = ExtResource( 7 )
-margin_left = 205.0
-margin_right = 303.0
-margin_bottom = 100.0
-grow_horizontal = 2
-grow_vertical = 2
-rect_min_size = Vector2( 50, 50 )
-size_flags_horizontal = 3
-size_flags_vertical = 3
-texture_normal = ExtResource( 2 )
-expand = true
+[node name="NotificationButton" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer" instance=ExtResource( 4 )]
+margin_left = 175.0
+margin_right = 370.0
+primary_color = Color( 0.988235, 0.988235, 0.988235, 1 )
+icon = ExtResource( 2 )
+menu_label = "notifications_screen"
 
 [node name="VSeparator3" type="VSeparator" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer"]
-margin_left = 307.0
-margin_right = 406.0
+margin_left = 374.0
+margin_right = 415.0
 margin_bottom = 100.0
 size_flags_horizontal = 3
 custom_styles/separator = SubResource( 2 )
 
-[node name="StatsButton" type="TextureButton" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer"]
-material = ExtResource( 7 )
-margin_left = 410.0
-margin_right = 509.0
-margin_bottom = 100.0
-grow_horizontal = 2
-grow_vertical = 2
-rect_min_size = Vector2( 50, 50 )
-size_flags_horizontal = 3
-size_flags_vertical = 3
-texture_normal = ExtResource( 1 )
-expand = true
+[node name="StatsButton" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer" instance=ExtResource( 4 )]
+margin_left = 419.0
+margin_right = 540.0
+primary_color = Color( 0.988235, 0.988235, 0.988235, 1 )
+icon = ExtResource( 1 )
+menu_label = "stats_screen"
 
 [node name="VSeparator4" type="VSeparator" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer"]
-margin_left = 513.0
-margin_right = 611.0
+margin_left = 544.0
+margin_right = 585.0
 margin_bottom = 100.0
 size_flags_horizontal = 3
 custom_styles/separator = SubResource( 2 )
 
-[node name="SocialButton" type="TextureButton" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer"]
-material = ExtResource( 7 )
-margin_left = 615.0
-margin_right = 714.0
-margin_bottom = 100.0
-grow_horizontal = 2
-grow_vertical = 2
-rect_min_size = Vector2( 50, 50 )
-size_flags_horizontal = 3
-size_flags_vertical = 3
-texture_normal = ExtResource( 3 )
-expand = true
+[node name="SocialButton" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer" instance=ExtResource( 4 )]
+margin_left = 589.0
+margin_right = 720.0
+primary_color = Color( 0.988235, 0.988235, 0.988235, 1 )
+icon = ExtResource( 5 )
+menu_label = "social_screen"
 
 [node name="VSeparator5" type="VSeparator" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer"]
-margin_left = 718.0
-margin_right = 817.0
+margin_left = 724.0
+margin_right = 766.0
 margin_bottom = 100.0
 size_flags_horizontal = 3
 custom_styles/separator = SubResource( 2 )
 
-[node name="SettingsButton" type="TextureButton" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer"]
-material = ExtResource( 7 )
-margin_left = 821.0
+[node name="SettingsButton" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer" instance=ExtResource( 4 )]
+margin_left = 770.0
 margin_right = 920.0
-margin_bottom = 100.0
-grow_horizontal = 2
-grow_vertical = 2
-rect_min_size = Vector2( 50, 50 )
-size_flags_horizontal = 3
-size_flags_vertical = 3
-texture_normal = ExtResource( 5 )
-expand = true
+primary_color = Color( 0.988235, 0.988235, 0.988235, 1 )
+icon = ExtResource( 3 )
+menu_label = "settings_screen"
 
 [node name="VSeparator6" type="VSeparator" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer"]
 visible = false

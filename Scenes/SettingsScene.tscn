@@ -30,7 +30,7 @@ shader_param/gradient = SubResource( 3 )
 material = SubResource( 4 )
 accent_color = Color( 0.517647, 0.517647, 0.517647, 1 )
 icon = ExtResource( 2 )
-screen_title = "settings_scene"
+screen_title = "settings_screen"
 
 [node name="ContentMain" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer" index="0"]
 show_menu_bar = true

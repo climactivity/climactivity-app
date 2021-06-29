@@ -8,6 +8,9 @@ enum Navigation_states {
 	SETTINGS = 4
 }
 
+export (Color) var active_tab_primary = Color("#f5af19")
+export (Color) var inactive_tab_primary = Color("#95c11e")
+export (Color) var disabled_tab_primary = Color("#636362")
 var navigation_state = Navigation_states.HOME setget set_navigation_state
 var last_navigation_state = Navigation_states.HOME
 onready var anim_player = $AnimationPlayer
@@ -63,22 +66,22 @@ func set_navigation_state(new_state, stay = false):
 	last_navigation_state = navigation_state
 	navigation_state = new_state
 	for button in buttons: 
-		button.self_modulate = Color(149.0, 194.0, 31.0)
+		button.set_primary_color(inactive_tab_primary)
 	match navigation_state:
 		Navigation_states.HOME:
-			home_button.self_modulate = Color.cornflower
+			home_button.set_primary_color(active_tab_primary)
 			if !stay: _navigate_home()
 		Navigation_states.NOTIFICATIONS:
-			notification_button.self_modulate = Color.cornflower
+			notification_button.set_primary_color(active_tab_primary)
 			if !stay: _navigate_notifications()
 		Navigation_states.SOCIAL:
-			social_button.self_modulate = Color.cornflower
+			social_button.set_primary_color(active_tab_primary)
 			if !stay: _navigate_social()
 		Navigation_states.STATS:
-			stats_button.self_modulate = Color.cornflower
+			stats_button.set_primary_color(active_tab_primary)
 			if !stay: _navigate_stats()
 		Navigation_states.SETTINGS:
-			settings_button.self_modulate = Color.cornflower
+			settings_button.set_primary_color(active_tab_primary)
 			if !stay: _navigate_settings()
 		_:
 			pass
@@ -103,3 +106,5 @@ func _navigate(scene):
 	if GameManager == null or GameManager.scene_manager == null: return
 	GameManager.scene_manager.push_scene(scene, {},
 	 TransitionFactory.MoveOut() if last_navigation_state <= navigation_state else TransitionFactory.MoveBack())
+
+

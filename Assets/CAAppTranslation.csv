@@ -3,13 +3,14 @@ current_tracking_level_label,Aktuell,Current
 current_tracking_level_unset,Noch nicht getrackt,Untracked
 button_save_tracking_setting,Speichern,Save
 button_save_tracking_setting_saved,Gespeichert,Saved!
-go_to_tracking_settings,Einstellen,set tracking
+go_to_tracking_settings,Jetzt eintragen!,set tracking
 water_percent_collected,Gesammeltes Wasser,Collected Water
 water_collection_screen,Wasser sammeln,Collect Water
+home_screen,Wald,Home
 stats_screen,Statistik,Statistics
 notifications_screen,Mitteilungen,Notifications
 social_screen,Freunde,Friends
-settings_scene,Einstellungen,Settings
+settings_screen,Einstellungen,Settings
 button_label_buy,Auswählen,Select
 new_seedling_avaliable_button,Neuen Setzling auswählen,select new seedling
 label_kind,Gattung,Kind
@@ -25,3 +26,4 @@ quest_action_in_progress,Schon vorgenommen,quest_action_in_progress
 quest_action_start,Mach' ich!,quest_action_start
 quest_action_completable,Habe ich geschafft!,quest_action_completable
 quest_action_just_completed,War toll!,quest_action_just_completed
+tracking_settings_kiko_prompt,,
