@@ -8,9 +8,9 @@
 script = ExtResource( 4 )
 
 [node name="MarginContainer" type="MarginContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="1"]
-margin_top = 350.0
+margin_top = 450.0
 margin_right = 1080.0
-margin_bottom = 517.0
+margin_bottom = 732.0
 custom_constants/margin_top = 40
 custom_constants/margin_left = 40
 custom_constants/margin_bottom = 40
@@ -22,17 +22,19 @@ __meta__ = {
 margin_left = 40.0
 margin_top = 40.0
 margin_right = 1080.0
-margin_bottom = 127.0
+margin_bottom = 242.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+custom_constants/separation = 5
 
 [node name="AspectCard" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/AspectList" index="0" instance=ExtResource( 5 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 1040.0
-margin_bottom = 87.0
+margin_bottom = 202.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="HTTPRequest" type="HTTPRequest" parent="." index="1"]
+
 [connection signal="request_completed" from="HTTPRequest" to="." method="_on_HTTPRequest_request_completed"]

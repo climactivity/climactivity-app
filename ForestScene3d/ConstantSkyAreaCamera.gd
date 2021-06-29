@@ -88,12 +88,11 @@ func _get_rotation_for_y(y: float):
 	#print(deg)
 	return deg
 	
-func _pan(delta: Vector2): 
+func _pan(position: Vector2, delta: Vector2, natural_scroll = -1): 
 	var current_pan_factor = (pan_factor/100.0) * max(get_elevation_percent(),0.05)
 	var pan_by = Vector3(delta.x, 0.0, delta.y) * current_pan_factor
-
 	var old_origin = global_transform.origin
-	var new_origin = old_origin + pan_by
+	var new_origin = old_origin + pan_by * natural_scroll
 	new_origin = Vector3(
 		clamp(new_origin.x, nw_bound.x, se_bound.x),
 		new_origin.y,
@@ -126,7 +125,8 @@ func _unhandled_input(event):
 		emit_signal("consuming_gesture")
 		events[event.index] = event
 		if events.size() == 1:
-			_pan(-event.relative)
+			event.position
+			_pan(event.position, event.relative)
 		elif events.size() == 2: 
 			var drag_distance = events[0].position.distance_to(events[1].position)
 			if abs(drag_distance - last_drag_distance) > zoom_sensitivity:

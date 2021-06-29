@@ -107,6 +107,11 @@ func _ready():
 	home_scene = current_scene
 	A_viewport.add_child(current_scene)
 
+	# do android things 
+	if OS.get_name() in ["Android"]: 
+		# reduce drag lag?
+		Input.set_use_accumulated_input(false)
+
 func _remove_splash(): 
 	Logger.print("Main Scene loaded!", self)
 	A.remove_child(loading_instance)

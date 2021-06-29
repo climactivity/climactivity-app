@@ -61,7 +61,7 @@ margin_bottom = 400.0
 anchor_right = 0.0
 margin_top = 404.0
 margin_right = 1080.0
-margin_bottom = 1717.0
+margin_bottom = 1700.0
 size_flags_vertical = 3
 top_left = Vector2( 142, 256.222 )
 
@@ -69,7 +69,7 @@ top_left = Vector2( 142, 256.222 )
 margin_left = 142.0
 margin_top = 256.222
 margin_right = 1030.0
-margin_bottom = 1069.0
+margin_bottom = 1052.0
 size_flags_horizontal = 3
 script = ExtResource( 5 )
 __meta__ = {
@@ -149,7 +149,7 @@ align = 1
 valign = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
-margin_top = 1721.0
+margin_top = 1704.0
 margin_right = 1080.0
 margin_bottom = 1918.0
 custom_constants/margin_right = 149
@@ -159,15 +159,15 @@ custom_constants/margin_bottom = 73
 [node name="CenterContainer" type="CenterContainer" parent="MarginContainer"]
 margin_top = 72.0
 margin_right = 931.0
-margin_bottom = 124.0
+margin_bottom = 141.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="SaveTrackingOptionButton" type="Button" parent="MarginContainer/CenterContainer"]
-margin_left = 377.0
-margin_right = 554.0
-margin_bottom = 52.0
+margin_left = 348.0
+margin_right = 582.0
+margin_bottom = 69.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_styles/hover = ExtResource( 7 )

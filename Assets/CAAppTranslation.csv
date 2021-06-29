@@ -27,3 +27,5 @@ quest_action_start,Mach' ich!,quest_action_start
 quest_action_completable,Habe ich geschafft!,quest_action_completable
 quest_action_just_completed,War toll!,quest_action_just_completed
 tracking_settings_kiko_prompt,,
+loading_anim,Lade,loading
+info_header_text,Infos,

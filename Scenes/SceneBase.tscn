@@ -178,6 +178,7 @@ screen_label = "Screen_Title"
 color = Color( 0.592157, 0.909804, 0.192157, 1 )
 
 [node name="DEBUGScreenLabel" type="LinkButton" parent="."]
+visible = false
 margin_top = 57.0
 margin_right = 124.0
 margin_bottom = 107.0

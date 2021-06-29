@@ -16,3 +16,6 @@ func get_aspects_per_sector():
 
 func get_title_for_name(name):
 	return sector_data[name].sector_title
+
+func get_sector_data(sector_name):
+	return sector_data[sector_name] if sector_data.has(sector_name) else null

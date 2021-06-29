@@ -180,6 +180,7 @@ __meta__ = {
 size = Vector2( 1080, 1920 )
 transparent_bg = true
 handle_input_locally = false
+usage = 3
 render_target_update_mode = 3
 audio_listener_enable_2d = true
 
@@ -198,6 +199,7 @@ __meta__ = {
 [node name="Viewport" type="Viewport" parent="A"]
 size = Vector2( 1080, 1920 )
 handle_input_locally = false
+usage = 3
 render_target_update_mode = 3
 physics_object_picking = true
 

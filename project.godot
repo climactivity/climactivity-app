@@ -44,6 +44,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://UI/Components/IconCapsule.gd"
 }, {
+"base": "PanelContainer",
+"class": "ListEntry",
+"language": "GDScript",
+"path": "res://UI/ListEntry.gd"
+}, {
 "base": "Control",
 "class": "MainMenu",
 "language": "GDScript",
@@ -237,6 +242,7 @@ _global_script_class_icons={
 "DialogicResources": "",
 "DialogicUtil": "",
 "IconCapsule": "",
+"ListEntry": "",
 "MainMenu": "",
 "NakamaAPI": "",
 "NakamaAsyncResult": "",
@@ -400,5 +406,4 @@ vram_compression/import_pvrtc=true
 quality/filters/anisotropic_filter_level=16
 gles2/compatibility/disable_half_float=true
 environment/default_clear_color=Color( 0.898039, 0.898039, 0.898039, 1 )
-quality/filters/msaa=2
 environment/default_environment="res://default_env.tres"

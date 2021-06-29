@@ -116,7 +116,7 @@ top_left = Vector2( 291.785, 35.114 )
 [node name="HBoxContainer" type="HBoxContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview/CySidePanel" index="1"]
 margin_left = 291.785
 margin_top = 35.114
-margin_right = 1187.79
+margin_right = 1322.79
 margin_bottom = 233.114
 size_flags_vertical = 3
 custom_constants/separation = 51
@@ -181,7 +181,7 @@ script = ExtResource( 16 )
 
 [node name="MarginContainer2" type="MarginContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview/CySidePanel/HBoxContainer" index="1"]
 margin_left = 469.0
-margin_right = 896.0
+margin_right = 1031.0
 margin_bottom = 198.0
 custom_constants/margin_top = 53
 custom_constants/margin_left = 0
@@ -190,7 +190,7 @@ custom_constants/margin_bottom = 33
 [node name="Panel" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview/CySidePanel/HBoxContainer/MarginContainer2" index="0" instance=ExtResource( 13 )]
 visible = false
 margin_top = 53.0
-margin_right = 427.0
+margin_right = 562.0
 margin_bottom = 165.0
 icon_texture = ExtResource( 14 )
 texture_min_size = 79
@@ -200,7 +200,7 @@ text = "go_to_tracking_settings"
 
 [node name="Button" type="Button" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview/CySidePanel/HBoxContainer/MarginContainer2" index="1"]
 margin_top = 53.0
-margin_right = 427.0
+margin_right = 562.0
 margin_bottom = 165.0
 custom_styles/hover = ExtResource( 18 )
 custom_styles/pressed = ExtResource( 10 )
@@ -254,7 +254,7 @@ custom_constants/margin_bottom = 40
 margin_left = 40.0
 margin_top = 40.0
 margin_right = 1040.0
-margin_bottom = 98.0
+margin_bottom = 115.0
 custom_styles/hover = ExtResource( 18 )
 custom_styles/pressed = ExtResource( 10 )
 custom_styles/focus = ExtResource( 18 )
@@ -298,7 +298,7 @@ anchor_bottom = 0.0
 margin_top = 0.0
 margin_right = 1080.0
 margin_bottom = 400.0
-text = "Infos here"
+text = "info_header_text"
 
 [node name="MarginContainer2" type="MarginContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/InfoGraph/VBoxContainer" index="1"]
 margin_top = 404.0

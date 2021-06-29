@@ -1,11 +1,37 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://UI/Components/RewardLabel.gd" type="Script" id=1]
+[ext_resource path="res://UI/typography/UI_Regular.tres" type="DynamicFont" id=2]
+[ext_resource path="res://UI/Components/Reward.gd" type="Script" id=3]
 
-[node name="RewardLabel" type="Control"]
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.584314, 0.756863, 0.117647, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 1, 1, 1, 1 )
+corner_radius_top_left = 1024
+corner_radius_top_right = 1024
+corner_radius_bottom_right = 1024
+corner_radius_bottom_left = 1024
+expand_margin_left = 10.0
+expand_margin_right = 10.0
+
+[node name="RewardLabel" type="PanelContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+rect_scale = Vector2( 0.998902, 0.987026 )
+custom_styles/panel = SubResource( 1 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Label" type="Label" parent="."]
+margin_left = 1.0
+margin_top = 938.0
+margin_right = 1079.0
+margin_bottom = 981.0
+custom_fonts/font = ExtResource( 2 )
+script = ExtResource( 3 )
