@@ -63,7 +63,7 @@ func set_navigation_state(new_state, stay = false):
 	last_navigation_state = navigation_state
 	navigation_state = new_state
 	for button in buttons: 
-		button.self_modulate = Color.gray
+		button.self_modulate = Color(149.0, 194.0, 31.0)
 	match navigation_state:
 		Navigation_states.HOME:
 			home_button.self_modulate = Color.cornflower

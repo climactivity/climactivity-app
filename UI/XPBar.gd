@@ -29,6 +29,9 @@ func _update():
 	current_xp = inventory.xp
 	level_label.text = "Level %d" % level
 	coin_label.text = "%3d" % coins
+	if inventory.xp == 0: 
+		visible = false
+		return
 	if last_xp == null:
 		xp_progress.value = RewardService.level_frag(current_xp)
 	else:

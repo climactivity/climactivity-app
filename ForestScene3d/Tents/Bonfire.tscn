@@ -142,36 +142,36 @@ anims/flicker = SubResource( 4 )
 anims/place_top_person = SubResource( 5 )
 
 [node name="Spatial" parent="." instance=ExtResource( 7 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.910245, 0, -0.295859 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.910245, 0.2, -0.295859 )
 facing = 0
 show_person = true
 show_log = true
 person_tex = ExtResource( 11 )
 
 [node name="Spatial2" parent="." instance=ExtResource( 7 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.925239, 0, -0.415874 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.925239, 0.2, -0.415874 )
 facing = 1
 show_person = true
 show_log = true
 person_tex = ExtResource( 10 )
 
 [node name="Spatial5" parent="." instance=ExtResource( 7 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.884693, 0.0336549, 0.671264 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.884693, 0.2, 0.671264 )
 facing = 0
 show_person = true
 person_tex = ExtResource( 8 )
 
 [node name="Spatial6" parent="." instance=ExtResource( 7 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.824605, 0.0529803, 0.645259 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.824605, 0.2, 0.645259 )
 facing = 1
 show_person = true
 person_tex = ExtResource( 9 )
 
 [node name="Spatial3" parent="." instance=ExtResource( 7 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0227464, 4.76837e-07, -0.868712 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0227464, 0.2, -0.868712 )
 show_person = true
 show_log = true
 
 [node name="Spatial4" parent="." instance=ExtResource( 7 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0168432, 0, 0.987334 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0168432, 0.2, 0.987334 )
 show_log = true

@@ -27,7 +27,7 @@ func receive_navigation(navigation_data):
 func show_data(): 
 	if !ready:
 		yield(self, "ready")
-	templates = TreeTemplateFactory.templates_in_sector(aspect_data.bigpoint)
+	templates = TreeTemplateFactory.get_available_templates(aspect_data.bigpoint, aspect_data.type)
 	print(templates)
 	for node in card_holder.get_children(): 
 		node.queue_free()

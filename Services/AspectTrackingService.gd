@@ -12,7 +12,7 @@ var tracking_states_path = "user://AspectTracking.tres"
 var player_state 
 
 #var last_update = OS.get_unix_time()
-var interval = 60 * 60 * 2 # minutue * hour * 2 -> update every 2 hours
+var interval = Util.HOUR * 2 # minutue * hour * 2 -> update every 2 hours
 var water_collected_for = []
 func _init():
 	player_state = PSS.get_player_state_ref()
