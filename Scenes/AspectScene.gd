@@ -44,18 +44,19 @@ func _show_data():
 	set_header_icon(aspect_data.icon if aspect_data.icon !=null else sector["sector_logo"])
 	factor_holder.set_factors(aspect_data.factors, aspect_data)
 	quest_holder.load_for_aspect(aspect_data)
-	tracking_question.set_text(aspect_data.tracking.question)
-	tracking_options_label.text = tr("current_tracking_level_label")
-	tracking_level.text = tr("current_tracking_level_unset")
-	var current_tracking_level = AspectTrackingService.get_current_tracking_level(aspect_data)
-	if current_tracking_level == null: return
-	var current_option = aspect_data.get_option_for_level(current_tracking_level.level)
-	if current_option != null:
-		tracking_level.text = current_option.option
-		tracking_reward.set_reward(current_option.reward)
-	if AspectTrackingService.has_seedling_available(aspect_data):
-		should_animate = true
-		#tracking_preview.show_shop_button()
+	tracking_preview.set_aspect(aspect_data)
+#	tracking_question.set_text(aspect_data.tracking.question)
+#	tracking_options_label.text = tr("current_tracking_level_label")
+#	tracking_level.text = tr("current_tracking_level_unset")
+#	var current_tracking_level = AspectTrackingService.get_current_tracking_level(aspect_data)
+#	if current_tracking_level == null: return
+#	var current_option = aspect_data.get_option_for_level(current_tracking_level.level)
+#	if current_option != null:
+#		tracking_level.text = current_option.option
+#		tracking_reward.set_reward(current_option.reward)
+#	if AspectTrackingService.has_seedling_available(aspect_data):
+#		should_animate = true
+#		#tracking_preview.show_shop_button()
 
 func anim_start(): 
 	if should_animate or ProjectSettings.get_setting("debug/settings/game_logic/cheat_seedlings"):# || OS.is_debug_build():

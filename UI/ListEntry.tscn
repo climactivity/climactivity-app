@@ -40,6 +40,7 @@ script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+reward = ExtResource( 8 )
 navigation_payload = {
 }
 
@@ -132,21 +133,20 @@ mouse_filter = 2
 alignment = 1
 
 [node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/HBoxContainer/ContentContainer/VBoxContainer"]
-margin_top = 52.0
+margin_top = 19.0
 margin_right = 700.0
-margin_bottom = 118.0
+margin_bottom = 85.0
 mouse_filter = 2
 custom_fonts/normal_font = ExtResource( 6 )
 fit_content_height = true
 
 [node name="RewardLabel" parent="MarginContainer/HBoxContainer/ContentContainer/VBoxContainer" instance=ExtResource( 1 )]
-visible = false
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 661.0
-margin_top = 53.0
-margin_right = 661.0
-margin_bottom = 96.0
+margin_left = 442.024
+margin_top = 89.0
+margin_right = 700.0
+margin_bottom = 150.0
+rect_min_size = Vector2( 257.976, 0 )
+rect_scale = Vector2( 1, 1 )
 size_flags_horizontal = 8
 _reward = ExtResource( 8 )
 

@@ -4,18 +4,23 @@ class_name ListEntry
 var bg_style = preload("res://UI/ListEntry.tres")
 export var texture = preload("res://Assets/TestData/checkered.png") setget set_icon
 export (String) var _content_text = "" setget set_content_text
+export var grab_attention = false setget ,grab_attention
 export (Resource) var reward setget set_reward_display 
 export (String) var navigation_target  = "" setget set_navigation_target
 export (Dictionary) var navigation_payload = {} setget set_navigation_payload
 export (Color) var accent_color = Color("95c11e") setget set_accent_color
+export (PackedScene) var button_replacement
 onready var icon = $MarginContainer/HBoxContainer/IconContainer/CenterContainer/Capsule
 onready var content_holder = $MarginContainer/HBoxContainer/ContentContainer
 onready var content_text = $MarginContainer/HBoxContainer/ContentContainer/VBoxContainer/RichTextLabel
 onready var content_reward = $MarginContainer/HBoxContainer/ContentContainer/VBoxContainer/RewardLabel
 onready var go_down_tex = $MarginContainer/HBoxContainer/PanelContainer/TextureRect
-
+onready var go_down_container = $MarginContainer/HBoxContainer/PanelContainer
 
 var ready = false
+
+func grab_attention():
+	return grab_attention 
 
 func _ready():
 	ready = true
@@ -42,6 +47,12 @@ func update():
 		content_reward.visible = true
 		content_reward.set_reward(reward)
 	content_text.text = _content_text 
+	if button_replacement != null: 
+		go_down_tex.visible = false
+		if go_down_container.get_children().size() == 1: 
+			go_down_container.add_child(button_replacement.instance())
+	else: 
+		go_down_tex.visible = true
 
 func set_navigation_target(target: String, payload = {}): 
 	navigation_target = target

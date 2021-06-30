@@ -1,0 +1,92 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://UI/typography/UI_Regular.tres" type="DynamicFont" id=1]
+[ext_resource path="res://UI/theme/Button_Important.tres" type="StyleBox" id=2]
+[ext_resource path="res://UI/theme/style_box_empty.tres" type="StyleBox" id=3]
+[ext_resource path="res://UI/Components/AttentionButton.gd" type="Script" id=4]
+
+[sub_resource type="Animation" id=1]
+resource_name = "att"
+length = 7.0
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("HBoxContainer:anchor_right")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 3.1, 3.4, 3.65, 4.1, 4.4, 4.65 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.04, 0.0, 0.0, 0.04, 0.0 ]
+}
+
+[node name="AttentionButton" type="PanelContainer"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -428.0
+margin_top = -29.0
+margin_bottom = 29.0
+mouse_filter = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+custom_styles/panel = ExtResource( 3 )
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchor_right = 0.0345299
+margin_right = 428.0
+margin_bottom = 58.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer"]
+margin_left = 160.31
+margin_top = 2.0
+margin_right = 442.0
+margin_bottom = 56.0
+mouse_filter = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
+
+[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer/MarginContainer"]
+margin_right = 281.69
+margin_bottom = 54.0
+mouse_filter = 2
+size_flags_horizontal = 11
+size_flags_vertical = 0
+size_flags_stretch_ratio = 0.0
+custom_styles/panel = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer/MarginContainer/PanelContainer"]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 276.69
+margin_bottom = 49.0
+rect_min_size = Vector2( 271.69, 0 )
+mouse_filter = 2
+size_flags_horizontal = 9
+size_flags_vertical = 0
+custom_fonts/bold_font = ExtResource( 1 )
+custom_fonts/normal_font = ExtResource( 1 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+bbcode_enabled = true
+bbcode_text = "Jetzt eintragen! >>"
+text = "Jetzt eintragen! >>"
+fit_content_height = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "att"
+anims/att = SubResource( 1 )

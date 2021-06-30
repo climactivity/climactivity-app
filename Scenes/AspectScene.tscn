@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://Scenes/SceneBase.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/AspectScene.gd" type="Script" id=2]
@@ -8,7 +8,7 @@
 [ext_resource path="res://UI/Components/QuestCard.tscn" type="PackedScene" id=6]
 [ext_resource path="res://UI/Components/kiko_hint.tscn" type="PackedScene" id=7]
 [ext_resource path="res://UI/typography/Content_Regular.tres" type="DynamicFont" id=8]
-[ext_resource path="res://UI/theme/TransparentGreen.tres" type="StyleBox" id=9]
+[ext_resource path="res://UI/Components/AttentionButton.tscn" type="PackedScene" id=9]
 [ext_resource path="res://UI/theme/Button_Important_Down.tres" type="StyleBox" id=10]
 [ext_resource path="res://Scenes/QuestList.gd" type="Script" id=11]
 [ext_resource path="res://UI/Components/IconCapsule.tscn" type="PackedScene" id=12]
@@ -19,6 +19,16 @@
 [ext_resource path="res://UI/Components/FactorCapsule.gd" type="Script" id=17]
 [ext_resource path="res://UI/theme/Button_Important.tres" type="StyleBox" id=18]
 [ext_resource path="res://UI/ListEntry.tscn" type="PackedScene" id=19]
+
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 0.584314, 0.756863, 0.117647, 1 )
+border_width_left = 4
+border_width_top = 4
+border_width_bottom = 4
+border_color = Color( 1, 1, 1, 1 )
+corner_radius_top_left = 1024
+corner_radius_bottom_left = 1024
+corner_detail = 20
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 1, 1, 1, 1 )
@@ -77,9 +87,10 @@ tracks/2/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="StyleBoxEmpty" id=3]
+[sub_resource type="StyleBoxFlat" id=9]
+bg_color = Color( 0.960784, 0.960784, 0.960784, 0.513726 )
 
-[sub_resource type="StyleBoxFlat" id=4]
+[sub_resource type="StyleBoxFlat" id=8]
 bg_color = Color( 0.584314, 0.756863, 0.117647, 1 )
 border_width_left = 4
 border_width_top = 4
@@ -105,7 +116,7 @@ scroll_horizontal_enabled = false
 
 [node name="ContentMain" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer" index="0"]
 margin_right = 1075.0
-margin_bottom = 2444.0
+margin_bottom = 2376.0
 custom_constants/separation = 49
 
 [node name="HSeparator" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="0"]
@@ -114,7 +125,7 @@ margin_right = 1075.0
 [node name="TrackingPreview" type="VBoxContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="1"]
 margin_top = 495.0
 margin_right = 1075.0
-margin_bottom = 1155.0
+margin_bottom = 1087.0
 script = ExtResource( 3 )
 
 [node name="TrackingQuestion" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview" index="0" instance=ExtResource( 7 )]
@@ -124,11 +135,31 @@ margin_top = 0.0
 margin_right = 1075.0
 margin_bottom = 400.0
 
-[node name="CySidePanel" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview" index="1" instance=ExtResource( 15 )]
-anchor_right = 0.0
+[node name="MarginContainer" type="MarginContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview" index="1"]
 margin_top = 404.0
 margin_right = 1075.0
-margin_bottom = 660.0
+margin_bottom = 592.0
+mouse_filter = 2
+custom_constants/margin_left = 15
+
+[node name="TrackingState" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview/MarginContainer" index="0" instance=ExtResource( 19 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 15.0
+margin_right = 1075.0
+margin_bottom = 188.0
+custom_styles/panel = SubResource( 7 )
+grab_attention = true
+navigation_payload = {
+}
+button_replacement = ExtResource( 9 )
+
+[node name="CySidePanel" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview" index="2" instance=ExtResource( 15 )]
+visible = false
+anchor_right = 0.0
+margin_top = 596.0
+margin_right = 1075.0
+margin_bottom = 852.0
 size_flags_vertical = 3
 top_left = Vector2( 291.785, 35.114 )
 
@@ -230,40 +261,12 @@ custom_fonts/font = ExtResource( 5 )
 custom_colors/font_color = Color( 0.588235, 0.74902, 0.0509804, 1 )
 text = "go_to_tracking_settings"
 
-[node name="MarginContainer" type="MarginContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview" index="2"]
-visible = false
-margin_top = 664.0
-margin_right = 1080.0
-margin_bottom = 939.0
-mouse_filter = 2
-custom_constants/margin_top = 275
-
-[node name="CenterContainer" type="CenterContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview/MarginContainer" index="0"]
-margin_top = 275.0
-margin_right = 1080.0
-margin_bottom = 275.0
-mouse_filter = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="PanelContainer" type="PanelContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview/MarginContainer" index="1"]
-visible = false
-margin_top = 275.0
-margin_right = 1080.0
-margin_bottom = 277.0
-mouse_filter = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_styles/panel = ExtResource( 9 )
-
 [node name="shop_button_container" type="MarginContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview" index="3"]
 visible = false
 modulate = Color( 1, 1, 1, 0 )
-margin_top = 664.0
-margin_right = 1080.0
-margin_bottom = 802.0
-rect_scale = Vector2( 1, 1e-05 )
+margin_top = 596.0
+margin_right = 1075.0
+margin_bottom = 751.0
 custom_constants/margin_right = 40
 custom_constants/margin_top = 40
 custom_constants/margin_left = 40
@@ -272,7 +275,7 @@ custom_constants/margin_bottom = 40
 [node name="entity_shop_button" type="Button" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview/shop_button_container" index="0"]
 margin_left = 40.0
 margin_top = 40.0
-margin_right = 1040.0
+margin_right = 1035.0
 margin_bottom = 115.0
 custom_styles/hover = ExtResource( 18 )
 custom_styles/pressed = ExtResource( 10 )
@@ -292,13 +295,13 @@ __meta__ = {
 anims/ShowShopButton = SubResource( 2 )
 
 [node name="InfoGraph" type="PanelContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="2"]
-margin_top = 1204.0
+margin_top = 1136.0
 margin_right = 1075.0
-margin_bottom = 1796.0
+margin_bottom = 1728.0
 rect_min_size = Vector2( 0, 500 )
 mouse_filter = 1
 size_flags_vertical = 3
-custom_styles/panel = SubResource( 3 )
+custom_styles/panel = SubResource( 9 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/InfoGraph" index="0"]
 margin_right = 1075.0
@@ -339,7 +342,7 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 1060.0
 margin_bottom = 188.0
-custom_styles/panel = SubResource( 4 )
+custom_styles/panel = SubResource( 8 )
 _content_text = "Factor"
 navigation_payload = {
 }
@@ -373,9 +376,9 @@ margin_right = 160.0
 margin_bottom = 384.0
 
 [node name="Aufgaben" type="PanelContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="3"]
-margin_top = 1845.0
+margin_top = 1777.0
 margin_right = 1075.0
-margin_bottom = 2345.0
+margin_bottom = 2277.0
 rect_min_size = Vector2( 0, 500 )
 custom_styles/panel = SubResource( 5 )
 script = ExtResource( 11 )
@@ -407,6 +410,7 @@ text = "Aufgaben"
 margin_top = 404.0
 margin_right = 1060.0
 margin_bottom = 404.0
+custom_constants/separation = 36
 
 [node name="Control" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/Aufgaben/MarginContainer/VBoxContainer/QuestList" index="0" instance=ExtResource( 6 )]
 visible = false
@@ -416,9 +420,9 @@ margin_right = 978.0
 margin_bottom = 160.0
 
 [node name="HSeparator2" type="HSeparator" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="4"]
-margin_top = 2394.0
+margin_top = 2326.0
 margin_right = 1075.0
-margin_bottom = 2444.0
+margin_bottom = 2376.0
 custom_styles/separator = SubResource( 6 )
 custom_constants/separation = 50
 
