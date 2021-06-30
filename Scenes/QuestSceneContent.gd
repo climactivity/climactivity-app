@@ -10,7 +10,7 @@ var not_reentered = false
 var just_completed = false
 onready var quest_content = $"Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TextContainer/PanelContainer/MarginContainer/Control"
 onready var end_date_label = $"Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/StatusContainer/DatePanel/Label2"
-onready var reward_label = $"Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/StatusContainer/RewardPanel/Label"
+onready var reward_label = $"Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/StatusContainer/RewardPanel/RewardLabel"
 onready var action_button = $"Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ActionContainer/ActionButton"
 
 func _ready():

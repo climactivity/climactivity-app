@@ -133,21 +133,22 @@ mouse_filter = 2
 alignment = 1
 
 [node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/HBoxContainer/ContentContainer/VBoxContainer"]
-margin_top = 19.0
+margin_top = 15.0
 margin_right = 700.0
-margin_bottom = 85.0
+margin_bottom = 81.0
 mouse_filter = 2
 custom_fonts/normal_font = ExtResource( 6 )
 fit_content_height = true
 
 [node name="RewardLabel" parent="MarginContainer/HBoxContainer/ContentContainer/VBoxContainer" instance=ExtResource( 1 )]
-margin_left = 442.024
-margin_top = 89.0
+margin_left = 430.695
+margin_top = 85.0
 margin_right = 700.0
-margin_bottom = 150.0
-rect_min_size = Vector2( 257.976, 0 )
+margin_bottom = 155.0
+rect_min_size = Vector2( 269.305, 0 )
 rect_scale = Vector2( 1, 1 )
 size_flags_horizontal = 8
+size_flags_vertical = 0
 _reward = ExtResource( 8 )
 
 [node name="VSeparator3" type="VSeparator" parent="MarginContainer/HBoxContainer"]

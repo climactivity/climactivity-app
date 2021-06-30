@@ -1,22 +1,14 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Scenes/SceneBase.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/AspectScene.gd" type="Script" id=2]
 [ext_resource path="res://Scenes/TrackingPreview.gd" type="Script" id=3]
 [ext_resource path="res://UI/Components/FactorContainer.gd" type="Script" id=4]
 [ext_resource path="res://UI/typography/Button_Label.tres" type="DynamicFont" id=5]
-[ext_resource path="res://UI/Components/QuestCard.tscn" type="PackedScene" id=6]
 [ext_resource path="res://UI/Components/kiko_hint.tscn" type="PackedScene" id=7]
-[ext_resource path="res://UI/typography/Content_Regular.tres" type="DynamicFont" id=8]
 [ext_resource path="res://UI/Components/AttentionButton.tscn" type="PackedScene" id=9]
 [ext_resource path="res://UI/theme/Button_Important_Down.tres" type="StyleBox" id=10]
 [ext_resource path="res://Scenes/QuestList.gd" type="Script" id=11]
-[ext_resource path="res://UI/Components/IconCapsule.tscn" type="PackedScene" id=12]
-[ext_resource path="res://UI/Components/NeoMButton.tscn" type="PackedScene" id=13]
-[ext_resource path="res://Assets/Icons/Arrow - Right 2.png" type="Texture" id=14]
-[ext_resource path="res://UI/Components/CySidePanel.tscn" type="PackedScene" id=15]
-[ext_resource path="res://UI/Components/Reward.gd" type="Script" id=16]
-[ext_resource path="res://UI/Components/FactorCapsule.gd" type="Script" id=17]
 [ext_resource path="res://UI/theme/Button_Important.tres" type="StyleBox" id=18]
 [ext_resource path="res://UI/ListEntry.tscn" type="PackedScene" id=19]
 
@@ -29,25 +21,6 @@ border_color = Color( 1, 1, 1, 1 )
 corner_radius_top_left = 1024
 corner_radius_bottom_left = 1024
 corner_detail = 20
-
-[sub_resource type="StyleBoxFlat" id=1]
-bg_color = Color( 1, 1, 1, 1 )
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color( 0.588235, 0.74902, 0.0509804, 1 )
-corner_radius_top_left = 7
-corner_radius_top_right = 7
-corner_radius_bottom_right = 7
-corner_radius_bottom_left = 7
-expand_margin_left = 10.0
-expand_margin_right = 10.0
-expand_margin_top = 10.0
-expand_margin_bottom = 10.0
-shadow_color = Color( 0, 0, 0, 0.0705882 )
-shadow_size = 32
-shadow_offset = Vector2( 0, 10.261 )
 
 [sub_resource type="Animation" id=2]
 tracks/0/type = "value"
@@ -90,16 +63,6 @@ tracks/2/keys = {
 [sub_resource type="StyleBoxFlat" id=9]
 bg_color = Color( 0.960784, 0.960784, 0.960784, 0.513726 )
 
-[sub_resource type="StyleBoxFlat" id=8]
-bg_color = Color( 0.584314, 0.756863, 0.117647, 1 )
-border_width_left = 4
-border_width_top = 4
-border_width_bottom = 4
-border_color = Color( 1, 1, 1, 1 )
-corner_radius_top_left = 1024
-corner_radius_bottom_left = 1024
-corner_detail = 20
-
 [sub_resource type="StyleBoxEmpty" id=5]
 
 [sub_resource type="StyleBoxEmpty" id=6]
@@ -116,7 +79,7 @@ scroll_horizontal_enabled = false
 
 [node name="ContentMain" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer" index="0"]
 margin_right = 1075.0
-margin_bottom = 2376.0
+margin_bottom = 2284.0
 custom_constants/separation = 49
 
 [node name="HSeparator" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="0"]
@@ -154,114 +117,7 @@ navigation_payload = {
 }
 button_replacement = ExtResource( 9 )
 
-[node name="CySidePanel" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview" index="2" instance=ExtResource( 15 )]
-visible = false
-anchor_right = 0.0
-margin_top = 596.0
-margin_right = 1075.0
-margin_bottom = 852.0
-size_flags_vertical = 3
-top_left = Vector2( 291.785, 35.114 )
-
-[node name="HBoxContainer" type="HBoxContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview/CySidePanel" index="1"]
-margin_left = 291.785
-margin_top = 35.114
-margin_right = 1322.79
-margin_bottom = 233.114
-size_flags_vertical = 3
-custom_constants/separation = 51
-alignment = 1
-
-[node name="MarginContainer" type="MarginContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview/CySidePanel/HBoxContainer" index="0"]
-margin_right = 418.0
-margin_bottom = 198.0
-custom_constants/margin_top = 54
-custom_constants/margin_left = 40
-custom_constants/margin_bottom = 40
-
-[node name="VBoxContainer" type="VBoxContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview/CySidePanel/HBoxContainer/MarginContainer" index="0"]
-margin_left = 40.0
-margin_top = 54.0
-margin_right = 418.0
-margin_bottom = 158.0
-size_flags_horizontal = 3
-alignment = 1
-
-[node name="CurrentTrackingSetting" type="HBoxContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview/CySidePanel/HBoxContainer/MarginContainer/VBoxContainer" index="0"]
-margin_right = 378.0
-margin_bottom = 50.0
-size_flags_horizontal = 3
-
-[node name="Label" type="Label" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview/CySidePanel/HBoxContainer/MarginContainer/VBoxContainer/CurrentTrackingSetting" index="0"]
-visible = false
-margin_right = 235.0
-margin_bottom = 50.0
-custom_fonts/font = ExtResource( 8 )
-text = "Aktueller Wert"
-
-[node name="OptionValueLabel" type="Label" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview/CySidePanel/HBoxContainer/MarginContainer/VBoxContainer/CurrentTrackingSetting" index="1"]
-margin_right = 378.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 378, 0 )
-size_flags_horizontal = 3
-size_flags_vertical = 1
-custom_fonts/font = ExtResource( 8 )
-text = "option_value"
-autowrap = true
-
-[node name="CurrentTrackingSetting2" type="HBoxContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview/CySidePanel/HBoxContainer/MarginContainer/VBoxContainer" index="1"]
-margin_top = 54.0
-margin_right = 378.0
-margin_bottom = 104.0
-size_flags_horizontal = 3
-
-[node name="Label" type="Label" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview/CySidePanel/HBoxContainer/MarginContainer/VBoxContainer/CurrentTrackingSetting2" index="0"]
-visible = false
-margin_right = 235.0
-margin_bottom = 50.0
-custom_fonts/font = ExtResource( 8 )
-text = "Aktueller Wert"
-
-[node name="OptionRewardLabel" type="Label" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview/CySidePanel/HBoxContainer/MarginContainer/VBoxContainer/CurrentTrackingSetting2" index="1"]
-margin_right = 378.0
-margin_bottom = 50.0
-custom_fonts/font = ExtResource( 8 )
-text = "Coins: 0 Xp: 0 Water: 0"
-script = ExtResource( 16 )
-
-[node name="MarginContainer2" type="MarginContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview/CySidePanel/HBoxContainer" index="1"]
-margin_left = 469.0
-margin_right = 1031.0
-margin_bottom = 198.0
-custom_constants/margin_top = 53
-custom_constants/margin_left = 0
-custom_constants/margin_bottom = 33
-
-[node name="Panel" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview/CySidePanel/HBoxContainer/MarginContainer2" index="0" instance=ExtResource( 13 )]
-visible = false
-margin_top = 53.0
-margin_right = 562.0
-margin_bottom = 165.0
-icon_texture = ExtResource( 14 )
-texture_min_size = 79
-font_color = Color( 0.588235, 0.74902, 0.0509804, 1 )
-font_color_disabled = Color( 0.301961, 0.301961, 0.301961, 1 )
-text = "go_to_tracking_settings"
-
-[node name="Button" type="Button" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview/CySidePanel/HBoxContainer/MarginContainer2" index="1"]
-margin_top = 53.0
-margin_right = 562.0
-margin_bottom = 165.0
-custom_styles/hover = ExtResource( 18 )
-custom_styles/pressed = ExtResource( 10 )
-custom_styles/focus = SubResource( 1 )
-custom_styles/disabled = ExtResource( 18 )
-custom_styles/normal = ExtResource( 18 )
-custom_fonts/font = ExtResource( 5 )
-custom_colors/font_color = Color( 0.588235, 0.74902, 0.0509804, 1 )
-text = "go_to_tracking_settings"
-
-[node name="shop_button_container" type="MarginContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview" index="3"]
+[node name="shop_button_container" type="MarginContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview" index="2"]
 visible = false
 modulate = Color( 1, 1, 1, 0 )
 margin_top = 596.0
@@ -291,13 +147,13 @@ __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview" index="4"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview" index="3"]
 anims/ShowShopButton = SubResource( 2 )
 
 [node name="InfoGraph" type="PanelContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="2"]
 margin_top = 1136.0
 margin_right = 1075.0
-margin_bottom = 1728.0
+margin_bottom = 1636.0
 rect_min_size = Vector2( 0, 500 )
 mouse_filter = 1
 size_flags_vertical = 3
@@ -305,7 +161,7 @@ custom_styles/panel = SubResource( 9 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/InfoGraph" index="0"]
 margin_right = 1075.0
-margin_bottom = 592.0
+margin_bottom = 404.0
 size_flags_vertical = 0
 __meta__ = {
 "_edit_use_anchors_": false
@@ -326,59 +182,20 @@ text = "info_header_text"
 [node name="MarginContainer2" type="MarginContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/InfoGraph/VBoxContainer" index="1"]
 margin_top = 404.0
 margin_right = 1075.0
-margin_bottom = 592.0
+margin_bottom = 404.0
 custom_constants/margin_left = 15
 
 [node name="FactorHolder" type="VBoxContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/InfoGraph/VBoxContainer/MarginContainer2" index="0"]
 margin_left = 15.0
 margin_right = 1075.0
-margin_bottom = 188.0
 size_flags_horizontal = 3
 custom_constants/separation = 36
 script = ExtResource( 4 )
 
-[node name="ListEntry" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/InfoGraph/VBoxContainer/MarginContainer2/FactorHolder" index="0" instance=ExtResource( 19 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_right = 1060.0
-margin_bottom = 188.0
-custom_styles/panel = SubResource( 8 )
-_content_text = "Factor"
-navigation_payload = {
-}
-
-[node name="Capsule" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/InfoGraph/VBoxContainer/MarginContainer2/FactorHolder" index="1" instance=ExtResource( 12 )]
-visible = false
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 224.0
-margin_right = 160.0
-margin_bottom = 384.0
-script = ExtResource( 17 )
-
-[node name="Capsule2" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/InfoGraph/VBoxContainer/MarginContainer2/FactorHolder" index="2" instance=ExtResource( 12 )]
-visible = false
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 224.0
-margin_right = 160.0
-margin_bottom = 384.0
-
-[node name="Capsule3" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/InfoGraph/VBoxContainer/MarginContainer2/FactorHolder" index="3" instance=ExtResource( 12 )]
-visible = false
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 224.0
-margin_right = 160.0
-margin_bottom = 384.0
-
 [node name="Aufgaben" type="PanelContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="3"]
-margin_top = 1777.0
+margin_top = 1685.0
 margin_right = 1075.0
-margin_bottom = 2277.0
+margin_bottom = 2185.0
 rect_min_size = Vector2( 0, 500 )
 custom_styles/panel = SubResource( 5 )
 script = ExtResource( 11 )
@@ -412,22 +229,13 @@ margin_right = 1060.0
 margin_bottom = 404.0
 custom_constants/separation = 36
 
-[node name="Control" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/Aufgaben/MarginContainer/VBoxContainer/QuestList" index="0" instance=ExtResource( 6 )]
-visible = false
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_right = 978.0
-margin_bottom = 160.0
-
 [node name="HSeparator2" type="HSeparator" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="4"]
-margin_top = 2326.0
+margin_top = 2234.0
 margin_right = 1075.0
-margin_bottom = 2376.0
+margin_bottom = 2284.0
 custom_styles/separator = SubResource( 6 )
 custom_constants/separation = 50
 
 [node name="HTTPRequest" type="HTTPRequest" parent="." index="1"]
 
-[connection signal="pressed" from="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview/CySidePanel/HBoxContainer/MarginContainer2/Panel" to="." method="_on_Panel_pressed"]
-[connection signal="pressed" from="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview/CySidePanel/HBoxContainer/MarginContainer2/Button" to="." method="_on_Button_pressed"]
 [connection signal="pressed" from="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview/shop_button_container/entity_shop_button" to="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview" method="_on_entity_shop_button_pressed"]

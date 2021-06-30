@@ -41,7 +41,6 @@ __meta__ = {
 }
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
-anchor_right = 0.0345299
 margin_right = 428.0
 margin_bottom = 58.0
 mouse_filter = 2
@@ -50,9 +49,9 @@ __meta__ = {
 }
 
 [node name="MarginContainer" type="MarginContainer" parent="HBoxContainer"]
-margin_left = 160.31
+margin_left = 146.31
 margin_top = 2.0
-margin_right = 442.0
+margin_right = 428.0
 margin_bottom = 56.0
 mouse_filter = 2
 size_flags_horizontal = 10

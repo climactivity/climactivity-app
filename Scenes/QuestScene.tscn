@@ -1,15 +1,15 @@
 [gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Scenes/SceneBase.tscn" type="PackedScene" id=1]
+[ext_resource path="res://UI/Components/RewardLabel.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Assets/Icons/Time Circle.png" type="Texture" id=3]
 [ext_resource path="res://UI/typography/Heading.tres" type="DynamicFont" id=4]
-[ext_resource path="res://UI/Components/Reward.gd" type="Script" id=5]
 [ext_resource path="res://UI/theme/ButtonPrimary_Inactive.stylebox" type="StyleBox" id=6]
 [ext_resource path="res://Scenes/QuestSceneContent.gd" type="Script" id=8]
 [ext_resource path="res://UI/theme/ButtonPrimary_Active.stylebox" type="StyleBox" id=9]
 [ext_resource path="res://UI/Components/infobits/InfobitContainer.tscn" type="PackedScene" id=10]
 
-[sub_resource type="Shader" id=1]
+[sub_resource type="Shader" id=10]
 code = "shader_type canvas_item; 
 
 uniform sampler2D gradient; 
@@ -19,16 +19,16 @@ void fragment() {
 	//COLOR = vec4(UV.y,0,0,1);
 }"
 
-[sub_resource type="Gradient" id=2]
+[sub_resource type="Gradient" id=11]
 offsets = PoolRealArray( 0.213622, 1 )
 colors = PoolColorArray( 0.592157, 0.909804, 0.192157, 1, 1, 1, 1, 1 )
 
-[sub_resource type="GradientTexture" id=3]
-gradient = SubResource( 2 )
+[sub_resource type="GradientTexture" id=12]
+gradient = SubResource( 11 )
 
-[sub_resource type="ShaderMaterial" id=4]
-shader = SubResource( 1 )
-shader_param/gradient = SubResource( 3 )
+[sub_resource type="ShaderMaterial" id=13]
+shader = SubResource( 10 )
+shader_param/gradient = SubResource( 12 )
 
 [sub_resource type="StyleBoxFlat" id=5]
 bg_color = Color( 1, 1, 1, 1 )
@@ -75,7 +75,7 @@ corner_detail = 20
 [sub_resource type="StyleBoxEmpty" id=9]
 
 [node name="SceneBase" instance=ExtResource( 1 )]
-material = SubResource( 4 )
+material = SubResource( 13 )
 navigation_dispatcher = NodePath("ContentContainer")
 screen_title = "Aufgabenvorschlag"
 
@@ -176,19 +176,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/StatusContainer/RewardPanel" index="0"]
-anchor_left = 1.0
+[node name="RewardLabel" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/StatusContainer/RewardPanel" index="0" instance=ExtResource( 2 )]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -451.0
-custom_fonts/font = ExtResource( 4 )
-text = "Coins: 100 Xp: 100 "
-align = 1
-valign = 1
-script = ExtResource( 5 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+margin_right = 0.0
+margin_bottom = 0.0
 
 [node name="HSeparator2" type="HSeparator" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="3"]
 margin_top = 1134.0

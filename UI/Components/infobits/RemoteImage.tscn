@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://UI/Components/SkeletonUI/sm_shimmer.tres" type="Material" id=1]
+[ext_resource path="res://Assets/Icons/climactivity_H-Icon_Energie.png" type="Texture" id=2]
+[ext_resource path="res://UI/Components/infobits/RemoteImage.gd" type="Script" id=3]
+
+[sub_resource type="StyleBoxEmpty" id=1]
+
+[node name="RemoteImage" type="PanelContainer"]
+anchor_right = 1.0
+rect_min_size = Vector2( 0, 500 )
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+data = {
+}
+
+[node name="Panel" type="Panel" parent="."]
+material = ExtResource( 1 )
+margin_right = 1080.0
+margin_bottom = 500.0
+rect_min_size = Vector2( 500, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+visible = false
+margin_right = 1080.0
+margin_bottom = 500.0
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 6
+
+[node name="HTTPRequest" type="HTTPRequest" parent="."]
+
+[connection signal="request_completed" from="HTTPRequest" to="." method="_on_HTTPRequest_request_completed"]
