@@ -14,6 +14,7 @@ onready var content_text = $MarginContainer/HBoxContainer/ContentContainer/VBoxC
 onready var content_reward = $MarginContainer/HBoxContainer/ContentContainer/VBoxContainer/RewardLabel
 onready var go_down_tex = $MarginContainer/HBoxContainer/PanelContainer/TextureRect
 
+
 var ready = false
 
 func _ready():
@@ -42,9 +43,11 @@ func update():
 		content_reward.set_reward(reward)
 	content_text.text = _content_text 
 
-func set_navigation_target(target: String): 
+func set_navigation_target(target: String, payload = {}): 
 	navigation_target = target
-
+	if payload != {}:
+		set_navigation_payload(payload)
+		
 func set_navigation_payload(any):
 	navigation_payload = any
 
@@ -56,6 +59,7 @@ func set_accent_color(color: Color):
 
 
 func _on_Button_pressed():
+	#if scrolling: return
 	Logger.print("Navigating down: %s" % navigation_target, self)
 	if navigation_target != "": 
 		GameManager.scene_manager.push_scene(navigation_target, navigation_payload)
@@ -65,3 +69,19 @@ func _on_Button_button_down():
 
 func _on_Button_button_up():
 	modulate = Color.white
+
+var last_touch_point : Vector2
+func _gui_input(event):
+	if event is InputEventScreenDrag: # reject input while scrolling
+		_on_Button_button_up()
+		return
+
+	if event is InputEventScreenTouch: 
+		print(event.position)
+		if event.pressed:
+			_on_Button_button_down()
+			last_touch_point = event.position
+		else: 
+			if event.position == last_touch_point:
+				_on_Button_button_up()
+				_on_Button_pressed()

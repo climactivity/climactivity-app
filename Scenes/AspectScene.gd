@@ -13,7 +13,7 @@ onready var tracking_level =  $"ContentContainer/Content/VBoxContainer/MarginCon
 onready var go_to_tracking_button = $"ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview/MarginContainer/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer/CenterContainer/MarginContainer/Button"
 onready var tracking_preview = $"ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview"
 onready var tracking_reward = $ "ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview/CySidePanel/HBoxContainer/MarginContainer/VBoxContainer/CurrentTrackingSetting2/OptionRewardLabel"
-onready var factor_holder = $"ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/InfoGraph/VBoxContainer/MarginContainer2/VBoxContainer/CenterContainer/HBoxContainer/MarginContainer/VBoxContainer"
+onready var factor_holder = $ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/InfoGraph/VBoxContainer/MarginContainer2/FactorHolder
 onready var quest_holder = $"ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/Aufgaben"
 export (Resource) var aspect_data
 
@@ -23,22 +23,27 @@ func _ready():
 	#tracking_settings.connect("emit_option", self, "commit_option")
 	#connect("commit_option", AspectTrackingService, "commit_tracking_level")
 	GameManager.scene_manager.connect("current_transition_finished", self, "anim_start")
+	
 	ready = true
 	_show_data()
 	
 func receive_navigation(navigation_data): 
 	if navigation_data.has("aspect"):
 		aspect_data = navigation_data["aspect"]
-	header.update_header(aspect_data["title"])
-	if aspect_data.icon != null: 
-		header.set_icon_texture(aspect_data.icon)
 	if ready:
 		_show_data()
 
 func _show_data(): 
 	if (aspect_data == null): return
+	var sector = SectorService.get_sector_data(aspect_data.bigpoint)
+	
+	set_screen_title(aspect_data.title)
+	if aspect_data.icon != null: 
+		header.set_icon_texture(aspect_data.icon)
+	set_accent_color(sector["sector_color"])
+	set_header_icon(aspect_data.icon if aspect_data.icon !=null else sector["sector_logo"])
 	factor_holder.set_factors(aspect_data.factors, aspect_data)
-	quest_holder.load_for_aspect(aspect_data._id)
+	quest_holder.load_for_aspect(aspect_data)
 	tracking_question.set_text(aspect_data.tracking.question)
 	tracking_options_label.text = tr("current_tracking_level_label")
 	tracking_level.text = tr("current_tracking_level_unset")

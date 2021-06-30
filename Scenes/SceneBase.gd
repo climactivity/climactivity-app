@@ -30,17 +30,21 @@ func _ready():
 	material = material.duplicate(true)
 	gradient = material.get_shader_param("gradient")
 	dispatch_nav_data()
+	
 func set_accent_color(color): 
 	accent_color = color 
 	if header_bg != null: _set_vars()
-	
+
+func set_header_icon(drawable: Texture): 
+	icon = drawable
+	if header != null: _set_vars()
+
 func _set_vars(): 
 	header_bg.self_modulate = accent_color
 	if gradient != null:
 		gradient.gradient.set_color(0, accent_color)
 		material.set_shader_param("gradient", gradient)
 	$HeaderContainer/Header.update_header(screen_title, icon, accent_color)
-	
 func set_screen_title(label):
 	screen_title = label
 	if header != null: _set_vars()

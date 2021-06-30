@@ -192,61 +192,62 @@ custom_styles/separator = SubResource( 2 )
 custom_constants/separation = -1361
 
 [node name="HomeButton" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer" instance=ExtResource( 4 )]
-margin_right = 126.0
+grow_horizontal = 2
+grow_vertical = 2
 primary_color = Color( 0.988235, 0.988235, 0.988235, 1 )
 menu_label = "home_screen"
 
 [node name="VSeparator2" type="VSeparator" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer"]
-margin_left = 130.0
-margin_right = 171.0
+margin_left = 104.0
+margin_right = 193.0
 margin_bottom = 100.0
 size_flags_horizontal = 3
 custom_styles/separator = SubResource( 2 )
 
 [node name="NotificationButton" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer" instance=ExtResource( 4 )]
-margin_left = 175.0
-margin_right = 370.0
+margin_left = 197.0
+margin_right = 327.0
 primary_color = Color( 0.988235, 0.988235, 0.988235, 1 )
 icon = ExtResource( 2 )
 menu_label = "notifications_screen"
 
 [node name="VSeparator3" type="VSeparator" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer"]
-margin_left = 374.0
-margin_right = 415.0
+margin_left = 331.0
+margin_right = 420.0
 margin_bottom = 100.0
 size_flags_horizontal = 3
 custom_styles/separator = SubResource( 2 )
 
 [node name="StatsButton" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer" instance=ExtResource( 4 )]
-margin_left = 419.0
-margin_right = 540.0
+margin_left = 424.0
+margin_right = 524.0
 primary_color = Color( 0.988235, 0.988235, 0.988235, 1 )
 icon = ExtResource( 1 )
 menu_label = "stats_screen"
 
 [node name="VSeparator4" type="VSeparator" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer"]
-margin_left = 544.0
-margin_right = 585.0
+margin_left = 528.0
+margin_right = 617.0
 margin_bottom = 100.0
 size_flags_horizontal = 3
 custom_styles/separator = SubResource( 2 )
 
 [node name="SocialButton" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer" instance=ExtResource( 4 )]
-margin_left = 589.0
-margin_right = 720.0
+margin_left = 621.0
+margin_right = 721.0
 primary_color = Color( 0.988235, 0.988235, 0.988235, 1 )
 icon = ExtResource( 5 )
 menu_label = "social_screen"
 
 [node name="VSeparator5" type="VSeparator" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer"]
-margin_left = 724.0
-margin_right = 766.0
+margin_left = 725.0
+margin_right = 815.0
 margin_bottom = 100.0
 size_flags_horizontal = 3
 custom_styles/separator = SubResource( 2 )
 
 [node name="SettingsButton" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer" instance=ExtResource( 4 )]
-margin_left = 770.0
+margin_left = 819.0
 margin_right = 920.0
 primary_color = Color( 0.988235, 0.988235, 0.988235, 1 )
 icon = ExtResource( 3 )
