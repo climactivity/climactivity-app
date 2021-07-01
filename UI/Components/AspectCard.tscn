@@ -16,8 +16,7 @@ corner_detail = 20
 [node name="AspectCard" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 0.105
-margin_bottom = 13.4
-rect_min_size = Vector2( 0, 202 )
+margin_bottom = -14.6
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false

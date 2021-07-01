@@ -10,7 +10,7 @@ script = ExtResource( 4 )
 [node name="MarginContainer" type="MarginContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="1"]
 margin_top = 450.0
 margin_right = 1080.0
-margin_bottom = 732.0
+margin_bottom = 530.0
 custom_constants/margin_top = 40
 custom_constants/margin_left = 40
 custom_constants/margin_bottom = 40
@@ -22,7 +22,7 @@ __meta__ = {
 margin_left = 40.0
 margin_top = 40.0
 margin_right = 1080.0
-margin_bottom = 242.0
+margin_bottom = 40.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = 36
@@ -31,7 +31,7 @@ custom_constants/separation = 36
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 1040.0
-margin_bottom = 202.0
+margin_bottom = 0.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 

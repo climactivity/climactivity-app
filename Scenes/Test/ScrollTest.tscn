@@ -63,20 +63,20 @@ material = SubResource( 11 )
 [node name="MarginContainer" type="MarginContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="1"]
 margin_top = 450.0
 margin_right = 1080.0
-margin_bottom = 1244.0
+margin_bottom = 1248.0
 custom_constants/margin_left = 30
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer" index="0"]
 margin_left = 30.0
 margin_right = 1080.0
-margin_bottom = 794.0
+margin_bottom = 798.0
 custom_constants/separation = 20
 
 [node name="ListEntry" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/VBoxContainer" index="0" instance=ExtResource( 2 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 1050.0
-margin_bottom = 290.0
+margin_bottom = 294.0
 custom_styles/panel = SubResource( 12 )
 texture = ExtResource( 3 )
 _content_text = "asdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasd"
@@ -87,18 +87,18 @@ accent_color = Color( 0.0862745, 0.101961, 0.0509804, 1 )
 [node name="ListEntry2" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/VBoxContainer" index="1" instance=ExtResource( 2 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 310.0
+margin_top = 314.0
 margin_right = 1050.0
-margin_bottom = 498.0
+margin_bottom = 502.0
 custom_styles/panel = SubResource( 13 )
 navigation_payload = {
 }
 accent_color = Color( 0.282353, 0.47451, 0.741176, 1 )
 
 [node name="PanelContainer" type="PanelContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/VBoxContainer" index="2"]
-margin_top = 518.0
+margin_top = 522.0
 margin_right = 1050.0
-margin_bottom = 794.0
+margin_bottom = 798.0
 custom_styles/panel = SubResource( 7 )
 
 [node name="RichTextLabel" type="RichTextLabel" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/VBoxContainer/PanelContainer" index="0"]

@@ -12,14 +12,14 @@
 [ext_resource path="res://UI/theme/Button_Important.tres" type="StyleBox" id=18]
 [ext_resource path="res://UI/ListEntry.tscn" type="PackedScene" id=19]
 
-[sub_resource type="StyleBoxFlat" id=7]
+[sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.584314, 0.756863, 0.117647, 1 )
 border_width_left = 4
 border_width_top = 4
 border_width_bottom = 4
 border_color = Color( 1, 1, 1, 1 )
-corner_radius_top_left = 1024
-corner_radius_bottom_left = 1024
+corner_radius_top_left = 90
+corner_radius_bottom_left = 90
 corner_detail = 20
 
 [sub_resource type="Animation" id=2]
@@ -60,12 +60,12 @@ tracks/2/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="StyleBoxFlat" id=9]
+[sub_resource type="StyleBoxFlat" id=3]
 bg_color = Color( 0.960784, 0.960784, 0.960784, 0.513726 )
 
-[sub_resource type="StyleBoxEmpty" id=5]
+[sub_resource type="StyleBoxEmpty" id=4]
 
-[sub_resource type="StyleBoxEmpty" id=6]
+[sub_resource type="StyleBoxEmpty" id=5]
 
 [node name="AspectScene" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
@@ -111,7 +111,7 @@ anchor_bottom = 0.0
 margin_left = 15.0
 margin_right = 1075.0
 margin_bottom = 188.0
-custom_styles/panel = SubResource( 7 )
+custom_styles/panel = SubResource( 1 )
 grab_attention = true
 navigation_payload = {
 }
@@ -157,7 +157,7 @@ margin_bottom = 1636.0
 rect_min_size = Vector2( 0, 500 )
 mouse_filter = 1
 size_flags_vertical = 3
-custom_styles/panel = SubResource( 9 )
+custom_styles/panel = SubResource( 3 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/InfoGraph" index="0"]
 margin_right = 1075.0
@@ -197,7 +197,7 @@ margin_top = 1685.0
 margin_right = 1075.0
 margin_bottom = 2185.0
 rect_min_size = Vector2( 0, 500 )
-custom_styles/panel = SubResource( 5 )
+custom_styles/panel = SubResource( 4 )
 script = ExtResource( 11 )
 
 [node name="MarginContainer" type="MarginContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/Aufgaben" index="0"]
@@ -233,7 +233,7 @@ custom_constants/separation = 36
 margin_top = 2234.0
 margin_right = 1075.0
 margin_bottom = 2284.0
-custom_styles/separator = SubResource( 6 )
+custom_styles/separator = SubResource( 5 )
 custom_constants/separation = 50
 
 [node name="HTTPRequest" type="HTTPRequest" parent="." index="1"]

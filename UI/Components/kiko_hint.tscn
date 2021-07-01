@@ -1,23 +1,11 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://UI/typography/Heading.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Assets/Kiko/kiko_avatar.png" type="Texture" id=2]
 [ext_resource path="res://UI/Components/kiko_hint.gd" type="Script" id=3]
+[ext_resource path="res://Assets/Kiko/speech_bubble.png" type="Texture" id=4]
 
-[sub_resource type="StyleBoxFlat" id=1]
-bg_color = Color( 1, 1, 1, 1 )
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color( 0.584314, 0.756863, 0.121569, 1 )
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
-shadow_color = Color( 0, 0, 0, 0.215686 )
-shadow_size = 12
-shadow_offset = Vector2( 0, 8 )
+[sub_resource type="StyleBoxEmpty" id=1]
 
 [node name="kiko_avatar - placeholder" type="Control"]
 anchor_top = 0.5
@@ -48,10 +36,10 @@ __meta__ = {
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-margin_left = 346.0
-margin_top = -162.0
+margin_left = 243.0
+margin_top = -91.0
 margin_right = -131.0
-margin_bottom = 129.0
+margin_bottom = 150.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_styles/panel = SubResource( 1 )
@@ -60,31 +48,36 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Control2" type="NinePatchRect" parent="SpeechBubbleHolder"]
+margin_right = 693.0
+margin_bottom = 964.0
+texture = ExtResource( 4 )
+patch_margin_left = 90
+patch_margin_top = 111
+patch_margin_right = 83
+patch_margin_bottom = 65
+
 [node name="MarginContainer" type="MarginContainer" parent="SpeechBubbleHolder"]
-margin_left = 2.0
-margin_top = 2.0
-margin_right = 588.0
-margin_bottom = 289.0
+margin_right = 693.0
+margin_bottom = 964.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/margin_right = 20
 custom_constants/margin_top = 20
-custom_constants/margin_left = 20
+custom_constants/margin_left = 80
 custom_constants/margin_bottom = 20
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="DialogLine" type="Label" parent="SpeechBubbleHolder/MarginContainer"]
-margin_left = 20.0
+[node name="DialogLine" type="RichTextLabel" parent="SpeechBubbleHolder/MarginContainer"]
+margin_left = 80.0
 margin_top = 20.0
-margin_right = 566.0
-margin_bottom = 267.0
+margin_right = 673.0
+margin_bottom = 944.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = ExtResource( 1 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-autowrap = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
+custom_fonts/normal_font = ExtResource( 1 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+bbcode_enabled = true
+fit_content_height = true
