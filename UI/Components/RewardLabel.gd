@@ -5,7 +5,7 @@ class_name RewardLabel
 export (Resource) var _reward setget set_reward, get_reward
 
 var ready = false
-onready var label = $MarginContainer/Label
+
 func _ready():
 	ready = true
 	update()
