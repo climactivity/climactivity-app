@@ -1,14 +1,17 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://UI/Components/RewardLabel.gd" type="Script" id=1]
 [ext_resource path="res://UI/typography/UI_Regular.tres" type="DynamicFont" id=2]
 [ext_resource path="res://UI/Components/Reward.gd" type="Script" id=3]
+[ext_resource path="res://Assets/Icons/coins-stack.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Icons/xp_star.png" type="Texture" id=5]
+[ext_resource path="res://UI/theme/style_box_empty.tres" type="StyleBox" id=6]
 
 [sub_resource type="StyleBoxFlat" id=1]
 content_margin_left = 8.0
 content_margin_right = 8.0
 content_margin_bottom = 4.0
-bg_color = Color( 0.584314, 0.756863, 0.117647, 1 )
+bg_color = Color( 1, 1, 1, 1 )
 border_width_left = 1
 border_width_top = 1
 border_width_right = 1
@@ -20,10 +23,12 @@ corner_radius_bottom_right = 1024
 corner_radius_bottom_left = 1024
 expand_margin_left = 10.0
 expand_margin_right = 10.0
+expand_margin_top = 5.0
+expand_margin_bottom = 5.0
 
 [node name="RewardLabel" type="PanelContainer"]
-margin_right = 276.0
-margin_bottom = 78.0
+anchor_right = 1.0
+anchor_bottom = 1.0
 rect_scale = Vector2( 0.998902, 0.987026 )
 size_flags_horizontal = 9
 custom_styles/panel = SubResource( 1 )
@@ -33,6 +38,7 @@ __meta__ = {
 }
 
 [node name="Label" type="RichTextLabel" parent="."]
+visible = false
 margin_left = 8.0
 margin_top = 5.0
 margin_right = 268.0
@@ -48,3 +54,61 @@ text = " 500  1000"
 fit_content_height = true
 scroll_active = false
 script = ExtResource( 3 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_left = 8.0
+margin_top = 1.0
+margin_right = 1072.0
+margin_bottom = 1916.0
+alignment = 1
+
+[node name="coins_icon_holder" type="MarginContainer" parent="HBoxContainer"]
+margin_left = 425.0
+margin_right = 465.0
+margin_bottom = 1915.0
+rect_min_size = Vector2( 40, 40 )
+
+[node name="coins_icon" type="TextureRect" parent="HBoxContainer/coins_icon_holder"]
+margin_right = 40.0
+margin_bottom = 1915.0
+texture = ExtResource( 4 )
+expand = true
+stretch_mode = 6
+
+[node name="coins_label" type="Label" parent="HBoxContainer"]
+margin_left = 469.0
+margin_top = 936.0
+margin_right = 523.0
+margin_bottom = 979.0
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0.411765, 0.411765, 0.407843, 1 )
+text = "500"
+
+[node name="VSeparator" type="VSeparator" parent="HBoxContainer"]
+margin_left = 527.0
+margin_right = 537.0
+margin_bottom = 1915.0
+custom_styles/separator = ExtResource( 6 )
+custom_constants/separation = 10
+
+[node name="xp_icon_holder" type="MarginContainer" parent="HBoxContainer"]
+margin_left = 541.0
+margin_right = 581.0
+margin_bottom = 1915.0
+rect_min_size = Vector2( 40, 40 )
+
+[node name="xp_icon" type="TextureRect" parent="HBoxContainer/xp_icon_holder"]
+margin_right = 40.0
+margin_bottom = 1915.0
+texture = ExtResource( 5 )
+expand = true
+stretch_mode = 6
+
+[node name="xp_label" type="Label" parent="HBoxContainer"]
+margin_left = 585.0
+margin_top = 936.0
+margin_right = 639.0
+margin_bottom = 979.0
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0.411765, 0.411765, 0.407843, 1 )
+text = "500"

@@ -3,7 +3,7 @@ extends Panel
 var _sector_data = preload("res://ForestScene3d/Tents/SectorData.gd").new().sector_data
 var sector_data = null
 var loading = true
-var bp_aspect_card = preload("res://UI/Components/AspectCard.tscn")
+var bp_aspect_card = preload("res://UI/ListEntry.tscn")
 var navigation_data = {}
 var aspect_resources = []
 
@@ -54,8 +54,17 @@ func render_resources():
 	Util.clear(aspect_list)
 	for aspect in aspect_resources: 
 		var aspect_card = bp_aspect_card.instance()
-		aspect_card.set_aspect(aspect)
 		aspect_list.add_child(aspect_card)
+
+		aspect_card.set_content_text(aspect.title)
+		if aspect.icon != null: 
+			aspect_card.set_icon(aspect.icon)
+		else: 
+			aspect_card.set_icon(sector_data["sector_logo"])
+		aspect_card.set_navigation_target("res://Scenes/AspectScene.tscn")
+		aspect_card.set_navigation_payload({"aspect": aspect})
+		aspect_card.set_accent_color(sector_data["sector_color"])		
+		
 	$HeaderContainer/Header.update_header(sector_data["sector_title"], sector_data["sector_logo"], sector_data["sector_color"])
 	if gradient != null:
 		gradient.gradient.set_color(0, sector_data["sector_color"])

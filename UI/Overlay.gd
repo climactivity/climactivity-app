@@ -26,7 +26,9 @@ func _close_popup():
 func show_dialog(timeline_name: String):
 	var dialog_box = Dialogic.start(timeline_name, false)
 	add_child(dialog_box)
-	dialog_box.connect("timeline_end", self, "after_dialog")
+	dialog_box.connect("timeline_end", self, "dialog_timeline_completed")
+	$AnimationPlayer.play("ShowDialog")
 
 func dialog_timeline_completed(timeline_name: String):
 	Logger.print("Finished dialog %s" % timeline_name, self)
+	$AnimationPlayer.play("HideDialog")

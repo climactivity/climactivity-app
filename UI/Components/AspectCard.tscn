@@ -24,7 +24,8 @@ __meta__ = {
 }
 
 [node name="ListEntry" parent="." instance=ExtResource( 1 )]
-margin_bottom = 182.0
+anchor_bottom = 1.0
+margin_bottom = 0.0
 custom_styles/panel = SubResource( 1 )
 navigation_payload = {
 }
