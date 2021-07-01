@@ -6,7 +6,6 @@ var image
 var tex = null
 func on_data(new_data:Dictionary):
 	if new_data.size() == 0: 
-		print("oops, no data")
 		return
 	data = new_data
 	var attrs = data["attrs"]

@@ -2,6 +2,13 @@ tool extends RichTextLabel
 
 export var data = [] setget on_data
 
+# handle clicks un urls etc
+func _ready():
+	connect("meta_clicked", self, "open_link")
+
+func open_link(meta): 
+	print(meta)
+	OS.shell_open(meta)
 
 #"""TODO generate bbcode from parsed json dict
 func _parse_data_object(data) -> String: 
@@ -15,7 +22,7 @@ func _parse_data_object(data) -> String:
 		elif (paragraph_dict.type == "image"):
 			get_parent().add_image(paragraph_dict)
 		else: 
-			Logger.print("Unkown type: " + paragraph_dict.type, self)
+			print("Unkown type: " + paragraph_dict.type, self)
 		if paragraph_dict.has("marks"):
 			for mark in paragraph_dict["marks"]:
 				match mark["type"]:
@@ -23,8 +30,11 @@ func _parse_data_object(data) -> String:
 						paragraph = "[b]" + paragraph +  "[/b]"
 					"em":
 						paragraph = "[i]" + paragraph +  "[/i]"
+					"link":
+						var href = mark["attrs"]["href"]
+						paragraph = ("[url=%s]" % href) + paragraph + "[/url]"
 					_: 
-						Logger.print("Unkown mark type: " + mark["type"], self)
+						print("Unkown mark type: " + mark["type"], self)
 		text = text + paragraph 
 	return text + "\n"
 

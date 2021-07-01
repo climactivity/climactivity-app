@@ -12,3 +12,32 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+json_doc = " [
+      {
+        \"type\": \"paragraph\",
+        \"content\": [
+          {
+            \"type\": \"text\",
+            \"text\": \"Ich lese mir die 6-seitige BUND-Broschüre \"
+          },
+          {
+            \"type\": \"text\",
+            \"marks\": [
+              {
+                \"type\": \"link\",
+                \"attrs\": {
+                  \"href\": \"https://www.bund.net/service/publikationen/detail/publication/weniger-ist-mehr-sieben-schritte-fuer-einen-klima-und-ressourcen-schonenden-luftverkehr/\",
+                  \"title\": \"\"
+                }
+              }
+            ],
+            \"text\": \"„Weniger ist mehr! Sieben Schritte für einen klima- und ressourcenschonenden Luftverkehr“\"
+          },
+          {
+            \"type\": \"text\",
+            \"text\": \" durch, die einen guten Überblick darüber gibt, was beim Thema Fliegen & Klimaschutz politisch geschehen muss.\"
+          }
+        ]
+      }
+    ]
+ "

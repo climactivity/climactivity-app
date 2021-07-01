@@ -63,13 +63,13 @@ material = SubResource( 11 )
 [node name="MarginContainer" type="MarginContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="1"]
 margin_top = 450.0
 margin_right = 1080.0
-margin_bottom = 1193.0
+margin_bottom = 1244.0
 custom_constants/margin_left = 30
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer" index="0"]
 margin_left = 30.0
 margin_right = 1080.0
-margin_bottom = 743.0
+margin_bottom = 794.0
 custom_constants/separation = 20
 
 [node name="ListEntry" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/VBoxContainer" index="0" instance=ExtResource( 2 )]
@@ -98,14 +98,14 @@ accent_color = Color( 0.282353, 0.47451, 0.741176, 1 )
 [node name="PanelContainer" type="PanelContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/VBoxContainer" index="2"]
 margin_top = 518.0
 margin_right = 1050.0
-margin_bottom = 743.0
+margin_bottom = 794.0
 custom_styles/panel = SubResource( 7 )
 
 [node name="RichTextLabel" type="RichTextLabel" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/VBoxContainer/PanelContainer" index="0"]
 margin_left = 36.0
 margin_top = 36.0
 margin_right = 1014.0
-margin_bottom = 189.0
+margin_bottom = 240.0
 custom_fonts/mono_font = ExtResource( 6 )
 custom_fonts/bold_italics_font = ExtResource( 8 )
 custom_fonts/italics_font = ExtResource( 7 )
@@ -115,8 +115,10 @@ custom_colors/default_color = Color( 0.0705882, 0.0705882, 0.0705882, 1 )
 bbcode_enabled = true
 bbcode_text = "[i]Hier[/i]
 [b] ist [/b] 
-[b] [i]Text [/i] [/b]"
+[b] [i]Text [/i] [/b]
+[url] https[/url]"
 text = "Hier
  ist  
- Text  "
+ Text  
+ https"
 fit_content_height = true
