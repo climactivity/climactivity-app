@@ -64,7 +64,7 @@ func render_resources():
 		aspect_card.set_navigation_target("res://Scenes/AspectScene.tscn")
 		aspect_card.set_navigation_payload({"aspect": aspect})
 		aspect_card.set_accent_color(sector_data["sector_color"])		
-		
+		aspect_card.is_start_hidden(true)
 	$HeaderContainer/Header.update_header(sector_data["sector_title"], sector_data["sector_logo"], sector_data["sector_color"])
 	if gradient != null:
 		gradient.gradient.set_color(0, sector_data["sector_color"])

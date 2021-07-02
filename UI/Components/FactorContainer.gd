@@ -15,7 +15,9 @@ func set_factors(new_factors, new_aspect):
 
 func _update_display():
 	var sector = SectorService.get_sector_data(aspect.bigpoint)
-
+	var reentering = false
+	if get_child_count() > 1:
+		reentering = true
 	Util.clear(self) 
 	if factors == null: 
 		return
@@ -24,7 +26,7 @@ func _update_display():
 		factor_list_entry.set_content_text(factor.name)
 		factor_list_entry.set_navigation_target("res://Scenes/GesichtspunktScreen.tscn", {"factor": factor, "aspect": aspect, "sector": sector})
 		factor_list_entry.set_accent_color(sector["sector_color"])
-		factor_list_entry.is_start_hidden(true)
+		factor_list_entry.is_start_hidden(!reentering)
 		if factor.has('icon'): 
 			factor_list_entry.set_icon(factor.icon)
 		elif aspect.icon != null: 

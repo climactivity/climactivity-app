@@ -3,12 +3,17 @@ extends Control
 class_name RewardLabel
 
 export (Resource) var _reward setget set_reward, get_reward
+enum SIZE {normal, big, huge}
+export (SIZE) var label_size setget set_label_size
 
 var ready = false
 
 func _ready():
 	ready = true
 	update()
+
+func set_label_size(_size):
+	label_size = _size
 	
 func set_reward(reward):
 	_reward = reward

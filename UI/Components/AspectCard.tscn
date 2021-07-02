@@ -13,7 +13,9 @@ corner_radius_top_left = 90
 corner_radius_bottom_left = 90
 corner_detail = 20
 
-[node name="AspectCard" type="Control"]
+[node name="AspectCard" type="Control" groups=[
+"animatable",
+]]
 anchor_right = 1.0
 anchor_bottom = 0.105
 margin_bottom = -14.6
@@ -24,7 +26,10 @@ __meta__ = {
 
 [node name="ListEntry" parent="." instance=ExtResource( 1 )]
 anchor_bottom = 1.0
+margin_left = 15.0
+margin_right = 14.999
 margin_bottom = 1.0
 custom_styles/panel = SubResource( 1 )
 navigation_payload = {
 }
+start_hidden = true

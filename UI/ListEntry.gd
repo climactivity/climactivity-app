@@ -11,6 +11,7 @@ export (Dictionary) var navigation_payload = {} setget set_navigation_payload
 export (Color) var accent_color = Color("95c11e") setget set_accent_color
 export (PackedScene) var button_replacement
 export var start_hidden = false setget is_start_hidden
+var has_entered_scene_animated = false
 onready var icon = $MarginContainer/HBoxContainer/IconContainer/CenterContainer/Capsule
 onready var content_holder = $MarginContainer/HBoxContainer/ContentContainer
 onready var content_text = $MarginContainer/HBoxContainer/ContentContainer/VBoxContainer/RichTextLabel
@@ -29,9 +30,13 @@ func is_start_hidden(_start_hidden):
 		_start_hidden()
 	
 func _start_hidden(): 
+	if has_entered_scene_animated:
+		return
 	if start_hidden: 
 		$AnimationPlayer.play("hide")
+		DEBUG_print()
 	else:
+#		has_entered_scene_animated = true
 		$AnimationPlayer.play("RESET")
 
 func _ready():
@@ -83,6 +88,7 @@ func set_accent_color(color: Color):
 
 
 func play_enter():
+	has_entered_scene_animated = true
 	$AnimationPlayer.play("Enter")
 
 func _on_Button_pressed():
@@ -112,3 +118,7 @@ func _gui_input(event):
 			if event.position == last_touch_point:
 				_on_Button_button_up()
 				_on_Button_pressed()
+
+
+func DEBUG_print():
+	print("hiding %s" % name, ", has_entered_scene_animated: " + str(has_entered_scene_animated), ", start_hidden: "  + str(start_hidden))
