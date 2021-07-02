@@ -1,0 +1,46 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item; 
+
+uniform float width = 64;
+uniform float height = 64;
+uniform float scale = 1; 
+uniform bool skew_enabled = false; 
+
+uniform vec2 interaction_pos = vec2(0.0); 
+uniform vec4 shadow_color : hint_color; 
+
+void vertex() {
+	float x = VERTEX.x;
+	float y = VERTEX.y;
+	/*
+	float half_width = width / 2.0;
+	float half_height = height / 2.0;
+	if (x <= 0.0) {
+		x = -half_width * scale;
+	} else {
+		x = half_width * scale;
+	}
+
+
+	if (y <= 0.0) {
+		y = -half_height * scale;
+	} else {
+		y = half_height * scale;
+	}
+
+	*/
+	VERTEX = vec2(x, y);
+	
+}
+"
+
+[resource]
+shader = SubResource( 1 )
+shader_param/width = 64.0
+shader_param/height = 64.0
+shader_param/scale = 1.0
+shader_param/skew_enabled = false
+shader_param/interaction_pos = Vector2( 0, 0 )
+shader_param/shadow_color = null

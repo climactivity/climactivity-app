@@ -1,53 +1,184 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://UI/typography/Content_Regular.tres" type="DynamicFont" id=1]
 [ext_resource path="res://UI/Components/TrackingOption.gd" type="Script" id=2]
 [ext_resource path="res://UI/Components/RadioButton.tscn" type="PackedScene" id=3]
 [ext_resource path="res://UI/Components/RewardLabel.tscn" type="PackedScene" id=4]
+[ext_resource path="res://UI/Components/SM_HoverCardShadow.tres" type="Material" id=5]
+[ext_resource path="res://UI/Components/HoverCard.gd" type="Script" id=6]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.6, 0.6, 0.6, 0 )
 border_width_top = 2
 border_color = Color( 1, 1, 1, 1 )
 
-[sub_resource type="StyleBoxEmpty" id=2]
+[sub_resource type="Shader" id=4]
+code = "shader_type canvas_item; 
+
+uniform float width = 64;
+uniform float height = 64;
+uniform float scale = 1; 
+uniform bool skew_enabled = false; 
+
+uniform vec2 interaction_pos = vec2(0.0); 
+uniform vec4 shadow_color : hint_color; 
+
+void vertex() {
+	float x = VERTEX.x;
+	float y = VERTEX.y;
+	/*
+	float half_width = width / 2.0;
+	float half_height = height / 2.0;
+	if (x <= 0.0) {
+		x = -half_width * scale;
+	} else {
+		x = half_width * scale;
+	}
+
+
+	if (y <= 0.0) {
+		y = -half_height * scale;
+	} else {
+		y = half_height * scale;
+	}
+
+	*/
+	VERTEX = vec2(x, y);
+	
+}
+
+void fragment() {
+	vec2 uv = UV; 
+	
+	float skew_x = interaction_pos.x / width; 
+	float skew_y = interaction_pos.y / height; 
+	uv.x = (uv.x - 0.5);
+	uv.y = (uv.y - 0.5);
+	float sx = 1.0 - (uv.x * skew_x);
+	float sy = 1.0 - (uv.y * skew_y);
+	float z = 1.0 + (sx * sy) /2.0; 
+	uv.x = uv.x /z;
+	uv.y = uv.y /z;
+	uv.x = uv.x /0.65+ 0.5;
+	uv.y = uv.y /0.6+ 0.5;
+	COLOR = texture(TEXTURE, uv);
+	if (uv.x < 0.0 || uv.x > 1.0) {
+		COLOR.a = 0.0;
+	} else if (uv.y < 0.0 || uv.y > 1.0) {
+		COLOR.a = 0.0;
+	} else {
+		// brightness
+		float brightness = 1.0 - interaction_pos.y / (height / 2.0) * 0.2;
+		COLOR.rgb = texture(TEXTURE, uv, 1.0).rgb * brightness;
+		
+		COLOR.a = texture(TEXTURE, uv, 1.0).a;
+	}
+}"
+
+[sub_resource type="ShaderMaterial" id=5]
+shader = SubResource( 4 )
+shader_param/width = 1080.0
+shader_param/height = 174.0
+shader_param/scale = 1.0
+shader_param/skew_enabled = false
+shader_param/interaction_pos = Vector2( -1.83027, -20 )
+shader_param/shadow_color = null
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.94902, 0.92549, 0.92549, 1 )
+border_color = Color( 0.00392157, 0, 0, 1 )
+shadow_color = Color( 0, 0, 0, 0.129412 )
+shadow_offset = Vector2( 0, 8.174 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "Hover"
+length = 4.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("ViewportContainer:interaction_pos")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( -0.1, 1, 2.1, 3, 4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( -20, 20 ), Vector2( -20, -20 ), Vector2( 20, -20 ), Vector2( 0, 0 ) ]
+}
 
 [node name="Option" type="PanelContainer"]
 anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_bottom = 0.092
+margin_bottom = -0.640015
+rect_min_size = Vector2( 0, 176 )
 custom_styles/panel = SubResource( 1 )
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="ViewportContainer" type="ViewportContainer" parent="."]
+material = SubResource( 5 )
 margin_top = 2.0
 margin_right = 1080.0
-margin_bottom = 1920.0
+margin_bottom = 176.0
+stretch = true
+script = ExtResource( 6 )
+interaction_pos = Vector2( -1.83027, -20 )
+
+[node name="Viewport" type="Viewport" parent="ViewportContainer"]
+size = Vector2( 1086, 189 )
+transparent_bg = true
+handle_input_locally = false
+msaa = 2
+fxaa = true
+keep_3d_linear = true
+usage = 1
+render_target_update_mode = 3
+
+[node name="Panel2" type="Panel" parent="ViewportContainer/Viewport"]
+material = ExtResource( 5 )
+margin_top = 2.0
+margin_right = 1080.0
+margin_bottom = 176.0
+custom_styles/panel = SubResource( 2 )
+
+[node name="Panel" type="Panel" parent="ViewportContainer/Viewport"]
+margin_top = 2.0
+margin_right = 1080.0
+margin_bottom = 176.0
+custom_styles/panel = SubResource( 2 )
+
+[node name="MarginContainer" type="MarginContainer" parent="ViewportContainer/Viewport/Panel"]
+margin_right = 1080.0
+margin_bottom = 174.0
+mouse_filter = 2
 size_flags_horizontal = 3
 custom_constants/margin_right = 30
-custom_constants/margin_top = 4
+custom_constants/margin_top = 36
 custom_constants/margin_left = 30
-custom_constants/margin_bottom = 4
+custom_constants/margin_bottom = 36
 
-[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer"]
+[node name="MarginContainer2" type="MarginContainer" parent="ViewportContainer/Viewport/Panel/MarginContainer"]
 margin_left = 30.0
-margin_top = 4.0
+margin_top = 36.0
 margin_right = 1050.0
-margin_bottom = 1914.0
+margin_bottom = 138.0
+mouse_filter = 2
 custom_constants/margin_right = 79
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/MarginContainer2"]
+[node name="VBoxContainer" type="VBoxContainer" parent="ViewportContainer/Viewport/Panel/MarginContainer/MarginContainer2"]
 margin_right = 941.0
-margin_bottom = 1910.0
+margin_bottom = 102.0
+mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="MarginContainer/MarginContainer2/VBoxContainer"]
+[node name="Label" type="Label" parent="ViewportContainer/Viewport/Panel/MarginContainer/MarginContainer2/VBoxContainer"]
 margin_right = 941.0
 margin_bottom = 50.0
 size_flags_horizontal = 3
@@ -58,23 +189,24 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Reward" parent="MarginContainer/MarginContainer2/VBoxContainer" instance=ExtResource( 4 )]
+[node name="Reward" parent="ViewportContainer/Viewport/Panel/MarginContainer/MarginContainer2/VBoxContainer" instance=ExtResource( 4 )]
 anchor_right = 0.0
-anchor_bottom = 0.0
 margin_left = 711.0
 margin_top = 54.0
 margin_right = 941.0
 margin_bottom = 102.0
 rect_scale = Vector2( 1, 1 )
+mouse_filter = 2
 size_flags_horizontal = 8
 
-[node name="HBoxContainer" type="Control" parent="MarginContainer"]
+[node name="HBoxContainer" type="Control" parent="ViewportContainer/Viewport/Panel/MarginContainer"]
 margin_left = 30.0
-margin_top = 4.0
+margin_top = 36.0
 margin_right = 1050.0
-margin_bottom = 1914.0
+margin_bottom = 138.0
+mouse_filter = 2
 
-[node name="SelectButton" parent="MarginContainer/HBoxContainer" instance=ExtResource( 3 )]
+[node name="SelectButton" parent="ViewportContainer/Viewport/Panel/MarginContainer/HBoxContainer" instance=ExtResource( 3 )]
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_bottom = 0.5
@@ -82,10 +214,10 @@ margin_left = -38.0
 margin_top = -52.0
 margin_bottom = 52.0
 
-[node name="Panel" type="Panel" parent="."]
-margin_top = 2.0
-margin_right = 1080.0
-margin_bottom = 1920.0
-custom_styles/panel = SubResource( 2 )
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Hover"
+anims/Hover = SubResource( 3 )
 
-[connection signal="gui_input" from="Panel" to="." method="_on_Panel_gui_input"]
+[connection signal="selected" from="." to="ViewportContainer" method="_on_Option_selected"]
+[connection signal="gui_input" from="ViewportContainer/Viewport/Panel2" to="." method="_on_Panel_gui_input"]
+[connection signal="gui_input" from="ViewportContainer/Viewport/Panel" to="." method="_on_Panel_gui_input"]

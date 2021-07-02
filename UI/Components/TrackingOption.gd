@@ -5,9 +5,9 @@ signal selected(option)
 var option_data setget set_tracking_option_data
 export (NodePath) var checkbox_controller_path setget set_checkbox_controller_path, get_checkbox_controller_path
 var checkox_controller
-onready var label = $MarginContainer/MarginContainer2/VBoxContainer/Label
-onready var reward_label = $MarginContainer/MarginContainer2/VBoxContainer/Reward
-onready var select_button = $MarginContainer/HBoxContainer/SelectButton
+onready var label = $ViewportContainer/Viewport/Panel/MarginContainer/MarginContainer2/VBoxContainer/Label
+onready var reward_label = $ViewportContainer/Viewport/Panel/MarginContainer/MarginContainer2/VBoxContainer/Reward
+onready var select_button = $ViewportContainer/Viewport/Panel/MarginContainer/HBoxContainer/SelectButton
 var preselected = false
 func _ready(): 
 	if option_data == null: return

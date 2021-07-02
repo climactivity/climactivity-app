@@ -33,3 +33,8 @@ func update():
 		$HBoxContainer/coins_label.text = coins_str
 		$HBoxContainer/xp_label.text = xp_str
 		
+		$HBoxContainer/coins_icon_holder.visible = coins_str != ""
+		$HBoxContainer/xp_icon_holder.visible = xp_str != ""
+		
+		if coins_str == "" and xp_str == "": 
+			visible = false

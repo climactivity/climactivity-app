@@ -1,0 +1,73 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+
+[sub_resource type="Shader" id=4]
+code = "shader_type canvas_item; 
+
+uniform float width = 64;
+uniform float height = 64;
+uniform float scale = 1; 
+uniform bool skew_enabled = false; 
+
+uniform vec2 interaction_pos = vec2(0.0); 
+uniform vec4 shadow_color : hint_color; 
+
+void vertex() {
+	float x = VERTEX.x;
+	float y = VERTEX.y;
+	/*
+	float half_width = width / 2.0;
+	float half_height = height / 2.0;
+	if (x <= 0.0) {
+		x = -half_width * scale;
+	} else {
+		x = half_width * scale;
+	}
+
+
+	if (y <= 0.0) {
+		y = -half_height * scale;
+	} else {
+		y = half_height * scale;
+	}
+
+	*/
+	VERTEX = vec2(x, y);
+	
+}
+
+void fragment() {
+	vec2 uv = UV; 
+	
+	float skew_x = interaction_pos.x / width; 
+	float skew_y = interaction_pos.y / height; 
+	uv.x = (uv.x - 0.5);
+	uv.y = (uv.y - 0.5);
+	float sx = 1.0 - (uv.x * skew_x);
+	float sy = 1.0 - (uv.y * skew_y);
+	float z = 1.0 + (sx * sy) /2.0; 
+	uv.x = uv.x /z;
+	uv.y = uv.y /z;
+	uv.x = uv.x /0.65+ 0.5;
+	uv.y = uv.y /0.6+ 0.5;
+	COLOR = texture(TEXTURE, uv);
+	if (uv.x < 0.0 || uv.x > 1.0) {
+		COLOR.a = 0.0;
+	} else if (uv.y < 0.0 || uv.y > 1.0) {
+		COLOR.a = 0.0;
+	} else {
+		// brightness
+		float brightness = 1.0 - interaction_pos.y / (height / 2.0) * 0.2;
+		COLOR.rgb = texture(TEXTURE, uv, 1.0).rgb * brightness;
+		
+		COLOR.a = texture(TEXTURE, uv, 1.0).a;
+	}
+}"
+
+[resource]
+shader = SubResource( 4 )
+shader_param/width = 64.0
+shader_param/height = 64.0
+shader_param/scale = 1.0
+shader_param/skew_enabled = false
+shader_param/interaction_pos = Vector2( 0, 0 )
+shader_param/shadow_color = null
