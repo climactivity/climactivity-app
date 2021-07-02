@@ -10,6 +10,7 @@ export (String) var navigation_target  = "" setget set_navigation_target
 export (Dictionary) var navigation_payload = {} setget set_navigation_payload
 export (Color) var accent_color = Color("95c11e") setget set_accent_color
 export (PackedScene) var button_replacement
+export var start_hidden = false setget is_start_hidden
 onready var icon = $MarginContainer/HBoxContainer/IconContainer/CenterContainer/Capsule
 onready var content_holder = $MarginContainer/HBoxContainer/ContentContainer
 onready var content_text = $MarginContainer/HBoxContainer/ContentContainer/VBoxContainer/RichTextLabel
@@ -22,9 +23,21 @@ var ready = false
 func grab_attention():
 	return grab_attention 
 
+func is_start_hidden(_start_hidden):
+	start_hidden = _start_hidden
+	if ready:
+		_start_hidden()
+	
+func _start_hidden(): 
+	if start_hidden: 
+		$AnimationPlayer.play("hide")
+	else:
+		$AnimationPlayer.play("RESET")
+
 func _ready():
 	ready = true
 	update()
+	_start_hidden()
 
 func set_icon(tex : Texture): 
 	texture = tex
@@ -68,6 +81,9 @@ func set_accent_color(color: Color):
 	bg_style.set_bg_color(color)
 	set('custom_styles/panel', bg_style) # panel is now green
 
+
+func play_enter():
+	$AnimationPlayer.play("Enter")
 
 func _on_Button_pressed():
 	#if scrolling: return

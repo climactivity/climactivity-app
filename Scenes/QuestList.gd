@@ -29,6 +29,7 @@ func _update():
 		quest_card_inst.set_navigation_target("res://Scenes/QuestScene.tscn",{"quest": quest, "sector": sector, "aspect": aspect})
 		quest_card_inst.set_accent_color(sector["sector_color"])
 		quest_card_inst.set_reward_display(quest.reward)
+		quest_card_inst.is_start_hidden(true)
 #		if quest.has('icon'): 
 #			quest_card_inst.set_icon(factor.icon)
 		if aspect.icon != null: 

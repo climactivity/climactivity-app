@@ -26,6 +26,9 @@ func update():
 func _on_enter_button_pressed():
 	GameManager.scene_manager.push_scene("res://Scenes/AspectScene.tscn", {"aspect": aspect_resource})
 
+func play_enter():
+	list_entry.play_enter()
+
 func _on_MarginContainer_gui_input(event):
 	if event is InputEventMouseButton:
 		if event.pressed and event.button_index == BUTTON_LEFT: 

@@ -9,8 +9,8 @@ border_width_left = 4
 border_width_top = 4
 border_width_bottom = 4
 border_color = Color( 1, 1, 1, 1 )
-corner_radius_top_left = 1024
-corner_radius_bottom_left = 1024
+corner_radius_top_left = 90
+corner_radius_bottom_left = 90
 corner_detail = 20
 
 [node name="AspectCard" type="Control"]
@@ -24,7 +24,7 @@ __meta__ = {
 
 [node name="ListEntry" parent="." instance=ExtResource( 1 )]
 anchor_bottom = 1.0
-margin_bottom = 0.0
+margin_bottom = 1.0
 custom_styles/panel = SubResource( 1 )
 navigation_payload = {
 }

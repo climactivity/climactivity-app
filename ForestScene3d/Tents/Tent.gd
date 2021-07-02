@@ -22,8 +22,8 @@ var sectors = {
 		}
 	},
 	"mobility": {
-		"texture": preload("res://Assets/sketch/zelt_neu/zelt_hellblau_ZU.png"),
-		"target_scene": "res://Scenes/BigPointScene.tscn",
+		"texture": preload("res://Assets/sketch/zelt_neu/zelt_gelb_ZU.png"), 
+		"target_scene": "res://Scenes/BigPointScene.tscn", 
 		"navigation_data": {
 			"sector": "mobility",
 			"sector_title": "Zelt der Mobilität",
@@ -40,7 +40,7 @@ var sectors = {
 		}
 	},
 	"private_engagement": {
-		"texture": preload("res://Assets/sketch/zelt_neu/zelt_gelb_ZU.png"),
+		"texture": preload("res://Assets/sketch/zelt_neu/zelt_hellblau_ZU.png"),
 		"target_scene": "res://Scenes/BigPointScene.tscn",
 		"navigation_data": {
 			"sector": "private_engagement",

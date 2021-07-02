@@ -24,6 +24,7 @@ func _update_display():
 		factor_list_entry.set_content_text(factor.name)
 		factor_list_entry.set_navigation_target("res://Scenes/GesichtspunktScreen.tscn", {"factor": factor, "aspect": aspect, "sector": sector})
 		factor_list_entry.set_accent_color(sector["sector_color"])
+		factor_list_entry.is_start_hidden(true)
 		if factor.has('icon'): 
 			factor_list_entry.set_icon(factor.icon)
 		elif aspect.icon != null: 

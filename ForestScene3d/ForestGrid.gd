@@ -31,7 +31,7 @@ var DEBUG_placeables = {
 var fixed_obejcts = {
 	Vector2(2,2): {
 		"scene": placeables["tent_scene"],
-		"params": ["mobility"]
+		"params": ["private_engagement"]
 	},
 	Vector2(2,0): {
 		"scene": placeables["tent_scene"],
@@ -47,7 +47,7 @@ var fixed_obejcts = {
 	},
 	Vector2(-2,0): {
 		"scene": placeables["tent_scene"],
-		"params": ["private_engagement"]
+		"params": ["mobility"]
 	},
 	Vector2(0,-2): {
 		"scene": placeables["tent_scene"],

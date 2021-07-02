@@ -1,45 +1,111 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://UI/typography/Heading.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Assets/Kiko/kiko_avatar.png" type="Texture" id=2]
 [ext_resource path="res://UI/Components/kiko_hint.gd" type="Script" id=3]
 [ext_resource path="res://Assets/Kiko/speech_bubble.png" type="Texture" id=4]
+[ext_resource path="res://UI/theme/style_box_empty.tres" type="StyleBox" id=5]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
-[node name="kiko_avatar - placeholder" type="Control"]
-anchor_top = 0.5
-anchor_bottom = 0.5
-margin_top = -159.0
-margin_right = 1067.0
-margin_bottom = 160.0
+[sub_resource type="Animation" id=2]
+resource_name = "Enter"
+length = 1.8
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("SpeechBubbleHolder:rect_position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( -300, -0.25, 0, 0.25, 0, -300, -0.25, 0, 0.25, 0, 13.5589, -0.25, 0, 0.062564, -1.3396, -0.171961, -0.0459796, -0.171961, 0.0754982, 0, 0, -0.0390671, 0.497835, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5, 1.2, 1.4, 1.5 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("SpeechBubbleHolder:modulate:a")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5, 1.2 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("MarginContainer2/Control:rect_position:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( -100, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.7 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("MarginContainer2/Control:modulate:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.7 )
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("SpeechBubbleHolder/MarginContainer/MarginContainer/DialogLine:percent_visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 1, 1.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 1.0 ]
+}
+
+[node name="kiko_avatar - placeholder" type="PanelContainer"]
+anchor_right = 1.0
+margin_bottom = 190.0
 rect_min_size = Vector2( 0, 400 )
+custom_styles/panel = ExtResource( 5 )
 script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Control" type="TextureRect" parent="."]
-anchor_top = 0.5
-anchor_bottom = 0.5
-margin_left = 67.2717
-margin_top = -151.0
-margin_right = 312.272
-margin_bottom = 151.0
+[node name="MarginContainer2" type="AspectRatioContainer" parent="."]
+margin_right = 400.0
+margin_bottom = 400.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="Control" type="TextureRect" parent="MarginContainer2"]
+modulate = Color( 1, 1, 1, 0 )
+margin_top = -100.0
+margin_right = 400.0
+margin_bottom = 300.0
+grow_horizontal = 0
+grow_vertical = 0
+rect_min_size = Vector2( 400, 400 )
 texture = ExtResource( 2 )
 expand = true
+stretch_mode = 6
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="MarginContainer" type="MarginContainer" parent="."]
+margin_right = 1080.0
+margin_bottom = 400.0
+grow_horizontal = 0
+grow_vertical = 0
+
 [node name="SpeechBubbleHolder" type="PanelContainer" parent="."]
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-margin_left = 243.0
-margin_top = -91.0
-margin_right = -131.0
-margin_bottom = 150.0
+modulate = Color( 1, 1, 1, 0 )
+margin_left = -300.0
+margin_right = 780.0
+margin_bottom = 400.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_styles/panel = SubResource( 1 )
@@ -48,36 +114,58 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Control2" type="NinePatchRect" parent="SpeechBubbleHolder"]
-margin_right = 693.0
-margin_bottom = 964.0
-texture = ExtResource( 4 )
-patch_margin_left = 90
-patch_margin_top = 111
-patch_margin_right = 83
-patch_margin_bottom = 65
-
 [node name="MarginContainer" type="MarginContainer" parent="SpeechBubbleHolder"]
-margin_right = 693.0
-margin_bottom = 964.0
+margin_right = 1080.0
+margin_bottom = 400.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_constants/margin_right = 20
-custom_constants/margin_top = 20
-custom_constants/margin_left = 80
+custom_constants/margin_right = 11
+custom_constants/margin_top = 107
+custom_constants/margin_left = 228
 custom_constants/margin_bottom = 20
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="DialogLine" type="RichTextLabel" parent="SpeechBubbleHolder/MarginContainer"]
-margin_left = 80.0
+[node name="Control2" type="NinePatchRect" parent="SpeechBubbleHolder/MarginContainer"]
+margin_left = 228.0
+margin_top = 107.0
+margin_right = 1069.0
+margin_bottom = 380.0
+texture = ExtResource( 4 )
+patch_margin_left = 87
+patch_margin_top = 103
+patch_margin_right = 83
+patch_margin_bottom = 49
+
+[node name="MarginContainer" type="MarginContainer" parent="SpeechBubbleHolder/MarginContainer"]
+margin_left = 228.0
+margin_top = 107.0
+margin_right = 1069.0
+margin_bottom = 380.0
+custom_constants/margin_right = 20
+custom_constants/margin_top = 20
+custom_constants/margin_left = 100
+custom_constants/margin_bottom = 20
+
+[node name="DialogLine" type="RichTextLabel" parent="SpeechBubbleHolder/MarginContainer/MarginContainer"]
+margin_left = 100.0
 margin_top = 20.0
-margin_right = 673.0
-margin_bottom = 944.0
+margin_right = 821.0
+margin_bottom = 253.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/normal_font = ExtResource( 1 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 bbcode_enabled = true
 fit_content_height = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="SpeechBubbleHolder"]
+margin_right = 1080.0
+margin_bottom = 400.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Enter = SubResource( 2 )
