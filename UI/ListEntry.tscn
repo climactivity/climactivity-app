@@ -24,6 +24,7 @@ shadow_size = 5
 [sub_resource type="StyleBoxEmpty" id=5]
 
 [sub_resource type="StyleBoxFlat" id=6]
+resource_local_to_scene = true
 bg_color = Color( 0.584314, 0.756863, 0.117647, 1 )
 corner_radius_top_left = 1024
 corner_radius_top_right = 1024
@@ -71,20 +72,20 @@ tracks/1/keys = {
 }
 
 [sub_resource type="Animation" id=3]
-resource_name = "hide"
+resource_name = "RESET"
 length = 0.001
 tracks/0/type = "bezier"
-tracks/0/path = NodePath(".:modulate:r")
+tracks/0/path = NodePath(".:rect_position:x")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"points": PoolRealArray( 15, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0 )
 }
 tracks/1/type = "bezier"
-tracks/1/path = NodePath(".:modulate:g")
+tracks/1/path = NodePath(".:modulate:r")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -94,7 +95,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 )
 }
 tracks/2/type = "bezier"
-tracks/2/path = NodePath(".:modulate:b")
+tracks/2/path = NodePath(".:modulate:g")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -104,25 +105,24 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 )
 }
 tracks/3/type = "bezier"
-tracks/3/path = NodePath(".:modulate:a")
+tracks/3/path = NodePath(".:modulate:b")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0 )
 }
-tracks/4/type = "method"
-tracks/4/path = NodePath(".")
+tracks/4/type = "bezier"
+tracks/4/path = NodePath(".:modulate:a")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray(  ),
-"transitions": PoolRealArray(  ),
-"values": [  ]
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
 }
 
 [sub_resource type="Animation" id=4]
@@ -197,6 +197,7 @@ __meta__ = {
 }
 navigation_payload = {
 }
+show_progress = true
 
 [node name="Button" type="Button" parent="."]
 margin_left = 4.0
@@ -351,7 +352,6 @@ fit_content_height = true
 [node name="RewardLabel" parent="MarginContainer/HBoxContainer/ContentContainer/VBoxContainer" instance=ExtResource( 1 )]
 visible = false
 anchor_right = 0.0
-anchor_bottom = 0.0
 margin_left = 425.695
 margin_top = 266.0
 margin_right = 695.0

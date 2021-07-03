@@ -198,9 +198,9 @@ mouse_filter = 2
 custom_constants/margin_left = 15
 
 [node name="TrackingState" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview/MarginContainer" index="0" instance=ExtResource( 19 )]
+modulate = Color( 1, 1, 1, 0 )
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 15.0
 margin_right = 1075.0
 margin_bottom = 188.0
 custom_styles/panel = SubResource( 1 )

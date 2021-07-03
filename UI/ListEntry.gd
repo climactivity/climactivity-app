@@ -13,8 +13,8 @@ export (PackedScene) var button_replacement
 export var start_hidden = false setget is_start_hidden
 var has_entered_scene_animated = false
 
-export (Texture) var progress_icon_tex = preload("res://Assets/Icons/Time Circle.png") setget set_progress_icon
-export (bool) var show_progress = false setget set_is_show_progress 
+export var progress_icon_tex = preload("res://Assets/Icons/Time Circle.png") setget set_progress_icon
+export var show_progress = false setget set_is_show_progress 
 
 onready var icon = $MarginContainer/HBoxContainer/IconContainer/CenterContainer/Capsule
 onready var content_holder = $MarginContainer/HBoxContainer/ContentContainer
@@ -75,6 +75,8 @@ func set_content_text(rich_text: String):
 func update():
 	if !ready: return  
 	icon.set_icon(texture)
+	progress_icon.texture = progress_icon_tex
+	progress_container.visible = show_progress
 	if reward == null: 
 		content_reward.visible = false
 	else: 
@@ -87,8 +89,7 @@ func update():
 			go_down_container.add_child(button_replacement.instance())
 	else: 
 		go_down_tex.visible = true
-	progress_icon.texture = progress_icon_tex
-	progress_container.visible = show_progress
+
 	
 func set_navigation_target(target: String, payload = {}): 
 	navigation_target = target
@@ -104,7 +105,7 @@ func set_accent_color(color: Color):
 		return
 	bg_style = bg_style.duplicate()
 	bg_style.set_bg_color(color)
-	set('custom_styles/panel', bg_style) # panel is now green
+	set('custom_styles/panel', bg_style)
 
 
 func play_enter():

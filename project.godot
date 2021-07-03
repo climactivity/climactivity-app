@@ -39,6 +39,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/dialogic/Other/DialogicUtil.gd"
 }, {
+"base": "Panel",
+"class": "IconCapsule",
+"language": "GDScript",
+"path": "res://UI/Components/IconCapsule.gd"
+}, {
 "base": "PanelContainer",
 "class": "ListEntry",
 "language": "GDScript",
@@ -123,6 +128,11 @@ _global_script_classes=[ {
 "class": "NakamaWriteStorageObject",
 "language": "GDScript",
 "path": "res://addons/com.heroiclabs.nakama/api/NakamaWriteStorageObject.gd"
+}, {
+"base": "Control",
+"class": "Overlay",
+"language": "GDScript",
+"path": "res://UI/Overlay.gd"
 }, {
 "base": "PanelContainer",
 "class": "QuestCard",
@@ -231,6 +241,7 @@ _global_script_class_icons={
 "DialogicDefinitionsUtil": "",
 "DialogicResources": "",
 "DialogicUtil": "",
+"IconCapsule": "",
 "ListEntry": "",
 "MainMenu": "",
 "NakamaAPI": "",
@@ -248,6 +259,7 @@ _global_script_class_icons={
 "NakamaSocketAdapter": "",
 "NakamaStorageObjectId": "",
 "NakamaWriteStorageObject": "",
+"Overlay": "",
 "QuestCard": "",
 "RBoardEntityx": "",
 "RInfoByte": "",
