@@ -82,3 +82,9 @@ func _on_SaveTrackingOptionButton_pressed():
 	yield(get_tree().create_timer(0.2), "timeout")
 	if AspectTrackingService.has_seedling_available(aspect):
 		$AnimationPlayer.play("ShowShopButton")
+
+
+func _on_ShopButton_pressed():
+		GameManager.scene_manager.push_scene("res://Scenes/EntityShopScene.tscn", {"aspect": aspect})
+
+	

@@ -12,6 +12,7 @@
 bg_color = Color( 0.584314, 0.756863, 0.117647, 1 )
 border_width_left = 4
 border_width_top = 4
+border_width_right = 4
 border_width_bottom = 4
 border_color = Color( 1, 1, 1, 1 )
 corner_radius_top_left = 90
@@ -167,10 +168,11 @@ tracks/4/keys = {
 [node name="ListEntry" type="PanelContainer" groups=[
 "animatable",
 ]]
+modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 anchor_bottom = 0.096
-margin_left = 15.0
-margin_right = 14.999
+margin_left = 1000.0
+margin_right = 999.999
 margin_bottom = 3.67999
 mouse_filter = 1
 mouse_default_cursor_shape = 8
@@ -185,7 +187,7 @@ navigation_payload = {
 [node name="Button" type="Button" parent="."]
 margin_left = 4.0
 margin_top = 4.0
-margin_right = 1080.0
+margin_right = 1076.0
 margin_bottom = 184.0
 mouse_filter = 1
 mouse_default_cursor_shape = 2
@@ -198,7 +200,7 @@ custom_styles/normal = ExtResource( 5 )
 [node name="MarginContainer" type="MarginContainer" parent="."]
 margin_left = 4.0
 margin_top = 4.0
-margin_right = 1080.0
+margin_right = 1076.0
 margin_bottom = 184.0
 mouse_filter = 2
 mouse_default_cursor_shape = 3
@@ -207,7 +209,7 @@ custom_constants/margin_bottom = 5
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
 margin_top = 5.0
-margin_right = 1075.0
+margin_right = 1071.0
 margin_bottom = 175.0
 mouse_filter = 2
 
@@ -256,7 +258,7 @@ custom_constants/separation = 29
 
 [node name="ContentContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer"]
 margin_left = 211.0
-margin_right = 910.0
+margin_right = 906.0
 margin_bottom = 170.0
 mouse_filter = 2
 size_flags_horizontal = 3
@@ -265,7 +267,7 @@ custom_constants/margin_bottom = 10
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/ContentContainer"]
 margin_top = 10.0
-margin_right = 699.0
+margin_right = 695.0
 margin_bottom = 160.0
 mouse_filter = 2
 custom_constants/separation = 10
@@ -273,7 +275,7 @@ alignment = 1
 
 [node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/HBoxContainer/ContentContainer/VBoxContainer"]
 margin_top = 42.0
-margin_right = 699.0
+margin_right = 695.0
 margin_bottom = 108.0
 mouse_filter = 2
 custom_fonts/normal_font = ExtResource( 6 )
@@ -293,16 +295,16 @@ size_flags_vertical = 0
 _reward = ExtResource( 8 )
 
 [node name="VSeparator3" type="VSeparator" parent="MarginContainer/HBoxContainer"]
-margin_left = 914.0
-margin_right = 943.0
+margin_left = 910.0
+margin_right = 939.0
 margin_bottom = 170.0
 mouse_filter = 2
 custom_styles/separator = ExtResource( 5 )
 custom_constants/separation = 29
 
 [node name="PanelContainer" type="PanelContainer" parent="MarginContainer/HBoxContainer"]
-margin_left = 947.0
-margin_right = 1067.0
+margin_left = 943.0
+margin_right = 1063.0
 margin_bottom = 170.0
 rect_min_size = Vector2( 120, 120 )
 mouse_filter = 2
@@ -320,8 +322,8 @@ __meta__ = {
 }
 
 [node name="VSeparator4" type="VSeparator" parent="MarginContainer/HBoxContainer"]
-margin_left = 1071.0
-margin_right = 1075.0
+margin_left = 1067.0
+margin_right = 1071.0
 margin_bottom = 170.0
 mouse_filter = 2
 custom_styles/separator = ExtResource( 5 )

@@ -74,7 +74,7 @@ func _input(event):
 				tween = Tween.new()
 				add_child(tween)
 			if (scrollDirection == "Vertical"):
-				var velocity = last_relative.y * last_relative.y * -1.0 if last_relative.y < 0 else 1
+				var velocity = last_relative.y * last_relative.y * (-1.0 if last_relative.y < 0 else 1)
 				var time = kineticScrollTime * abs(last_relative.y)/10 
 				print(last_relative.y , "  " , time)
 				tween.interpolate_method(self, "set_v_scroll", self.get_v_scroll(), 

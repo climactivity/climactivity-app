@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://UI/Components/TrackingOption.tscn" type="PackedScene" id=1]
 [ext_resource path="res://UI/Components/kiko_hint.tscn" type="PackedScene" id=2]
@@ -26,6 +26,21 @@ expand_margin_left = 240.0
 expand_margin_right = 240.0
 expand_margin_top = 20.0
 expand_margin_bottom = 20.0
+shadow_color = Color( 0, 0, 0, 0.0705882 )
+shadow_size = 32
+shadow_offset = Vector2( 0, 10.141 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.584314, 0.756863, 0.121569, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 1, 1, 1, 1 )
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
 shadow_color = Color( 0, 0, 0, 0.0705882 )
 shadow_size = 32
 shadow_offset = Vector2( 0, 10.141 )
@@ -93,10 +108,44 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2 ),
+"times": PoolRealArray( 0, 0.015 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ false, true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("MarginContainer3:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("MarginContainer3/CenterContainer:rect_position:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 246.473, -0.25, 0, 0.25, 0, 74.83, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.8 )
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("MarginContainer3/CenterContainer/ShopButton:rect_scale")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.8, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.05, 1.05 ), Vector2( 1, 1 ) ]
 }
 
 [node name="TrackingSettings" type="VBoxContainer"]
@@ -235,30 +284,30 @@ text = "Speichern"
 
 [node name="MarginContainer3" type="MarginContainer" parent="."]
 visible = false
+modulate = Color( 1, 1, 1, 0 )
 margin_top = 1597.0
 margin_right = 1080.0
 margin_bottom = 1811.0
 custom_constants/margin_top = 72
 custom_constants/margin_bottom = 73
 
-[node name="CenterContainer" type="CenterContainer" parent="MarginContainer3"]
-margin_top = 72.0
+[node name="CenterContainer" type="MarginContainer" parent="MarginContainer3"]
+margin_top = 246.473
 margin_right = 1080.0
-margin_bottom = 141.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+margin_bottom = 315.473
 
-[node name="SaveTrackingOptionButton" type="Button" parent="MarginContainer3/CenterContainer"]
-margin_left = 313.0
-margin_right = 767.0
+[node name="ShopButton" type="Button" parent="MarginContainer3/CenterContainer"]
+margin_right = 1080.0
 margin_bottom = 69.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_pivot_offset = Vector2( 540, 34 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_styles/hover = ExtResource( 7 )
 custom_styles/pressed = SubResource( 1 )
 custom_styles/disabled = ExtResource( 8 )
-custom_styles/normal = ExtResource( 7 )
+custom_styles/normal = SubResource( 4 )
 custom_fonts/font = ExtResource( 6 )
 custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
@@ -272,4 +321,4 @@ anims/Enter = SubResource( 2 )
 anims/ShowShopButton = SubResource( 3 )
 
 [connection signal="pressed" from="MarginContainer/CenterContainer/SaveTrackingOptionButton" to="." method="_on_SaveTrackingOptionButton_pressed"]
-[connection signal="pressed" from="MarginContainer3/CenterContainer/SaveTrackingOptionButton" to="." method="_on_SaveTrackingOptionButton_pressed"]
+[connection signal="pressed" from="MarginContainer3/CenterContainer/ShopButton" to="." method="_on_SaveTrackingOptionButton_pressed"]

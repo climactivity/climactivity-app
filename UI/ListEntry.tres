@@ -4,6 +4,7 @@
 bg_color = Color( 0.584314, 0.756863, 0.117647, 1 )
 border_width_left = 4
 border_width_top = 4
+border_width_right = 4
 border_width_bottom = 4
 border_color = Color( 1, 1, 1, 1 )
 corner_radius_top_left = 90
