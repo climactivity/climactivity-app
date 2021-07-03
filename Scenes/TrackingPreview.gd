@@ -6,7 +6,7 @@ onready var tracking_question = $TrackingQuestion
 onready var tracking_state_list_entry = $MarginContainer/TrackingState
 
 var aspect_data
-
+var sector_data
 
 func show_shop_button():
 	Logger.print("new seedling available", self)
@@ -17,8 +17,9 @@ func _on_entity_shop_button_pressed():
 	if AspectTrackingService.has_seedling_available(aspect_data):
 		GameManager.scene_manager.push_scene("res://Scenes/EntityShopScene.tscn", {"aspect": aspect_data})
 
-func set_aspect(new_aspect_data):
+func set_aspect(new_aspect_data, sector):
 	aspect_data = new_aspect_data
+	sector_data = sector
 	update()
 
 func update():
@@ -29,6 +30,8 @@ func update():
 	var text_content =  "%s:\n%s" % [tr("current_tracking_level_label"), current_option.option if current_tracking_level != null  else tr("current_tracking_level_unset") ]
 	tracking_state_list_entry.set_content_text( text_content ) 
 	tracking_state_list_entry.set_navigation_target("res://Scenes/TrackingSettingScene.tscn", {"aspect": aspect_data})
+	tracking_state_list_entry.set_icon(aspect_data.icon if aspect_data.icon !=null else sector_data["sector_logo"])
+	tracking_state_list_entry.set_accent_color(sector_data["sector_color"])
 	if current_option != null: 
 		tracking_state_list_entry.set_reward_display(current_option.reward)
 	if AspectTrackingService.has_seedling_available(aspect_data):

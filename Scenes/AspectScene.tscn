@@ -17,6 +17,7 @@
 bg_color = Color( 0.584314, 0.756863, 0.117647, 1 )
 border_width_left = 4
 border_width_top = 4
+border_width_right = 4
 border_width_bottom = 4
 border_color = Color( 1, 1, 1, 1 )
 corner_radius_top_left = 90
@@ -197,9 +198,9 @@ mouse_filter = 2
 custom_constants/margin_left = 15
 
 [node name="TrackingState" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview/MarginContainer" index="0" instance=ExtResource( 19 )]
-modulate = Color( 1, 1, 1, 0 )
 anchor_right = 0.0
 anchor_bottom = 0.0
+margin_left = 15.0
 margin_right = 1075.0
 margin_bottom = 188.0
 custom_styles/panel = SubResource( 7 )

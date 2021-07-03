@@ -44,7 +44,7 @@ func _show_data():
 	set_header_icon(aspect_data.icon if aspect_data.icon !=null else sector["sector_logo"])
 	factor_holder.set_factors(aspect_data.factors, aspect_data)
 	quest_holder.load_for_aspect(aspect_data)
-	tracking_preview.set_aspect(aspect_data)
+	tracking_preview.set_aspect(aspect_data, sector)
 #	tracking_question.set_text(aspect_data.tracking.question)
 #	tracking_options_label.text = tr("current_tracking_level_label")
 #	tracking_level.text = tr("current_tracking_level_unset")
