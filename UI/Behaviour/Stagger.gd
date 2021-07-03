@@ -19,10 +19,10 @@ func play_enter():
 	for c in candidates:
 			if c.is_in_group(call_group):
 				targets.append(c)
-				print("%s will animate" % c.name)
+#				print("%s will animate" % c.name)
 	for t in targets: 
 		if is_inside_tree():
 			yield(get_tree().create_timer(delay), "timeout")
 			if t.has_method("play_enter"):
 				t.play_enter()
-				print("%s entered" % t.name)
+#				print("%s entered" % t.name)

@@ -38,4 +38,4 @@ func _init(dict = {}):
 	else:
 		reward = load("res://Network/DefaultReward.tres")
 #	reward = RReward.from_dict(dict["reward"]) if dict.has("reward") else load("res://Network/DefaultReward.tres")
-	print(dict["reward"] if dict.has("reward") else "no reward found")
+#	print(dict["reward"] if dict.has("reward") else "no reward found")

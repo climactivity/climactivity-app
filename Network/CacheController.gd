@@ -117,7 +117,7 @@ var DEBUG_aspect_icons = {
 func _save_aspect_data(data):
 	for aspect_data in data: 
 		var path = fs + "://Network/Cache/Aspects/%s.%s" % [aspect_data["_id"], format]
-		Logger.print("Saving resource for %s at %s" % [aspect_data["name"], path ], self)
+#		Logger.print("Saving resource for %s at %s" % [aspect_data["name"], path ], self)
 		var aspect_resource = aspect_resource_type.new(aspect_data)
 		if ProjectSettings.get_setting("debug/settings/game_logic/use_fixed_icons"): 
 			if DEBUG_aspect_icons.has(aspect_resource.name):
@@ -129,7 +129,7 @@ func _save_aspect_data(data):
 func _save_infobyte_data(data):
 	for infobyte_data in data: 
 		var path = fs + "://Network/Cache/Infobytes/%s.%s" % [infobyte_data["_id"], format]
-		Logger.print("Saving resource for %s at %s" % [infobyte_data["name"], path ], self)
+#		Logger.print("Saving resource for %s at %s" % [infobyte_data["name"], path ], self)
 		var infobyte_resource = infobyte_resource_type.new(infobyte_data)
 		writalbe_cache_manifest.insert(infobyte_data["_id"], "RLocalizedInfobyte", fs)
 		infobyte_resource.take_over_path(path)
@@ -138,7 +138,7 @@ func _save_infobyte_data(data):
 func _save_tree_template_data(data):
 	for tree_template_data in data: 
 		var path = fs + "://Network/Cache/TreeTemplates/%s.%s" % [tree_template_data["_id"], format]
-		Logger.print("Saving resource for %s at %s" % [tree_template_data["ui_name"], path ], self)
+#		Logger.print("Saving resource for %s at %s" % [tree_template_data["ui_name"], path ], self)
 		var tree_template_resource = tree_template_resource_type.new(tree_template_data)
 		tree_template_resource.take_over_path(path)
 		writalbe_cache_manifest.insert(tree_template_data["_id"], "RTreeTemplate", fs)
@@ -147,7 +147,7 @@ func _save_tree_template_data(data):
 func _save_quest_data(data):
 	for quest_data in data: 
 		var path = fs + "://Network/Cache/Quests/%s.%s" % [quest_data["_id"], format]
-		Logger.print("Saving resource for %s at %s" % [quest_data["title"], path ], self)
+#		Logger.print("Saving resource for %s at %s" % [quest_data["title"], path ], self)
 		var quest_resource = quest_resource_type.new(quest_data)
 		quest_resource.take_over_path(path)
 		writalbe_cache_manifest.insert(quest_data["_id"], "RLocalizedQuest", fs)
@@ -155,7 +155,7 @@ func _save_quest_data(data):
 
 func _done(): 
 	var path = fs + "://Network/Cache/manifest.%s" % format
-	Logger.print("Saving manifest", self)
+	Logger.print("Saving manifest holdig %d entites" % [writalbe_cache_manifest.saved_entities.size()], self)
 	ResourceSaver.save(path, writalbe_cache_manifest, 32)
 	Api.emit_signal("finished_cache")
 	_load_manifest_resources()

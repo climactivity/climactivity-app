@@ -13,7 +13,7 @@
 [ext_resource path="res://UI/theme/Button_Important.tres" type="StyleBox" id=18]
 [ext_resource path="res://UI/ListEntry.tscn" type="PackedScene" id=19]
 
-[sub_resource type="StyleBoxFlat" id=7]
+[sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.584314, 0.756863, 0.117647, 1 )
 border_width_left = 4
 border_width_top = 4
@@ -203,7 +203,7 @@ anchor_bottom = 0.0
 margin_left = 15.0
 margin_right = 1075.0
 margin_bottom = 188.0
-custom_styles/panel = SubResource( 7 )
+custom_styles/panel = SubResource( 1 )
 grab_attention = true
 navigation_payload = {
 }

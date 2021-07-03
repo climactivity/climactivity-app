@@ -52,7 +52,7 @@ func get_checkbox_controller_path():
 	return checkbox_controller_path
 
 func selected():
-	print("selected: " + self.name + " preselected: " + str(preselected) + " selected: " + str(selected))
+#	print("selected: " + self.name + " preselected: " + str(preselected) + " selected: " + str(selected))
 	if selected:
 		return
 	selected = true
@@ -60,7 +60,7 @@ func selected():
 	$AnimationPlayer.play("Select")
 
 func deselected():
-	print("deselected: " + self.name + " preselected: " + str(preselected) + " selected: " + str(selected))
+#	print("deselected: " + self.name + " preselected: " + str(preselected) + " selected: " + str(selected))
 	if !selected: 
 		return
 	selected = false
