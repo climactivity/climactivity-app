@@ -62,6 +62,8 @@ func do_update():
 	for aspect_id in levels: 
 		var tracking_state = levels[aspect_id]
 		var reward = tracking_state.get_reward_for_time_interval_from_now(absolute_delta)
+		if reward == null:
+			continue
 		reward.coins = 0
 		if tracking_state.water_tank == null:
 			tracking_state.water_tank = bp_r_water_tank.new()
@@ -87,6 +89,16 @@ func get_tracked_aspects():
 
 # TODO move construction logic to builder methods
 func commit_tracking_level(option, aspect): 
+	if option == null:
+		if player_state.tracking_states.has(aspect._id): 
+			if player_state.tracking_states[aspect._id].history == null: 
+				player_state.tracking_states[aspect._id].history = []
+			player_state.tracking_states[aspect._id].current = null
+			_flush()
+			return
+		else:
+			return
+		
 	Logger.print("Commit %s for aspect %s" % [option["level"], aspect._id], self)
 	var new_reward = bp_r_reward.new()
 	new_reward._id = "-1"
@@ -118,15 +130,8 @@ func commit_tracking_level(option, aspect):
 	else:
 		var new_state = bp_r_tracking_state.new()
 		new_state.make_tracking_state(aspect["bigpoint"], aspect["_id"], new_entry, 1)
-#		new_state.bigpoint = aspect["bigpoint"]
-#		new_state.aspect = aspect["_id"]
-#		new_state.run_time = 1
-#		var  history = []
-#		history.push_front(new_entry)
-#		new_state.history = history
-#		new_state.current = new_entry
 		player_state.tracking_states[aspect._id] = new_state
-#	_save_tracking_state(aspect._id, player_state.tracking_states[aspect._id])
+
 	_flush()
 
 #func _save_tracking_state(aspect_id, tracking_state : RTrackingState): 

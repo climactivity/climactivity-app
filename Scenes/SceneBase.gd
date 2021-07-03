@@ -40,6 +40,7 @@ func set_header_icon(drawable: Texture):
 	if header != null: _set_vars()
 
 func _set_vars(): 
+	Logger.print("Update", self)
 	header_bg.self_modulate = accent_color
 	if gradient != null:
 		gradient.gradient.set_color(0, accent_color)

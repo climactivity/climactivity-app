@@ -1,13 +1,18 @@
 extends Control
 
 signal selected(option)
+signal deselected(option)
 
+export var panel_style = preload("res://UI/Components/M_TrackingOption.tres")
+var selected = false
 var option_data setget set_tracking_option_data
 export (NodePath) var checkbox_controller_path setget set_checkbox_controller_path, get_checkbox_controller_path
 var checkox_controller
-onready var label = $ViewportContainer/Viewport/Panel/MarginContainer/MarginContainer2/VBoxContainer/Label
-onready var reward_label = $ViewportContainer/Viewport/Panel/MarginContainer/MarginContainer2/VBoxContainer/Reward
-onready var select_button = $ViewportContainer/Viewport/Panel/MarginContainer/HBoxContainer/SelectButton
+onready var label = $MarginContainer/Panel/MarginContainer/MarginContainer2/VBoxContainer/Label
+onready var reward_label = $MarginContainer/Panel/MarginContainer/MarginContainer2/VBoxContainer/Reward
+onready var select_button = $MarginContainer/Panel/HBoxContainer/SelectButton
+onready var panel = $MarginContainer/Panel/Panel
+
 var preselected = false
 func _ready(): 
 	if option_data == null: return
@@ -15,9 +20,14 @@ func _ready():
 #	checkox_controller = get_node(checkbox_controller_path)
 	if checkox_controller != null:
 		checkox_controller.register(select_button)
-		select_button.connect("pressed", self, "selected")
+		select_button.connect("checked", self, "selected")
+		select_button.connect("unchecked", self, "deselected")
+#		select_button.connect("pressed", self, "selected")
 	if select_button != null and preselected: select_button._check()
-
+	#duplicate panel style so other panels don't get messed up
+	var new_style = panel_style.duplicate()
+	panel.set('custom_styles/panel', new_style)
+	selected = preselected
 	
 func set_tracking_option_data(new_option_data): 
 	option_data = new_option_data
@@ -42,14 +52,35 @@ func get_checkbox_controller_path():
 	return checkbox_controller_path
 
 func selected():
-	emit_signal("selected", self)	
+	print("selected: " + self.name + " preselected: " + str(preselected) + " selected: " + str(selected))
+	if selected:
+		return
+	selected = true
+	emit_signal("selected", self)
+	$AnimationPlayer.play("Select")
 
+func deselected():
+	print("deselected: " + self.name + " preselected: " + str(preselected) + " selected: " + str(selected))
+	if !selected: 
+		return
+	selected = false
+	emit_signal("deselected", self)
+	$AnimationPlayer.play("Deselect")
+	
 func preselect(): 
 	preselected = true
-	if select_button != null: select_button._check()
+	if select_button != null: 
+		select_button._check()
+		$AnimationPlayer.play("Preselected")
 
 
 func _on_Panel_gui_input(event):
 	if event is InputEventScreenTouch and event.pressed:
 		select_button._on_Control_pressed()
-		selected()
+
+func play_enter():
+	$Enter.play("Enter")
+
+
+func _on_SelectButton_unchecked():
+	deselected()

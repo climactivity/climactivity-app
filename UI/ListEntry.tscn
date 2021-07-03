@@ -6,10 +6,22 @@
 [ext_resource path="res://UI/ListEntry.gd" type="Script" id=4]
 [ext_resource path="res://UI/theme/style_box_empty.tres" type="StyleBox" id=5]
 [ext_resource path="res://UI/typography/Button_Label.tres" type="DynamicFont" id=6]
-[ext_resource path="res://UI/ListEntry.tres" type="StyleBox" id=7]
 [ext_resource path="res://Network/DefaultReward.tres" type="Resource" id=8]
 
-[sub_resource type="StyleBoxFlat" id=2]
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0.584314, 0.756863, 0.117647, 1 )
+border_width_left = 4
+border_width_top = 4
+border_width_bottom = 4
+border_color = Color( 1, 1, 1, 1 )
+corner_radius_top_left = 90
+corner_radius_bottom_left = 90
+corner_detail = 20
+shadow_color = Color( 0, 0, 0, 0.117647 )
+shadow_size = 8
+shadow_offset = Vector2( 0, 4 )
+
+[sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 1, 1, 1, 1 )
 border_color = Color( 1, 1, 1, 1 )
 corner_radius_top_left = 1024
@@ -20,7 +32,7 @@ corner_detail = 20
 shadow_color = Color( 0, 0, 0, 0.184314 )
 shadow_size = 5
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 resource_name = "Enter"
 tracks/0/type = "bezier"
 tracks/0/path = NodePath(".:rect_position:x")
@@ -43,7 +55,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 1 )
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=3]
 resource_name = "RESET"
 length = 0.001
 tracks/0/type = "bezier"
@@ -97,7 +109,7 @@ tracks/4/keys = {
 "times": PoolRealArray( 0 )
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=4]
 resource_name = "hide"
 length = 0.001
 tracks/0/type = "bezier"
@@ -162,7 +174,7 @@ margin_right = 14.999
 margin_bottom = 3.67999
 mouse_filter = 1
 mouse_default_cursor_shape = 8
-custom_styles/panel = ExtResource( 7 )
+custom_styles/panel = SubResource( 5 )
 script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -232,7 +244,7 @@ anchor_bottom = 0.0
 margin_right = 160.0
 margin_bottom = 160.0
 mouse_filter = 2
-custom_styles/panel = SubResource( 2 )
+custom_styles/panel = SubResource( 1 )
 
 [node name="VSeparator2" type="VSeparator" parent="MarginContainer/HBoxContainer"]
 margin_left = 178.0
@@ -316,6 +328,6 @@ custom_styles/separator = ExtResource( 5 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "RESET"
-anims/Enter = SubResource( 3 )
-anims/RESET = SubResource( 5 )
-anims/hide = SubResource( 6 )
+anims/Enter = SubResource( 2 )
+anims/RESET = SubResource( 3 )
+anims/hide = SubResource( 4 )

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Scenes/SceneBase.tscn" type="PackedScene" id=1]
 [ext_resource path="res://UI/ListEntry.tscn" type="PackedScene" id=2]
@@ -9,7 +9,7 @@
 [ext_resource path="res://UI/typography/Content_Italic.tres" type="DynamicFont" id=7]
 [ext_resource path="res://UI/typography/Content_Bold_Italic.tres" type="DynamicFont" id=8]
 
-[sub_resource type="Shader" id=8]
+[sub_resource type="Shader" id=9]
 code = "shader_type canvas_item; 
 
 uniform sampler2D gradient; 
@@ -19,36 +19,42 @@ void fragment() {
 	//COLOR = vec4(UV.y,0,0,1);
 }"
 
-[sub_resource type="Gradient" id=9]
+[sub_resource type="Gradient" id=10]
 offsets = PoolRealArray( 0.213622, 1 )
 colors = PoolColorArray( 0.592157, 0.909804, 0.192157, 1, 1, 1, 1, 1 )
 
-[sub_resource type="GradientTexture" id=10]
-gradient = SubResource( 9 )
+[sub_resource type="GradientTexture" id=11]
+gradient = SubResource( 10 )
 
-[sub_resource type="ShaderMaterial" id=11]
-shader = SubResource( 8 )
-shader_param/gradient = SubResource( 10 )
+[sub_resource type="ShaderMaterial" id=12]
+shader = SubResource( 9 )
+shader_param/gradient = SubResource( 11 )
 
-[sub_resource type="StyleBoxFlat" id=12]
+[sub_resource type="StyleBoxFlat" id=13]
 bg_color = Color( 0.0862745, 0.101961, 0.0509804, 1 )
 border_width_left = 4
 border_width_top = 4
 border_width_bottom = 4
 border_color = Color( 1, 1, 1, 1 )
-corner_radius_top_left = 1024
-corner_radius_bottom_left = 1024
+corner_radius_top_left = 90
+corner_radius_bottom_left = 90
 corner_detail = 20
+shadow_color = Color( 0, 0, 0, 0.117647 )
+shadow_size = 8
+shadow_offset = Vector2( 0, 4 )
 
-[sub_resource type="StyleBoxFlat" id=13]
+[sub_resource type="StyleBoxFlat" id=14]
 bg_color = Color( 0.282353, 0.47451, 0.741176, 1 )
 border_width_left = 4
 border_width_top = 4
 border_width_bottom = 4
 border_color = Color( 1, 1, 1, 1 )
-corner_radius_top_left = 1024
-corner_radius_bottom_left = 1024
+corner_radius_top_left = 90
+corner_radius_bottom_left = 90
 corner_detail = 20
+shadow_color = Color( 0, 0, 0, 0.117647 )
+shadow_size = 8
+shadow_offset = Vector2( 0, 4 )
 
 [sub_resource type="StyleBoxFlat" id=7]
 content_margin_left = 36.0
@@ -56,28 +62,66 @@ content_margin_right = 36.0
 content_margin_top = 36.0
 content_margin_bottom = 36.0
 bg_color = Color( 1, 1, 1, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 100
+border_width_bottom = 1
+border_color = Color( 0.605053, 0.843742, 0.13099, 1 )
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="Animation" id=8]
+resource_name = "Select"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:custom_styles/panel:border_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0.52549, 0.52549, 0.52549, 1 ), Color( 0.619608, 0.901961, 0.0588235, 1 ), Color( 0.605053, 0.843742, 0.13099, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:custom_styles/panel:border_width_right")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1.56917, 0.594604 ),
+"update": 0,
+"values": [ 1, 80, 100 ]
+}
 
 [node name="ScrollTest" instance=ExtResource( 1 )]
-material = SubResource( 11 )
+material = SubResource( 12 )
 
 [node name="MarginContainer" type="MarginContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="1"]
 margin_top = 450.0
 margin_right = 1080.0
-margin_bottom = 1248.0
+margin_bottom = 1190.0
+custom_constants/margin_right = 27
 custom_constants/margin_left = 30
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer" index="0"]
 margin_left = 30.0
-margin_right = 1080.0
-margin_bottom = 798.0
+margin_right = 1053.0
+margin_bottom = 740.0
 custom_constants/separation = 20
 
 [node name="ListEntry" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/VBoxContainer" index="0" instance=ExtResource( 2 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 1050.0
-margin_bottom = 294.0
-custom_styles/panel = SubResource( 12 )
+margin_right = 1038.0
+margin_bottom = 236.0
+custom_styles/panel = SubResource( 13 )
 texture = ExtResource( 3 )
 _content_text = "asdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasd"
 navigation_payload = {
@@ -87,24 +131,24 @@ accent_color = Color( 0.0862745, 0.101961, 0.0509804, 1 )
 [node name="ListEntry2" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/VBoxContainer" index="1" instance=ExtResource( 2 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 314.0
-margin_right = 1050.0
-margin_bottom = 502.0
-custom_styles/panel = SubResource( 13 )
+margin_top = 256.0
+margin_right = 1038.0
+margin_bottom = 444.0
+custom_styles/panel = SubResource( 14 )
 navigation_payload = {
 }
 accent_color = Color( 0.282353, 0.47451, 0.741176, 1 )
 
 [node name="PanelContainer" type="PanelContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/VBoxContainer" index="2"]
-margin_top = 522.0
-margin_right = 1050.0
-margin_bottom = 798.0
+margin_top = 464.0
+margin_right = 1023.0
+margin_bottom = 740.0
 custom_styles/panel = SubResource( 7 )
 
 [node name="RichTextLabel" type="RichTextLabel" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/VBoxContainer/PanelContainer" index="0"]
 margin_left = 36.0
 margin_top = 36.0
-margin_right = 1014.0
+margin_right = 987.0
 margin_bottom = 240.0
 custom_fonts/mono_font = ExtResource( 6 )
 custom_fonts/bold_italics_font = ExtResource( 8 )
@@ -122,3 +166,15 @@ text = "Hier
  Text  
  https"
 fit_content_height = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/VBoxContainer/PanelContainer" index="1"]
+anims/Select = SubResource( 8 )
+
+[node name="Panel" type="Panel" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/VBoxContainer/PanelContainer" index="2"]
+margin_left = 947.0
+margin_top = 118.0
+margin_right = 987.0
+margin_bottom = 158.0
+rect_min_size = Vector2( 40, 40 )
+size_flags_horizontal = 8
+size_flags_vertical = 4

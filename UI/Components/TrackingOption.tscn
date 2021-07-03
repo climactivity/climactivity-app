@@ -1,176 +1,427 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://UI/typography/Content_Regular.tres" type="DynamicFont" id=1]
 [ext_resource path="res://UI/Components/TrackingOption.gd" type="Script" id=2]
 [ext_resource path="res://UI/Components/RadioButton.tscn" type="PackedScene" id=3]
 [ext_resource path="res://UI/Components/RewardLabel.tscn" type="PackedScene" id=4]
-[ext_resource path="res://UI/Components/SM_HoverCardShadow.tres" type="Material" id=5]
-[ext_resource path="res://UI/Components/HoverCard.gd" type="Script" id=6]
+[ext_resource path="res://UI/Components/M_TrackingOption.tres" type="StyleBox" id=5]
 
-[sub_resource type="StyleBoxFlat" id=1]
-bg_color = Color( 0.6, 0.6, 0.6, 0 )
-border_width_top = 2
-border_color = Color( 1, 1, 1, 1 )
+[sub_resource type="StyleBoxEmpty" id=7]
 
-[sub_resource type="Shader" id=4]
-code = "shader_type canvas_item; 
+[sub_resource type="StyleBoxEmpty" id=12]
 
-uniform float width = 64;
-uniform float height = 64;
-uniform float scale = 1; 
-uniform bool skew_enabled = false; 
-
-uniform vec2 interaction_pos = vec2(0.0); 
-uniform vec4 shadow_color : hint_color; 
-
-void vertex() {
-	float x = VERTEX.x;
-	float y = VERTEX.y;
-	/*
-	float half_width = width / 2.0;
-	float half_height = height / 2.0;
-	if (x <= 0.0) {
-		x = -half_width * scale;
-	} else {
-		x = half_width * scale;
-	}
-
-
-	if (y <= 0.0) {
-		y = -half_height * scale;
-	} else {
-		y = half_height * scale;
-	}
-
-	*/
-	VERTEX = vec2(x, y);
-	
-}
-
-void fragment() {
-	vec2 uv = UV; 
-	
-	float skew_x = interaction_pos.x / width; 
-	float skew_y = interaction_pos.y / height; 
-	uv.x = (uv.x - 0.5);
-	uv.y = (uv.y - 0.5);
-	float sx = 1.0 - (uv.x * skew_x);
-	float sy = 1.0 - (uv.y * skew_y);
-	float z = 1.0 + (sx * sy) /2.0; 
-	uv.x = uv.x /z;
-	uv.y = uv.y /z;
-	uv.x = uv.x /0.65+ 0.5;
-	uv.y = uv.y /0.6+ 0.5;
-	COLOR = texture(TEXTURE, uv);
-	if (uv.x < 0.0 || uv.x > 1.0) {
-		COLOR.a = 0.0;
-	} else if (uv.y < 0.0 || uv.y > 1.0) {
-		COLOR.a = 0.0;
-	} else {
-		// brightness
-		float brightness = 1.0 - interaction_pos.y / (height / 2.0) * 0.2;
-		COLOR.rgb = texture(TEXTURE, uv, 1.0).rgb * brightness;
-		
-		COLOR.a = texture(TEXTURE, uv, 1.0).a;
-	}
-}"
-
-[sub_resource type="ShaderMaterial" id=5]
-shader = SubResource( 4 )
-shader_param/width = 1080.0
-shader_param/height = 174.0
-shader_param/scale = 1.0
-shader_param/skew_enabled = false
-shader_param/interaction_pos = Vector2( -1.83027, -20 )
-shader_param/shadow_color = null
-
-[sub_resource type="StyleBoxFlat" id=2]
-bg_color = Color( 0.94902, 0.92549, 0.92549, 1 )
-border_color = Color( 0.00392157, 0, 0, 1 )
-shadow_color = Color( 0, 0, 0, 0.129412 )
-shadow_offset = Vector2( 0, 8.174 )
-
-[sub_resource type="Animation" id=3]
-resource_name = "Hover"
-length = 4.0
-loop = true
+[sub_resource type="Animation" id=8]
+resource_name = "Deselect"
+length = 0.3
 tracks/0/type = "value"
-tracks/0/path = NodePath("ViewportContainer:interaction_pos")
+tracks/0/path = NodePath("MarginContainer/Panel/Panel:custom_styles/panel:border_color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( -0.1, 1, 2.1, 3, 4 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( -20, 20 ), Vector2( -20, -20 ), Vector2( 20, -20 ), Vector2( 0, 0 ) ]
+"values": [ Color( 0.584314, 0.756863, 0.121569, 1 ), Color( 0.411765, 0.411765, 0.407843, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("MarginContainer/Panel/Panel:custom_styles/panel:border_width_right")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 60, 2 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("MarginContainer/Panel:rect_position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 10, 2 ), Vector2( 10, 10 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("MarginContainer/Panel/Panel:custom_styles/panel:shadow_size")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 16, 8 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("MarginContainer/Panel/Panel:custom_styles/panel:shadow_offset")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 8 ), Vector2( 0, 4 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("MarginContainer/Panel/Panel:custom_styles/panel:shadow_color")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0.129412 ) ]
 }
 
-[node name="Option" type="PanelContainer"]
+[sub_resource type="Animation" id=14]
+resource_name = "Preselected"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("MarginContainer/Panel/Panel:custom_styles/panel:border_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0.584314, 0.756863, 0.121569, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("MarginContainer/Panel/Panel:custom_styles/panel:border_width_right")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 60 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("MarginContainer/Panel:rect_position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 10, 2 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("MarginContainer/Panel/Panel:custom_styles/panel:shadow_size")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 16 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("MarginContainer/Panel/Panel:custom_styles/panel:shadow_offset")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 8 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("MarginContainer/Panel/Panel:custom_styles/panel:shadow_color")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0.129412 ) ]
+}
+
+[sub_resource type="Animation" id=15]
+resource_name = "RESET"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("MarginContainer/Panel/Panel:custom_styles/panel:border_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0.411765, 0.411765, 0.407843, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("MarginContainer/Panel/Panel:custom_styles/panel:border_width_right")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 2 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("MarginContainer/Panel:rect_position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 10, 10 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("MarginContainer/Panel/Panel:custom_styles/panel:shadow_size")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 8 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("MarginContainer/Panel/Panel:custom_styles/panel:shadow_offset")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 4 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("MarginContainer/Panel/Panel:custom_styles/panel:shadow_color")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"update": 0,
+"values": [  ]
+}
+
+[sub_resource type="Animation" id=13]
+resource_name = "Select"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("MarginContainer/Panel/Panel:custom_styles/panel:border_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0.411765, 0.411765, 0.407843, 1 ), Color( 0.584314, 0.756863, 0.121569, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("MarginContainer/Panel/Panel:custom_styles/panel:border_width_right")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 2, 60 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("MarginContainer/Panel:rect_position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 10, 10 ), Vector2( 10, 2 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("MarginContainer/Panel/Panel:custom_styles/panel:shadow_size")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 8, 16 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("MarginContainer/Panel/Panel:custom_styles/panel:shadow_offset")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 4 ), Vector2( 0, 8 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("MarginContainer/Panel/Panel:custom_styles/panel:shadow_color")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0.3 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0.129412 ) ]
+}
+
+[sub_resource type="Animation" id=16]
+resource_name = "Enter"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("MarginContainer:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 2.2974 ),
+"update": 0,
+"values": [ Vector2( 0, -200 ), Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("MarginContainer:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 2.14355 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[node name="Option" type="PanelContainer" groups=[
+"animatable",
+]]
 anchor_right = 1.0
-anchor_bottom = 0.092
-margin_bottom = -0.640015
-rect_min_size = Vector2( 0, 176 )
-custom_styles/panel = SubResource( 1 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/panel = SubResource( 7 )
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ViewportContainer" type="ViewportContainer" parent="."]
-material = SubResource( 5 )
-margin_top = 2.0
+[node name="MarginContainer" type="MarginContainer" parent="."]
+modulate = Color( 1, 1, 1, 0 )
 margin_right = 1080.0
-margin_bottom = 176.0
-stretch = true
-script = ExtResource( 6 )
-interaction_pos = Vector2( -1.83027, -20 )
+margin_bottom = 191.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/margin_right = 10
+custom_constants/margin_top = 10
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 10
 
-[node name="Viewport" type="Viewport" parent="ViewportContainer"]
-size = Vector2( 1086, 189 )
-transparent_bg = true
-handle_input_locally = false
-msaa = 2
-fxaa = true
-keep_3d_linear = true
-usage = 1
-render_target_update_mode = 3
+[node name="Panel" type="PanelContainer" parent="MarginContainer"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 1070.0
+margin_bottom = 181.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/panel = SubResource( 12 )
 
-[node name="Panel2" type="Panel" parent="ViewportContainer/Viewport"]
-material = ExtResource( 5 )
-margin_top = 2.0
-margin_right = 1080.0
-margin_bottom = 176.0
-custom_styles/panel = SubResource( 2 )
+[node name="Panel" type="Panel" parent="MarginContainer/Panel"]
+margin_right = 1060.0
+margin_bottom = 171.0
+mouse_filter = 2
+custom_styles/panel = ExtResource( 5 )
 
-[node name="Panel" type="Panel" parent="ViewportContainer/Viewport"]
-margin_top = 2.0
-margin_right = 1080.0
-margin_bottom = 176.0
-custom_styles/panel = SubResource( 2 )
+[node name="HBoxContainer" type="MarginContainer" parent="MarginContainer/Panel"]
+margin_left = 1006.0
+margin_top = 66.0
+margin_right = 1060.0
+margin_bottom = 104.0
+mouse_filter = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+custom_constants/margin_right = 16
 
-[node name="MarginContainer" type="MarginContainer" parent="ViewportContainer/Viewport/Panel"]
-margin_right = 1080.0
-margin_bottom = 174.0
+[node name="SelectButton" parent="MarginContainer/Panel/HBoxContainer" instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 38.0
+margin_bottom = 38.0
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Panel"]
+margin_right = 1060.0
+margin_bottom = 171.0
 mouse_filter = 2
 size_flags_horizontal = 3
+size_flags_vertical = 3
 custom_constants/margin_right = 30
-custom_constants/margin_top = 36
+custom_constants/margin_top = 30
 custom_constants/margin_left = 30
 custom_constants/margin_bottom = 36
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="MarginContainer2" type="MarginContainer" parent="ViewportContainer/Viewport/Panel/MarginContainer"]
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/Panel/MarginContainer"]
 margin_left = 30.0
-margin_top = 36.0
-margin_right = 1050.0
-margin_bottom = 138.0
+margin_top = 30.0
+margin_right = 1030.0
+margin_bottom = 135.0
 mouse_filter = 2
+size_flags_vertical = 3
 custom_constants/margin_right = 79
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ViewportContainer/Viewport/Panel/MarginContainer/MarginContainer2"]
-margin_right = 941.0
-margin_bottom = 102.0
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Panel/MarginContainer/MarginContainer2"]
+margin_right = 921.0
+margin_bottom = 105.0
 mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -178,46 +429,36 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="ViewportContainer/Viewport/Panel/MarginContainer/MarginContainer2/VBoxContainer"]
-margin_right = 941.0
+[node name="Label" type="Label" parent="MarginContainer/Panel/MarginContainer/MarginContainer2/VBoxContainer"]
+margin_right = 921.0
 margin_bottom = 50.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0.411765, 0.411765, 0.407843, 1 )
 text = "option_text"
 autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Reward" parent="ViewportContainer/Viewport/Panel/MarginContainer/MarginContainer2/VBoxContainer" instance=ExtResource( 4 )]
+[node name="Reward" parent="MarginContainer/Panel/MarginContainer/MarginContainer2/VBoxContainer" instance=ExtResource( 4 )]
 anchor_right = 0.0
-margin_left = 711.0
+margin_left = 691.0
 margin_top = 54.0
-margin_right = 941.0
-margin_bottom = 102.0
+margin_right = 921.0
+margin_bottom = 105.0
 rect_scale = Vector2( 1, 1 )
 mouse_filter = 2
 size_flags_horizontal = 8
 
-[node name="HBoxContainer" type="Control" parent="ViewportContainer/Viewport/Panel/MarginContainer"]
-margin_left = 30.0
-margin_top = 36.0
-margin_right = 1050.0
-margin_bottom = 138.0
-mouse_filter = 2
-
-[node name="SelectButton" parent="ViewportContainer/Viewport/Panel/MarginContainer/HBoxContainer" instance=ExtResource( 3 )]
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_bottom = 0.5
-margin_left = -38.0
-margin_top = -52.0
-margin_bottom = 52.0
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "Hover"
-anims/Hover = SubResource( 3 )
+anims/Deselect = SubResource( 8 )
+anims/Preselected = SubResource( 14 )
+anims/RESET = SubResource( 15 )
+anims/Select = SubResource( 13 )
 
-[connection signal="selected" from="." to="ViewportContainer" method="_on_Option_selected"]
-[connection signal="gui_input" from="ViewportContainer/Viewport/Panel2" to="." method="_on_Panel_gui_input"]
-[connection signal="gui_input" from="ViewportContainer/Viewport/Panel" to="." method="_on_Panel_gui_input"]
+[node name="Enter" type="AnimationPlayer" parent="."]
+anims/Enter = SubResource( 16 )
+
+[connection signal="gui_input" from="MarginContainer/Panel" to="." method="_on_Panel_gui_input"]
+[connection signal="unchecked" from="MarginContainer/Panel/HBoxContainer/SelectButton" to="." method="_on_SelectButton_unchecked"]

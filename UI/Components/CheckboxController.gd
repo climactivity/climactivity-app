@@ -21,8 +21,6 @@ func toggle_state(checkbox):
 		checkbox._uncheck()
 	else:
 		checkbox._check()
-	for checkbox in checkbox_refs: 
-		pass
 
 func register(checkbox):
 	checkbox.controller = self

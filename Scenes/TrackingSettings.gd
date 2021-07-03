@@ -12,9 +12,12 @@ var bp_option = preload("res://UI/Components/TrackingOption.tscn")
 var tracking_data
 var ready = false
 var title = "Heading not set!"
-var selected_option setget set_option
+var selected_option setget set_option, get_option
 var aspect
 var options = {}
+
+func get_option(): 
+	return selected_option
 	
 func set_tracking_data(new_tracking_data, new_aspect): 
 	tracking_data = new_tracking_data
@@ -50,8 +53,7 @@ func _show_data():
 		return
 	question.set_text(tracking_data.question)
 	#clear previous options if any
-	for child in options_holder.get_children(): 
-		options_holder.remove_child(child)
+	Util.clear(options_holder)
 	#show options
 	if tracking_data.options == null: 
 		return
@@ -64,7 +66,10 @@ func _show_data():
 		options_holder.add_child(new_option_instance)
 	_get_current_tracking_level()
 func set_option(option):
-	selected_option = option
+	if option == selected_option: 
+		selected_option = null
+	else:
+		selected_option = option
 	select_button.text = "Speichern"
 	print(option)
 	select_button.disabled = false
@@ -73,4 +78,7 @@ func set_option(option):
 func _on_SaveTrackingOptionButton_pressed():
 	select_button.disabled = true
 	select_button.text = "Gespeichert!"
-	emit_signal("emit_option", selected_option.option_data, aspect)
+	emit_signal("emit_option", selected_option.option_data if selected_option != null else null, aspect)
+	yield(get_tree().create_timer(0.2), "timeout")
+	if AspectTrackingService.has_seedling_available(aspect):
+		$AnimationPlayer.play("ShowShopButton")

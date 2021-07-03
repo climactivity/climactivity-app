@@ -31,6 +31,8 @@ func from_dict(dict):
 	new_seedling_available = dict["new_seedling_available"] if dict.has("new_seedling_available") else false # p_bigpoint
 
 func get_reward_for_time_interval_from_now(seconds) -> Resource:
+	if current == null:
+		return null
 	var current_state_since = OS.get_unix_time() - current.time_stamp
 	if seconds <= current_state_since:	
 		return current.get_reward_for_time_interval(seconds)
@@ -105,7 +107,7 @@ func to_dict():
 
 	  "bigpoint" : bigpoint,
 	  "aspect" : aspect,
-	  "current" : current.to_dict(),
+	  "current" : current.to_dict() if current != null else "null",
 	  "history" : Util.flatten_array(history),
 	  "water_tank" : water_tank,
 	  "run_time" : run_time, # in days

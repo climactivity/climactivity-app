@@ -22,8 +22,12 @@ border_color = Color( 1, 1, 1, 1 )
 corner_radius_top_left = 90
 corner_radius_bottom_left = 90
 corner_detail = 20
+shadow_color = Color( 0, 0, 0, 0.117647 )
+shadow_size = 8
+shadow_offset = Vector2( 0, 4 )
 
 [sub_resource type="Animation" id=2]
+length = 2.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("shop_button_container:visible")
 tracks/0/interp = 1
@@ -31,10 +35,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0, 1, 1.1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
-"values": [ false, true ]
+"values": [ false, false, true ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("shop_button_container:rect_scale")
@@ -43,10 +47,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.6 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0, 1, 1.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 1, 1e-05 ), Vector2( 1, 1 ) ]
+"values": [ Vector2( 1, 1e-05 ), Vector2( 1, 1e-05 ), Vector2( 1, 1 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("shop_button_container:modulate")
@@ -55,10 +59,10 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.6 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0, 1, 1.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
 [sub_resource type="StyleBoxFlat" id=3]
@@ -207,11 +211,9 @@ start_hidden = true
 
 [node name="shop_button_container" type="MarginContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview" index="2"]
 visible = false
-modulate = Color( 1, 1, 1, 0 )
 margin_top = 596.0
 margin_right = 1075.0
 margin_bottom = 751.0
-rect_scale = Vector2( 1, 1e-05 )
 custom_constants/margin_right = 40
 custom_constants/margin_top = 40
 custom_constants/margin_left = 40

@@ -4,8 +4,8 @@ extends Control
 var width = 64
 var height = 64
 
-const NORMAL_SCALE = 1.0
-const HOVER_SCALE = 1.5 
+export var NORMAL_SCALE = 1.0
+export var HOVER_SCALE = 1.5 
 
 var target_scale = 1.0
 var actual_scale = 1.0

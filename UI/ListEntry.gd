@@ -34,7 +34,7 @@ func _start_hidden():
 		return
 	if start_hidden: 
 		$AnimationPlayer.play("hide")
-		DEBUG_print()
+#		DEBUG_print()
 	else:
 #		has_entered_scene_animated = true
 		$AnimationPlayer.play("RESET")
@@ -110,7 +110,6 @@ func _gui_input(event):
 		return
 
 	if event is InputEventScreenTouch: 
-		print(event.position)
 		if event.pressed:
 			_on_Button_button_down()
 			last_touch_point = event.position
