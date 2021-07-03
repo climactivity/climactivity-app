@@ -73,7 +73,10 @@ func _notification(what):
 			pop_scene()
 		if header.has_method("_on_BackButton_pressed"):
 			header._on_BackButton_pressed() 
-
+	if what == MainLoop.NOTIFICATION_APP_RESUMED or what == MainLoop.NOTIFICATION_WM_FOCUS_IN:
+		Logger.print("App focused!", self) 
+		if OS.low_processor_usage_mode:
+			animation_player.queue("Focus")
 func _get_focused_header():
 	if current_scene != null and current_scene.get("header") != null: 
 		var current_header = current_scene.get("header")
@@ -225,7 +228,6 @@ func _show_B():
 	B.modulate.a = 1
 	A.modulate.a = 0
 
-	
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if (anim_name == "Reset"): return
 	_show_A()
@@ -234,3 +236,4 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 	is_changing_scene = false
 	get_tree().get_root().set_disable_input(false)
 	emit_signal("current_transition_finished")
+
