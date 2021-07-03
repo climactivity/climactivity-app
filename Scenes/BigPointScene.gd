@@ -1,4 +1,4 @@
-extends Panel
+extends SceneBase
 
 var _sector_data = preload("res://ForestScene3d/Tents/SectorData.gd").new().sector_data
 var sector_data = null
@@ -7,7 +7,7 @@ var bp_aspect_card = preload("res://UI/ListEntry.tscn")
 var navigation_data = {}
 var aspect_resources = []
 
-var gradient = null
+
 
 onready var req = $HTTPRequest
 onready var aspect_list = $"ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/AspectList"
@@ -23,6 +23,7 @@ func _ready():
 	material = material.duplicate(true)
 	gradient = material.get_shader_param("gradient")
 	render_resources() 
+	._ready()
 
 func load_from_cache(): 
 	if Api.is_cache_ready(): 

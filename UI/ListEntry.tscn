@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://UI/Components/RewardLabel.tscn" type="PackedScene" id=1]
 [ext_resource path="res://UI/Components/IconCapsule.tscn" type="PackedScene" id=2]
@@ -6,21 +6,9 @@
 [ext_resource path="res://UI/ListEntry.gd" type="Script" id=4]
 [ext_resource path="res://UI/theme/style_box_empty.tres" type="StyleBox" id=5]
 [ext_resource path="res://UI/typography/Button_Label.tres" type="DynamicFont" id=6]
+[ext_resource path="res://UI/ListEntry.tres" type="StyleBox" id=7]
 [ext_resource path="res://Network/DefaultReward.tres" type="Resource" id=8]
-
-[sub_resource type="StyleBoxFlat" id=5]
-bg_color = Color( 0.584314, 0.756863, 0.117647, 1 )
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color( 1, 1, 1, 1 )
-corner_radius_top_left = 90
-corner_radius_bottom_left = 90
-corner_detail = 20
-shadow_color = Color( 0, 0, 0, 0.117647 )
-shadow_size = 8
-shadow_offset = Vector2( 0, 4 )
+[ext_resource path="res://Assets/Icons/Time Circle.png" type="Texture" id=9]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 1, 1, 1, 1 )
@@ -32,6 +20,32 @@ corner_radius_bottom_left = 1000
 corner_detail = 20
 shadow_color = Color( 0, 0, 0, 0.184314 )
 shadow_size = 5
+
+[sub_resource type="StyleBoxEmpty" id=5]
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0.584314, 0.756863, 0.117647, 1 )
+corner_radius_top_left = 1024
+corner_radius_top_right = 1024
+corner_radius_bottom_right = 1024
+corner_radius_bottom_left = 1024
+corner_detail = 20
+
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 1, 1, 1, 1 )
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color( 0.988235, 0.988235, 0.988235, 1 )
+corner_radius_top_left = 1024
+corner_radius_top_right = 1024
+corner_radius_bottom_right = 1024
+corner_radius_bottom_left = 1024
+expand_margin_left = 5.0
+expand_margin_right = 5.0
+expand_margin_top = 5.0
+expand_margin_bottom = 5.0
 
 [sub_resource type="Animation" id=2]
 resource_name = "Enter"
@@ -57,20 +71,20 @@ tracks/1/keys = {
 }
 
 [sub_resource type="Animation" id=3]
-resource_name = "RESET"
+resource_name = "hide"
 length = 0.001
 tracks/0/type = "bezier"
-tracks/0/path = NodePath(".:rect_position:x")
+tracks/0/path = NodePath(".:modulate:r")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"points": PoolRealArray( 15, -0.25, 0, 0.25, 0 ),
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0 )
 }
 tracks/1/type = "bezier"
-tracks/1/path = NodePath(".:modulate:r")
+tracks/1/path = NodePath(".:modulate:g")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -80,7 +94,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 )
 }
 tracks/2/type = "bezier"
-tracks/2/path = NodePath(".:modulate:g")
+tracks/2/path = NodePath(".:modulate:b")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -90,24 +104,25 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 )
 }
 tracks/3/type = "bezier"
-tracks/3/path = NodePath(".:modulate:b")
+tracks/3/path = NodePath(".:modulate:a")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0 )
 }
-tracks/4/type = "bezier"
-tracks/4/path = NodePath(".:modulate:a")
+tracks/4/type = "method"
+tracks/4/path = NodePath(".")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0 )
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"values": [  ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -168,15 +183,14 @@ tracks/4/keys = {
 [node name="ListEntry" type="PanelContainer" groups=[
 "animatable",
 ]]
-modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 anchor_bottom = 0.096
-margin_left = 1000.0
-margin_right = 999.999
-margin_bottom = 3.67999
+margin_left = 15.0
+margin_right = 14.999
+margin_bottom = 109.68
 mouse_filter = 1
 mouse_default_cursor_shape = 8
-custom_styles/panel = SubResource( 5 )
+custom_styles/panel = ExtResource( 7 )
 script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -188,7 +202,7 @@ navigation_payload = {
 margin_left = 4.0
 margin_top = 4.0
 margin_right = 1076.0
-margin_bottom = 184.0
+margin_bottom = 290.0
 mouse_filter = 1
 mouse_default_cursor_shape = 2
 custom_styles/hover = ExtResource( 5 )
@@ -201,7 +215,8 @@ custom_styles/normal = ExtResource( 5 )
 margin_left = 4.0
 margin_top = 4.0
 margin_right = 1076.0
-margin_bottom = 184.0
+margin_bottom = 290.0
+rect_clip_content = true
 mouse_filter = 2
 mouse_default_cursor_shape = 3
 custom_constants/margin_top = 5
@@ -210,11 +225,11 @@ custom_constants/margin_bottom = 5
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
 margin_top = 5.0
 margin_right = 1071.0
-margin_bottom = 175.0
+margin_bottom = 281.0
 mouse_filter = 2
 
 [node name="VSeparator" type="VSeparator" parent="MarginContainer/HBoxContainer"]
-margin_bottom = 170.0
+margin_bottom = 276.0
 mouse_filter = 2
 custom_styles/separator = ExtResource( 5 )
 custom_constants/separation = -1
@@ -222,7 +237,7 @@ custom_constants/separation = -1
 [node name="IconContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer"]
 margin_left = 4.0
 margin_right = 174.0
-margin_bottom = 170.0
+margin_bottom = 276.0
 mouse_filter = 2
 custom_constants/margin_right = 5
 custom_constants/margin_top = 5
@@ -236,7 +251,7 @@ __meta__ = {
 margin_left = 5.0
 margin_top = 5.0
 margin_right = 165.0
-margin_bottom = 165.0
+margin_bottom = 271.0
 mouse_filter = 2
 
 [node name="Capsule" parent="MarginContainer/HBoxContainer/IconContainer/CenterContainer" instance=ExtResource( 2 )]
@@ -251,7 +266,7 @@ custom_styles/panel = SubResource( 1 )
 [node name="VSeparator2" type="VSeparator" parent="MarginContainer/HBoxContainer"]
 margin_left = 178.0
 margin_right = 207.0
-margin_bottom = 170.0
+margin_bottom = 276.0
 mouse_filter = 2
 custom_styles/separator = ExtResource( 5 )
 custom_constants/separation = 29
@@ -259,24 +274,76 @@ custom_constants/separation = 29
 [node name="ContentContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer"]
 margin_left = 211.0
 margin_right = 906.0
-margin_bottom = 170.0
+margin_bottom = 132.0
 mouse_filter = 2
 size_flags_horizontal = 3
+size_flags_vertical = 0
 custom_constants/margin_top = 10
 custom_constants/margin_bottom = 10
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/ContentContainer"]
 margin_top = 10.0
 margin_right = 695.0
-margin_bottom = 160.0
+margin_bottom = 122.0
 mouse_filter = 2
 custom_constants/separation = 10
 alignment = 1
 
-[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/HBoxContainer/ContentContainer/VBoxContainer"]
-margin_top = 42.0
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/ContentContainer/VBoxContainer"]
 margin_right = 695.0
-margin_bottom = 108.0
+margin_bottom = 36.0
+rect_min_size = Vector2( 0, 36 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/margin_right = 48
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/HBoxContainer/ContentContainer/VBoxContainer/MarginContainer"]
+margin_right = 647.0
+margin_bottom = 36.0
+custom_styles/panel = SubResource( 5 )
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/ContentContainer/VBoxContainer/MarginContainer/PanelContainer"]
+margin_right = 647.0
+margin_bottom = 36.0
+custom_constants/margin_right = 8
+
+[node name="ProgressBar" type="ProgressBar" parent="MarginContainer/HBoxContainer/ContentContainer/VBoxContainer/MarginContainer/PanelContainer/MarginContainer"]
+margin_right = 639.0
+margin_bottom = 36.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/fg = SubResource( 6 )
+custom_styles/bg = SubResource( 7 )
+min_value = -7.364
+step = 1.0
+value = 59.0
+rounded = true
+percent_visible = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="MarginContainer/HBoxContainer/ContentContainer/VBoxContainer/MarginContainer/PanelContainer"]
+margin_left = 647.0
+margin_right = 647.0
+margin_bottom = 36.0
+size_flags_horizontal = 8
+stretch_mode = 1
+alignment_horizontal = 0
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/ContentContainer/VBoxContainer/MarginContainer/PanelContainer/AspectRatioContainer"]
+margin_right = 36.0
+margin_bottom = 36.0
+texture = ExtResource( 9 )
+expand = true
+stretch_mode = 6
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/HBoxContainer/ContentContainer/VBoxContainer"]
+margin_top = 46.0
+margin_right = 695.0
+margin_bottom = 112.0
 mouse_filter = 2
 custom_fonts/normal_font = ExtResource( 6 )
 fit_content_height = true
@@ -284,10 +351,11 @@ fit_content_height = true
 [node name="RewardLabel" parent="MarginContainer/HBoxContainer/ContentContainer/VBoxContainer" instance=ExtResource( 1 )]
 visible = false
 anchor_right = 0.0
-margin_left = 429.695
-margin_top = 89.0
-margin_right = 699.0
-margin_bottom = 137.0
+anchor_bottom = 0.0
+margin_left = 425.695
+margin_top = 266.0
+margin_right = 695.0
+margin_bottom = 314.0
 rect_min_size = Vector2( 269.305, 0 )
 rect_scale = Vector2( 1, 1 )
 size_flags_horizontal = 8
@@ -297,7 +365,7 @@ _reward = ExtResource( 8 )
 [node name="VSeparator3" type="VSeparator" parent="MarginContainer/HBoxContainer"]
 margin_left = 910.0
 margin_right = 939.0
-margin_bottom = 170.0
+margin_bottom = 276.0
 mouse_filter = 2
 custom_styles/separator = ExtResource( 5 )
 custom_constants/separation = 29
@@ -305,14 +373,14 @@ custom_constants/separation = 29
 [node name="PanelContainer" type="PanelContainer" parent="MarginContainer/HBoxContainer"]
 margin_left = 943.0
 margin_right = 1063.0
-margin_bottom = 170.0
+margin_bottom = 276.0
 rect_min_size = Vector2( 120, 120 )
 mouse_filter = 2
 custom_styles/panel = ExtResource( 5 )
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/PanelContainer"]
 margin_right = 120.0
-margin_bottom = 170.0
+margin_bottom = 276.0
 mouse_filter = 2
 texture = ExtResource( 3 )
 expand = true
@@ -324,7 +392,7 @@ __meta__ = {
 [node name="VSeparator4" type="VSeparator" parent="MarginContainer/HBoxContainer"]
 margin_left = 1067.0
 margin_right = 1071.0
-margin_bottom = 170.0
+margin_bottom = 276.0
 mouse_filter = 2
 custom_styles/separator = ExtResource( 5 )
 

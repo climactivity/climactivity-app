@@ -12,13 +12,19 @@ export (Color) var accent_color = Color("95c11e") setget set_accent_color
 export (PackedScene) var button_replacement
 export var start_hidden = false setget is_start_hidden
 var has_entered_scene_animated = false
+
+export (Texture) var progress_icon_tex = preload("res://Assets/Icons/Time Circle.png") setget set_progress_icon
+export (bool) var show_progress = false setget set_is_show_progress 
+
 onready var icon = $MarginContainer/HBoxContainer/IconContainer/CenterContainer/Capsule
 onready var content_holder = $MarginContainer/HBoxContainer/ContentContainer
 onready var content_text = $MarginContainer/HBoxContainer/ContentContainer/VBoxContainer/RichTextLabel
 onready var content_reward = $MarginContainer/HBoxContainer/ContentContainer/VBoxContainer/RewardLabel
 onready var go_down_tex = $MarginContainer/HBoxContainer/PanelContainer/TextureRect
 onready var go_down_container = $MarginContainer/HBoxContainer/PanelContainer
-
+onready var progress_bar = $"MarginContainer/HBoxContainer/ContentContainer/VBoxContainer/MarginContainer/PanelContainer/MarginContainer/ProgressBar"
+onready var progress_icon = $"MarginContainer/HBoxContainer/ContentContainer/VBoxContainer/MarginContainer/PanelContainer/AspectRatioContainer/TextureRect"
+onready var progress_container = $"MarginContainer/HBoxContainer/ContentContainer/VBoxContainer/MarginContainer"
 var ready = false
 
 func grab_attention():
@@ -28,8 +34,18 @@ func is_start_hidden(_start_hidden):
 	start_hidden = _start_hidden
 	if ready:
 		_start_hidden()
+
+func set_progress_icon(_progress_icon_texture): 
+	progress_icon_tex = _progress_icon_texture
+	update()
+
+func set_is_show_progress(_show_progress): 
+	show_progress = _show_progress
+	update()
 	
 func _start_hidden(): 
+	if Engine.is_editor_hint():
+		return
 	if has_entered_scene_animated:
 		return
 	if start_hidden: 
@@ -71,7 +87,9 @@ func update():
 			go_down_container.add_child(button_replacement.instance())
 	else: 
 		go_down_tex.visible = true
-
+	progress_icon.texture = progress_icon_tex
+	progress_container.visible = show_progress
+	
 func set_navigation_target(target: String, payload = {}): 
 	navigation_target = target
 	if payload != {}:
@@ -82,6 +100,8 @@ func set_navigation_payload(any):
 
 func set_accent_color(color: Color): 
 	accent_color = color
+	if Engine.is_editor_hint():
+		return
 	bg_style = bg_style.duplicate()
 	bg_style.set_bg_color(color)
 	set('custom_styles/panel', bg_style) # panel is now green
