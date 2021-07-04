@@ -708,7 +708,7 @@ should_move = true
 parallax2_factor = 1.0
 
 [node name="Backdrop" type="Sprite3D" parent="Background"]
-transform = Transform( 20, 0, 0, 0, 1.158, 5.30055e-08, 0, -6.13803e-08, 1, 0, 3.695, -50 )
+transform = Transform( 20, 0, 0, 0, 3.224, 5.30054e-08, 0, -1.7089e-07, 1, 0, -0.658982, -50 )
 billboard = 2
 transparent = false
 shaded = true
