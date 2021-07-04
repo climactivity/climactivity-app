@@ -5,6 +5,7 @@ var _quests = []
 var ready = false
 var sector
 var aspect
+export var is_started_icon = preload("res://Assets/Icons/bookmark.png")
 onready var quest_list = $MarginContainer/VBoxContainer/QuestList
 func _ready():
 	ready = true
@@ -33,10 +34,16 @@ func _update():
 		quest_card_inst.set_accent_color(sector["sector_color"])
 		quest_card_inst.set_reward_display(quest.reward)
 		quest_card_inst.is_start_hidden(!reentering)
-#		if quest.has('icon'): 
-#			quest_card_inst.set_icon(factor.icon)
+
 		if aspect.icon != null: 
 			quest_card_inst.set_icon(aspect.icon)
 		else:
 			quest_card_inst.set_icon(sector["sector_logo"])
+		
+		var quest_status = QuestService.get_quest_status(quest._id)
+		if quest_status != null: 
+			quest_card_inst.set_is_show_progress(true)
+			quest_card_inst.set_progress(Util.frac(OS.get_unix_time(), quest_status.when, quest_status.quest_dead_line))
+			quest_card_inst.set_icon(is_started_icon)
+
 		quest_list.add_child(quest_card_inst)

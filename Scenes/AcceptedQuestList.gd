@@ -25,6 +25,8 @@ func update():
 			quest_card.set_navigation_target("res://Scenes/QuestScene.tscn",{"quest": quest, "sector": sector, "aspect": aspect})
 			quest_card.set_accent_color(sector["sector_color"])
 			quest_card.set_reward_display(quest.reward)
+			quest_card.set_is_show_progress(true)
+			quest_card.set_progress(Util.frac(OS.get_unix_time(), accepted_quest.when, accepted_quest.quest_dead_line))
 	#		if quest.has('icon'): 
 	#			quest_card_inst.set_icon(factor.icon)
 			if aspect.icon != null: 

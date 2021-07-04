@@ -3,6 +3,9 @@ tool extends Node
 static func map_to_range(x,a,b,c,d): 
 	return (x-a)/(b-a) * (d-c) + c
 
+static func frac(value, start, end): 
+	return map_to_range(value, start, end, 0.0, 1.0)
+	
 const uuid_util = preload('res://uuid.gd')
 
 static func update_dict_with(old_dict: Dictionary, update_dict: Dictionary) -> Dictionary:

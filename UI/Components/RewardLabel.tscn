@@ -28,7 +28,7 @@ expand_margin_bottom = 5.0
 
 [node name="RewardLabel" type="PanelContainer"]
 anchor_right = 1.0
-margin_bottom = 48.0
+margin_bottom = 51.0
 rect_scale = Vector2( 0.998902, 0.987026 )
 size_flags_horizontal = 9
 custom_styles/panel = SubResource( 1 )

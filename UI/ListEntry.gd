@@ -15,6 +15,7 @@ var has_entered_scene_animated = false
 
 export var progress_icon_tex = preload("res://Assets/Icons/Time Circle.png") setget set_progress_icon
 export var show_progress = false setget set_is_show_progress 
+export var progress = 0.0 setget set_progress
 
 onready var icon = $MarginContainer/HBoxContainer/IconContainer/CenterContainer/Capsule
 onready var content_holder = $MarginContainer/HBoxContainer/ContentContainer
@@ -35,6 +36,9 @@ func is_start_hidden(_start_hidden):
 	if ready:
 		_start_hidden()
 
+func set_progress(_progress):
+	progress = _progress
+	update()
 func set_progress_icon(_progress_icon_texture): 
 	progress_icon_tex = _progress_icon_texture
 	update()
@@ -77,6 +81,7 @@ func update():
 	icon.set_icon(texture)
 	progress_icon.texture = progress_icon_tex
 	progress_container.visible = show_progress
+	progress_bar.value = progress * 100
 	if reward == null: 
 		content_reward.visible = false
 	else: 
@@ -89,7 +94,12 @@ func update():
 			go_down_container.add_child(button_replacement.instance())
 	else: 
 		go_down_tex.visible = true
-
+	if Engine.is_editor_hint():
+		return
+	bg_style = bg_style.duplicate()
+	bg_style.set_bg_color(accent_color)
+	set('custom_styles/panel', bg_style)
+	progress_bar.get_stylebox("fg").set_bg_color(accent_color)
 	
 func set_navigation_target(target: String, payload = {}): 
 	navigation_target = target
@@ -101,12 +111,7 @@ func set_navigation_payload(any):
 
 func set_accent_color(color: Color): 
 	accent_color = color
-	if Engine.is_editor_hint():
-		return
-	bg_style = bg_style.duplicate()
-	bg_style.set_bg_color(color)
-	set('custom_styles/panel', bg_style)
-
+	update()
 
 func play_enter():
 	has_entered_scene_animated = true
@@ -138,7 +143,6 @@ func _gui_input(event):
 			if event.position == last_touch_point:
 				_on_Button_button_up()
 				_on_Button_pressed()
-
 
 func DEBUG_print():
 	print("hiding %s" % name, ", has_entered_scene_animated: " + str(has_entered_scene_animated), ", start_hidden: "  + str(start_hidden))

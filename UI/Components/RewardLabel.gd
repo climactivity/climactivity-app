@@ -3,10 +3,14 @@ extends Control
 class_name RewardLabel
 
 export (Resource) var _reward setget set_reward, get_reward
-enum SIZE {normal, big, huge}
+enum SIZE {normal, big}
 export (SIZE) var label_size setget set_label_size
 
 var ready = false
+
+var normal_font = preload("res://UI/typography/UI_Regular.tres")
+var big_font = preload("res://UI/typography/UI_big.tres")
+
 
 func _ready():
 	ready = true
@@ -38,3 +42,14 @@ func update():
 		
 		if coins_str == "" and xp_str == "": 
 			visible = false
+		match label_size:
+			SIZE.normal:
+				$HBoxContainer/coins_icon_holder.rect_min_size = Vector2(40,40)
+				$HBoxContainer/xp_icon_holder.rect_min_size = Vector2(40,40)
+				$HBoxContainer/coins_label.set("custom_fonts/font", normal_font )
+				$HBoxContainer/xp_label.set("custom_fonts/font", normal_font )
+			SIZE.big:
+				$HBoxContainer/coins_icon_holder.rect_min_size = Vector2(80,80)
+				$HBoxContainer/xp_icon_holder.rect_min_size = Vector2(80,80)
+				$HBoxContainer/coins_label.set("custom_fonts/font", big_font )
+				$HBoxContainer/xp_label.set("custom_fonts/font", big_font )
