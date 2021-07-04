@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://ForestScene3d/TreeTemplates/ContactShadow.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/sketch/lagerfeuer/lagerfeuer_holz.png" type="Texture" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://Assets/sketch/Characters/Chara_011.png" type="Texture" id=9]
 [ext_resource path="res://Assets/sketch/Characters/Chara_04.png" type="Texture" id=10]
 [ext_resource path="res://Assets/sketch/Characters/Chara_02.png" type="Texture" id=11]
+[ext_resource path="res://Assets/sketch/Characters/Chara_09.png" type="Texture" id=12]
 
 [sub_resource type="QuadMesh" id=1]
 
@@ -70,7 +71,7 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"points": PoolRealArray( 0.5, -0.25, 0, 0.25, 0, 0.53, -0.25, 0, 0.25, 0, 0.5, -0.25, 0, 0.25, 0 ),
+"points": PoolRealArray( 0.5, -0.25, 0, 0.25, 0, 0.614, -0.25, 0, 0.25, 0, 0.5, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0, 0.494222, 1 )
 }
 tracks/4/type = "bezier"
@@ -80,8 +81,8 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"points": PoolRealArray( 0.5, -0.25, 0, 0.25, 0, 0.49, -0.25, 0, 0.25, 0, 0.5, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 0.499438, 1 )
+"points": PoolRealArray( 0.5, -0.25, 0, 0.25, 0, 0.52, -0.25, 0, 0.25, 0, 0.5, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5, 1 )
 }
 tracks/5/type = "bezier"
 tracks/5/path = NodePath("Sprite3D2:scale:z")
@@ -102,8 +103,8 @@ transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0 )
 script = ExtResource( 4 )
 
 [node name="ContactShadow" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.132716, 0.74908, -0.39862 )
-visible = false
+transform = Transform( 4.05185, 0, 0, 0, 1, 0, 0, 0, 4.05185, 0.0119222, 0, -0.0261991 )
+material/0 = null
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00534546, -0.253799, 0.151965 )
@@ -117,7 +118,7 @@ script = ExtResource( 3 )
 _unit_factor = 1.117
 
 [node name="Sprite3D2" type="Sprite3D" parent="."]
-transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 1, 0.00534546, -0.055, 0.148 )
+transform = Transform( 0.603302, 0, 0, 0, 0.518303, 0, 0, 0, 1, 0.00534546, -0.055, 0.148 )
 centered = false
 offset = Vector2( -512, 0 )
 pixel_size = 0.00109082
@@ -142,36 +143,37 @@ anims/flicker = SubResource( 4 )
 anims/place_top_person = SubResource( 5 )
 
 [node name="Spatial" parent="." instance=ExtResource( 7 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.910245, 0.2, -0.295859 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.910245, 0.104, -0.295859 )
 facing = 0
 show_person = true
 show_log = true
 person_tex = ExtResource( 11 )
 
 [node name="Spatial2" parent="." instance=ExtResource( 7 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.925239, 0.2, -0.415874 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.925239, 0.104, -0.415874 )
 facing = 1
 show_person = true
 show_log = true
 person_tex = ExtResource( 10 )
 
 [node name="Spatial5" parent="." instance=ExtResource( 7 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.884693, 0.2, 0.671264 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.884693, 0.104, 0.671264 )
 facing = 0
 show_person = true
 person_tex = ExtResource( 8 )
 
 [node name="Spatial6" parent="." instance=ExtResource( 7 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.824605, 0.2, 0.645259 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.824605, 0.104, 0.645259 )
 facing = 1
 show_person = true
 person_tex = ExtResource( 9 )
 
 [node name="Spatial3" parent="." instance=ExtResource( 7 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0227464, 0.2, -0.868712 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0227464, 0.104, -0.868712 )
 show_person = true
 show_log = true
 
 [node name="Spatial4" parent="." instance=ExtResource( 7 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0168432, 0.2, 0.987334 )
-show_log = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0168432, 0.104, 0.987334 )
+show_person = true
+person_tex = ExtResource( 12 )

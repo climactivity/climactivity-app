@@ -3,6 +3,6 @@
 [ext_resource path="res://Assets/Theme/Fonts/RobotoCondensed-Regular.ttf" type="DynamicFontData" id=1]
 
 [resource]
-size = 42
+size = 52
 use_filter = true
 font_data = ExtResource( 1 )

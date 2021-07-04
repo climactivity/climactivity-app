@@ -4,6 +4,6 @@
 font_path = "res://Assets/Theme/Fonts/LovedbytheKing-Regular.ttf"
 
 [resource]
-size = 42
+size = 52
 use_filter = true
 font_data = SubResource( 1 )

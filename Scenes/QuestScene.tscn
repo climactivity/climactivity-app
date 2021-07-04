@@ -190,10 +190,11 @@ custom_constants/margin_left = 24
 custom_constants/margin_bottom = 24
 
 [node name="PanelContainer" type="PanelContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TextContainer" index="0"]
+modulate = Color( 1, 1, 1, 0 )
 margin_left = 24.0
-margin_top = 24.0
+margin_top = -300.0
 margin_right = 1056.0
-margin_bottom = 524.0
+margin_bottom = 200.0
 rect_min_size = Vector2( 0, 500 )
 size_flags_horizontal = 3
 custom_styles/panel = SubResource( 5 )
@@ -228,8 +229,8 @@ margin_bottom = 1434.0
 rect_min_size = Vector2( 0, 128 )
 
 [node name="DatePanel" type="Panel" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/StatusContainer" index="0"]
+modulate = Color( 1, 1, 1, 0 )
 anchor_bottom = 1.0
-margin_right = 391.0
 custom_styles/panel = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -265,10 +266,11 @@ __meta__ = {
 }
 
 [node name="RewardPanel" type="Panel" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/StatusContainer" index="1"]
+modulate = Color( 1, 1, 1, 0 )
 anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -444.0
+margin_left = 80.0
 custom_styles/panel = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -290,14 +292,15 @@ custom_constants/separation = 59
 [node name="ActionContainer" type="CenterContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="5"]
 margin_top = 1501.0
 margin_right = 1080.0
-margin_bottom = 1709.0
+margin_bottom = 1916.0
 size_flags_vertical = 3
 
 [node name="ActionButton" type="Button" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ActionContainer" index="0"]
+modulate = Color( 1, 1, 1, 0 )
 margin_left = 318.0
-margin_top = 69.0
+margin_top = 173.0
 margin_right = 762.0
-margin_bottom = 138.0
+margin_bottom = 242.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 custom_styles/hover = ExtResource( 9 )
@@ -309,11 +312,11 @@ custom_fonts/font = ExtResource( 4 )
 text = "Nehme ich mir vor!"
 
 [node name="HSeparator3" type="HSeparator" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="6"]
-margin_top = 1713.0
+margin_top = 1920.0
 margin_right = 1080.0
 margin_bottom = 1920.0
 custom_styles/separator = SubResource( 9 )
-custom_constants/separation = 207
+custom_constants/separation = 0
 __meta__ = {
 "_edit_use_anchors_": false
 }

@@ -29,7 +29,7 @@ __meta__ = {
 }
 
 [node name="ActionButton" type="Button" parent="VBoxContainer"]
-margin_right = 179.0
+margin_right = 204.0
 margin_bottom = 70.0
 custom_styles/hover = ExtResource( 5 )
 custom_styles/pressed = ExtResource( 6 )
@@ -37,6 +37,6 @@ custom_styles/focus = ExtResource( 7 )
 custom_styles/disabled = ExtResource( 4 )
 custom_styles/normal = ExtResource( 3 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
-text = "Aufgaben"
+text = "Challenges"
 
 [connection signal="pressed" from="VBoxContainer/ActionButton" to="." method="_on_ActionButton_pressed"]
