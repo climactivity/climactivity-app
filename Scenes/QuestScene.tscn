@@ -320,6 +320,7 @@ __meta__ = {
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="3"]
 autoplay = "Enter"
+playback_speed = 2.0
 anims/Enter = SubResource( 14 )
 
 [connection signal="pressed" from="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ActionContainer/ActionButton" to="." method="_on_ActionButton_pressed"]
