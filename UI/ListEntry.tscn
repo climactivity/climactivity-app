@@ -9,6 +9,8 @@
 [ext_resource path="res://UI/ListEntry.tres" type="StyleBox" id=7]
 [ext_resource path="res://Network/DefaultReward.tres" type="Resource" id=8]
 [ext_resource path="res://Assets/Icons/Time Circle.png" type="Texture" id=9]
+[ext_resource path="res://UI/M_Progress_FG.tres" type="StyleBox" id=10]
+[ext_resource path="res://UI/M_Progress_BG.tres" type="StyleBox" id=11]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 1, 1, 1, 1 )
@@ -22,31 +24,6 @@ shadow_color = Color( 0, 0, 0, 0.184314 )
 shadow_size = 5
 
 [sub_resource type="StyleBoxEmpty" id=2]
-
-[sub_resource type="StyleBoxFlat" id=3]
-resource_local_to_scene = true
-bg_color = Color( 0.584314, 0.756863, 0.117647, 1 )
-corner_radius_top_left = 1024
-corner_radius_top_right = 1024
-corner_radius_bottom_right = 1024
-corner_radius_bottom_left = 1024
-corner_detail = 20
-
-[sub_resource type="StyleBoxFlat" id=4]
-bg_color = Color( 1, 1, 1, 1 )
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
-border_color = Color( 0.988235, 0.988235, 0.988235, 1 )
-corner_radius_top_left = 1024
-corner_radius_top_right = 1024
-corner_radius_bottom_right = 1024
-corner_radius_bottom_left = 1024
-expand_margin_left = 5.0
-expand_margin_right = 5.0
-expand_margin_top = 5.0
-expand_margin_bottom = 5.0
 
 [sub_resource type="Animation" id=5]
 tracks/0/type = "bezier"
@@ -271,7 +248,7 @@ custom_constants/separation = 29
 [node name="ContentContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer"]
 margin_left = 211.0
 margin_right = 906.0
-margin_bottom = 132.0
+margin_bottom = 86.0
 mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 0
@@ -281,12 +258,13 @@ custom_constants/margin_bottom = 10
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/ContentContainer"]
 margin_top = 10.0
 margin_right = 695.0
-margin_bottom = 122.0
+margin_bottom = 76.0
 mouse_filter = 2
 custom_constants/separation = 10
 alignment = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/ContentContainer/VBoxContainer"]
+visible = false
 margin_right = 695.0
 margin_bottom = 36.0
 rect_min_size = Vector2( 0, 36 )
@@ -315,11 +293,10 @@ grow_vertical = 0
 mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_styles/fg = SubResource( 3 )
-custom_styles/bg = SubResource( 4 )
+custom_styles/fg = ExtResource( 10 )
+custom_styles/bg = ExtResource( 11 )
 min_value = -7.364
 step = 1.0
-value = 100.0
 rounded = true
 percent_visible = false
 __meta__ = {
@@ -346,9 +323,8 @@ expand = true
 stretch_mode = 6
 
 [node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/HBoxContainer/ContentContainer/VBoxContainer"]
-margin_top = 46.0
 margin_right = 695.0
-margin_bottom = 112.0
+margin_bottom = 66.0
 mouse_filter = 2
 custom_fonts/normal_font = ExtResource( 6 )
 fit_content_height = true
