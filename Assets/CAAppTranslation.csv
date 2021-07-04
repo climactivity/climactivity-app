@@ -29,3 +29,7 @@ quest_action_just_completed,War toll!,quest_action_just_completed
 tracking_settings_kiko_prompt,,
 loading_anim,Lade,loading
 info_header_text,Infos,
+tracking_header_text,,
+accepted_quests,Challenges,Challenges
+accepted_quest,Deine Challenge,Your challenges
+quest,Challenge,Challenge

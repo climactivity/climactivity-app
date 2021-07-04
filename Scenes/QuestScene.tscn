@@ -1,15 +1,17 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Scenes/SceneBase.tscn" type="PackedScene" id=1]
 [ext_resource path="res://UI/Components/RewardLabel.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Assets/Icons/Time Circle.png" type="Texture" id=3]
 [ext_resource path="res://UI/typography/Heading.tres" type="DynamicFont" id=4]
+[ext_resource path="res://UI/M_StatusContainer.tres" type="StyleBox" id=5]
 [ext_resource path="res://UI/theme/ButtonPrimary_Inactive.stylebox" type="StyleBox" id=6]
+[ext_resource path="res://UI/Components/kiko_hint.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Scenes/QuestSceneContent.gd" type="Script" id=8]
 [ext_resource path="res://UI/theme/ButtonPrimary_Active.stylebox" type="StyleBox" id=9]
 [ext_resource path="res://UI/Components/infobits/InfobitContainer.tscn" type="PackedScene" id=10]
 
-[sub_resource type="Shader" id=1]
+[sub_resource type="Shader" id=15]
 code = "shader_type canvas_item; 
 
 uniform sampler2D gradient; 
@@ -19,16 +21,16 @@ void fragment() {
 	//COLOR = vec4(UV.y,0,0,1);
 }"
 
-[sub_resource type="Gradient" id=2]
+[sub_resource type="Gradient" id=16]
 offsets = PoolRealArray( 0.213622, 1 )
 colors = PoolColorArray( 0.592157, 0.909804, 0.192157, 1, 1, 1, 1, 1 )
 
-[sub_resource type="GradientTexture" id=3]
-gradient = SubResource( 2 )
+[sub_resource type="GradientTexture" id=17]
+gradient = SubResource( 16 )
 
-[sub_resource type="ShaderMaterial" id=4]
-shader = SubResource( 1 )
-shader_param/gradient = SubResource( 3 )
+[sub_resource type="ShaderMaterial" id=18]
+shader = SubResource( 15 )
+shader_param/gradient = SubResource( 17 )
 
 [sub_resource type="StyleBoxFlat" id=5]
 bg_color = Color( 1, 1, 1, 1 )
@@ -43,17 +45,6 @@ corner_radius_bottom_right = 64
 corner_radius_bottom_left = 64
 corner_detail = 20
 
-[sub_resource type="StyleBoxFlat" id=6]
-bg_color = Color( 0.482353, 0.776471, 0.109804, 0.741176 )
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color( 0.584314, 0.756863, 0.117647, 1 )
-corner_radius_top_right = 64
-corner_radius_bottom_right = 64
-corner_detail = 20
-
 [sub_resource type="StyleBoxFlat" id=7]
 bg_color = Color( 0, 0, 0, 1 )
 corner_radius_top_left = 64
@@ -61,28 +52,137 @@ corner_radius_top_right = 64
 corner_radius_bottom_right = 64
 corner_radius_bottom_left = 64
 
-[sub_resource type="StyleBoxFlat" id=8]
-bg_color = Color( 0.482353, 0.776471, 0.109804, 0.741176 )
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color( 0.584314, 0.756863, 0.117647, 1 )
-corner_radius_top_left = 64
-corner_radius_bottom_left = 64
-corner_detail = 20
-
 [sub_resource type="StyleBoxEmpty" id=9]
 
+[sub_resource type="Animation" id=14]
+resource_name = "Enter"
+length = 5.0
+tracks/0/type = "method"
+tracks/0/path = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/kiko_avatar - placeholder")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "play_enter"
+} ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TextContainer/PanelContainer:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2, 3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 24, -300 ), Vector2( 24, -300 ), Vector2( 24, 24 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TextContainer/PanelContainer:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 2, 3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/StatusContainer/RewardPanel:margin_left")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 3.3, 4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 80.0, 80.0, -444.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/StatusContainer/DatePanel:margin_right")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 3.3, 4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 391.0 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/StatusContainer/DatePanel:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 3.3, 4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/StatusContainer/RewardPanel:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 3.3, 4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/HSeparator3:custom_constants/separation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 4.2, 5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0, 0, 207 ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ActionContainer/ActionButton:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 4.2, 5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
 [node name="SceneBase" instance=ExtResource( 1 )]
-material = SubResource( 4 )
+material = SubResource( 18 )
 script = ExtResource( 8 )
 accent_color = Color( 0.6, 0.6, 0.6, 1 )
 
-[node name="TextContainer" type="MarginContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="1"]
+[node name="kiko_avatar - placeholder" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="1" instance=ExtResource( 7 )]
+anchor_right = 0.0
 margin_top = 350.0
 margin_right = 1080.0
-margin_bottom = 898.0
+margin_bottom = 750.0
+
+[node name="TextContainer" type="MarginContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="2"]
+margin_top = 754.0
+margin_right = 1080.0
+margin_bottom = 1302.0
 size_flags_horizontal = 3
 custom_constants/margin_right = 24
 custom_constants/margin_top = 24
@@ -121,16 +221,16 @@ margin_top = 64.0
 margin_right = 966.0
 margin_bottom = 434.0
 
-[node name="StatusContainer" type="Control" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="2"]
-margin_top = 902.0
+[node name="StatusContainer" type="Control" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="3"]
+margin_top = 1306.0
 margin_right = 1080.0
-margin_bottom = 1030.0
+margin_bottom = 1434.0
 rect_min_size = Vector2( 0, 128 )
 
 [node name="DatePanel" type="Panel" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/StatusContainer" index="0"]
 anchor_bottom = 1.0
-margin_right = 418.0
-custom_styles/panel = SubResource( 6 )
+margin_right = 391.0
+custom_styles/panel = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -139,8 +239,8 @@ __meta__ = {
 anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -119.0
-margin_right = 9.0
+margin_left = -69.371
+margin_right = 58.629
 custom_styles/panel = SubResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -154,7 +254,8 @@ expand = true
 
 [node name="Label2" type="Label" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/StatusContainer/DatePanel" index="1"]
 anchor_bottom = 1.0
-margin_right = 292.0
+margin_left = 1.56195
+margin_right = 293.562
 custom_fonts/font = ExtResource( 4 )
 text = "20.05.2021"
 align = 1
@@ -168,7 +269,7 @@ anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -444.0
-custom_styles/panel = SubResource( 8 )
+custom_styles/panel = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -179,24 +280,24 @@ margin_left = -83.0
 margin_bottom = 0.0
 label_size = 1
 
-[node name="HSeparator2" type="HSeparator" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="3"]
-margin_top = 1034.0
+[node name="HSeparator2" type="HSeparator" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="4"]
+margin_top = 1438.0
 margin_right = 1080.0
-margin_bottom = 1093.0
+margin_bottom = 1497.0
 custom_styles/separator = SubResource( 9 )
 custom_constants/separation = 59
 
-[node name="ActionContainer" type="CenterContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="4"]
-margin_top = 1097.0
+[node name="ActionContainer" type="CenterContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="5"]
+margin_top = 1501.0
 margin_right = 1080.0
 margin_bottom = 1709.0
 size_flags_vertical = 3
 
 [node name="ActionButton" type="Button" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ActionContainer" index="0"]
 margin_left = 318.0
-margin_top = 271.0
+margin_top = 69.0
 margin_right = 762.0
-margin_bottom = 340.0
+margin_bottom = 138.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 custom_styles/hover = ExtResource( 9 )
@@ -207,7 +308,7 @@ custom_styles/normal = ExtResource( 9 )
 custom_fonts/font = ExtResource( 4 )
 text = "Nehme ich mir vor!"
 
-[node name="HSeparator3" type="HSeparator" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="5"]
+[node name="HSeparator3" type="HSeparator" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="6"]
 margin_top = 1713.0
 margin_right = 1080.0
 margin_bottom = 1920.0
@@ -217,7 +318,8 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Header" parent="HeaderContainer" index="1"]
-screen_label = "Aufgabenvorschlag"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="3"]
+autoplay = "Enter"
+anims/Enter = SubResource( 14 )
 
-[connection signal="pressed" from="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ActionContainer/ActionButton" to="ContentContainer" method="_on_ActionButton_pressed"]
+[connection signal="pressed" from="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ActionContainer/ActionButton" to="." method="_on_ActionButton_pressed"]
