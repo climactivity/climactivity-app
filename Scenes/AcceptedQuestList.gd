@@ -1,20 +1,20 @@
-extends VBoxContainer
+extends SceneBase
 
 var _accepted_quests = []
-var ready = false
-var bp_quest_card = preload("res://UI/ListEntry.tscn")
 
+var bp_quest_card = preload("res://UI/ListEntry.tscn")
+onready var quest_list = $"ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/VBoxContainer"
 func _ready():
+	._ready()
 	_accepted_quests = QuestService.get_available_quests()
 	QuestService.connect("quest_completed", self, "update")
-	ready = true
 	update()
 
 func _enter_tree():
 	update()
 func update(): 
 	if ready: 
-		Util.clear(self)
+		Util.clear(quest_list)
 		for accepted_quest in  QuestService.get_available_quests():
 
 			var quest_card = bp_quest_card.instance()
@@ -33,7 +33,7 @@ func update():
 				quest_card.set_icon(aspect.icon)
 			else:
 				quest_card.set_icon(sector["sector_logo"])
-			add_child(quest_card)
+			quest_list.add_child(quest_card)
 			
 func receive_navigation(navigation_data): 
 	update()
