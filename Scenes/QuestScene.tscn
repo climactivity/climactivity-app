@@ -1,18 +1,20 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Scenes/SceneBase.tscn" type="PackedScene" id=1]
 [ext_resource path="res://UI/Components/RewardLabel.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Assets/Icons/Time Circle.png" type="Texture" id=3]
 [ext_resource path="res://UI/typography/Heading.tres" type="DynamicFont" id=4]
 [ext_resource path="res://UI/M_StatusContainer.tres" type="StyleBox" id=5]
-[ext_resource path="res://UI/theme/ButtonPrimary_Inactive.stylebox" type="StyleBox" id=6]
+[ext_resource path="res://Assets/Theme/collect_button_9p_down.png" type="Texture" id=6]
 [ext_resource path="res://UI/Components/kiko_hint.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Scenes/QuestSceneContent.gd" type="Script" id=8]
-[ext_resource path="res://UI/theme/ButtonPrimary_Active.stylebox" type="StyleBox" id=9]
+[ext_resource path="res://Assets/Theme/collect_button_9p_normal.png" type="Texture" id=9]
 [ext_resource path="res://UI/Components/infobits/InfobitContainer.tscn" type="PackedScene" id=10]
 [ext_resource path="res://UI/RewardCollector.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Assets/Theme/collect_button_9p_hover.png" type="Texture" id=12]
+[ext_resource path="res://Assets/Theme/collect_button_9p_disabled.png" type="Texture" id=13]
 
-[sub_resource type="Shader" id=14]
+[sub_resource type="Shader" id=10]
 code = "shader_type canvas_item; 
 
 uniform sampler2D gradient; 
@@ -22,16 +24,16 @@ void fragment() {
 	//COLOR = vec4(UV.y,0,0,1);
 }"
 
-[sub_resource type="Gradient" id=15]
+[sub_resource type="Gradient" id=11]
 offsets = PoolRealArray( 0.213622, 1 )
 colors = PoolColorArray( 0.592157, 0.909804, 0.192157, 1, 1, 1, 1, 1 )
 
-[sub_resource type="GradientTexture" id=16]
-gradient = SubResource( 15 )
+[sub_resource type="GradientTexture" id=12]
+gradient = SubResource( 11 )
 
-[sub_resource type="ShaderMaterial" id=17]
-shader = SubResource( 14 )
-shader_param/gradient = SubResource( 16 )
+[sub_resource type="ShaderMaterial" id=13]
+shader = SubResource( 10 )
+shader_param/gradient = SubResource( 12 )
 
 [sub_resource type="StyleBoxFlat" id=5]
 bg_color = Color( 1, 1, 1, 1 )
@@ -169,7 +171,7 @@ tracks/8/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=13]
+[sub_resource type="Animation" id=9]
 resource_name = "show_reward_collector"
 length = 1.5
 tracks/0/type = "value"
@@ -242,15 +244,31 @@ tracks/5/keys = {
 "points": PoolRealArray( 100, -0.25, 0, 0.25, 0, 100, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0, 0.7, 1.5 )
 }
+tracks/6/type = "method"
+tracks/6/path = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ActionContainer/RewardCollector")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 1.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "grab_focus"
+} ]
+}
 
 [node name="SceneBase" instance=ExtResource( 1 )]
-material = SubResource( 17 )
+material = SubResource( 13 )
 script = ExtResource( 8 )
 accent_color = Color( 0.6, 0.6, 0.6, 1 )
 
-[node name="HSeparator" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="0"]
-margin_bottom = 346.0
-custom_constants/separation = 346
+[node name="ScrollContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer" index="0"]
+follow_focus = true
+
+[node name="ContentMain" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer" index="0"]
+margin_bottom = 2064.0
 
 [node name="kiko_avatar - placeholder" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="1" instance=ExtResource( 7 )]
 anchor_right = 0.0
@@ -371,7 +389,7 @@ custom_constants/separation = 59
 [node name="ActionContainer" type="MarginContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="5"]
 margin_top = 1635.0
 margin_right = 1080.0
-margin_bottom = 1916.0
+margin_bottom = 2060.27
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/margin_right = 36
@@ -387,50 +405,51 @@ anchor_bottom = 0.0
 margin_left = 36.0
 margin_top = 0.0
 margin_right = 1044.0
-margin_bottom = 128.0
+margin_bottom = 225.0
+focus_mode = 2
 
-[node name="ActionButton" type="Button" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ActionContainer" index="1"]
-margin_left = 318.0
-margin_top = 6.0
-margin_right = 762.0
-margin_bottom = 75.0
-size_flags_horizontal = 4
-size_flags_vertical = 4
-custom_styles/hover = ExtResource( 9 )
-custom_styles/pressed = ExtResource( 9 )
-custom_styles/focus = ExtResource( 9 )
-custom_styles/disabled = ExtResource( 6 )
-custom_styles/normal = ExtResource( 9 )
+[node name="ActionButton" type="TextureButton" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ActionContainer" index="1"]
+margin_left = 36.0
+margin_right = 1044.0
+margin_bottom = 225.272
+rect_min_size = Vector2( 512, 225.272 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = ExtResource( 9 )
+texture_pressed = ExtResource( 6 )
+texture_hover = ExtResource( 12 )
+texture_disabled = ExtResource( 13 )
+expand = true
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ActionContainer/ActionButton" index="0"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 custom_fonts/font = ExtResource( 4 )
-text = "Nehme ich mir vor!"
+text = "quest_action_start"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="HSeparator3" type="HSeparator" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="6"]
-margin_top = 1920.0
+margin_top = 2064.0
 margin_right = 1080.0
-margin_bottom = 1920.0
+margin_bottom = 2064.0
 custom_styles/separator = SubResource( 7 )
 custom_constants/separation = 0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HSeparator2" parent="ContentContainer/Content/HeaderBG" index="0"]
-margin_bottom = 346.0
-custom_constants/separation = 346
-
-[node name="HSeparator" parent="HeaderContainer" index="0"]
-margin_bottom = 100.0
-custom_constants/separation = 100
-
-[node name="Header" parent="HeaderContainer" index="1"]
-margin_top = 104.0
-margin_bottom = 261.0
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="3"]
 autoplay = "Enter"
 playback_speed = 2.0
 anims/Enter = SubResource( 8 )
-anims/show_reward_collector = SubResource( 13 )
+anims/show_reward_collector = SubResource( 9 )
 
 [connection signal="collected" from="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ActionContainer/RewardCollector" to="." method="_on_RewardCollector_collected"]
 [connection signal="pressed" from="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ActionContainer/ActionButton" to="." method="_on_ActionButton_pressed"]

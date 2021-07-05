@@ -22,8 +22,9 @@ return_button,Schließen,Close
 tree_growth_done,Ausgewachsen!,done
 quiz_end_message,Du hast es geschafft!,done
 ack_reward_button_label,Yay!,yay
+,,
 quest_action_in_progress,Schon vorgenommen,quest_action_in_progress
-quest_action_start,Mach' ich!,quest_action_start
+quest_action_start,Nehme ich mir vor,quest_action_start
 quest_action_completable,Habe ich geschafft!,quest_action_completable
 quest_action_just_completed,War toll!,quest_action_just_completed
 tracking_settings_kiko_prompt,,
@@ -33,3 +34,7 @@ tracking_header_text,,
 accepted_quests,Challenges,Challenges
 accepted_quest,Deine Challenge,Your challenges
 quest,Challenge,Challenge
+no_current_accepted_quests,Du hast keine akutell laufende Challenge - gehe in ein Themenzelt und nimm dir etwas vor!,
+no_accepted_quests,Du hast dir noch keine Challenges ausgesucht - gehe in ein Themenzelt und nimm dir etwas vor!,
+collect_reward_action_label,Einsammeln,Collect
+collected_reward_action_label,Eingesammelt,

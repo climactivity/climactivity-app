@@ -29,11 +29,15 @@ var swiping = false
 var _swipePoint = null
 var tween
 
+#func scroll_to(node): 
+#	var target = node.rect_position.y
+#	var tween = Tween.new() 
+#	tween.interpolate_property()
+
 func _ready():
 	set_process_input(kineticScrollEnable)
 
 func _input(event):
-	
 	if not (event is InputEventScreenDrag or event is InputEventMouseButton or event is InputEventMouseMotion): 
 		return 
 	

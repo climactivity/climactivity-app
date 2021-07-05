@@ -12,6 +12,7 @@ onready var quest_content = $"ContentContainer/Content/VBoxContainer/MarginConta
 onready var end_date_label = $"ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/StatusContainer/DatePanel/Label2"
 onready var reward_label = $"ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/StatusContainer/RewardPanel/RewardLabel"
 onready var action_button = $"ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ActionContainer/ActionButton"
+onready var action_button_label = $ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ActionContainer/ActionButton/Label
 onready var date_panel = $ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/StatusContainer/DatePanel
 onready var kiko_hint = $"ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/kiko_avatar - placeholder"
 onready var reward_collector = $ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ActionContainer/RewardCollector
@@ -29,10 +30,10 @@ func _update():
 	var quest_text = _quest.text["doc"]["content"] if _quest.text.has("doc") else _quest.text["content"]
 	quest_content.on_data(quest_text)
 	if _active_quest:
-		action_button.text = tr("quest_action_in_progress") if not_reentered else tr("quest_action_completable")
+		action_button_label.text = tr("quest_action_in_progress") if not_reentered else tr("quest_action_completable")
 		end_date_label.text = Util.date_as_eu_string(QuestService.get_quest_status(_quest._id)["quest_dead_line"])
 	else: 
-		action_button.text = tr("quest_action_start") if !just_completed else tr("quest_action_just_completed")
+		action_button_label.text = tr("quest_action_start") if !just_completed else tr("quest_action_just_completed")
 		if _quest.deadline != 0: 
 			end_date_label.text = Util.date_as_eu_string(_quest.deadline)
 		else: 

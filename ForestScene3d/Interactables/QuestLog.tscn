@@ -29,8 +29,8 @@ __meta__ = {
 }
 
 [node name="ActionButton" type="Button" parent="VBoxContainer"]
-margin_right = 204.0
-margin_bottom = 70.0
+margin_right = 246.0
+margin_bottom = 82.0
 custom_styles/hover = ExtResource( 5 )
 custom_styles/pressed = ExtResource( 6 )
 custom_styles/focus = ExtResource( 7 )

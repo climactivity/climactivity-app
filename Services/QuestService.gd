@@ -3,15 +3,18 @@ extends Node
 signal complete
 signal quest_completed(quest_id)
 var _accepted_quests : Array
-var _completed_quest : Array
+var _completed_quests : Array
 
 func _ready():
 	var _player_state = PSS.get_player_state_ref()
 	_accepted_quests = _player_state.current_quests
-	_completed_quest = _player_state.completed_quests
+	_completed_quests = _player_state.completed_quests
 	
 func get_available_quests() -> Array: 
 	return _accepted_quests
+
+func get_completed_quests() -> Array:
+	return _completed_quests
 
 func get_quest_by_id(quest_id):
 	return Api.cache.get_quest_by_id(quest_id)
@@ -22,7 +25,7 @@ func get_quests_for_aspect(aspect):
 func complete_quest(quest_id): 
 	for accepted_quest in _accepted_quests:
 		if accepted_quest.quest == quest_id:
-			_completed_quest.append(accepted_quest)
+			_completed_quests.append(accepted_quest)
 			_accepted_quests.erase(accepted_quest)
 			_reward_quest(accepted_quest)
 			emit_signal("quest_completed", quest_id)
@@ -51,4 +54,7 @@ func get_quest_status(quest_id):
 	for accepted_quest in _accepted_quests:
 		if accepted_quest.quest == quest_id:
 			return accepted_quest
+	for completed_quest in _completed_quests: 
+		if completed_quest.quest == quest_id:
+			return completed_quest
 	return null

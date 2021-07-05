@@ -7,7 +7,7 @@ var xp = 0
 var coins = 0 
 export var disabled = true setget set_disabled
 export var display_frac = 1.0 setget set_display_frac
-export (String) var label = tr("collect") setget set_label
+export (String) var label = tr("collect_reward_action_label") setget set_label
 onready var collect_button = $VBoxContainer/CollectButton
 onready var collect_button_label = $VBoxContainer/CollectButton/Label
 onready var animation_player = $AnimationPlayer
@@ -66,7 +66,6 @@ func _on_button_button_up():
 	collect_button.modulate = Color.white
 
 func _on_button_pressed():
-	print("Collected")
 	animation_player.play("Collect")
 
 var last_touch_point : Vector2

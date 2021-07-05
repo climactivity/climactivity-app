@@ -4,6 +4,7 @@ var _accepted_quests = []
 
 var bp_quest_card = preload("res://UI/ListEntry.tscn")
 onready var quest_list = $"ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/VBoxContainer"
+onready var quest_list_empty_message = $"ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/quests_empty_message"
 func _ready():
 	._ready()
 	_accepted_quests = QuestService.get_available_quests()
@@ -15,7 +16,12 @@ func _ready():
 func update(): 
 	if ready: 
 		Util.clear(quest_list)
-		for accepted_quest in  QuestService.get_available_quests():
+		var accepted_quests = QuestService.get_available_quests()
+		if accepted_quests.empty():
+			quest_list_empty_message.visible = true
+			quest_list_empty_message.set_text(tr("no_accepted_quests") if QuestService.get_completed_quests().size() == 0 else tr("no_current_accepted_quests"))
+			quest_list_empty_message.play_enter()
+		for accepted_quest in  accepted_quests:
 			var quest_card = bp_quest_card.instance()
 			var quest = QuestService.get_quest_by_id(accepted_quest.quest)
 			var aspect = Api.get_aspect_by_name(quest.alert_tracked_aspect)
@@ -32,6 +38,9 @@ func update():
 				quest_card.set_icon(sector["sector_logo"])
 			quest_card.is_start_hidden(true)
 			quest_list.add_child(quest_card)
-			
+
 func receive_navigation(navigation_data): 
+	update()
+
+func _restored():
 	update()
