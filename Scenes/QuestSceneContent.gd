@@ -19,7 +19,6 @@ func _ready():
 	._ready()
 	ready = true
 	_update()
-	reward_collector.connect("collected", self, "_on_reward_collected")
 	
 func _update(): 
 	if !ready or _quest == null: return
@@ -77,3 +76,7 @@ func _on_ActionButton_pressed():
 		not_reentered = true
 		action_button.disabled = true
 	_update()
+
+
+func _on_RewardCollector_collected(reward):
+	_on_reward_collected()

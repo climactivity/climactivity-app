@@ -271,9 +271,9 @@ custom_constants/margin_bottom = 24
 [node name="PanelContainer" type="PanelContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TextContainer" index="0"]
 modulate = Color( 1, 1, 1, 0 )
 margin_left = 24.0
-margin_top = -300.0
+margin_top = 24.0
 margin_right = 1056.0
-margin_bottom = 334.0
+margin_bottom = 658.0
 rect_min_size = Vector2( 0, 500 )
 size_flags_horizontal = 3
 custom_styles/panel = SubResource( 5 )
@@ -384,9 +384,10 @@ modulate = Color( 1, 1, 1, 0 )
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 100.0
-margin_right = 1008.0
-margin_bottom = 228.0
+margin_left = 36.0
+margin_top = 0.0
+margin_right = 1044.0
+margin_bottom = 128.0
 
 [node name="ActionButton" type="Button" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ActionContainer" index="1"]
 margin_left = 318.0
@@ -431,4 +432,5 @@ playback_speed = 2.0
 anims/Enter = SubResource( 8 )
 anims/show_reward_collector = SubResource( 13 )
 
+[connection signal="collected" from="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ActionContainer/RewardCollector" to="." method="_on_RewardCollector_collected"]
 [connection signal="pressed" from="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ActionContainer/ActionButton" to="." method="_on_ActionButton_pressed"]

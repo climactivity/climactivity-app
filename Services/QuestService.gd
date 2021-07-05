@@ -35,7 +35,7 @@ func _reward_quest(acceped_quest):
 		Logger.error("Quest % not found" % acceped_quest.quest, self)
 		return 
 	var reward = quest.reward
-	RewardService.add_reward(reward, true)
+	RewardService.add_reward(reward)
 
 func _flush(): 
 	PSS.flush()
