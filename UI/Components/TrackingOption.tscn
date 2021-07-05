@@ -357,7 +357,7 @@ __meta__ = {
 modulate = Color( 1, 1, 1, 0 )
 margin_top = -75.0
 margin_right = 1080.0
-margin_bottom = 116.0
+margin_bottom = 128.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/margin_right = 10
@@ -369,22 +369,22 @@ custom_constants/margin_bottom = 10
 margin_left = 10.0
 margin_top = 10.0
 margin_right = 1070.0
-margin_bottom = 178.0
+margin_bottom = 193.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_styles/panel = SubResource( 2 )
 
 [node name="Panel" type="Panel" parent="MarginContainer/Panel"]
 margin_right = 1060.0
-margin_bottom = 168.0
+margin_bottom = 183.0
 mouse_filter = 2
 custom_styles/panel = ExtResource( 5 )
 
 [node name="HBoxContainer" type="MarginContainer" parent="MarginContainer/Panel"]
 margin_left = 1006.0
-margin_top = 65.0
+margin_top = 72.0
 margin_right = 1060.0
-margin_bottom = 103.0
+margin_bottom = 110.0
 mouse_filter = 2
 size_flags_horizontal = 8
 size_flags_vertical = 4
@@ -398,7 +398,7 @@ margin_bottom = 38.0
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Panel"]
 margin_right = 1060.0
-margin_bottom = 168.0
+margin_bottom = 183.0
 mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -414,14 +414,14 @@ __meta__ = {
 margin_left = 30.0
 margin_top = 30.0
 margin_right = 1030.0
-margin_bottom = 132.0
+margin_bottom = 147.0
 mouse_filter = 2
 size_flags_vertical = 3
 custom_constants/margin_right = 79
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Panel/MarginContainer/MarginContainer2"]
 margin_right = 921.0
-margin_bottom = 102.0
+margin_bottom = 117.0
 mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -431,7 +431,7 @@ __meta__ = {
 
 [node name="Label" type="Label" parent="MarginContainer/Panel/MarginContainer/MarginContainer2/VBoxContainer"]
 margin_right = 921.0
-margin_bottom = 50.0
+margin_bottom = 62.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 1 )
 custom_colors/font_color = Color( 0.411765, 0.411765, 0.407843, 1 )
@@ -443,11 +443,10 @@ __meta__ = {
 
 [node name="Reward" parent="MarginContainer/Panel/MarginContainer/MarginContainer2/VBoxContainer" instance=ExtResource( 4 )]
 anchor_right = 0.0
-anchor_bottom = 0.0
 margin_left = 691.0
-margin_top = 54.0
+margin_top = 66.0
 margin_right = 921.0
-margin_bottom = 102.0
+margin_bottom = 117.0
 rect_scale = Vector2( 1, 1 )
 mouse_filter = 2
 size_flags_horizontal = 8

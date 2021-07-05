@@ -43,7 +43,7 @@ func _update():
 	var aspect = Api.get_aspect_by_name(_quest.alert_tracked_aspect)
 	var sector = SectorService.get_sector_data(aspect.bigpoint)
 	set_accent_color(sector["sector_color"])
-	set_header_icon(aspect.icon if aspect.icon != null else sector["sector_icon"])
+	set_header_icon(aspect.icon if aspect.icon != null else sector["sector_logo"])
 	date_panel.get_stylebox("panel").set("bg_color", sector["sector_color"])
 	set_screen_title(tr("quest") if not_reentered else tr("accepted_quest"))
 	
