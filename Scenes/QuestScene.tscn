@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Scenes/SceneBase.tscn" type="PackedScene" id=1]
 [ext_resource path="res://UI/Components/RewardLabel.tscn" type="PackedScene" id=2]
@@ -10,8 +10,9 @@
 [ext_resource path="res://Scenes/QuestSceneContent.gd" type="Script" id=8]
 [ext_resource path="res://UI/theme/ButtonPrimary_Active.stylebox" type="StyleBox" id=9]
 [ext_resource path="res://UI/Components/infobits/InfobitContainer.tscn" type="PackedScene" id=10]
+[ext_resource path="res://UI/RewardCollector.tscn" type="PackedScene" id=11]
 
-[sub_resource type="Shader" id=1]
+[sub_resource type="Shader" id=14]
 code = "shader_type canvas_item; 
 
 uniform sampler2D gradient; 
@@ -21,16 +22,16 @@ void fragment() {
 	//COLOR = vec4(UV.y,0,0,1);
 }"
 
-[sub_resource type="Gradient" id=2]
+[sub_resource type="Gradient" id=15]
 offsets = PoolRealArray( 0.213622, 1 )
 colors = PoolColorArray( 0.592157, 0.909804, 0.192157, 1, 1, 1, 1, 1 )
 
-[sub_resource type="GradientTexture" id=3]
-gradient = SubResource( 2 )
+[sub_resource type="GradientTexture" id=16]
+gradient = SubResource( 15 )
 
-[sub_resource type="ShaderMaterial" id=4]
-shader = SubResource( 1 )
-shader_param/gradient = SubResource( 3 )
+[sub_resource type="ShaderMaterial" id=17]
+shader = SubResource( 14 )
+shader_param/gradient = SubResource( 16 )
 
 [sub_resource type="StyleBoxFlat" id=5]
 bg_color = Color( 1, 1, 1, 1 )
@@ -168,8 +169,82 @@ tracks/8/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
+[sub_resource type="Animation" id=13]
+resource_name = "show_reward_collector"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ActionContainer/ActionButton:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ActionContainer/ActionButton:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ActionContainer/RewardCollector:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.6, 0.7, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ false, false, true, true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ActionContainer/RewardCollector:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.7, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ActionContainer/RewardCollector:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.7, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, true, false ]
+}
+tracks/5/type = "bezier"
+tracks/5/path = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ActionContainer/RewardCollector:rect_position:y")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"points": PoolRealArray( 100, -0.25, 0, 0.25, 0, 100, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.7, 1.5 )
+}
+
 [node name="SceneBase" instance=ExtResource( 1 )]
-material = SubResource( 4 )
+material = SubResource( 17 )
 script = ExtResource( 8 )
 accent_color = Color( 0.6, 0.6, 0.6, 1 )
 
@@ -196,9 +271,9 @@ custom_constants/margin_bottom = 24
 [node name="PanelContainer" type="PanelContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TextContainer" index="0"]
 modulate = Color( 1, 1, 1, 0 )
 margin_left = 24.0
-margin_top = 24.0
+margin_top = -300.0
 margin_right = 1056.0
-margin_bottom = 658.0
+margin_bottom = 334.0
 rect_min_size = Vector2( 0, 500 )
 size_flags_horizontal = 3
 custom_styles/panel = SubResource( 5 )
@@ -293,20 +368,33 @@ margin_bottom = 1631.0
 custom_styles/separator = SubResource( 7 )
 custom_constants/separation = 59
 
-[node name="ActionContainer" type="CenterContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="5"]
+[node name="ActionContainer" type="MarginContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="5"]
 margin_top = 1635.0
 margin_right = 1080.0
 margin_bottom = 1916.0
+size_flags_horizontal = 3
 size_flags_vertical = 3
+custom_constants/margin_right = 36
+custom_constants/margin_left = 36
+custom_constants/margin_bottom = 200
 
-[node name="ActionButton" type="Button" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ActionContainer" index="0"]
+[node name="RewardCollector" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ActionContainer" index="0" instance=ExtResource( 11 )]
+visible = false
 modulate = Color( 1, 1, 1, 0 )
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 100.0
+margin_right = 1008.0
+margin_bottom = 228.0
+
+[node name="ActionButton" type="Button" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ActionContainer" index="1"]
 margin_left = 318.0
-margin_top = 106.0
+margin_top = 6.0
 margin_right = 762.0
-margin_bottom = 175.0
-size_flags_horizontal = 0
-size_flags_vertical = 0
+margin_bottom = 75.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
 custom_styles/hover = ExtResource( 9 )
 custom_styles/pressed = ExtResource( 9 )
 custom_styles/focus = ExtResource( 9 )
@@ -341,5 +429,6 @@ margin_bottom = 261.0
 autoplay = "Enter"
 playback_speed = 2.0
 anims/Enter = SubResource( 8 )
+anims/show_reward_collector = SubResource( 13 )
 
 [connection signal="pressed" from="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ActionContainer/ActionButton" to="." method="_on_ActionButton_pressed"]

@@ -17,7 +17,7 @@ var water_collected_for = []
 func _init():
 	player_state = PSS.get_player_state_ref()
 	if OS.is_debug_build(): 
-		interval = 60 # update every minute in debug builds
+		interval = Util.HOUR # update every hour in debug builds
 
 func _ready():
 	if Api.is_cache_ready(): # don't update if aspects aren't loaded yet, it might cause problems

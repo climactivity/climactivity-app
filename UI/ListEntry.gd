@@ -12,7 +12,7 @@ export (Color) var accent_color = Color("95c11e") setget set_accent_color
 export (PackedScene) var button_replacement
 export var start_hidden = false setget is_start_hidden
 var has_entered_scene_animated = false
-
+export var important = false setget set_is_important
 export var progress_icon_tex = preload("res://Assets/Icons/Time Circle.png") setget set_progress_icon
 export var show_progress = false setget set_is_show_progress 
 export var progress = 0.0 setget set_progress
@@ -28,6 +28,10 @@ onready var progress_icon = $"MarginContainer/HBoxContainer/ContentContainer/VBo
 onready var progress_container = $"MarginContainer/HBoxContainer/ContentContainer/VBoxContainer/MarginContainer"
 var ready = false
 
+func set_is_important(_important): 
+	important = _important
+	update()
+	
 func grab_attention():
 	return grab_attention 
 
@@ -87,7 +91,7 @@ func update():
 	else: 
 		content_reward.visible = true
 		content_reward.set_reward(reward)
-	content_text.text = _content_text 
+	content_text.bbcode_text = "[bold]" + _content_text + "[/bold]" if important else _content_text
 	if button_replacement != null: 
 		go_down_tex.visible = false
 		if go_down_container.get_children().size() == 1: 

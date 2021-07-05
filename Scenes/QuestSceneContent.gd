@@ -14,10 +14,12 @@ onready var reward_label = $"ContentContainer/Content/VBoxContainer/MarginContai
 onready var action_button = $"ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ActionContainer/ActionButton"
 onready var date_panel = $ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/StatusContainer/DatePanel
 onready var kiko_hint = $"ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/kiko_avatar - placeholder"
+onready var reward_collector = $ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ActionContainer/RewardCollector
 func _ready():
 	._ready()
 	ready = true
 	_update()
+	reward_collector.connect("collected", self, "_on_reward_collected")
 	
 func _update(): 
 	if !ready or _quest == null: return
@@ -38,7 +40,7 @@ func _update():
 			end_date_label.text = "%d Tage" % [_quest.max_duration / 24]
 	reward_label.set_reward(_quest.reward)
 	kiko_hint.set_text(_quest.title)
-	
+	reward_collector.set_reward(_quest.reward)
 	# update scene theme from sector
 	var aspect = Api.get_aspect_by_name(_quest.alert_tracked_aspect)
 	var sector = SectorService.get_sector_data(aspect.bigpoint)
@@ -57,11 +59,18 @@ func receive_navigation(data):
 	_update()
 	
 
+# show the reward collection thingy 
+func _on_complete_quest(): 
+	$AnimationPlayer.play("show_reward_collector")
+	
+func _on_reward_collected(): 
+	QuestService.complete_quest(_quest._id)
+	just_completed = true
+
 func _on_ActionButton_pressed():
 	if _active_quest:
 		if !not_reentered:
-			QuestService.complete_quest(_quest._id)
-			just_completed = true
+			_on_complete_quest()
 			action_button.disabled = true
 	else:
 		QuestService.add_quest(_quest)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://UI/Components/RewardLabel.tscn" type="PackedScene" id=1]
 [ext_resource path="res://UI/Components/IconCapsule.tscn" type="PackedScene" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://Assets/Icons/Time Circle.png" type="Texture" id=9]
 [ext_resource path="res://UI/M_Progress_FG.tres" type="StyleBox" id=10]
 [ext_resource path="res://UI/M_Progress_BG.tres" type="StyleBox" id=11]
+[ext_resource path="res://UI/typography/Button_Label_thicc.tres" type="DynamicFont" id=12]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 1, 1, 1, 1 )
@@ -25,7 +26,7 @@ shadow_size = 5
 
 [sub_resource type="StyleBoxEmpty" id=2]
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=3]
 tracks/0/type = "bezier"
 tracks/0/path = NodePath(".:rect_position:x")
 tracks/0/interp = 1
@@ -47,7 +48,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 1 )
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=4]
 length = 0.001
 tracks/0/type = "bezier"
 tracks/0/path = NodePath(".:rect_position:x")
@@ -100,7 +101,7 @@ tracks/4/keys = {
 "times": PoolRealArray( 0 )
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=5]
 length = 0.001
 tracks/0/type = "bezier"
 tracks/0/path = NodePath(".:modulate:r")
@@ -326,7 +327,9 @@ stretch_mode = 6
 margin_right = 695.0
 margin_bottom = 66.0
 mouse_filter = 2
+custom_fonts/bold_font = ExtResource( 12 )
 custom_fonts/normal_font = ExtResource( 6 )
+bbcode_enabled = true
 fit_content_height = true
 
 [node name="RewardLabel" parent="MarginContainer/HBoxContainer/ContentContainer/VBoxContainer" instance=ExtResource( 1 )]
@@ -378,6 +381,6 @@ custom_styles/separator = ExtResource( 5 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "RESET"
-anims/Enter = SubResource( 5 )
-anims/RESET = SubResource( 6 )
-anims/hide = SubResource( 7 )
+anims/Enter = SubResource( 3 )
+anims/RESET = SubResource( 4 )
+anims/hide = SubResource( 5 )
