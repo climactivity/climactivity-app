@@ -8,6 +8,28 @@ static func frac(value, start, end):
 	
 const uuid_util = preload('res://uuid.gd')
 
+### stolen from https://www.davidepesce.com/2019/11/04/essential-guide-to-godot-filesystem-api/
+static func remove_recursive(path):
+	var directory = Directory.new()
+	
+	# Open directory
+	var error = directory.open(path)
+	if error == OK:
+		# List directory content
+		directory.list_dir_begin(true)
+		var file_name = directory.get_next()
+		while file_name != "":
+			if directory.current_is_dir():
+				remove_recursive(path + "/" + file_name)
+			else:
+				directory.remove(file_name)
+			file_name = directory.get_next()
+		
+		# Remove current path
+		directory.remove(path)
+	else:
+		print("Error removing " + path)
+
 static func update_dict_with(old_dict: Dictionary, update_dict: Dictionary) -> Dictionary:
 	var new_dict = old_dict
 	for key in update_dict.keys(): 

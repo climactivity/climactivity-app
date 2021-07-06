@@ -4,177 +4,180 @@ var _base_tree_scene = preload("res://ForestScene3d/TreeTemplates/BaseTree.tscn"
 
 onready var http_request = $HTTPRequest
 
+var texture_set_path = "res://ForestScene3d/TreeTemplates/TextureSets/"
+var available_textures = {}
+
 # preload texture assets from application bundle
-var available_textures = {
-	'tree0': {
-		0: preload("res://ForestScene3d/TreeTemplates/Textures/Baum_Entwurf_01.png"),
-		1: preload("res://ForestScene3d/TreeTemplates/Textures/tree0_2.png"),
-		2: preload("res://ForestScene3d/TreeTemplates/Textures/tree0_3.png"),
-		3: preload("res://ForestScene3d/TreeTemplates/Textures/tree0_4.png"),
-		4: preload("res://ForestScene3d/TreeTemplates/Textures/tree0_5.png")
-	},
-	'test': {
-		0: preload("res://Assets/TestData/Sprite-0001.png"),
-		1: preload("res://Assets/TestData/Sprite-0002.png"),
-		2: preload("res://Assets/TestData/Sprite-0003.png"),
-		3: preload("res://Assets/TestData/Sprite-0004.png"),
-		4: preload("res://Assets/TestData/Sprite-0005.png"),
-	},
-	'jasmin-00': {
-		0: preload("res://Assets/sketch/setzling.png"),
-		1: preload("res://Assets/sketch/baum_jung01.png"),
-		2: preload("res://Assets/sketch/baum_jung.png"),
-		3: preload("res://Assets/sketch/baum_erwachsen.png"),
-		4: preload("res://Assets/sketch/baum_blueten.png"),
-		'sizes': {
-			0: 0.4,
-			1: 0.6,
-			2: 0.8,
-			3: 1.0,
-			4: 1.0
-		}
-	},
-	'birke': {
-		0: preload("res://Assets/sketch/baum/Birke/birke_01.png"),
-		1: preload("res://Assets/sketch/baum/Birke/birke_02.png"),
-		2: preload("res://Assets/sketch/baum/Birke/birke_03.png"),
-		3: preload("res://Assets/sketch/baum/Birke/birke_04.png"),
-		4: preload("res://Assets/sketch/baum/Birke/birke_05.png"),
-		'sizes': {
-			0: 0.4,
-			1: 0.6,
-			2: 0.8,
-			3: 1.0,
-			4: 1.0
-		}
-	},
-	'esche': {
-		0: preload("res://Assets/sketch/baum/Esche/esche_01.png"),
-		1: preload("res://Assets/sketch/baum/Esche/esche_02.png"),
-		2: preload("res://Assets/sketch/baum/Esche/esche_03.png"),
-		3: preload("res://Assets/sketch/baum/Esche/esche_04.png"),
-		4: preload("res://Assets/sketch/baum/Esche/esche_05.png"),
-		'sizes': {
-			0: 0.4,
-			1: 0.6,
-			2: 0.8,
-			3: 1.0,
-			4: 1.0
-		}
-	},
-	'fichte': {
-		0: preload("res://Assets/sketch/baum/Fichte/fichte_01.png"),
-		1: preload("res://Assets/sketch/baum/Fichte/fichte_02.png"),
-		2: preload("res://Assets/sketch/baum/Fichte/fichte_03.png"),
-		3: preload("res://Assets/sketch/baum/Fichte/fichte_04.png"),
-		4: preload("res://Assets/sketch/baum/Fichte/fichte_05.png"),
-		'sizes': {
-			0: 0.4,
-			1: 0.6,
-			2: 0.8,
-			3: 1.0,
-			4: 1.0
-		}
-	},
-	'kastanie': {
-		0: preload("res://Assets/sketch/baum/Kastanie/kastanie_01.png"),
-		1: preload("res://Assets/sketch/baum/Kastanie/kastanie_02.png"),
-		2: preload("res://Assets/sketch/baum/Kastanie/kastanie_03.png"),
-		3: preload("res://Assets/sketch/baum/Kastanie/kastanie_04.png"),
-		4: preload("res://Assets/sketch/baum/Kastanie/kastanie_05.png"),
-		'sizes': {
-			0: 0.4,
-			1: 0.6,
-			2: 0.8,
-			3: 1.0,
-			4: 1.0
-		}
-	},
-	'pappel': {
-		0: preload("res://Assets/sketch/baum/Pappel/pappel_01.png"),
-		1: preload("res://Assets/sketch/baum/Pappel/pappel_02.png"),
-		2: preload("res://Assets/sketch/baum/Pappel/pappel_03.png"),
-		3: preload("res://Assets/sketch/baum/Pappel/pappel_04.png"),
-		4: preload("res://Assets/sketch/baum/Pappel/pappel_05.png"),
-		'sizes': {
-			0: 0.4,
-			1: 0.6,
-			2: 0.8,
-			3: 1.0,
-			4: 1.0
-		}
-	},
-	'tanne': {
-		0: preload("res://Assets/sketch/baum/Tanne/tanne_01.png"),
-		1: preload("res://Assets/sketch/baum/Tanne/tanne_02.png"),
-		2: preload("res://Assets/sketch/baum/Tanne/tanne_03.png"),
-		3: preload("res://Assets/sketch/baum/Tanne/tanne_04.png"),
-		4: preload("res://Assets/sketch/baum/Tanne/tanne_05.png"),
-		'sizes': {
-			0: 0.4,
-			1: 0.6,
-			2: 0.8,
-			3: 1.0,
-			4: 1.0
-		}
-	},
-	'weide': {
-		0: preload("res://Assets/sketch/baum/Weide/weide_01.png"),
-		1: preload("res://Assets/sketch/baum/Weide/weide_02.png"),
-		2: preload("res://Assets/sketch/baum/Weide/weide_03.png"),
-		3: preload("res://Assets/sketch/baum/Weide/weide_04.png"),
-		4: preload("res://Assets/sketch/baum/Weide/weide_05.png"),
-		'sizes': {
-			0: 0.4,
-			1: 0.6,
-			2: 0.8,
-			3: 1.0,
-			4: 1.0
-		}
-	},
-	'busch': {
-		0: preload("res://Assets/sketch/busch/busch_setzling.png"),
-		1: preload("res://Assets/sketch/busch/busch_jung01.png"),
-		2: preload("res://Assets/sketch/busch/busch_jung02.png"),
-		3: preload("res://Assets/sketch/busch/busch.png"),
-		4: preload("res://Assets/sketch/busch/busch_berries.png"),
-		'sizes': {
-			0: 0.4,
-			1: 0.6,
-			2: 0.8,
-			3: 1.0,
-			4: 1.0
-		}
-	},
-	'heckenrose': {
-		0: preload("res://Assets/sketch/busch/busch_setzling.png"),
-		1: preload("res://Assets/sketch/busch/Heckenrose/heckenrose_02.png"),
-		2: preload("res://Assets/sketch/busch/Heckenrose/heckenrose_03.png"),
-		3: preload("res://Assets/sketch/busch/Heckenrose/heckenrose_04.png"),
-		4: preload("res://Assets/sketch/busch/Heckenrose/heckenrose_05.png"),
-		'sizes': {
-			0: 0.4,
-			1: 0.6,
-			2: 0.8,
-			3: 1.0,
-			4: 1.0
-		}
-	},
-	'wacholder': {
-		0: preload("res://Assets/sketch/busch/busch_setzling.png"),
-		1: preload("res://Assets/sketch/busch/Wacholder/wacholder_02.png"),
-		2: preload("res://Assets/sketch/busch/Wacholder/wacholder_03.png"),
-		3: preload("res://Assets/sketch/busch/Wacholder/wacholder_04.png"),
-		4: preload("res://Assets/sketch/busch/Wacholder/wacholder_05.png"),
-		'sizes': {
-			0: 0.4,
-			1: 0.6,
-			2: 0.8,
-			3: 1.0,
-			4: 1.0
-		}
-	},
-}
+#export var available_textures = {
+#	'tree0': {
+#		0: preload("res://ForestScene3d/TreeTemplates/Textures/Baum_Entwurf_01.png"),
+#		1: preload("res://ForestScene3d/TreeTemplates/Textures/tree0_2.png"),
+#		2: preload("res://ForestScene3d/TreeTemplates/Textures/tree0_3.png"),
+#		3: preload("res://ForestScene3d/TreeTemplates/Textures/tree0_4.png"),
+#		4: preload("res://ForestScene3d/TreeTemplates/Textures/tree0_5.png")
+#	},
+#	'test': {
+#		0: preload("res://Assets/TestData/Sprite-0001.png"),
+#		1: preload("res://Assets/TestData/Sprite-0002.png"),
+#		2: preload("res://Assets/TestData/Sprite-0003.png"),
+#		3: preload("res://Assets/TestData/Sprite-0004.png"),
+#		4: preload("res://Assets/TestData/Sprite-0005.png"),
+#	},
+#	'jasmin-00': {
+#		0: preload("res://Assets/sketch/setzling.png"),
+#		1: preload("res://Assets/sketch/baum_jung01.png"),
+#		2: preload("res://Assets/sketch/baum_jung.png"),
+#		3: preload("res://Assets/sketch/baum_erwachsen.png"),
+#		4: preload("res://Assets/sketch/baum_blueten.png"),
+#		'sizes': {
+#			0: 0.4,
+#			1: 0.6,
+#			2: 0.8,
+#			3: 1.0,
+#			4: 1.0
+#		}
+#	},
+#	'birke': {
+#		0: preload("res://Assets/sketch/baum/Birke/birke_01.png"),
+#		1: preload("res://Assets/sketch/baum/Birke/birke_02.png"),
+#		2: preload("res://Assets/sketch/baum/Birke/birke_03.png"),
+#		3: preload("res://Assets/sketch/baum/Birke/birke_04.png"),
+#		4: preload("res://Assets/sketch/baum/Birke/birke_05.png"),
+#		'sizes': {
+#			0: 0.4,
+#			1: 0.6,
+#			2: 0.8,
+#			3: 1.0,
+#			4: 1.0
+#		}
+#	},
+#	'esche': {
+#		0: preload("res://Assets/sketch/baum/Esche/esche_01.png"),
+#		1: preload("res://Assets/sketch/baum/Esche/esche_02.png"),
+#		2: preload("res://Assets/sketch/baum/Esche/esche_03.png"),
+#		3: preload("res://Assets/sketch/baum/Esche/esche_04.png"),
+#		4: preload("res://Assets/sketch/baum/Esche/esche_05.png"),
+#		'sizes': {
+#			0: 0.4,
+#			1: 0.6,
+#			2: 0.8,
+#			3: 1.0,
+#			4: 1.0
+#		}
+#	},
+#	'fichte': {
+#		0: preload("res://Assets/sketch/baum/Fichte/fichte_01.png"),
+#		1: preload("res://Assets/sketch/baum/Fichte/fichte_02.png"),
+#		2: preload("res://Assets/sketch/baum/Fichte/fichte_03.png"),
+#		3: preload("res://Assets/sketch/baum/Fichte/fichte_04.png"),
+#		4: preload("res://Assets/sketch/baum/Fichte/fichte_05.png"),
+#		'sizes': {
+#			0: 0.4,
+#			1: 0.6,
+#			2: 0.8,
+#			3: 1.0,
+#			4: 1.0
+#		}
+#	},
+#	'kastanie': {
+#		0: preload("res://Assets/sketch/baum/Kastanie/kastanie_01.png"),
+#		1: preload("res://Assets/sketch/baum/Kastanie/kastanie_02.png"),
+#		2: preload("res://Assets/sketch/baum/Kastanie/kastanie_03.png"),
+#		3: preload("res://Assets/sketch/baum/Kastanie/kastanie_04.png"),
+#		4: preload("res://Assets/sketch/baum/Kastanie/kastanie_05.png"),
+#		'sizes': {
+#			0: 0.4,
+#			1: 0.6,
+#			2: 0.8,
+#			3: 1.0,
+#			4: 1.0
+#		}
+#	},
+#	'pappel': {
+#		0: preload("res://Assets/sketch/baum/Pappel/pappel_01.png"),
+#		1: preload("res://Assets/sketch/baum/Pappel/pappel_02.png"),
+#		2: preload("res://Assets/sketch/baum/Pappel/pappel_03.png"),
+#		3: preload("res://Assets/sketch/baum/Pappel/pappel_04.png"),
+#		4: preload("res://Assets/sketch/baum/Pappel/pappel_05.png"),
+#		'sizes': {
+#			0: 0.4,
+#			1: 0.6,
+#			2: 0.8,
+#			3: 1.0,
+#			4: 1.0
+#		}
+#	},
+#	'tanne': {
+#		0: preload("res://Assets/sketch/baum/Tanne/tanne_01.png"),
+#		1: preload("res://Assets/sketch/baum/Tanne/tanne_02.png"),
+#		2: preload("res://Assets/sketch/baum/Tanne/tanne_03.png"),
+#		3: preload("res://Assets/sketch/baum/Tanne/tanne_04.png"),
+#		4: preload("res://Assets/sketch/baum/Tanne/tanne_05.png"),
+#		'sizes': {
+#			0: 0.4,
+#			1: 0.6,
+#			2: 0.8,
+#			3: 1.0,
+#			4: 1.0
+#		}
+#	},
+#	'weide': {
+#		0: preload("res://Assets/sketch/baum/Weide/weide_01.png"),
+#		1: preload("res://Assets/sketch/baum/Weide/weide_02.png"),
+#		2: preload("res://Assets/sketch/baum/Weide/weide_03.png"),
+#		3: preload("res://Assets/sketch/baum/Weide/weide_04.png"),
+#		4: preload("res://Assets/sketch/baum/Weide/weide_05.png"),
+#		'sizes': {
+#			0: 0.4,
+#			1: 0.6,
+#			2: 0.8,
+#			3: 1.0,
+#			4: 1.0
+#		}
+#	},
+#	'busch': {
+#		0: preload("res://Assets/sketch/busch/busch_setzling.png"),
+#		1: preload("res://Assets/sketch/busch/busch_jung01.png"),
+#		2: preload("res://Assets/sketch/busch/busch_jung02.png"),
+#		3: preload("res://Assets/sketch/busch/busch.png"),
+#		4: preload("res://Assets/sketch/busch/busch_berries.png"),
+#		'sizes': {
+#			0: 0.4,
+#			1: 0.6,
+#			2: 0.8,
+#			3: 1.0,
+#			4: 1.0
+#		}
+#	},
+#	'heckenrose': {
+#		0: preload("res://Assets/sketch/busch/busch_setzling.png"),
+#		1: preload("res://Assets/sketch/busch/Heckenrose/heckenrose_02.png"),
+#		2: preload("res://Assets/sketch/busch/Heckenrose/heckenrose_03.png"),
+#		3: preload("res://Assets/sketch/busch/Heckenrose/heckenrose_04.png"),
+#		4: preload("res://Assets/sketch/busch/Heckenrose/heckenrose_05.png"),
+#		'sizes': {
+#			0: 0.4,
+#			1: 0.6,
+#			2: 0.8,
+#			3: 1.0,
+#			4: 1.0
+#		}
+#	},
+#	'wacholder': {
+#		0: preload("res://Assets/sketch/busch/busch_setzling.png"),
+#		1: preload("res://Assets/sketch/busch/Wacholder/wacholder_02.png"),
+#		2: preload("res://Assets/sketch/busch/Wacholder/wacholder_03.png"),
+#		3: preload("res://Assets/sketch/busch/Wacholder/wacholder_04.png"),
+#		4: preload("res://Assets/sketch/busch/Wacholder/wacholder_05.png"),
+#		'sizes': {
+#			0: 0.4,
+#			1: 0.6,
+#			2: 0.8,
+#			3: 1.0,
+#			4: 1.0
+#		}
+#	},
+#}
 
 var _example_template = {
 	"_id": "undefined",
@@ -197,7 +200,23 @@ var _tree_templates = {
 	"tree0": _example_template
 }
 
+func _preload_textures():
+	var dir = Directory.new()
+
+	if dir.open(texture_set_path) == OK:
+		dir.list_dir_begin()
+		var file_name = dir.get_next()
+		while file_name != "":
+			if !dir.current_is_dir():
+				print("Found file: " + file_name)
+				available_textures[file_name.trim_suffix('.tres')] = load(texture_set_path + '/' + file_name)
+			file_name = dir.get_next()
+	else:
+		print("An error occurred when trying to access the path.")
+
+
 func _ready(): 
+	_preload_textures()
 	Api.connect("cache_ready", self, "load_templates")
 	if Api.get_tree_templates() != null:
 		load_templates()
@@ -206,7 +225,7 @@ func load_templates():
 	_tree_templates = Api.get_tree_templates()
 	for template in _tree_templates: 
 		template.texture_data = available_textures[template.texture_name]
-		template.preview_texture = available_textures[template.texture_name][int(template.preview_name)] # ain't that some jank
+		template.preview_texture = available_textures[template.texture_name].get(int(template.preview_name)) # ain't that some jank
 		if template.has_method("save_texture_assignment"): template.save_texture_assignment()
 
 func available_templates():

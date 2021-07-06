@@ -1,0 +1,23 @@
+[gd_resource type="Resource" load_steps=7 format=2]
+
+[ext_resource path="res://ForestScene3d/TreeTemplates/RTreeTemplateTextures.gd" type="Script" id=1]
+[ext_resource path="res://Assets/sketch/baum/Eibe/eibe_05.png" type="Texture" id=2]
+[ext_resource path="res://Assets/sketch/baum/Eibe/eibe_03.png" type="Texture" id=3]
+[ext_resource path="res://Assets/sketch/baum/Eibe/eibe_04.png" type="Texture" id=4]
+[ext_resource path="res://Assets/sketch/baum/Eibe/eibe_01.png" type="Texture" id=5]
+[ext_resource path="res://Assets/sketch/baum/Eibe/eibe_02.png" type="Texture" id=6]
+
+[resource]
+script = ExtResource( 1 )
+tex_0 = ExtResource( 5 )
+tex_1 = ExtResource( 6 )
+tex_2 = ExtResource( 3 )
+tex_3 = ExtResource( 4 )
+tex_4 = ExtResource( 2 )
+sizes = {
+0: 0.4,
+1: 0.6,
+2: 0.8,
+3: 1.0,
+4: 1.0
+}

@@ -123,3 +123,5 @@ func get_infobytes_for_factor(factor, aspect):
 func get_cache():
 	return $CacheController
 
+func drop_cache(): 
+	return cache.drop_cache()

@@ -210,6 +210,11 @@ _global_script_classes=[ {
 "path": "res://Network/Types/RTreeTemplate.gd"
 }, {
 "base": "Resource",
+"class": "RTreeTemplateTextures",
+"language": "GDScript",
+"path": "res://ForestScene3d/TreeTemplates/RTreeTemplateTextures.gd"
+}, {
+"base": "Resource",
 "class": "RWaterTank",
 "language": "GDScript",
 "path": "res://Network/Types/RWaterTank.gd"
@@ -275,6 +280,7 @@ _global_script_class_icons={
 "RTrackingStates": "",
 "RTrackingUpdate": "",
 "RTreeTemplate": "",
+"RTreeTemplateTextures": "",
 "RWaterTank": "",
 "RewardLabel": "",
 "SceneBase": "",

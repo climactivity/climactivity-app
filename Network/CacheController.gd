@@ -258,5 +258,12 @@ func get_quest_by_id(quest_id):
 	return null
 
 func drop_cache(): 
-	Logger.log("------------ Dropping everything ------------", self)
+	Logger.log("------------ Dropping cache ------------", self)
+	Util.remove_recursive("user://Network/Cache")
+	update()
+
+func _notification(what):
+	if what == MainLoop.NOTIFICATION_CRASH:
+		Logger.print("Something went wrong, clearing cache...")
+		drop_cache()
 	

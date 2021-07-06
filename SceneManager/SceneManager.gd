@@ -77,6 +77,7 @@ func _notification(what):
 		Logger.print("App focused!", self) 
 		if OS.low_processor_usage_mode:
 			animation_player.queue("Focus")
+
 func _get_focused_header():
 	if current_scene != null and current_scene.get("header") != null: 
 		var current_header = current_scene.get("header")
