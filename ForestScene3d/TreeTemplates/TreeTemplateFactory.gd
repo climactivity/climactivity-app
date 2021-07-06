@@ -5,7 +5,26 @@ var _base_tree_scene = preload("res://ForestScene3d/TreeTemplates/BaseTree.tscn"
 onready var http_request = $HTTPRequest
 
 var texture_set_path = "res://ForestScene3d/TreeTemplates/TextureSets/"
-var available_textures = {}
+export (Dictionary) var available_textures = {
+	'apfelbaum': preload("res://ForestScene3d/TreeTemplates/TextureSets/apfelbaum.tres"),
+	'birke': preload("res://ForestScene3d/TreeTemplates/TextureSets/birke.tres"),
+	'eibe': preload("res://ForestScene3d/TreeTemplates/TextureSets/eibe.tres"),
+	'eiche': preload("res://ForestScene3d/TreeTemplates/TextureSets/eiche.tres"),
+	'esche': preload("res://ForestScene3d/TreeTemplates/TextureSets/esche.tres"),
+	'farn': preload("res://ForestScene3d/TreeTemplates/TextureSets/farn.tres"),
+	'fichte': preload("res://ForestScene3d/TreeTemplates/TextureSets/fichte.tres"),
+	'hasel': preload("res://ForestScene3d/TreeTemplates/TextureSets/hasel.tres"),
+	'heckenrose': preload("res://ForestScene3d/TreeTemplates/TextureSets/heckenrose.tres"),
+	'johannisbeere': preload("res://ForestScene3d/TreeTemplates/TextureSets/johannisbeere.tres"),
+	'kastanie': preload("res://ForestScene3d/TreeTemplates/TextureSets/kastanie.tres"),
+	'kiefer': preload("res://ForestScene3d/TreeTemplates/TextureSets/kiefer.tres"),
+	'pappel': preload("res://ForestScene3d/TreeTemplates/TextureSets/pappel.tres"),
+	'stechpalme': preload("res://ForestScene3d/TreeTemplates/TextureSets/stechpalme.tres"),
+	'tanne': preload("res://ForestScene3d/TreeTemplates/TextureSets/tanne.tres"),
+	'wacholder': preload("res://ForestScene3d/TreeTemplates/TextureSets/wacholder.tres"),
+	'weide': preload("res://ForestScene3d/TreeTemplates/TextureSets/weide.tres"),
+	'weissdorn': preload("res://ForestScene3d/TreeTemplates/TextureSets/weissdorn.tres"),
+}
 
 # preload texture assets from application bundle
 #export var available_textures = {
@@ -200,24 +219,24 @@ var _tree_templates = {
 	"tree0": _example_template
 }
 
-func _preload_textures():
-	var dir = Directory.new()
-
-	if dir.open(texture_set_path) == OK:
-		dir.list_dir_begin()
-		var file_name = dir.get_next()
-		while file_name != "":
-			if !dir.current_is_dir():
-
-				available_textures[file_name.trim_suffix('.tres')] = load(texture_set_path + '/' + file_name)
-			file_name = dir.get_next()
-	else:
-		Logger.error("Could not open texture_set_path.")
-	Logger.print("Loaded %d texture sets" % available_textures.size(), self)
+#func _preload_textures():
+#	var dir = Directory.new()
+#
+#	if dir.open(texture_set_path) == OK:
+#		dir.list_dir_begin()
+#		var file_name = dir.get_next()
+#		while file_name != "":
+#			if !dir.current_is_dir():
+#
+#				available_textures[file_name.trim_suffix('.tres')] = load(texture_set_path + '/' + file_name)
+#			file_name = dir.get_next()
+#	else:
+#		Logger.error("Could not open texture_set_path.")
+#	Logger.print("Loaded %d texture sets" % available_textures.size(), self)
 
 
 func _ready(): 
-	_preload_textures()
+#	_preload_textures()
 	Api.connect("cache_ready", self, "load_templates")
 	if Api.get_tree_templates() != null:
 		load_templates()
