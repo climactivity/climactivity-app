@@ -31,7 +31,7 @@ stretch_mode = 6
 [node name="CloudSprite" type="Sprite" parent="."]
 material = ExtResource( 4 )
 position = Vector2( -1.00136e-05, 0.396821 )
-scale = Vector2( 0.244428, 0.243653 )
+scale = Vector2( 0.488, 0.488 )
 texture = ExtResource( 3 )
 script = ExtResource( 7 )
 
