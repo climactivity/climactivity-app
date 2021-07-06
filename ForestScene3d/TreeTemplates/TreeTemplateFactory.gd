@@ -242,8 +242,10 @@ func templates_in_sector(sector_name):
 func get_available_templates(sector_name: String, type: String = "tree") -> Array: 
 	var out = []
 	for template in _tree_templates: 
-		if template.bigpoint_available.find(sector_name) != -1 and template.archetype == type:
+		if template.type == type:
 			out.push_back(template)
+#		if template.bigpoint_available.find(sector_name) != -1 and template.archetype == type:
+#			out.push_back(template)
 	return out
 
 func get_template(key):

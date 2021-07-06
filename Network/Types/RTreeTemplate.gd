@@ -23,6 +23,7 @@ class_name RTreeTemplate
 export (String) var _id 
 export (String) var template_name 
 export (String) var texture_name
+export (String) var type
 export (String) var ui_name
 export (String) var preview_name 
 export (int) var coin_value 
@@ -32,6 +33,7 @@ export (Texture) var preview_texture
 
 func _init(p_dict = {}): 
 	_id =  p_dict["_id"] if p_dict.has("_id") else ""
+	type = p_dict["archetype"] if p_dict.has("archetype") else 'tree'
 	template_name =  p_dict["template_name"] if p_dict.has("template_name") else ""
 	texture_name =  p_dict["texture_name"] if p_dict.has("texture_name") else ""
 	ui_name =  p_dict["ui_name"] if p_dict.has("ui_name") else ""

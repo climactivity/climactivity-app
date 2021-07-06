@@ -1,9 +1,9 @@
-tool
 extends SceneBase
  
 
 var _quest : RLocalizedQuest
 var _active_quest = false
+var _completed_quest = false
 var _quest_status = null 
 
 var not_reentered = false
@@ -26,7 +26,8 @@ func _update():
 	_quest_status = QuestService.get_quest_status(_quest._id)
 
 	# Update scene with quest data
-	_active_quest = _quest_status != null
+	_active_quest = _quest_status != null && !_quest_status.has("completed")
+	_completed_quest = _quest_status != null && _quest_status.has("completed")
 	var quest_text = _quest.text["doc"]["content"] if _quest.text.has("doc") else _quest.text["content"]
 	quest_content.on_data(quest_text)
 	if _active_quest:
@@ -49,6 +50,13 @@ func _update():
 	date_panel.get_stylebox("panel").set("bg_color", sector["sector_color"])
 	set_screen_title(tr("quest") if not_reentered else tr("accepted_quest"))
 	
+	if _completed_quest: 
+		reward_collector.visible = true
+		reward_collector.set_disabled(true)
+		reward_collector.set_label(tr("collected_reward_action_label"))
+		action_button.disabled = true
+		action_button_label.text = tr("quest_social_chellenge")
+		end_date_label.text = "Geschafft am " + Util.date_as_eu_string(_quest_status.completed)
 func receive_navigation(data):
 	not_reentered = false 
 	action_button.disabled = false
@@ -73,9 +81,12 @@ func _on_ActionButton_pressed():
 			_on_complete_quest()
 			action_button.disabled = true
 	else:
-		QuestService.add_quest(_quest)
-		not_reentered = true
-		action_button.disabled = true
+		if _completed_quest:
+			Logger.print("social challenge not implemented!", self)
+		else:
+			QuestService.add_quest(_quest)
+			not_reentered = true
+			action_button.disabled = true
 	_update()
 
 

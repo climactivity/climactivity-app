@@ -6,6 +6,7 @@ var ready = false
 var sector
 var aspect
 export var is_started_icon = preload("res://Assets/Icons/bookmark.png")
+export var is_completed_icon = preload("res://Assets/Icons/xp_star.png")
 onready var quest_list = $MarginContainer/VBoxContainer/QuestList
 func _ready():
 	ready = true
@@ -42,8 +43,11 @@ func _update():
 		
 		var quest_status = QuestService.get_quest_status(quest._id)
 		if quest_status != null: 
-			quest_card_inst.set_is_show_progress(true)
-			quest_card_inst.set_progress(Util.frac(OS.get_unix_time(), quest_status.when, quest_status.quest_dead_line))
-			quest_card_inst.set_icon(is_started_icon)
+			if quest_status.has("completed"):
+				quest_card_inst.set_icon(is_completed_icon)
+			else:
+				quest_card_inst.set_is_show_progress(true)
+				quest_card_inst.set_progress(Util.frac(OS.get_unix_time(), quest_status.when, quest_status.quest_dead_line))
+				quest_card_inst.set_icon(is_started_icon)
 
 		quest_list.add_child(quest_card_inst)

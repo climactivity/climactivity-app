@@ -25,9 +25,10 @@ func get_quests_for_aspect(aspect):
 func complete_quest(quest_id): 
 	for accepted_quest in _accepted_quests:
 		if accepted_quest.quest == quest_id:
-			_completed_quests.append(accepted_quest)
 			_accepted_quests.erase(accepted_quest)
 			_reward_quest(accepted_quest)
+			accepted_quest["completed"] = OS.get_unix_time()
+			_completed_quests.append(accepted_quest)
 			emit_signal("quest_completed", quest_id)
 			_flush()
 			return
@@ -56,5 +57,7 @@ func get_quest_status(quest_id):
 			return accepted_quest
 	for completed_quest in _completed_quests: 
 		if completed_quest.quest == quest_id:
+			if !completed_quest.has("completed"):
+				completed_quest["completed"] = OS.get_unix_time()
 			return completed_quest
 	return null

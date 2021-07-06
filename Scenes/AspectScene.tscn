@@ -173,16 +173,16 @@ scroll_horizontal_enabled = false
 
 [node name="ContentMain" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer" index="0"]
 margin_right = 1075.0
-margin_bottom = 2284.0
+margin_bottom = 2184.0
 custom_constants/separation = 49
 
 [node name="HSeparator" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="0"]
 margin_right = 1075.0
 
 [node name="TrackingPreview" type="VBoxContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="1"]
-margin_top = 495.0
+margin_top = 395.0
 margin_right = 1075.0
-margin_bottom = 1087.0
+margin_bottom = 987.0
 script = ExtResource( 3 )
 
 [node name="TrackingQuestion" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview" index="0" instance=ExtResource( 7 )]
@@ -243,9 +243,9 @@ __meta__ = {
 anims/ShowShopButton = SubResource( 2 )
 
 [node name="InfoGraph" type="PanelContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="2"]
-margin_top = 1136.0
+margin_top = 1036.0
 margin_right = 1075.0
-margin_bottom = 1636.0
+margin_bottom = 1536.0
 rect_min_size = Vector2( 0, 500 )
 mouse_filter = 1
 size_flags_vertical = 3
@@ -285,9 +285,9 @@ script = ExtResource( 4 )
 [node name="Stagger" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/InfoGraph/VBoxContainer/MarginContainer2/FactorHolder" index="0" instance=ExtResource( 6 )]
 
 [node name="Aufgaben" type="PanelContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="3"]
-margin_top = 1685.0
+margin_top = 1585.0
 margin_right = 1075.0
-margin_bottom = 2185.0
+margin_bottom = 2085.0
 rect_min_size = Vector2( 0, 500 )
 custom_styles/panel = SubResource( 4 )
 script = ExtResource( 11 )
@@ -322,9 +322,9 @@ custom_constants/separation = 36
 [node name="Stagger2" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/Aufgaben/MarginContainer/VBoxContainer/QuestList" index="0" instance=ExtResource( 6 )]
 
 [node name="HSeparator2" type="HSeparator" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="4"]
-margin_top = 2234.0
+margin_top = 2134.0
 margin_right = 1075.0
-margin_bottom = 2284.0
+margin_bottom = 2184.0
 custom_styles/separator = SubResource( 5 )
 custom_constants/separation = 50
 

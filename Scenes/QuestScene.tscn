@@ -14,7 +14,7 @@
 [ext_resource path="res://Assets/Theme/collect_button_9p_hover.png" type="Texture" id=12]
 [ext_resource path="res://Assets/Theme/collect_button_9p_disabled.png" type="Texture" id=13]
 
-[sub_resource type="Shader" id=10]
+[sub_resource type="Shader" id=1]
 code = "shader_type canvas_item; 
 
 uniform sampler2D gradient; 
@@ -24,16 +24,16 @@ void fragment() {
 	//COLOR = vec4(UV.y,0,0,1);
 }"
 
-[sub_resource type="Gradient" id=11]
+[sub_resource type="Gradient" id=2]
 offsets = PoolRealArray( 0.213622, 1 )
 colors = PoolColorArray( 0.592157, 0.909804, 0.192157, 1, 1, 1, 1, 1 )
 
-[sub_resource type="GradientTexture" id=12]
-gradient = SubResource( 11 )
+[sub_resource type="GradientTexture" id=3]
+gradient = SubResource( 2 )
 
-[sub_resource type="ShaderMaterial" id=13]
-shader = SubResource( 10 )
-shader_param/gradient = SubResource( 12 )
+[sub_resource type="ShaderMaterial" id=4]
+shader = SubResource( 1 )
+shader_param/gradient = SubResource( 3 )
 
 [sub_resource type="StyleBoxFlat" id=5]
 bg_color = Color( 1, 1, 1, 1 )
@@ -260,7 +260,7 @@ tracks/6/keys = {
 }
 
 [node name="SceneBase" instance=ExtResource( 1 )]
-material = SubResource( 13 )
+material = SubResource( 4 )
 script = ExtResource( 8 )
 accent_color = Color( 0.6, 0.6, 0.6, 1 )
 
@@ -268,7 +268,7 @@ accent_color = Color( 0.6, 0.6, 0.6, 1 )
 follow_focus = true
 
 [node name="ContentMain" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer" index="0"]
-margin_bottom = 2064.0
+margin_bottom = 2137.0
 
 [node name="kiko_avatar - placeholder" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="1" instance=ExtResource( 7 )]
 anchor_right = 0.0
@@ -279,7 +279,7 @@ margin_bottom = 750.0
 [node name="TextContainer" type="MarginContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="2"]
 margin_top = 754.0
 margin_right = 1080.0
-margin_bottom = 1436.0
+margin_bottom = 1302.0
 size_flags_horizontal = 3
 custom_constants/margin_right = 24
 custom_constants/margin_top = 24
@@ -287,11 +287,10 @@ custom_constants/margin_left = 24
 custom_constants/margin_bottom = 24
 
 [node name="PanelContainer" type="PanelContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TextContainer" index="0"]
-modulate = Color( 1, 1, 1, 0 )
 margin_left = 24.0
 margin_top = 24.0
 margin_right = 1056.0
-margin_bottom = 658.0
+margin_bottom = 524.0
 rect_min_size = Vector2( 0, 500 )
 size_flags_horizontal = 3
 custom_styles/panel = SubResource( 5 )
@@ -303,7 +302,7 @@ __meta__ = {
 margin_left = 1.0
 margin_top = 1.0
 margin_right = 1031.0
-margin_bottom = 633.0
+margin_bottom = 499.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/margin_right = 64
@@ -317,17 +316,17 @@ anchor_bottom = 0.0
 margin_left = 64.0
 margin_top = 64.0
 margin_right = 966.0
-margin_bottom = 568.0
+margin_bottom = 434.0
 
 [node name="StatusContainer" type="Control" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="3"]
-margin_top = 1440.0
+margin_top = 1306.0
 margin_right = 1080.0
-margin_bottom = 1568.0
+margin_bottom = 1434.0
 rect_min_size = Vector2( 0, 128 )
 
 [node name="DatePanel" type="Panel" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/StatusContainer" index="0"]
-modulate = Color( 1, 1, 1, 0 )
 anchor_bottom = 1.0
+margin_right = 391.0
 custom_styles/panel = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -358,16 +357,16 @@ custom_fonts/font = ExtResource( 4 )
 text = "20.05.2021"
 align = 1
 valign = 1
+autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="RewardPanel" type="Panel" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/StatusContainer" index="1"]
-modulate = Color( 1, 1, 1, 0 )
 anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 80.0
+margin_left = -444.0
 custom_styles/panel = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -380,16 +379,16 @@ margin_bottom = 0.0
 label_size = 1
 
 [node name="HSeparator2" type="HSeparator" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="4"]
-margin_top = 1572.0
+margin_top = 1438.0
 margin_right = 1080.0
-margin_bottom = 1631.0
+margin_bottom = 1497.0
 custom_styles/separator = SubResource( 7 )
 custom_constants/separation = 59
 
 [node name="ActionContainer" type="MarginContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="5"]
-margin_top = 1635.0
+margin_top = 1501.0
 margin_right = 1080.0
-margin_bottom = 2060.27
+margin_bottom = 1926.27
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/margin_right = 36
@@ -436,11 +435,11 @@ __meta__ = {
 }
 
 [node name="HSeparator3" type="HSeparator" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="6"]
-margin_top = 2064.0
+margin_top = 1930.0
 margin_right = 1080.0
-margin_bottom = 2064.0
+margin_bottom = 2137.0
 custom_styles/separator = SubResource( 7 )
-custom_constants/separation = 0
+custom_constants/separation = 207
 __meta__ = {
 "_edit_use_anchors_": false
 }
