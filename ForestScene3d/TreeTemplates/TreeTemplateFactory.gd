@@ -208,11 +208,12 @@ func _preload_textures():
 		var file_name = dir.get_next()
 		while file_name != "":
 			if !dir.current_is_dir():
-				print("Found file: " + file_name)
+
 				available_textures[file_name.trim_suffix('.tres')] = load(texture_set_path + '/' + file_name)
 			file_name = dir.get_next()
 	else:
-		print("An error occurred when trying to access the path.")
+		Logger.error("Could not open texture_set_path.")
+	Logger.print("Loaded %d texture sets" % available_textures.size(), self)
 
 
 func _ready(): 

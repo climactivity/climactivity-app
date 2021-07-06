@@ -258,7 +258,7 @@ func get_quest_by_id(quest_id):
 	return null
 
 func drop_cache(): 
-	Logger.log("------------ Dropping cache ------------", self)
+	Logger.print("------------ Dropping cache ------------", self)
 	Util.remove_recursive("user://Network/Cache")
 	update()
 

@@ -34,5 +34,9 @@ func update():
 	tracking_state_list_entry.set_accent_color(sector_data["sector_color"])
 	if current_option != null: 
 		tracking_state_list_entry.set_reward_display(current_option.reward)
+		tracking_state_list_entry.grab_attention()
 	if AspectTrackingService.has_seedling_available(aspect_data):
+		var att = preload("res://UI/Components/SetzlingAvailable.tscn").instance()
+		tracking_state_list_entry.set_attention_grabber(att)
+		tracking_state_list_entry.set_show_attention_grabber(true)
 		show_shop_button()

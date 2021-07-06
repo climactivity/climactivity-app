@@ -7,7 +7,7 @@ onready var question = $"MarginContainer2/kiko_avatar - placeholder"
 
 onready var options_holder = $"Options"
 onready var select_button = $"MarginContainer/CenterContainer/SaveTrackingOptionButton"
-
+onready var select_button_label = $"MarginContainer/CenterContainer/SaveTrackingOptionButton/Label"
 var bp_option = preload("res://UI/Components/TrackingOption.tscn")
 var tracking_data
 var ready = false
@@ -70,14 +70,14 @@ func set_option(option):
 		selected_option = null
 	else:
 		selected_option = option
-	select_button.text = "Speichern"
+	select_button_label.text = "Speichern"
 	print(option)
 	select_button.disabled = false
 
 
 func _on_SaveTrackingOptionButton_pressed():
 	select_button.disabled = true
-	select_button.text = "Gespeichert!"
+	select_button_label.text = "Gespeichert!"
 	emit_signal("emit_option", selected_option.option_data if selected_option != null else null, aspect)
 	yield(get_tree().create_timer(0.2), "timeout")
 	if AspectTrackingService.has_seedling_available(aspect):

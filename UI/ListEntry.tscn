@@ -173,6 +173,15 @@ __meta__ = {
 navigation_payload = {
 }
 
+[node name="BadgeAttachmentPoint" type="Control" parent="."]
+margin_left = 955.999
+margin_top = 4.0
+margin_right = 1076.0
+margin_bottom = 5.0
+rect_min_size = Vector2( 120, 1 )
+size_flags_horizontal = 8
+size_flags_vertical = 0
+
 [node name="Button" type="Button" parent="."]
 margin_left = 4.0
 margin_top = 4.0

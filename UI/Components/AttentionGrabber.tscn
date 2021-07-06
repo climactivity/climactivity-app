@@ -1,0 +1,70 @@
+[gd_scene load_steps=3 format=2]
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 1, 1, 1, 1 )
+border_color = Color( 0.4, 0.4, 0.4, 1 )
+corner_radius_top_left = 1024
+corner_radius_top_right = 1024
+corner_radius_bottom_right = 1024
+corner_radius_bottom_left = 1024
+corner_detail = 20
+shadow_color = Color( 0, 0, 0, 0.14902 )
+shadow_size = 8
+shadow_offset = Vector2( 0, 4 )
+
+[sub_resource type="Animation" id=1]
+resource_name = "wobble"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1.23114, 1.23114 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.5, 1.5 ), Vector2( 1, 1 ), Vector2( 1, 1 ) ]
+}
+
+[node name="AttentionGrabber" type="Control"]
+grow_horizontal = 2
+grow_vertical = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control" type="PanelContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -37.0
+margin_top = -37.0
+margin_right = 37.0
+margin_bottom = 37.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_styles/panel = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+margin_right = 74.0
+margin_bottom = 74.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_min_size = Vector2( 60, 60 )
+rect_scale = Vector2( 0.974421, 0.974421 )
+rect_pivot_offset = Vector2( 30, 30 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Control/TextureRect"]
+autoplay = "wobble"
+anims/wobble = SubResource( 1 )

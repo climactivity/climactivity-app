@@ -37,9 +37,9 @@ screen_title = "settings_screen"
 show_menu_bar = true
 
 [node name="MarginContainer" type="MarginContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="1"]
-margin_top = 450.0
+margin_top = 350.0
 margin_right = 1080.0
-margin_bottom = 510.0
+margin_bottom = 422.0
 custom_constants/margin_right = 168
 custom_constants/margin_left = 168
 script = ExtResource( 5 )
@@ -47,7 +47,7 @@ script = ExtResource( 5 )
 [node name="VBoxContainer" type="VBoxContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer" index="0"]
 margin_left = 168.0
 margin_right = 912.0
-margin_bottom = 60.0
+margin_bottom = 72.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/VBoxContainer" index="0"]
 margin_right = 744.0
@@ -64,7 +64,7 @@ margin_right = 4.0
 [node name="DeleteButton" type="Button" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/VBoxContainer" index="1"]
 margin_top = 4.0
 margin_right = 744.0
-margin_bottom = 60.0
+margin_bottom = 72.0
 custom_fonts/font = ExtResource( 3 )
 text = "Spielstand löschen"
 
@@ -80,4 +80,4 @@ screen_label = "settings_screen"
 icon_texture = ExtResource( 2 )
 color = Color( 0.517647, 0.517647, 0.517647, 1 )
 
-[connection signal="pressed" from="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/VBoxContainer/DeleteButton" to="." method="_on_DeleteButton_pressed"]
+[connection signal="pressed" from="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/VBoxContainer/DeleteButton" to="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer" method="_on_DeleteButton_pressed"]

@@ -4,7 +4,7 @@ class_name ListEntry
 var bg_style = preload("res://UI/ListEntry.tres")
 export var texture = preload("res://Assets/TestData/checkered.png") setget set_icon
 export (String) var _content_text = "" setget set_content_text
-export var grab_attention = false setget ,grab_attention
+export var grab_attention = false setget set_grab_attention,grab_attention
 export (Resource) var reward setget set_reward_display 
 export (String) var navigation_target  = "" setget set_navigation_target
 export (Dictionary) var navigation_payload = {} setget set_navigation_payload
@@ -16,7 +16,8 @@ export var important = false setget set_is_important
 export var progress_icon_tex = preload("res://Assets/Icons/Time Circle.png") setget set_progress_icon
 export var show_progress = false setget set_is_show_progress 
 export var progress = 0.0 setget set_progress
-
+export var show_attention_grabber = false setget set_show_attention_grabber
+export (NodePath) var attention_grabber setget set_attention_grabber
 onready var icon = $MarginContainer/HBoxContainer/IconContainer/CenterContainer/Capsule
 onready var content_holder = $MarginContainer/HBoxContainer/ContentContainer
 onready var content_text = $MarginContainer/HBoxContainer/ContentContainer/VBoxContainer/RichTextLabel
@@ -28,8 +29,19 @@ onready var progress_icon = $"MarginContainer/HBoxContainer/ContentContainer/VBo
 onready var progress_container = $"MarginContainer/HBoxContainer/ContentContainer/VBoxContainer/MarginContainer"
 var ready = false
 
+func set_attention_grabber(scene):
+	attention_grabber = scene
+	update()
+func set_show_attention_grabber(boolean):
+	show_attention_grabber = boolean
+	update()
+
 func set_is_important(_important): 
 	important = _important
+	update()
+	
+func set_grab_attention(val): 
+	grab_attention = val
 	update()
 	
 func grab_attention():
@@ -104,7 +116,9 @@ func update():
 	bg_style.set_bg_color(accent_color)
 	set('custom_styles/panel', bg_style)
 	progress_bar.get_stylebox("fg").set_bg_color(accent_color)
-	
+	$BadgeAttachmentPoint.visible = show_attention_grabber
+	if show_attention_grabber and $BadgeAttachmentPoint.get_child_count() == 0 and attention_grabber != null:
+		$BadgeAttachmentPoint.add_child(attention_grabber)
 func set_navigation_target(target: String, payload = {}): 
 	navigation_target = target
 	if payload != {}:

@@ -30,27 +30,27 @@ func from_dict(dict):
 	run_time = dict["run_time"] if dict.has("run_time") else 0 # p_bigpoint
 	new_seedling_available = dict["new_seedling_available"] if dict.has("new_seedling_available") else false # p_bigpoint
 
-func get_reward_for_time_interval_from_now(seconds) -> Resource:
+func get_water_for_time_interval_from_now(seconds) -> Resource:
 	if current == null:
 		return null
 	var current_state_since = OS.get_unix_time() - current.time_stamp
 	if seconds <= current_state_since:	
-		return current.get_reward_for_time_interval(seconds)
+		return current.get_water_from_factor(seconds)
 	else: 
-		var reward = null
+		var water = null
 		var remaining = seconds
 		var last_time_stamp = OS.get_unix_time()
 		for entry in history: 
 			var applied_time =  last_time_stamp - entry.time_stamp
-			var current_reward =  entry.get_reward_for_time_interval(min(applied_time, remaining))
+			var current_water =  entry.get_water_from_factor(min(applied_time, remaining))
 			remaining -= applied_time
-			if reward == null:
-				reward = current_reward
+			if water == null:
+				water = current_water
 			else:
-				reward.merge(current_reward)
+				water = water + current_water
 			if remaining <= 0: 
 				break
-		return reward
+		return water
 
 func get_next_growth_period(): 
 	var next_entity_count = entity_list.size()
@@ -65,26 +65,26 @@ func get_next_growth_period():
 		_:
 			return 7 * Util.DAY
 
-func get_water_for_time_interval_from_now(seconds) -> float:
-	var current_state_since = OS.get_unix_time() - current.time_stamp
-	if seconds <= current_state_since:	
-		return current.get_reward_for_time_interval(seconds)
-	else: 
-		var reward = null
-		var remaining = seconds
-		var last_time_stamp = OS.get_unix_time()
-		for entry in history: 
-			var applied_time =  last_time_stamp - entry.time_stamp
-			var current_reward =  entry.get_reward_for_time_interval(min(applied_time, remaining))
-			remaining -= applied_time
-			if reward == null:
-				reward = current_reward
-			else:
-				reward.merge(current_reward)
-			if remaining <= 0: 
-				break
-		return reward
-				
+#func get_water_for_time_interval_from_now(seconds) -> float:
+#	var current_state_since = OS.get_unix_time() - current.time_stamp
+#	if seconds <= current_state_since:	
+#		return current.get_reward_for_time_interval(seconds)
+#	else: 
+#		var reward = null
+#		var remaining = seconds
+#		var last_time_stamp = OS.get_unix_time()
+#		for entry in history: 
+#			var applied_time =  last_time_stamp - entry.time_stamp
+#			var current_reward =  entry.get_reward_for_time_interval(min(applied_time, remaining))
+#			remaining -= applied_time
+#			if reward == null:
+#				reward = current_reward
+#			else:
+#				reward.merge(current_reward)
+#			if remaining <= 0: 
+#				break
+#		return reward
+#
 
 # cannot go into _init() because resources need to have a no args constructor to deserialize properly
 func make_tracking_state(new_bigpoint, new_aspect, new_entry, new_run_time): 

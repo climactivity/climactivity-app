@@ -42,9 +42,8 @@ func to_json():
 func _to_string():
 	return JSON.print(to_dict())
 
-func add_tracking_update(tracking_update, reward):
+func add_tracking_update(tracking_update):
 	tracking_updates.push_front(tracking_update)
-	inventory.add_reward(reward)
 
 func add_reward(reward):
 	inventory.add_reward(reward)

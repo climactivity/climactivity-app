@@ -8,6 +8,8 @@
 [node name="EntityShopScene" instance=ExtResource( 1 )]
 use_parent_material = true
 script = ExtResource( 5 )
+accent_color = Color( 0.6, 0.6, 0.6, 1 )
+screen_title = "new_seedling_avaliable"
 
 [node name="MarginContainer" parent="ContentContainer/Content/VBoxContainer" index="0"]
 custom_constants/margin_right = 89
@@ -19,12 +21,13 @@ margin_right = 991.0
 
 [node name="ContentMain" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer" index="0"]
 margin_right = 914.0
-margin_bottom = 3105.0
+margin_bottom = 3036.0
 
 [node name="HSeparator" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="0"]
 margin_right = 914.0
 
 [node name="coin_display" type="Label" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="1"]
+visible = false
 margin_top = 350.0
 margin_right = 914.0
 margin_bottom = 415.0
@@ -33,9 +36,9 @@ text = "coins_pill"
 align = 2
 
 [node name="ScrollContainer" type="MarginContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="2"]
-margin_top = 419.0
+margin_top = 350.0
 margin_right = 914.0
-margin_bottom = 3037.0
+margin_bottom = 2968.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
@@ -105,9 +108,9 @@ margin_right = 914.0
 margin_bottom = 2618.0
 
 [node name="MarginContainer" type="MarginContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="3"]
-margin_top = 3041.0
+margin_top = 2972.0
 margin_right = 914.0
-margin_bottom = 3105.0
+margin_bottom = 3036.0
 custom_constants/margin_right = 90
 custom_constants/margin_top = 64
 custom_constants/margin_left = 90

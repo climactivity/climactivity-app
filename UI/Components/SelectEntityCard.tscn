@@ -7,7 +7,7 @@
 [ext_resource path="res://UI/theme/ButtonPrimary_Active_small.stylebox" type="StyleBox" id=6]
 
 [sub_resource type="StyleBoxFlat" id=1]
-bg_color = Color( 0.482353, 0.776471, 0.109804, 0.741176 )
+bg_color = Color( 1, 1, 1, 1 )
 border_width_left = 1
 border_width_top = 1
 border_width_right = 1
@@ -20,7 +20,6 @@ corner_radius_bottom_left = 32
 
 [sub_resource type="StreamTexture" id=2]
 flags = 7
-load_path = "res://.import/tree_hard edge.png-ac6c484de9f5d47108442ed4ffaec045.stex"
 
 [node name="Card" type="PanelContainer"]
 anchor_right = 1.0
@@ -46,44 +45,45 @@ custom_constants/separation = 25
 alignment = 1
 
 [node name="Label" type="Label" parent="VBoxContainer"]
-margin_top = 645.0
+margin_top = 636.0
 margin_right = 1078.0
-margin_bottom = 710.0
+margin_bottom = 701.0
 custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "tree_label"
 align = 1
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer"]
-margin_top = 735.0
+margin_top = 726.0
 margin_right = 1078.0
-margin_bottom = 1115.0
+margin_bottom = 1106.0
 rect_min_size = Vector2( 380, 380 )
 texture = SubResource( 2 )
 expand = true
 stretch_mode = 6
 
 [node name="Label2" type="Label" parent="VBoxContainer"]
-margin_top = 1140.0
+margin_top = 1131.0
 margin_right = 1078.0
-margin_bottom = 1154.0
+margin_bottom = 1145.0
 
 [node name="CenterContainer" type="CenterContainer" parent="VBoxContainer"]
-margin_top = 1179.0
+margin_top = 1170.0
 margin_right = 1078.0
-margin_bottom = 1273.0
+margin_bottom = 1281.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/CenterContainer"]
-margin_left = 387.0
-margin_right = 690.0
-margin_bottom = 94.0
+margin_left = 339.0
+margin_right = 739.0
+margin_bottom = 111.0
 custom_constants/margin_bottom = 42
 
 [node name="select_button" type="Button" parent="VBoxContainer/CenterContainer/MarginContainer"]
-margin_right = 303.0
-margin_bottom = 52.0
+margin_right = 400.0
+margin_bottom = 69.0
 size_flags_stretch_ratio = 0.0
 custom_styles/hover = ExtResource( 6 )
 custom_styles/pressed = ExtResource( 6 )
@@ -92,4 +92,5 @@ custom_styles/disabled = ExtResource( 5 )
 custom_styles/normal = ExtResource( 6 )
 custom_fonts/font = ExtResource( 4 )
 text = "button_label_buy"
+
 [connection signal="pressed" from="VBoxContainer/CenterContainer/MarginContainer/select_button" to="." method="_on_select_button_pressed"]

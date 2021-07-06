@@ -53,8 +53,8 @@ func _tracked_option_label(instance_resource) -> String:
 #		var __float = options.get(0.0)
 #		var __str = options.get("0")
 		
-		var selected_option = options[current_level.level as int]
-		return selected_option.option
+		var selected_option = options[current_level.level as int].option if current_level != null else tr("no_longer_tracked")
+		return selected_option
 
 	return "Test"
 

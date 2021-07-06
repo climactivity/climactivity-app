@@ -74,9 +74,30 @@ func preselect():
 		$AnimationPlayer.play("Preselected")
 
 
+func _on_Button_pressed():
+	select_button._on_Control_pressed()
+
+func _on_Button_button_down():
+	modulate = Color("#afafaf")
+
+func _on_Button_button_up():
+	modulate = Color.white
+
+var last_touch_point : Vector2
+export var accept_radius = 5.0
 func _on_Panel_gui_input(event):
-	if event is InputEventScreenTouch and event.pressed:
-		select_button._on_Control_pressed()
+	if event is InputEventScreenDrag: # reject input while scrolling
+		_on_Button_button_up()
+		return
+
+	if event is InputEventScreenTouch: 
+		if event.pressed:
+			_on_Button_button_down()
+			last_touch_point = event.position
+		else: 
+			if (event.position - last_touch_point).length() < accept_radius:
+				_on_Button_button_up()
+				_on_Button_pressed()
 
 func play_enter():
 	$Enter.play("Enter")

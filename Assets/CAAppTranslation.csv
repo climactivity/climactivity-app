@@ -12,6 +12,7 @@ notifications_screen,Mitteilungen,Notifications
 social_screen,Freunde,Friends
 settings_screen,Einstellungen,Settings
 button_label_buy,Auswählen,Select
+new_seedling_avaliable,Neuen Setzling auswählen,
 new_seedling_avaliable_button,Neuen Setzling auswählen,select new seedling
 label_kind,Gattung,Kind
 label_stage,Höhe,Height
@@ -38,3 +39,4 @@ no_current_accepted_quests,Du hast keine akutell laufende Challenge - gehe in ei
 no_accepted_quests,Du hast dir noch keine Challenges ausgesucht - gehe in ein Themenzelt und nimm dir etwas vor!,
 collect_reward_action_label,Einsammeln,Collect
 collected_reward_action_label,Eingesammelt,
+quest_social_chellenge,Fordere jemanden heraus,

@@ -50,13 +50,13 @@ func update_view(animate = false):
 		if template_resource.texture_data.has("sizes"):
 			var sizes = template_resource.texture_data.get("sizes") 
 			if sizes.has(texture_key):
-				current_size = sizes[texture_key]
+				current_size = sizes[texture_key] * (1.2 if template_resource.type == 'tree' else 0.8)
 				#bill_board.set_unit_factor(sizes[texture_key])
 				if animate:
 					_animate_update(current_texture, current_size, old_texture, old_size)
 				else:
 					bill_board.set_texture(current_texture)
-					bill_board.set_unit_factor(sizes[texture_key])
+					bill_board.set_unit_factor(current_size)
 			else:
 				Logger.error("Missing factor in sizes!", self)
 		else:

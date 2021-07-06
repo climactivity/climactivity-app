@@ -28,7 +28,8 @@ func _init(dict = {}):
 	info_graph = dict["infoGraph"] if dict.has("infoGraph") else {} # p_info_graph = {}
 	factors = dict["localizedFactors"] if dict.has("localizedFactors") else []
 	icon = dict["icon"] if dict.has("icon") else null
-	type = dict["archetype"] if dict.has("archetype") else 'tree'
+	print(">>> type:" ,dict["templateType"] if dict.has("templateType") else 'null', " ", dict["name"] if dict.has("name") else "??")
+	type = dict["templateType"] if dict.has("templateType") else 'tree'
 	
 func get_option_for_level(level): 
 	if tracking == {}: return null

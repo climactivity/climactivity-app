@@ -61,19 +61,22 @@ func do_update():
 	var total_reward = bp_r_reward.new()
 	for aspect_id in levels: 
 		var tracking_state = levels[aspect_id]
-		var reward = tracking_state.get_reward_for_time_interval_from_now(absolute_delta)
-		if reward == null:
-			continue
-		reward.coins = 0
+#		var reward = tracking_state.get_reward_for_time_interval_from_now(absolute_delta)
+#		if reward == null:
+#			continue
+#		reward.coins = 0
 		if tracking_state.water_tank == null:
 			tracking_state.water_tank = bp_r_water_tank.new()
 			tracking_state.water_tank.initialize(aspect_id, tracking_state.run_time)
 			#tracking_state.water_tank.add_water(100.0)
-		tracking_state.water_tank.add_water(reward.water)
+		var water = tracking_state.get_water_for_time_interval_from_now(absolute_delta)
+		
+		if water != null: 
+			tracking_state.water_tank.add_water(water)
 		# add update to stats
-		tracking_update.add_reward(aspect_id, reward)
-		total_reward.merge(reward)
-	player_state.add_tracking_update(tracking_update, total_reward)
+#		tracking_update.add_reward(aspect_id, reward)
+#		total_reward.merge(reward)
+	player_state.add_tracking_update(tracking_update)
 	#finalize
 	player_state.last_update = OS.get_unix_time()
 	#Logger.print(player_state.to_json(), self)
@@ -112,11 +115,13 @@ func commit_tracking_level(option, aspect):
 		new_reward.xp = 0.0
 	if option["reward"].has("water"):
 		new_reward.water =  option["reward"]["water"]
-	elif int(option["waterFactor"]) != 0:
-		 new_reward.water = option["waterFactor"]
+
 	else:
 		new_reward.water = 0
 	var new_entry = bp_r_tracking_entry.new()
+	
+	if float(option["waterFactor"]) > 0.0:
+		new_entry.water_factor =  float(option["waterFactor"])
 	new_entry.aspect = aspect._id
 	new_entry.time_stamp = OS.get_unix_time()
 	new_entry.level = option["level"] if option.has("level") else 0 
