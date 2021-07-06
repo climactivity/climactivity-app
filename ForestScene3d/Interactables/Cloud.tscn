@@ -51,7 +51,7 @@ scale_amount = 0.1
 [node name="Droplet" type="Sprite" parent="CloudSprite"]
 visible = false
 position = Vector2( 2.03407, 1.31012 )
-scale = Vector2( 2.65486, 2.65486 )
+scale = Vector2( 1.322, 1.322 )
 texture = ExtResource( 6 )
 
 [connection signal="gui_input" from="." to="." method="_on_Cloud_gui_input"]

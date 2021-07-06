@@ -25,24 +25,25 @@
 	<key>CFBundleSignature</key>
 	<string></string>
 	<key>CFBundleVersion</key>
-	<string>1.0</string>
+	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>ITSAppUsesNonExemptEncryption</key>
-	<false />
+	<false/>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>LSSupportsOpeningDocumentsInPlace</key>
 	<false/>
-	<key>UIFileSharingEnabled</key>
-	<false/>
-	<key>UIRequiredDeviceCapabilities</key>
-	<array>
-			</array>
 	<key>NSCameraUsageDescription</key>
-	<string></string>
-	<key>NSPhotoLibraryUsageDescription</key>
 	<string></string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string></string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string></string>
+	<key>UIFileSharingEnabled</key>
+	<false/>
+	<key>UILaunchStoryboardName</key>
+	<string>Launch Screen</string>
+	<key>UIRequiredDeviceCapabilities</key>
+	<array/>
 	<key>UIRequiresFullScreen</key>
 	<true/>
 	<key>UIStatusBarHidden</key>
@@ -55,9 +56,5 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
-	
-	<key>UILaunchStoryboardName</key>
-<string>Launch Screen</string>
 </dict>
 </plist>
-

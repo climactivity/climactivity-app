@@ -5,9 +5,9 @@
 
 [node name="Seedling" type="Sprite"]
 position = Vector2( -15.874, -211.435 )
-scale = Vector2( 0.414017, 0.414017 )
+scale = Vector2( 0.828, 0.828 )
 script = ExtResource( 3 )
 
 [node name="Pot" type="Sprite" parent="."]
-position = Vector2( 42.1755, 697.814 )
+position = Vector2( 42.175, 350 )
 texture = ExtResource( 2 )
