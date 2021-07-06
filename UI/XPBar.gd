@@ -24,7 +24,7 @@ func _avoid_screen_cutouts():
 		$MarginContainer.margin_top = (safe_area.position.y / 2)
 	
 func _update(): 
-#	return 
+	Logger.print("XP Bar updated", self) 
 	level = inventory.level
 	coins = inventory.coins
 	current_xp = inventory.xp

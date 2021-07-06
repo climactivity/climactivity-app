@@ -53,6 +53,9 @@ func render_resources():
 	if loading: return
 	if aspect_list == null: return
 	Util.clear(aspect_list)
+	
+#	if aspect_resources.size() == 0: 
+		
 	for aspect in aspect_resources: 
 		var aspect_card = bp_aspect_card.instance()
 		aspect_list.add_child(aspect_card)

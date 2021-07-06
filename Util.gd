@@ -89,7 +89,7 @@ static func clear(node: Node):
 		return
 	for child in node.get_children(): 
 		if !child.is_in_group("behaviour"):
-			print("cleared %s" % child.name)
+#			print("cleared %s" % child.name)
 			node.remove_child(child)
 		
 static func change_callback(req: HTTPRequest, inst: Object, function: String):

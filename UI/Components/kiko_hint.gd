@@ -9,6 +9,8 @@ func _ready():
 	label.text = text
 
 func set_text(new_text):
+	if new_text == null: 
+		return
 	text = tr(new_text)
 	if label != null: 
 		label.bbcode_text = "[center]" + text + "[/center]"

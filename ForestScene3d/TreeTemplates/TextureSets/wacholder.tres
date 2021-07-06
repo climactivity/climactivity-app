@@ -1,7 +1,7 @@
 [gd_resource type="Resource" load_steps=7 format=2]
 
 [ext_resource path="res://ForestScene3d/TreeTemplates/RTreeTemplateTextures.gd" type="Script" id=1]
-[ext_resource path="res://Assets/sketch/busch/Wacholder/wacholder_02.png" type="Texture" id=2]
+[ext_resource path="res://Assets/sketch/busch/Wacholder/Wacholder_02.png" type="Texture" id=2]
 [ext_resource path="res://Assets/sketch/busch/Wacholder/wacholder_03.png" type="Texture" id=3]
 [ext_resource path="res://Assets/sketch/busch/Wacholder/wacholder_04.png" type="Texture" id=4]
 [ext_resource path="res://Assets/sketch/busch/Wacholder/wacholder_05.png" type="Texture" id=5]

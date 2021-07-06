@@ -32,7 +32,7 @@ func _parse_data_object(data) -> String:
 						paragraph = "[i]" + paragraph +  "[/i]"
 					"link":
 						var href = mark["attrs"]["href"]
-						paragraph = ("[url=%s]" % href) + paragraph + "[/url]"
+						paragraph = ("[color=#1a0dab][url=%s]" % href) + paragraph + "[/url][/color]"
 					_: 
 						print("Unkown mark type: " + mark["type"], self)
 		text = text + paragraph 
