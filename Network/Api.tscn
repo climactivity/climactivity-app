@@ -1,7 +1,6 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Network/api.gd" type="Script" id=1]
-[ext_resource path="res://Network/WS.gd" type="Script" id=2]
 [ext_resource path="res://Network/CacheController.gd" type="Script" id=3]
 
 [node name="Api" type="Node"]
@@ -10,7 +9,6 @@ script = ExtResource( 1 )
 [node name="HTTPRequest" type="HTTPRequest" parent="."]
 
 [node name="WS" type="Node" parent="."]
-script = ExtResource( 2 )
 
 [node name="CacheController" type="Node" parent="."]
 script = ExtResource( 3 )

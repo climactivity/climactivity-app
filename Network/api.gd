@@ -32,7 +32,7 @@ var network_status = network_status_options.CONNECTED_LAN setget set_network_sta
 
 var enqueued_tasks = []
 
-onready var ws = $WS
+#onready var ws = $WS
 onready var req = $HTTPRequest
 onready var cache = $CacheController
 

@@ -39,11 +39,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/dialogic/Other/DialogicUtil.gd"
 }, {
-"base": "Panel",
-"class": "IconCapsule",
-"language": "GDScript",
-"path": "res://UI/Components/IconCapsule.gd"
-}, {
 "base": "PanelContainer",
 "class": "ListEntry",
 "language": "GDScript",
@@ -128,11 +123,6 @@ _global_script_classes=[ {
 "class": "NakamaWriteStorageObject",
 "language": "GDScript",
 "path": "res://addons/com.heroiclabs.nakama/api/NakamaWriteStorageObject.gd"
-}, {
-"base": "Control",
-"class": "Overlay",
-"language": "GDScript",
-"path": "res://UI/Overlay.gd"
 }, {
 "base": "PanelContainer",
 "class": "QuestCard",
@@ -246,7 +236,6 @@ _global_script_class_icons={
 "DialogicDefinitionsUtil": "",
 "DialogicResources": "",
 "DialogicUtil": "",
-"IconCapsule": "",
 "ListEntry": "",
 "MainMenu": "",
 "NakamaAPI": "",
@@ -264,7 +253,6 @@ _global_script_class_icons={
 "NakamaSocketAdapter": "",
 "NakamaStorageObjectId": "",
 "NakamaWriteStorageObject": "",
-"Overlay": "",
 "QuestCard": "",
 "RBoardEntityx": "",
 "RInfoByte": "",
@@ -307,8 +295,8 @@ Transition="*res://UI/Transition.tscn"
 PSS="*res://Services/PlayerStateSyncronizationService.gd"
 PlayerController="*res://PlayerController.gd"
 SectorService="*res://Services/SectorService.gd"
-AspectTrackingService="*res://Services/AspectTrackingService.gd"
 TreeTemplateFactory="*res://ForestScene3d/TreeTemplates/TreeTemplateFactory.tscn"
+AspectTrackingService="*res://Services/AspectTrackingService.gd"
 RewardService="*res://Services/RewardService.gd"
 BoardEntityService="*res://Services/BoardEntityService.gd"
 InfobyteService="*res://Services/InfobyteService.gd"
@@ -409,6 +397,7 @@ quality/driver/driver_name="GLES2"
 quality/driver/fallback_to_gles2=true
 vram_compression/import_etc=true
 vram_compression/import_pvrtc=true
+quality/filters/anisotropic_filter_level=16
 gles2/compatibility/disable_half_float=true
 environment/default_clear_color=Color( 0.898039, 0.898039, 0.898039, 1 )
 quality/filters/msaa=2
