@@ -1,0 +1,29 @@
+{
+	"events": [
+		{
+			"action": "join",
+			"character": "character-1623833731.json",
+			"event_id": "dialogic_002",
+			"mirror": false,
+			"portrait": "",
+			"position": {
+				"0": false,
+				"1": true,
+				"2": false,
+				"3": false,
+				"4": false
+			}
+		},
+		{
+			"character": "character-1623833731.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Dieses Zelt ist leider noch leer. Wir sind fleißig dabei weitere Inhalte in die App zu bringen. Bitte hab noch ein wenig Geduld. Danke!"
+		}
+	],
+	"metadata": {
+		"dialogic-version": "1.2",
+		"file": "timeline-1625600385.json",
+		"name": "BigpointScreenEmpty"
+	}
+}

@@ -1,0 +1,35 @@
+{
+	"events": [
+		{
+			"action": "join",
+			"character": "character-1623833731.json",
+			"event_id": "dialogic_002",
+			"mirror": false,
+			"portrait": "",
+			"position": {
+				"0": false,
+				"1": true,
+				"2": false,
+				"3": false,
+				"4": false
+			}
+		},
+		{
+			"character": "character-1623833731.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Hier stellst du ein, wie du in Bezug auf den oben genannten Aspekt des Klimaschutzes derzeit lebst.\nWähle die höchste Stufe (mit den meisten Sternen), die auf dich zutrifft.\nIm Anschluss bekommst du einen Setzling für einen Baum, einen Busch oder eine Blume je nach dem, wie wichtig der Aspekt für den Klimaschutz ist.\nAußerdem sammelt sich Wasser dafür in der Wolke; je klimafreundlicher du lebst desto mehr.\n Hol es dort regelmäßig ab und gieß deinen Wald!"
+		},
+		{
+			"definition": "1625600088-146",
+			"event_id": "dialogic_014",
+			"operation": "=",
+			"set_value": "1"
+		}
+	],
+	"metadata": {
+		"dialogic-version": "1.2",
+		"file": "timeline-1625600470.json",
+		"name": "TrackingSettingsIntro"
+	}
+}

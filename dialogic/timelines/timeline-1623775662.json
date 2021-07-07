@@ -18,19 +18,13 @@
 			"character": "character-1623833731.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "Hello"
-		},
-		{
-			"character": "character-1623833731.json",
-			"event_id": "dialogic_001",
-			"portrait": "",
-			"text": "Willkommen in der Climactivity App\nHier Einleitungstext einfügen... "
+			"text": "Schön, dass wir dir beim Klimaschutz helfen dürfen. Darf ich mich vorstellen: Ich bin Kiko.\nMit dem, was du für den Klimaschutz tust, lässt du in dieser App rund um den Zeltplatz einen Wald wachsen.\nJedes Zelt steht für einen wichtigen Bereich des Klimaschutz. Wenn du eins der offenen Zelte betrittst, findest du dort verschiedene Aspekte des jeweiligen Themas, mit denen du dich beschäftigen kannst. \nViel Spaß beim Wachsen-lassen deines Klimawaldes!\nAch übrigens: Die Infos zu den einzelnen App-Schirmen kannst du immer über das Kiko—Symbol unten links wieder aufrufen."
 		},
 		{
 			"definition": "1623840219-787",
 			"event_id": "dialogic_014",
 			"operation": "=",
-			"set_value": "true"
+			"set_value": "1"
 		}
 	],
 	"metadata": {

@@ -1,0 +1,35 @@
+{
+	"events": [
+		{
+			"action": "join",
+			"character": "character-1623833731.json",
+			"event_id": "dialogic_002",
+			"mirror": false,
+			"portrait": "",
+			"position": {
+				"0": false,
+				"1": true,
+				"2": false,
+				"3": false,
+				"4": false
+			}
+		},
+		{
+			"character": "character-1623833731.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "(Demnächst:) Was soll in deinem Wald wachsen?\n Je höher dein Level ist und je mehr Taler du hast, desto größer ist die Auswahl!"
+		},
+		{
+			"definition": "1625600197-918",
+			"event_id": "dialogic_014",
+			"operation": "=",
+			"set_value": "1"
+		}
+	],
+	"metadata": {
+		"dialogic-version": "1.2",
+		"file": "timeline-1625600562.json",
+		"name": "ShopIntro"
+	}
+}

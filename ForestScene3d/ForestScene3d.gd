@@ -43,7 +43,16 @@ func _restored():
 
 func enter_game():
 	$AnimationPlayer.play("Zoom_To_Clearing")
-	if Dialogic.get_variable("IntroPlayed") == "false" || OS.is_debug_build():
+	DialogicSingleton.get_definitions_list()
+
+	var reset = true
+	for definition in DialogicSingleton.get_definitions_list(): 
+		if definition.name != "IntroPlayed":
+			reset = false
+			break
+	if reset: 
+		 DialogicSingleton.init(true)
+	if Dialogic.get_variable("IntroPlayed") == "false" or Util.debug_dialog():
 		yield( $AnimationPlayer, "animation_finished" )
 		GameManager.overlay.show_dialog("Intro")
 

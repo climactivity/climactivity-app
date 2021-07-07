@@ -1,0 +1,35 @@
+{
+	"events": [
+		{
+			"action": "join",
+			"character": "character-1623833731.json",
+			"event_id": "dialogic_002",
+			"mirror": false,
+			"portrait": "",
+			"position": {
+				"0": false,
+				"1": true,
+				"2": false,
+				"3": false,
+				"4": false
+			}
+		},
+		{
+			"character": "character-1623833731.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Hier findest du eine Übersicht der Aspekte, die zu dem jeweiligen Thema dazu gehören.\nManche sind Big Points, also besonders wichtig für den Klimaschutz. Du erkennst sie an dem Baumsymbol und den 4 Sternen.\nDie Mittelgewichte sind durch ein Buschsymbol und 2 Sterne gekennzeichnet, die Leichtgewichte durch eine Blume und einen Stern. \nKümmere dich zuerst um die Big Points, denn dort liegen die größten Hebel für den Klimaschutz!"
+		},
+		{
+			"definition": "1625600087-648",
+			"event_id": "dialogic_014",
+			"operation": "=",
+			"set_value": "1"
+		}
+	],
+	"metadata": {
+		"dialogic-version": "1.2",
+		"file": "timeline-1625599925.json",
+		"name": "BigpointScreenIntro"
+	}
+}

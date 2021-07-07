@@ -1,0 +1,35 @@
+{
+	"events": [
+		{
+			"action": "join",
+			"character": "character-1623833731.json",
+			"event_id": "dialogic_002",
+			"mirror": false,
+			"portrait": "",
+			"position": {
+				"0": false,
+				"1": true,
+				"2": false,
+				"3": false,
+				"4": false
+			}
+		},
+		{
+			"character": "character-1623833731.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Zu jedem Aspekt gibt es drei Bereiche:\nErstens: Den Trackingbereich, in dem du einstellst, wie du im Hinblick auf den Aspekt derzeit lebst; darüber bekommst du die Setzlinge für deinen Wald und das Wasser um ihn wachsen zu lassen.\nZweitens: Den Wissensbereich, in dem du über ein Quiztraining und Quizzes spannende Einblicke in das Thema erhältst und Taler verdienen kannst.\nUnd drittens: Den Bereich der Challenges, die dir helfen Neues zu erproben und auch Taler einbringen."
+		},
+		{
+			"definition": "1625600088-366",
+			"event_id": "dialogic_014",
+			"operation": "=",
+			"set_value": "1"
+		}
+	],
+	"metadata": {
+		"dialogic-version": "1.2",
+		"file": "timeline-1625600426.json",
+		"name": "AspectScreenIntro"
+	}
+}

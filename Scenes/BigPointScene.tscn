@@ -8,6 +8,9 @@
 [node name="BigPointScene" instance=ExtResource( 1 )]
 script = ExtResource( 4 )
 accent_color = Color( 0.6, 0.6, 0.6, 1 )
+intro_gate_var = "BigpointScreenPlayed"
+intro_timeline = "BigpointScreenIntro"
+intro_autoplay_delay = 1.0
 
 [node name="MarginContainer" type="MarginContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="1"]
 margin_top = 350.0

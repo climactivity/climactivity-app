@@ -8,8 +8,7 @@ func _ready():
 	#connect("commit_option", AspectTrackingService, "commit_tracking_level")
 	if (aspect_data == null): return
 	update()
-
-
+	yield(get_tree().create_timer(1.0), "timeout")
 	
 func receive_navigation(navigation_data): 
 	#print(navigation_data)

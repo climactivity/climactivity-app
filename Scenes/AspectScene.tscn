@@ -163,6 +163,8 @@ tracks/5/keys = {
 
 [node name="AspectScene" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
+intro_gate_var = "AspectScreenPlayed"
+intro_timeline = "AspectScreenIntro"
 
 [node name="MarginContainer" parent="ContentContainer/Content/VBoxContainer" index="0"]
 custom_constants/margin_left = 5

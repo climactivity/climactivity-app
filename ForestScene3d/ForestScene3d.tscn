@@ -617,9 +617,9 @@ custom_constants/margin_bottom = 115
 
 [node name="Label" type="Label" parent="Camera/HUD/PlaceHereDialog/PanelContainer/MarginContainer"]
 margin_left = 40.0
-margin_top = 83.0
-margin_right = 879.0
-margin_bottom = 133.0
+margin_top = 77.0
+margin_right = 944.0
+margin_bottom = 139.0
 custom_fonts/font = ExtResource( 17 )
 text = "Möchtest du deinen Setzling hier platzieren?"
 align = 1

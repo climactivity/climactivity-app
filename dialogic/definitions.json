@@ -7,7 +7,37 @@
 			"id": "1623840219-787",
 			"name": "IntroPlayed",
 			"type": 0,
-			"value": "false"
+			"value": "0"
+		},
+		{
+			"id": "1625600087-787",
+			"name": "EmptyBigpointScreenPlayed",
+			"type": 0,
+			"value": "0"
+		},
+		{
+			"id": "1625600088-366",
+			"name": "AspectScreenPlayed",
+			"type": 0,
+			"value": "0"
+		},
+		{
+			"id": "1625600088-146",
+			"name": "TrackingSettingsPlayed",
+			"type": 0,
+			"value": "0"
+		},
+		{
+			"id": "1625600197-918",
+			"name": "ShopPlayed",
+			"type": 0,
+			"value": "0"
+		},
+		{
+			"id": "1625600087-648",
+			"name": "BigpointScreenPlayed",
+			"type": 0,
+			"value": "0"
 		}
 	]
 }

@@ -9,6 +9,10 @@ export var right_align = 64
 export var safe_area_top = 50
 export var top_align = 200
 
+export (String) var intro_gate_var
+export (String) var intro_timeline
+export (float) var intro_autoplay_delay
+
 export var icon = preload("res://Assets/Icons/AufforstungIcon.png")
 
 export (NodePath) var navigation_dispatcher 
@@ -31,6 +35,16 @@ func _ready():
 	material = material.duplicate(true)
 	gradient = material.get_shader_param("gradient")
 	dispatch_nav_data()
+	play_intro(intro_timeline, intro_gate_var, intro_autoplay_delay)
+
+func play_intro(timeline, gate_var, delay, force = false):
+	if not gate_var or not timeline:
+		return
+	if force or Dialogic.get_variable(gate_var) == "0" or Util.debug_dialog():
+		if delay > 0.0:
+			yield(get_tree().create_timer(delay), "timeout")
+		Logger.print("Playing intro", self)
+		GameManager.overlay.show_dialog(timeline)
 
 func align_top(): 
 	var safe_area = OS.get_window_safe_area()

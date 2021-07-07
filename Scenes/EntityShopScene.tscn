@@ -9,6 +9,8 @@
 use_parent_material = true
 script = ExtResource( 5 )
 accent_color = Color( 0.6, 0.6, 0.6, 1 )
+intro_gate_var = "ShopPlayed"
+intro_timeline = "ShopIntro"
 screen_title = "new_seedling_avaliable"
 
 [node name="MarginContainer" parent="ContentContainer/Content/VBoxContainer" index="0"]

@@ -12,7 +12,12 @@ onready var coin_displayer = $"ContentContainer/Content/VBoxContainer/MarginCont
 func _ready(): 
 	ready = true
 	if aspect_data != null: show_data()
-
+#	play_intro()
+#
+#func play_intro():
+#	if Dialogic.get_variable("IntroPlayed") == "false" or Util.debug_dialog():
+#		yield(get_tree().create_timer(1.0), "timeout")
+#		GameManager.overlay.show_dialog("ShopIntro")
 func receive_navigation(navigation_data): 
 	if navigation_data.has("aspect"):
 		aspect_data = navigation_data["aspect"]

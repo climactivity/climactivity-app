@@ -6,15 +6,17 @@
 
 [node name="TrackingSettingScene" instance=ExtResource( 1 )]
 script = ExtResource( 3 )
-accent_color = Color( 0.6, 0.6, 0.6, 1 )
+intro_gate_var = "TrackingSettingsPlayed"
+intro_timeline = "TrackingSettingsIntro"
+intro_autoplay_delay = 1.5
 
 [node name="ContentMain" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer" index="0"]
-margin_bottom = 2043.0
+margin_bottom = 2307.0
 
 [node name="MarginContainer" type="MarginContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="1"]
-margin_top = 450.0
+margin_top = 350.0
 margin_right = 1080.0
-margin_bottom = 2043.0
+margin_bottom = 2307.0
 custom_constants/margin_right = 27
 custom_constants/margin_left = 22
 
@@ -22,5 +24,5 @@ custom_constants/margin_left = 22
 anchor_right = 0.0
 margin_left = 22.0
 margin_right = 1053.0
-margin_bottom = 1593.0
+margin_bottom = 1957.0
 rect_scale = Vector2( 1, 1 )
