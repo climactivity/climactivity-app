@@ -17,7 +17,7 @@ export var icon = preload("res://Assets/Icons/AufforstungIcon.png")
 
 export (NodePath) var navigation_dispatcher 
 var _navigation_data
-
+signal align_top(offset)
 onready var header_bg = $"ContentContainer/Content/HeaderBG"
 onready var header = $"HeaderContainer/Header"
 onready var content_main = $"ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain"
@@ -57,7 +57,7 @@ func align_top():
 	header_bg_sep.set("custom_constants/separation", body_offset)
 	body_sep.set("custom_constants/separation", body_offset)
 	Logger.print("Aligning to %d:%d" % [header_offset,body_offset], self)
-
+	emit_signal("align_top", body_offset)
 func set_accent_color(color): 
 	accent_color = color 
 	if header_bg != null: _set_vars()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Scenes/SceneBase.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/WaterCollectionScene.gd" type="Script" id=2]
@@ -28,17 +28,25 @@ corner_radius_top_right = 20
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 
+[sub_resource type="StyleBoxEmpty" id=5]
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.392157, 0.65098, 0.886275, 1 )
+shadow_color = Color( 0, 0, 0, 0.341176 )
+shadow_size = 4
+shadow_offset = Vector2( 0, 10.485 )
+
 [node name="WaterCollectionScene" instance=ExtResource( 1 )]
 custom_styles/panel = SubResource( 1 )
 script = ExtResource( 2 )
 accent_color = Color( 0.6, 0.6, 0.6, 1 )
 
 [node name="ContentMain" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer" index="0"]
-margin_bottom = 3093.0
+margin_bottom = 3084.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="0"]
 margin_right = 1080.0
-margin_bottom = 2743.0
+margin_bottom = 2734.0
 size_flags_horizontal = 3
 custom_constants/separation = -1
 __meta__ = {
@@ -47,70 +55,14 @@ __meta__ = {
 
 [node name="HSeparator" type="HSeparator" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/VBoxContainer" index="0"]
 margin_right = 1080.0
-margin_bottom = 346.0
+margin_bottom = 535.0
 custom_styles/separator = SubResource( 2 )
-custom_constants/separation = 346
+custom_constants/separation = 535
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CloudHolder" type="MarginContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/VBoxContainer" index="1"]
-margin_top = 345.0
-margin_right = 1080.0
-margin_bottom = 544.0
-grow_horizontal = 0
-grow_vertical = 0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_constants/margin_top = 49
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="HBoxContainer" type="HBoxContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/VBoxContainer/CloudHolder" index="0"]
-margin_top = 49.0
-margin_right = 1080.0
-margin_bottom = 199.0
-
-[node name="MarginContainer" type="MarginContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/VBoxContainer/CloudHolder/HBoxContainer" index="0"]
-margin_right = 862.0
-margin_bottom = 150.0
-size_flags_horizontal = 3
-custom_constants/margin_right = -12
-custom_constants/margin_left = 43
-
-[node name="VBoxContainer" type="VBoxContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/VBoxContainer/CloudHolder/HBoxContainer/MarginContainer" index="0"]
-margin_left = 43.0
-margin_right = 874.0
-margin_bottom = 150.0
-alignment = 1
-
-[node name="Label" type="Label" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/VBoxContainer/CloudHolder/HBoxContainer/MarginContainer/VBoxContainer" index="0"]
-margin_top = 42.0
-margin_right = 831.0
-margin_bottom = 107.0
-custom_fonts/font = ExtResource( 8 )
-text = "water_percent_collected"
-valign = 1
-
-[node name="MarginContainer2" type="MarginContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/VBoxContainer/CloudHolder/HBoxContainer" index="1"]
-margin_left = 866.0
-margin_right = 1080.0
-margin_bottom = 150.0
-custom_constants/margin_right = 64
-
-[node name="CloudPreview" type="TextureRect" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/VBoxContainer/CloudHolder/HBoxContainer/MarginContainer2" index="0"]
-material = ExtResource( 9 )
-margin_right = 150.0
-margin_bottom = 150.0
-rect_min_size = Vector2( 150, 150 )
-texture = ExtResource( 5 )
-expand = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="KikoHintHolder" type="MarginContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/VBoxContainer" index="2"]
+[node name="KikoHintHolder" type="MarginContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/VBoxContainer" index="1"]
 visible = false
 margin_top = 687.0
 margin_right = 1080.0
@@ -122,10 +74,10 @@ anchor_right = 0.0
 margin_right = 1003.0
 margin_bottom = 400.0
 
-[node name="SectorHolders" type="VBoxContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/VBoxContainer" index="3"]
-margin_top = 543.0
+[node name="SectorHolders" type="VBoxContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/VBoxContainer" index="2"]
+margin_top = 534.0
 margin_right = 1080.0
-margin_bottom = 2397.0
+margin_bottom = 2388.0
 custom_constants/separation = 0
 
 [node name="SectorHolder" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/VBoxContainer/SectorHolders" index="0" instance=ExtResource( 6 )]
@@ -153,10 +105,10 @@ margin_bottom = 1545.0
 margin_top = 1545.0
 margin_bottom = 1854.0
 
-[node name="UsageHintHolder" type="MarginContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/VBoxContainer" index="4"]
-margin_top = 2396.0
+[node name="UsageHintHolder" type="MarginContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/VBoxContainer" index="3"]
+margin_top = 2387.0
 margin_right = 1080.0
-margin_bottom = 2743.0
+margin_bottom = 2734.0
 custom_constants/margin_right = 40
 custom_constants/margin_top = 40
 custom_constants/margin_left = 40
@@ -185,11 +137,87 @@ text = "Hole dein Wasser regelmäßig ab, bevor die Tanks volllaufen und sich ke
 autowrap = true
 
 [node name="HSeparator" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="1"]
-margin_top = 2747.0
-margin_bottom = 3093.0
+margin_top = 2738.0
+margin_bottom = 3084.0
 
 [node name="HeaderBG" parent="ContentContainer/Content" index="1"]
 self_modulate = Color( 0.392157, 0.65098, 0.886275, 1 )
+
+[node name="HSeparator2" parent="ContentContainer/Content/HeaderBG" index="0"]
+margin_bottom = 536.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ContentContainer/Content/HeaderBG" index="1"]
+margin_right = 1080.0
+margin_bottom = 536.0
+
+[node name="HSeparator" type="HSeparator" parent="ContentContainer/Content/HeaderBG/VBoxContainer" index="0"]
+margin_right = 1080.0
+margin_bottom = 246.0
+custom_styles/separator = SubResource( 5 )
+custom_constants/separation = 246
+
+[node name="CloudHolder" type="MarginContainer" parent="ContentContainer/Content/HeaderBG/VBoxContainer" index="1"]
+margin_top = 250.0
+margin_right = 1080.0
+margin_bottom = 536.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/margin_top = 49
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="ContentContainer/Content/HeaderBG/VBoxContainer/CloudHolder" index="0"]
+margin_top = 49.0
+margin_right = 1080.0
+margin_bottom = 286.0
+custom_styles/panel = SubResource( 4 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ContentContainer/Content/HeaderBG/VBoxContainer/CloudHolder" index="1"]
+margin_top = 49.0
+margin_right = 1080.0
+margin_bottom = 286.0
+
+[node name="MarginContainer" type="MarginContainer" parent="ContentContainer/Content/HeaderBG/VBoxContainer/CloudHolder/HBoxContainer" index="0"]
+margin_right = 862.0
+margin_bottom = 237.0
+size_flags_horizontal = 3
+custom_constants/margin_right = -12
+custom_constants/margin_left = 43
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ContentContainer/Content/HeaderBG/VBoxContainer/CloudHolder/HBoxContainer/MarginContainer" index="0"]
+margin_left = 43.0
+margin_right = 874.0
+margin_bottom = 237.0
+alignment = 1
+
+[node name="Label" type="Label" parent="ContentContainer/Content/HeaderBG/VBoxContainer/CloudHolder/HBoxContainer/MarginContainer/VBoxContainer" index="0"]
+margin_top = 86.0
+margin_right = 831.0
+margin_bottom = 151.0
+custom_fonts/font = ExtResource( 8 )
+text = "water_percent_collected"
+valign = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="ContentContainer/Content/HeaderBG/VBoxContainer/CloudHolder/HBoxContainer" index="1"]
+margin_left = 866.0
+margin_right = 1080.0
+margin_bottom = 237.0
+custom_constants/margin_right = 64
+
+[node name="CloudPreview" type="TextureRect" parent="ContentContainer/Content/HeaderBG/VBoxContainer/CloudHolder/HBoxContainer/MarginContainer2" index="0"]
+material = ExtResource( 9 )
+margin_right = 150.0
+margin_bottom = 237.0
+rect_min_size = Vector2( 150, 150 )
+texture = ExtResource( 5 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Header" parent="HeaderContainer" index="1"]
 screen_label = "water_collection_screen"

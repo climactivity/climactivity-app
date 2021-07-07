@@ -2,8 +2,8 @@ extends SceneBase
 
 var bp_sector_entry = preload("res://UI/Components/SectorHolder.tscn")
 
-onready var cloud_preview =$ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/VBoxContainer/CloudHolder/HBoxContainer/MarginContainer2/CloudPreview
-onready var percent_collected_label = $"ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/VBoxContainer/CloudHolder/HBoxContainer/MarginContainer/VBoxContainer/Label"
+onready var cloud_preview =$ContentContainer/Content/HeaderBG/VBoxContainer/CloudHolder/HBoxContainer/MarginContainer2/CloudPreview
+onready var percent_collected_label = $ContentContainer/Content/HeaderBG/VBoxContainer/CloudHolder/HBoxContainer/MarginContainer/VBoxContainer/Label
 onready var sector_list = $"ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/VBoxContainer/SectorHolders"
 
 var fill_state setget set_fill_state
@@ -20,7 +20,10 @@ func _ready():
 	set_accent_color(Color('#64A6E2'))
 	ready = true
 	update()
-		 
+	connect("align_top", self, "align_cloud")
+
+func align_cloud(offset): 
+	$"ContentContainer/Content/HeaderBG/VBoxContainer/HSeparator".set("custom_constants/seperation", offset)
 func update():
 	if !ready:
 		return
