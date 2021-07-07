@@ -13,18 +13,27 @@ onready var selected_label = $"HBoxContainer/VBoxContainer/selected_level"
 onready var water_tank = $"HBoxContainer/WaterTank"
 onready var bg = $MarginContainer/Panel
 
+var sector_data setget set_sector_data
+
 func _ready(): 
 	ready = true
 	water_tank.connect("clicked", self, "collect_water")
-	_render()
+	update()
 
-func _render(): 
-	if !ready:
+func set_sector_data(_sector_data):
+	sector_data = _sector_data
+	update() 
+
+func update(): 
+	if !ready or aspect_data == null or sector_data == null:
 		return
+
+	tracking_label.text = aspect_data.name
+	icon.set_icon(aspect_data.icon if aspect_data.icon else sector_data["sector_logo"])
 	if aspect_tracking_data != null and aspect_tracking_data.current != null:
 		var current_option = aspect_data.get_option_for_level(aspect_tracking_data.current.level)
 		if current_option != null:
-			tracking_label.text = aspect_data.name
+
 			selected_label.text = current_option.option
 			water_tank.set_percent(aspect_tracking_data.get_water_percent_available())
 	if bg_color != null:
@@ -33,11 +42,11 @@ func _render():
 func set_aspect_data(aspect):
 	aspect_tracking_data = aspect
 	aspect_data = aspect_tracking_data.get_aspect_data()
-	_render()
+	update()
 
 func set_color(color):
 	bg_color = color
-	_render()
+	update()
 
 func collect_water():
 	if aspect_tracking_data == null: return

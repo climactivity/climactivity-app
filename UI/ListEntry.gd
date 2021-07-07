@@ -103,7 +103,7 @@ func update():
 	else: 
 		content_reward.visible = true
 		content_reward.set_reward(reward)
-	content_text.bbcode_text = "[bold]" + _content_text + "[/bold]" if important else _content_text
+	content_text.bbcode_text = "[b]" + _content_text + "[/b]" if important else _content_text
 	if button_replacement != null: 
 		go_down_tex.visible = false
 		if go_down_container.get_children().size() == 1: 

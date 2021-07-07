@@ -12,3 +12,89 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+json_doc = " [
+                    {
+                        \"type\": \"paragraph\",
+                        \"content\": [
+                            {
+                                \"type\": \"text\",
+                                \"text\": \"Wie kann der Übergang dennoch gelingen?\"
+                            },
+                            {
+                                \"type\": \"hard_break\"
+                            },
+                            {
+                                \"type\": \"hard_break\"
+                            },
+                            {
+                                \"type\": \"text\",
+                                \"text\": \"Es ist eine gute Idee, sich nicht so sehr auf die Schwierigkeiten zu fokussieren, sondern auf das, was andere Mobilitätsoptionen auch ab sofort schon an Bereicherungen mit sich bringen wie z.B.:\"
+                            }
+                        ]
+                    },
+                    {
+                        \"type\": \"bullet_list\",
+                        \"content\": [
+                            {
+                                \"type\": \"list_item\",
+                                \"content\": [
+                                    {
+                                        \"type\": \"paragraph\",
+                                        \"content\": [
+                                            {
+                                                \"type\": \"text\",
+                                                \"text\": \"eine bessere Fitness;\"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                \"type\": \"list_item\",
+                                \"content\": [
+                                    {
+                                        \"type\": \"paragraph\",
+                                        \"content\": [
+                                            {
+                                                \"type\": \"text\",
+                                                \"text\": \"Zeit, um im Zug zu lesen, zu schlafen oder zu arbeiten\"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                \"type\": \"list_item\",
+                                \"content\": [
+                                    {
+                                        \"type\": \"paragraph\",
+                                        \"content\": [
+                                            {
+                                                \"type\": \"text\",
+                                                \"text\": \"das Ende des Sich-Kümmerns um TÜV, Autoreparaturen und Instandhaltung\"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                \"type\": \"list_item\",
+                                \"content\": [
+                                    {
+                                        \"type\": \"paragraph\",
+                                        \"content\": [
+                                            {
+                                                \"type\": \"text\",
+                                                \"text\": \"und nicht zuletzt das gute Gefühl, die Lücke zwischen dem Wissen, was richtig wäre, und dem eigenen Handeln geschlossen zu haben.\"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        \"type\": \"paragraph\"
+                    }
+                ]
+            },"
