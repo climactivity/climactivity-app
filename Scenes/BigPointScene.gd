@@ -16,6 +16,8 @@ onready var aspect_list = $"ContentContainer/Content/VBoxContainer/MarginContain
 #	else: 
 #		Api.getEndpoint("aspect_for_sector", req, [], true)
 
+export var badge = preload("res://UI/Components/ImportanceBadge.tscn")
+
 func _ready(): 
 	material = material.duplicate(true)
 	gradient = material.get_shader_param("gradient")
@@ -63,8 +65,20 @@ func render_resources():
 			aspect_card.set_icon(sector_data["sector_logo"])
 		aspect_card.set_navigation_target("res://Scenes/AspectScene.tscn")
 		aspect_card.set_navigation_payload({"aspect": aspect})
-		aspect_card.set_accent_color(sector_data["sector_color"])		
+		aspect_card.set_accent_color(sector_data["sector_color"])
 		aspect_card.is_start_hidden(true)
+		if badge:
+			var badge_inst = badge.instance()
+			match aspect.type:
+				'tree': 
+					badge_inst.level = 4
+					aspect_card.set_is_important(true)
+				'bush':
+					badge_inst.level = 2
+				_:
+					badge_inst.level = 1
+			aspect_card.set_attention_grabber(badge_inst)
+			aspect_card.set_show_attention_grabber(true)
 	$HeaderContainer/Header.update_header(sector_data["sector_title"], sector_data["sector_logo"], sector_data["sector_color"])
 	if gradient != null:
 		gradient.gradient.set_color(0, sector_data["sector_color"])
