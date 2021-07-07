@@ -39,6 +39,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/dialogic/Other/DialogicUtil.gd"
 }, {
+"base": "Panel",
+"class": "IconCapsule",
+"language": "GDScript",
+"path": "res://UI/Components/IconCapsule.gd"
+}, {
 "base": "PanelContainer",
 "class": "ListEntry",
 "language": "GDScript",
@@ -123,6 +128,11 @@ _global_script_classes=[ {
 "class": "NakamaWriteStorageObject",
 "language": "GDScript",
 "path": "res://addons/com.heroiclabs.nakama/api/NakamaWriteStorageObject.gd"
+}, {
+"base": "Control",
+"class": "Overlay",
+"language": "GDScript",
+"path": "res://UI/Overlay.gd"
 }, {
 "base": "PanelContainer",
 "class": "QuestCard",
@@ -236,6 +246,7 @@ _global_script_class_icons={
 "DialogicDefinitionsUtil": "",
 "DialogicResources": "",
 "DialogicUtil": "",
+"IconCapsule": "",
 "ListEntry": "",
 "MainMenu": "",
 "NakamaAPI": "",
@@ -253,6 +264,7 @@ _global_script_class_icons={
 "NakamaSocketAdapter": "",
 "NakamaStorageObjectId": "",
 "NakamaWriteStorageObject": "",
+"Overlay": "",
 "QuestCard": "",
 "RBoardEntityx": "",
 "RInfoByte": "",
@@ -295,8 +307,8 @@ Transition="*res://UI/Transition.tscn"
 PSS="*res://Services/PlayerStateSyncronizationService.gd"
 PlayerController="*res://PlayerController.gd"
 SectorService="*res://Services/SectorService.gd"
-TreeTemplateFactory="*res://ForestScene3d/TreeTemplates/TreeTemplateFactory.tscn"
 AspectTrackingService="*res://Services/AspectTrackingService.gd"
+TreeTemplateFactory="*res://ForestScene3d/TreeTemplates/TreeTemplateFactory.tscn"
 RewardService="*res://Services/RewardService.gd"
 BoardEntityService="*res://Services/BoardEntityService.gd"
 InfobyteService="*res://Services/InfobyteService.gd"
@@ -326,6 +338,11 @@ window/stretch/aspect="expand"
 [editor_plugins]
 
 enabled=PoolStringArray( "res://addons/Radial-progress-bar/plugin.cfg", "res://addons/dialogic/plugin.cfg", "res://addons/gut/plugin.cfg", "res://addons/tile_object/plugin.cfg" )
+
+[global]
+
+fps=false
+phy=false
 
 [importer_defaults]
 

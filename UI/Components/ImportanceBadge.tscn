@@ -1,0 +1,61 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://UI/Components/ImportanceBadge.gd" type="Script" id=1]
+[ext_resource path="res://UI/Components/ImportanceStar.tscn" type="PackedScene" id=2]
+[ext_resource path="res://UI/theme/style_box_empty.tres" type="StyleBox" id=3]
+
+[sub_resource type="Animation" id=1]
+resource_name = "wobble"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1.23114, 1.23114 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.5, 1.5 ), Vector2( 1, 1 ), Vector2( 1, 1 ) ]
+}
+
+[node name="ImportanceBadge" type="Control"]
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+badge = ExtResource( 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/wobble = SubResource( 1 )
+
+[node name="Control" type="PanelContainer" parent="."]
+anchor_bottom = 0.693
+margin_left = -100.0
+margin_top = -31.0
+margin_right = 100.0
+margin_bottom = 32.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/panel = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control"]
+margin_right = 137.0
+margin_bottom = 63.0
+size_flags_horizontal = 0
+custom_constants/separation = 5
+
+[node name="TextureRect" parent="Control/HBoxContainer" instance=ExtResource( 2 )]
+margin_right = 66.0
+margin_bottom = 63.0
+
+[node name="TextureRect2" parent="Control/HBoxContainer" instance=ExtResource( 2 )]
+margin_left = 71.0
+margin_right = 137.0
+margin_bottom = 63.0

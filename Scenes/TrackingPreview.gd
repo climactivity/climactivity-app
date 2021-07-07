@@ -39,4 +39,4 @@ func update():
 		var att = preload("res://UI/Components/SetzlingAvailable.tscn").instance()
 		tracking_state_list_entry.set_attention_grabber(att)
 		tracking_state_list_entry.set_show_attention_grabber(true)
-		show_shop_button()
+#		show_shop_button()

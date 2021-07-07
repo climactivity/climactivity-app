@@ -1,7 +1,7 @@
 extends Control
 
 export(Resource) var aspect_resource setget set_aspect
-
+export (PackedScene) var badge
 
 onready var list_entry = $ListEntry
 
@@ -22,9 +22,19 @@ func update():
 		list_entry.set_navigation_target("res://Scenes/AspectScene.tscn")
 		list_entry.set_navigation_payload({"aspect": aspect_resource})
 		list_entry.set_accent_color(sector["sector_color"])
-		if aspect_resource.type == 'tree': 
-			list_entry.set_is_important(true)
-			
+		if badge:
+			badge = badge.instance()
+			match aspect_resource.type:
+				'tree': 
+					badge.level = 4
+					list_entry.set_is_important(true)
+				'bush':
+					badge.level = 2
+				_:
+					badge.level = 1
+			list_entry.set_attention_grabber(badge)
+			list_entry.set_show_attention_grabber(true)
+			print("hey ~~~~~")
 func _on_enter_button_pressed():
 	GameManager.scene_manager.push_scene("res://Scenes/AspectScene.tscn", {"aspect": aspect_resource})
 
