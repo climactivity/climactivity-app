@@ -3,7 +3,7 @@ extends PanelContainer
 class_name WaterTank 
 
 signal clicked
-
+export var can_be_clicked = true
 export var bg_color = Color('#a7a7a7') setget set_bg
 export var border_color = Color('#ffffff') setget set_border
 export (float, 0.0, 1.0, 0.01) var percent = 0.0 setget set_percent
@@ -40,7 +40,20 @@ func _redraw():
 		self_modulate = border_color
 		panel.material.set_shader_param("percent_complete", percent)
 
+var down = false
+var last_pos = Vector2.ZERO
 
 func _on_Icon_gui_input(event):
-	if event is InputEventMouseButton and event.pressed:
-		emit_signal("clicked")
+	if event is InputEventScreenTouch:
+		if !can_be_clicked: return
+		print(event.as_text(), " ", down)
+		if  event.pressed:
+			down = true
+			last_pos = event.position
+
+		else:
+			if down:
+				emit_signal("clicked")
+				$droplets.emitting = true
+			else: 
+				down = false

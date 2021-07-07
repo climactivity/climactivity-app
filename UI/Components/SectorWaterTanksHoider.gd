@@ -7,6 +7,7 @@ export var bg_color = Color('#d5d5d5')
 export var font_color = Color('#fafafa')
 
 signal collect(tracking_data)
+signal added_aspect
 
 var sector_name setget set_sector_name
 var sector 
@@ -56,7 +57,8 @@ func update():
 		instance.set_aspect_data(aspect)
 		instance.set_color(sector_color)
 		aspects_holder.add_child(instance)
-
+		instance.connect("collect", self, "_emit")
+		emit_signal("added_aspect")
 
 func _sort_aspects():
 	pass

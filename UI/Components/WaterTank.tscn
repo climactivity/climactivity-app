@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://UI/Components/WaterTank.gd" type="Script" id=1]
 [ext_resource path="res://UI/Components/MWaterTank.tres" type="Material" id=2]
 [ext_resource path="res://Assets/drop.png" type="Texture" id=3]
+[ext_resource path="res://Assets/droplet.png" type="Texture" id=4]
 
 [sub_resource type="StyleBoxFlat" id=2]
 bg_color = Color( 1, 1, 1, 1 )
@@ -17,6 +18,9 @@ corner_detail = 20
 bg_color = Color( 1, 1, 1, 1 )
 border_color = Color( 1, 1, 1, 1 )
 corner_detail = 20
+
+[sub_resource type="Gradient" id=5]
+colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
 
 [node name="WaterTank" type="PanelContainer"]
 anchor_right = 1.0
@@ -59,5 +63,24 @@ stretch_mode = 6
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="droplets" type="CPUParticles2D" parent="."]
+position = Vector2( 80, 77.46 )
+emitting = false
+amount = 20
+lifetime = 0.7
+one_shot = true
+local_coords = false
+texture = ExtResource( 4 )
+emission_shape = 1
+emission_sphere_radius = 31.66
+direction = Vector2( 0, -1 )
+spread = 0.0
+gravity = Vector2( 0, -98 )
+initial_velocity = 1000.0
+initial_velocity_random = 0.7
+angle = 180.0
+scale_amount = 0.17
+color_ramp = SubResource( 5 )
 
 [connection signal="gui_input" from="BG_Icon/Icon" to="." method="_on_Icon_gui_input"]
