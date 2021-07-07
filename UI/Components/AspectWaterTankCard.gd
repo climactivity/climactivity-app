@@ -1,4 +1,4 @@
-extends MarginContainer
+tool extends MarginContainer
 
 signal collect(tracking_data)
 
@@ -35,6 +35,7 @@ func update():
 		if current_option != null:
 
 			selected_label.text = current_option.option
+#			water_tank.set_percent(0.5)
 			water_tank.set_percent(aspect_tracking_data.get_water_percent_available())
 	if bg_color != null:
 		bg.self_modulate = bg_color
@@ -53,7 +54,7 @@ func collect_water():
 	emit_signal("collect", aspect_tracking_data)
 	if is_instance_valid(AspectTrackingService): AspectTrackingService.water_collected(aspect_tracking_data)
 	var start = aspect_tracking_data.get_water_percent_available()
-	$Tween.interpolate_property(water_tank, "percent", start,
+	$Tween.interpolate_method(water_tank, "set_percent", start,
 		0.0, 0.4,Tween.TRANS_CUBIC, Tween.EASE_IN_OUT)
 	$Tween.start()
 

@@ -11,6 +11,8 @@
 
 [sub_resource type="StyleBoxFlat" id=2]
 bg_color = Color( 1, 1, 1, 1 )
+border_width_right = 145
+border_color = Color( 0.8, 0.8, 0.8, 0 )
 
 [sub_resource type="StyleBoxEmpty" id=3]
 
@@ -44,15 +46,15 @@ script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-color = Color( 0.670588, 0.839216, 0.219608, 1 )
+color = Color( 1, 1, 1, 1 )
 
 [node name="BG" type="Panel" parent="."]
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-margin_top = -77.479
-margin_right = -165.331
-margin_bottom = 79.521
+margin_top = -77.5
+margin_right = -68.0
+margin_bottom = 79.5
 custom_styles/panel = SubResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -80,8 +82,8 @@ __meta__ = {
 anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -284.0
-margin_right = 334.0
+margin_left = -347.0
+margin_right = 301.0
 custom_fonts/font = SubResource( 8 )
 custom_colors/font_color = Color( 0.584314, 0.756863, 0.121569, 1 )
 text = "Screen Label"
@@ -95,11 +97,15 @@ max_size = 48
 min_size = 32
 
 [node name="BG_Category" parent="BG" instance=ExtResource( 2 )]
-anchor_left = 0.892981
-anchor_top = -0.0919516
-anchor_right = 1.10945
-anchor_bottom = 1.16919
-bg_color = Color( 0.670588, 0.839216, 0.219608, 1 )
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -200.0
+margin_top = -100.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 200, 200 )
+bg_color = Color( 1, 1, 1, 1 )
 icon_texture = ExtResource( 6 )
 
 [connection signal="pressed" from="BG/BackButton" to="." method="_on_BackButton_pressed"]

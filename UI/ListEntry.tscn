@@ -246,6 +246,7 @@ margin_right = 160.0
 margin_bottom = 160.0
 mouse_filter = 2
 custom_styles/panel = SubResource( 1 )
+bg_color = Color( 1, 1, 1, 1 )
 
 [node name="VSeparator2" type="VSeparator" parent="MarginContainer/HBoxContainer"]
 margin_left = 178.0

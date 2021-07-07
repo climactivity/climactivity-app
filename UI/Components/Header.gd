@@ -15,7 +15,7 @@ onready var icon = $BG/BG_Category
 func _ready():
 	label.set_text(screen_label)
 	icon.set_icon(icon_texture)
-	icon.set_bg(color)
+#	icon.set_bg(color)
 	#icon.set_border(color)
 func _on_BackButton_pressed():
 	emit_signal("go_back")
@@ -40,6 +40,6 @@ func set_icon_texture(new_texture):
 func set_color(new_color): 
 	color = new_color
 	if(is_instance_valid(icon)):
-		icon.set_bg(color)
+		#icon.set_bg(color)
 		label.set("custom_colors/font_color", color)
 		back_button.self_modulate = color

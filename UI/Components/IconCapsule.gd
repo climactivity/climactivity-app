@@ -16,7 +16,6 @@ onready var panel = $BG_Icon
 onready var icon = $BG_Icon/Icon
 
 func _ready (): 
-	panel.material = preload("res://UI/Components/MWaterTank.tres").duplicate()
 	_redraw()
 
 func set_bg(bg): 
@@ -46,7 +45,7 @@ func _redraw():
 		icon.texture = icon_texture if icon_texture != null else default_texture
 		panel.self_modulate = bg_color
 		self_modulate = border_color
-		panel.material.set_shader_param("percent_complete", percent)
+
 
 
 func _on_Icon_gui_input(event):

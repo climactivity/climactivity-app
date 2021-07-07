@@ -1,10 +1,10 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://UI/Components/CircleCutout.shader" type="Shader" id=1]
+[ext_resource path="res://UI/Components/MIconCapsule.tres" type="Material" id=1]
 [ext_resource path="res://UI/Components/IconCapsule.gd" type="Script" id=2]
 [ext_resource path="res://Assets/TestData/checkered.png" type="Texture" id=3]
 
-[sub_resource type="StyleBoxFlat" id=2]
+[sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 1, 1, 1, 1 )
 border_color = Color( 1, 1, 1, 1 )
 corner_radius_top_left = 1024
@@ -12,20 +12,7 @@ corner_radius_top_right = 1000
 corner_radius_bottom_right = 1000
 corner_radius_bottom_left = 1000
 
-[sub_resource type="Shader" id=1]
-code = "shader_type canvas_item; 
-
-uniform float percent_complete : hint_range(0.0,1.0) = 0.0f; 
-
-void fragment() {
-	COLOR = UV.y >= (1.0 - percent_complete) ? vec4(1.0) : vec4(0.0);
-}"
-
-[sub_resource type="ShaderMaterial" id=3]
-shader = SubResource( 1 )
-shader_param/percent_complete = 0.0
-
-[sub_resource type="StyleBoxFlat" id=4]
+[sub_resource type="StyleBoxFlat" id=2]
 bg_color = Color( 1, 1, 1, 1 )
 border_width_left = 1024
 border_width_top = 1024
@@ -38,10 +25,6 @@ corner_radius_bottom_right = 1024
 corner_radius_bottom_left = 1024
 corner_detail = 20
 
-[sub_resource type="ShaderMaterial" id=5]
-shader = ExtResource( 1 )
-shader_param/radius = 0.495
-
 [node name="Capsule" type="Panel"]
 anchor_top = 0.000520833
 anchor_right = 0.997222
@@ -49,15 +32,13 @@ anchor_bottom = 0.560417
 rect_min_size = Vector2( 160, 160 )
 size_flags_horizontal = 0
 size_flags_vertical = 0
-custom_styles/panel = SubResource( 2 )
+custom_styles/panel = SubResource( 1 )
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": true
 }
 
 [node name="BG_Icon" type="Panel" parent="."]
-self_modulate = Color( 0.654902, 0.654902, 0.654902, 1 )
-material = SubResource( 3 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 18.0
@@ -67,13 +48,13 @@ margin_bottom = -18.0
 rect_clip_content = true
 size_flags_horizontal = 0
 size_flags_vertical = 0
-custom_styles/panel = SubResource( 4 )
+custom_styles/panel = SubResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Icon" type="TextureRect" parent="BG_Icon"]
-material = SubResource( 5 )
+material = ExtResource( 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 texture = ExtResource( 3 )

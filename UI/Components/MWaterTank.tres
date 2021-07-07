@@ -1,14 +1,39 @@
 [gd_resource type="ShaderMaterial" load_steps=2 format=2]
 
 [sub_resource type="Shader" id=1]
+resource_local_to_scene = true
 code = "shader_type canvas_item; 
 
 uniform float percent_complete : hint_range(0.0,1.0) = 0.0f; 
-
+uniform float radius : hint_range(0.0,1.0) = 0.0f;
+uniform vec4 color: hint_color; 
+uniform vec4 color_top: hint_color;
+uniform float distortion_amount = 1.0;
+uniform float distortion_freq = 1.0;
 void fragment() {
-	COLOR = UV.y >= (1.0 - percent_complete) ? vec4(1.0) : vec4(0.0);
+	float fill = (1.0 - percent_complete);
+
+	float dist_from_center = length(vec2(UV.xy - vec2(0.5,0.5))); 
+	float distortion = sin(distortion_freq * (UV.x + TIME)) / (100.0-distortion_amount); 
+	fill = fill + distortion;
+	
+	float near_top = (UV.y - fill )/0.1;
+	near_top = clamp(near_top, 0.0, 1.0); 
+	near_top = 1.0 - near_top; 
+	
+	vec4 _color = mix(color, color_top, near_top);
+	vec4 circle = (dist_from_center > radius) ? vec4(0.0) : _color;
+	vec4 water =  UV.y >= fill ? circle : vec4(0.0);
+	
+	COLOR = water ;
+
 }"
 
 [resource]
 shader = SubResource( 1 )
 shader_param/percent_complete = 0.0
+shader_param/radius = 0.443
+shader_param/color = Color( 0.152941, 0.607843, 0.831373, 1 )
+shader_param/color_top = Color( 0.886275, 0.929412, 0.952941, 1 )
+shader_param/distortion_amount = 26.598
+shader_param/distortion_freq = 1.752

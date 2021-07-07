@@ -1,0 +1,42 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Tests/Sprite Emitter.gd" type="Script" id=1]
+[ext_resource path="res://Assets/droplet.png" type="Texture" id=2]
+[ext_resource path="res://Tests/test_particle.tscn" type="PackedScene" id=3]
+
+[node name="SpriteTest" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite Emitter" type="Control" parent="."]
+anchor_left = 0.100327
+anchor_top = 0.204737
+anchor_right = 0.100327
+anchor_bottom = 0.204737
+margin_left = 249.464
+margin_top = 1257.4
+margin_right = 289.464
+margin_bottom = 1297.4
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+particle_texture = ExtResource( 2 )
+target = NodePath("../Sprite Attractor")
+particle_scene = ExtResource( 3 )
+
+[node name="Sprite Attractor" type="Control" parent="."]
+anchor_left = 1.59828
+anchor_top = 0.221681
+anchor_right = 1.59828
+anchor_bottom = 0.221681
+margin_left = -861.84
+margin_top = -226.56
+margin_right = -821.84
+margin_bottom = -186.56
+__meta__ = {
+"_edit_use_anchors_": false
+}
