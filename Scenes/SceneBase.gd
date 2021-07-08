@@ -17,7 +17,10 @@ export var icon = preload("res://Assets/Icons/AufforstungIcon.png")
 
 export (NodePath) var navigation_dispatcher 
 var _navigation_data
+
 signal align_top(offset)
+signal header_shadow_alpha(shadow_alpha)
+
 onready var header_bg = $"ContentContainer/Content/HeaderBG"
 onready var header = $"HeaderContainer/Header"
 onready var content_main = $"ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain"
@@ -40,7 +43,9 @@ func _ready():
 
 func on_scroll(scroll_pos):
 #	print("scroll: " + str(scroll_pos))
-	header_bg.modulate.a = clamp(Util.map_to_range(float(scroll_pos), 60.0,130.0,0.0,1.0), 0.0, 1.0)
+	var shadow_alpha = clamp(Util.map_to_range(float(scroll_pos), 60.0,130.0,0.0,1.0), 0.0, 1.0)
+	header_bg.modulate.a = shadow_alpha
+	emit_signal("header_shadow_alpha", shadow_alpha)
 
 
 func play_intro(timeline, gate_var, delay, force = false):

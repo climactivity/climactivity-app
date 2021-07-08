@@ -2,10 +2,11 @@ extends SceneBase
 
 var bp_sector_entry = preload("res://UI/Components/SectorHolder.tscn")
 
-onready var cloud_preview = $ContentContainer/VBoxContainer2/CloudHolder/HBoxContainer/MarginContainer2/CloudPreview
-onready var percent_collected_label = $"ContentContainer/VBoxContainer2/CloudHolder/HBoxContainer/MarginContainer/VBoxContainer/Label"
+onready var cloud_panel_bg = $"ContentContainer/Content/VBoxContainer2/CloudHolder/Panel"
+onready var cloud_preview = $"ContentContainer/Content/VBoxContainer2/CloudHolder/HBoxContainer/MarginContainer2/CloudPreview"
+onready var percent_collected_label = $"ContentContainer/Content/VBoxContainer2/CloudHolder/HBoxContainer/MarginContainer/VBoxContainer/Label"
 onready var sector_list = $"ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/VBoxContainer/SectorHolders"
-
+onready var top_seperator = $"ContentContainer/Content/VBoxContainer2/HSeparator"
 var fill_state setget set_fill_state
 var _sector_data
 var data = {}
@@ -21,9 +22,15 @@ func _ready():
 	ready = true
 	update()
 	connect("align_top", self, "align_cloud")
-
+	connect("header_shadow_alpha", self, "shadow_collection_preview")
+	
+func shadow_collection_preview(shadow_alpha):
+	var stylebox = cloud_panel_bg.get_stylebox("panel")
+	stylebox.set("shadow_size", 22.0 * shadow_alpha)
+	stylebox.set("shadow_offset", 22.0 * shadow_alpha)
+	
 func align_cloud(offset): 
-	$"ContentContainer/Content/HeaderBG/VBoxContainer/HSeparator".set("custom_constants/seperation", offset)
+	top_seperator.set("custom_constants/seperation", offset)
 func update():
 	if !ready:
 		return

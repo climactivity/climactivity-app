@@ -32,10 +32,13 @@ corner_radius_bottom_left = 20
 [sub_resource type="StyleBoxEmpty" id=5]
 
 [sub_resource type="StyleBoxFlat" id=4]
-bg_color = Color( 0.392157, 0.65098, 0.886275, 1 )
+bg_color = Color( 0.462745, 0.741176, 1, 1 )
+corner_radius_top_left = 1024
+corner_radius_top_right = 1024
+corner_radius_bottom_right = 1024
+corner_radius_bottom_left = 1024
+corner_detail = 20
 shadow_color = Color( 0, 0, 0, 0.172549 )
-shadow_size = 22
-shadow_offset = Vector2( 0, 22.74 )
 
 [node name="WaterCollectionScene" instance=ExtResource( 1 )]
 custom_styles/panel = SubResource( 1 )
@@ -145,78 +148,80 @@ margin_bottom = 3084.0
 
 [node name="HeaderBG" parent="ContentContainer/Content" index="1"]
 self_modulate = Color( 0.392157, 0.65098, 0.886275, 1 )
+margin_bottom = 346.0
 
-[node name="HSeparator2" parent="ContentContainer/Content/HeaderBG" index="0"]
-margin_bottom = 449.0
-
-[node name="VBoxContainer2" type="VBoxContainer" parent="." index="1"]
-margin_right = 1080.0
-margin_bottom = 449.0
+[node name="VBoxContainer2" type="VBoxContainer" parent="ContentContainer/Content" index="2"]
+anchor_right = 1.0
+margin_bottom = 257.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HSeparator" type="HSeparator" parent="VBoxContainer2" index="0"]
+[node name="HSeparator" type="HSeparator" parent="ContentContainer/Content/VBoxContainer2" index="0"]
 margin_right = 1080.0
-margin_bottom = 246.0
+margin_bottom = 300.0
 custom_styles/separator = SubResource( 5 )
-custom_constants/separation = 246
+custom_constants/separation = 300
 
-[node name="CloudHolder" type="MarginContainer" parent="VBoxContainer2" index="1"]
-margin_top = 250.0
+[node name="CloudHolder" type="MarginContainer" parent="ContentContainer/Content/VBoxContainer2" index="1"]
+margin_top = 304.0
 margin_right = 1080.0
-margin_bottom = 449.0
+margin_bottom = 510.0
 grow_horizontal = 0
 grow_vertical = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_constants/margin_top = 49
+custom_constants/margin_right = 32
+custom_constants/margin_top = 36
+custom_constants/margin_left = 36
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Panel" type="Panel" parent="VBoxContainer2/CloudHolder" index="0"]
-margin_top = 49.0
-margin_right = 1080.0
-margin_bottom = 199.0
+[node name="Panel" type="Panel" parent="ContentContainer/Content/VBoxContainer2/CloudHolder" index="0"]
+margin_left = 36.0
+margin_top = 36.0
+margin_right = 1048.0
+margin_bottom = 206.0
 custom_styles/panel = SubResource( 4 )
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer2/CloudHolder" index="1"]
-margin_top = 49.0
-margin_right = 1080.0
-margin_bottom = 199.0
+[node name="HBoxContainer" type="HBoxContainer" parent="ContentContainer/Content/VBoxContainer2/CloudHolder" index="1"]
+margin_left = 36.0
+margin_top = 36.0
+margin_right = 1048.0
+margin_bottom = 206.0
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer2/CloudHolder/HBoxContainer" index="0"]
-margin_right = 862.0
-margin_bottom = 150.0
+[node name="MarginContainer" type="MarginContainer" parent="ContentContainer/Content/VBoxContainer2/CloudHolder/HBoxContainer" index="0"]
+margin_right = 794.0
+margin_bottom = 170.0
 size_flags_horizontal = 3
 custom_constants/margin_right = -12
 custom_constants/margin_left = 43
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer2/CloudHolder/HBoxContainer/MarginContainer" index="0"]
+[node name="VBoxContainer" type="VBoxContainer" parent="ContentContainer/Content/VBoxContainer2/CloudHolder/HBoxContainer/MarginContainer" index="0"]
 margin_left = 43.0
-margin_right = 874.0
-margin_bottom = 150.0
+margin_right = 806.0
+margin_bottom = 170.0
 alignment = 1
 
-[node name="Label" type="Label" parent="VBoxContainer2/CloudHolder/HBoxContainer/MarginContainer/VBoxContainer" index="0"]
-margin_top = 42.0
-margin_right = 831.0
-margin_bottom = 107.0
+[node name="Label" type="Label" parent="ContentContainer/Content/VBoxContainer2/CloudHolder/HBoxContainer/MarginContainer/VBoxContainer" index="0"]
+margin_top = 52.0
+margin_right = 763.0
+margin_bottom = 117.0
 custom_fonts/font = ExtResource( 8 )
 text = "water_percent_collected"
 valign = 1
 
-[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer2/CloudHolder/HBoxContainer" index="1"]
-margin_left = 866.0
-margin_right = 1080.0
-margin_bottom = 150.0
+[node name="MarginContainer2" type="MarginContainer" parent="ContentContainer/Content/VBoxContainer2/CloudHolder/HBoxContainer" index="1"]
+margin_left = 798.0
+margin_right = 1012.0
+margin_bottom = 170.0
 custom_constants/margin_right = 64
 
-[node name="CloudPreview" type="TextureRect" parent="VBoxContainer2/CloudHolder/HBoxContainer/MarginContainer2" index="0"]
+[node name="CloudPreview" type="TextureRect" parent="ContentContainer/Content/VBoxContainer2/CloudHolder/HBoxContainer/MarginContainer2" index="0"]
 material = ExtResource( 9 )
 margin_right = 150.0
-margin_bottom = 150.0
+margin_bottom = 170.0
 rect_min_size = Vector2( 150, 150 )
 texture = ExtResource( 5 )
 expand = true
