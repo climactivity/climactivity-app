@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://ForestScene3d/Interactables/Cloud.gd" type="Script" id=1]
 [ext_resource path="res://ForestScene3d/Interactables/Wolke_preview.tscn" type="PackedScene" id=2]
@@ -7,6 +7,82 @@
 [ext_resource path="res://Assets/sketch/wolke_mask.png" type="Texture" id=5]
 [ext_resource path="res://Assets/droplet.png" type="Texture" id=6]
 [ext_resource path="res://ForestScene3d/Interactables/CloudSprite.gd" type="Script" id=7]
+[ext_resource path="res://UI/typography/UI_Regular.tres" type="DynamicFont" id=8]
+[ext_resource path="res://Assets/Kiko/kiko_avatar.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Theme/speech_bubble_down.png" type="Texture" id=10]
+[ext_resource path="res://UI/theme/style_box_empty.tres" type="StyleBox" id=11]
+
+[sub_resource type="Animation" id=1]
+resource_name = "hint_wait_water"
+length = 2.6
+tracks/0/type = "value"
+tracks/0/path = NodePath("HintWaitForWater:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 2.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("HintWaitForWater:rect_position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.1, 0.5, 2.2, 2.6 ),
+"transitions": PoolRealArray( -2, 0, -2, -2 ),
+"update": 0,
+"values": [ Vector2( -352.6, 0 ), Vector2( -352.6, 83 ), Vector2( -352.6, 83 ), Vector2( -352.6, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("HintWaitForWater/HBoxContainer/RichTextLabel:percent_visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.4, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("HintWaitForWater/HBoxContainer/RichTextLabel:rect_scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = false
+tracks/3/keys = {
+"times": PoolRealArray( 1.5, 1.6, 1.7 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.02, 1 ), Vector2( 1, 1 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("HintWaitForWater:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.1, 0.4, 2.3, 2.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="StyleBoxTexture" id=2]
+texture = ExtResource( 10 )
+region_rect = Rect2( 3, -0.11908, 334, 78.1191 )
+margin_left = 21.5945
+margin_right = 22.3235
+margin_top = 51.971
+margin_bottom = 44.9396
 
 [node name="Cloud" type="Control"]
 script = ExtResource( 1 )
@@ -38,6 +114,7 @@ script = ExtResource( 7 )
 [node name="Particles2D" type="CPUParticles2D" parent="CloudSprite"]
 position = Vector2( -0.0795403, 130.859 )
 scale = Vector2( 4.09118, 4.10419 )
+emitting = false
 amount = 25
 lifetime = 0.63
 local_coords = false
@@ -55,5 +132,59 @@ visible = false
 position = Vector2( 2.03407, 1.31012 )
 scale = Vector2( 1.322, 1.322 )
 texture = ExtResource( 6 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/hint_wait_water = SubResource( 1 )
+
+[node name="HintWaitForWater" type="PanelContainer" parent="."]
+visible = false
+modulate = Color( 1, 1, 1, 0 )
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -352.6
+margin_right = 139.4
+margin_bottom = 185.0
+custom_styles/panel = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HintWaitForWater"]
+margin_left = 21.5945
+margin_top = 51.971
+margin_right = 469.676
+margin_bottom = 140.06
+
+[node name="TextureRect" type="TextureRect" parent="HintWaitForWater/HBoxContainer"]
+margin_right = 74.56
+margin_bottom = 88.0
+rect_min_size = Vector2( 74.56, 0 )
+texture = ExtResource( 9 )
+expand = true
+stretch_mode = 6
+
+[node name="VSeparator" type="VSeparator" parent="HintWaitForWater/HBoxContainer"]
+margin_left = 78.0
+margin_right = 83.0
+margin_bottom = 88.0
+custom_styles/separator = ExtResource( 11 )
+custom_constants/separation = 5
+
+[node name="RichTextLabel" type="RichTextLabel" parent="HintWaitForWater/HBoxContainer"]
+margin_left = 87.0
+margin_right = 448.0
+margin_bottom = 88.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/normal_font = ExtResource( 8 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+bbcode_enabled = true
+bbcode_text = "Warte ab, bis sich etwas [color=#279bd4]Wasser[/color] angesammelt hat"
+visible_characters = 0
+percent_visible = 0.0
+text = "Warte ab, bis sich etwas Wasser angesammelt hat"
+fit_content_height = true
 
 [connection signal="gui_input" from="." to="." method="_on_Cloud_gui_input"]

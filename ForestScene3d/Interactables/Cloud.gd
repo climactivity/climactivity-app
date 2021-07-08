@@ -89,15 +89,20 @@ var prewiew = preload("res://ForestScene3d/Interactables/Wolke_preview.tscn")
 #		}
 #	}
 
+func hint_wait_water():
+	$AnimationPlayer.play("hint_wait_water")
+
 func _on_Cloud_gui_input(event):
 	if event is InputEventScreenTouch:
 		if event.index == 0 and event.pressed:
-			if cloud_state == Cloud_States.CAN_COLLECT:
-				Logger.print("Moving to WaterCollectionScene", self)
-				GameManager.scene_manager.push_scene("water_collection_scene")
-			else: 
-				if cloud_state == Cloud_States.READY: 
+			match cloud_state:
+				Cloud_States.CAN_COLLECT:
+					Logger.print("Moving to WaterCollectionScene", self)
+					GameManager.scene_manager.push_scene("water_collection_scene")
+				Cloud_States.READY: 
 					start_drag()
+				_:
+					hint_wait_water()
 				
 
 func start_drag(): 
@@ -149,8 +154,11 @@ func _watering_progress():
 	drops.emitting = true
 	var duration = 2
 	var _stops = stops - 1
+	var fillstate_start = float(stops)/float(initial_stops)
+	var fillstate_end =  float(_stops)/float(initial_stops)
+	print("initial stops: ", initial_stops, " _stops: ", _stops,  " stops: ", stops,  " stops/initial_stops: ", fillstate_start, " _stops/initial_stops:",fillstate_end)
 	$Tween.interpolate_callback(self, duration, "_watering_done")
-	$Tween.interpolate_method(cloud, "set_fill_state", stops/initial_stops, _stops/initial_stops, duration,Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	$Tween.interpolate_method(cloud, "set_fill_state", fillstate_start, fillstate_end, duration,Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	$Tween.start()
 
 func _watering_done(): 
