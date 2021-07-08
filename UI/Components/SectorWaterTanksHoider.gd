@@ -59,6 +59,10 @@ func update():
 		aspects_holder.add_child(instance)
 		instance.connect("collect", self, "_emit")
 		emit_signal("added_aspect")
+func play_enter():
+	$AnimationPlayer.play("Enter")
+	yield( $AnimationPlayer, "animation_finished")
+	$AspectHolder/MarginContainer/AspectWaterTankHolder/Stagger.play_enter()
 
 func _sort_aspects():
 	pass

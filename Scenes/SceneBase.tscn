@@ -8,7 +8,7 @@
 [ext_resource path="res://UI/ContentMain.gd" type="Script" id=6]
 [ext_resource path="res://UI/typography/Content_Regular.tres" type="DynamicFont" id=7]
 
-[sub_resource type="Shader" id=14]
+[sub_resource type="Shader" id=1]
 code = "shader_type canvas_item; 
 
 uniform sampler2D gradient; 
@@ -18,16 +18,16 @@ void fragment() {
 	//COLOR = vec4(UV.y,0,0,1);
 }"
 
-[sub_resource type="Gradient" id=15]
+[sub_resource type="Gradient" id=2]
 offsets = PoolRealArray( 0.213622, 1 )
 colors = PoolColorArray( 0.592157, 0.909804, 0.192157, 1, 1, 1, 1, 1 )
 
-[sub_resource type="GradientTexture" id=16]
-gradient = SubResource( 15 )
+[sub_resource type="GradientTexture" id=3]
+gradient = SubResource( 2 )
 
-[sub_resource type="ShaderMaterial" id=17]
-shader = SubResource( 14 )
-shader_param/gradient = SubResource( 16 )
+[sub_resource type="ShaderMaterial" id=4]
+shader = SubResource( 1 )
+shader_param/gradient = SubResource( 3 )
 
 [sub_resource type="StyleBoxFlat" id=5]
 bg_color = Color( 0.972549, 0.972549, 0.972549, 1 )
@@ -47,8 +47,8 @@ void fragment() {
 }"
 
 [sub_resource type="Gradient" id=9]
-offsets = PoolRealArray( 0.745981, 0.871383 )
-colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
+offsets = PoolRealArray( 0.873143, 0.876571, 0.965714 )
+colors = PoolColorArray( 1, 1, 1, 1, 0.509035, 0.509035, 0.509035, 0.506787, 0, 0, 0, 0 )
 
 [sub_resource type="GradientTexture" id=10]
 gradient = SubResource( 9 )
@@ -63,7 +63,7 @@ bg_color = Color( 1, 1, 1, 1 )
 [sub_resource type="StyleBoxEmpty" id=13]
 
 [node name="SceneBase" type="Panel"]
-material = SubResource( 17 )
+material = SubResource( 4 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -1.88776
@@ -137,6 +137,7 @@ __meta__ = {
 }
 
 [node name="HeaderBG" type="PanelContainer" parent="ContentContainer/Content"]
+modulate = Color( 1, 1, 1, 0 )
 self_modulate = Color( 0.592157, 0.909804, 0.192157, 1 )
 material = SubResource( 11 )
 anchor_right = 1.0

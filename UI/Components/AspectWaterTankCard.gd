@@ -19,7 +19,8 @@ func _ready():
 	ready = true
 	water_tank.connect("clicked", self, "collect_water")
 	update()
-
+func play_enter(): 
+	$AnimationPlayer.play("Enter")
 func set_sector_data(_sector_data):
 	sector_data = _sector_data
 	update() 

@@ -2,7 +2,7 @@
 ## TODO adapt speed and hide/show scrollbars
 
 signal swiping
-
+signal scrolled(y_pos)
 extends ScrollContainer
 # The script adds the ability to kinetic scroll for ScrollContainer
 # It is necessary to check the state of the scroll when working with internal controls
@@ -67,9 +67,10 @@ func _input(event):
 		last_relative = event.relative
 		if (scrollDirection == "Vertical"):
 			self.set_v_scroll(self.get_v_scroll() + linearScrollBias * (-event.relative.y))
+			emit_signal("scrolled", get_v_scroll())
 		if (scrollDirection == "Horizontal"):
-			self.set_v_scroll(self.get_v_scroll() + linearScrollBias * (-event.relative.x))
-	
+			self.set_h_scroll(self.get_h_scroll() + linearScrollBias * (-event.relative.x))
+			emit_signal("scrolled", get_h_scroll())
 	if  (event is InputEventMouseButton) and !event.pressed:
 #		last_relative = _swipePoint - event.position
 		if last_relative != Vector2.ZERO:
@@ -81,10 +82,12 @@ func _input(event):
 				var velocity = last_relative.y * last_relative.y * (-1.0 if last_relative.y < 0 else 1)
 				var time = kineticScrollTime * abs(last_relative.y)/10 
 				print(last_relative.y , "  " , time)
+				var end_offset = self.get_v_scroll() - kineticScrollBias * velocity
 				tween.interpolate_method(self, "set_v_scroll", self.get_v_scroll(), 
-					self.get_v_scroll() - kineticScrollBias * velocity, time , 
+					end_offset, time, 
 					Tween.TRANS_QUAD, Tween.EASE_OUT)
 				tween.start()
+				emit_signal("scrolled", end_offset)
 			last_relative = Vector2.ZERO
 #	if (not(event is InputEventMouseButton)) and (not(event is InputEventMouseMotion)):
 #		return

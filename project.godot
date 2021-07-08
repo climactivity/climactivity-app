@@ -328,6 +328,7 @@ settings/game_logic/cheat_seedlings=false
 settings/game_logic/show_factor_names=true
 settings/game_logic/use_res_for_cache=false
 settings/game_logic/use_fixed_icons=true
+settings/game_logic/debug_dialog=false
 
 [display]
 

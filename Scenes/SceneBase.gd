@@ -22,7 +22,7 @@ onready var header_bg = $"ContentContainer/Content/HeaderBG"
 onready var header = $"HeaderContainer/Header"
 onready var content_main = $"ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain"
 export var screen_title = "Screen_Title" setget set_screen_title
-
+onready var scroll_container = $ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer
 var ready = false 
  
 var gradient
@@ -36,6 +36,12 @@ func _ready():
 	gradient = material.get_shader_param("gradient")
 	dispatch_nav_data()
 	play_intro(intro_timeline, intro_gate_var, intro_autoplay_delay)
+	scroll_container.connect("scrolled", self, "on_scroll")
+
+func on_scroll(scroll_pos):
+	print("scroll: " + str(scroll_pos))
+	header_bg.modulate.a = clamp(Util.map_to_range(float(scroll_pos), 60.0,130.0,0.0,1.0), 0.0, 1.0)
+
 
 func play_intro(timeline, gate_var, delay, force = false):
 	if not gate_var or not timeline:

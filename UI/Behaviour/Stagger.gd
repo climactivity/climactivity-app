@@ -22,7 +22,7 @@ func play_enter():
 #				print("%s will animate" % c.name)
 	for t in targets: 
 		if is_inside_tree():
-			yield(get_tree().create_timer(delay), "timeout")
 			if t.has_method("play_enter"):
 				t.play_enter()
 #				print("%s entered" % t.name)
+			yield(get_tree().create_timer(delay), "timeout")

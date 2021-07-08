@@ -39,7 +39,7 @@ func update():
 #		sector_entry.set_title(SectorService.get_title_for_name(sector))
 #		sector_entry.set_aspects(_sector_data[sector])
 		sector_entry.connect("collect", self, "_update_total_water_collected")
-		
+	$"ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/VBoxContainer/SectorHolders/Stagger".play_enter()
 func _inc_num_aspects():
 	num_aspects += 1.0 
 	

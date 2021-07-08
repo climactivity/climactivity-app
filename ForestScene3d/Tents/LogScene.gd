@@ -18,8 +18,9 @@ export (LogFacing) var facing = LogFacing.rl setget set_facing
 export (bool) var show_person = false setget set_show_person
 export (bool) var show_log = true setget set_show_log
 export (Texture) var person_tex = preload("res://Assets/sketch/character01.png") setget set_person_tex
-
+var ready = false
 func _ready():
+	ready = true
 	_set_sprite()
 
 func init_at(params = [Vector2(0,0)]): 
@@ -45,6 +46,7 @@ func set_facing(log_facing):
 	_set_sprite()
 
 func _set_sprite():
+	if !ready: return
 	if !textures.has(facing):
 		print("No texture for %s" + str(facing), self)
 		return
