@@ -1,92 +1,37 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://UI/typography/Content_Regular.tres" type="DynamicFont" id=1]
-[ext_resource path="res://Assets/kiko_avatar.png" type="Texture" id=2]
-[ext_resource path="res://Assets/Icons/Arrow - Left W.png" type="Texture" id=3]
+[ext_resource path="res://UI/Components/kiko_hint.tscn" type="PackedScene" id=1]
+[ext_resource path="res://UI/theme/style_box_empty.tres" type="StyleBox" id=2]
 [ext_resource path="res://UI/Components/infobits/QuestionBox.gd" type="Script" id=4]
 [ext_resource path="res://UI/Components/infobits/AnswerButton.tscn" type="PackedScene" id=5]
 
-[sub_resource type="StyleBoxFlat" id=1]
-bg_color = Color( 1, 1, 1, 1 )
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color( 0.584314, 0.756863, 0.121569, 1 )
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
-shadow_color = Color( 0, 0, 0, 0.215686 )
-shadow_size = 12
-shadow_offset = Vector2( 0, 8 )
-
-[node name="QuestionBox" type="Control"]
+[node name="QuestionBox" type="PanelContainer"]
 anchor_right = 1.0
 anchor_bottom = 0.359
 margin_right = 4.0
 margin_bottom = 7.76495
 mouse_filter = 2
 size_flags_horizontal = 3
+custom_styles/panel = ExtResource( 2 )
 script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+question_box = NodePath("VBoxContainer2/question_box")
 
-[node name="SpeechBubbleHolder" type="PanelContainer" parent="."]
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 459.0
-margin_top = -427.0
-margin_right = -77.0
-margin_bottom = -117.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_styles/panel = SubResource( 1 )
-__meta__ = {
-"_edit_group_": true,
-"_edit_use_anchors_": false
-}
+[node name="VBoxContainer2" type="VBoxContainer" parent="."]
+margin_right = 1084.0
+margin_bottom = 697.045
 
-[node name="MarginContainer" type="MarginContainer" parent="SpeechBubbleHolder"]
-margin_left = 2.0
-margin_top = 2.0
-margin_right = 546.0
-margin_bottom = 308.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_constants/margin_right = 20
-custom_constants/margin_top = 20
-custom_constants/margin_left = 20
-custom_constants/margin_bottom = 20
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="question_box" parent="VBoxContainer2" instance=ExtResource( 1 )]
+anchor_right = 0.0
+margin_right = 1084.0
+margin_bottom = 400.0
 
-[node name="DialogLine" type="Label" parent="SpeechBubbleHolder/MarginContainer"]
-margin_left = 20.0
-margin_top = 20.0
-margin_right = 524.0
-margin_bottom = 286.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_fonts/font = ExtResource( 1 )
-custom_colors/font_color = Color( 0.392157, 0.388235, 0.388235, 1 )
-text = "Wieviel der landwirtschaftlichen Nutzfläche verwendet um tierische Nahrung herzustellen?"
-autowrap = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -1.46106
-margin_top = -1.53894
-margin_right = -4.46106
-margin_bottom = 633.461
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer2"]
+margin_top = 404.0
+margin_right = 1084.0
+margin_bottom = 404.0
 grow_horizontal = 0
 grow_vertical = 0
 mouse_filter = 2
@@ -95,7 +40,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button" type="Button" parent="VBoxContainer"]
+[node name="Button" type="Button" parent="VBoxContainer2/VBoxContainer"]
 visible = false
 margin_right = 1081.0
 margin_bottom = 20.0
@@ -103,7 +48,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="AnswerButton" parent="VBoxContainer" instance=ExtResource( 5 )]
+[node name="AnswerButton" parent="VBoxContainer2/VBoxContainer" instance=ExtResource( 5 )]
 visible = false
 anchor_top = 0.0
 anchor_right = 0.0
@@ -111,12 +56,3 @@ anchor_bottom = 0.0
 margin_top = 0.0
 margin_right = 1081.0
 margin_bottom = 90.0
-
-[node name="kiko_avatar - placeholder2" type="Sprite" parent="."]
-position = Vector2( 261.331, 159.5 )
-texture = ExtResource( 2 )
-
-[node name="Arrow - Left W" type="Sprite" parent="kiko_avatar - placeholder2"]
-position = Vector2( 156.295, -12.9422 )
-scale = Vector2( 0.277457, -0.271261 )
-texture = ExtResource( 3 )

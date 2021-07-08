@@ -64,6 +64,7 @@ func _update_question(anim_to_play):
 		last.add_child(child)
 	current.add_child(questions[current_question])
 	questions[current_question].clear_selected()
+	questions[current_question].play_enter()
 	anim_player.play(anim_to_play)
 
 func _can_check(): 

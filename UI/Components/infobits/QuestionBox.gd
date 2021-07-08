@@ -9,18 +9,23 @@ var question_text
 var question_mode = "radio_buttons" 
 var answers = []
 var selected_answers = []
-onready var answer_text = $"SpeechBubbleHolder/MarginContainer/DialogLine"
+#onready var answer_text = $"SpeechBubbleHolder/MarginContainer/DialogLine"
 var answer_button_factory = preload("res://UI/Components/infobits/AnswerButton.tscn")
-onready var answer_button_holder = $VBoxContainer
+onready var answer_button_holder = $VBoxContainer2/VBoxContainer
 enum AnswerState {DEFAULT, SELECTED, SELECTED_CORRECT, CORRECT, WRONG} # kill it with fire
 
+export (NodePath) onready var question_box
+
 func _ready():
-	answer_text.text = question_text if question_text != null else "null"
+	question_box = get_node(question_box)
+	question_box.set_text( question_text if question_text != null else "null" )
 	for answer_button in answers:
 		answer_button_holder.add_child(answer_button)
 		answer_button.connect("selected", self, "_on_answer_selected")
 		answer_button.connect("unselected", self, "_on_answer_unselected")
-		
+
+func play_enter(): 
+	question_box.play_enter()
 
 func set_question(new_question): 
 	question = new_question

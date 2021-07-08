@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://UI/Components/infobits/QuestionBox.tscn" type="PackedScene" id=1]
 [ext_resource path="res://UI/Components/infobits/Questions.gd" type="Script" id=2]
+[ext_resource path="res://UI/theme/style_box_empty.tres" type="StyleBox" id=3]
 
 [sub_resource type="Animation" id=1]
 resource_name = "RESET"
@@ -84,13 +85,15 @@ resource_name = "backward"
 [sub_resource type="Animation" id=3]
 resource_name = "forward"
 
-[node name="Questions" type="Control"]
-anchor_left = 0.5
-anchor_right = 0.5
-margin_left = -540.0
-margin_right = 540.0
-margin_bottom = 1165.0
+[node name="Questions" type="PanelContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1.0
+margin_top = -1.0
+margin_right = 1.0
+margin_bottom = -1.0
 mouse_filter = 2
+custom_styles/panel = ExtResource( 3 )
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -103,37 +106,33 @@ anims/backward = SubResource( 2 )
 anims/forward = SubResource( 3 )
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
+margin_right = 1080.0
+margin_bottom = 1920.0
 mouse_filter = 2
 custom_constants/margin_right = 50
-custom_constants/margin_top = 100
+custom_constants/margin_top = 0
 custom_constants/margin_left = 50
 custom_constants/margin_bottom = 20
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Current" type="Control" parent="MarginContainer"]
+[node name="Current" type="PanelContainer" parent="MarginContainer"]
 margin_left = 50.0
-margin_top = 100.0
 margin_right = 1030.0
-margin_bottom = 1145.0
+margin_bottom = 1900.0
 mouse_filter = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
+custom_styles/panel = ExtResource( 3 )
 
 [node name="QuestionBox" parent="MarginContainer/Current" instance=ExtResource( 1 )]
-visible = false
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 980.0
-margin_bottom = 1045.0
+margin_bottom = 1900.0
 
 [node name="MarginContainer2" type="MarginContainer" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
+margin_right = 1080.0
+margin_bottom = 1920.0
 mouse_filter = 2
 custom_constants/margin_right = 50
 custom_constants/margin_top = 100
@@ -144,10 +143,11 @@ __meta__ = {
 }
 
 [node name="Last" type="Control" parent="MarginContainer2"]
+visible = false
 margin_left = 50.0
 margin_top = 100.0
 margin_right = 1030.0
-margin_bottom = 1145.0
+margin_bottom = 1900.0
 mouse_filter = 2
 __meta__ = {
 "_edit_use_anchors_": false

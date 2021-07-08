@@ -515,6 +515,7 @@ back_button = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/V
 infobit_holder = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ContentHolder/Infobits")
 questions_holder = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ContentHolder/Quiz/Questions")
 quiz_end = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ContentHolder/QuizEnd")
+direct_to_quiz_button = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ContentHolder/FrontMatter/direct_to_quiz_button")
 
 [node name="ContentHolder" type="PanelContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="1"]
 margin_top = 350.0
@@ -529,11 +530,10 @@ __meta__ = {
 
 [node name="FrontMatter" type="Control" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ContentHolder" index="0"]
 modulate = Color( 1, 1, 1, 0 )
-margin_top = 45.36
 margin_right = 1080.0
-margin_bottom = 1394.36
+margin_bottom = 1349.0
 
-[node name="WeiterButton3" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ContentHolder/FrontMatter" index="0" instance=ExtResource( 7 )]
+[node name="direct_to_quiz_button" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ContentHolder/FrontMatter" index="0" instance=ExtResource( 7 )]
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
@@ -619,20 +619,19 @@ margin_right = 1080.0
 [node name="kiko_avatar - placeholder" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ContentHolder/QuizStart" index="0" instance=ExtResource( 3 )]
 text = "Wie wäre es mit einem kurzen Quiz?"
 
-[node name="Quiz" type="Control" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ContentHolder" index="4"]
-visible = false
+[node name="Quiz" type="MarginContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ContentHolder" index="4"]
 margin_right = 1080.0
 margin_bottom = 1349.0
 rect_pivot_offset = Vector2( -537.719, 1703.08 )
 mouse_filter = 2
 
 [node name="Questions" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ContentHolder/Quiz" index="0" instance=ExtResource( 4 )]
-anchor_left = 0.0
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_right = 0.0
+anchor_bottom = 0.0
 margin_left = 0.0
-margin_right = 0.0
-margin_bottom = 0.0
+margin_top = 0.0
+margin_right = 1080.0
+margin_bottom = 1349.0
 
 [node name="QuizEnd" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ContentHolder" index="5" instance=ExtResource( 8 )]
 visible = false
@@ -706,5 +705,6 @@ anims/show_quiz = SubResource( 13 )
 anims/show_quiz_intro = SubResource( 14 )
 anims/show_quiz_result = SubResource( 15 )
 
+[connection signal="pressed" from="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ContentHolder/FrontMatter/direct_to_quiz_button" to="." method="_on_direct_to_quiz_button_pressed"]
 [connection signal="pressed" from="ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/Footer/Panel/BackButton" to="." method="_on_BackButton_pressed"]
 [connection signal="pressed" from="ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/Footer/Panel/ContinueButton" to="." method="_on_ContinueButton_pressed"]

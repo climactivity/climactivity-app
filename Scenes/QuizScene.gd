@@ -16,6 +16,7 @@ export (NodePath) onready var back_button
 export (NodePath) onready var infobit_holder 
 export (NodePath) onready var questions_holder 
 export (NodePath) onready var quiz_end
+export (NodePath) onready var direct_to_quiz_button
 
 var has_data = false
 var has_error = false
@@ -44,7 +45,8 @@ func _ready():
 	infobit_holder = get_node(infobit_holder)
 	questions_holder = get_node(questions_holder)
 	quiz_end = get_node(quiz_end)
-		
+	direct_to_quiz_button = get_node(direct_to_quiz_button)
+	
 	connect("next_infobit", infobit_holder, "next")
 	connect("prev_infobit", infobit_holder, "prev")
 	
@@ -205,3 +207,7 @@ func _on_CollectRewardButton_pressed():
 	RewardService.add_reward(quiz_data.reward, true)
 	can_exit = true
 	$"ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/ContentHolder/QuizEnd/CollectRewardButton".set_disabled(true)
+
+
+func _on_direct_to_quiz_button_pressed():
+	_show_quiz()

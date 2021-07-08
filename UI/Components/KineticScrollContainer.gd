@@ -81,7 +81,7 @@ func _input(event):
 			if (scrollDirection == "Vertical"):
 				var velocity = last_relative.y * last_relative.y * (-1.0 if last_relative.y < 0 else 1)
 				var time = kineticScrollTime * abs(last_relative.y)/10 
-				print(last_relative.y , "  " , time)
+#				print(last_relative.y , "  " , time)
 				var end_offset = self.get_v_scroll() - kineticScrollBias * velocity
 				tween.interpolate_method(self, "set_v_scroll", self.get_v_scroll(), 
 					end_offset, time, 
