@@ -166,62 +166,62 @@ custom_constants/separation = 300
 [node name="CloudHolder" type="MarginContainer" parent="ContentContainer/Content/VBoxContainer2" index="1"]
 margin_top = 304.0
 margin_right = 1080.0
-margin_bottom = 510.0
+margin_bottom = 490.0
 grow_horizontal = 0
 grow_vertical = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_constants/margin_right = 32
+custom_constants/margin_right = 74
 custom_constants/margin_top = 36
-custom_constants/margin_left = 36
+custom_constants/margin_left = 118
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Panel" type="Panel" parent="ContentContainer/Content/VBoxContainer2/CloudHolder" index="0"]
-margin_left = 36.0
+margin_left = 118.0
 margin_top = 36.0
-margin_right = 1048.0
-margin_bottom = 206.0
+margin_right = 1006.0
+margin_bottom = 186.0
 custom_styles/panel = SubResource( 4 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="ContentContainer/Content/VBoxContainer2/CloudHolder" index="1"]
-margin_left = 36.0
+margin_left = 118.0
 margin_top = 36.0
-margin_right = 1048.0
-margin_bottom = 206.0
+margin_right = 1006.0
+margin_bottom = 186.0
 
 [node name="MarginContainer" type="MarginContainer" parent="ContentContainer/Content/VBoxContainer2/CloudHolder/HBoxContainer" index="0"]
-margin_right = 794.0
-margin_bottom = 170.0
+margin_right = 670.0
+margin_bottom = 150.0
 size_flags_horizontal = 3
 custom_constants/margin_right = -12
 custom_constants/margin_left = 43
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ContentContainer/Content/VBoxContainer2/CloudHolder/HBoxContainer/MarginContainer" index="0"]
 margin_left = 43.0
-margin_right = 806.0
-margin_bottom = 170.0
+margin_right = 682.0
+margin_bottom = 150.0
 alignment = 1
 
 [node name="Label" type="Label" parent="ContentContainer/Content/VBoxContainer2/CloudHolder/HBoxContainer/MarginContainer/VBoxContainer" index="0"]
-margin_top = 52.0
-margin_right = 763.0
-margin_bottom = 117.0
+margin_top = 42.0
+margin_right = 639.0
+margin_bottom = 107.0
 custom_fonts/font = ExtResource( 8 )
 text = "water_percent_collected"
 valign = 1
 
 [node name="MarginContainer2" type="MarginContainer" parent="ContentContainer/Content/VBoxContainer2/CloudHolder/HBoxContainer" index="1"]
-margin_left = 798.0
-margin_right = 1012.0
-margin_bottom = 170.0
+margin_left = 674.0
+margin_right = 888.0
+margin_bottom = 150.0
 custom_constants/margin_right = 64
 
 [node name="CloudPreview" type="TextureRect" parent="ContentContainer/Content/VBoxContainer2/CloudHolder/HBoxContainer/MarginContainer2" index="0"]
 material = ExtResource( 9 )
 margin_right = 150.0
-margin_bottom = 170.0
+margin_bottom = 150.0
 rect_min_size = Vector2( 150, 150 )
 texture = ExtResource( 5 )
 expand = true
