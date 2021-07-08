@@ -46,10 +46,10 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0.4, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0, 0.4, 1, 2.2, 2.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ 0.0, 1.0 ]
+"values": [ 0.0, 0.0, 1.0, 1.0, 0.0 ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("HintWaitForWater/HBoxContainer/RichTextLabel:rect_scale")
@@ -138,14 +138,15 @@ anims/hint_wait_water = SubResource( 1 )
 
 [node name="HintWaitForWater" type="PanelContainer" parent="."]
 visible = false
-modulate = Color( 1, 1, 1, 0 )
+modulate = Color( 1, 1, 1, 0.333333 )
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 margin_left = -352.6
+margin_top = 6.9707
 margin_right = 139.4
-margin_bottom = 185.0
+margin_bottom = 191.971
 custom_styles/panel = SubResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false

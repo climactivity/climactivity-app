@@ -139,6 +139,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://UI/Components/QuestCard.gd"
 }, {
+"base": "SceneBase",
+"class": "QuizScene",
+"language": "GDScript",
+"path": "res://Scenes/QuizScene.gd"
+}, {
 "base": "Resource",
 "class": "RBoardEntityx",
 "language": "GDScript",
@@ -271,6 +276,7 @@ _global_script_class_icons={
 "NakamaWriteStorageObject": "",
 "Overlay": "",
 "QuestCard": "",
+"QuizScene": "",
 "RBoardEntityx": "",
 "RInfoByte": "",
 "RInfoGraphEntry": "",

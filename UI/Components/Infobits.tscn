@@ -319,8 +319,8 @@ size_flags_horizontal = 3
 
 [node name="RichTextLabel" type="RichTextLabel" parent="InfoBit/MarginContainer/ContentHolder"]
 visible = false
-margin_right = 1040.0
-margin_bottom = 560.0
+margin_right = 892.0
+margin_bottom = 962.0
 rect_clip_content = false
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -337,9 +337,8 @@ __meta__ = {
 
 [node name="RichTextLabel2" type="RichTextLabel" parent="InfoBit/MarginContainer/ContentHolder"]
 visible = false
-margin_top = 564.0
-margin_right = 1040.0
-margin_bottom = 1125.0
+margin_right = 892.0
+margin_bottom = 962.0
 rect_clip_content = false
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -378,4 +377,5 @@ margin_top = 100.0
 margin_right = 942.0
 margin_bottom = 1062.0
 size_flags_horizontal = 3
+
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

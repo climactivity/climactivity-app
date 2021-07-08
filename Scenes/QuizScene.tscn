@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Scenes/SceneBase.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/QuizScene.gd" type="Script" id=2]
@@ -7,10 +7,9 @@
 [ext_resource path="res://UI/Components/SkeletonUI/Loading.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Assets/Icons/Arrow - Right 2.png" type="Texture" id=6]
 [ext_resource path="res://UI/Components/NeoMButton.tscn" type="PackedScene" id=7]
-[ext_resource path="res://UI/Components/RewardLabel.tscn" type="PackedScene" id=8]
+[ext_resource path="res://UI/Components/infobits/QuizEnd.tscn" type="PackedScene" id=8]
 [ext_resource path="res://UI/Components/Infobits.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Assets/Theme/Fonts/RobotoSlab-Bold.ttf" type="DynamicFontData" id=10]
-[ext_resource path="res://Scenes/QuizEnd.gd" type="Script" id=11]
+[ext_resource path="res://UI/theme/style_box_empty.tres" type="StyleBox" id=10]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.972549, 0.972549, 0.972549, 1 )
@@ -31,17 +30,6 @@ corner_radius_top_right = 30
 corner_radius_bottom_right = 30
 corner_radius_bottom_left = 30
 
-[sub_resource type="StyleBoxFlat" id=6]
-bg_color = Color( 0.588235, 0.74902, 0.0509804, 1 )
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
-
-[sub_resource type="DynamicFont" id=7]
-size = 72
-font_data = ExtResource( 10 )
-
 [sub_resource type="StyleBoxFlat" id=8]
 bg_color = Color( 0.847059, 0.847059, 0.847059, 1 )
 
@@ -50,7 +38,7 @@ bg_color = Color( 0.847059, 0.847059, 0.847059, 1 )
 [sub_resource type="Animation" id=10]
 length = 0.1
 tracks/0/type = "value"
-tracks/0/path = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/ContentHolder/Infobits:visible")
+tracks/0/path = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ContentHolder/Infobits:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -62,7 +50,7 @@ tracks/0/keys = {
 "values": [ false ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/ContentHolder/Loading:visible")
+tracks/1/path = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ContentHolder/Loading:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -74,7 +62,7 @@ tracks/1/keys = {
 "values": [ true ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/ContentHolder/FrontMatter:visible")
+tracks/2/path = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ContentHolder/FrontMatter:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -86,7 +74,7 @@ tracks/2/keys = {
 "values": [ false ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/ContentHolder/FrontMatter:modulate")
+tracks/3/path = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ContentHolder/FrontMatter:modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -98,7 +86,7 @@ tracks/3/keys = {
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/ContentHolder/QuizStart:visible")
+tracks/4/path = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ContentHolder/QuizStart:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -110,7 +98,7 @@ tracks/4/keys = {
 "values": [ false ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/ContentHolder/Quiz:visible")
+tracks/5/path = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ContentHolder/Quiz:visible")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -122,7 +110,7 @@ tracks/5/keys = {
 "values": [ false ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/ContentHolder/QuizEnd:visible")
+tracks/6/path = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ContentHolder/QuizEnd:visible")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
@@ -137,7 +125,7 @@ tracks/6/keys = {
 [sub_resource type="Animation" id=11]
 length = 0.2
 tracks/0/type = "value"
-tracks/0/path = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/ContentHolder/FrontMatter:visible")
+tracks/0/path = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ContentHolder/FrontMatter:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -149,7 +137,7 @@ tracks/0/keys = {
 "values": [ true ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/ContentHolder/Loading:visible")
+tracks/1/path = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ContentHolder/Loading:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -161,7 +149,7 @@ tracks/1/keys = {
 "values": [ false ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/ContentHolder/FrontMatter:rect_position")
+tracks/2/path = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ContentHolder/FrontMatter:rect_position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -173,7 +161,7 @@ tracks/2/keys = {
 "values": [ Vector2( 0, 45.36 ), Vector2( 0, 0 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/ContentHolder/FrontMatter:modulate")
+tracks/3/path = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ContentHolder/FrontMatter:modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -185,7 +173,7 @@ tracks/3/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/ContentHolder/Infobits:visible")
+tracks/4/path = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ContentHolder/Infobits:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -196,11 +184,25 @@ tracks/4/keys = {
 "update": 1,
 "values": [ false ]
 }
+tracks/5/type = "method"
+tracks/5/path = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ContentHolder/FrontMatter/kiko_avatar - placeholder")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "play_enter"
+} ]
+}
 
 [sub_resource type="Animation" id=12]
 length = 0.573
 tracks/0/type = "value"
-tracks/0/path = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/ContentHolder/Infobits:visible")
+tracks/0/path = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ContentHolder/Infobits:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -212,7 +214,7 @@ tracks/0/keys = {
 "values": [ true ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/ContentHolder/FrontMatter:modulate")
+tracks/1/path = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ContentHolder/FrontMatter:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -224,7 +226,7 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/ContentHolder/FrontMatter:visible")
+tracks/2/path = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ContentHolder/FrontMatter:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -236,7 +238,7 @@ tracks/2/keys = {
 "values": [ true, false ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/ContentHolder/Infobits:modulate")
+tracks/3/path = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ContentHolder/Infobits:modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -248,7 +250,7 @@ tracks/3/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/ContentHolder/FrontMatter:rect_position")
+tracks/4/path = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ContentHolder/FrontMatter:rect_position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -274,7 +276,7 @@ tracks/5/keys = {
 } ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/ContentHolder/QuizStart:visible")
+tracks/6/path = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ContentHolder/QuizStart:visible")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
@@ -289,7 +291,7 @@ tracks/6/keys = {
 [sub_resource type="Animation" id=13]
 length = 0.317
 tracks/0/type = "value"
-tracks/0/path = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/ContentHolder/Quiz:visible")
+tracks/0/path = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ContentHolder/Quiz:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -301,7 +303,7 @@ tracks/0/keys = {
 "values": [ true ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/ContentHolder/QuizStart:visible")
+tracks/1/path = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ContentHolder/QuizStart:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -313,7 +315,7 @@ tracks/1/keys = {
 "values": [ true, false ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/ContentHolder/QuizStart:modulate")
+tracks/2/path = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ContentHolder/QuizStart:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -325,7 +327,7 @@ tracks/2/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/ContentHolder/QuizStart:rect_position")
+tracks/3/path = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ContentHolder/QuizStart:rect_position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -337,7 +339,7 @@ tracks/3/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( -1080, 0 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/ContentHolder/Quiz:modulate")
+tracks/4/path = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ContentHolder/Quiz:modulate")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -349,7 +351,7 @@ tracks/4/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/ContentHolder/Quiz:rect_position")
+tracks/5/path = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ContentHolder/Quiz:rect_position")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -378,7 +380,7 @@ tracks/6/keys = {
 [sub_resource type="Animation" id=14]
 length = 0.3
 tracks/0/type = "value"
-tracks/0/path = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/ContentHolder/Infobits:visible")
+tracks/0/path = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ContentHolder/Infobits:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -390,7 +392,7 @@ tracks/0/keys = {
 "values": [ true, false ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/ContentHolder/Infobits:modulate")
+tracks/1/path = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ContentHolder/Infobits:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -402,7 +404,7 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/ContentHolder/Infobits:rect_position")
+tracks/2/path = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ContentHolder/Infobits:rect_position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -414,7 +416,7 @@ tracks/2/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( -1080, 0 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/ContentHolder/QuizStart:visible")
+tracks/3/path = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ContentHolder/QuizStart:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -426,7 +428,7 @@ tracks/3/keys = {
 "values": [ false, true ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/ContentHolder/QuizStart:modulate")
+tracks/4/path = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ContentHolder/QuizStart:modulate")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -438,7 +440,7 @@ tracks/4/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/ContentHolder/QuizStart:rect_position")
+tracks/5/path = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ContentHolder/QuizStart:rect_position")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -453,7 +455,7 @@ tracks/5/keys = {
 [sub_resource type="Animation" id=15]
 resource_name = "show_quiz_result"
 tracks/0/type = "value"
-tracks/0/path = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/ContentHolder/QuizEnd:visible")
+tracks/0/path = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ContentHolder/QuizEnd:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -465,7 +467,7 @@ tracks/0/keys = {
 "values": [ true ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/ContentHolder/QuizEnd:modulate")
+tracks/1/path = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ContentHolder/QuizEnd:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -477,7 +479,7 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/ContentHolder/Quiz:visible")
+tracks/2/path = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ContentHolder/Quiz:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -489,7 +491,7 @@ tracks/2/keys = {
 "values": [ false ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/ContentHolder/QuizStart:visible")
+tracks/3/path = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ContentHolder/QuizStart:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -505,32 +507,33 @@ tracks/3/keys = {
 mouse_filter = 2
 custom_styles/panel = SubResource( 1 )
 script = ExtResource( 2 )
+accent_color = Color( 0.6, 0.6, 0.6, 1 )
+kiko_dialog = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ContentHolder/FrontMatter/kiko_avatar - placeholder")
+loading_anim = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ContentHolder/Loading")
+continue_button = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/Footer/Panel/ContinueButton")
+back_button = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/Footer/Panel/BackButton")
+infobit_holder = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ContentHolder/Infobits")
+questions_holder = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ContentHolder/Quiz/Questions")
+quiz_end = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ContentHolder/QuizEnd")
 
-[node name="ScrollContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer" index="0"]
-visible = false
-
-[node name="VSplitContainer" type="Control" parent="ContentContainer/Content/VBoxContainer/MarginContainer" index="1"]
+[node name="ContentHolder" type="PanelContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="1"]
+margin_top = 350.0
 margin_right = 1080.0
-margin_bottom = 1920.0
+margin_bottom = 1699.0
 mouse_filter = 2
-
-[node name="ContentHolder" type="PanelContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer" index="0"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_top = 321.0
-margin_bottom = -299.0
-mouse_filter = 2
+size_flags_vertical = 3
 custom_styles/panel = SubResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="FrontMatter" type="Control" parent="ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/ContentHolder" index="0"]
+[node name="FrontMatter" type="Control" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ContentHolder" index="0"]
 modulate = Color( 1, 1, 1, 0 )
+margin_top = 45.36
 margin_right = 1080.0
-margin_bottom = 1300.0
+margin_bottom = 1394.36
 
-[node name="WeiterButton3" parent="ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/ContentHolder/FrontMatter" index="0" instance=ExtResource( 7 )]
+[node name="WeiterButton3" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ContentHolder/FrontMatter" index="0" instance=ExtResource( 7 )]
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
@@ -546,15 +549,14 @@ text = "Direkt zum Quiz"
 button_disabled = true
 color_icon = true
 
-[node name="kiko_avatar - placeholder" parent="ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/ContentHolder/FrontMatter" index="1" instance=ExtResource( 3 )]
-visible = false
+[node name="kiko_avatar - placeholder" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ContentHolder/FrontMatter" index="1" instance=ExtResource( 3 )]
 text = "Frontmatter missing :("
 
-[node name="Loading" parent="ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/ContentHolder" index="1" instance=ExtResource( 5 )]
+[node name="Loading" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ContentHolder" index="1" instance=ExtResource( 5 )]
 visible = false
 margin_bottom = 1607.0
 
-[node name="Panel" type="Panel" parent="ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/ContentHolder/Loading" index="0"]
+[node name="Panel" type="Panel" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ContentHolder/Loading" index="0"]
 use_parent_material = true
 anchor_left = 0.5
 anchor_top = 0.5
@@ -569,7 +571,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Panel2" type="Panel" parent="ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/ContentHolder/Loading" index="1"]
+[node name="Panel2" type="Panel" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ContentHolder/Loading" index="1"]
 use_parent_material = true
 anchor_left = 0.5
 anchor_top = 0.5
@@ -584,7 +586,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Panel3" type="Panel" parent="ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/ContentHolder/Loading" index="2"]
+[node name="Panel3" type="Panel" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ContentHolder/Loading" index="2"]
 use_parent_material = true
 anchor_left = 0.5
 anchor_top = 0.5
@@ -599,31 +601,32 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Infobits" parent="ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/ContentHolder" index="2" instance=ExtResource( 9 )]
+[node name="Infobits" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ContentHolder" index="2" instance=ExtResource( 9 )]
 visible = false
 modulate = Color( 1, 1, 1, 0 )
 anchor_left = 0.0
 anchor_right = 0.0
 margin_left = 0.0
+margin_top = 0.0
 margin_right = 1080.0
-margin_bottom = 1607.0
+margin_bottom = 1349.0
 
-[node name="QuizStart" type="Control" parent="ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/ContentHolder" index="3"]
+[node name="QuizStart" type="Control" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ContentHolder" index="3"]
 visible = false
 modulate = Color( 1, 1, 1, 0 )
 margin_right = 1080.0
 
-[node name="kiko_avatar - placeholder" parent="ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/ContentHolder/QuizStart" index="0" instance=ExtResource( 3 )]
+[node name="kiko_avatar - placeholder" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ContentHolder/QuizStart" index="0" instance=ExtResource( 3 )]
 text = "Wie wäre es mit einem kurzen Quiz?"
 
-[node name="Quiz" type="Control" parent="ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/ContentHolder" index="4"]
+[node name="Quiz" type="Control" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ContentHolder" index="4"]
 visible = false
 margin_right = 1080.0
-margin_bottom = 1165.0
+margin_bottom = 1349.0
 rect_pivot_offset = Vector2( -537.719, 1703.08 )
 mouse_filter = 2
 
-[node name="Questions" parent="ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/ContentHolder/Quiz" index="0" instance=ExtResource( 4 )]
+[node name="Questions" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ContentHolder/Quiz" index="0" instance=ExtResource( 4 )]
 anchor_left = 0.0
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -631,108 +634,67 @@ margin_left = 0.0
 margin_right = 0.0
 margin_bottom = 0.0
 
-[node name="QuizEnd" type="Control" parent="ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/ContentHolder" index="5"]
+[node name="QuizEnd" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ContentHolder" index="5" instance=ExtResource( 8 )]
+visible = false
+
+[node name="HSeparator2" type="HSeparator" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="2"]
+margin_top = 1703.0
 margin_right = 1080.0
-margin_bottom = 1300.0
-script = ExtResource( 11 )
+margin_bottom = 1920.0
+custom_constants/separation = 217
 
-[node name="kiko_avatar - placeholder" parent="ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/ContentHolder/QuizEnd" index="0" instance=ExtResource( 3 )]
-margin_left = 7.55957
-margin_top = -567.215
-margin_right = 1074.56
-margin_bottom = -167.215
-text = "Frontmatter missing :("
+[node name="VSplitContainer" type="Control" parent="ContentContainer/Content/VBoxContainer/MarginContainer" index="1"]
+margin_right = 1080.0
+margin_bottom = 1920.0
+mouse_filter = 2
 
-[node name="Panel" type="Panel" parent="ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/ContentHolder/QuizEnd" index="1"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -350.992
-margin_top = -42.0714
-margin_right = 413.008
-margin_bottom = 62.9286
-custom_styles/panel = SubResource( 6 )
-__meta__ = {
-"_edit_group_": true,
-"_edit_use_anchors_": false
-}
-
-[node name="RewardLabel" parent="ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/ContentHolder/QuizEnd/Panel" index="0" instance=ExtResource( 8 )]
-
-[node name="Label" type="Label" parent="ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/ContentHolder/QuizEnd" index="2"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -167.122
-margin_top = -460.772
-margin_right = 183.878
-margin_bottom = -364.772
-custom_fonts/font = SubResource( 7 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "5/5 richtig"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="CollectRewardButton" parent="ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/ContentHolder/QuizEnd" index="3" instance=ExtResource( 7 )]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -351.302
-margin_top = 267.366
-margin_right = 401.698
-margin_bottom = 414.366
-font_color = Color( 0.588235, 0.74902, 0.0509804, 1 )
-text = "Sammeln"
-color_icon = true
-
-[node name="Footer" type="Panel" parent="ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer" index="1"]
+[node name="Footer" type="PanelContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer" index="0"]
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = -301.0
+margin_top = -213.0
+size_flags_horizontal = 3
+size_flags_vertical = 9
 custom_styles/panel = SubResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ProgressBlips" type="Panel" parent="ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/Footer" index="0"]
+[node name="Panel" type="Panel" parent="ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/Footer" index="0"]
+margin_right = 1080.0
+margin_bottom = 213.0
+custom_styles/panel = ExtResource( 10 )
+
+[node name="ProgressBlips" type="Panel" parent="ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/Footer/Panel" index="0"]
 anchor_left = 0.5
-anchor_top = -0.131
 anchor_right = 0.5
-anchor_bottom = 0.186
-margin_left = -345.0
-margin_top = 21.094
-margin_right = 342.0
-margin_bottom = -47.164
+margin_left = -257.0
+margin_top = -27.0
+margin_right = 227.0
+margin_bottom = 25.0
 custom_styles/panel = SubResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="BackButton" parent="ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/Footer" index="1" instance=ExtResource( 7 )]
+[node name="BackButton" parent="ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/Footer/Panel" index="1" instance=ExtResource( 7 )]
 anchor_top = 0.5
 anchor_bottom = 0.5
-margin_left = 130.656
-margin_top = -46.0
-margin_right = 406.656
-margin_bottom = 48.0
+margin_left = 40.0
+margin_top = -56.5
+margin_right = 364.0
+margin_bottom = 52.5
 text = "Zurück"
 
-[node name="ContinueButton" parent="ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/Footer" index="2" instance=ExtResource( 7 )]
+[node name="ContinueButton" parent="ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/Footer/Panel" index="2" instance=ExtResource( 7 )]
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-margin_left = -393.544
-margin_top = -46.0
-margin_right = -136.544
-margin_bottom = 46.0
+margin_left = -399.909
+margin_top = -56.5908
+margin_right = -25.9094
+margin_bottom = 52.4092
 text = "Weiter"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1"]
@@ -744,6 +706,5 @@ anims/show_quiz = SubResource( 13 )
 anims/show_quiz_intro = SubResource( 14 )
 anims/show_quiz_result = SubResource( 15 )
 
-[connection signal="pressed" from="ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/ContentHolder/QuizEnd/CollectRewardButton" to="." method="_on_CollectRewardButton_pressed"]
-[connection signal="pressed" from="ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/Footer/BackButton" to="." method="_on_BackButton_pressed"]
-[connection signal="pressed" from="ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/Footer/ContinueButton" to="." method="_on_ContinueButton_pressed"]
+[connection signal="pressed" from="ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/Footer/Panel/BackButton" to="." method="_on_BackButton_pressed"]
+[connection signal="pressed" from="ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/Footer/Panel/ContinueButton" to="." method="_on_ContinueButton_pressed"]
