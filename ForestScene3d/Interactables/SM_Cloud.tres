@@ -16,6 +16,10 @@ uniform sampler2D filled_texture : hint_albedo;
 uniform sampler2D fill_mask : hint_albedo; 
 
 uniform vec4 fill_color : hint_color;
+uniform vec4 fill_color_top : hint_color;
+
+uniform float distortion_freq;
+uniform float distortion_amount;
 
 float mapToRange(float x, float inMin, float inMax, float outMin, float outMax) {
 	  return (x - inMin) * (outMax - outMin) / (inMax - inMin) + outMin;
@@ -27,10 +31,15 @@ void fragment() {
 		return
 	} else {
 		float fill_point = mapToRange(1.0 - fill_state, 0.0, 1.0, fill_start, fill_end);
+		float distortion = sin(distortion_freq * (UV.x + TIME)) / (100.0-distortion_amount); 
+		fill_point += distortion;
+		float near_top = 1.0 - (UV.y - fill_point )/0.1;
+		near_top = clamp(near_top, 0.0, 1.0); 
 		vec4 outline_color = texture(filled_texture, UV);
 		if (outline_color.a == 0.0) {
 			if (UV.y >= fill_point && UV.y < fill_end) {
-			COLOR = fill_color * texture(fill_mask, UV);
+				vec4 _color = mix(fill_color, fill_color_top, near_top); 
+				COLOR = _color * texture(fill_mask, UV);
 			} else {
 				COLOR = vec4(0.0);
 			}
@@ -46,7 +55,10 @@ shader = SubResource( 1 )
 shader_param/fill_state = 0.0
 shader_param/fill_start = 0.164
 shader_param/fill_end = 0.723
-shader_param/fill_color = Color( 0.105882, 0.254902, 0.823529, 0.572549 )
+shader_param/fill_color = Color( 0.156863, 0.682353, 0.941176, 1 )
+shader_param/fill_color_top = Color( 0.623529, 0.815686, 0.921569, 1 )
+shader_param/distortion_freq = 1.934
+shader_param/distortion_amount = 20.947
 shader_param/empty_texture = ExtResource( 3 )
 shader_param/filled_texture = ExtResource( 1 )
 shader_param/fill_mask = ExtResource( 2 )

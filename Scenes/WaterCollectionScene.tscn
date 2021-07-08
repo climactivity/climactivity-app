@@ -234,3 +234,5 @@ __meta__ = {
 screen_label = "water_collection_screen"
 icon_texture = ExtResource( 4 )
 color = Color( 0.392157, 0.65098, 0.886275, 1 )
+
+[node name="Tween" type="Tween" parent="." index="3"]

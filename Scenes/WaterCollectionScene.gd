@@ -7,7 +7,7 @@ onready var cloud_preview = $"ContentContainer/Content/VBoxContainer2/CloudHolde
 onready var percent_collected_label = $"ContentContainer/Content/VBoxContainer2/CloudHolder/HBoxContainer/MarginContainer/VBoxContainer/Label"
 onready var sector_list = $"ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/VBoxContainer/SectorHolders"
 onready var top_seperator = $"ContentContainer/Content/VBoxContainer2/HSeparator"
-var fill_state setget set_fill_state
+var fill_state = 0.0 setget set_fill_state
 var _sector_data
 var data = {}
 
@@ -30,7 +30,7 @@ func shadow_collection_preview(shadow_alpha):
 	stylebox.set("shadow_offset", 22.0 * shadow_alpha)
 	
 func align_cloud(offset): 
-	top_seperator.set("custom_constants/seperation", offset)
+	top_seperator.set("custom_constants/seperation", offset + 20)
 func update():
 	if !ready:
 		return
@@ -38,6 +38,9 @@ func update():
 	Util.clear(sector_list)
 	num_aspects = 0.0
 	num_collected = 0.0
+	fill_state = 0.0
+	cloud_preview.material.set_shader_param("fill_state", fill_state)
+	percent_collected_label.text = tr("water_percent_collected")
 	for sector in SectorService.get_sector_names():
 		var sector_entry = bp_sector_entry.instance()
 		sector_list.add_child(sector_entry)
@@ -57,10 +60,16 @@ func _update_total_water_collected(aspect_data):
 func receive_navigation(navigation_data):
 	update()
 
+func _set_fill_state(value): 
+	cloud_preview.material.set_shader_param("fill_state", value)
+	
 func set_fill_state(new_state): 
 	print("set fill state: ", new_state)
+
+	$Tween.interpolate_method(self, "_set_fill_state", fill_state, new_state, 0.7, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	$Tween.start()
 	fill_state = new_state
-	cloud_preview.material.set_shader_param("fill_state", fill_state)
+#	cloud_preview.material.set_shader_param("fill_state", fill_state)
 	percent_collected_label.text = "%d / %d eingesammelt (%3d %%)" % [num_collected,num_aspects,(100.0 * num_collected/num_aspects)]
 	#if $Droplet == null: return
 #	$Droplet.visible = fill_state > 0.0
