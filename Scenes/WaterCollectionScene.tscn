@@ -149,17 +149,20 @@ self_modulate = Color( 0.392157, 0.65098, 0.886275, 1 )
 [node name="HSeparator2" parent="ContentContainer/Content/HeaderBG" index="0"]
 margin_bottom = 449.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ContentContainer/Content/HeaderBG" index="1"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="." index="1"]
 margin_right = 1080.0
 margin_bottom = 449.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="HSeparator" type="HSeparator" parent="ContentContainer/Content/HeaderBG/VBoxContainer" index="0"]
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer2" index="0"]
 margin_right = 1080.0
 margin_bottom = 246.0
 custom_styles/separator = SubResource( 5 )
 custom_constants/separation = 246
 
-[node name="CloudHolder" type="MarginContainer" parent="ContentContainer/Content/HeaderBG/VBoxContainer" index="1"]
+[node name="CloudHolder" type="MarginContainer" parent="VBoxContainer2" index="1"]
 margin_top = 250.0
 margin_right = 1080.0
 margin_bottom = 449.0
@@ -172,31 +175,31 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Panel" type="Panel" parent="ContentContainer/Content/HeaderBG/VBoxContainer/CloudHolder" index="0"]
+[node name="Panel" type="Panel" parent="VBoxContainer2/CloudHolder" index="0"]
 margin_top = 49.0
 margin_right = 1080.0
 margin_bottom = 199.0
 custom_styles/panel = SubResource( 4 )
 
-[node name="HBoxContainer" type="HBoxContainer" parent="ContentContainer/Content/HeaderBG/VBoxContainer/CloudHolder" index="1"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer2/CloudHolder" index="1"]
 margin_top = 49.0
 margin_right = 1080.0
 margin_bottom = 199.0
 
-[node name="MarginContainer" type="MarginContainer" parent="ContentContainer/Content/HeaderBG/VBoxContainer/CloudHolder/HBoxContainer" index="0"]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer2/CloudHolder/HBoxContainer" index="0"]
 margin_right = 862.0
 margin_bottom = 150.0
 size_flags_horizontal = 3
 custom_constants/margin_right = -12
 custom_constants/margin_left = 43
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ContentContainer/Content/HeaderBG/VBoxContainer/CloudHolder/HBoxContainer/MarginContainer" index="0"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer2/CloudHolder/HBoxContainer/MarginContainer" index="0"]
 margin_left = 43.0
 margin_right = 874.0
 margin_bottom = 150.0
 alignment = 1
 
-[node name="Label" type="Label" parent="ContentContainer/Content/HeaderBG/VBoxContainer/CloudHolder/HBoxContainer/MarginContainer/VBoxContainer" index="0"]
+[node name="Label" type="Label" parent="VBoxContainer2/CloudHolder/HBoxContainer/MarginContainer/VBoxContainer" index="0"]
 margin_top = 42.0
 margin_right = 831.0
 margin_bottom = 107.0
@@ -204,13 +207,13 @@ custom_fonts/font = ExtResource( 8 )
 text = "water_percent_collected"
 valign = 1
 
-[node name="MarginContainer2" type="MarginContainer" parent="ContentContainer/Content/HeaderBG/VBoxContainer/CloudHolder/HBoxContainer" index="1"]
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer2/CloudHolder/HBoxContainer" index="1"]
 margin_left = 866.0
 margin_right = 1080.0
 margin_bottom = 150.0
 custom_constants/margin_right = 64
 
-[node name="CloudPreview" type="TextureRect" parent="ContentContainer/Content/HeaderBG/VBoxContainer/CloudHolder/HBoxContainer/MarginContainer2" index="0"]
+[node name="CloudPreview" type="TextureRect" parent="VBoxContainer2/CloudHolder/HBoxContainer/MarginContainer2" index="0"]
 material = ExtResource( 9 )
 margin_right = 150.0
 margin_bottom = 150.0

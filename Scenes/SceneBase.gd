@@ -39,7 +39,7 @@ func _ready():
 	scroll_container.connect("scrolled", self, "on_scroll")
 
 func on_scroll(scroll_pos):
-	print("scroll: " + str(scroll_pos))
+#	print("scroll: " + str(scroll_pos))
 	header_bg.modulate.a = clamp(Util.map_to_range(float(scroll_pos), 60.0,130.0,0.0,1.0), 0.0, 1.0)
 
 
