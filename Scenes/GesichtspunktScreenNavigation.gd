@@ -29,7 +29,7 @@ func _show_data():
 		for infobyte in infobytes: 
 			var new_child = s_infobyte_card.instance()
 			var infobyte_completed = InfobyteService.is_completed(infobyte._id)
-			new_child.set_content_text(infobyte.name if !infobyte_completed else infobyte.name + " ✔")
+			new_child.set_content_text(infobyte.name if !infobyte_completed else infobyte.name + " (geschafft)")
 			new_child.set_reward_display(infobyte.reward)
 			new_child.set_accent_color(sector["sector_color"])
 			new_child.set_navigation_target("res://Scenes/QuizScene.tscn", {"aspect": aspect, "sector": sector,"factor": factor, "quiz": infobyte})

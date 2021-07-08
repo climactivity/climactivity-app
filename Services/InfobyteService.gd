@@ -9,7 +9,7 @@ func _ready():
 
 func is_completed(infobyte_id): 
 	if completed_infobytes.has(infobyte_id):
-		return  completed_infobytes.ge(infobyte_id)
+		return  completed_infobytes.get(infobyte_id)
 	else:
 		return false
 

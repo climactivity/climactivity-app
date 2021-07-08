@@ -174,7 +174,7 @@ func push_scene(scene, navigation_data = {}, config = TransitionFactory.MoveOut(
 	Logger.print("Navigating: " + current_path + "::" + current_scene.name, self)
 	A_viewport.add_child(scene)
 	if (scene.has_method("receive_navigation") && navigation_data != null):
-		Logger.print("Navigation data %s" % str(navigation_data), self)
+#		Logger.print("Navigation data %s" % str(navigation_data), self)
 		scene.receive_navigation(navigation_data)
 	if (scene.has_method("_restored")): 
 		scene._restored()
