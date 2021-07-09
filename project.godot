@@ -362,7 +362,7 @@ window/stretch/aspect="expand"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/Radial-progress-bar/plugin.cfg", "res://addons/dialogic/plugin.cfg", "res://addons/gut/plugin.cfg", "res://addons/tile_object/plugin.cfg" )
+enabled=PoolStringArray( "res://addons/dialogic/plugin.cfg", "res://addons/tile_object/plugin.cfg" )
 
 [global]
 

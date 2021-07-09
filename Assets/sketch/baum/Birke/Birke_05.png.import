@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/birke_05.png-ad4937ffcbf95798de3dab3a814b2388.stex"
+path="res://.import/Birke_05.png-1a3e296c843616e1320c428e9e4091e8.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/sketch/baum/Birke/birke_05.png"
-dest_files=[ "res://.import/birke_05.png-ad4937ffcbf95798de3dab3a814b2388.stex" ]
+source_file="res://Assets/sketch/baum/Birke/Birke_05.png"
+dest_files=[ "res://.import/Birke_05.png-1a3e296c843616e1320c428e9e4091e8.stex" ]
 
 [params]
 
