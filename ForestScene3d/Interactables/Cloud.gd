@@ -166,9 +166,13 @@ func _watering_done():
 	stops -= 1
 	drops.emitting = false
 	currently_watering = null
-	
+	if !dragging:
+		_reset()
 func _input(event):
-	if cloud_state != Cloud_States.DRAGGING: return
+	if cloud_state != Cloud_States.DRAGGING: 
+		if event is InputEventScreenTouch and  event.index == 0:
+			dragging = event.pressed
+		return
 	if event is InputEventScreenTouch and  event.index == 0 and not event.pressed:
 		dragging = false
 		_reset()
