@@ -1,54 +1,15 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://UI/Components/TrackingOption.tscn" type="PackedScene" id=1]
 [ext_resource path="res://UI/Components/kiko_hint.tscn" type="PackedScene" id=2]
-[ext_resource path="res://UI/typography/Heading.tres" type="DynamicFont" id=3]
 [ext_resource path="res://Scenes/TrackingSettings.gd" type="Script" id=4]
 [ext_resource path="res://UI/Components/CheckboxController.gd" type="Script" id=5]
-[ext_resource path="res://UI/typography/Button_Label.tres" type="DynamicFont" id=6]
-[ext_resource path="res://UI/theme/ButtonPrimary_Active.stylebox" type="StyleBox" id=7]
-[ext_resource path="res://UI/theme/ButtonPrimary_Inactive.stylebox" type="StyleBox" id=8]
-[ext_resource path="res://UI/theme/TransparentGreen.tres" type="StyleBox" id=9]
 [ext_resource path="res://UI/Behaviour/Stagger.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Assets/Theme/collect_button_9p_normal.png" type="Texture" id=11]
 [ext_resource path="res://Assets/Theme/collect_button_9p_down.png" type="Texture" id=12]
 [ext_resource path="res://Assets/Theme/collect_button_9p_hover.png" type="Texture" id=13]
 [ext_resource path="res://Assets/Theme/collect_button_9p_disabled.png" type="Texture" id=14]
 [ext_resource path="res://UI/typography/UI_big.tres" type="DynamicFont" id=15]
-
-[sub_resource type="StyleBoxFlat" id=1]
-bg_color = Color( 0.51992, 0.67, 0.1072, 1 )
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color( 1, 1, 1, 1 )
-corner_radius_top_left = 7
-corner_radius_top_right = 7
-corner_radius_bottom_right = 7
-corner_radius_bottom_left = 7
-expand_margin_left = 240.0
-expand_margin_right = 240.0
-expand_margin_top = 20.0
-expand_margin_bottom = 20.0
-shadow_color = Color( 0, 0, 0, 0.0705882 )
-shadow_size = 32
-shadow_offset = Vector2( 0, 10.141 )
-
-[sub_resource type="StyleBoxFlat" id=2]
-bg_color = Color( 0.584314, 0.756863, 0.121569, 1 )
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color( 1, 1, 1, 1 )
-corner_radius_top_left = 7
-corner_radius_top_right = 7
-corner_radius_bottom_right = 7
-corner_radius_bottom_left = 7
-shadow_color = Color( 0, 0, 0, 0.0705882 )
-shadow_size = 32
-shadow_offset = Vector2( 0, 10.141 )
 
 [sub_resource type="Animation" id=3]
 length = 3.0
@@ -103,33 +64,9 @@ tracks/3/keys = {
 "times": PoolRealArray( 2.7, 3 )
 }
 
-[sub_resource type="Animation" id=4]
-tracks/0/type = "value"
-tracks/0/path = NodePath("MarginContainer3:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.8 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
-}
-tracks/1/type = "bezier"
-tracks/1/path = NodePath("MarginContainer3/CenterContainer:rect_position:y")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"points": PoolRealArray( 246.473, -0.25, 0, 0.25, 0, 74.83, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 0.8 )
-}
-
 [node name="TrackingSettings" type="VBoxContainer"]
 anchor_right = 1.0
-margin_bottom = 1518.0
+anchor_bottom = 1.0
 rect_scale = Vector2( 0.998628, 1 )
 size_flags_horizontal = 3
 script = ExtResource( 4 )
@@ -190,43 +127,6 @@ margin_bottom = 1031.0
 
 [node name="Stagger" parent="Options" instance=ExtResource( 10 )]
 
-[node name="PanelContainer" type="PanelContainer" parent="."]
-visible = false
-margin_top = 1439.0
-margin_right = 1080.0
-margin_bottom = 1526.0
-size_flags_vertical = 3
-custom_styles/panel = ExtResource( 9 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
-margin_left = 1.0
-margin_top = 1.0
-margin_right = 1079.0
-margin_bottom = 86.0
-custom_constants/margin_right = 10
-custom_constants/margin_top = 10
-custom_constants/margin_left = 10
-custom_constants/margin_bottom = 10
-
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
-margin_left = 10.0
-margin_top = 10.0
-margin_right = 1068.0
-margin_bottom = 75.0
-custom_constants/separation = 0
-alignment = 1
-
-[node name="Heading" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
-margin_right = 1058.0
-margin_bottom = 65.0
-custom_fonts/font = ExtResource( 3 )
-text = "Heading"
-align = 1
-valign = 1
-
 [node name="MarginContainer" type="MarginContainer" parent="."]
 modulate = Color( 1, 1, 1, 0 )
 margin_top = 1439.0
@@ -265,45 +165,8 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MarginContainer3" type="MarginContainer" parent="."]
-modulate = Color( 1, 1, 1, 0 )
-margin_top = 1743.0
-margin_right = 1080.0
-margin_bottom = 1957.0
-custom_constants/margin_top = 72
-custom_constants/margin_bottom = 73
-
-[node name="CenterContainer" type="MarginContainer" parent="MarginContainer3"]
-margin_top = 72.0
-margin_right = 1080.0
-margin_bottom = 141.0
-custom_constants/margin_right = 170
-custom_constants/margin_left = 170
-
-[node name="ShopButton" type="Button" parent="MarginContainer3/CenterContainer"]
-margin_left = 170.0
-margin_right = 910.0
-margin_bottom = 69.0
-grow_horizontal = 2
-grow_vertical = 2
-rect_pivot_offset = Vector2( 540, 34 )
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_styles/hover = ExtResource( 7 )
-custom_styles/pressed = SubResource( 1 )
-custom_styles/disabled = ExtResource( 8 )
-custom_styles/normal = SubResource( 2 )
-custom_fonts/font = ExtResource( 6 )
-custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
-custom_colors/font_color = Color( 1, 1, 1, 1 )
-custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
-custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
-text = "Setzling auswählen"
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Enter"
 anims/Enter = SubResource( 3 )
-anims/ShowShopButton = SubResource( 4 )
 
 [connection signal="pressed" from="MarginContainer/CenterContainer/SaveTrackingOptionButton" to="." method="_on_SaveTrackingOptionButton_pressed"]
-[connection signal="pressed" from="MarginContainer3/CenterContainer/ShopButton" to="." method="_on_ShopButton_pressed"]

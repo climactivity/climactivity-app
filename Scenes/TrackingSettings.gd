@@ -65,6 +65,7 @@ func _show_data():
 		options[option_data.level] = new_option_instance
 		options_holder.add_child(new_option_instance)
 	_get_current_tracking_level()
+
 func set_option(option):
 	if option == selected_option: 
 		selected_option = null
@@ -74,17 +75,7 @@ func set_option(option):
 	print(option)
 	select_button.disabled = false
 
-
 func _on_SaveTrackingOptionButton_pressed():
 	select_button.disabled = true
 	select_button_label.text = "Gespeichert!"
 	emit_signal("emit_option", selected_option.option_data if selected_option != null else null, aspect)
-	yield(get_tree().create_timer(0.2), "timeout")
-	if AspectTrackingService.has_seedling_available(aspect):
-		$AnimationPlayer.play("ShowShopButton")
-
-
-func _on_ShopButton_pressed():
-		GameManager.scene_manager.push_scene("res://Scenes/EntityShopScene.tscn", {"aspect": aspect})
-
-	
