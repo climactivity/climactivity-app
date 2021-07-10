@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Pappel_04.png-318b743d77a03984b5a9276cc29b2c82.stex"
+path="res://.import/pappel_04.png-cbafa11d4f2eaa3ff2338e2280212d13.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/sketch/baum/Pappel/Pappel_04.png"
-dest_files=[ "res://.import/Pappel_04.png-318b743d77a03984b5a9276cc29b2c82.stex" ]
+source_file="res://Assets/sketch/baum/Pappel/pappel_04.png"
+dest_files=[ "res://.import/pappel_04.png-cbafa11d4f2eaa3ff2338e2280212d13.stex" ]
 
 [params]
 

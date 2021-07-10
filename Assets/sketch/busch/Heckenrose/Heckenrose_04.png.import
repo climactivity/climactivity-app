@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Heckenrose_04.png-045a251e1109d91548e831eb72be3c51.stex"
+path="res://.import/heckenrose_04.png-0ad649156b79758e904382629fc38b89.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/sketch/busch/Heckenrose/Heckenrose_04.png"
-dest_files=[ "res://.import/Heckenrose_04.png-045a251e1109d91548e831eb72be3c51.stex" ]
+source_file="res://Assets/sketch/busch/Heckenrose/heckenrose_04.png"
+dest_files=[ "res://.import/heckenrose_04.png-0ad649156b79758e904382629fc38b89.stex" ]
 
 [params]
 
@@ -19,7 +19,7 @@ compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
-flags/repeat=0
+flags/repeat=true
 flags/filter=true
 flags/mipmaps=true
 flags/anisotropic=false

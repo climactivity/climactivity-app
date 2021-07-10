@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Heckenrose_03.png-64fb51bff6e3c30fe468272ad18a348d.stex"
+path="res://.import/heckenrose_03.png-c53d70cb6767b5b9122e30c3e6842d65.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/sketch/busch/Heckenrose/Heckenrose_03.png"
-dest_files=[ "res://.import/Heckenrose_03.png-64fb51bff6e3c30fe468272ad18a348d.stex" ]
+source_file="res://Assets/sketch/busch/Heckenrose/heckenrose_03.png"
+dest_files=[ "res://.import/heckenrose_03.png-c53d70cb6767b5b9122e30c3e6842d65.stex" ]
 
 [params]
 

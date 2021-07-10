@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Wacholder_04.png-9596ed754384bb80dd0baf26214e5bd1.stex"
+path="res://.import/wacholder_04.png-3199919ac36d2a18495dad7578cad3fd.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/sketch/busch/Wacholder/Wacholder_04.png"
-dest_files=[ "res://.import/Wacholder_04.png-9596ed754384bb80dd0baf26214e5bd1.stex" ]
+source_file="res://Assets/sketch/busch/Wacholder/wacholder_04.png"
+dest_files=[ "res://.import/wacholder_04.png-3199919ac36d2a18495dad7578cad3fd.stex" ]
 
 [params]
 
