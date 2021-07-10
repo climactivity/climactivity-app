@@ -6,6 +6,12 @@ export_presets.cfg
 /Network/Cache/**/*.res
 /Network/Cache/**/*.tres
 
+android/.gradle
+android/.idea
+android/build/**/*
+
+android/gradle
+
 logs/
 # Imported translations (automatically generated from CSV files)
 *.translation
@@ -32,3 +38,5 @@ project.*.TMP
 *.a
 *.pck
 *.zip
+
+MyApplication
