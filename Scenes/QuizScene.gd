@@ -17,6 +17,7 @@ export (NodePath) onready var infobit_holder
 export (NodePath) onready var questions_holder 
 export (NodePath) onready var quiz_end
 export (NodePath) onready var direct_to_quiz_button
+export (NodePath) onready var progress_blips
 
 var has_data = false
 var has_error = false
@@ -46,6 +47,7 @@ func _ready():
 	questions_holder = get_node(questions_holder)
 	quiz_end = get_node(quiz_end)
 	direct_to_quiz_button = get_node(direct_to_quiz_button)
+	progress_blips = get_node(progress_blips)
 	
 	connect("next_infobit", infobit_holder, "next")
 	connect("prev_infobit", infobit_holder, "prev")
@@ -86,17 +88,20 @@ func _finished_loading():
 func _show_infobits():
 	state = InfoByteState.INFO
 	anim_player.play("show_infobit_holder")
-
+	progress_blips.set_mode(ProgressBlip.BlipMode.INFO)
+	progress_blips.set_blips(quiz_data.info_bits.size())
+	progress_blips.set_active(0)
+	
 func _next_infobit(): 
 	if reshow:
 		reshow = false
 		return
 	emit_signal("next_infobit") 
 	back_button.set_disabled(false)
-
+	progress_blips.next()
 func _prev_infobit(): 
 	emit_signal("prev_infobit")
-	
+	progress_blips.prev()
 func _last_infobit():
 	Logger.print("Last infobit reached " + quiz_data.name, self)
 	state = InfoByteState.QUIZ_INTRO

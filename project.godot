@@ -129,20 +129,10 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/com.heroiclabs.nakama/api/NakamaWriteStorageObject.gd"
 }, {
-"base": "Control",
-"class": "Overlay",
-"language": "GDScript",
-"path": "res://UI/Overlay.gd"
-}, {
 "base": "TextureRect",
 "class": "ProgressBlip",
 "language": "GDScript",
 "path": "res://UI/Components/infobits/blip.gd"
-}, {
-"base": "Control",
-"class": "ProgressBlips",
-"language": "GDScript",
-"path": "res://UI/Components/infobits/ProgressBlips.gd"
 }, {
 "base": "PanelContainer",
 "class": "QuestCard",
@@ -284,9 +274,7 @@ _global_script_class_icons={
 "NakamaSocketAdapter": "",
 "NakamaStorageObjectId": "",
 "NakamaWriteStorageObject": "",
-"Overlay": "",
 "ProgressBlip": "",
-"ProgressBlips": "",
 "QuestCard": "",
 "QuizScene": "",
 "RBoardEntityx": "",
@@ -346,7 +334,7 @@ settings/game_logic/cheat_seedlings=false
 settings/game_logic/show_factor_names=true
 settings/game_logic/use_res_for_cache=false
 settings/game_logic/use_fixed_icons=true
-settings/game_logic/debug_dialog=false
+settings/game_logic/debug_dialog=true
 
 [display]
 

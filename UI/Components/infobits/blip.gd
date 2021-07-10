@@ -10,9 +10,15 @@ export (Texture) var quiz_inactive = preload("res://Assets/Theme/blips/step_indi
 export (Texture) var quiz_active = preload("res://Assets/Theme/blips/step_indicator_quiz_active.png")
 export (Texture) var quiz_completed = preload("res://Assets/Theme/blips/step_indicator_quiz_completed.png")
 
+enum BlipMode {
+	INFO,
+	QUIZ
+}
+
 enum BlipState {INACTIVE, ACTIVE, COMPLETED}
 export (BlipState) var state = BlipState.INACTIVE setget set_state
-export (ProgressBlips.BlipMode) var mode = ProgressBlips.BlipMode.INFO setget set_mode
+
+export var mode = 0 setget set_mode
 
 func set_state(_state): 
 	state = _state
@@ -22,9 +28,13 @@ func set_mode(_mode):
 	mode = _mode
 	_update_texture()
 
+func _enter_tree():
+	_update_texture()
+
 func _update_texture(): 
+#	print(state, " ", mode)
 	match mode:
-		ProgressBlips.BlipMode.INFO:
+		BlipMode.INFO:
 			match state:
 				BlipState.INACTIVE:
 					texture = info_inactive
@@ -32,7 +42,7 @@ func _update_texture():
 					texture = info_active
 				BlipState.COMPLETED:
 					texture = info_completed
-		ProgressBlips.BlipMode.QUIZ:
+		BlipMode.QUIZ:
 			match state:
 				BlipState.INACTIVE:
 					texture = quiz_inactive

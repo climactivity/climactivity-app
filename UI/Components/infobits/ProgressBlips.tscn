@@ -1,46 +1,31 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://UI/theme/style_box_empty.tres" type="StyleBox" id=1]
 [ext_resource path="res://UI/Components/infobits/ProgressBlips.gd" type="Script" id=2]
-[ext_resource path="res://UI/Components/infobits/blip.gd" type="Script" id=3]
-[ext_resource path="res://Assets/Theme/blips/step_indicator_info_completed.png" type="Texture" id=4]
+[ext_resource path="res://UI/Components/infobits/blip.tscn" type="PackedScene" id=3]
 
 [node name="ProgressBlips" type="PanelContainer"]
-anchor_left = 0.5
-anchor_right = 0.5
-margin_left = -258.5
-margin_right = 258.5
-margin_bottom = 33.0
+anchor_right = 1.0
+margin_bottom = 1.0
 custom_styles/panel = ExtResource( 1 )
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+_blip = ExtResource( 3 )
+blip_count = 0
 
 [node name="TextureProgress" type="TextureProgress" parent="."]
-margin_right = 517.0
-margin_bottom = 72.0
+margin_right = 1080.0
+margin_bottom = 1.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
-margin_right = 517.0
-margin_bottom = 72.0
+margin_right = 1080.0
+margin_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+custom_constants/separation = 9
 alignment = 1
-
-[node name="Control2" type="CenterContainer" parent="HBoxContainer"]
-margin_left = 217.0
-margin_right = 299.619
-margin_bottom = 72.0
-rect_min_size = Vector2( 82.619, 0 )
-
-[node name="blip" type="TextureRect" parent="HBoxContainer/Control2"]
-margin_left = 5.0
-margin_right = 77.0
-margin_bottom = 72.0
-texture = ExtResource( 4 )
-script = ExtResource( 3 )
-state = 2
