@@ -9,14 +9,15 @@ signal check_answer
 
 onready var anim_player = $AnimationPlayer
 
-export (NodePath) onready var kiko_dialog 
+export (Dictionary) onready var preloaded_quiz_data
+
 export (NodePath) onready var loading_anim 
 export (NodePath) onready var continue_button 
 export (NodePath) onready var back_button 
 export (NodePath) onready var infobit_holder 
 export (NodePath) onready var questions_holder 
 export (NodePath) onready var quiz_end
-export (NodePath) onready var direct_to_quiz_button
+export (NodePath) onready var front_matter
 export (NodePath) onready var progress_blips
 
 var has_data = false
@@ -39,14 +40,13 @@ var reshow = false
 var wait_check = false 
 
 func _ready():
-	kiko_dialog = get_node(kiko_dialog)
+	front_matter = get_node(front_matter)
 	loading_anim  = get_node(loading_anim)
 	continue_button  = get_node(continue_button)
 	back_button = get_node(back_button)
 	infobit_holder = get_node(infobit_holder)
 	questions_holder = get_node(questions_holder)
 	quiz_end = get_node(quiz_end)
-	direct_to_quiz_button = get_node(direct_to_quiz_button)
 	progress_blips = get_node(progress_blips)
 	
 	connect("next_infobit", infobit_holder, "next")
@@ -64,6 +64,8 @@ func _ready():
 	loading_anim.connect("finished_loading", self, "_finished_loading")
 	
 	header.connect("go_back", self, "_on_back_button")
+	if preloaded_quiz_data != {}: 
+		receive_navigation(preloaded_quiz_data)
 
 func receive_navigation(_quiz_data):
 	quiz_data = _quiz_data.quiz
@@ -76,7 +78,7 @@ func receive_navigation(_quiz_data):
 
 func _on_quiz_data(quiz_data):
 #	header.set_screen_label(quiz_data.name)
-	kiko_dialog.set_text(quiz_data.name)
+	front_matter.set_text(quiz_data.name)
 	loading_anim.loading_finished()
 	infobit_holder.set_infobits_data(quiz_data.info_bits)
 	questions_holder.on_data(quiz_data.questions)
@@ -86,10 +88,13 @@ func _finished_loading():
 	state = InfoByteState.FRONT
 
 func _show_infobits():
+	print("showing infobits")
 	state = InfoByteState.INFO
 	anim_player.play("show_infobit_holder")
 	progress_blips.set_mode(ProgressBlip.BlipMode.INFO)
-	progress_blips.set_blips(quiz_data.info_bits.size())
+	var blip_count = quiz_data.info_bits.size()
+	print("blip_count: ",blip_count)
+	progress_blips.set_blips(blip_count)
 	progress_blips.set_active(0)
 	
 func _next_infobit(): 
@@ -97,11 +102,15 @@ func _next_infobit():
 		reshow = false
 		return
 	emit_signal("next_infobit") 
+	print("next_infobit")
 	back_button.set_disabled(false)
 	progress_blips.next()
+	
 func _prev_infobit(): 
 	emit_signal("prev_infobit")
+	print("prev_infobit")
 	progress_blips.prev()
+	
 func _last_infobit():
 	Logger.print("Last infobit reached " + quiz_data.name, self)
 	state = InfoByteState.QUIZ_INTRO
@@ -184,10 +193,10 @@ func _nav_back():
 	
 func _on_back_button():
 	match(state):
-		InfoByteState.LOADING:
-			GameManager.scene_manager.pop_scene()
-		InfoByteState.FRONT:
-			GameManager.scene_manager.pop_scene()
+#		InfoByteState.LOADING:
+#			GameManager.scene_manager.pop_scene()
+#		InfoByteState.FRONT:
+#			GameManager.scene_manager.pop_scene()
 		InfoByteState.INFO:
 			_prev_infobit()
 		InfoByteState.QUIZ_INTRO:
@@ -195,9 +204,7 @@ func _on_back_button():
 			reshow = true
 		InfoByteState.QUIZ:
 			_prev_question()
-		InfoByteState.QUIZ_COMPLETE:
-			pass
-		InfoByteState.ERROR:
+		_:
 			pass
 
 # passed of to extra function so the header back button can hook in even if the local back button is disabled

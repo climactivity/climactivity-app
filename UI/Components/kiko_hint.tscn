@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://UI/typography/Heading.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Assets/Kiko/kiko_avatar.png" type="Texture" id=2]
@@ -64,6 +64,118 @@ tracks/4/keys = {
 "values": [ 0.0, 0.0, 1.0 ]
 }
 
+[sub_resource type="Animation" id=3]
+resource_name = "RESET"
+length = 0.1
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("SpeechBubbleHolder:rect_position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( -300, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("SpeechBubbleHolder:modulate:a")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("MarginContainer2/Control:rect_position:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( -100, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("MarginContainer2/Control:modulate:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("SpeechBubbleHolder/MarginContainer/MarginContainer/DialogLine:percent_visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "SHOW"
+length = 0.1
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("SpeechBubbleHolder:rect_position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 0, -0.0390671, 0.497835, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("SpeechBubbleHolder:modulate:a")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("MarginContainer2/Control:rect_position:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("MarginContainer2/Control:modulate:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("SpeechBubbleHolder/MarginContainer/MarginContainer/DialogLine:percent_visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+
 [node name="kiko_avatar - placeholder" type="PanelContainer"]
 anchor_right = 1.0
 margin_bottom = 190.0
@@ -81,10 +193,8 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 
 [node name="Control" type="TextureRect" parent="MarginContainer2"]
-modulate = Color( 1, 1, 1, 0 )
-margin_top = -100.0
 margin_right = 400.0
-margin_bottom = 300.0
+margin_bottom = 400.0
 grow_horizontal = 0
 grow_vertical = 0
 rect_min_size = Vector2( 400, 400 )
@@ -102,9 +212,7 @@ grow_horizontal = 0
 grow_vertical = 0
 
 [node name="SpeechBubbleHolder" type="PanelContainer" parent="."]
-modulate = Color( 1, 1, 1, 0 )
-margin_left = -300.0
-margin_right = 780.0
+margin_right = 1080.0
 margin_bottom = 400.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -171,3 +279,5 @@ __meta__ = {
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Enter = SubResource( 2 )
+anims/RESET = SubResource( 3 )
+anims/SHOW = SubResource( 4 )

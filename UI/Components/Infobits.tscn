@@ -267,6 +267,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "RESET"
+anims/RESET = SubResource( 1 )
+anims/backward = SubResource( 2 )
+anims/forward = SubResource( 3 )
+
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -287,22 +293,18 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "RESET"
-anims/RESET = SubResource( 1 )
-anims/backward = SubResource( 2 )
-anims/forward = SubResource( 3 )
-
 [node name="InfoBit" type="ScrollContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_right = 88.0
+margin_bottom = 83.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="MarginContainer" type="MarginContainer" parent="InfoBit"]
-margin_right = 992.0
-margin_bottom = 1082.0
+margin_right = 1080.0
+margin_bottom = 1165.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/margin_right = 50
@@ -313,14 +315,14 @@ custom_constants/margin_bottom = 20
 [node name="ContentHolder" type="VBoxContainer" parent="InfoBit/MarginContainer"]
 margin_left = 50.0
 margin_top = 100.0
-margin_right = 942.0
-margin_bottom = 1062.0
+margin_right = 1030.0
+margin_bottom = 1145.0
 size_flags_horizontal = 3
 
 [node name="RichTextLabel" type="RichTextLabel" parent="InfoBit/MarginContainer/ContentHolder"]
 visible = false
-margin_right = 892.0
-margin_bottom = 962.0
+margin_right = 968.0
+margin_bottom = 630.0
 rect_clip_content = false
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -337,8 +339,8 @@ __meta__ = {
 
 [node name="RichTextLabel2" type="RichTextLabel" parent="InfoBit/MarginContainer/ContentHolder"]
 visible = false
-margin_right = 892.0
-margin_bottom = 962.0
+margin_right = 980.0
+margin_bottom = 1045.0
 rect_clip_content = false
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -357,13 +359,15 @@ __meta__ = {
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_right = 88.0
+margin_bottom = 83.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="MarginContainer" type="MarginContainer" parent="Old_Infobit"]
-margin_right = 992.0
-margin_bottom = 1082.0
+margin_right = 1080.0
+margin_bottom = 1165.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/margin_right = 50
@@ -374,8 +378,8 @@ custom_constants/margin_bottom = 20
 [node name="ContentHolder" type="VBoxContainer" parent="Old_Infobit/MarginContainer"]
 margin_left = 50.0
 margin_top = 100.0
-margin_right = 942.0
-margin_bottom = 1062.0
+margin_right = 1030.0
+margin_bottom = 1145.0
 size_flags_horizontal = 3
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

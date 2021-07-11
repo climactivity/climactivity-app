@@ -1,0 +1,110 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://UI/typography/UI_big.tres" type="DynamicFont" id=1]
+[ext_resource path="res://UI/theme/style_box_empty.tres" type="StyleBox" id=2]
+[ext_resource path="res://UI/Components/infobits/FrontMatter.gd" type="Script" id=3]
+[ext_resource path="res://Assets/Theme/skipquiz_button_hover.png" type="Texture" id=4]
+[ext_resource path="res://UI/Components/kiko_hint.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Assets/Theme/skipquiz_button_normal.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Theme/skipquiz_button__disabled.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Theme/skipquiz_button_down.png" type="Texture" id=8]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Enter"
+tracks/0/type = "method"
+tracks/0/path = NodePath("VBoxContainer/kiko_avatar - placeholder")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "play_enter"
+} ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("VBoxContainer/MarginContainer/SkipQuizButton:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.6, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[node name="FrontMatter" type="PanelContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_rotation = 0.156904
+mouse_filter = 2
+custom_styles/panel = ExtResource( 2 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+autoplay = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_right = 1080.0
+margin_bottom = 1920.0
+
+[node name="kiko_avatar - placeholder" parent="VBoxContainer" instance=ExtResource( 5 )]
+anchor_right = 0.0
+margin_right = 1080.0
+margin_bottom = 400.0
+text = "Frontmatter missing :("
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+margin_left = 292.0
+margin_top = 404.0
+margin_right = 1080.0
+margin_bottom = 1920.0
+mouse_filter = 1
+size_flags_horizontal = 8
+size_flags_vertical = 3
+
+[node name="SkipQuizButton" type="TextureButton" parent="VBoxContainer/MarginContainer"]
+modulate = Color( 1, 1, 1, 0 )
+margin_top = 659.0
+margin_right = 788.0
+margin_bottom = 857.0
+size_flags_horizontal = 8
+size_flags_vertical = 4
+texture_normal = ExtResource( 6 )
+texture_pressed = ExtResource( 8 )
+texture_hover = ExtResource( 4 )
+texture_disabled = ExtResource( 7 )
+stretch_mode = 6
+
+[node name="VBoxContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer/SkipQuizButton"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+custom_constants/margin_bottom = 38
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/SkipQuizButton/VBoxContainer"]
+margin_top = 42.0
+margin_right = 788.0
+margin_bottom = 118.0
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0.466667, 0.72549, 0.141176, 1 )
+text = "info_skip_to_quiz"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Enter = SubResource( 1 )
+
+[connection signal="pressed" from="VBoxContainer/MarginContainer/SkipQuizButton" to="." method="_on_PanelContainer_pressed"]

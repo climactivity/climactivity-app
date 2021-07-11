@@ -33,6 +33,7 @@ func prev() -> void:
 		update_current_infobit("at_start", "backward")
 
 func update_current_infobit(signal_to_emit: String, anim_to_play = "") -> void:
+	print("Current infobit: ", current_index)
 	if infobits.size() > current_index && current_index > -1:
 		current_infobit = infobits[current_index]
 		for child in old_infobit_holder.get_children():

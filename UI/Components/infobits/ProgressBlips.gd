@@ -33,7 +33,7 @@ func set_active(_active):
 
 func next(): 
 	active += 1
-	active = min(active, completed)
+	active = min(active, blip_count)
 	update()
 
 func prev(): 
@@ -45,7 +45,7 @@ func update():
 #	if !ready:
 #		return
 	if !is_inside_tree(): return
-	
+	print("blips: ", active)
 	Util.clear($HBoxContainer)
 	for i in range(0,blip_count):
 		var blip = _blip.instance()
