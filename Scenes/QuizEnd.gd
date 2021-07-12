@@ -1,4 +1,4 @@
-extends Control
+extends InfoSection
 
 
 func set_result(quiz_result):

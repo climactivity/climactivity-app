@@ -134,6 +134,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/com.heroiclabs.nakama/api/NakamaWriteStorageObject.gd"
 }, {
+"base": "Control",
+"class": "Overlay",
+"language": "GDScript",
+"path": "res://UI/Overlay.gd"
+}, {
 "base": "TextureRect",
 "class": "ProgressBlip",
 "language": "GDScript",
@@ -280,6 +285,7 @@ _global_script_class_icons={
 "NakamaSocketAdapter": "",
 "NakamaStorageObjectId": "",
 "NakamaWriteStorageObject": "",
+"Overlay": "",
 "ProgressBlip": "",
 "QuestCard": "",
 "QuizScene": "",

@@ -5,10 +5,12 @@ signal end_reached
 signal selected_answer
 signal can_check
 signal has_checked
+
+signal question_state(position, state)
+
 var questions_data 
 var questions = []
 var selected_answers = []
-var questions_count = 0
 var correct = 0 
 
 var current_question = -1
@@ -20,7 +22,14 @@ onready var anim_player = $AnimationPlayer
 
 func on_data(new_data):
 	questions_data = new_data
+	for question_box in questions:
+		question_box.free()
+	questions.clear()
 	for question in questions_data: 
+		# hack to skip empty questions
+		if question.question == "":
+			Logger.error("Malformed question!", self)
+			continue
 		var question_box = question_box_factory.instance()
 		questions.append(question_box)
 		question_box.set_question(question)
@@ -32,6 +41,7 @@ func next():
 		if questions[current_question].get_result() == 0.0:
 			Logger.print("Set active question index: " + str(current_question), self)
 			_update_question("forward")
+			emit_signal("question_state" , current_question, ProgressBlip.BlipMode.QUIZ)
 			return
 	var next_index = get_next_incorrect()
 	if next_index != -1:

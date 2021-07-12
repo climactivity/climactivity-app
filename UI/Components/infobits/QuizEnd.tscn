@@ -1,112 +1,48 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://Assets/Icons/Arrow - Right W.png" type="Texture" id=1]
+[ext_resource path="res://UI/RewardCollector.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/QuizEnd.gd" type="Script" id=2]
-[ext_resource path="res://UI/Components/kiko_hint.gd" type="Script" id=3]
-[ext_resource path="res://UI/Components/NeoMButton.gd" type="Script" id=4]
 [ext_resource path="res://UI/Components/kiko_hint.tscn" type="PackedScene" id=5]
-[ext_resource path="res://UI/Components/RewardLabel.tscn" type="PackedScene" id=6]
-[ext_resource path="res://UI/Components/RewardLabel.gd" type="Script" id=7]
 [ext_resource path="res://UI/theme/style_box_empty.tres" type="StyleBox" id=8]
 [ext_resource path="res://Assets/Theme/Fonts/RobotoSlab-Bold.ttf" type="DynamicFontData" id=9]
-[ext_resource path="res://UI/Components/NeoMButton.tscn" type="PackedScene" id=10]
 
-[sub_resource type="StyleBoxFlat" id=6]
-bg_color = Color( 0.588235, 0.74902, 0.0509804, 1 )
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
-
-[sub_resource type="StyleBoxFlat" id=8]
-content_margin_left = 8.0
-content_margin_right = 8.0
-content_margin_top = 4.0
-content_margin_bottom = 4.0
-bg_color = Color( 1, 1, 1, 1 )
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color( 0.733333, 0.733333, 0.733333, 1 )
-corner_radius_top_left = 1024
-corner_radius_top_right = 1024
-corner_radius_bottom_right = 1024
-corner_radius_bottom_left = 1024
-expand_margin_left = 10.0
-expand_margin_right = 10.0
-expand_margin_top = 5.0
-expand_margin_bottom = 5.0
-
-[sub_resource type="DynamicFont" id=7]
+[sub_resource type="DynamicFont" id=1]
 size = 72
 font_data = ExtResource( 9 )
 
-[sub_resource type="StyleBoxFlat" id=9]
-bg_color = Color( 0.6, 0.6, 0.6, 0 )
-corner_radius_top_left = 14
-corner_radius_top_right = 14
-corner_radius_bottom_right = 14
-corner_radius_bottom_left = 14
-shadow_color = Color( 0, 0, 0, 0.12549 )
-shadow_size = 12
-shadow_offset = Vector2( 0, 8 )
-
-[node name="QuizEnd" type="Control"]
+[node name="QuizEnd" type="PanelContainer"]
 margin_right = 1080.0
 margin_bottom = 1349.0
-script = ExtResource( 2 )
-
-[node name="kiko_avatar - placeholder" type="PanelContainer" parent="." instance=ExtResource( 5 )]
-anchor_right = 1.0
-margin_left = 7.55957
-margin_top = -567.215
-margin_right = 1074.56
-margin_bottom = -167.215
-rect_min_size = Vector2( 0, 400 )
 custom_styles/panel = ExtResource( 8 )
-script = ExtResource( 3 )
+script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+margin_right = 1080.0
+margin_bottom = 1422.0
+custom_constants/margin_right = 64
+custom_constants/margin_left = 64
+custom_constants/margin_bottom = 64
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+margin_left = 64.0
+margin_right = 1016.0
+margin_bottom = 1358.0
+custom_constants/separation = 101
+
+[node name="kiko_avatar - placeholder" parent="MarginContainer/VBoxContainer" instance=ExtResource( 5 )]
+anchor_right = 0.0
+margin_right = 952.0
+margin_bottom = 400.0
 text = "Frontmatter missing :("
 
-[node name="Panel" type="Panel" parent="."]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -350.992
-margin_top = -42.0714
-margin_right = 413.008
-margin_bottom = 62.9286
-custom_styles/panel = SubResource( 6 )
-__meta__ = {
-"_edit_group_": true,
-"_edit_use_anchors_": false
-}
-
-[node name="RewardLabel" type="PanelContainer" parent="Panel" instance=ExtResource( 6 )]
-anchor_right = 1.0
-margin_bottom = 51.0
-rect_scale = Vector2( 0.998902, 0.987026 )
-size_flags_horizontal = 9
-custom_styles/panel = SubResource( 8 )
-script = ExtResource( 7 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="."]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -167.122
-margin_top = -460.772
-margin_right = 183.878
-margin_bottom = -364.772
-custom_fonts/font = SubResource( 7 )
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+margin_top = 501.0
+margin_right = 952.0
+margin_bottom = 597.0
+custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "5/5 richtig"
 align = 1
@@ -115,24 +51,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CollectRewardButton" type="Panel" parent="." instance=ExtResource( 10 )]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -351.302
-margin_top = 267.366
-margin_right = 401.698
-margin_bottom = 414.366
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_styles/panel = SubResource( 9 )
-script = ExtResource( 4 )
-__meta__ = {
-"_edit_group_": true,
-"_edit_use_anchors_": false
-}
-icon_texture = ExtResource( 1 )
-font_color = Color( 0.588235, 0.74902, 0.0509804, 1 )
-text = "Sammeln"
-color_icon = true
+[node name="RewardCollector" parent="MarginContainer/VBoxContainer" instance=ExtResource( 1 )]
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 698.0
+margin_right = 952.0
+margin_bottom = 1358.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]

@@ -41,6 +41,11 @@ func prev():
 	active = min(active, -1)
 	update()
 	
+func set_state(_index, _mode): 
+	print("set_state", _index, _mode)
+	set_active(_index)
+	set_mode(_mode)
+	
 func update(): 
 #	if !ready:
 #		return

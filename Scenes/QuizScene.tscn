@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://Scenes/SceneBase.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/QuizScene.gd" type="Script" id=2]
@@ -12,16 +12,20 @@
 [ext_resource path="res://UI/theme/style_box_empty.tres" type="StyleBox" id=10]
 [ext_resource path="res://UI/Components/infobits/ProgressBlips.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Network/Cache/Aspects/605af74af333c40013c79fee.tres" type="Resource" id=12]
-[ext_resource path="res://Network/Cache/Infobytes/605c35679c79830015f5eaaa.tres" type="Resource" id=13]
+[ext_resource path="res://Network/Cache/Infobytes/60b8a10c25d36000132b0acd.tres" type="Resource" id=13]
+[ext_resource path="res://Assets/Theme/share_button_normal.png" type="Texture" id=14]
+[ext_resource path="res://Assets/Theme/share_button_hover.png" type="Texture" id=15]
+[ext_resource path="res://Assets/Theme/share_button_disabled.png" type="Texture" id=16]
+[ext_resource path="res://Assets/Theme/share_button_down.png" type="Texture" id=17]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.972549, 0.972549, 0.972549, 1 )
 
-[sub_resource type="StreamTexture" id=13]
+[sub_resource type="StreamTexture" id=2]
 flags = 3
 load_path = "res://.import/climactivity_H-Icon_Mobilitaet.png-24b8e8d331861fd97bb8c0d0c5137cae.stex"
 
-[sub_resource type="StyleBoxEmpty" id=2]
+[sub_resource type="StyleBoxEmpty" id=3]
 
 [sub_resource type="StyleBoxFlat" id=4]
 corner_radius_top_left = 180
@@ -112,6 +116,30 @@ tracks/5/keys = {
 "update": 1,
 "values": [ false ]
 }
+tracks/6/type = "value"
+tracks/6/path = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/Footer/Panel/ShareButton:disabled")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/Footer/Panel/ShareButton:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
 
 [sub_resource type="Animation" id=8]
 length = 0.2
@@ -152,6 +180,30 @@ tracks/2/keys = {
 "args": [  ],
 "method": "play_enter"
 } ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/Footer/Panel/ShareButton:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/Footer/Panel/ShareButton:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
 }
 
 [sub_resource type="Animation" id=9]
@@ -206,94 +258,130 @@ tracks/3/keys = {
 "update": 1,
 "values": [ true, false ]
 }
-
-[sub_resource type="Animation" id=10]
-length = 0.317
-tracks/0/type = "value"
-tracks/0/path = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/ContentHolder/Quiz:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/ContentHolder/QuizStart:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.3 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ true, false ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/ContentHolder/QuizStart:modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0, 0.3 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/ContentHolder/QuizStart:rect_position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0, 0.3 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( -1080, 0 ) ]
-}
 tracks/4/type = "value"
-tracks/4/path = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/ContentHolder/Quiz:modulate")
+tracks/4/path = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/Footer/Panel/ShareButton:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0, 0.3 ),
+"times": PoolRealArray( 0, 0.1 ),
 "transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+"update": 1,
+"values": [ false, true ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/ContentHolder/Quiz:rect_position")
+tracks/5/path = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/Footer/Panel/ShareButton:disabled")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 0, 0.3 ),
+"times": PoolRealArray( 0, 0.1 ),
 "transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 1080, 0 ), Vector2( 0, 0 ) ]
+"update": 1,
+"values": [ true, false ]
 }
-tracks/6/type = "method"
-tracks/6/path = NodePath(".")
+tracks/6/type = "value"
+tracks/6/path = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/Footer/Panel/ShareButton:modulate")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ContentHolder/QuizStart:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, false ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ContentHolder/QuizStart:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=10]
+length = 0.317
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
 "times": PoolRealArray( 0.3 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],
 "method": "_next_question"
 } ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ContentHolder/QuizStart:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ContentHolder/QuizStart:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ContentHolder/Quiz:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ContentHolder/Quiz:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
 [sub_resource type="Animation" id=11]
@@ -341,63 +429,153 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0.3 ),
+"times": PoolRealArray( 0.2 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],
 "method": "play_enter"
 } ]
 }
+tracks/4/type = "value"
+tracks/4/path = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ContentHolder/QuizStart:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/Footer/Panel/ShareButton:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, true ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/Footer/Panel/ShareButton:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/Footer/Panel/ShareButton:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
 
 [sub_resource type="Animation" id=12]
 resource_name = "show_quiz_result"
 tracks/0/type = "value"
-tracks/0/path = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/ContentHolder/QuizEnd:visible")
+tracks/0/path = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ContentHolder/Quiz:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ true ]
+"values": [ true, false ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/ContentHolder/QuizEnd:modulate")
+tracks/1/path = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ContentHolder/Quiz:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 1 ) ]
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/ContentHolder/Quiz:visible")
+tracks/2/path = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ContentHolder/QuizEnd:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ false ]
+"values": [ false, true ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/ContentHolder/QuizStart:visible")
+tracks/3/path = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ContentHolder/QuizEnd:modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0 ),
+"times": PoolRealArray( 0.3, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=13]
+resource_name = "skip_to_quiz"
+length = 0.3
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.3 ),
 "transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_show_quiz"
+} ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ContentHolder/FrontMatter:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ContentHolder/FrontMatter:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ false ]
+"values": [ true, false ]
 }
 
 [node name="QuizScene" instance=ExtResource( 1 )]
@@ -416,16 +594,18 @@ preloaded_quiz_data = {
 "sector": {
 "sector": "mobility",
 "sector_color": Color( 0.901961, 0.654902, 0.0941176, 1 ),
-"sector_logo": SubResource( 13 ),
+"sector_logo": SubResource( 2 ),
 "sector_title": "Zelt der Mobilität"
 }
 }
 loading_anim = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ContentHolder/Loading")
 continue_button = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/Footer/Panel/ContinueButton")
+share_button = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/Footer/Panel/ShareButton")
 back_button = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/Footer/Panel/BackButton")
 infobit_holder = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ContentHolder/Infobits")
 questions_holder = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ContentHolder/Quiz/Questions")
 quiz_end = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ContentHolder/QuizEnd")
+front_matter = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ContentHolder/FrontMatter")
 progress_blips = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/Footer/Panel/ProgressBlips")
 
 [node name="ContentHolder" type="PanelContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="1"]
@@ -434,12 +614,17 @@ margin_right = 1080.0
 margin_bottom = 1699.0
 mouse_filter = 2
 size_flags_vertical = 3
-custom_styles/panel = SubResource( 2 )
+custom_styles/panel = SubResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="FrontMatter" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ContentHolder" index="0" instance=ExtResource( 6 )]
+modulate = Color( 1, 1, 1, 0 )
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 1080.0
+margin_bottom = 1349.0
 rect_rotation = 0.0
 
 [node name="Loading" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ContentHolder" index="1" instance=ExtResource( 5 )]
@@ -493,6 +678,7 @@ __meta__ = {
 
 [node name="Infobits" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ContentHolder" index="2" instance=ExtResource( 9 )]
 visible = false
+modulate = Color( 1, 1, 1, 0.25 )
 anchor_left = 0.0
 anchor_right = 0.0
 margin_left = 0.0
@@ -511,8 +697,9 @@ text = "Wie wäre es mit einem kurzen Quiz?"
 
 [node name="Quiz" type="MarginContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ContentHolder" index="4"]
 visible = false
+modulate = Color( 1, 1, 1, 0 )
 margin_right = 1080.0
-margin_bottom = 1920.0
+margin_bottom = 1349.0
 rect_pivot_offset = Vector2( -537.719, 1703.08 )
 mouse_filter = 2
 
@@ -522,7 +709,7 @@ anchor_bottom = 0.0
 margin_left = 0.0
 margin_top = 0.0
 margin_right = 1080.0
-margin_bottom = 1920.0
+margin_bottom = 1349.0
 
 [node name="QuizEnd" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ContentHolder" index="5" instance=ExtResource( 8 )]
 visible = false
@@ -579,6 +766,28 @@ text = "Weiter"
 margin_top = -36.0
 margin_bottom = 36.0
 
+[node name="ShareButton" type="TextureButton" parent="ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/Footer/Panel" index="3"]
+visible = false
+modulate = Color( 1, 1, 1, 0 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -64.5
+margin_top = -54.5
+margin_right = 64.5
+margin_bottom = 70.5
+disabled = true
+texture_normal = ExtResource( 14 )
+texture_pressed = ExtResource( 17 )
+texture_hover = ExtResource( 15 )
+texture_disabled = ExtResource( 16 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1"]
 autoplay = "RESET"
 anims/RESET = SubResource( 7 )
@@ -587,6 +796,8 @@ anims/show_infobit_holder = SubResource( 9 )
 anims/show_quiz = SubResource( 10 )
 anims/show_quiz_intro = SubResource( 11 )
 anims/show_quiz_result = SubResource( 12 )
+anims/skip_to_quiz = SubResource( 13 )
 
 [connection signal="pressed" from="ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/Footer/Panel/BackButton" to="." method="_on_BackButton_pressed"]
 [connection signal="pressed" from="ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/Footer/Panel/ContinueButton" to="." method="_on_ContinueButton_pressed"]
+[connection signal="pressed" from="ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/Footer/Panel/ShareButton" to="." method="_on_ShareButton_pressed"]

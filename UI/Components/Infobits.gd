@@ -4,6 +4,7 @@ signal finished
 signal at_start
 signal anim_finished
 signal go_back
+signal infobit_state(position, state)
 export var infobits_data = [] setget set_infobits_data
 
 var infobits = [] 
@@ -35,6 +36,7 @@ func prev() -> void:
 func update_current_infobit(signal_to_emit: String, anim_to_play = "") -> void:
 	print("Current infobit: ", current_index)
 	if infobits.size() > current_index && current_index > -1:
+		emit_signal("infobit_state", current_index, ProgressBlip.BlipMode.INFO)
 		current_infobit = infobits[current_index]
 		for child in old_infobit_holder.get_children():
 			old_infobit_holder.remove_child(child)
@@ -45,6 +47,7 @@ func update_current_infobit(signal_to_emit: String, anim_to_play = "") -> void:
 		if(anim_to_play != ""): $AnimationPlayer.play(anim_to_play)
 	else:
 		emit_signal(signal_to_emit)
+
 		current_index = min(current_index, infobits.size() - 1)
 
 func _on_AnimationPlayer_animation_finished(_anim_name):

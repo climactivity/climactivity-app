@@ -22,7 +22,7 @@ func _parse_data_object(data, depth = 0, _numbered = false, running_number = 0, 
 			"paragraph": 
 				text = _parse_data_object(paragraph_dict.content, depth, _numbered, 0, false)
 			"text": 
-				print(paragraph_dict.text)
+#				print(paragraph_dict.text)
 				paragraph = paragraph_dict.text 
 			"hard_break":
 				paragraph = "\n"

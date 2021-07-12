@@ -13,12 +13,15 @@ export (Dictionary) onready var preloaded_quiz_data
 
 export (NodePath) onready var loading_anim 
 export (NodePath) onready var continue_button 
+export (NodePath) onready var share_button 
 export (NodePath) onready var back_button 
 export (NodePath) onready var infobit_holder 
 export (NodePath) onready var questions_holder 
 export (NodePath) onready var quiz_end
 export (NodePath) onready var front_matter
 export (NodePath) onready var progress_blips
+
+export (String) var share_base_url = "https://app.climactivity.de/s/%s/%s?r=%s&l=%s" 
 
 var has_data = false
 var has_error = false
@@ -43,11 +46,14 @@ func _ready():
 	front_matter = get_node(front_matter)
 	loading_anim  = get_node(loading_anim)
 	continue_button  = get_node(continue_button)
+	share_button  = get_node(share_button)
 	back_button = get_node(back_button)
 	infobit_holder = get_node(infobit_holder)
 	questions_holder = get_node(questions_holder)
 	quiz_end = get_node(quiz_end)
 	progress_blips = get_node(progress_blips)
+	
+	front_matter.connect("skip_to_quiz", self, "_on_direct_to_quiz_button_pressed")
 	
 	connect("next_infobit", infobit_holder, "next")
 	connect("prev_infobit", infobit_holder, "prev")
@@ -63,6 +69,8 @@ func _ready():
 	questions_holder.connect( "has_checked" ,self, "_has_checked")
 	loading_anim.connect("finished_loading", self, "_finished_loading")
 	
+	infobit_holder.connect("infobit_state", progress_blips, "set_state")
+	questions_holder.connect("question_state", progress_blips, "set_state")
 	header.connect("go_back", self, "_on_back_button")
 	if preloaded_quiz_data != {}: 
 		receive_navigation(preloaded_quiz_data)
@@ -95,7 +103,7 @@ func _show_infobits():
 	var blip_count = quiz_data.info_bits.size()
 	print("blip_count: ",blip_count)
 	progress_blips.set_blips(blip_count)
-	progress_blips.set_active(0)
+#	progress_blips.set_active(0)
 	
 func _next_infobit(): 
 	if reshow:
@@ -104,16 +112,15 @@ func _next_infobit():
 	emit_signal("next_infobit") 
 	print("next_infobit")
 	back_button.set_disabled(false)
-	progress_blips.next()
 	
 func _prev_infobit(): 
 	emit_signal("prev_infobit")
 	print("prev_infobit")
-	progress_blips.prev()
 	
 func _last_infobit():
 	Logger.print("Last infobit reached " + quiz_data.name, self)
 	state = InfoByteState.QUIZ_INTRO
+	progress_blips.next()
 	anim_player.play("show_quiz_intro")
 	
 func _show_quiz(): 
@@ -121,7 +128,11 @@ func _show_quiz():
 	back_button.set_disabled(true)
 	back_button.visible = false
 	anim_player.play("show_quiz")
-
+	progress_blips.set_mode(ProgressBlip.BlipMode.QUIZ)
+	var blip_count = quiz_data.questions.size()
+	progress_blips.set_blips(blip_count)
+	progress_blips.set_active(0)
+	
 func _next_question():
 	if(wait_check):
 		emit_signal("check_answer")
@@ -153,6 +164,7 @@ func _last_question():
 #	var quiz_end_collect_button = $"ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/ContentHolder/QuizEnd/CollectRewardButton"
 #	var quiz_reward_label = $"ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/ContentHolder/QuizEnd/Panel/RewardLabel"
 	
+	progress_blips.next()
 	quiz_end.set_result(quiz_result)
 	quiz_end.set_quiz(quiz_data)
 
@@ -160,7 +172,7 @@ func _last_question():
 	state = InfoByteState.QUIZ_COMPLETE
 	continue_button.set_text("Zur Auswahl")
 	continue_button.set_disabled(false)
-	
+	continue_button.visible = false
 func _content_anim_finished():
 	pass
 	
@@ -222,4 +234,13 @@ func _on_CollectRewardButton_pressed():
 
 
 func _on_direct_to_quiz_button_pressed():
-	_show_quiz()
+	anim_player.play("skip_to_quiz")
+
+
+func _on_ShareButton_pressed():
+	if state == InfoByteState.INFO: 
+		var share_target = share_base_url % [ str(quiz_data._id), str(infobit_holder.current_index), Api.locale.region, Api.locale.language ]
+		Logger.print("Sharing share_target", self)
+		OS.shell_open(share_target)
+	else:
+		Logger.error("Can't share state %d" % state, self)
