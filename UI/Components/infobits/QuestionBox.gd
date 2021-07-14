@@ -8,9 +8,10 @@ signal on_next_question
 var question_text
 var question_mode = "radio_buttons" 
 var answers = []
+var num_correct_answers = 0
 var selected_answers = []
 #onready var answer_text = $"SpeechBubbleHolder/MarginContainer/DialogLine"
-var answer_button_factory = preload("res://UI/Components/infobits/AnswerButton.tscn")
+var answer_button_factory = preload("res://UI/Components/infobits/AnswerOption.tscn")
 onready var answer_button_holder = $VBoxContainer2/VBoxContainer
 enum AnswerState {DEFAULT, SELECTED, SELECTED_CORRECT, CORRECT, WRONG} # kill it with fire
 
@@ -26,17 +27,27 @@ func _ready():
 
 func play_enter(): 
 	question_box.play_enter()
-
+	$"VBoxContainer2/VBoxContainer/Stagger".play_enter()
+	$AnimationPlayer.play("Enter")
+	
 func set_question(new_question): 
 	question = new_question
 	question_text = question.question
 	question_mode = question.question_mode if question.has("question_mode") else "radio_buttons" 
 	for answer in question.answers:
 		var answer_button = answer_button_factory.instance()
-		answer_button.is_correct = answer.correct
-		answer_button.set_label_text(answer.value)
 		answers.append(answer_button)
-
+		answer_button.set_answer_data(answer)
+		if answer.has("correct") and answer["correct"]:
+			print("ping")
+			num_correct_answers += 1
+	match num_correct_answers:
+		0: 
+			Logger.error("No correct answers in question: %s" % question.value, self )
+		1: 
+			$"VBoxContainer2/Label".text = tr("hint_select_exactly_one")
+		_:
+			$"VBoxContainer2/Label".text = tr("hint_select_at_least_one")
 func _on_answer_selected(answer): 
 	if(question_mode == "radio_buttons"): 
 		for answer_button in selected_answers:

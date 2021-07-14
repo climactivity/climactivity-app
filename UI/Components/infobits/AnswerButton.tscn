@@ -60,14 +60,14 @@ answer_text = "Antwort Text"
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 margin_right = 1080.0
-margin_bottom = 90.0
+margin_bottom = 102.0
 custom_constants/margin_top = 20
 custom_constants/margin_bottom = 20
 
 [node name="Control2" type="Control" parent="MarginContainer"]
 margin_top = 20.0
 margin_right = 1080.0
-margin_bottom = 70.0
+margin_bottom = 82.0
 
 [node name="CheckBox" type="TextureRect" parent="MarginContainer/Control2"]
 visible = false
@@ -88,7 +88,7 @@ __meta__ = {
 [node name="Label" type="Label" parent="MarginContainer"]
 margin_top = 20.0
 margin_right = 1080.0
-margin_bottom = 70.0
+margin_bottom = 82.0
 custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.392157, 0.388235, 0.388235, 1 )
 text = "Antwort Text"

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://UI/RewardCollector.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/QuizEnd.gd" type="Script" id=2]
@@ -9,6 +9,35 @@
 [sub_resource type="DynamicFont" id=1]
 size = 72
 font_data = ExtResource( 9 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "Enter"
+tracks/0/type = "method"
+tracks/0/path = NodePath("MarginContainer/VBoxContainer/kiko_avatar - placeholder")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "play_enter"
+} ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("MarginContainer/VBoxContainer/RewardCollector:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
 
 [node name="QuizEnd" type="PanelContainer"]
 margin_right = 1080.0
@@ -21,7 +50,7 @@ __meta__ = {
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 margin_right = 1080.0
-margin_bottom = 1422.0
+margin_bottom = 1390.0
 custom_constants/margin_right = 64
 custom_constants/margin_left = 64
 custom_constants/margin_bottom = 64
@@ -29,16 +58,17 @@ custom_constants/margin_bottom = 64
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 margin_left = 64.0
 margin_right = 1016.0
-margin_bottom = 1358.0
+margin_bottom = 1326.0
 custom_constants/separation = 101
 
 [node name="kiko_avatar - placeholder" parent="MarginContainer/VBoxContainer" instance=ExtResource( 5 )]
 anchor_right = 0.0
 margin_right = 952.0
 margin_bottom = 400.0
-text = "Frontmatter missing :("
+text = "quiz_end_message"
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+visible = false
 margin_top = 501.0
 margin_right = 952.0
 margin_bottom = 597.0
@@ -52,11 +82,21 @@ __meta__ = {
 }
 
 [node name="RewardCollector" parent="MarginContainer/VBoxContainer" instance=ExtResource( 1 )]
+modulate = Color( 1, 1, 1, 0 )
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 698.0
+margin_top = 501.0
 margin_right = 952.0
-margin_bottom = 1358.0
+margin_bottom = 1161.0
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer"]
+margin_top = 1262.0
+margin_right = 952.0
+margin_bottom = 1326.0
+custom_styles/separator = ExtResource( 8 )
+custom_constants/separation = 64
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Enter"
+anims/Enter = SubResource( 2 )

@@ -45,6 +45,7 @@ func _update():
 		if quest_status != null: 
 			if quest_status.has("completed"):
 				quest_card_inst.set_icon(is_completed_icon)
+				quest_card_inst.set_accent_color(sector["sector_color"].lightened(0.3))
 			else:
 				quest_card_inst.set_is_show_progress(true)
 				quest_card_inst.set_progress(Util.frac(OS.get_unix_time(), quest_status.when, quest_status.quest_dead_line))

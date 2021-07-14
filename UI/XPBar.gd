@@ -33,6 +33,8 @@ func _update():
 	if inventory.xp == 0: 
 		visible = false
 		return
+	else: 
+		visible = true
 	if last_xp == null:
 		xp_progress.value = RewardService.level_frag(current_xp)
 	else:

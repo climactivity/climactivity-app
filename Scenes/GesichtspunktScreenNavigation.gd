@@ -1,31 +1,34 @@
-extends Control
+extends SceneBase
 
 var s_infobyte_card = preload("res://UI/ListEntry.tscn")
 
-var _navigation_data
-onready var scene = $"../../../../../../.."
 
+onready var container = $"ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/VBoxContainer"
+onready var kiko_hint = $"ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/kiko_avatar - placeholder"
 func _ready():
 	_show_data()
+#	if _navigation_data != null and _navigation_data.has("factor"):
+	kiko_hint.play_enter()
 
 func receive_navigation(navigation_data):
 	_navigation_data = navigation_data
 	_show_data()
 
 func _show_data():
-	if scene == null: return
+	if container == null: return
 	if _navigation_data == null: return 
 	if _navigation_data.has("factor") and _navigation_data.has("aspect"):
 		var factor = _navigation_data["factor"]
 		var aspect = _navigation_data["aspect"]
 		var sector = _navigation_data["sector"]
 		var infobytes = Api.get_infobytes_for_factor(_navigation_data.get("factor"), _navigation_data.get("aspect"))
-		scene.set_screen_title ( _navigation_data.aspect.name if _navigation_data.has("aspect") else "Gesichtspunkte" ) 
-		scene.set_accent_color(sector["sector_color"])
+		set_screen_title ( _navigation_data.aspect.name if _navigation_data.has("aspect") else "Gesichtspunkte" ) 
+		set_accent_color(sector["sector_color"])
+		kiko_hint.set_text(factor.intro)
 		if aspect.icon != null: 
-				scene.set_header_icon(aspect.icon)
+				set_header_icon(aspect.icon)
 		else:
-				scene.set_header_icon(sector["sector_logo"])
+				set_header_icon(sector["sector_logo"])
 		for infobyte in infobytes: 
 			var new_child = s_infobyte_card.instance()
 			var infobyte_completed = InfobyteService.is_completed(infobyte._id)
@@ -38,6 +41,5 @@ func _show_data():
 			else:
 				new_child.set_icon(sector["sector_logo"])
 			new_child.is_start_hidden(true)
-			add_child(new_child)
+			container.add_child(new_child)
 
-		return

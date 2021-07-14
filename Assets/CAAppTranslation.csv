@@ -40,4 +40,14 @@ no_accepted_quests,Du hast dir noch keine Challenges ausgesucht - gehe in ein Th
 collect_reward_action_label,Einsammeln,Collect
 collected_reward_action_label,Eingesammelt,
 quest_social_chellenge,Fordere jemanden heraus,
-hint_wait_water,Warte bis sich etwas Wasser angesammelt hat,hint_wait_water
+hint_wait_water,"Warte ab, bis sich etwas [color=#279bd4]Wasser[/color] angesammelt hat",hint_wait_water
+info_skip_to_quiz,Direkt zum Quiz,
+info_next_infobyte,Weiter,
+info_prev_infobyte,Zurück,
+hint_select_exactly_one,Wähle die richtige Antwort,
+hint_select_at_least_one,Wähle eine der passenden Antworten,
+hint_select_many,,
+tracking_header_text,"Trage ein, wie du derzeit bezüglich dieses Aspekts lebst und lasse deinen Wald wachsen!",
+info_header_text,Lerne spannende Informationen kennen und verdiene über Quizzes Punkte und Taler,
+quest_header_text,Welcher Herausforderung willst du dich in diesem Bereich stellen und Punkte sowie Taler verdienen?,
+quiz_start_hint,Jetzt kannst du mit deinem Wissen punkten. Los geht‘s mit einem kleinen Quiz!,

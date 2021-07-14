@@ -44,20 +44,20 @@ margin_right = 1072.0
 margin_bottom = 47.0
 alignment = 1
 
-[node name="coins_icon_holder" type="MarginContainer" parent="HBoxContainer"]
+[node name="xp_icon_holder" type="MarginContainer" parent="HBoxContainer"]
 margin_left = 425.0
 margin_right = 465.0
 margin_bottom = 43.0
 rect_min_size = Vector2( 40, 40 )
 
-[node name="coins_icon" type="TextureRect" parent="HBoxContainer/coins_icon_holder"]
+[node name="xp_icon" type="TextureRect" parent="HBoxContainer/xp_icon_holder"]
 margin_right = 40.0
 margin_bottom = 43.0
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 expand = true
 stretch_mode = 6
 
-[node name="coins_label" type="Label" parent="HBoxContainer"]
+[node name="xp_label" type="Label" parent="HBoxContainer"]
 margin_left = 469.0
 margin_right = 523.0
 margin_bottom = 43.0
@@ -73,20 +73,20 @@ margin_bottom = 43.0
 custom_styles/separator = ExtResource( 6 )
 custom_constants/separation = 10
 
-[node name="xp_icon_holder" type="MarginContainer" parent="HBoxContainer"]
+[node name="coins_icon_holder" type="MarginContainer" parent="HBoxContainer"]
 margin_left = 541.0
 margin_right = 581.0
 margin_bottom = 43.0
 rect_min_size = Vector2( 40, 40 )
 
-[node name="xp_icon" type="TextureRect" parent="HBoxContainer/xp_icon_holder"]
+[node name="coins_icon" type="TextureRect" parent="HBoxContainer/coins_icon_holder"]
 margin_right = 40.0
 margin_bottom = 43.0
-texture = ExtResource( 5 )
+texture = ExtResource( 4 )
 expand = true
 stretch_mode = 6
 
-[node name="xp_label" type="Label" parent="HBoxContainer"]
+[node name="coins_label" type="Label" parent="HBoxContainer"]
 margin_left = 585.0
 margin_right = 639.0
 margin_bottom = 43.0

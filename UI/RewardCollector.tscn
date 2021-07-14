@@ -42,7 +42,7 @@ void fragment() {
 	COLOR = texture(TEXTURE, UV) * (1.0 - greyness); //* vec4(0.5, 0.5, 0.5, 1);
 }"
 
-[sub_resource type="ShaderMaterial" id=3]
+[sub_resource type="ShaderMaterial" id=5]
 resource_local_to_scene = true
 shader = SubResource( 2 )
 shader_param/greyness = 0.0
@@ -50,7 +50,7 @@ shader_param/greyness = 0.0
 [sub_resource type="Gradient" id=4]
 colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
 
-[sub_resource type="ShaderMaterial" id=5]
+[sub_resource type="ShaderMaterial" id=3]
 resource_local_to_scene = true
 shader = SubResource( 2 )
 shader_param/greyness = 0.0
@@ -267,8 +267,8 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 reward = ExtResource( 10 )
-disabled = false
-label = "collect"
+display_frac = 0.9
+label = "collect_reward_action_label"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 margin_left = 64.0
@@ -283,56 +283,9 @@ margin_bottom = 240.0
 custom_constants/separation = 64
 alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
 margin_left = 284.0
 margin_right = 444.0
-margin_bottom = 240.0
-
-[node name="coins_icon_holder" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
-margin_right = 160.0
-margin_bottom = 160.0
-rect_min_size = Vector2( 160, 160 )
-
-[node name="coins_icon" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/coins_icon_holder"]
-material = SubResource( 3 )
-margin_right = 160.0
-margin_bottom = 160.0
-texture = ExtResource( 3 )
-expand = true
-stretch_mode = 6
-script = ExtResource( 11 )
-
-[node name="coin_particels" type="CPUParticles2D" parent="VBoxContainer/HBoxContainer/VBoxContainer/coins_icon_holder"]
-position = Vector2( 80, 40 )
-emitting = false
-amount = 50
-lifetime = 1.5
-one_shot = true
-local_coords = false
-texture = ExtResource( 4 )
-emission_shape = 2
-emission_rect_extents = Vector2( 80, 0 )
-direction = Vector2( 0, -1 )
-spread = 0.0
-gravity = Vector2( 0, -98 )
-initial_velocity = 1000.0
-initial_velocity_random = 0.7
-scale_amount = 0.17
-color_ramp = SubResource( 4 )
-
-[node name="coins_label" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
-margin_top = 164.0
-margin_right = 160.0
-margin_bottom = 240.0
-custom_fonts/font = ExtResource( 1 )
-custom_colors/font_color = Color( 0.411765, 0.411765, 0.407843, 1 )
-text = "500"
-align = 1
-valign = 1
-
-[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
-margin_left = 508.0
-margin_right = 668.0
 margin_bottom = 240.0
 
 [node name="xp_icon_holder" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer2"]
@@ -348,6 +301,7 @@ texture = ExtResource( 2 )
 expand = true
 stretch_mode = 6
 script = ExtResource( 11 )
+greyness = 0.08
 
 [node name="xp_particles" type="CPUParticles2D" parent="VBoxContainer/HBoxContainer/VBoxContainer2/xp_icon_holder"]
 position = Vector2( 80, 40 )
@@ -368,6 +322,54 @@ scale_amount = 0.1
 color_ramp = SubResource( 4 )
 
 [node name="xp_label" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer2"]
+margin_top = 164.0
+margin_right = 160.0
+margin_bottom = 240.0
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0.411765, 0.411765, 0.407843, 1 )
+text = "500"
+align = 1
+valign = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+margin_left = 508.0
+margin_right = 668.0
+margin_bottom = 240.0
+
+[node name="coins_icon_holder" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+margin_right = 160.0
+margin_bottom = 160.0
+rect_min_size = Vector2( 160, 160 )
+
+[node name="coins_icon" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/coins_icon_holder"]
+material = SubResource( 3 )
+margin_right = 160.0
+margin_bottom = 160.0
+texture = ExtResource( 3 )
+expand = true
+stretch_mode = 6
+script = ExtResource( 11 )
+greyness = 0.08
+
+[node name="coin_particels" type="CPUParticles2D" parent="VBoxContainer/HBoxContainer/VBoxContainer/coins_icon_holder"]
+position = Vector2( 80, 40 )
+emitting = false
+amount = 50
+lifetime = 1.5
+one_shot = true
+local_coords = false
+texture = ExtResource( 4 )
+emission_shape = 2
+emission_rect_extents = Vector2( 80, 0 )
+direction = Vector2( 0, -1 )
+spread = 0.0
+gravity = Vector2( 0, -98 )
+initial_velocity = 1000.0
+initial_velocity_random = 0.7
+scale_amount = 0.17
+color_ramp = SubResource( 4 )
+
+[node name="coins_label" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
 margin_top = 164.0
 margin_right = 160.0
 margin_bottom = 240.0

@@ -53,6 +53,8 @@ func _ready():
 	quiz_end = get_node(quiz_end)
 	progress_blips = get_node(progress_blips)
 	
+	connect("align_top", self, "align_footer")
+	
 	front_matter.connect("skip_to_quiz", self, "_on_direct_to_quiz_button_pressed")
 	
 	connect("next_infobit", infobit_holder, "next")
@@ -75,6 +77,12 @@ func _ready():
 	if preloaded_quiz_data != {}: 
 		receive_navigation(preloaded_quiz_data)
 
+func align_footer(height):
+	var footer = $"ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/Footer"
+	var current_margin = footer.margin_top
+	current_margin += height
+	footer.margin_top = current_margin
+
 func receive_navigation(_quiz_data):
 	quiz_data = _quiz_data.quiz
 	set_screen_title(quiz_data.name)
@@ -96,12 +104,12 @@ func _finished_loading():
 	state = InfoByteState.FRONT
 
 func _show_infobits():
-	print("showing infobits")
+#	print("showing infobits")
 	state = InfoByteState.INFO
 	anim_player.play("show_infobit_holder")
 	progress_blips.set_mode(ProgressBlip.BlipMode.INFO)
 	var blip_count = quiz_data.info_bits.size()
-	print("blip_count: ",blip_count)
+#	print("blip_count: ",blip_count)
 	progress_blips.set_blips(blip_count)
 #	progress_blips.set_active(0)
 	
@@ -110,12 +118,12 @@ func _next_infobit():
 		reshow = false
 		return
 	emit_signal("next_infobit") 
-	print("next_infobit")
+#	print("next_infobit")
 	back_button.set_disabled(false)
 	
 func _prev_infobit(): 
 	emit_signal("prev_infobit")
-	print("prev_infobit")
+#	print("prev_infobit")
 	
 func _last_infobit():
 	Logger.print("Last infobit reached " + quiz_data.name, self)

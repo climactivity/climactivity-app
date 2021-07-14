@@ -314,7 +314,7 @@ margin_bottom = 400.0
 anchor_right = 0.0
 margin_right = 1060.0
 margin_bottom = 400.0
-text = "Aufgaben"
+text = "quest_header_text"
 
 [node name="QuestList" type="VBoxContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/Aufgaben/MarginContainer/VBoxContainer" index="1"]
 margin_top = 404.0

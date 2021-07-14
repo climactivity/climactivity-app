@@ -678,7 +678,6 @@ __meta__ = {
 
 [node name="Infobits" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ContentHolder" index="2" instance=ExtResource( 9 )]
 visible = false
-modulate = Color( 1, 1, 1, 0.25 )
 anchor_left = 0.0
 anchor_right = 0.0
 margin_left = 0.0
@@ -729,7 +728,7 @@ mouse_filter = 2
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = -213.0
+margin_top = -257.0
 size_flags_horizontal = 3
 size_flags_vertical = 9
 custom_styles/panel = SubResource( 6 )
@@ -739,16 +738,16 @@ __meta__ = {
 
 [node name="Panel" type="Panel" parent="ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/Footer" index="0"]
 margin_right = 1080.0
-margin_bottom = 213.0
+margin_bottom = 257.0
 custom_styles/panel = ExtResource( 10 )
 
 [node name="BackButton" parent="ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/Footer/Panel" index="0" instance=ExtResource( 7 )]
 anchor_top = 0.5
 anchor_bottom = 0.5
 margin_left = 40.0
-margin_top = -56.5
+margin_top = -81.5
 margin_right = 364.0
-margin_bottom = 52.5
+margin_bottom = 27.5
 text = "Zurück"
 
 [node name="ContinueButton" parent="ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/Footer/Panel" index="1" instance=ExtResource( 7 )]
@@ -757,9 +756,9 @@ anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
 margin_left = -399.909
-margin_top = -56.5908
+margin_top = -81.5908
 margin_right = -25.9094
-margin_bottom = 52.4092
+margin_bottom = 27.4092
 text = "Weiter"
 
 [node name="ProgressBlips" parent="ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/Footer/Panel" index="2" instance=ExtResource( 11 )]
@@ -768,15 +767,14 @@ margin_bottom = 36.0
 
 [node name="ShareButton" type="TextureButton" parent="ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/Footer/Panel" index="3"]
 visible = false
-modulate = Color( 1, 1, 1, 0 )
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -64.5
-margin_top = -54.5
+margin_top = -73.4187
 margin_right = 64.5
-margin_bottom = 70.5
+margin_bottom = 51.5813
 disabled = true
 texture_normal = ExtResource( 14 )
 texture_pressed = ExtResource( 17 )
