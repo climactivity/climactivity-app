@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://Scenes/SceneBase.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/QuizScene.gd" type="Script" id=2]
@@ -17,6 +17,7 @@
 [ext_resource path="res://Assets/Theme/share_button_hover.png" type="Texture" id=15]
 [ext_resource path="res://Assets/Theme/share_button_disabled.png" type="Texture" id=16]
 [ext_resource path="res://Assets/Theme/share_button_down.png" type="Texture" id=17]
+[ext_resource path="res://Assets/Icons/Arrow - Left W.png" type="Texture" id=18]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.972549, 0.972549, 0.972549, 1 )
@@ -746,20 +747,30 @@ anchor_top = 0.5
 anchor_bottom = 0.5
 margin_left = 40.0
 margin_top = -81.5
-margin_right = 364.0
+margin_right = 360.0
 margin_bottom = 27.5
+icon_left = true
+icon_texture = ExtResource( 18 )
+texture_min_size = 76
+font_color = Color( 0.482353, 0.776471, 0.109804, 1 )
 text = "Zurück"
+color_icon = true
+h_sep = 22
 
 [node name="ContinueButton" parent="ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/Footer/Panel" index="1" instance=ExtResource( 7 )]
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-margin_left = -399.909
-margin_top = -81.5908
-margin_right = -25.9094
-margin_bottom = 27.4092
+margin_left = -360.0
+margin_top = -81.5
+margin_right = -40.0
+margin_bottom = 27.5
+texture_min_size = 76
+font_color = Color( 0.482353, 0.776471, 0.109804, 1 )
 text = "Weiter"
+color_icon = true
+h_sep = 29
 
 [node name="ProgressBlips" parent="ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/Footer/Panel" index="2" instance=ExtResource( 11 )]
 margin_top = -36.0

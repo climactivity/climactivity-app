@@ -2,7 +2,7 @@ extends PanelContainer
 
 signal selected(option)
 signal deselected(option)
-
+signal unselected(option)
 export var panel_style = preload("res://UI/Components/M_TrackingOption.tres")
 var selected = false
 #var option_data setget set_tracking_option_data

@@ -4,6 +4,7 @@ signal anim_finished
 signal end_reached
 signal selected_answer
 signal can_check
+signal cannot_check
 signal has_checked
 
 signal question_state(position, state)
@@ -34,6 +35,8 @@ func on_data(new_data):
 		questions.append(question_box)
 		question_box.set_question(question)
 		question_box.connect("ready_to_check", self, "_can_check")
+		question_box.connect("cannot_check", self, "_cannot_check")
+		
 
 func next():
 	if current_question < questions.size() - 1:
@@ -45,10 +48,6 @@ func next():
 			return
 	var next_index = get_next_incorrect()
 	if next_index != -1:
-		if next_index == current_question:
-			Logger.print("Reset active question: " + str(current_question), self)
-			questions[current_question].clear_selected()
-			return
 		current_question = next_index
 		Logger.print("Set active question index: " + str(current_question), self)
 		_update_question("forward")
@@ -72,17 +71,21 @@ func _update_question(anim_to_play):
 	for child in current.get_children():
 		current.remove_child(child)
 		last.add_child(child)
+	var next_question_parent = questions[current_question].get_parent()
+	if next_question_parent:
+		next_question_parent.remove_child(questions[current_question])
 	current.add_child(questions[current_question])
 	questions[current_question].clear_selected()
 	questions[current_question].play_enter()
 	anim_player.play(anim_to_play)
 
 func _can_check(): 
-	print("can_check")
 	emit_signal("can_check")
 
+func _cannot_check(): 
+	emit_signal("cannot_check") 
+	
 func check_answer():
-	print("has_checked")
 	var question_result = questions[current_question].check_result()
 	selected_answers.push_back(question_result)
 	emit_signal("has_checked")

@@ -68,6 +68,7 @@ func _ready():
 	connect("check_answer", questions_holder, "check_answer")
 	questions_holder.connect("end_reached", self, "_last_question")
 	questions_holder.connect( "can_check", self, "_can_check")
+	questions_holder.connect( "cannot_check", self, "_cannot_check")
 	questions_holder.connect( "has_checked" ,self, "_has_checked")
 	loading_anim.connect("finished_loading", self, "_finished_loading")
 	
@@ -158,7 +159,10 @@ func _wait_check():
 	
 func _can_check():
 	continue_button.set_disabled(false)
-	
+
+func _cannot_check():
+	continue_button.set_disabled(true)
+
 func _has_checked(): 
 	wait_check = false
 	continue_button.set_text("Weiter")

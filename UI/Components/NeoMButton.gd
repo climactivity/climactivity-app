@@ -11,10 +11,11 @@ export var font_color_disabled = Color(.3,.3,.3,1) setget set_font_color_disable
 export var text = "" setget set_text
 export var button_disabled = false setget set_disabled
 export var color_icon = false setget set_color_icon
+export var h_sep = 0 setget set_h_sep
 onready var button = $Panel2/Button
-onready var content_holder = $Panel2/Button/HBoxContainer
-onready var label = $Panel2/Button/HBoxContainer/Label
-onready var icon = $Panel2/Button/HBoxContainer/TextureRect
+onready var content_holder = $Panel2/Button/MarginContainer/HBoxContainer
+onready var label = $Panel2/Button/MarginContainer/HBoxContainer/Label
+onready var icon = $Panel2/Button/MarginContainer/HBoxContainer/TextureRect
 
 func _ready(): 
 	set_text(text)
@@ -24,7 +25,11 @@ func _ready():
 	_update_colors()
 	set_disabled(button_disabled)
 	set_color_icon(color_icon)
-	
+
+func set_h_sep(sep): 
+	h_sep  = sep 
+	if(is_instance_valid(content_holder)):
+		content_holder.set("custom_constants/separation", h_sep)
 func set_icon_textrue(texture: Texture): 
 	icon_texture = texture
 	if(icon == null): return
@@ -36,9 +41,10 @@ func set_icon_align_left(left):
 	if(is_instance_valid(content_holder)):
 		if(icon_left):
 			content_holder.move_child(label,1)
+			content_holder.alignment = content_holder.ALIGN_BEGIN
 		else:
 			content_holder.move_child(label,0)
-
+			content_holder.alignment = content_holder.ALIGN_END
 func set_icon_size(new_size):
 	texture_min_size = new_size
 	if(icon == null): return
@@ -53,7 +59,7 @@ func _update_colors():
 		label.set("custom_colors/font_color", font_color_disabled)
 	else:
 		label.set("custom_colors/font_color", font_color)
-		button.set("custom_styles/pressed/custom_styles/border_color", font_color)
+#		button.set("custom_styles/pressed/custom_styles/border_color", font_color)
 	if(icon != null):
 		if(color_icon):
 			icon.modulate = font_color_disabled if button_disabled else font_color

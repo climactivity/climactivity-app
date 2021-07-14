@@ -3,6 +3,7 @@ extends Control
 var question setget set_question
 
 signal ready_to_check
+signal cannot_check
 signal on_next_question
 
 var question_text
@@ -67,7 +68,7 @@ func clear_selected():
 func _on_answer_unselected(answer):
 	var index = selected_answers.find(answer)
 	if (index != -1): selected_answers.remove(index)
-
+	_can_check()
 func check_result():
 	for answer_button in answers:
 		answer_button.lock() 
@@ -86,5 +87,7 @@ func get_result():
 	
 	
 func _can_check():
-	if(true): 
+	if(selected_answers.size() > 0): 
 		emit_signal("ready_to_check")
+	else: 
+		emit_signal("cannot_check")
