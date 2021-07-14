@@ -164,3 +164,6 @@ func lock():
 func unlock():
 	can_fire = true
 	set_state(AnswerState.DEFAULT)
+
+func reset(): 
+	$Enter.play("RESET")

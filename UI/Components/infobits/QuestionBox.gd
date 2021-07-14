@@ -62,7 +62,7 @@ func clear_selected():
 		selected_answers.clear()
 		for answer in answers:
 			answer.unlock()
-		
+			answer.reset()
 
 func _on_answer_unselected(answer):
 	var index = selected_answers.find(answer)

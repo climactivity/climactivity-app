@@ -68,5 +68,12 @@ __meta__ = {
 
 [node name="Stagger" parent="VBoxContainer2/VBoxContainer" instance=ExtResource( 3 )]
 
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer2"]
+margin_top = 455.0
+margin_right = 1084.0
+margin_bottom = 525.0
+custom_styles/separator = ExtResource( 2 )
+custom_constants/separation = 70
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Enter = SubResource( 1 )
