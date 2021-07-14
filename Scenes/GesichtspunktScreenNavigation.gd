@@ -42,4 +42,3 @@ func _show_data():
 				new_child.set_icon(sector["sector_logo"])
 			new_child.is_start_hidden(true)
 			container.add_child(new_child)
-

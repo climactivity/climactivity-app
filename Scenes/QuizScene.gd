@@ -100,13 +100,13 @@ func _on_quiz_data(quiz_data):
 	questions_holder.on_data(quiz_data.questions)
 
 func _finished_loading(): 
-	anim_player.play("show_frontmatter")
+	anim_player.queue("show_frontmatter")
 	state = InfoByteState.FRONT
 
 func _show_infobits():
 #	print("showing infobits")
 	state = InfoByteState.INFO
-	anim_player.play("show_infobit_holder")
+	anim_player.queue("show_infobit_holder")
 	progress_blips.set_mode(ProgressBlip.BlipMode.INFO)
 	var blip_count = quiz_data.info_bits.size()
 #	print("blip_count: ",blip_count)
@@ -129,13 +129,13 @@ func _last_infobit():
 	Logger.print("Last infobit reached " + quiz_data.name, self)
 	state = InfoByteState.QUIZ_INTRO
 	progress_blips.next()
-	anim_player.play("show_quiz_intro")
+	anim_player.queue("show_quiz_intro")
 	
 func _show_quiz(): 
 	state = InfoByteState.QUIZ
 	back_button.set_disabled(true)
 	back_button.visible = false
-	anim_player.play("show_quiz")
+	anim_player.queue("show_quiz")
 	progress_blips.set_mode(ProgressBlip.BlipMode.QUIZ)
 	var blip_count = quiz_data.questions.size()
 	progress_blips.set_blips(blip_count)
@@ -176,7 +176,7 @@ func _last_question():
 	quiz_end.set_result(quiz_result)
 	quiz_end.set_quiz(quiz_data)
 
-	anim_player.play("show_quiz_result")
+	anim_player.queue("show_quiz_result")
 	state = InfoByteState.QUIZ_COMPLETE
 	continue_button.set_text("Zur Auswahl")
 	continue_button.set_disabled(false)
@@ -242,7 +242,7 @@ func _on_CollectRewardButton_pressed():
 
 
 func _on_direct_to_quiz_button_pressed():
-	anim_player.play("skip_to_quiz")
+	anim_player.queue("skip_to_quiz")
 
 
 func _on_ShareButton_pressed():

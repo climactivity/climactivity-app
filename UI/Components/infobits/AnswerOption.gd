@@ -50,37 +50,25 @@ func set_state(_state):
 	state = _state
 	update()
 
-func update(): 	
-#	if (label == null): return
+var last_state = AnswerState.DEFAULT
+func update(): 
 	label.text = answer_data.value
 	match(state): 
 		AnswerState.DEFAULT:
-#			set("custom_styles/panel", default)
-#			checkbox.texture = icon_default
-			modulate = Color("#ffffff")
-			$AnimationPlayer.play("RESET")
-#			if(label): label.set("custom_colors/font_color", Color("#696968"))
+			if last_state == AnswerState.DEFAULT: 
+				$AnimationPlayer.play("RESET")
+			else: 
+				$AnimationPlayer.play("Deselect")
 		AnswerState.SELECTED:
-#			set("custom_styles/panel", selected)
-#			checkbox.texture = icon_selected
-			modulate = Color("#d4d4d4")
 			$AnimationPlayer.play("Select")
-#			if(label): label.set("custom_colors/font_color", Color("#ffffff"))
 		AnswerState.SELECTED_CORRECT:
-#			set("custom_styles/panel", selected_correct)
-#			checkbox.texture = icon_selected_correct
-			modulate = Color("#00ff00")
-#			if(label): label.set("custom_colors/font_color", Color("#ffffff"))
+			$AnimationPlayer.play("SelectedCorrect")
 		AnswerState.CORRECT:
-#			set("custom_styles/panel", correct)
-#			checkbox.texture = icon_correct
-			modulate = Color("#aaffaa")
-#			if(label): label.set("custom_colors/font_color", Color("#ffffff"))
+			$AnimationPlayer.play("Correct")
 		AnswerState.WRONG:
-#			set("custom_styles/panel", wrong)
-#			checkbox.texture = icon_wrong
-			modulate = Color("#ff0000")
-#			if(label): label.set("custom_colors/font_color", Color("#ffffff"))
+			$AnimationPlayer.play("Wrong")
+
+	last_state = state
 	
 func set_checkbox_controller(controller):
 	checkox_controller = controller
