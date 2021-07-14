@@ -44,7 +44,7 @@ func set_question(new_question):
 			num_correct_answers += 1
 	match num_correct_answers:
 		0: 
-			Logger.error("No correct answers in question: %s" % question.value, self )
+			Logger.error("No correct answers in question: %s" % question.question, self )
 		1: 
 			$"VBoxContainer2/Label".text = tr("hint_select_exactly_one")
 		_:

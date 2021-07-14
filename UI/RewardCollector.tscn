@@ -129,27 +129,13 @@ tracks/5/keys = {
 "update": 0,
 "values": [ 0.0, 0.8 ]
 }
-tracks/6/type = "method"
-tracks/6/path = NodePath(".")
+tracks/6/type = "value"
+tracks/6/path = NodePath(".:disabled")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
-"times": PoolRealArray( 1 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "on_collected"
-} ]
-}
-tracks/7/type = "value"
-tracks/7/path = NodePath(".:disabled")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/keys = {
 "times": PoolRealArray( 0, 0.5, 1 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
@@ -267,7 +253,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 reward = ExtResource( 10 )
-display_frac = 0.9
 label = "collect_reward_action_label"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
@@ -301,7 +286,6 @@ texture = ExtResource( 2 )
 expand = true
 stretch_mode = 6
 script = ExtResource( 11 )
-greyness = 0.08
 
 [node name="xp_particles" type="CPUParticles2D" parent="VBoxContainer/HBoxContainer/VBoxContainer2/xp_icon_holder"]
 position = Vector2( 80, 40 )
@@ -349,7 +333,6 @@ texture = ExtResource( 3 )
 expand = true
 stretch_mode = 6
 script = ExtResource( 11 )
-greyness = 0.08
 
 [node name="coin_particels" type="CPUParticles2D" parent="VBoxContainer/HBoxContainer/VBoxContainer/coins_icon_holder"]
 position = Vector2( 80, 40 )

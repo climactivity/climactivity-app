@@ -4,7 +4,7 @@ var level
 var current_xp
 var last_xp
 var coins
-
+var last_coins
 var inventory = PSS.get_player_state_ref().inventory
 
 onready var level_label = $MarginContainer/HBoxContainer/Level/LevelLabel
@@ -40,18 +40,20 @@ func _update():
 	else:
 		var last_frag = RewardService.level_frag(last_xp)
 		var current_frag = RewardService.level_frag(current_xp)
+		print(last_frag, "/",current_frag)
 		if last_frag > current_frag:
 			var tween = $Tween
-			tween.interpolate_property($xp_progress, "value",
+			tween.interpolate_property(xp_progress, "value",
 					last_frag, 1, 1,
 					Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 			tween.interpolate_callback(self, 1, "_update")
 			tween.start()
 		else:
 			var tween = $Tween
-			tween.interpolate_property($xp_progress, "value",
+			tween.interpolate_property(xp_progress, "value",
 					last_frag, current_frag, 1,
 					Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+			tween.interpolate_callback(self, 1, "_update")
 			tween.start()
 	last_xp = current_xp
 

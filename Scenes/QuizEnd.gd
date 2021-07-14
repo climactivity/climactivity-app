@@ -1,7 +1,12 @@
 extends InfoSection
 
+signal reward_collected
 
 func set_result(quiz_result):
-	pass
+	print(quiz_result)
 func set_quiz(quiz_data):
-	pass
+	print(quiz_data)
+
+
+func _on_RewardCollector_collected(reward):
+	emit_signal("reward_collected")

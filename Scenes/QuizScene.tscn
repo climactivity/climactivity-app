@@ -679,6 +679,7 @@ __meta__ = {
 
 [node name="Infobits" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ContentHolder" index="2" instance=ExtResource( 9 )]
 visible = false
+modulate = Color( 1, 1, 1, 0 )
 anchor_left = 0.0
 anchor_right = 0.0
 margin_left = 0.0
@@ -687,8 +688,6 @@ margin_right = 1080.0
 margin_bottom = 1349.0
 
 [node name="QuizStart" type="Control" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ContentHolder" index="3"]
-visible = false
-modulate = Color( 1, 1, 1, 0 )
 margin_right = 1080.0
 margin_bottom = 1349.0
 
@@ -778,6 +777,7 @@ margin_bottom = 36.0
 
 [node name="ShareButton" type="TextureButton" parent="ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/Footer/Panel" index="3"]
 visible = false
+modulate = Color( 1, 1, 1, 0 )
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -807,6 +807,7 @@ anims/show_quiz_intro = SubResource( 11 )
 anims/show_quiz_result = SubResource( 12 )
 anims/skip_to_quiz = SubResource( 13 )
 
+[connection signal="reward_collected" from="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ContentHolder/QuizEnd" to="." method="_on_CollectRewardButton_pressed"]
 [connection signal="pressed" from="ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/Footer/Panel/BackButton" to="." method="_on_BackButton_pressed"]
 [connection signal="pressed" from="ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/Footer/Panel/ContinueButton" to="." method="_on_ContinueButton_pressed"]
 [connection signal="pressed" from="ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/Footer/Panel/ShareButton" to="." method="_on_ShareButton_pressed"]

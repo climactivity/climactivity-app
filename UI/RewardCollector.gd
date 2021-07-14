@@ -67,6 +67,7 @@ func _on_button_button_up():
 
 func _on_button_pressed():
 	animation_player.play("Collect")
+	on_collected()
 
 var last_touch_point : Vector2
 

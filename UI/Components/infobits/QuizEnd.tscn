@@ -100,3 +100,5 @@ custom_constants/separation = 64
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Enter"
 anims/Enter = SubResource( 2 )
+
+[connection signal="collected" from="MarginContainer/VBoxContainer/RewardCollector" to="." method="_on_RewardCollector_collected"]

@@ -93,9 +93,15 @@ func receive_navigation(_quiz_data):
 		Logger.print( "Loaded quiz %s" % [quiz_data.name], self)
 	_on_quiz_data(quiz_data)
 
+var completed_infobyte = false
 func _on_quiz_data(quiz_data):
 #	header.set_screen_label(quiz_data.name)
+	completed_infobyte = (InfobyteService.is_completed(quiz_data._id) is Dictionary)
+	if (OS.is_debug_build() and ProjectSettings.get_setting("debug/settings/game_logic/recomplete_infobytes")):
+		completed_infobyte = false
+	$"ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ContentHolder/QuizStart/kiko_avatar - placeholder".set_text(tr("completed_infobyte_hint") if completed_infobyte else tr("quiz_intro_hint"))
 	front_matter.set_text(quiz_data.name)
+	front_matter.set_completed_infobyte(completed_infobyte)
 	loading_anim.loading_finished()
 	infobit_holder.set_infobits_data(quiz_data.info_bits)
 	questions_holder.on_data(quiz_data.questions)
@@ -131,6 +137,7 @@ func _last_infobit():
 	state = InfoByteState.QUIZ_INTRO
 	progress_blips.next()
 	anim_player.queue("show_quiz_intro")
+	continue_button.set_disabled(completed_infobyte)
 	
 func _show_quiz(): 
 	state = InfoByteState.QUIZ
@@ -236,13 +243,14 @@ func _on_BackButton_pressed():
 	_on_back_button()
 
 var can_exit = false
+
 func _on_CollectRewardButton_pressed():
 	if can_exit: 
 		return
 	InfobyteService.complete_infobyte(quiz_data._id)
-	RewardService.add_reward(quiz_data.reward, true)
+	RewardService.add_reward(quiz_data.reward)
 	can_exit = true
-	$"ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/ContentHolder/QuizEnd/CollectRewardButton".set_disabled(true)
+
 
 
 func _on_direct_to_quiz_button_pressed():

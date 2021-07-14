@@ -60,6 +60,20 @@ margin_right = 1080.0
 margin_bottom = 400.0
 text = "Frontmatter missing :("
 
+[node name="Label2" type="Label" parent="VBoxContainer"]
+visible = false
+margin_top = 404.0
+margin_right = 1080.0
+margin_bottom = 480.0
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0.466667, 0.72549, 0.141176, 1 )
+text = "infobyte_completed"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
 margin_left = 292.0
 margin_top = 404.0
@@ -70,7 +84,6 @@ size_flags_horizontal = 8
 size_flags_vertical = 3
 
 [node name="SkipQuizButton" type="TextureButton" parent="VBoxContainer/MarginContainer"]
-modulate = Color( 1, 1, 1, 0 )
 margin_top = 659.0
 margin_right = 788.0
 margin_bottom = 857.0

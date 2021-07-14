@@ -14,6 +14,9 @@ func receive_navigation(navigation_data):
 	_navigation_data = navigation_data
 	_show_data()
 
+func _restored(): 
+	_show_data()
+
 func _show_data():
 	if container == null: return
 	if _navigation_data == null: return 
@@ -29,6 +32,8 @@ func _show_data():
 				set_header_icon(aspect.icon)
 		else:
 				set_header_icon(sector["sector_logo"])
+				
+		Util.clear(container)
 		for infobyte in infobytes: 
 			var new_child = s_infobyte_card.instance()
 			var infobyte_completed = InfobyteService.is_completed(infobyte._id)

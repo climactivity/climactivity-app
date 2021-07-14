@@ -1,3 +1,4 @@
+extends Node
 var levels = {
 	1: {"xp": 500, "xp_total": 500, "bonus_coins": 5},
 	2: {"xp": 1000, "xp_total": 1500, "bonus_coins": 5},
@@ -100,3 +101,22 @@ var levels = {
 	99: {"xp": 49500, "xp_total": 2475000, "bonus_coins": 5},
 	100: {"xp": 50000, "xp_total": 2525000, "bonus_coins": 20}
 }
+
+func get_level(xp): 
+	for key in levels.keys(): 
+		var _level = levels[key]
+		if _level.xp_total > xp:
+			return key 
+
+func get_frac(xp): 
+	var level = get_level(xp)
+	var frac = 0.0
+	if level == 1:
+		frac = float(xp/levels[1].xp)
+	else: 
+		var prev_level = level - 1 
+#		var teiler = 
+#		var nenner =  - levels[prev_level].xp
+		frac = float(xp - levels[prev_level].xp_total )/ float(levels[level].xp)
+	Logger.print( str(frac), self)
+	return frac
