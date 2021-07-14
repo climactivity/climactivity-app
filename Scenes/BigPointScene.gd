@@ -9,7 +9,7 @@ var aspect_resources = []
 
 onready var req = $HTTPRequest
 onready var aspect_list = $"ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/AspectList"
-
+onready var kiko_hint = $"ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/AspectList/kiko_avatar - placeholder"
 #func _fetch_data(param = null): 
 #	if param != null: 
 #		Api.getEndpoint("aspect_for_sector",req, [param], true)
@@ -22,7 +22,8 @@ func _ready():
 	material = material.duplicate(true)
 	gradient = material.get_shader_param("gradient")
 	render_resources() 
-
+	kiko_hint.play_enter()
+	
 func load_from_cache(): 
 	if Api.is_cache_ready(): 
 		_load_from_cache()
@@ -84,6 +85,7 @@ func render_resources():
 		gradient.gradient.set_color(0, sector_data["sector_color"])
 		material.set_shader_param("gradient", gradient)
 	$"ContentContainer/Content/HeaderBG".self_modulate = sector_data["sector_color"]
+	kiko_hint.set_text(sector_data["sector_hint"])
 #func render_aspects(aspect_data): 
 #	for aspect in aspect_data:
 #		var aspect_card = bp_aspect_card.instance()
