@@ -42,7 +42,7 @@ func prev():
 	update()
 	
 func set_state(_index, _mode): 
-	print("set_state", _index, _mode)
+	# print("set_state", _index, _mode)
 	set_active(_index)
 	set_mode(_mode)
 	
@@ -50,7 +50,7 @@ func update():
 #	if !ready:
 #		return
 	if !is_inside_tree(): return
-	print("blips: ", active)
+	# print("blips: ", active)
 	Util.clear($HBoxContainer)
 	for i in range(0,blip_count):
 		var blip = _blip.instance()

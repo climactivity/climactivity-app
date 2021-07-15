@@ -43,6 +43,8 @@ func update_current_infobit(signal_to_emit: String, anim_to_play = "") -> void:
 		for child in infobit_holder.get_children():
 			infobit_holder.remove_child(child)
 			old_infobit_holder.add_child(child)
+		if current_infobit.get_parent():
+			current_infobit.get_parent().remove_child(current_infobit)
 		infobit_holder.add_child(current_infobit)
 		if(anim_to_play != ""): $AnimationPlayer.play(anim_to_play)
 	else:

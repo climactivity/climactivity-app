@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://UI/Components/Infobits.gd" type="Script" id=1]
 [ext_resource path="res://UI/typography/Content_Regular.tres" type="DynamicFont" id=2]
 [ext_resource path="res://UI/theme/rounded_light.tres" type="StyleBox" id=3]
+[ext_resource path="res://UI/theme/style_box_empty.tres" type="StyleBox" id=4]
 
 [sub_resource type="Animation" id=1]
 resource_name = "RESET"
@@ -255,17 +256,16 @@ tracks/5/keys = {
 "values": [ Vector2( 1080, 0 ), Vector2( 0, 0 ) ]
 }
 
-[node name="Infobits" type="Control"]
+[node name="Infobits" type="PanelContainer"]
 anchor_left = 0.5
 anchor_right = 0.5
 margin_left = -497.0
 margin_top = 40.0
 margin_right = 495.0
 margin_bottom = 1122.0
+mouse_filter = 2
+custom_styles/panel = ExtResource( 4 )
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "RESET"
@@ -274,8 +274,8 @@ anims/backward = SubResource( 2 )
 anims/forward = SubResource( 3 )
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
+margin_right = 992.0
+margin_bottom = 1082.0
 custom_constants/margin_right = 20
 custom_constants/margin_top = 0
 custom_constants/margin_left = 20
@@ -294,17 +294,17 @@ __meta__ = {
 }
 
 [node name="InfoBit" type="ScrollContainer" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_right = 88.0
-margin_bottom = 83.0
+margin_right = 992.0
+margin_bottom = 1082.0
+scroll_horizontal_enabled = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="MarginContainer" type="MarginContainer" parent="InfoBit"]
-margin_right = 1080.0
-margin_bottom = 1165.0
+margin_right = 992.0
+margin_bottom = 1082.0
+mouse_filter = 1
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/margin_right = 50
@@ -312,11 +312,18 @@ custom_constants/margin_top = 100
 custom_constants/margin_left = 50
 custom_constants/margin_bottom = 20
 
+[node name="HSeparator" type="HSeparator" parent="InfoBit/MarginContainer"]
+margin_left = 50.0
+margin_top = 100.0
+margin_right = 942.0
+margin_bottom = 1062.0
+custom_styles/separator = ExtResource( 4 )
+
 [node name="ContentHolder" type="VBoxContainer" parent="InfoBit/MarginContainer"]
 margin_left = 50.0
 margin_top = 100.0
-margin_right = 1030.0
-margin_bottom = 1145.0
+margin_right = 942.0
+margin_bottom = 1062.0
 size_flags_horizontal = 3
 
 [node name="RichTextLabel" type="RichTextLabel" parent="InfoBit/MarginContainer/ContentHolder"]
@@ -351,6 +358,16 @@ bbcode_text = "Phasellus malesuada ac quam vitae gravida. Nulla vulputate urna v
 text = "Phasellus malesuada ac quam vitae gravida. Nulla vulputate urna vitae turpis condimentum iaculis. Suspendisse potenti. Nullam in urna vitae risus tincidunt posuere id quis justo. Phasellus sollicitudin mauris id orci porta sagittis. Donec ac turpis ac lacus consequat sodales. Suspendisse eu neque et arcu consectetur pellentesque eget et nisl. Nunc id blandit metus. Cras purus quam, dignissim id ex quis, laoreet congue ipsum. "
 fit_content_height = true
 scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HSeparator2" type="HSeparator" parent="InfoBit/MarginContainer"]
+margin_left = 50.0
+margin_top = 100.0
+margin_right = 942.0
+margin_bottom = 1062.0
+custom_styles/separator = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
