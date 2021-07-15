@@ -40,7 +40,6 @@ func set_question(new_question):
 		answers.append(answer_button)
 		answer_button.set_answer_data(answer)
 		if answer.has("correct") and answer["correct"]:
-			print("ping")
 			num_correct_answers += 1
 	match num_correct_answers:
 		0: 

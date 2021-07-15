@@ -51,6 +51,6 @@ tracking_header_text,"Trage ein, wie du derzeit bezüglich dieses Aspekts lebst 
 info_header_text,Lerne spannende Informationen kennen und verdiene über Quizzes Punkte und Taler,
 quest_header_text,Welcher Herausforderung willst du dich in diesem Bereich stellen und Punkte sowie Taler verdienen?,
 quiz_start_hint,Jetzt kannst du mit deinem Wissen punkten. Los geht‘s mit einem kleinen Quiz!,
-infobyte_completed,Infobyte schon abgeschlossen,
+infobyte_completed,"Du hast das Quiz schon abgeschlossen, aber kannst natürlich gerne die Infos dazu noch mal lesen",
 completed_infobyte_hint,Du hast diesen Quiz schon geschafft!,
 quiz_intro_hint,Wie wäre es mit einem kurzen Quiz?,

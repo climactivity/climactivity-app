@@ -119,6 +119,7 @@ func _show_infobits():
 #	print("blip_count: ",blip_count)
 	progress_blips.set_blips(blip_count)
 #	progress_blips.set_active(0)
+	continue_button.set_disabled(false)
 	
 func _next_infobit(): 
 	if reshow:
@@ -130,6 +131,7 @@ func _next_infobit():
 	
 func _prev_infobit(): 
 	emit_signal("prev_infobit")
+
 #	print("prev_infobit")
 	
 func _last_infobit():

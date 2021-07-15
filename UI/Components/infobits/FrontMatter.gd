@@ -25,6 +25,7 @@ func update():
 		kiko.set_text(_text)
 	if completed_infobyte: 
 		$"VBoxContainer/MarginContainer/SkipQuizButton".disabled = true
+		$"VBoxContainer/MarginContainer/SkipQuizButton".visible = true
 	$"VBoxContainer/Label2".visible = completed_infobyte
 
 func _on_PanelContainer_pressed():

@@ -32,7 +32,8 @@ func _show_data():
 				set_header_icon(aspect.icon)
 		else:
 				set_header_icon(sector["sector_logo"])
-				
+		if reshow:
+			return
 		Util.clear(container)
 		for infobyte in infobytes: 
 			var new_child = s_infobyte_card.instance()
@@ -45,6 +46,6 @@ func _show_data():
 				new_child.set_icon(aspect.icon)
 			else:
 				new_child.set_icon(sector["sector_logo"])
-			new_child.is_start_hidden(!reshow)
+			new_child.is_start_hidden(true)
 			container.add_child(new_child)
 		reshow = true
