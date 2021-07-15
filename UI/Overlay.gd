@@ -32,3 +32,22 @@ func show_dialog(timeline_name: String):
 func dialog_timeline_completed(timeline_name: String):
 	Logger.print("Finished dialog %s" % timeline_name, self)
 	$AnimationPlayer.play("HideDialog")
+
+var available_timeline = ''
+var hidden = true
+func show_available_tutorial(timeline):
+	available_timeline = timeline
+	if hidden:
+		$AnimationPlayer.play("show_available_tutorial")
+		hidden = false
+
+func hide_available_tutorial():
+	available_timeline = ''
+	yield(get_tree().create_timer(0.1), "timeout")
+	if available_timeline == '':
+		$AnimationPlayer.play_backwards("show_available_tutorial")
+		hidden = true
+
+func _on_TextureButton_pressed():
+	if available_timeline != '': 
+		show_dialog(available_timeline)

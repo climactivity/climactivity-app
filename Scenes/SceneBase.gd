@@ -47,8 +47,11 @@ func on_scroll(scroll_pos):
 	header_bg.modulate.a = shadow_alpha
 	emit_signal("header_shadow_alpha", shadow_alpha)
 
+func _restored(): 
+	play_intro(intro_timeline, intro_gate_var, intro_autoplay_delay)
 
 func play_intro(timeline, gate_var, delay, force = false):
+	GameManager.overlay.hide_available_tutorial()
 	if not gate_var or not timeline:
 		return
 	if force or Dialogic.get_variable(gate_var) == "0" or Util.debug_dialog():
@@ -56,6 +59,8 @@ func play_intro(timeline, gate_var, delay, force = false):
 			yield(get_tree().create_timer(delay), "timeout")
 		Logger.print("Playing intro", self)
 		GameManager.overlay.show_dialog(timeline)
+	else: 
+		GameManager.overlay.show_available_tutorial(timeline)
 
 func align_top(): 
 	var safe_area = OS.get_window_safe_area()
