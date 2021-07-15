@@ -36,6 +36,7 @@ func dialog_timeline_completed(timeline_name: String):
 var available_timeline = ''
 var hidden = true
 func show_available_tutorial(timeline):
+	Logger.print("Tutorial %s available" % timeline, self)
 	available_timeline = timeline
 	if hidden:
 		$AnimationPlayer.play("show_available_tutorial")

@@ -51,7 +51,7 @@ func _restored():
 	play_intro(intro_timeline, intro_gate_var, intro_autoplay_delay)
 
 func play_intro(timeline, gate_var, delay, force = false):
-	if !GameManager == null: return
+	if GameManager == null: return
 	GameManager.overlay.hide_available_tutorial()
 	if not gate_var or not timeline:
 		return

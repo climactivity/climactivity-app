@@ -7,9 +7,7 @@ func _ready():
 	connect("meta_clicked", self, "open_link")
 
 func open_link(meta): 
-	print(meta)
-	OS.shell_open(meta)
-
+	Util.open_link(meta)
 #"""TODO generate bbcode from parsed json dict
 func _parse_data_object(data) -> String: 
 	var text = ""

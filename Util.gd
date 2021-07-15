@@ -104,3 +104,10 @@ static func change_callback(req: HTTPRequest, inst: Object, function: String):
 		req.disconnect("request_completed", inst, current_request_callback)
 	req.connect("request_completed", inst, function)
 
+static func open_link(link: String):
+	print("Open " + link)
+	if '://' in link:
+		OS.shell_open(link)
+	else: 
+		print("Guessing protocol for ", link)
+		OS.shell_open( 'https://'+link)
