@@ -85,7 +85,7 @@ tracks/2/keys = {
 "values": [ false ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("TextureButton:rect_position")
+tracks/3/path = NodePath("TextureButton:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -93,28 +93,16 @@ tracks/3/enabled = true
 tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 1156.31, 1494 ) ]
+"update": 1,
+"values": [ false ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("TextureButton:visible")
+tracks/4/path = NodePath("TextureButton:modulate")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
-}
-tracks/5/type = "value"
-tracks/5/path = NodePath("TextureButton:modulate")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
@@ -316,6 +304,7 @@ __meta__ = {
 }
 
 [node name="Panel" type="Panel" parent="."]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
@@ -327,10 +316,8 @@ __meta__ = {
 [node name="TextureButton" type="TextureButton" parent="."]
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_left = -153.507
-margin_top = -164.01
-margin_right = -0.507004
-margin_bottom = -8.01001
+margin_top = -156.0
+margin_right = 153.0
 texture_normal = ExtResource( 8 )
 expand = true
 stretch_mode = 5

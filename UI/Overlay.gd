@@ -4,7 +4,7 @@ onready var anim_player = $AnimationPlayer
 onready var popup_content = $Popup/MarginContainer
 func _ready():
 	GameManager.overlay = self
-
+	$TextureButton.set_position(Vector2($TextureButton.get_position().x, get_viewport_rect().size.y - $TextureButton.rect_size.y))
 func _show_popup(control):
 	anim_player.play("ShowPopupLayer")
 	$Popup.add_child(control)
