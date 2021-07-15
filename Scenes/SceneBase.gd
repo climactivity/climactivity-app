@@ -50,6 +50,8 @@ func on_scroll(scroll_pos):
 func _restored(): 
 	play_intro(intro_timeline, intro_gate_var, intro_autoplay_delay)
 
+var bottom_margin
+
 func play_intro(timeline, gate_var, delay, force = false):
 	if GameManager == null: return
 	GameManager.overlay.hide_available_tutorial()
@@ -62,7 +64,12 @@ func play_intro(timeline, gate_var, delay, force = false):
 		GameManager.overlay.show_dialog(timeline)
 	else: 
 		GameManager.overlay.show_available_tutorial(timeline)
-
+		if bottom_margin == null:
+			bottom_margin = HSeparator.new()
+			bottom_margin.set("custom_constants/separation", 150)
+			bottom_margin.set("custom_styles/separator", load("res://UI/theme/style_box_empty.tres"))
+			content_main.add_child( bottom_margin)
+			content_main.move_child(bottom_margin, content_main.get_child_count())
 func align_top(): 
 	var safe_area = OS.get_window_safe_area()
 	var header_sep = $"HeaderContainer/HSeparator"
