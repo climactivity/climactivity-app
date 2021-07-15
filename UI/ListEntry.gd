@@ -28,7 +28,7 @@ onready var progress_bar = $"MarginContainer/HBoxContainer/ContentContainer/VBox
 onready var progress_icon = $"MarginContainer/HBoxContainer/ContentContainer/VBoxContainer/MarginContainer/PanelContainer/AspectRatioContainer/TextureRect"
 onready var progress_container = $"MarginContainer/HBoxContainer/ContentContainer/VBoxContainer/MarginContainer"
 var ready = false
-
+export var acceptance_radius = 5.0
 func set_attention_grabber(scene):
 	attention_grabber = scene
 	update()
@@ -158,7 +158,7 @@ func _gui_input(event):
 			_on_Button_button_down()
 			last_touch_point = event.position
 		else: 
-			if event.position == last_touch_point:
+			if (event.position - last_touch_point).length() < acceptance_radius:
 				_on_Button_button_up()
 				_on_Button_pressed()
 

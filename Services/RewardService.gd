@@ -13,6 +13,7 @@ func add_reward(reward, show = false):
 	player_state.add_reward(reward)
 	emit_signal("xp_bar_update")
 	if show: emit_signal("reward_added", reward)
+	PSS.flush()
 
 func DEBUG_default_reward():
 	Logger.print("Generated default reward", self)

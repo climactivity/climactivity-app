@@ -108,6 +108,8 @@ func sync_player_state(immediate = false):
 
 func _sync_player_state(): 
 #	Util.change_callback($HTTPRequest, self, "_on_player_state_synced") 
+	if req == null:
+		return
 	req.connect("request_completed", self, "_on_player_state_synced")
 	getEndpoint("sync-player-state", req, [OS.get_unique_id()], false, HTTPClient.METHOD_POST, JSON.print({"player-state": PSS.get_player_state_as_dict()})) 
 	return 

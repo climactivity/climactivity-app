@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/heterosexual-couple-communication.png-6cc38d21c0787b7260757ad047706890.stex"
+path="res://.import/digital.png-15e84be7cb14cd23d9499cddc1e93e20.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Icons/heterosexual-couple-communication.png"
-dest_files=[ "res://.import/heterosexual-couple-communication.png-6cc38d21c0787b7260757ad047706890.stex" ]
+source_file="res://Assets/Icons/digital.png"
+dest_files=[ "res://.import/digital.png-15e84be7cb14cd23d9499cddc1e93e20.stex" ]
 
 [params]
 

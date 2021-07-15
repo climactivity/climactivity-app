@@ -111,6 +111,13 @@ var DEBUG_aspect_icons = {
 	"Abkehr vom Auto-Vorrang": preload("res://Assets/Icons/mobility-abzeichen2.png"),
 	"Bewusst Konsumieren": preload("res://Assets/Icons/kaufen-nutzen-abzeichen.png"),
 	"Dingen ein zweites Leben schenken": preload("res://Assets/Icons/recyceln-abzeichen.png"), # nur echt mit dem Schreibfehler	
+	"Privat Fliegen": preload("res://Assets/Icons/abzeichen-privat-fliegen.png"),
+	"Beruflich fliegen": preload("res://Assets/Icons/beruflich-fliegen.png"),
+	"Strom sparen": preload("res://Assets/Icons/energieeffizienzklassen-strom-sparen.png"),
+	"Digitales Engagement": preload("res://Assets/Icons/digital.png"),
+	"Finanzielles Engagement": preload("res://Assets/Icons/pig-money-safe-klima.png"),
+	"Ökostrom nutzen und selber erzeugen": preload("res://Assets/Icons/energie-abzeichen.png"), 
+	"Klima-Kommunikation": preload("res://Assets/Icons/heterosexual-couple-communication.png"),
 }
 
 
@@ -122,6 +129,7 @@ func _save_aspect_data(data):
 		if ProjectSettings.get_setting("debug/settings/game_logic/use_fixed_icons"): 
 			if DEBUG_aspect_icons.has(aspect_resource.name):
 				aspect_resource.icon = DEBUG_aspect_icons.get(aspect_resource.name)
+				Logger.print("associating debug_icon %s with %s" % [ aspect_resource.icon.get_load_path(), aspect_resource.name], self)
 		writalbe_cache_manifest.insert(aspect_data["_id"], "RLocalizedAspect", fs)
 		#aspect_resource.take_over_path(path)
 		ResourceSaver.save(path, aspect_resource, 32)

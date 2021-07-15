@@ -211,7 +211,6 @@ navigation_payload = {
 }
 button_replacement = ExtResource( 9 )
 start_hidden = true
-attention_grabber = null
 
 [node name="shop_button_container" type="MarginContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview" index="2"]
 visible = false

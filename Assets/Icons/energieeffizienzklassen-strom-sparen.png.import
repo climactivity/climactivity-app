@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/heterosexual-couple-communication.png-6cc38d21c0787b7260757ad047706890.stex"
+path="res://.import/energieeffizienzklassen-strom-sparen.png-ad6ebf8743a0d441b48b99944031af4e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Icons/heterosexual-couple-communication.png"
-dest_files=[ "res://.import/heterosexual-couple-communication.png-6cc38d21c0787b7260757ad047706890.stex" ]
+source_file="res://Assets/Icons/energieeffizienzklassen-strom-sparen.png"
+dest_files=[ "res://.import/energieeffizienzklassen-strom-sparen.png-ad6ebf8743a0d441b48b99944031af4e.stex" ]
 
 [params]
 

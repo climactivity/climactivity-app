@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/heterosexual-couple-communication.png-6cc38d21c0787b7260757ad047706890.stex"
+path="res://.import/pig-money-safe-klima.png-bb2fdd3a0c6f45cfd25c5e30a907d530.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Icons/heterosexual-couple-communication.png"
-dest_files=[ "res://.import/heterosexual-couple-communication.png-6cc38d21c0787b7260757ad047706890.stex" ]
+source_file="res://Assets/Icons/pig-money-safe-klima.png"
+dest_files=[ "res://.import/pig-money-safe-klima.png-bb2fdd3a0c6f45cfd25c5e30a907d530.stex" ]
 
 [params]
 

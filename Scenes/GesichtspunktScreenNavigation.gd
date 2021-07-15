@@ -2,7 +2,7 @@ extends SceneBase
 
 var s_infobyte_card = preload("res://UI/ListEntry.tscn")
 
-
+var reshow = false
 onready var container = $"ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/VBoxContainer"
 onready var kiko_hint = $"ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/kiko_avatar - placeholder"
 func _ready():
@@ -45,5 +45,6 @@ func _show_data():
 				new_child.set_icon(aspect.icon)
 			else:
 				new_child.set_icon(sector["sector_logo"])
-			new_child.is_start_hidden(true)
+			new_child.is_start_hidden(!reshow)
 			container.add_child(new_child)
+		reshow = true

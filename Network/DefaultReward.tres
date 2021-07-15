@@ -6,6 +6,6 @@
 script = ExtResource( 1 )
 _id = "-1"
 water = 0.0
-coins = 100.0
-xp = 100.0
+coins = 20.0
+xp = 200.0
 trigger = [  ]
