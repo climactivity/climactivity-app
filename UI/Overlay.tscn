@@ -9,7 +9,7 @@
 [ext_resource path="res://UI/PopupController.gd" type="Script" id=7]
 [ext_resource path="res://Assets/kiko_avatar.png" type="Texture" id=8]
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=1]
 resource_name = "HideDialog"
 length = 0.3
 tracks/0/type = "value"
@@ -36,18 +36,20 @@ tracks/1/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
-tracks/2/type = "bezier"
-tracks/2/path = NodePath("TextureButton:rect_position:x")
+tracks/2/type = "value"
+tracks/2/path = NodePath("TextureButton:rect_position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"points": PoolRealArray( -153.507, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 0.3 )
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -153.507, 1755.99 ), Vector2( 0, 1755.99 ) ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=2]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Popup:visible")
 tracks/0/interp = 1
@@ -85,7 +87,7 @@ tracks/2/keys = {
 "values": [ false ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("TextureButton:visible")
+tracks/3/path = NodePath("TextureButton:rect_position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -93,11 +95,11 @@ tracks/3/enabled = true
 tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
+"update": 0,
+"values": [ Vector2( 1156.31, 1494 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("TextureButton:modulate")
+tracks/4/path = NodePath("TextureButton:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -105,11 +107,23 @@ tracks/4/enabled = true
 tracks/4/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("TextureButton:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=3]
 resource_name = "ShowDialog"
 length = 0.3
 tracks/0/type = "value"
@@ -136,15 +150,17 @@ tracks/1/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
-tracks/2/type = "bezier"
-tracks/2/path = NodePath("TextureButton:rect_position:x")
+tracks/2/type = "value"
+tracks/2/path = NodePath("TextureButton:rect_position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, -153.507, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 0.3 )
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 1764 ), Vector2( -153.507, 1755.99 ) ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -174,57 +190,59 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.317647 ) ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=5]
 resource_name = "show_available_tutorial"
 length = 0.4
 tracks/0/type = "value"
-tracks/0/path = NodePath("TextureButton:visible")
+tracks/0/path = NodePath("TextureButton:rect_position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.4 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 1,
-"values": [ false, true, true ]
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -157.511, 1764 ), Vector2( 0, 1764 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("TextureButton:modulate")
+tracks/1/path = NodePath("TextureButton:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0.1, 0.4 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+"times": PoolRealArray( 0, 0.1, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, true ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("TextureButton:disabled")
+tracks/2/path = NodePath("TextureButton:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0.2, 0.4 ),
+"times": PoolRealArray( 0.1, 0.4 ),
 "transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ true, false ]
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
-tracks/3/type = "bezier"
-tracks/3/path = NodePath("TextureButton:rect_position:x")
+tracks/3/type = "value"
+tracks/3/path = NodePath("TextureButton:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"points": PoolRealArray( -157.511, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 0.4 )
+"times": PoolRealArray( 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
 }
 
-[sub_resource type="StyleBoxFlat" id=5]
+[sub_resource type="StyleBoxFlat" id=6]
 bg_color = Color( 0, 0, 0, 0.505882 )
 
 [node name="Overlay" type="Control"]
@@ -280,11 +298,11 @@ __meta__ = {
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "RESET"
-anims/HideDialog = SubResource( 7 )
-anims/RESET = SubResource( 8 )
-anims/ShowDialog = SubResource( 9 )
+anims/HideDialog = SubResource( 1 )
+anims/RESET = SubResource( 2 )
+anims/ShowDialog = SubResource( 3 )
 anims/ShowPopupLayer = SubResource( 4 )
-anims/show_available_tutorial = SubResource( 6 )
+anims/show_available_tutorial = SubResource( 5 )
 
 [node name="Label" type="Label" parent="."]
 visible = false
@@ -304,11 +322,10 @@ __meta__ = {
 }
 
 [node name="Panel" type="Panel" parent="."]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
-custom_styles/panel = SubResource( 5 )
+custom_styles/panel = SubResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -316,8 +333,10 @@ __meta__ = {
 [node name="TextureButton" type="TextureButton" parent="."]
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_top = -156.0
-margin_right = 153.0
+margin_left = -153.507
+margin_top = -164.01
+margin_right = -0.507004
+margin_bottom = -8.01001
 texture_normal = ExtResource( 8 )
 expand = true
 stretch_mode = 5

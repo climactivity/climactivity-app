@@ -315,7 +315,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Climactivity-app"
-run/main_scene="res://SceneManager/SceneManager.tscn"
+run/main_scene="res://SceneManager/Loading.tscn"
 boot_splash/image="res://Assets/logo_sm.png"
 boot_splash/bg_color=Color( 1, 1, 1, 1 )
 config/icon="res://Assets/BG/cyIcon.png"

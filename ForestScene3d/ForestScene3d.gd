@@ -2,11 +2,11 @@ extends Spatial
 signal update_hud
 func _ready(): 
 	$Camera.connect("camera_moved", $Background, "move")
-	Api.connect("cache_ready", self, "enter_game")
+#	Api.connect("cache_ready", self, "enter_game")
 	get_tree().get_root().set_disable_input(true)
 	#$AnimationPlayer.play("Zoom_To_Clearing")
 	GameManager.forest = self
-	if GameManager.menu != null: GameManager.menu.hide_menu()
+#	if GameManager.menu != null: GameManager.menu.hide_menu()
 	$Camera/HUD/DebugMenu.connect("free_place", $ForestFloor/HexGrid, "set_free_place")
 	connect("update_hud", $Camera/HUD, "update_hud")
 	connect("update_hud", $Camera/HUD/Cloud, "update_water_available")
@@ -14,6 +14,8 @@ func _ready():
 	$Camera/HUD/SeedlingBox.connect("placed", $ForestFloor/HexGrid, "place_entity")
 	if is_instance_valid(AspectTrackingService): connect("update_hud", AspectTrackingService, "notify_watered_aspects")
 	$ForestFloor/HexGrid.connect("placed_entity", $Camera/HUD, "update_hud")
+	enter_game()
+	
 func _input(event):
 	if (!OS.is_debug_build()): return
 	if (event is InputEventKey and event.scancode == KEY_R and event.is_pressed()):
@@ -42,6 +44,7 @@ func _restored():
 		GameManager.menu.show_menu()
 		GameManager.menu.set_navigation_state( MainMenu.Navigation_states.HOME ,true)
 		GameManager.overlay.hide_available_tutorial()
+
 func enter_game():
 	$AnimationPlayer.play("Zoom_To_Clearing")
 	DialogicSingleton.get_definitions_list()
@@ -56,6 +59,7 @@ func enter_game():
 	if Dialogic.get_variable("IntroPlayed") == "false" or Util.debug_dialog():
 		yield( $AnimationPlayer, "animation_finished" )
 		GameManager.overlay.show_dialog("Intro")
+	show_overlay()
 
 func show_overlay(): 
 	if GameManager.menu != null: GameManager.menu.show_menu()
