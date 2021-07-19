@@ -8,6 +8,8 @@
 [ext_resource path="res://UI/MainMenu.gd" type="Script" id=6]
 [ext_resource path="res://Assets/Theme/menu_bg.png" type="Texture" id=7]
 
+[sub_resource type="StyleBoxEmpty" id=6]
+
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 7 )
 region_rect = Rect2( -0.477905, -1.10837, 1084.21, 191.582 )
@@ -17,37 +19,8 @@ margin_top = 1.0
 
 [sub_resource type="StyleBoxEmpty" id=2]
 
-[sub_resource type="Animation" id=3]
-resource_name = "Hide"
-length = 0.4
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.4 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ true, false ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath(".:margin_bottom")
-tracks/1/interp = 2
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.4 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 0.0, 400 ]
-}
-
 [sub_resource type="Animation" id=4]
 resource_name = "RESET"
-length = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:visible")
 tracks/0/interp = 1
@@ -60,18 +33,6 @@ tracks/0/keys = {
 "update": 1,
 "values": [ false ]
 }
-tracks/1/type = "value"
-tracks/1/path = NodePath(".:margin_bottom")
-tracks/1/interp = 2
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 400 ]
-}
 
 [sub_resource type="Animation" id=5]
 resource_name = "Show"
@@ -83,29 +44,35 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 0.0230873, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
-"values": [ true ]
+"values": [ false, true, true ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath(".:margin_bottom")
+tracks/1/path = NodePath("MarginContainer:rect_position")
 tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.3 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1.46409, 0.210225 ),
 "update": 0,
-"values": [ 400, -1.0 ]
+"values": [ Vector2( 0, 200 ), Vector2( 0, 0 ) ]
 }
 
-[node name="MainMenu" type="Control"]
+[node name="MainMenu" type="PanelContainer"]
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_bottom = 400.0
+margin_top = -180.0
+margin_right = 139.0
+margin_bottom = 64.0
+mouse_filter = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+custom_styles/panel = SubResource( 6 )
 script = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -113,21 +80,20 @@ __meta__ = {
 active_tab_primary = Color( 0.337255, 0.537255, 0.627451, 1 )
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_top = -250.0
+margin_right = 1080.0
+margin_bottom = 244.0
 size_flags_horizontal = 2
-size_flags_vertical = 0
+size_flags_vertical = 8
 custom_constants/margin_right = 40
 custom_constants/margin_left = 40
+custom_constants/margin_bottom = 64
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
 margin_left = 40.0
-margin_right = 1179.0
+margin_right = 1040.0
 margin_bottom = 180.0
 rect_min_size = Vector2( 1000, 180 )
 size_flags_horizontal = 3
@@ -137,7 +103,7 @@ custom_styles/panel = SubResource( 1 )
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer"]
 margin_left = 62.0
 margin_top = 1.0
-margin_right = 1065.0
+margin_right = 926.0
 margin_bottom = 180.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -148,7 +114,7 @@ custom_constants/margin_bottom = 40
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer"]
 margin_top = 35.0
-margin_right = 1003.0
+margin_right = 864.0
 margin_bottom = 139.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -173,42 +139,45 @@ menu_label = "home_screen"
 
 [node name="VSeparator2" type="VSeparator" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer"]
 margin_left = 172.0
-margin_right = 176.0
+margin_right = 285.0
 margin_bottom = 104.0
 size_flags_horizontal = 3
 custom_styles/separator = SubResource( 2 )
 
 [node name="NotificationButton" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer" instance=ExtResource( 4 )]
-margin_left = 180.0
-margin_right = 434.0
+margin_left = 289.0
+margin_right = 543.0
 margin_bottom = 104.0
 primary_color = Color( 0.988235, 0.988235, 0.988235, 1 )
 icon = ExtResource( 2 )
 menu_label = "notifications_screen"
 
 [node name="VSeparator3" type="VSeparator" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer"]
-margin_left = 438.0
-margin_right = 442.0
+visible = false
+margin_left = 508.0
+margin_right = 582.0
 margin_bottom = 104.0
 size_flags_horizontal = 3
 custom_styles/separator = SubResource( 2 )
 
 [node name="StatsButton" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer" instance=ExtResource( 4 )]
-margin_left = 446.0
-margin_right = 607.0
+visible = false
+margin_left = 465.0
+margin_right = 626.0
 margin_bottom = 104.0
 primary_color = Color( 0.988235, 0.988235, 0.988235, 1 )
 icon = ExtResource( 1 )
 menu_label = "stats_screen"
 
 [node name="VSeparator4" type="VSeparator" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer"]
-margin_left = 611.0
-margin_right = 615.0
+margin_left = 547.0
+margin_right = 661.0
 margin_bottom = 104.0
 size_flags_horizontal = 3
 custom_styles/separator = SubResource( 2 )
 
 [node name="SocialButton" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer" instance=ExtResource( 4 )]
+visible = false
 margin_left = 619.0
 margin_right = 792.0
 margin_bottom = 104.0
@@ -217,15 +186,16 @@ icon = ExtResource( 5 )
 menu_label = "social_screen"
 
 [node name="VSeparator5" type="VSeparator" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer"]
-margin_left = 796.0
-margin_right = 800.0
+visible = false
+margin_left = 606.0
+margin_right = 661.0
 margin_bottom = 104.0
 size_flags_horizontal = 3
 custom_styles/separator = SubResource( 2 )
 
 [node name="SettingsButton" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer" instance=ExtResource( 4 )]
-margin_left = 804.0
-margin_right = 1003.0
+margin_left = 665.0
+margin_right = 864.0
 margin_bottom = 104.0
 primary_color = Color( 0.988235, 0.988235, 0.988235, 1 )
 icon = ExtResource( 3 )
@@ -243,7 +213,6 @@ custom_constants/separation = -1361
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "RESET"
-anims/Hide = SubResource( 3 )
 anims/RESET = SubResource( 4 )
 anims/Show = SubResource( 5 )
 

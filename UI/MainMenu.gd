@@ -35,7 +35,7 @@ func _avoid_screen_cutouts():
 func hide_menu(): 
 	Logger.print("Hiding Menu", self)
 	if visible: 
-		anim_player.play("Hide")
+		anim_player.play_backwards("Show")
 
 func show_menu(): 
 	Logger.print("Showing Menu", self)

@@ -42,7 +42,7 @@ func _restored():
 	emit_signal("update_hud")
 	if GameManager != null: 
 		GameManager.menu.show_menu()
-		GameManager.menu.set_navigation_state( MainMenu.Navigation_states.HOME ,true)
+		GameManager.menu.set_navigation_state( MainMenu.Navigation_states.HOME, true)
 		GameManager.overlay.hide_available_tutorial()
 
 func enter_game():

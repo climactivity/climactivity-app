@@ -48,9 +48,11 @@ expand = true
 stretch_mode = 6
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+margin_left = 15.0
 margin_top = 62.0
-margin_right = 100.0
+margin_right = 84.0
 margin_bottom = 100.0
+size_flags_horizontal = 4
 custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 0.411765, 0.411765, 0.407843, 1 )
 text = "menu"
