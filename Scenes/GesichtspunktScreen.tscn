@@ -30,6 +30,8 @@ shader_param/gradient = SubResource( 3 )
 material = SubResource( 4 )
 script = ExtResource( 3 )
 accent_color = Color( 0.6, 0.6, 0.6, 1 )
+intro_gate_var = "GesichtspunktPlayed"
+intro_timeline = "GesichtspunktIntro"
 
 [node name="MarginContainer" parent="ContentContainer/Content/VBoxContainer" index="0"]
 custom_constants/margin_left = 15

@@ -70,6 +70,7 @@ func play_intro(timeline, gate_var, delay, force = false):
 			bottom_margin.set("custom_styles/separator", load("res://UI/theme/style_box_empty.tres"))
 			content_main.add_child( bottom_margin)
 			content_main.move_child(bottom_margin, content_main.get_child_count())
+			
 func align_top(): 
 	var safe_area = OS.get_window_safe_area()
 	var header_sep = $"HeaderContainer/HSeparator"

@@ -50,12 +50,16 @@ func enter_game():
 	DialogicSingleton.get_definitions_list()
 
 	var reset = true
-	for definition in DialogicSingleton.get_definitions_list(): 
-		if definition.name != "IntroPlayed":
+	var current_defs = DialogicSingleton.get_definitions_list() 
+	for definition in current_defs: 
+		if definition.name == "v2":
 			reset = false
 			break
 	if reset: 
-		 DialogicSingleton.init(true)
+		Logger.print("Outdated intro states, reset!", self)
+		DialogicSingleton.init(true)
+	else: 
+		Logger.print("Loaded dialogic defs!", self)
 	if Dialogic.get_variable("IntroPlayed") == "false" or Util.debug_dialog():
 		yield( $AnimationPlayer, "animation_finished" )
 		GameManager.overlay.show_dialog("_available_tutorial")

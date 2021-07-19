@@ -1,0 +1,35 @@
+{
+	"events": [
+		{
+			"action": "join",
+			"character": "character-1623833731.json",
+			"event_id": "dialogic_002",
+			"mirror": false,
+			"portrait": "",
+			"position": {
+				"0": false,
+				"1": true,
+				"2": false,
+				"3": false,
+				"4": false
+			}
+		},
+		{
+			"character": "",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Hier kannst du das Wasser abholen, um deine Bäume & Co zu gießen. Die blauen Tropfen zeigen dir an, welche Pflanzen du mit dem gesammelten Wasser gießen kannst."
+		},
+		{
+			"definition": "1626701779-366",
+			"event_id": "dialogic_014",
+			"operation": "=",
+			"set_value": "1"
+		}
+	],
+	"metadata": {
+		"dialogic-version": "1.2",
+		"file": "timeline-1626701761.json",
+		"name": "WaterCollectIntro"
+	}
+}

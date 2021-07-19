@@ -1,0 +1,35 @@
+{
+	"events": [
+		{
+			"action": "join",
+			"character": "character-1623833731.json",
+			"event_id": "dialogic_002",
+			"mirror": false,
+			"portrait": "",
+			"position": {
+				"0": false,
+				"1": true,
+				"2": false,
+				"3": false,
+				"4": false
+			}
+		},
+		{
+			"character": "character-1623833731.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Bei den Multiple Choice Fragen kannst du (derzeit) nur eine Antwort auswählen. Bei manchen Fragen gibt es  mehr als eine richtige Antwort. Nachdem du deine Antwort bestätigt hast, werden dir alle richtigen Antworten in grün angezeigt."
+		},
+		{
+			"definition": "1626702027-713",
+			"event_id": "dialogic_014",
+			"operation": "=",
+			"set_value": "1"
+		}
+	],
+	"metadata": {
+		"dialogic-version": "1.2",
+		"file": "timeline-1626702312.json",
+		"name": "FirstQuestionIntro"
+	}
+}

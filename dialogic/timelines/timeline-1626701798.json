@@ -1,0 +1,35 @@
+{
+	"events": [
+		{
+			"action": "join",
+			"character": "character-1623833731.json",
+			"event_id": "dialogic_002",
+			"mirror": false,
+			"portrait": "",
+			"position": {
+				"0": false,
+				"1": true,
+				"2": false,
+				"3": false,
+				"4": false
+			}
+		},
+		{
+			"character": "",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Hier kannst du eine Challenge annehmen. Du siehst unter der Challenge links, wie lange du Zeit hast, sie zu erledigen, und rechts, wie viele Taler und Punkte du dafür bekommst.\nAngenommene Challenges findest du auf dem App-Schirm mit der Lichtung oben links; du gelangst zu ihnen über das Challenge-Journal (Buch-Icon)."
+		},
+		{
+			"definition": "1626701829-146",
+			"event_id": "dialogic_014",
+			"operation": "=",
+			"set_value": "1"
+		}
+	],
+	"metadata": {
+		"dialogic-version": "1.2",
+		"file": "timeline-1626701798.json",
+		"name": "QuestIntro"
+	}
+}

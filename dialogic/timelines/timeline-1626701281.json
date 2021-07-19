@@ -1,0 +1,35 @@
+{
+	"events": [
+		{
+			"action": "join",
+			"character": "character-1623833731.json",
+			"event_id": "dialogic_002",
+			"mirror": false,
+			"portrait": "",
+			"position": {
+				"0": false,
+				"1": true,
+				"2": false,
+				"3": false,
+				"4": false
+			}
+		},
+		{
+			"character": "character-1623833731.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Jeder Aspekt hat eine Reihe verschiedener Gesichtspunkte. Einen davon hast du gerade angewählt.\nJeder Streifen hier steht für einen Quiz zu einem Unterpunkt. Zunächst bekommst du in einer Trainingseinheit ein paar Informationen, danach gibt es ein paar Fragen zu dem Unterpunkt und abschließend Taler und Punkte :-)"
+		},
+		{
+			"definition": "1626701584-648",
+			"event_id": "dialogic_014",
+			"operation": "=",
+			"set_value": "1"
+		}
+	],
+	"metadata": {
+		"dialogic-version": "1.2",
+		"file": "timeline-1626701281.json",
+		"name": "GesichtspunktIntro"
+	}
+}

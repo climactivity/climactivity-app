@@ -32,6 +32,8 @@ shader_param/gradient = SubResource( 3 )
 material = SubResource( 4 )
 script = ExtResource( 4 )
 accent_color = Color( 0.427451, 0.513726, 0.639216, 1 )
+intro_gate_var = "QuestLogPlayed"
+intro_timeline = "QuestLogIntro"
 icon = ExtResource( 3 )
 screen_title = "accepted_quests"
 

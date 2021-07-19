@@ -599,6 +599,8 @@ mouse_filter = 2
 custom_styles/panel = SubResource( 1 )
 script = ExtResource( 2 )
 accent_color = Color( 0.6, 0.6, 0.6, 1 )
+intro_gate_var = "FirstInfobitPlayed"
+intro_timeline = "FirstInfobitIntro"
 preloaded_quiz_data = {
 "aspect": ExtResource( 12 ),
 "factor": {

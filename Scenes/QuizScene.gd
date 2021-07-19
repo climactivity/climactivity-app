@@ -140,6 +140,7 @@ func _last_infobit():
 	progress_blips.next()
 	anim_player.queue("show_quiz_intro")
 	continue_button.set_disabled(completed_infobyte)
+	play_intro( "QuizIntro", "QuizIntroPlayed", 1.0)
 	
 func _show_quiz(): 
 	state = InfoByteState.QUIZ
@@ -150,6 +151,7 @@ func _show_quiz():
 	var blip_count = quiz_data.questions.size()
 	progress_blips.set_blips(blip_count)
 	progress_blips.set_active(0)
+	play_intro( "FirstQuestionIntro", "FirstQuestionPlayed", 1.0)
 	
 func _next_question():
 	if(wait_check):

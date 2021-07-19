@@ -1,0 +1,35 @@
+{
+	"events": [
+		{
+			"action": "join",
+			"character": "character-1623833731.json",
+			"event_id": "dialogic_002",
+			"mirror": false,
+			"portrait": "",
+			"position": {
+				"0": false,
+				"1": true,
+				"2": false,
+				"3": false,
+				"4": false
+			}
+		},
+		{
+			"character": "character-1623833731.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Hier startet die Quizeinheit. Mit „Weiter“ kommst du zu den Infos, die dir helfen, die Quizfragen zu beantworten. Wenn du dich in dem Thema sowieso schon bestens auskennst, kannst du auch „Direkt zum Quiz“ gehen."
+		},
+		{
+			"definition": "1626701948-483",
+			"event_id": "dialogic_014",
+			"operation": "=",
+			"set_value": "1"
+		}
+	],
+	"metadata": {
+		"dialogic-version": "1.2",
+		"file": "timeline-1626702044.json",
+		"name": "FirstInfobitIntro"
+	}
+}

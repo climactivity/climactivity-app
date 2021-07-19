@@ -38,6 +38,54 @@
 			"name": "IntroPlayed",
 			"type": 0,
 			"value": "0"
+		},
+		{
+			"id": "1626701584-648",
+			"name": "GesichtspunktPlayed",
+			"type": 0,
+			"value": "0"
+		},
+		{
+			"id": "1626701730-787",
+			"name": "v2",
+			"type": 0,
+			"value": "1"
+		},
+		{
+			"id": "1626701779-366",
+			"name": "WaterCollectPlayed",
+			"type": 0,
+			"value": "0"
+		},
+		{
+			"id": "1626701829-146",
+			"name": "QuestPlayed",
+			"type": 0,
+			"value": "0"
+		},
+		{
+			"id": "1626701886-918",
+			"name": "QuestLogPlayed",
+			"type": 0,
+			"value": "0"
+		},
+		{
+			"id": "1626701948-483",
+			"name": "FirstInfobitPlayed",
+			"type": 0,
+			"value": "0"
+		},
+		{
+			"id": "1626701963-970",
+			"name": "QuizIntroPlayed",
+			"type": 0,
+			"value": "0"
+		},
+		{
+			"id": "1626702027-713",
+			"name": "FirstQuestionPlayed",
+			"type": 0,
+			"value": "0"
 		}
 	]
 }
