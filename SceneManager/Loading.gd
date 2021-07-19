@@ -14,6 +14,7 @@ func setProgress(progress):
 
 func _ready():
 	enter_game(game_root_path)
+	Api.update_cache()
 	Api.connect("cache_ready", self, "cache_ready")
 
 func cache_ready(): 

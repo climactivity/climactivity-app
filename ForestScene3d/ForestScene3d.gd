@@ -15,7 +15,7 @@ func _ready():
 	if is_instance_valid(AspectTrackingService): connect("update_hud", AspectTrackingService, "notify_watered_aspects")
 	$ForestFloor/HexGrid.connect("placed_entity", $Camera/HUD, "update_hud")
 	enter_game()
-	
+#	GameManager.overlay.hide_available_tutorial()
 func _input(event):
 	if (!OS.is_debug_build()): return
 	if (event is InputEventKey and event.scancode == KEY_R and event.is_pressed()):
@@ -58,9 +58,11 @@ func enter_game():
 		 DialogicSingleton.init(true)
 	if Dialogic.get_variable("IntroPlayed") == "false" or Util.debug_dialog():
 		yield( $AnimationPlayer, "animation_finished" )
-		GameManager.overlay.show_dialog("Intro")
+		GameManager.overlay.show_dialog("_available_tutorial")
 	show_overlay()
 
 func show_overlay(): 
 	if GameManager.menu != null: GameManager.menu.show_menu()
 	if GameManager.xp_bar != null: GameManager.xp_bar.show()
+	GameManager.overlay.show_available_tutorial("Intro")
+	GameManager.overlay.hide_available_tutorial()

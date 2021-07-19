@@ -42,8 +42,6 @@ func _ready():
 		if ProjectSettings.get_setting("debug/settings/network/localhost"):
 			base_url = "localhost:3000"
 			protocol = "http"
-	update_cache() 
-	if get_tree().has_method("standalone"): print("Got it")
 	
 func getBaseUrl():
 	return "%s://%s" % [protocol, base_url]

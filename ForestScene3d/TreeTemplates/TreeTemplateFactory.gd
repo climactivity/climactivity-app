@@ -6,24 +6,24 @@ onready var http_request = $HTTPRequest
 
 var texture_set_path = "res://ForestScene3d/TreeTemplates/TextureSets/"
 export (Dictionary) var available_textures = {
-	'apfelbaum': preload("res://ForestScene3d/TreeTemplates/TextureSets/apfelbaum.tres"),
-	'birke': preload("res://ForestScene3d/TreeTemplates/TextureSets/birke.tres"),
-	'eibe': preload("res://ForestScene3d/TreeTemplates/TextureSets/eibe.tres"),
-	'eiche': preload("res://ForestScene3d/TreeTemplates/TextureSets/eiche.tres"),
-	'esche': preload("res://ForestScene3d/TreeTemplates/TextureSets/esche.tres"),
-	'farn': preload("res://ForestScene3d/TreeTemplates/TextureSets/farn.tres"),
-	'fichte': preload("res://ForestScene3d/TreeTemplates/TextureSets/fichte.tres"),
-	'hasel': preload("res://ForestScene3d/TreeTemplates/TextureSets/hasel.tres"),
-	'heckenrose': preload("res://ForestScene3d/TreeTemplates/TextureSets/heckenrose.tres"),
-	'johannisbeere': preload("res://ForestScene3d/TreeTemplates/TextureSets/johannisbeere.tres"),
-	'kastanie': preload("res://ForestScene3d/TreeTemplates/TextureSets/kastanie.tres"),
-	'kiefer': preload("res://ForestScene3d/TreeTemplates/TextureSets/kiefer.tres"),
-	'pappel': preload("res://ForestScene3d/TreeTemplates/TextureSets/pappel.tres"),
-	'stechpalme': preload("res://ForestScene3d/TreeTemplates/TextureSets/stechpalme.tres"),
-	'tanne': preload("res://ForestScene3d/TreeTemplates/TextureSets/tanne.tres"),
-	'wacholder': preload("res://ForestScene3d/TreeTemplates/TextureSets/wacholder.tres"),
-	'weide': preload("res://ForestScene3d/TreeTemplates/TextureSets/weide.tres"),
-	'weissdorn': preload("res://ForestScene3d/TreeTemplates/TextureSets/weissdorn.tres"),
+	'apfelbaum': load("res://ForestScene3d/TreeTemplates/TextureSets/apfelbaum.tres"),
+	'birke': load("res://ForestScene3d/TreeTemplates/TextureSets/birke.tres"),
+	'eibe': load("res://ForestScene3d/TreeTemplates/TextureSets/eibe.tres"),
+	'eiche': load("res://ForestScene3d/TreeTemplates/TextureSets/eiche.tres"),
+	'esche': load("res://ForestScene3d/TreeTemplates/TextureSets/esche.tres"),
+	'farn': load("res://ForestScene3d/TreeTemplates/TextureSets/farn.tres"),
+	'fichte': load("res://ForestScene3d/TreeTemplates/TextureSets/fichte.tres"),
+	'hasel': load("res://ForestScene3d/TreeTemplates/TextureSets/hasel.tres"),
+	'heckenrose': load("res://ForestScene3d/TreeTemplates/TextureSets/heckenrose.tres"),
+	'johannisbeere': load("res://ForestScene3d/TreeTemplates/TextureSets/johannisbeere.tres"),
+	'kastanie': load("res://ForestScene3d/TreeTemplates/TextureSets/kastanie.tres"),
+	'kiefer': load("res://ForestScene3d/TreeTemplates/TextureSets/kiefer.tres"),
+	'pappel': load("res://ForestScene3d/TreeTemplates/TextureSets/pappel.tres"),
+	'stechpalme': load("res://ForestScene3d/TreeTemplates/TextureSets/stechpalme.tres"),
+	'tanne': load("res://ForestScene3d/TreeTemplates/TextureSets/tanne.tres"),
+	'wacholder': load("res://ForestScene3d/TreeTemplates/TextureSets/wacholder.tres"),
+	'weide': load("res://ForestScene3d/TreeTemplates/TextureSets/weide.tres"),
+	'weissdorn': load("res://ForestScene3d/TreeTemplates/TextureSets/weissdorn.tres"),
 }
 
 # preload texture assets from application bundle
@@ -238,8 +238,8 @@ var _tree_templates = {
 func _ready(): 
 #	_preload_textures()
 	Api.connect("cache_ready", self, "load_templates")
-	if Api.get_tree_templates() != null:
-		load_templates()
+#	if Api.get_tree_templates() != null:
+#		load_templates()
 		
 func load_templates(): 
 	_tree_templates = Api.get_tree_templates()

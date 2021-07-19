@@ -5,6 +5,8 @@ onready var popup_content = $Popup/MarginContainer
 func _ready():
 	GameManager.overlay = self
 #	$TextureButton.set_position(Vector2($TextureButton.get_position().x, get_viewport_rect().size.y - $TextureButton.rect_size.y))
+	$MainMenu.connect("show_menu", self, "_tutorial_button_avoid_menu", [true])
+	$MainMenu.connect("hide_menu", self, "_tutorial_button_avoid_menu", [false])
 func _show_popup(control):
 	anim_player.play("ShowPopupLayer")
 	$Popup.add_child(control)
@@ -17,6 +19,11 @@ func _on_Popup_gui_input(event):
 
 func _on_Close_Button_pressed():
 	_close_popup()
+
+func _tutorial_button_avoid_menu(show_menu):
+	pass
+#	print("_tutorial_button_avoid_menu: ", show_menu)
+#	$TextureButton.rect_position.y += -250.0 if show_menu else  250.0
 
 
 func _close_popup(): 

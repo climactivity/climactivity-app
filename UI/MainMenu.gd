@@ -7,7 +7,8 @@ enum Navigation_states {
 	STATS = 2,
 	SETTINGS = 4
 }
-
+signal show_menu 
+signal hide_menu
 export (Color) var active_tab_primary = Color("#f5af19")
 export (Color) var inactive_tab_primary = Color("#95c11e")
 export (Color) var disabled_tab_primary = Color("#636362")
@@ -36,12 +37,14 @@ func hide_menu():
 	Logger.print("Hiding Menu", self)
 	if visible: 
 		anim_player.play_backwards("Show")
+		emit_signal("hide_menu")
 
 func show_menu(): 
 	Logger.print("Showing Menu", self)
 	if !visible:
 		anim_player.play("Show")
-
+		emit_signal("show_menu")
+		
 func _on_HomeButton_pressed():
 	Logger.print("HomeButton pressed", self)
 	set_navigation_state(Navigation_states.HOME)

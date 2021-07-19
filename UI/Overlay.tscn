@@ -289,7 +289,9 @@ __meta__ = {
 }
 
 [node name="Panel" type="Panel" parent="."]
+visible = false
 modulate = Color( 1, 1, 1, 0.823529 )
+self_modulate = Color( 1, 1, 1, 0 )
 margin_right = 1080.0
 margin_bottom = 1920.0
 mouse_filter = 2
@@ -298,8 +300,8 @@ __meta__ = {
 }
 
 [node name="TextureButton" type="TextureButton" parent="."]
+margin_left = -150.0
 margin_top = 1770.0
-margin_right = 150.0
 margin_bottom = 1920.0
 rect_min_size = Vector2( 150, 150 )
 size_flags_horizontal = 0
