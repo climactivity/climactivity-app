@@ -12,13 +12,13 @@ __meta__ = {
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-margin_right = 1024.0
-margin_bottom = 600.0
+margin_right = 1080.0
+margin_bottom = 1920.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer"]
-margin_right = 1024.0
+margin_right = 1080.0
 margin_bottom = 452.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer3"]
@@ -47,14 +47,12 @@ text = "Default"
 
 [node name="ThemeOptionButton" type="OptionButton" parent="VBoxContainer/HBoxContainer3/VBoxContainer/VBoxContainer/HBoxContainer"]
 margin_left = 50.0
-margin_right = 228.0
+margin_right = 190.0
 margin_bottom = 20.0
 rect_min_size = Vector2( 140, 0 )
-text = "theme-1619305742.cfg"
-items = [ "theme-1619305742.cfg", null, false, 0, {
-"file": "theme-1619305742.cfg"
-}, "theme-1620071267.cfg", null, false, 1, {
-"file": "theme-1620071267.cfg"
+text = "cyTheme"
+items = [ "cyTheme", null, false, 0, {
+"file": "theme-1623834033.cfg"
 } ]
 selected = 0
 
@@ -74,6 +72,7 @@ text = "Advanced theme options"
 margin_left = 164.0
 margin_right = 188.0
 margin_bottom = 24.0
+pressed = true
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/HBoxContainer3/VBoxContainer"]
 margin_top = 90.0
@@ -124,6 +123,7 @@ margin_left = 169.0
 margin_right = 356.0
 margin_bottom = 24.0
 size_flags_horizontal = 3
+pressed = true
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer/HBoxContainer3/VBoxContainer/VBoxContainer2"]
 margin_top = 86.0
@@ -140,6 +140,7 @@ text = "Auto color character names in messages"
 margin_left = 264.0
 margin_right = 288.0
 margin_bottom = 24.0
+pressed = true
 
 [node name="HBoxContainer4" type="HBoxContainer" parent="VBoxContainer/HBoxContainer3/VBoxContainer/VBoxContainer2"]
 margin_top = 114.0
@@ -156,6 +157,7 @@ text = "Propagate input to rest of the Tree"
 margin_left = 223.0
 margin_right = 247.0
 margin_bottom = 24.0
+pressed = true
 
 [node name="HBoxContainer5" type="HBoxContainer" parent="VBoxContainer/HBoxContainer3/VBoxContainer/VBoxContainer2"]
 margin_top = 142.0

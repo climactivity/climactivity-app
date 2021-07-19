@@ -1080,3 +1080,8 @@ func close_dialog_event(transition_duration):
 func _on_close_dialog_timeout():
 	on_timeline_end()
 	queue_free()
+
+
+func _on_QuitButton_pressed():
+	on_timeline_end()
+	queue_free()

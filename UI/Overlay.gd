@@ -51,6 +51,10 @@ func hide_available_tutorial():
 		hidden = true
 
 func _on_TextureButton_pressed():
-	Logger.print("play timeline?")
+#	Logger.print("play timeline?")
 	if available_timeline != '': 
 		show_dialog(available_timeline)
+
+
+func _on_CloseDialogButton_pressed():
+	Logger.print("close dialog!")
