@@ -238,7 +238,6 @@ __meta__ = {
 
 [node name="XPBar" parent="." instance=ExtResource( 6 )]
 anchor_right = 0.0
-margin_top = 0.0
 margin_right = 1080.0
 margin_bottom = 0.0
 

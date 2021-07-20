@@ -47,22 +47,22 @@ corner_detail = 20
 [sub_resource type="Animation" id=5]
 resource_name = "show"
 tracks/0/type = "value"
-tracks/0/path = NodePath("MarginContainer:rect_position")
+tracks/0/path = NodePath(".:rect_position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.4 ),
+"times": PoolRealArray( 0, 0.7 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 0, -200 ), Vector2( 0, 0 ) ]
+"values": [ Vector2( 0, -200 ), Vector2( 0, 12 ) ]
 }
 
 [node name="XPBar" type="Control"]
 anchor_right = 1.0
-margin_top = 12.0
-margin_bottom = 12.0
+margin_top = -200.0
+margin_bottom = -200.0
 size_flags_vertical = 0
 script = ExtResource( 3 )
 __meta__ = {
@@ -72,8 +72,7 @@ __meta__ = {
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = -200.0
-margin_bottom = -105.0
+margin_bottom = 95.0
 size_flags_vertical = 0
 custom_constants/margin_top = 40
 custom_constants/margin_bottom = 10
