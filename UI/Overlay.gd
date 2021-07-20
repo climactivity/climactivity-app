@@ -50,7 +50,9 @@ func show_available_tutorial(timeline):
 		hidden = false
 
 func hide_available_tutorial():
-	if hidden: return
+	if hidden: 
+		Logger.print("Not hinding", self)
+		return
 	available_timeline = ''
 	yield(get_tree().create_timer(0.1), "timeout")
 	if available_timeline == '':

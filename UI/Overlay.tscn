@@ -190,6 +190,7 @@ tracks/1/keys = {
 [sub_resource type="Animation" id=6]
 resource_name = "show_available_tutorial"
 length = 0.4
+step = 0.05
 tracks/0/type = "bezier"
 tracks/0/path = NodePath("TextureButton:rect_position:x")
 tracks/0/interp = 1
@@ -199,6 +200,30 @@ tracks/0/enabled = true
 tracks/0/keys = {
 "points": PoolRealArray( -150, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0, 0.4 )
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("TextureButton:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.05 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("TextureButton:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.05, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
 [node name="Overlay" type="PanelContainer"]
@@ -289,6 +314,7 @@ __meta__ = {
 }
 
 [node name="Panel" type="Panel" parent="."]
+visible = false
 modulate = Color( 1, 1, 1, 0.823529 )
 margin_right = 1080.0
 margin_bottom = 1920.0
@@ -298,8 +324,10 @@ __meta__ = {
 }
 
 [node name="TextureButton" type="TextureButton" parent="."]
+visible = false
+modulate = Color( 1, 1, 1, 0.0145686 )
+margin_left = -150.0
 margin_top = 1770.0
-margin_right = 150.0
 margin_bottom = 1920.0
 rect_min_size = Vector2( 150, 150 )
 size_flags_horizontal = 0
