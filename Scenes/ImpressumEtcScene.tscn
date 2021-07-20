@@ -48,13 +48,17 @@ accent_color = Color( 1, 1, 1, 1 )
 icon = ExtResource( 2 )
 screen_title = "about"
 
+[node name="ScrollContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer" index="0"]
+scroll_vertical = 10055
+
 [node name="ContentMain" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer" index="0"]
-margin_bottom = 10914.0
+margin_top = -10055.0
+margin_bottom = 1931.0
 
 [node name="MarginContainer" type="MarginContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="1"]
 margin_top = 350.0
 margin_right = 1080.0
-margin_bottom = 10914.0
+margin_bottom = 11986.0
 custom_constants/margin_right = 64
 custom_constants/margin_left = 64
 __meta__ = {
@@ -64,7 +68,7 @@ __meta__ = {
 [node name="VBoxContainer" type="VBoxContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer" index="0"]
 margin_left = 64.0
 margin_right = 1016.0
-margin_bottom = 10564.0
+margin_bottom = 11636.0
 custom_constants/separation = 64
 
 [node name="Version" type="PanelContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/VBoxContainer" index="0"]
@@ -314,6 +318,57 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 "
+
+[node name="pics" type="PanelContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/VBoxContainer" index="4"]
+margin_top = 10628.0
+margin_right = 952.0
+margin_bottom = 11636.0
+custom_styles/panel = SubResource( 5 )
+
+[node name="pics" type="RichTextLabel" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/VBoxContainer/pics" index="0"]
+margin_left = 20.0
+margin_right = 932.0
+margin_bottom = 1008.0
+custom_fonts/mono_font = ExtResource( 6 )
+custom_fonts/bold_italics_font = ExtResource( 5 )
+custom_fonts/italics_font = ExtResource( 4 )
+custom_fonts/bold_font = ExtResource( 7 )
+custom_fonts/normal_font = ExtResource( 3 )
+custom_colors/default_color = Color( 0.411765, 0.411765, 0.407843, 1 )
+bbcode_enabled = true
+bbcode_text = "[center][b][color=#5689A0]Icons[/color][/b][/center]
+Verwendet Icons von: 
+
+Freepik 
+Iconmonstr
+Free2Use 
+Monkik 
+Pixel perfect 
+Those Icons 
+Kiranhastry 
+itim 2101 
+sbed 
+radioaktiv 
+pixabay 
+
+"
+text = "Icons
+Verwendet Icons von: 
+
+Freepik 
+Iconmonstr
+Free2Use 
+Monkik 
+Pixel perfect 
+Those Icons 
+Kiranhastry 
+itim 2101 
+sbed 
+radioaktiv 
+pixabay 
+
+"
+fit_content_height = true
 
 [node name="HeaderBG" parent="ContentContainer/Content" index="1"]
 self_modulate = Color( 1, 1, 1, 1 )
