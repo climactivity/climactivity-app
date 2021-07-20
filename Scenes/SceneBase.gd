@@ -77,7 +77,7 @@ func align_top():
 	var header_sep = $"HeaderContainer/HSeparator"
 	var header_bg_sep = $"ContentContainer/Content/HeaderBG/HSeparator2"
 	var body_sep = $"ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/HSeparator"
-	var header_offset = 100 + OS.get_window_safe_area().position.y /2
+	var header_offset = 128 + OS.get_window_safe_area().position.y /2
 	var body_offset = 246 + header_offset
 	header_sep.set("custom_constants/separation", header_offset)
 	header_bg_sep.set("custom_constants/separation", body_offset)
