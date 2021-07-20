@@ -17,13 +17,15 @@ var sector_data setget set_sector_data
 
 func _ready(): 
 	ready = true
-	water_tank.connect("clicked", self, "collect_water")
 	update()
+	
 func play_enter(): 
 	$AnimationPlayer.play("Enter")
 func set_sector_data(_sector_data):
 	sector_data = _sector_data
 	update() 
+
+var no_current_entity = false
 
 func update(): 
 	if !ready or aspect_data == null or sector_data == null:
@@ -31,13 +33,28 @@ func update():
 
 	tracking_label.text = aspect_data.name
 	icon.set_icon(aspect_data.icon if aspect_data.icon else sector_data["sector_logo"])
-	if aspect_tracking_data != null and aspect_tracking_data.current != null:
-		var current_option = aspect_data.get_option_for_level(aspect_tracking_data.current.level)
-		if current_option != null:
-
-			selected_label.text = current_option.option
-#			water_tank.set_percent(0.5)
+	if aspect_tracking_data != null:
+		if aspect_tracking_data.current != null:
+			var current_option = aspect_data.get_option_for_level(aspect_tracking_data.current.level)
+			if current_option != null:
+				selected_label.text = current_option.option
+			else:
+				Logger.error("No option for value %s!" % str(aspect_tracking_data.current.level),self)
+		else: 
+			selected_label.text = tr("no_longer_tracked")
 			water_tank.set_percent(aspect_tracking_data.get_water_percent_available())
+		if aspect_tracking_data.current_entity == null:
+			no_current_entity = true
+			water_tank.set_no_current_entity(true)
+			Logger.print("prompt pick tree", self)
+		else: 
+			var water_available = aspect_tracking_data.get_water_percent_available()
+			if water_available < 0.05: 
+				water_tank.can_be_clicked = false
+			water_tank.set_percent(water_available)
+	else:
+		Logger.error("No tracking data in %s!" % aspect_data.name, self)
+		selected_label.text = "No tracking data!"
 	if bg_color != null:
 		bg.self_modulate = bg_color
 
@@ -63,3 +80,10 @@ func collect_water():
 
 func _on_Tween_tween_step(object, key, elapsed, value):
 	print(value)
+
+
+func _on_WaterTank_clicked():
+	if no_current_entity:
+		GameManager.scene_manager.push_scene("res://Scenes/EntityShopScene.tscn", {"aspect": aspect_data})
+	else:
+		collect_water()

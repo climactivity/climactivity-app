@@ -177,3 +177,5 @@ percent = 0.5
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Enter = SubResource( 4 )
 anims/RESET = SubResource( 5 )
+
+[connection signal="clicked" from="HBoxContainer/WaterTank" to="." method="_on_WaterTank_clicked"]
