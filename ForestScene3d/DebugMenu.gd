@@ -3,7 +3,7 @@ signal free_place
 export var free_placement = false 
 onready var cb_free_placement = $"VBox/HBoxContainer/CheckBox"
 func _ready():
-	if !OS.is_debug_build(): 
+	if !OS.is_debug_build() or OS.get_name() in ['iOS', 'OSX']: 
 		queue_free()
 
 func _set_free_placement_mode(b):
