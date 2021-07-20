@@ -24,8 +24,11 @@ func cache_ready():
 	
 func enter_game(path): 
 	loader = ResourceLoader.load_interactive(path)
-	if loader == null: # Check for errors.
-		show_error()
+	if loader == null: # scene already cached
+		print("- - - - - - - - - - - - Reloading Root Scene! - - - - - - - - - - - -")
+		var res = load(path)
+		set_new_scene(res)
+		return
 	set_process(true)
 	
 	## play throbber or something 

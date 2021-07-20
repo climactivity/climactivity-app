@@ -21,9 +21,9 @@ func _on_Close_Button_pressed():
 	_close_popup()
 
 func _tutorial_button_avoid_menu(show_menu):
-	pass
-#	print("_tutorial_button_avoid_menu: ", show_menu)
-#	$TextureButton.rect_position.y += -250.0 if show_menu else  250.0
+#	pass
+	print("_tutorial_button_avoid_menu: ", show_menu)
+	$TextureButton.rect_position.y += -250.0 if show_menu else  250.0
 
 
 func _close_popup(): 
@@ -50,7 +50,7 @@ func show_available_tutorial(timeline):
 		hidden = false
 
 func hide_available_tutorial():
-	if available_timeline == '': return
+	if hidden: return
 	available_timeline = ''
 	yield(get_tree().create_timer(0.1), "timeout")
 	if available_timeline == '':

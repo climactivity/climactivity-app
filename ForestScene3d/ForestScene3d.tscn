@@ -1,9 +1,8 @@
-[gd_scene load_steps=55 format=2]
+[gd_scene load_steps=50 format=2]
 
 [ext_resource path="res://ForestScene3d/Interactables/SeedlingBox.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Vertical_Gradient.shader" type="Shader" id=2]
 [ext_resource path="res://ForestScene3d/ForestScene3d.gd" type="Script" id=3]
-[ext_resource path="res://UI/typography/Heading.tres" type="DynamicFont" id=4]
 [ext_resource path="res://ForestScene3d/ConstantSkyAreaCamera.gd" type="Script" id=5]
 [ext_resource path="res://ForestScene3d/Background.gd" type="Script" id=6]
 [ext_resource path="res://ForestScene3d/ForestGrid.gd" type="Script" id=7]
@@ -21,7 +20,6 @@
 [ext_resource path="res://UI/theme/Button_Important.tres" type="StyleBox" id=19]
 [ext_resource path="res://UI/theme/Button_Important_Down.tres" type="StyleBox" id=20]
 [ext_resource path="res://ForestScene3d/PlaceHereDialog.gd" type="Script" id=21]
-[ext_resource path="res://Assets/logo.png" type="Texture" id=22]
 [ext_resource path="res://Assets/BG/01.png" type="Texture" id=23]
 [ext_resource path="res://Assets/BG/03.png" type="Texture" id=24]
 [ext_resource path="res://Assets/BG/02.png" type="Texture" id=25]
@@ -47,32 +45,6 @@ background_sky = SubResource( 1 )
 background_energy = 16.0
 
 [sub_resource type="StyleBoxEmpty" id=3]
-
-[sub_resource type="StyleBoxFlat" id=4]
-bg_color = Color( 1, 1, 1, 1 )
-
-[sub_resource type="StyleBoxFlat" id=5]
-corner_radius_top_left = 1024
-corner_radius_top_right = 1024
-corner_radius_bottom_right = 1024
-corner_radius_bottom_left = 1024
-
-[sub_resource type="Animation" id=6]
-resource_name = "loading"
-length = 0.5
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("Panel:rect_scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2, 0.4 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 1, 1 ), Vector2( 0.9, 0.9 ), Vector2( 1, 1 ) ]
-}
 
 [sub_resource type="StyleBoxFlat" id=7]
 bg_color = Color( 0.482353, 0.776471, 0.109804, 1 )
@@ -203,18 +175,6 @@ tracks/1/keys = {
 "update": 0,
 "values": [ Vector3( -39.767, 0, 0 ) ]
 }
-tracks/2/type = "value"
-tracks/2/path = NodePath("Camera/HUD/Loading:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
 
 [sub_resource type="Animation" id=21]
 length = 0.479
@@ -328,39 +288,13 @@ tracks/5/keys = {
 "points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0, 1 )
 }
-tracks/6/type = "value"
-tracks/6/path = NodePath("Camera/HUD/Loading:modulate")
+tracks/6/type = "method"
+tracks/6/path = NodePath(".")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
-"times": PoolRealArray( 0, 0.2 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
-}
-tracks/7/type = "method"
-tracks/7/path = NodePath("Camera/HUD/Loading")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/keys = {
-"times": PoolRealArray( 0.3 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "queue_free"
-} ]
-}
-tracks/8/type = "method"
-tracks/8/path = NodePath(".")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/keys = {
 "times": PoolRealArray( 0.3 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
@@ -408,8 +342,8 @@ anchor_left = 0.5
 anchor_right = 0.5
 margin_left = -92.0
 margin_top = 203.0
-margin_right = 92.0
-margin_bottom = 226.68
+margin_right = 112.0
+margin_bottom = 342.68
 
 [node name="Cloud" parent="Camera/HUD" instance=ExtResource( 10 )]
 anchor_left = 1.0
@@ -480,72 +414,6 @@ custom_styles/panel = SubResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="Loading" type="Panel" parent="Camera/HUD"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-mouse_filter = 2
-custom_styles/panel = SubResource( 4 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="MarginContainer" type="MarginContainer" parent="Camera/HUD/Loading"]
-anchor_right = 1.0
-margin_bottom = 814.0
-custom_constants/margin_right = 100
-custom_constants/margin_top = 100
-custom_constants/margin_left = 100
-custom_constants/margin_bottom = 100
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TextureRect" type="TextureRect" parent="Camera/HUD/Loading/MarginContainer"]
-margin_left = 100.0
-margin_top = 100.0
-margin_right = 980.0
-margin_bottom = 714.0
-texture = ExtResource( 22 )
-expand = true
-stretch_mode = 6
-
-[node name="Panel" type="Panel" parent="Camera/HUD/Loading"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -90.7158
-margin_top = -87.86
-margin_right = 89.2842
-margin_bottom = 92.14
-grow_horizontal = 2
-grow_vertical = 2
-rect_scale = Vector2( 0.996462, 0.996462 )
-rect_pivot_offset = Vector2( 90, 90 )
-custom_styles/panel = SubResource( 5 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="Camera/HUD/Loading/Panel"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -54.0
-margin_top = -32.5
-margin_right = 54.0
-margin_bottom = 32.5
-custom_fonts/font = ExtResource( 4 )
-text = "loading_anim"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Camera/HUD/Loading"]
-autoplay = "loading"
-anims/loading = SubResource( 6 )
 
 [node name="EntityDetails" type="Control" parent="Camera/HUD"]
 visible = false

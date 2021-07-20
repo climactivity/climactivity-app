@@ -317,9 +317,11 @@ _global_script_class_icons={
 config/name="Climactivity-app"
 run/main_scene="res://SceneManager/Loading.tscn"
 boot_splash/image="res://Assets/logo_sm.png"
+boot_splash/fullsize=false
 boot_splash/bg_color=Color( 1, 1, 1, 1 )
 config/icon="res://Assets/BG/cyIcon.png"
 config/quit_on_go_back=false
+config/version="1.35"
 
 [autoload]
 
@@ -342,6 +344,7 @@ LevelLut="*res://Services/LevelLut.gd"
 
 [debug]
 
+settings/crash_handler/message="Please include this when reporting the bug on https://github.com/climactivity/climactivity-app/issues"
 settings/network/localhost=false
 settings/game_logic/cheat_seedlings=false
 settings/game_logic/show_factor_names=true

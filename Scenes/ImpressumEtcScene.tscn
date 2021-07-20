@@ -1,0 +1,325 @@
+[gd_scene load_steps=20 format=2]
+
+[ext_resource path="res://Scenes/SceneBase.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Assets/TestData/Intersect.png" type="Texture" id=2]
+[ext_resource path="res://UI/typography/Content_Regular.tres" type="DynamicFont" id=3]
+[ext_resource path="res://UI/typography/Content_Italic.tres" type="DynamicFont" id=4]
+[ext_resource path="res://UI/typography/Content_Bold_Italic.tres" type="DynamicFont" id=5]
+[ext_resource path="res://UI/typography/Content_Mono.tres" type="DynamicFont" id=6]
+[ext_resource path="res://UI/typography/Content_Bold.tres" type="DynamicFont" id=7]
+[ext_resource path="res://Scenes/ImpressumEtcScene.gd" type="Script" id=8]
+[ext_resource path="res://UI/typography/UI_big.tres" type="DynamicFont" id=9]
+[ext_resource path="res://UI/theme/Button_Important.tres" type="StyleBox" id=10]
+[ext_resource path="res://UI/theme/Button_Important_Down.tres" type="StyleBox" id=11]
+[ext_resource path="res://UI/Components/VersionBox.gd" type="Script" id=12]
+[ext_resource path="res://UI/Components/LicenseBox.gd" type="Script" id=13]
+[ext_resource path="res://UI/theme/Button_Important_Hover.tres" type="StyleBox" id=14]
+
+[sub_resource type="Shader" id=6]
+code = "shader_type canvas_item; 
+
+uniform sampler2D gradient; 
+
+void fragment() {
+	COLOR = texture(gradient, vec2(UV.y, 0));
+	//COLOR = vec4(UV.y,0,0,1);
+}"
+
+[sub_resource type="Gradient" id=7]
+offsets = PoolRealArray( 0.213622, 1 )
+colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 1 )
+
+[sub_resource type="GradientTexture" id=8]
+gradient = SubResource( 7 )
+
+[sub_resource type="ShaderMaterial" id=9]
+shader = SubResource( 6 )
+shader_param/gradient = SubResource( 8 )
+
+[sub_resource type="StyleBoxFlat" id=5]
+content_margin_left = 20.0
+content_margin_right = 20.0
+bg_color = Color( 1, 1, 1, 1 )
+
+[node name="ImpressumEtcScene" instance=ExtResource( 1 )]
+material = SubResource( 9 )
+script = ExtResource( 8 )
+accent_color = Color( 1, 1, 1, 1 )
+icon = ExtResource( 2 )
+screen_title = "about"
+
+[node name="ContentMain" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer" index="0"]
+margin_bottom = 10914.0
+
+[node name="MarginContainer" type="MarginContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="1"]
+margin_top = 350.0
+margin_right = 1080.0
+margin_bottom = 10914.0
+custom_constants/margin_right = 64
+custom_constants/margin_left = 64
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer" index="0"]
+margin_left = 64.0
+margin_right = 1016.0
+margin_bottom = 10564.0
+custom_constants/separation = 64
+
+[node name="Version" type="PanelContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/VBoxContainer" index="0"]
+margin_right = 952.0
+margin_bottom = 458.0
+custom_styles/panel = SubResource( 5 )
+
+[node name="VersionBox" type="RichTextLabel" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/VBoxContainer/Version" index="0"]
+margin_left = 20.0
+margin_right = 932.0
+margin_bottom = 458.0
+custom_fonts/mono_font = ExtResource( 6 )
+custom_fonts/bold_italics_font = ExtResource( 5 )
+custom_fonts/italics_font = ExtResource( 4 )
+custom_fonts/bold_font = ExtResource( 7 )
+custom_fonts/normal_font = ExtResource( 3 )
+custom_colors/default_color = Color( 0.411765, 0.411765, 0.407843, 1 )
+bbcode_enabled = true
+bbcode_text = "[center][img=256]res://Assets/BG/cyIcon.png[/img]
+Climactivty App
+Version 1.35
+Engine Version: 3.3.2-stable (official) "
+text = "
+Climactivty App
+Version 1.35
+Engine Version: 3.3.2-stable (official) "
+fit_content_height = true
+script = ExtResource( 12 )
+template_str = "[center][img=256]res://Assets/BG/cyIcon.png[/img]
+Climactivty App
+Version %s
+Engine Version: %s "
+
+[node name="Impressum" type="PanelContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/VBoxContainer" index="1"]
+margin_top = 522.0
+margin_right = 952.0
+margin_bottom = 7452.0
+custom_styles/panel = SubResource( 5 )
+
+[node name="Impressum" type="RichTextLabel" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/VBoxContainer/Impressum" index="0"]
+margin_left = 20.0
+margin_right = 932.0
+margin_bottom = 6930.0
+custom_fonts/mono_font = ExtResource( 6 )
+custom_fonts/bold_italics_font = ExtResource( 5 )
+custom_fonts/italics_font = ExtResource( 4 )
+custom_fonts/bold_font = ExtResource( 7 )
+custom_fonts/normal_font = ExtResource( 3 )
+custom_colors/default_color = Color( 0.411765, 0.411765, 0.407843, 1 )
+bbcode_enabled = true
+bbcode_text = "[center][b][color=#5689A0]Impressum[/color][/b][/center]
+
+[b][color=#5689A0]Angaben gemäß § TMG[/color][/b]
+
+Klimaschutz For All e. V.
+Ritterhuder Str. 23
+28237 Bremen
+
+Tel.: 0421 – 1676 7749
+
+Registergericht: Amtsgericht BremenVereinsregister: VR 8275 HB
+Registergericht: Amtsgericht Bremen
+
+Vertreten durch:
+Ulrich Wischnath, Eva Bischof, Ricarda Förster, Kathrin Wischnath
+
+[b][color=#5689A0]Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV[/color][/b]
+
+Klimaschutz For All e. V.
+Ritterhuder Str. 23
+28237 Bremen
+
+Tel.: 0421 – 1676 7749
+
+Wir sind nicht bereit oder verpflichtet an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.
+
+[b][color=#5689A0]Haftung für Inhalte[/color][/b]
+
+Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen.
+
+Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben hiervon unberührt. Eine diesbezügliche Haftung ist jedoch erst ab dem Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung möglich. Bei Bekanntwerden von entsprechenden Rechtsverletzungen werden wir diese Inhalte umgehend entfernen.
+
+[b][color=#5689A0]Haftung für Links[/color][/b]
+
+Unser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich. Die verlinkten Seiten wurden zum Zeitpunkt der Verlinkung auf mögliche Rechtsverstöße überprüft. Rechtswidrige Inhalte waren zum Zeitpunkt der Verlinkung nicht erkennbar.
+
+Eine permanente inhaltliche Kontrolle der verlinkten Seiten ist jedoch ohne konkrete Anhaltspunkte einer Rechtsverletzung nicht zumutbar. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Links umgehend entfernen.Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben hiervon unberührt. Eine diesbezügliche Haftung ist jedoch erst ab dem Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung möglich. Bei Bekanntwerden von entsprechenden Rechtsverletzungen werden wir diese Inhalte umgehend entfernen.
+
+[b][color=#5689A0]Urheberrecht[/color][/b]
+
+Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers. Downloads und Kopien dieser Seite sind nur für den privaten, nicht kommerziellen Gebrauch gestattet. Soweit die Inhalte auf dieser Seite nicht vom Betreiber erstellt wurden, werden die Urheberrechte Dritter beachtet. Insbesondere werden Inhalte Dritter als solche gekennzeichnet. Sollten Sie trotzdem auf eine Urheberrechtsverletzung aufmerksam werden, bitten wir um einen entsprechenden Hinweis. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Inhalte umgehend entfernen.
+"
+text = "Impressum
+
+Angaben gemäß § TMG
+
+Klimaschutz For All e. V.
+Ritterhuder Str. 23
+28237 Bremen
+
+Tel.: 0421 – 1676 7749
+
+Registergericht: Amtsgericht BremenVereinsregister: VR 8275 HB
+Registergericht: Amtsgericht Bremen
+
+Vertreten durch:
+Ulrich Wischnath, Eva Bischof, Ricarda Förster, Kathrin Wischnath
+
+Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV
+
+Klimaschutz For All e. V.
+Ritterhuder Str. 23
+28237 Bremen
+
+Tel.: 0421 – 1676 7749
+
+Wir sind nicht bereit oder verpflichtet an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.
+
+Haftung für Inhalte
+
+Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen.
+
+Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben hiervon unberührt. Eine diesbezügliche Haftung ist jedoch erst ab dem Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung möglich. Bei Bekanntwerden von entsprechenden Rechtsverletzungen werden wir diese Inhalte umgehend entfernen.
+
+Haftung für Links
+
+Unser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich. Die verlinkten Seiten wurden zum Zeitpunkt der Verlinkung auf mögliche Rechtsverstöße überprüft. Rechtswidrige Inhalte waren zum Zeitpunkt der Verlinkung nicht erkennbar.
+
+Eine permanente inhaltliche Kontrolle der verlinkten Seiten ist jedoch ohne konkrete Anhaltspunkte einer Rechtsverletzung nicht zumutbar. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Links umgehend entfernen.Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben hiervon unberührt. Eine diesbezügliche Haftung ist jedoch erst ab dem Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung möglich. Bei Bekanntwerden von entsprechenden Rechtsverletzungen werden wir diese Inhalte umgehend entfernen.
+
+Urheberrecht
+
+Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers. Downloads und Kopien dieser Seite sind nur für den privaten, nicht kommerziellen Gebrauch gestattet. Soweit die Inhalte auf dieser Seite nicht vom Betreiber erstellt wurden, werden die Urheberrechte Dritter beachtet. Insbesondere werden Inhalte Dritter als solche gekennzeichnet. Sollten Sie trotzdem auf eine Urheberrechtsverletzung aufmerksam werden, bitten wir um einen entsprechenden Hinweis. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Inhalte umgehend entfernen.
+"
+fit_content_height = true
+
+[node name="NavPrivacyNotice" type="Button" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/VBoxContainer" index="2"]
+margin_top = 7516.0
+margin_right = 952.0
+margin_bottom = 7602.0
+custom_styles/hover = ExtResource( 14 )
+custom_styles/pressed = ExtResource( 11 )
+custom_styles/normal = ExtResource( 10 )
+custom_fonts/font = ExtResource( 9 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "privacy_statement"
+
+[node name="OSS" type="PanelContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/VBoxContainer" index="3"]
+margin_top = 7666.0
+margin_right = 952.0
+margin_bottom = 10564.0
+custom_styles/panel = SubResource( 5 )
+
+[node name="OSS" type="RichTextLabel" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/VBoxContainer/OSS" index="0"]
+margin_left = 20.0
+margin_right = 932.0
+margin_bottom = 2898.0
+custom_fonts/mono_font = ExtResource( 6 )
+custom_fonts/bold_italics_font = ExtResource( 5 )
+custom_fonts/italics_font = ExtResource( 4 )
+custom_fonts/bold_font = ExtResource( 7 )
+custom_fonts/normal_font = ExtResource( 3 )
+custom_colors/default_color = Color( 0.411765, 0.411765, 0.407843, 1 )
+bbcode_enabled = true
+bbcode_text = "Verwendet [b] Godot Engine [/b] lizensiert unter: 
+%s 
+
+
+Verwendet [b] Dialogic [/b] lizensiert unter: 
+MIT License
+
+Copyright (c) 2020 Emilio Coppola
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the \"Software\"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+"
+text = "Verwendet  Godot Engine  lizensiert unter: 
+%s 
+
+
+Verwendet  Dialogic  lizensiert unter: 
+MIT License
+
+Copyright (c) 2020 Emilio Coppola
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the \"Software\"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+"
+fit_content_height = true
+script = ExtResource( 13 )
+template_str = "[center][b][color=#5689A0]Open Source Lizenzen[/color][/b][/center]
+
+Verwendet [b] Godot Engine [/b] lizensiert unter: 
+%s 
+
+
+Verwendet [b] Dialogic [/b] lizensiert unter: 
+MIT License
+
+Copyright (c) 2020 Emilio Coppola
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the \"Software\"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+"
+
+[node name="HeaderBG" parent="ContentContainer/Content" index="1"]
+self_modulate = Color( 1, 1, 1, 1 )
+
+[node name="Header" parent="HeaderContainer" index="1"]
+screen_label = "Über"
+color = Color( 1, 1, 1, 1 )
+
+[connection signal="pressed" from="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/VBoxContainer/NavPrivacyNotice" to="." method="_on_NavPrivacyNotice_pressed"]

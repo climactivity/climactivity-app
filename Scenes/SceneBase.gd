@@ -9,8 +9,8 @@ export var right_align = 64
 export var safe_area_top = 50
 export var top_align = 200
 
-export (String) var intro_gate_var
-export (String) var intro_timeline
+export (String) var intro_gate_var = ""
+export (String) var intro_timeline = ""
 export (float) var intro_autoplay_delay
 
 export var icon = preload("res://Assets/Icons/AufforstungIcon.png")
@@ -31,12 +31,13 @@ var ready = false
 var gradient
 
 func _ready(): 
-	_set_vars()
+
 	ready = true
 	align_top()
 	header.set_screen_label(screen_title)
 	material = material.duplicate(true)
 	gradient = material.get_shader_param("gradient")
+	_set_vars()
 	dispatch_nav_data()
 	play_intro(intro_timeline, intro_gate_var, intro_autoplay_delay)
 	scroll_container.connect("scrolled", self, "on_scroll")
@@ -53,9 +54,9 @@ func _restored():
 var bottom_margin
 
 func play_intro(timeline, gate_var, delay, force = false):
-	if GameManager == null: return
+	if GameManager == null or GameManager.overlay == null: return
 	GameManager.overlay.hide_available_tutorial()
-	if not gate_var or not timeline:
+	if gate_var == "" or timeline == "":
 		return
 	if force or Dialogic.get_variable(gate_var) == "0" or Util.debug_dialog():
 		if delay > 0.0:
@@ -92,12 +93,13 @@ func set_header_icon(drawable: Texture):
 	if header != null: _set_vars()
 
 func _set_vars(): 
-	Logger.print("Update", self)
+#	Logger.print("Update", self)
 	header_bg.self_modulate = accent_color
 	if gradient != null:
 		gradient.gradient.set_color(0, accent_color)
 		material.set_shader_param("gradient", gradient)
 	$HeaderContainer/Header.update_header(screen_title, icon, accent_color)
+
 func set_screen_title(label):
 	screen_title = label
 	if header != null: _set_vars()

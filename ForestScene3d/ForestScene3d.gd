@@ -43,7 +43,9 @@ func _restored():
 	if GameManager != null: 
 		GameManager.menu.show_menu()
 		GameManager.menu.set_navigation_state( MainMenu.Navigation_states.HOME, true)
+		GameManager.overlay.show_available_tutorial("Intro")
 		GameManager.overlay.hide_available_tutorial()
+
 
 func enter_game():
 	$AnimationPlayer.play("Zoom_To_Clearing")
@@ -60,13 +62,14 @@ func enter_game():
 		DialogicSingleton.init(true)
 	else: 
 		Logger.print("Loaded dialogic defs!", self)
-	if Dialogic.get_variable("IntroPlayed") == "false" or Util.debug_dialog():
+	if Dialogic.get_variable("IntroPlayed") == "0" or Util.debug_dialog():
 		yield( $AnimationPlayer, "animation_finished" )
-		GameManager.overlay.show_dialog("_available_tutorial")
+		GameManager.overlay.show_dialog("Intro")
+	else: 
+		GameManager.overlay.show_available_tutorial("Intro") # looks janky with main menu
+		GameManager.overlay.hide_available_tutorial()
 	show_overlay()
 
 func show_overlay(): 
 	if GameManager.menu != null: GameManager.menu.show_menu()
 	if GameManager.xp_bar != null: GameManager.xp_bar.show()
-	GameManager.overlay.show_available_tutorial("Intro")
-	GameManager.overlay.hide_available_tutorial()
