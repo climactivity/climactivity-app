@@ -58,4 +58,6 @@ func _update():
 	last_xp = current_xp
 
 func show(): 
+	if $AnimationPlayer.is_playing():
+		return
 	$AnimationPlayer.play("show")
