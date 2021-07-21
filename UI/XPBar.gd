@@ -46,14 +46,14 @@ func _update():
 			tween.interpolate_property(xp_progress, "value",
 					last_frag, 1, 1,
 					Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-			tween.interpolate_callback(self, 1, "_update")
+#			tween.interpolate_callback(self, 1, "_update")
 			tween.start()
 		else:
 			var tween = $Tween
 			tween.interpolate_property(xp_progress, "value",
 					last_frag, current_frag, 1,
 					Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-			tween.interpolate_callback(self, 1, "_update")
+#			tween.interpolate_callback(self, 1, "_update")
 			tween.start()
 	last_xp = current_xp
 
