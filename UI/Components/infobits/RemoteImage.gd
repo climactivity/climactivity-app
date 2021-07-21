@@ -4,7 +4,13 @@ extends PanelContainer
 export var data = {} setget on_data
 var image 
 var tex = null
+var paragraph = null
+
 func on_data(new_data:Dictionary):
+	if !self.is_inside_tree(): 
+		paragraph = new_data
+		print("Deferred image loading... ") 
+		return 
 	if new_data.size() == 0: 
 		return
 	data = new_data
@@ -13,6 +19,9 @@ func on_data(new_data:Dictionary):
 	if http_error != OK:
 		print("Could not load %s"% attrs["src"])
 
+func _ready():
+	if paragraph != null: 
+		on_data(paragraph)
 
 func _on_HTTPRequest_request_completed(result, response_code, headers, body):
 	image = Image.new()

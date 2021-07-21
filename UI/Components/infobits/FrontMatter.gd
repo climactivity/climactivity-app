@@ -26,7 +26,7 @@ func update():
 	if completed_infobyte: 
 		$"VBoxContainer/MarginContainer/SkipQuizButton".disabled = true
 		$"VBoxContainer/MarginContainer/SkipQuizButton".visible = true
-	$"VBoxContainer/Label2".visible = completed_infobyte
+	$"VBoxContainer/PanelContainer/Label2".visible = completed_infobyte
 
 func _on_PanelContainer_pressed():
 	emit_signal("skip_to_quiz")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://UI/typography/UI_big.tres" type="DynamicFont" id=1]
 [ext_resource path="res://UI/theme/style_box_empty.tres" type="StyleBox" id=2]
@@ -9,8 +9,14 @@
 [ext_resource path="res://Assets/Theme/skipquiz_button__disabled.png" type="Texture" id=7]
 [ext_resource path="res://Assets/Theme/skipquiz_button_down.png" type="Texture" id=8]
 
-[sub_resource type="Animation" id=1]
-resource_name = "Enter"
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 1, 1, 1, 0.819608 )
+corner_radius_top_left = 64
+corner_radius_top_right = 64
+corner_radius_bottom_right = 64
+corner_radius_bottom_left = 64
+
+[sub_resource type="Animation" id=2]
 tracks/0/type = "method"
 tracks/0/path = NodePath("VBoxContainer/kiko_avatar - placeholder")
 tracks/0/interp = 1
@@ -38,7 +44,7 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("VBoxContainer/Label2:modulate")
+tracks/2/path = NodePath("VBoxContainer/PanelContainer/Label2:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -50,8 +56,7 @@ tracks/2/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "RESET"
+[sub_resource type="Animation" id=3]
 length = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("VBoxContainer/MarginContainer/SkipQuizButton:modulate")
@@ -88,12 +93,19 @@ margin_right = 1080.0
 margin_bottom = 400.0
 text = "Frontmatter missing :("
 
-[node name="Label2" type="Label" parent="VBoxContainer"]
-visible = false
-modulate = Color( 1, 1, 1, 0 )
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer"]
+margin_left = 140.0
 margin_top = 404.0
-margin_right = 1080.0
+margin_right = 940.0
 margin_bottom = 480.0
+size_flags_horizontal = 4
+custom_styles/panel = SubResource( 1 )
+
+[node name="Label2" type="Label" parent="VBoxContainer/PanelContainer"]
+margin_right = 800.0
+margin_bottom = 76.0
+rect_min_size = Vector2( 800, 0 )
+size_flags_horizontal = 4
 custom_fonts/font = ExtResource( 1 )
 custom_colors/font_color = Color( 0.466667, 0.72549, 0.141176, 1 )
 text = "infobyte_completed"
@@ -106,7 +118,7 @@ __meta__ = {
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
 margin_left = 292.0
-margin_top = 404.0
+margin_top = 484.0
 margin_right = 1080.0
 margin_bottom = 1920.0
 mouse_filter = 1
@@ -115,9 +127,9 @@ size_flags_vertical = 3
 
 [node name="SkipQuizButton" type="TextureButton" parent="VBoxContainer/MarginContainer"]
 modulate = Color( 1, 1, 1, 0 )
-margin_top = 659.0
+margin_top = 619.0
 margin_right = 788.0
-margin_bottom = 857.0
+margin_bottom = 817.0
 size_flags_horizontal = 8
 size_flags_vertical = 4
 texture_normal = ExtResource( 6 )
@@ -150,7 +162,7 @@ __meta__ = {
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "RESET"
-anims/Enter = SubResource( 1 )
-anims/RESET = SubResource( 2 )
+anims/Enter = SubResource( 2 )
+anims/RESET = SubResource( 3 )
 
 [connection signal="pressed" from="VBoxContainer/MarginContainer/SkipQuizButton" to="." method="_on_PanelContainer_pressed"]

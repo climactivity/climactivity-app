@@ -193,10 +193,8 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 
 [node name="Control" type="TextureRect" parent="MarginContainer2"]
-modulate = Color( 1, 1, 1, 0 )
-margin_top = -100.0
 margin_right = 400.0
-margin_bottom = 300.0
+margin_bottom = 400.0
 grow_horizontal = 0
 grow_vertical = 0
 rect_min_size = Vector2( 400, 400 )
@@ -214,9 +212,7 @@ grow_horizontal = 0
 grow_vertical = 0
 
 [node name="SpeechBubbleHolder" type="PanelContainer" parent="."]
-modulate = Color( 1, 1, 1, 0 )
-margin_left = -300.0
-margin_right = 780.0
+margin_right = 1080.0
 margin_bottom = 400.0
 size_flags_horizontal = 3
 size_flags_vertical = 3

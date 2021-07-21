@@ -325,6 +325,7 @@ config/version="1.40"
 
 [autoload]
 
+ScreenClear="*res://Scenes/ScreenClear.tscn"
 Logger="*res://Logger.gd"
 Util="*res://Util.gd"
 Api="*res://Network/Api.tscn"

@@ -1,8 +1,9 @@
-[gd_scene load_steps=50 format=2]
+[gd_scene load_steps=54 format=2]
 
 [ext_resource path="res://ForestScene3d/Interactables/SeedlingBox.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Vertical_Gradient.shader" type="Shader" id=2]
 [ext_resource path="res://ForestScene3d/ForestScene3d.gd" type="Script" id=3]
+[ext_resource path="res://Assets/logo.png" type="Texture" id=4]
 [ext_resource path="res://ForestScene3d/ConstantSkyAreaCamera.gd" type="Script" id=5]
 [ext_resource path="res://ForestScene3d/Background.gd" type="Script" id=6]
 [ext_resource path="res://ForestScene3d/ForestGrid.gd" type="Script" id=7]
@@ -43,6 +44,15 @@ sun_longitude = 180.0
 background_mode = 2
 background_sky = SubResource( 1 )
 background_energy = 16.0
+
+[sub_resource type="StyleBoxFlat" id=20]
+bg_color = Color( 1, 1, 1, 1 )
+
+[sub_resource type="StyleBoxFlat" id=21]
+bg_color = Color( 0.584314, 0.760784, 0.121569, 1 )
+
+[sub_resource type="StyleBoxFlat" id=22]
+bg_color = Color( 0.886275, 0.886275, 0.886275, 1 )
 
 [sub_resource type="StyleBoxEmpty" id=3]
 
@@ -302,6 +312,32 @@ tracks/6/keys = {
 "method": "show_overlay"
 } ]
 }
+tracks/7/type = "value"
+tracks/7/path = NodePath("Camera/HUD/Panel:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/8/type = "method"
+tracks/8/path = NodePath("Camera/HUD/Panel")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0.7 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "queue_free"
+} ]
+}
 
 [node name="ForestScene3D" type="Spatial"]
 script = ExtResource( 3 )
@@ -405,6 +441,71 @@ text = "Free placement"
 margin_left = 104.0
 margin_right = 128.0
 margin_bottom = 24.0
+
+[node name="Panel" type="Panel" parent="Camera/HUD"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = SubResource( 20 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="Camera/HUD/Panel"]
+margin_right = 1080.0
+margin_bottom = 1920.0
+mouse_filter = 2
+custom_constants/margin_right = 64
+custom_constants/margin_top = 200
+custom_constants/margin_left = 64
+custom_constants/margin_bottom = 200
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Camera/HUD/Panel/MarginContainer"]
+margin_left = 64.0
+margin_top = 200.0
+margin_right = 1016.0
+margin_bottom = 1720.0
+mouse_filter = 2
+custom_constants/separation = 200
+alignment = 1
+
+[node name="logo" type="TextureRect" parent="Camera/HUD/Panel/MarginContainer/VBoxContainer"]
+margin_top = 428.0
+margin_right = 952.0
+margin_bottom = 628.0
+rect_min_size = Vector2( 0, 200 )
+mouse_filter = 2
+texture = ExtResource( 4 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="Camera/HUD/Panel/MarginContainer/VBoxContainer"]
+margin_top = 828.0
+margin_right = 952.0
+margin_bottom = 892.0
+mouse_filter = 2
+custom_constants/margin_right = 64
+custom_constants/margin_left = 64
+
+[node name="ProgressBar" type="ProgressBar" parent="Camera/HUD/Panel/MarginContainer/VBoxContainer/MarginContainer"]
+margin_left = 64.0
+margin_right = 888.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 0, 64 )
+mouse_filter = 2
+custom_styles/fg = SubResource( 21 )
+custom_styles/bg = SubResource( 22 )
+value = 100.0
+percent_visible = false
+
+[node name="CenterContainer" type="AspectRatioContainer" parent="Camera/HUD/Panel/MarginContainer/VBoxContainer"]
+margin_top = 1092.0
+margin_right = 952.0
+margin_bottom = 1092.0
+size_flags_vertical = 0
+stretch_mode = 1
 
 [node name="DetailsBG" type="Panel" parent="Camera/HUD"]
 anchor_right = 1.0

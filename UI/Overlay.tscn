@@ -238,6 +238,7 @@ __meta__ = {
 
 [node name="XPBar" parent="." instance=ExtResource( 6 )]
 anchor_right = 0.0
+margin_top = 0.0
 margin_right = 1080.0
 margin_bottom = 0.0
 
@@ -313,7 +314,6 @@ __meta__ = {
 }
 
 [node name="Panel" type="Panel" parent="."]
-visible = false
 modulate = Color( 1, 1, 1, 0.823529 )
 margin_right = 1080.0
 margin_bottom = 1920.0

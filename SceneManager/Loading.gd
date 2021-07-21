@@ -14,8 +14,12 @@ func setProgress(progress):
 
 func _ready():
 	enter_game(game_root_path)
-	Api.update_cache()
 	Api.connect("cache_ready", self, "cache_ready")
+	call_deferred("_init_cache")
+
+func _init_cache(): 
+	Api.update_cache()
+
 
 func cache_ready(): 
 	b_cache_ready = true
@@ -25,10 +29,7 @@ func cache_ready():
 func enter_game(path): 
 	loader = ResourceLoader.load_interactive(path)
 	if loader == null: # scene already cached
-		print("- - - - - - - - - - - - Reloading Root Scene! - - - - - - - - - - - -")
-		var res = load(path)
-		set_new_scene(res)
-		return
+		show_error()
 	set_process(true)
 	
 	## play throbber or something 
