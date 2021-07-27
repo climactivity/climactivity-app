@@ -15,7 +15,7 @@
 [ext_resource path="res://UI/Components/LicenseBox.gd" type="Script" id=13]
 [ext_resource path="res://UI/theme/Button_Important_Hover.tres" type="StyleBox" id=14]
 
-[sub_resource type="Shader" id=6]
+[sub_resource type="Shader" id=1]
 code = "shader_type canvas_item; 
 
 uniform sampler2D gradient; 
@@ -25,16 +25,16 @@ void fragment() {
 	//COLOR = vec4(UV.y,0,0,1);
 }"
 
-[sub_resource type="Gradient" id=7]
+[sub_resource type="Gradient" id=2]
 offsets = PoolRealArray( 0.213622, 1 )
 colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 1 )
 
-[sub_resource type="GradientTexture" id=8]
-gradient = SubResource( 7 )
+[sub_resource type="GradientTexture" id=3]
+gradient = SubResource( 2 )
 
-[sub_resource type="ShaderMaterial" id=9]
-shader = SubResource( 6 )
-shader_param/gradient = SubResource( 8 )
+[sub_resource type="ShaderMaterial" id=4]
+shader = SubResource( 1 )
+shader_param/gradient = SubResource( 3 )
 
 [sub_resource type="StyleBoxFlat" id=5]
 content_margin_left = 20.0
@@ -42,18 +42,14 @@ content_margin_right = 20.0
 bg_color = Color( 1, 1, 1, 1 )
 
 [node name="ImpressumEtcScene" instance=ExtResource( 1 )]
-material = SubResource( 9 )
+material = SubResource( 4 )
 script = ExtResource( 8 )
 accent_color = Color( 1, 1, 1, 1 )
 icon = ExtResource( 2 )
 screen_title = "about"
 
-[node name="ScrollContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer" index="0"]
-scroll_vertical = 10055
-
 [node name="ContentMain" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer" index="0"]
-margin_top = -10055.0
-margin_bottom = 1931.0
+margin_bottom = 11986.0
 
 [node name="MarginContainer" type="MarginContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="1"]
 margin_top = 350.0
@@ -89,11 +85,11 @@ custom_colors/default_color = Color( 0.411765, 0.411765, 0.407843, 1 )
 bbcode_enabled = true
 bbcode_text = "[center][img=256]res://Assets/BG/cyIcon.png[/img]
 Climactivty App
-Version 1.35
+Version 1.45
 Engine Version: 3.3.2-stable (official) "
 text = "
 Climactivty App
-Version 1.35
+Version 1.45
 Engine Version: 3.3.2-stable (official) "
 fit_content_height = true
 script = ExtResource( 12 )
@@ -133,7 +129,7 @@ Registergericht: Amtsgericht BremenVereinsregister: VR 8275 HB
 Registergericht: Amtsgericht Bremen
 
 Vertreten durch:
-Ulrich Wischnath, Eva Bischof, Ricarda Förster, Kathrin Wischnath
+Ulrich Wischnath, Ricarda Förster, Kathrin Wischnath
 
 [b][color=#5689A0]Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV[/color][/b]
 
@@ -175,7 +171,7 @@ Registergericht: Amtsgericht BremenVereinsregister: VR 8275 HB
 Registergericht: Amtsgericht Bremen
 
 Vertreten durch:
-Ulrich Wischnath, Eva Bischof, Ricarda Förster, Kathrin Wischnath
+Ulrich Wischnath, Ricarda Förster, Kathrin Wischnath
 
 Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV
 

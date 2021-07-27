@@ -10,7 +10,7 @@
 [ext_resource path="res://UI/theme/Button_Important_Down.tres" type="StyleBox" id=8]
 [ext_resource path="res://UI/theme/Button_Important_Hover.tres" type="StyleBox" id=9]
 
-[sub_resource type="Shader" id=6]
+[sub_resource type="Shader" id=1]
 code = "shader_type canvas_item; 
 
 uniform sampler2D gradient; 
@@ -20,21 +20,21 @@ void fragment() {
 	//COLOR = vec4(UV.y,0,0,1);
 }"
 
-[sub_resource type="Gradient" id=7]
+[sub_resource type="Gradient" id=2]
 offsets = PoolRealArray( 0.213622, 1 )
 colors = PoolColorArray( 0.517647, 0.517647, 0.517647, 1, 1, 1, 1, 1 )
 
-[sub_resource type="GradientTexture" id=8]
-gradient = SubResource( 7 )
+[sub_resource type="GradientTexture" id=3]
+gradient = SubResource( 2 )
 
-[sub_resource type="ShaderMaterial" id=9]
-shader = SubResource( 6 )
-shader_param/gradient = SubResource( 8 )
+[sub_resource type="ShaderMaterial" id=4]
+shader = SubResource( 1 )
+shader_param/gradient = SubResource( 3 )
 
 [sub_resource type="StyleBoxEmpty" id=5]
 
 [node name="SettingsScene" instance=ExtResource( 1 )]
-material = SubResource( 9 )
+material = SubResource( 4 )
 accent_color = Color( 0.517647, 0.517647, 0.517647, 1 )
 icon = ExtResource( 2 )
 screen_title = "settings_screen"
@@ -42,8 +42,12 @@ screen_title = "settings_screen"
 [node name="ContentMain" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer" index="0"]
 show_menu_bar = true
 
+[node name="HSeparator" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="0"]
+margin_bottom = 374.0
+custom_constants/separation = 374
+
 [node name="MarginContainer" type="MarginContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="1"]
-margin_top = 350.0
+margin_top = 378.0
 margin_right = 1080.0
 margin_bottom = 1920.0
 size_flags_vertical = 3
@@ -55,7 +59,7 @@ script = ExtResource( 5 )
 [node name="Settings" type="VBoxContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer" index="0"]
 margin_left = 168.0
 margin_right = 912.0
-margin_bottom = 1402.0
+margin_bottom = 1374.0
 size_flags_vertical = 3
 custom_constants/separation = 64
 
@@ -86,9 +90,9 @@ custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "privacy_statement"
 
 [node name="debug_settings" type="VBoxContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/Settings" index="1"]
-margin_top = 386.0
+margin_top = 150.0
 margin_right = 744.0
-margin_bottom = 774.0
+margin_bottom = 982.0
 size_flags_vertical = 6
 custom_constants/separation = 36
 
@@ -120,14 +124,13 @@ custom_fonts/font = ExtResource( 3 )
 text = "Spielstand löschen"
 
 [node name="AuthBox" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/Settings/debug_settings" index="4" instance=ExtResource( 4 )]
-visible = false
 margin_top = 424.0
 margin_bottom = 832.0
 
 [node name="HSeparator" type="HSeparator" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/Settings" index="2"]
-margin_top = 1075.0
+margin_top = 1047.0
 margin_right = 744.0
-margin_bottom = 1402.0
+margin_bottom = 1374.0
 custom_styles/separator = SubResource( 5 )
 custom_constants/separation = 327
 
@@ -137,7 +140,17 @@ anchor_right = 0.0
 margin_right = 1080.0
 margin_bottom = 346.0
 
+[node name="HSeparator2" parent="ContentContainer/Content/HeaderBG" index="0"]
+margin_bottom = 374.0
+custom_constants/separation = 374
+
+[node name="HSeparator" parent="HeaderContainer" index="0"]
+margin_bottom = 128.0
+custom_constants/separation = 128
+
 [node name="Header" parent="HeaderContainer" index="1"]
+margin_top = 132.0
+margin_bottom = 289.0
 screen_label = "settings_screen"
 icon_texture = ExtResource( 2 )
 color = Color( 0.517647, 0.517647, 0.517647, 1 )

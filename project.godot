@@ -74,11 +74,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/com.heroiclabs.nakama/client/NakamaClient.gd"
 }, {
-"base": "Node",
-"class": "NakamaConnection",
-"language": "GDScript",
-"path": "res://Network/Nakama.gd"
-}, {
 "base": "Reference",
 "class": "NakamaException",
 "language": "GDScript",
@@ -273,7 +268,6 @@ _global_script_class_icons={
 "NakamaAPI": "",
 "NakamaAsyncResult": "",
 "NakamaClient": "",
-"NakamaConnection": "",
 "NakamaException": "",
 "NakamaHTTPAdapter": "",
 "NakamaLogger": "",
@@ -342,6 +336,8 @@ InfobyteService="*res://Services/InfobyteService.gd"
 QuestService="*res://Services/QuestService.gd"
 DialogicSingleton="*res://addons/dialogic/Other/DialogicSingleton.gd"
 LevelLut="*res://Services/LevelLut.gd"
+Nakama="*res://addons/com.heroiclabs.nakama/Nakama.gd"
+NakamaConnection="*res://Network/Nakama.gd"
 
 [debug]
 

@@ -1,11 +1,15 @@
 extends Node
-class_name NakamaConnection
+#class_name NakamaConnection
 var client : NakamaClient
 var session : NakamaSession
 signal nk_connected
 signal completed
+export var server_key = "cyserver_BVZ29wCUCJmjh2rcTrECCcDm9WdqsptDpuYyuen8tEC4WBYcYcJdjxwpmycxuxNP"
 func _ready():
-#	client = Nakama.create_client("cyserver_BVZ29wCUCJmjh2rcTrECCcDm9WdqsptDpuYyuen8tEC4WBYcYcJdjxwpmycxuxNP", "127.0.0.1", 7350, "http")
+	if ProjectSettings.get_setting("debug/settings/network/localhost"): 
+		client = Nakama.create_client(server_key, "127.0.0.1", 7350, "http")
+	else:
+		client = Nakama.create_client(server_key, "wss.climactivity.de", 443, "https")
 	authenticate_device_uid()
 
 
@@ -20,9 +24,11 @@ func update_account_with_email(email, password):
 func authenticate_device_uid(): 
 	var device_id = OS.get_unique_id()
 	session = yield(client.authenticate_device_async(device_id), "completed")
-	emit_signal("nk_connected")
-	Logger.print(session, self)
-
+	if session.valid: 
+		emit_signal("nk_connected")
+		Logger.print(session, self)
+	else:
+		Logger.print(session._to_string(), self)
 func save_var(collection_name: String, key_name: String, value: String, can_read = 1, can_write = 1, version = ""): 
 
 	var storage_object = NakamaWriteStorageObject.new(collection_name, key_name, can_read, can_write, value, version)
