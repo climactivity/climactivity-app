@@ -51,4 +51,3 @@ oder
 # godot muss im PATH sein, ist unter win zumindest nicht automatisch so
 $ godot --export <platform>
 ``` 
-(mein Makefile ist noch zu unfertig 🙁) 
