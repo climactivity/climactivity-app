@@ -349,6 +349,7 @@ settings/game_logic/use_res_for_cache=true
 settings/game_logic/use_fixed_icons=true
 settings/game_logic/debug_dialog=false
 settings/game_logic/recomplete_infobytes=false
+settings/network/localgameserver=true
 
 [display]
 
