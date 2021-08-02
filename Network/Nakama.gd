@@ -7,13 +7,14 @@ var socket : NakamaSocket
 signal nk_connected
 signal completed
 signal cy_network_authenticated
-export var server_key = "cyserver_BVZ29wCUCJmjh2rcTrECCcDm9WdqsptDpuYyuen8tEC4WBYcYcJdjxwpmycxuxNP"
-export var oauth_base_url = "http://localhost:8069/oauth"
-export var oauth_client_id = "fCJGxy5JaJgKfqJIelPEn8zzRI4AGUnoTvs1YvOL"
+var server_key = "cyserver_BVZ29wCUCJmjh2rcTrECCcDm9WdqsptDpuYyuen8tEC4WBYcYcJdjxwpmycxuxNP"
+var oauth_base_url = "https://dev.climactivity.de/oauth"
+var oauth_client_id = "fCJGxy5JaJgKfqJIelPEn8zzRI4AGUnoTvs1YvOL"
 
 func _ready():
 	if ProjectSettings.get_setting("debug/settings/network/localgameserver"): 
-		client = Nakama.create_client(server_key, "127.0.0.1", 7350, "http")
+		client = Nakama.create_client(server_key, "10.0.2.2" if OS.get_name() in ['Android'] else "127.0.0.1", 7350, "http")
+		oauth_base_url = "http://10.0.2.2:8069/oauth" if OS.get_name() in ['Android'] else "http://localhost:8069/oauth"
 	else:
 		client = Nakama.create_client(server_key, "wss.climactivity.de", 443, "https")
 	socket = Nakama.create_socket_from(client)

@@ -58,3 +58,5 @@ no_longer_tracked,Nicht mehr getrackt,
 impressum,Impressum ,Legal Disclosure
 privacy_statement,Datenschutzerklärung,Privacy Statement
 about,Über/Impressum,
+select_entity,Auswählen,
+buy_entity,Für %d[img=56]res://Assets/Icons/coin.png[/img] freischalten,

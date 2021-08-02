@@ -27,6 +27,7 @@ export (String) var type
 export (String) var ui_name
 export (String) var preview_name 
 export (int) var coin_value 
+export (int) var unlock_level
 export (Array) var bigpoint_available 
 export (Dictionary) var texture_data
 export (Texture) var preview_texture
@@ -38,7 +39,8 @@ func _init(p_dict = {}):
 	texture_name =  p_dict["texture_name"] if p_dict.has("texture_name") else ""
 	ui_name =  p_dict["ui_name"] if p_dict.has("ui_name") else ""
 	preview_name =  p_dict["preview_name"] if p_dict.has("preview_name") else ""
-	coin_value =  p_dict["coin_value"] if p_dict.has("coin_value") else ""
+	coin_value =  p_dict["coin_value"] if p_dict.has("coin_value") else 0
+	unlock_level =  p_dict["unlock_level"] if p_dict.has("unlock_level") else 0
 	bigpoint_available =  p_dict["bigpoint_available"] if p_dict.has("bigpoint_available") else []
 	texture_data =  p_dict["texture_data"] if p_dict.has("texture_data") else {}
 
