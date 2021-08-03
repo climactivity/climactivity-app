@@ -35,7 +35,7 @@ func init_player_state():
 	
 func _sync(): 
 #	Api.sync_player_state()
-	NakamaConnection.sync_player_state(player_state) 
+	if NakamaConnection: NakamaConnection.sync_player_state(player_state) 
 
 func update_from_json(document): 
 	pass

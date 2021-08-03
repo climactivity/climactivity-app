@@ -4,11 +4,16 @@ export var plane_coordinates = Vector2.ZERO
 
 func show_grid():
 	if $Grid.visible: return false
-	$AnimationPlayer.play("ShowGrid")
+	$Grid.visible = true
+	$Preview.visible = false
 	return true
 	
 func show_preview():
-	$AnimationPlayer.play("ShowPreview")
+	$Grid.visible = false
+	$Preview.visible = true
+#	$AnimationPlayer.play("ShowPreview")
 	
 func hide():
-	$AnimationPlayer.play("Hide")
+	$Grid.visible = false
+	$Preview.visible = false
+#	$AnimationPlayer.play("Hide")

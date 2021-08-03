@@ -1,5 +1,9 @@
 extends Control
 class_name Overlay
+
+signal popup_show
+signal popup_hide
+
 onready var anim_player = $AnimationPlayer
 onready var popup_content = $Popup/MarginContainer
 func _ready():
@@ -10,7 +14,7 @@ func _ready():
 func _show_popup(control):
 	anim_player.play("ShowPopupLayer")
 	$Popup.add_child(control)
-
+	emit_signal("popup_show")
 func _on_Popup_gui_input(event):
 	if event is InputEventMouseButton: 
 		if event.pressed: 
@@ -29,6 +33,7 @@ func _tutorial_button_avoid_menu(show_menu):
 func _close_popup(): 
 	anim_player.play_backwards("ShowPopupLayer")
 	$Popup.clear()
+	emit_signal("popup_hide")
 
 func show_dialog(timeline_name: String):
 	var dialog_box = Dialogic.start(timeline_name, false)

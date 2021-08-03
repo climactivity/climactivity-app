@@ -27,7 +27,8 @@ func _update_new_trees():
 		if object.is_mature():
 			AspectTrackingService.award_seedling(object.aspect_id)
 			
-
+func _pay_coins(coins): 
+	player_state.inventory.pay_coins()
 func add_entity(template, aspect):
 	var new_entity = _new_board_entity_resource(template, aspect)
 	PSS.add_item_to_inventory(new_entity)

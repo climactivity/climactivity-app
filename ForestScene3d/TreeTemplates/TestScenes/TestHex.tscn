@@ -135,7 +135,6 @@ mesh = ExtResource( 1 )
 material/0 = null
 
 [node name="Grid" type="MeshInstance" parent="."]
-visible = false
 mesh = SubResource( 2 )
 material/0 = null
 

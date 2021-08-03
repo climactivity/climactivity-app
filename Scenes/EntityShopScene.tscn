@@ -7,6 +7,8 @@
 
 [node name="EntityShopScene" instance=ExtResource( 1 )]
 use_parent_material = true
+margin_top = 8.0
+margin_bottom = 8.0
 script = ExtResource( 5 )
 accent_color = Color( 0.6, 0.6, 0.6, 1 )
 intro_gate_var = "ShopPlayed"
@@ -23,7 +25,7 @@ margin_right = 991.0
 
 [node name="ContentMain" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer" index="0"]
 margin_right = 914.0
-margin_bottom = 3036.0
+margin_bottom = 3012.0
 
 [node name="HSeparator" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="0"]
 margin_right = 914.0
@@ -40,13 +42,13 @@ align = 2
 [node name="ScrollContainer" type="MarginContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="2"]
 margin_top = 350.0
 margin_right = 914.0
-margin_bottom = 2968.0
+margin_bottom = 2944.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="GridContainer" type="GridContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ScrollContainer" index="0"]
 margin_right = 914.0
-margin_bottom = 2618.0
+margin_bottom = 2594.0
 custom_constants/vseparation = 10
 custom_constants/hseparation = 10
 columns = 2
@@ -55,64 +57,64 @@ columns = 2
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 452.0
-margin_bottom = 647.0
+margin_bottom = 641.0
 
 [node name="Card2" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ScrollContainer/GridContainer" index="1" instance=ExtResource( 3 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 462.0
 margin_right = 914.0
-margin_bottom = 647.0
+margin_bottom = 641.0
 
 [node name="Card3" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ScrollContainer/GridContainer" index="2" instance=ExtResource( 3 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 657.0
+margin_top = 651.0
 margin_right = 452.0
-margin_bottom = 1304.0
+margin_bottom = 1292.0
 
 [node name="Card4" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ScrollContainer/GridContainer" index="3" instance=ExtResource( 3 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 462.0
-margin_top = 657.0
+margin_top = 651.0
 margin_right = 914.0
-margin_bottom = 1304.0
+margin_bottom = 1292.0
 
 [node name="Card5" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ScrollContainer/GridContainer" index="4" instance=ExtResource( 3 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 1314.0
+margin_top = 1302.0
 margin_right = 452.0
-margin_bottom = 1961.0
+margin_bottom = 1943.0
 
 [node name="Card6" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ScrollContainer/GridContainer" index="5" instance=ExtResource( 3 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 462.0
-margin_top = 1314.0
+margin_top = 1302.0
 margin_right = 914.0
-margin_bottom = 1961.0
+margin_bottom = 1943.0
 
 [node name="Card7" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ScrollContainer/GridContainer" index="6" instance=ExtResource( 3 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 1971.0
+margin_top = 1953.0
 margin_right = 452.0
-margin_bottom = 2618.0
+margin_bottom = 2594.0
 
 [node name="Card8" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ScrollContainer/GridContainer" index="7" instance=ExtResource( 3 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 462.0
-margin_top = 1971.0
+margin_top = 1953.0
 margin_right = 914.0
-margin_bottom = 2618.0
+margin_bottom = 2594.0
 
 [node name="MarginContainer" type="MarginContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="3"]
-margin_top = 2972.0
+margin_top = 2948.0
 margin_right = 914.0
-margin_bottom = 3036.0
+margin_bottom = 3012.0
 custom_constants/margin_right = 90
 custom_constants/margin_top = 64
 custom_constants/margin_left = 90

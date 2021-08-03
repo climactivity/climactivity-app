@@ -13,10 +13,10 @@ var oauth_client_id = "fCJGxy5JaJgKfqJIelPEn8zzRI4AGUnoTvs1YvOL"
 
 func _ready():
 	if ProjectSettings.get_setting("debug/settings/network/localgameserver"): 
-		client = Nakama.create_client(server_key, "10.0.2.2" if OS.get_name() in ['Android'] else "127.0.0.1", 7350, "http")
+		client = Nakama.create_client(server_key, "10.0.2.2" if OS.get_name() in ['Android'] else "127.0.0.1", 7350, "http", 3, NakamaLogger.LOG_LEVEL.DEBUG )
 		oauth_base_url = "http://10.0.2.2:8069/oauth" if OS.get_name() in ['Android'] else "http://localhost:8069/oauth"
 	else:
-		client = Nakama.create_client(server_key, "wss.climactivity.de", 443, "https")
+		client = Nakama.create_client(server_key, "wss.climactivity.de", 443, "https", 3, NakamaLogger.LOG_LEVEL.ERROR )
 	socket = Nakama.create_socket_from(client)
 	yield(authenticate_device_uid(), "completed") 
 	yield(connect_socket(), "completed") 
@@ -60,7 +60,7 @@ func get_user():
 func authenticate_email(email, password): 
 	session = yield(client.authenticate_email_async(email, password, false), "completed")
 	emit_signal("nk_connected")
-	Logger.print(session)
+#	Logger.print(session)
 
 func start_cy_network_oauth_flow(): 
 	if !session: return 
@@ -152,18 +152,19 @@ func sync_player_state(player_state : RTrackingStates):
 	var version = ""
 	
 	var player_state_dict = player_state.to_dict()
-	var objs = []
-	
-	for key in player_state_dict.keys(): 
-		var value = player_state_dict[key]
-		var storage_object = NakamaWriteStorageObject.new("player_state", key, can_read, can_write, JSON.print({key: value}), version)
-		print(JSON.print(value))
-		objs.append(storage_object)	
-	
-	var acks : NakamaAPI.ApiStorageObjectAcks = yield(client.write_storage_objects_async(session, objs), "completed")
-	if acks.is_exception():
-		print("An error occured: %s" % acks)
-		return
-	print("Successfully stored objects:")
-	for a in acks.acks:
-		print("%s" % a)
+	_store_dict(player_state_dict, "player_state", can_read, can_write, version )
+#	var objs = []
+#
+#	for key in player_state_dict.keys(): 
+#		var value = player_state_dict[key]
+#		var storage_object = NakamaWriteStorageObject.new("player_state", key, can_read, can_write, JSON.print({key: value}), version)
+##		print(JSON.print(value))
+#		objs.append(storage_object)	
+#
+#	var acks : NakamaAPI.ApiStorageObjectAcks = yield(client.write_storage_objects_async(session, objs), "completed")
+#	if acks.is_exception():
+#		print("An error occured: %s" % acks)
+#		return
+##	print("Successfully stored objects:")
+#	for a in acks.acks:
+#		print("%s" % a)

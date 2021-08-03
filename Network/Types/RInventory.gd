@@ -20,6 +20,13 @@ func add_reward(reward):
 	# if uncollected_rewards == null: uncollected_rewards = []
 	# uncollected_rewards.push_back(reward)
 
+func pay_coins(amount): 
+	if coins >= amount: 
+		coins -= amount
+		return true
+	else: 
+		return false
+
 func update():
 	last_seen_xp = xp 
 	last_seen_coins = coins

@@ -1,6 +1,6 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://UI/typography/UI_Regular.tres" type="DynamicFont" id=1]
+[ext_resource path="res://UI/typography/UI_big.tres" type="DynamicFont" id=1]
 [ext_resource path="res://UI/Components/SelectEntityCard.gd" type="Script" id=2]
 [ext_resource path="res://UI/typography/Heading.tres" type="DynamicFont" id=3]
 [ext_resource path="res://UI/typography/Button_Label.tres" type="DynamicFont" id=4]
@@ -22,9 +22,13 @@ corner_radius_bottom_left = 32
 [sub_resource type="StreamTexture" id=2]
 flags = 7
 
+[sub_resource type="StyleBoxEmpty" id=3]
+
 [node name="Card" type="PanelContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_right = -622.0
+margin_bottom = -1315.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_styles/panel = SubResource( 1 )
@@ -36,8 +40,8 @@ __meta__ = {
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 margin_left = 1.0
 margin_top = 1.0
-margin_right = 1079.0
-margin_bottom = 1919.0
+margin_right = 457.0
+margin_bottom = 640.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
@@ -46,64 +50,59 @@ custom_constants/separation = 25
 alignment = 1
 
 [node name="Label" type="Label" parent="VBoxContainer"]
-margin_top = 657.0
-margin_right = 1078.0
-margin_bottom = 722.0
+margin_right = 456.0
+margin_bottom = 65.0
 custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "tree_label"
 align = 1
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer"]
-margin_top = 747.0
-margin_right = 1078.0
-margin_bottom = 1127.0
+margin_top = 90.0
+margin_right = 456.0
+margin_bottom = 470.0
 rect_min_size = Vector2( 380, 380 )
 texture = SubResource( 2 )
 expand = true
 stretch_mode = 6
 
 [node name="Label2" type="Label" parent="VBoxContainer"]
-margin_top = 1152.0
-margin_right = 1078.0
-margin_bottom = 1166.0
+margin_top = 495.0
+margin_right = 456.0
+margin_bottom = 509.0
 
-[node name="CenterContainer" type="CenterContainer" parent="VBoxContainer"]
-margin_top = 1191.0
-margin_right = 1078.0
-margin_bottom = 1260.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/CenterContainer"]
-margin_left = 339.0
-margin_right = 739.0
-margin_bottom = 69.0
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+margin_top = 534.0
+margin_right = 456.0
+margin_bottom = 639.0
 size_flags_horizontal = 3
+custom_constants/margin_right = 36
+custom_constants/margin_left = 36
+custom_constants/margin_bottom = 36
 
-[node name="select_button" type="Button" parent="VBoxContainer/CenterContainer/MarginContainer"]
-margin_right = 400.0
+[node name="select_button" type="Button" parent="VBoxContainer/MarginContainer"]
+margin_left = 36.0
+margin_right = 420.0
 margin_bottom = 69.0
-rect_min_size = Vector2( 400, 0 )
+rect_min_size = Vector2( 350, 0 )
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.0
 custom_styles/hover = ExtResource( 6 )
 custom_styles/pressed = ExtResource( 6 )
-custom_styles/focus = ExtResource( 6 )
+custom_styles/focus = SubResource( 3 )
 custom_styles/disabled = ExtResource( 5 )
 custom_styles/normal = ExtResource( 6 )
 custom_fonts/font = ExtResource( 4 )
 
-[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/CenterContainer/MarginContainer/select_button"]
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/MarginContainer/select_button"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -200.0
-margin_top = -34.5
-margin_right = 200.0
-margin_bottom = 34.5
+margin_left = -201.414
+margin_top = -37.3285
+margin_right = 198.586
+margin_bottom = 31.6715
 mouse_filter = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -116,4 +115,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[connection signal="pressed" from="VBoxContainer/CenterContainer/MarginContainer/select_button" to="." method="_on_select_button_pressed"]
+[node name="Tween" type="Tween" parent="."]
+
+[connection signal="pressed" from="VBoxContainer/MarginContainer/select_button" to="." method="_on_select_button_pressed"]

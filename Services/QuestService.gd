@@ -53,9 +53,19 @@ func add_quest(quest: RLocalizedQuest):
 
 func get_quest_status(quest_id): 
 	for accepted_quest in _accepted_quests:
+		if accepted_quest is Resource: 
+			Logger.error("_accepted_quests doesn't contain resources!")
+			_accepted_quests = []
+			_flush()
+			break
 		if accepted_quest.quest == quest_id:
 			return accepted_quest
 	for completed_quest in _completed_quests: 
+		if completed_quest is Resource: 
+			Logger.error("_completed_quests doesn't contain resources!")
+			_completed_quests = []
+			_flush()
+			break
 		if completed_quest.quest == quest_id:
 			if !completed_quest.has("completed"):
 				completed_quest["completed"] = OS.get_unix_time()

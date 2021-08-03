@@ -59,4 +59,4 @@ impressum,Impressum ,Legal Disclosure
 privacy_statement,Datenschutzerklärung,Privacy Statement
 about,Über/Impressum,
 select_entity,Auswählen,
-buy_entity,Für %d[img=56]res://Assets/Icons/coin.png[/img] freischalten,
+buy_entity,%d [img=48]res://Assets/Icons/coin.png[/img],%d

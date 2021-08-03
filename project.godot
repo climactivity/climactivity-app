@@ -445,6 +445,4 @@ vram_compression/import_pvrtc=true
 quality/filters/anisotropic_filter_level=16
 gles2/compatibility/disable_half_float=true
 environment/default_clear_color=Color( 0.898039, 0.898039, 0.898039, 1 )
-quality/filters/msaa=2
-quality/filters/use_fxaa=true
 environment/default_environment="res://default_env.tres"
