@@ -5,6 +5,7 @@ export (Resource) var entity setget set_entity
 onready var preview = $VBoxContainer/TextureRect
 onready var title = $VBoxContainer/Label
 onready var select_button = $VBoxContainer/CenterContainer/MarginContainer/select_button
+onready var select_button_label = $VBoxContainer/CenterContainer/MarginContainer/select_button/RichTextLabel
 
 var ready = false
 var aspect
@@ -24,9 +25,9 @@ func set_aspect(new_aspect):
 func _show_data(): 
 	preview.texture = entity.preview_texture
 	title.text = entity.ui_name
-	var select_button_text = tr("select_entity") if entity.coin_value == 0 else tr("buy_entity") % entity.coin_value
-	select_button.text = select_button_text
-	if BoardEntityService.can_affort(entity): 
+	var select_button_text = '[center]' + tr("select_entity") if entity.coin_value == 0 else tr("buy_entity") % entity.coin_value
+	select_button_label.bbcode_text = select_button_text
+	if BoardEntityService.can_buy(entity): 
 		select_button.disabled = false
 		
 	else: 

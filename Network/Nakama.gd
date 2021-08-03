@@ -118,6 +118,31 @@ func read_collection(collection):
 			objects.append(object.value)
 		return objects
 
+func analytics_store_viewed_tutorials():
+	var definitions = DialogicSingleton.get_definitions()
+	var completed_tutorials = {}
+	for def in definitions.variables: 
+		if def.value == "1":
+			def['at'] = Util.date_as_RFC1123(OS.get_datetime())
+			completed_tutorials[def.name] = def
+		
+	_store_dict(completed_tutorials, "completed_tutorials", 1, 1, "" )
+
+func _store_dict(dict, collection, can_read, can_write, version) :
+	var objs = []
+	for key in dict.keys(): 
+		var value = dict[key]
+		var storage_object = NakamaWriteStorageObject.new(collection, key, can_read, can_write, JSON.print({key: value}), version)
+#		print(JSON.print(value))
+		objs.append(storage_object)	
+	var acks : NakamaAPI.ApiStorageObjectAcks = yield(client.write_storage_objects_async(session, objs), "completed")
+	if acks.is_exception():
+		print("An error occured: %s" % acks)
+		return
+#	print("Successfully stored objects:")
+#	for a in acks.acks:
+#		print("%s" % a)
+
 func sync_player_state(player_state : RTrackingStates):
 	if (not client or not session): 
 		Logger.print("Connection not ready!", self)

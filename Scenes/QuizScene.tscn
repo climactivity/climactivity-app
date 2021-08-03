@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://Scenes/SceneBase.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/QuizScene.gd" type="Script" id=2]
@@ -11,8 +11,6 @@
 [ext_resource path="res://UI/Components/Infobits.tscn" type="PackedScene" id=9]
 [ext_resource path="res://UI/theme/style_box_empty.tres" type="StyleBox" id=10]
 [ext_resource path="res://UI/Components/infobits/ProgressBlips.tscn" type="PackedScene" id=11]
-[ext_resource path="res://Network/Cache/Aspects/605af74af333c40013c79fee.tres" type="Resource" id=12]
-[ext_resource path="res://Network/Cache/Infobytes/60b8a10c25d36000132b0acd.tres" type="Resource" id=13]
 [ext_resource path="res://Assets/Theme/share_button_normal.png" type="Texture" id=14]
 [ext_resource path="res://Assets/Theme/share_button_hover.png" type="Texture" id=15]
 [ext_resource path="res://Assets/Theme/share_button_disabled.png" type="Texture" id=16]
@@ -22,28 +20,24 @@
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.972549, 0.972549, 0.972549, 1 )
 
-[sub_resource type="StreamTexture" id=2]
-flags = 3
-load_path = "res://.import/climactivity_H-Icon_Mobilitaet.png-24b8e8d331861fd97bb8c0d0c5137cae.stex"
+[sub_resource type="StyleBoxEmpty" id=2]
 
-[sub_resource type="StyleBoxEmpty" id=3]
-
-[sub_resource type="StyleBoxFlat" id=4]
+[sub_resource type="StyleBoxFlat" id=3]
 corner_radius_top_left = 180
 corner_radius_top_right = 180
 corner_radius_bottom_right = 180
 corner_radius_bottom_left = 180
 
-[sub_resource type="StyleBoxFlat" id=5]
+[sub_resource type="StyleBoxFlat" id=4]
 corner_radius_top_left = 30
 corner_radius_top_right = 30
 corner_radius_bottom_right = 30
 corner_radius_bottom_left = 30
 
-[sub_resource type="StyleBoxFlat" id=6]
+[sub_resource type="StyleBoxFlat" id=5]
 bg_color = Color( 0.847059, 0.847059, 0.847059, 1 )
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=6]
 length = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ContentHolder/FrontMatter:visible")
@@ -142,7 +136,7 @@ tracks/7/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=7]
 length = 0.2
 step = 0.01
 tracks/0/type = "value"
@@ -222,7 +216,7 @@ tracks/5/keys = {
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=8]
 length = 0.573
 tracks/0/type = "method"
 tracks/0/path = NodePath(".")
@@ -335,7 +329,7 @@ tracks/8/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=9]
 length = 0.317
 tracks/0/type = "method"
 tracks/0/path = NodePath(".")
@@ -400,7 +394,7 @@ tracks/4/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=10]
 length = 0.3
 tracks/0/type = "value"
 tracks/0/path = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ContentHolder/Infobits:modulate")
@@ -501,7 +495,7 @@ tracks/7/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=11]
 resource_name = "show_quiz_result"
 tracks/0/type = "value"
 tracks/0/path = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ContentHolder/Quiz:visible")
@@ -552,7 +546,7 @@ tracks/3/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=13]
+[sub_resource type="Animation" id=12]
 resource_name = "skip_to_quiz"
 length = 0.3
 tracks/0/type = "method"
@@ -601,21 +595,6 @@ script = ExtResource( 2 )
 accent_color = Color( 0.6, 0.6, 0.6, 1 )
 intro_gate_var = "FirstInfobitPlayed"
 intro_timeline = "FirstInfobitIntro"
-preloaded_quiz_data = {
-"aspect": ExtResource( 12 ),
-"factor": {
-"id": 0,
-"intro": "So wie wir uns heute im Alltag am Boden überwiegend mit dem Auto bewegen, ist ein wesentlicher Punkt in der Klimabilanz. Wo können und müssen wir ansetzen, um das zu ändern? ",
-"name": "Themen-Monat: Mobilität zu Lande"
-},
-"quiz": ExtResource( 13 ),
-"sector": {
-"sector": "mobility",
-"sector_color": Color( 0.901961, 0.654902, 0.0941176, 1 ),
-"sector_logo": SubResource( 2 ),
-"sector_title": "Zelt der Mobilität"
-}
-}
 loading_anim = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ContentHolder/Loading")
 continue_button = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/Footer/Panel/ContinueButton")
 share_button = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/Footer/Panel/ShareButton")
@@ -632,7 +611,7 @@ margin_right = 1080.0
 margin_bottom = 1699.0
 mouse_filter = 2
 size_flags_vertical = 3
-custom_styles/panel = SubResource( 3 )
+custom_styles/panel = SubResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -658,7 +637,7 @@ margin_left = -430.873
 margin_top = -407.592
 margin_right = -149.873
 margin_bottom = -121.592
-custom_styles/panel = SubResource( 4 )
+custom_styles/panel = SubResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -673,7 +652,7 @@ margin_left = -133.782
 margin_top = -407.719
 margin_right = 373.218
 margin_bottom = -121.719
-custom_styles/panel = SubResource( 5 )
+custom_styles/panel = SubResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -688,7 +667,7 @@ margin_left = 25.0
 margin_top = 290.5
 margin_right = 450.0
 margin_bottom = 416.5
-custom_styles/panel = SubResource( 5 )
+custom_styles/panel = SubResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -748,7 +727,7 @@ anchor_bottom = 1.0
 margin_top = -257.0
 size_flags_horizontal = 3
 size_flags_vertical = 9
-custom_styles/panel = SubResource( 6 )
+custom_styles/panel = SubResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -816,13 +795,13 @@ __meta__ = {
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1"]
 autoplay = "RESET"
-anims/RESET = SubResource( 7 )
-anims/show_frontmatter = SubResource( 8 )
-anims/show_infobit_holder = SubResource( 9 )
-anims/show_quiz = SubResource( 10 )
-anims/show_quiz_intro = SubResource( 11 )
-anims/show_quiz_result = SubResource( 12 )
-anims/skip_to_quiz = SubResource( 13 )
+anims/RESET = SubResource( 6 )
+anims/show_frontmatter = SubResource( 7 )
+anims/show_infobit_holder = SubResource( 8 )
+anims/show_quiz = SubResource( 9 )
+anims/show_quiz_intro = SubResource( 10 )
+anims/show_quiz_result = SubResource( 11 )
+anims/skip_to_quiz = SubResource( 12 )
 
 [connection signal="reward_collected" from="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ContentHolder/QuizEnd" to="." method="_on_CollectRewardButton_pressed"]
 [connection signal="pressed" from="ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/Footer/Panel/BackButton" to="." method="_on_BackButton_pressed"]

@@ -14,7 +14,7 @@ export (float) var water_applied
 export (float) var base_water_required
 export (float) var water_required
 export (Resource) var tree_template
-export (Vector3) var axial_coords
+export (Vector2) var axial_coords
 export (bool) var just_planted 
 export (Vector2) var center_offset # in AABB (1.0,1.0),(-1.0,1-.0), how much the scene is acutally shifted is controlled by presentation layer
 export (String) var aspect_id

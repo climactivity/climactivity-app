@@ -42,6 +42,11 @@ func _new_board_entity_resource(template, aspect):
 	resource.make_new(template, id, aspect, 0, next_growth_period)
 	return resource
 
+func can_buy(entity): 
+	var has_currency = player_state.inventory.coins >= entity.coin_value
+	var has_level = player_state.inventory.level >= entity.unlock_level
+	return (has_currency and has_level)
+
 func add_object():
 	pass
 	
@@ -61,6 +66,7 @@ func place_entity(entity, coordinates):
 	player_state.inventory.unplaced_items.erase(entity)
 	player_state.board_entites[coordinates] = entity
 	entity.planted_at = OS.get_unix_time() 
+	entity.axial_coords = coordinates
 	flush()
 	# add scene
 	return TreeTemplateFactory.rehydrate(entity)

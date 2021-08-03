@@ -238,8 +238,8 @@ var _tree_templates = {
 func _ready(): 
 #	_preload_textures()
 	Api.connect("cache_ready", self, "load_templates")
-#	if Api.get_tree_templates() != null:
-#		load_templates()
+	if Api.get_tree_templates() != null:
+		load_templates()
 		
 func load_templates(): 
 	_tree_templates = Api.get_tree_templates()

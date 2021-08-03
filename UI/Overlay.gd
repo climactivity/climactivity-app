@@ -38,6 +38,7 @@ func show_dialog(timeline_name: String):
 
 func dialog_timeline_completed(timeline_name: String):
 	Logger.print("Finished dialog %s" % timeline_name, self)
+	NakamaConnection.analytics_store_viewed_tutorials()
 	$AnimationPlayer.play("HideDialog")
 
 var available_timeline = ''
