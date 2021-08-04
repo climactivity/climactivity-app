@@ -27,13 +27,14 @@ func _update_new_trees():
 		if object.is_mature():
 			AspectTrackingService.award_seedling(object.aspect_id)
 			
-func _pay_coins(coins): 
-	player_state.inventory.pay_coins()
 func add_entity(template, aspect):
-	var new_entity = _new_board_entity_resource(template, aspect)
-	PSS.add_item_to_inventory(new_entity)
-	AspectTrackingService.consume_seedling(aspect._id, new_entity)
-	return OK
+	if RewardService.pay_coins(template.coin_value):
+		var new_entity = _new_board_entity_resource(template, aspect)
+		PSS.add_item_to_inventory(new_entity)
+		AspectTrackingService.consume_seedling(aspect._id, new_entity)
+		return OK
+	else: 
+		return ERR_UNAUTHORIZED 
 
 func _new_board_entity_resource(template, aspect): 
 	var id = Util.uuid_util.v4()
@@ -47,7 +48,8 @@ func can_buy(entity):
 	var has_currency = player_state.inventory.coins >= entity.coin_value
 	var has_level = player_state.inventory.level >= entity.unlock_level
 	return (has_currency and has_level)
-
+func has_level(entity): 
+	return player_state.inventory.level >= entity.unlock_level
 func add_object():
 	pass
 	

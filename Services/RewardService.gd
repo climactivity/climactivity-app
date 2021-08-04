@@ -30,3 +30,14 @@ func update_xp_vals():
 	var inventory = player_state.inventory
 	inventory.level = LevelLut.get_level(inventory.xp)
 	
+func pay_coins(amount): 
+	if player_state.inventory.coins >= amount: 
+		var old_coins = player_state.inventory.coins
+		var reward = RReward.new()
+		reward.xp = 0
+		reward.coins = -amount
+		add_reward(reward)
+		NakamaConnection.wallet_update(amount, player_state.inventory.coins, old_coins)
+		return true
+	else: 
+		return false

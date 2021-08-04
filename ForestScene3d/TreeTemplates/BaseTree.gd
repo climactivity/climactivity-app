@@ -132,6 +132,15 @@ func _after_water():
 func _update_stage(): 
 	Logger.print("Current stage %s" % str(instance_resource.stage), self)
 	update_view(true)
+	if instance_resource.stage == 4: 
+		var aspect = instance_resource.aspect_id
+		var tracking_level = AspectTrackingService.get_current_tracking_level(aspect)
+#		var reward = null
+#		for option in aspect.tracking.options: 
+#			if option.level == tracking_level.level:
+#				reward = option.reward
+		if tracking_level.reward != null: 
+			RewardService.add_reward(tracking_level.reward)
 	_flush()
 	
 func DEBUG_add_stage(): 

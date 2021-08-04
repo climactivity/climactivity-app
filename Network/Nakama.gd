@@ -22,11 +22,14 @@ func _ready():
 	yield(connect_socket(), "completed") 
 	socket.connect("received_notification", self, "_on_notification")
 
+### TODO
+func wallet_update(delta, new_coins, old_coins): 
+	pass 
+
 ## notification codes, as made up by me on the fly: 
 ## 1xx -> Oauth things 
 ##        100 -> Authenticated with network 
 ##
-
 func _on_notification(p_notification : NakamaAPI.ApiNotification):
 	Logger.print(p_notification, self)
 	Logger.print(p_notification.content, self)

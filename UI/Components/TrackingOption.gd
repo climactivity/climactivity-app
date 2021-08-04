@@ -2,7 +2,7 @@ extends Control
 
 signal selected(option)
 signal deselected(option)
-
+export var badge = preload("res://UI/Components/ImportanceBadge.tscn")
 export var panel_style = preload("res://UI/Components/M_TrackingOption.tres")
 var selected = false
 var option_data setget set_tracking_option_data
@@ -12,9 +12,10 @@ onready var label = $MarginContainer/Panel/MarginContainer/MarginContainer2/VBox
 onready var reward_label = $MarginContainer/Panel/MarginContainer/MarginContainer2/VBoxContainer/Reward
 onready var select_button = $MarginContainer/Panel/HBoxContainer/SelectButton
 onready var panel = $MarginContainer/Panel/Panel
-
+onready var badge_inst = $"MarginContainer/Panel/BadgeAttach/ImportanceBadge"
 var preselected = false
 func _ready(): 
+
 	if option_data == null: return
 	_update_fields()
 #	checkox_controller = get_node(checkbox_controller_path)
@@ -28,7 +29,7 @@ func _ready():
 	var new_style = panel_style.duplicate()
 	panel.set('custom_styles/panel', new_style)
 	selected = preselected
-	
+
 func set_tracking_option_data(new_option_data): 
 	option_data = new_option_data
 	if label != null && reward_label != null:
@@ -37,6 +38,7 @@ func set_tracking_option_data(new_option_data):
 func _update_fields(): 
 	label.text = option_data.option
 	reward_label.set_reward(option_data.reward) 
+	badge_inst.level = option_data.level + 1
 	
 func set_checkbox_controller(controller):
 	checkox_controller = controller

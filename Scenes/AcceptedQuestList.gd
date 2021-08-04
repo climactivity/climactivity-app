@@ -38,6 +38,7 @@ func update():
 				quest_card.set_icon(sector["sector_logo"])
 			quest_card.is_start_hidden(true)
 			quest_list.add_child(quest_card)
+			$"ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/VBoxContainer/Stagger".play_enter()
 
 func receive_navigation(navigation_data): 
 	update()

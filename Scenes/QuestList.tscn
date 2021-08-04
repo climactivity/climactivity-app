@@ -49,7 +49,6 @@ margin_right = 1080.0
 custom_constants/separation = 36
 
 [node name="Stagger" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/VBoxContainer" index="0" instance=ExtResource( 5 )]
-autoplay = true
 
 [node name="quests_empty_message" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer" index="1" instance=ExtResource( 6 )]
 visible = false

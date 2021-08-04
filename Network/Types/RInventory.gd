@@ -15,17 +15,10 @@ export (Array) var unplaced_items
 func add_reward(reward):
 	if reward == null:
 		reward = RewardService.DEBUG_default_reward()
-	xp += reward.xp
-	coins += reward.coins
+	xp += float(reward.xp)
+	coins += float(reward.coins)
 	# if uncollected_rewards == null: uncollected_rewards = []
 	# uncollected_rewards.push_back(reward)
-
-func pay_coins(amount): 
-	if coins >= amount: 
-		coins -= amount
-		return true
-	else: 
-		return false
 
 func update():
 	last_seen_xp = xp 

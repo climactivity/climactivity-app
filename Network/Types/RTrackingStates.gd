@@ -1,16 +1,23 @@
 extends Resource
 class_name RTrackingStates
-export (Dictionary) var tracking_states = {}
-export (Array) var tracking_updates = []
+export (Dictionary) var tracking_states 
+export (Array) var tracking_updates
 export (int) var last_update = 0
-export (Dictionary) var board_entites = {}
+export (Dictionary) var board_entites
 export (Resource) var inventory
-export (Dictionary) var completed_infobytes = {}
-export (Array) var current_quests = []
-export (Array) var completed_quests = []
+export (Dictionary) var completed_infobytes
+export (Array) var current_quests 
+export (Array) var completed_quests
 #export (Dictionary) var level = {}
 
-func _init(): 
+func _init():
+	if current_quests == null: current_quests = []
+	if completed_quests == null: completed_quests = []
+	if tracking_updates == null: tracking_updates = []
+	if tracking_states == null: tracking_states = {}
+	if board_entites == null: board_entites = {}
+	if completed_infobytes == null: completed_infobytes = {}
+
 	if inventory == null: 
 		inventory = load("res://Network/Types/RInventory.gd").new()
 

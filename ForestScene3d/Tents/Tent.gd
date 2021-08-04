@@ -101,7 +101,12 @@ func on_touch():
 func save():
 	return false
 
-
+var last_pos = Vector2.ZERO
 func _on_Collider_input_event(camera, event, click_position, click_normal, shape_idx):
 	if event is InputEventMouseButton and event.pressed: 
-		call_deferred("on_touch")
+		last_pos = event.position
+	if event is InputEventMouseButton and !event.pressed: 
+		if (event.position - last_pos).length() < .5:
+			call_deferred('on_touch')
+		else:
+			print( (event.position - last_pos).length() ) 

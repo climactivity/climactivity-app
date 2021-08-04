@@ -34,8 +34,20 @@ func show_data():
 	templates = TreeTemplateFactory.get_available_templates(aspect_data.bigpoint, aspect_data.type)
 	for node in card_holder.get_children(): 
 		node.queue_free()
+	templates.sort_custom(SortByLevelThenPrice, "sort_ascending")
 	for template in templates: 
 		var card = bp_entity_card.instance()
 		card.set_entity(template)
 		card.set_aspect(aspect_data)
 		card_holder.add_child(card)
+
+
+
+class SortByLevelThenPrice:
+	static func sort_ascending(a, b):
+		if a['unlock_level'] < b['unlock_level']:
+			return true
+		if a['unlock_level'] == b['unlock_level']:
+			if a['coin_value'] < b['coin_value']:
+				return true
+		return false

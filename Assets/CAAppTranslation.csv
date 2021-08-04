@@ -60,3 +60,4 @@ privacy_statement,Datenschutzerklärung,Privacy Statement
 about,Über/Impressum,
 select_entity,Auswählen,
 buy_entity,%d [img=48]res://Assets/Icons/coin.png[/img],%d
+unlocked_at_level,ab Level %d,%d

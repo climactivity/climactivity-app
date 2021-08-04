@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://UI/typography/Content_Regular.tres" type="DynamicFont" id=1]
 [ext_resource path="res://UI/Components/TrackingOption.gd" type="Script" id=2]
 [ext_resource path="res://UI/Components/RadioButton.tscn" type="PackedScene" id=3]
 [ext_resource path="res://UI/Components/RewardLabel.tscn" type="PackedScene" id=4]
 [ext_resource path="res://UI/Components/M_TrackingOption.tres" type="StyleBox" id=5]
+[ext_resource path="res://UI/Components/ImportanceBadge.tscn" type="PackedScene" id=6]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
@@ -355,8 +356,9 @@ __meta__ = {
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 modulate = Color( 1, 1, 1, 0 )
+margin_top = -75.0
 margin_right = 1080.0
-margin_bottom = 203.0
+margin_bottom = 128.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/margin_right = 10
@@ -378,6 +380,19 @@ margin_right = 1060.0
 margin_bottom = 183.0
 mouse_filter = 2
 custom_styles/panel = ExtResource( 5 )
+
+[node name="BadgeAttach" type="Control" parent="MarginContainer/Panel"]
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="ImportanceBadge" parent="MarginContainer/Panel/BadgeAttach" instance=ExtResource( 6 )]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = 837.167
+margin_top = -69.5927
+margin_right = 1917.17
+margin_bottom = 133.407
+level = 4
 
 [node name="HBoxContainer" type="MarginContainer" parent="MarginContainer/Panel"]
 margin_left = 1006.0

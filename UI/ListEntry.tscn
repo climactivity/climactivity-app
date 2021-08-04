@@ -158,11 +158,10 @@ tracks/4/keys = {
 [node name="ListEntry" type="PanelContainer" groups=[
 "animatable",
 ]]
-modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 anchor_bottom = 0.096
-margin_left = 1000.0
-margin_right = 999.999
+margin_left = 15.0
+margin_right = 14.999
 margin_bottom = 109.68
 mouse_filter = 1
 mouse_default_cursor_shape = 8

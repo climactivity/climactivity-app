@@ -28,10 +28,11 @@ func _show_data():
 	preview.texture = entity.preview_texture
 	title.text = entity.ui_name
 	var select_button_text = '[center]' + (tr("select_entity") if entity.coin_value == 0 else tr("buy_entity") % entity.coin_value)
+	if !BoardEntityService.has_level(entity): 
+		select_button_text = '[center]' + tr("unlocked_at_level") % entity.unlock_level
 	select_button_label.bbcode_text = select_button_text
 	if BoardEntityService.can_buy(entity): 
 		select_button.disabled = false
-		
 	else: 
 		select_button.disabled = true
 	# TODO show coin price if applicable
@@ -46,9 +47,10 @@ func _on_select_button_pressed():
 		var err = BoardEntityService.add_entity(entity, aspect)
 		if err == OK: 
 			GameManager.scene_manager.go_home()
+			_close_overlay_nav()
 		else: 
 			Logger.error(err)
-		_close_overlay_nav()
+			_close_overlay()
 	else:
 		_open_overlay()
 

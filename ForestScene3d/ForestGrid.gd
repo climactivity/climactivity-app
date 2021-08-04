@@ -168,7 +168,6 @@ func _on_HexGrid_input_event(_camera, event, click_position, _click_normal, _sha
 			can_interact = false
 		return
 	if event is InputEventMouseButton:
-
 		#print(can_interact)
 		if event.is_pressed() && event.button_index == BUTTON_LEFT:
 			can_interact = true 

@@ -7,8 +7,8 @@
 
 [node name="EntityShopScene" instance=ExtResource( 1 )]
 use_parent_material = true
-margin_top = 8.0
-margin_bottom = 8.0
+margin_left = 0.0
+margin_right = 0.00012207
 script = ExtResource( 5 )
 accent_color = Color( 0.6, 0.6, 0.6, 1 )
 intro_gate_var = "ShopPlayed"
