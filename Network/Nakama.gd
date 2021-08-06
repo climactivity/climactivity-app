@@ -7,9 +7,9 @@ var socket : NakamaSocket
 signal nk_connected
 signal completed
 signal cy_network_authenticated
-var server_key = ContextService.server_key
-var oauth_base_url = ProjectSettings.get_setting("debug/settings/network/oauth_base_url")
-var oauth_client_id = ContextService.oauth_client_id
+var server_key 
+var oauth_base_url
+var oauth_client_id
 
 func _ready():
 	server_key = ContextService.server_key
