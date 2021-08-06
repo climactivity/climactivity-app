@@ -40,3 +40,4 @@ project.*.TMP
 *.zip
 
 MyApplication
+.secrets.cfg

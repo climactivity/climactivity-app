@@ -19,7 +19,7 @@ func update():
 	if user.display_name != "": 
 		connect_box.visible = false
 		profile_box.visible = true
-		profile_box_label.bbcode_text = "Angemelted als " + user.display_name # + " (" + user.custom.id  + ")" 
+		profile_box_label.bbcode_text = "Angemeldet als " + user.display_name # + " (" + user.custom.id  + ")" 
 		
 func _authenticated_callback(): 
 	update()
