@@ -12,6 +12,9 @@ var oauth_base_url = ProjectSettings.get_setting("debug/settings/network/oauth_b
 var oauth_client_id = ContextService.oauth_client_id
 
 func _ready():
+	server_key = ContextService.server_key
+	oauth_base_url = ProjectSettings.get_setting("debug/settings/network/oauth_base_url")
+	oauth_client_id = ContextService.oauth_client_id
 	if ProjectSettings.get_setting("debug/settings/network/localgameserver"): 
 		client = Nakama.create_client(server_key, ProjectSettings.get_setting("debug/settings/network/localgameserver_host"), 7350, "http", 3, NakamaLogger.LOG_LEVEL.DEBUG )
 		if ProjectSettings.get_setting("debug/settings/network/localwp"):
