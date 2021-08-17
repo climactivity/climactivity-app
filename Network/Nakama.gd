@@ -33,6 +33,11 @@ func _ready():
 func wallet_update(delta, new_coins, old_coins): 
 	pass 
 
+func _reconnect(): 
+	yield(authenticate_device_uid(), "completed")
+	yield(connect_socket(), "completed")
+	return
+
 ## notification codes, as made up by me on the fly: 
 ## 1xx -> Oauth things 
 ##        100 -> Authenticated with network 
@@ -60,6 +65,7 @@ func _on_notification(p_notification : NakamaAPI.ApiNotification):
 
 func get_user():
 	if !session: return null
+
 	var account : NakamaAPI.ApiAccount = yield(client.get_account_async(session), "completed")
 	if account.is_exception():
 		Logger.print("An error occured: %s" % account, self)
@@ -126,6 +132,19 @@ func read_collection(collection):
 		var objects = []
 		for object in objects_in_collection.objects:
 			objects.append(object.value)
+		return objects
+
+func read_global_constants(): 
+	if !session:
+		yield(self, "nk_connected")
+	var objects_in_collection = yield(client.list_storage_objects_async(session, "game_constants", "", 100), "completed")
+	if objects_in_collection.is_exception(): 
+		Logger.error("Socket error: %s" % objects_in_collection, self)
+		return []
+	else:
+		var objects = {}
+		for object in objects_in_collection.objects:
+			objects[object.key] = JSON.parse(object.value)
 		return objects
 
 func analytics_store_viewed_tutorials():
