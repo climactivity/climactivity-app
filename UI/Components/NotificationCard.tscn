@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://UI/typography/UI_big.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Assets/Icons/OpenExternal.png" type="Texture" id=2]
+
+[node name="Notification" type="PanelContainer"]
+margin_top = 487.0
+margin_right = 1080.0
+margin_bottom = 655.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 1073.0
+margin_bottom = 161.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer"]
+margin_right = 816.0
+margin_bottom = 154.0
+size_flags_horizontal = 3
+custom_fonts/normal_font = ExtResource( 1 )
+bbcode_enabled = true
+bbcode_text = "Admin hat ihnen eine Nachricht geschrieben"
+text = "Admin hat ihnen eine Nachricht geschrieben"
+fit_content_height = true
+
+[node name="TextureButton" type="TextureButton" parent="HBoxContainer"]
+margin_left = 820.0
+margin_right = 1066.0
+margin_bottom = 154.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.3
+texture_normal = ExtResource( 2 )
+expand = true
+stretch_mode = 5
