@@ -34,10 +34,14 @@ screen_title = "notifications_screen"
 [node name="ContentMain" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer" index="0"]
 show_menu_bar = true
 
+[node name="HSeparator" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="0"]
+margin_bottom = 374.0
+custom_constants/separation = 374
+
 [node name="MarginContainer" type="MarginContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="1"]
-margin_top = 350.0
+margin_top = 378.0
 margin_right = 1080.0
-margin_bottom = 455.0
+margin_bottom = 483.0
 custom_constants/margin_top = 40
 custom_constants/margin_left = 163
 
@@ -52,7 +56,17 @@ text = "Noch keine Benachrichtigungen!"
 [node name="HeaderBG" parent="ContentContainer/Content" index="1"]
 self_modulate = Color( 0.501961, 0.501961, 0.501961, 1 )
 
+[node name="HSeparator2" parent="ContentContainer/Content/HeaderBG" index="0"]
+margin_bottom = 374.0
+custom_constants/separation = 374
+
+[node name="HSeparator" parent="HeaderContainer" index="0"]
+margin_bottom = 128.0
+custom_constants/separation = 128
+
 [node name="Header" parent="HeaderContainer" index="1"]
+margin_top = 132.0
+margin_bottom = 289.0
 screen_label = "notifications_screen"
 icon_texture = ExtResource( 2 )
 color = Color( 0.501961, 0.501961, 0.501961, 1 )
