@@ -1,8 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Scenes/SceneBase.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/Icons/bell-solid.svg" type="Texture" id=2]
 [ext_resource path="res://UI/typography/Heading.tres" type="DynamicFont" id=3]
+[ext_resource path="res://Scenes/NotificationsScene.gd" type="Script" id=4]
+[ext_resource path="res://UI/Components/NotificationCard.tscn" type="PackedScene" id=5]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item; 
@@ -27,9 +29,9 @@ shader_param/gradient = SubResource( 3 )
 
 [node name="NotificationsScene" instance=ExtResource( 1 )]
 material = SubResource( 4 )
-accent_color = Color( 0.501961, 0.501961, 0.501961, 1 )
-icon = ExtResource( 2 )
-screen_title = "notifications_screen"
+script = ExtResource( 4 )
+accent_color = Color( 0.6, 0.6, 0.6, 1 )
+bp_notification_card = ExtResource( 5 )
 
 [node name="ContentMain" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer" index="0"]
 show_menu_bar = true
