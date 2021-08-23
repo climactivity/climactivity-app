@@ -338,6 +338,7 @@ LevelLut="*res://Services/LevelLut.gd"
 Nakama="*res://addons/com.heroiclabs.nakama/Nakama.gd"
 NakamaConnection="*res://Network/Nakama.gd"
 nc="*res://Services/RemoteConfig.gd"
+NotificationService="*res://Services/NotificationService.gd"
 
 [debug]
 

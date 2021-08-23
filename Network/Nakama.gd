@@ -7,6 +7,7 @@ var socket : NakamaSocket
 signal nk_connected
 signal completed
 signal cy_network_authenticated
+signal notificaion_received
 var server_key 
 var oauth_base_url
 var oauth_client_id
@@ -41,7 +42,11 @@ func _reconnect():
 ## notification codes, as made up by me on the fly: 
 ## 1xx -> Oauth things 
 ##        100 -> Authenticated with network 
-##
+## 2xx -> Network messages
+##        201 -> received notification
+##        210 -> joined team
+##        220 -> challenged by team member 
+##        
 func _on_notification(p_notification : NakamaAPI.ApiNotification):
 	Logger.print(p_notification, self)
 	Logger.print(p_notification.content, self)
@@ -60,6 +65,8 @@ func _on_notification(p_notification : NakamaAPI.ApiNotification):
 			pass
 		100: # Authenticated with network 
 			emit_signal("cy_network_authenticated")
+		201:
+			emit_signal("notificaion_received")
 		_: 
 			pass
 

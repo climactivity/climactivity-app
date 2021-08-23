@@ -64,7 +64,10 @@ func _on_SocialButton_pressed():
 func _on_SettingsButton_pressed():
 	Logger.print("SettingsButton pressed", self)
 	set_navigation_state(Navigation_states.SETTINGS)
-	
+
+func _on_NetworkButton_pressed():
+	Logger.print("NetworkButton pressed", self)
+	OS.shell_open("https://climactivity-netzwerk.de/")
 func set_navigation_state(new_state, stay = false): 
 	last_navigation_state = navigation_state
 	navigation_state = new_state
@@ -109,5 +112,8 @@ func _navigate(scene):
 	if GameManager == null or GameManager.scene_manager == null: return
 	GameManager.scene_manager.push_scene(scene, {},
 	 TransitionFactory.MoveOut() if last_navigation_state <= navigation_state else TransitionFactory.MoveBack())
+
+
+
 
 

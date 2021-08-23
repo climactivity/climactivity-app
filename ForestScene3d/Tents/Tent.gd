@@ -64,7 +64,7 @@ var was_initialized = false
 var sector_name
 var target_scene
 var navigation_data
-var texture = preload("res://ForestScene3d/Tents/g1474.png") setget set_sprite
+var texture = preload("res://Assets/sketch/zelt_neu/zelt_rot_ZU.png") setget set_sprite
 onready var sprite = $Sprite3D
 onready var tile = $MeshInstance
 

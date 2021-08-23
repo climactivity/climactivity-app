@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://ForestScene3d/Tents/g1474.png" type="Texture" id=1]
+[ext_resource path="res://icon.png" type="Texture" id=1]
 [ext_resource path="res://ForestScene3d/Tents/Tent.gd" type="Script" id=2]
 [ext_resource path="res://ForestScene3d/HexMesh.tres" type="CylinderMesh" id=3]
 [ext_resource path="res://ForestScene3d/TreeTemplates/ContactShadow.tscn" type="PackedScene" id=4]
