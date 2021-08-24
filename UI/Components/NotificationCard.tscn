@@ -1,12 +1,46 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://UI/typography/UI_big.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Assets/Icons/OpenExternal.png" type="Texture" id=2]
+[ext_resource path="res://UI/Components/NotificationCard.gd" type="Script" id=3]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Dismiss"
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "queue_free"
+} ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
 
 [node name="Notification" type="PanelContainer"]
 margin_top = 487.0
 margin_right = 1080.0
 margin_bottom = 655.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 margin_left = 7.0
@@ -24,7 +58,7 @@ bbcode_text = "Admin hat ihnen eine Nachricht geschrieben"
 text = "Admin hat ihnen eine Nachricht geschrieben"
 fit_content_height = true
 
-[node name="TextureButton" type="TextureButton" parent="HBoxContainer"]
+[node name="ActionButton" type="TextureButton" parent="HBoxContainer"]
 margin_left = 820.0
 margin_right = 1066.0
 margin_bottom = 154.0
@@ -33,3 +67,8 @@ size_flags_stretch_ratio = 0.3
 texture_normal = ExtResource( 2 )
 expand = true
 stretch_mode = 5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Dismiss = SubResource( 1 )
+
+[connection signal="pressed" from="HBoxContainer/ActionButton" to="." method="_on_ActionButton_pressed"]

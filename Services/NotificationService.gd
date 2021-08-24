@@ -23,8 +23,10 @@ func _persist_notification(notification):
 func get_notifications(): 
 	var _notifications: Array =  persistent_notifications.get_all() + ephemeral_notifications
 	_notifications.sort_custom(NotificationSorter, "sort_desc")
-	
+
+func dismiss_notification(notification): 
+	pass
 
 class NotificationSorter:
 	static func sort_desc(a, b):
-		return a['send_at'] > b['send_at']
+		return a['sendAt'] > b['sendAt']
