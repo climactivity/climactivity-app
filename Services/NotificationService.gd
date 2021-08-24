@@ -31,7 +31,8 @@ func get_notifications():
 	return _notifications
 
 func dismiss_notification(notification): 
-	pass
+	persistent_notifications.delete(notification)
+	ephemeral_notifications.erase(notification)
 
 class NotificationSorter:
 	static func sort_desc(a, b):
