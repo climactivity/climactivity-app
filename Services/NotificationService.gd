@@ -3,7 +3,7 @@ extends Node
 export (String) var notification_persist_path = "user://notifications.tres"
 var persistent_notifications = load("user://notifications.tres")
 var ephemeral_notifications = []
-func ready(): 
+func _ready(): 
 	NakamaConnection.connect("notificaion_received", self, "on_notification_received")
 	if persistent_notifications == null: 
 		persistent_notifications = RPersistentNotifications.new()
@@ -21,8 +21,14 @@ func _persist_notification(notification):
 	ResourceSaver.save(notification_persist_path, persistent_notifications,32)
 
 func get_notifications(): 
+	if persistent_notifications == null: 
+		Logger.error("Notifications failed to initialize", self)
+		var _notifications: Array = ephemeral_notifications
+		_notifications.sort_custom(NotificationSorter, "sort_desc")
+		return _notifications
 	var _notifications: Array =  persistent_notifications.get_all() + ephemeral_notifications
 	_notifications.sort_custom(NotificationSorter, "sort_desc")
+	return _notifications
 
 func dismiss_notification(notification): 
 	pass
