@@ -33,6 +33,7 @@ func get_notifications():
 func dismiss_notification(notification): 
 	persistent_notifications.delete(notification)
 	ephemeral_notifications.erase(notification)
+	ResourceSaver.save(notification_persist_path, persistent_notifications,32)
 
 class NotificationSorter:
 	static func sort_desc(a, b):
