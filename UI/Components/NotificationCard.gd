@@ -16,6 +16,13 @@ func set_notification(_notification):
 func update(): 
 	if text_content == null: return 
 	text_content.bbcode_text = notification.text
+	match notification.type:
+		"Notification":
+			var href = notification.text.split("\"")[1]
+			var text = notification.text.split(">")[1].split("<")[0]
+			text_content.bbcode_text = " %s %s " % [href, text] 
+		_:
+			pass
  
 func _on_ActionButton_pressed():
 	if notification != null and notification is Dictionary and notification.has("linkTo"): 

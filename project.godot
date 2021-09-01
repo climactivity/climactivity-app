@@ -356,14 +356,14 @@ settings/game_logic/use_res_for_cache=false
 settings/game_logic/use_fixed_icons=true
 settings/game_logic/debug_dialog=false
 settings/game_logic/recomplete_infobytes=false
-settings/network/localgameserver=true
+settings/network/localgameserver=false
 settings/network/localwp=false
-settings/network/oauth_base_url="https://dev.climactivity.net/oauth"
+settings/network/oauth_base_url="https://climactivity-netzwerk.de/oauth"
 settings/network/local_oauth_base_url="http://localhost:8069/oauth"
 settings/network/local_oauth_base_url.Android="http://10.0.2.2:8069/oauth"
 settings/network/localgameserver_host="127.0.0.1"
 settings/network/localgameserver_host.Android="10.0.2.2"
-settings/network/gameserver_host="wws.climactivity.de"
+settings/network/gameserver_host="wss.climactivity.de"
 
 [display]
 

@@ -7,7 +7,7 @@ var socket : NakamaSocket
 signal nk_connected
 signal completed
 signal cy_network_authenticated
-signal notificaion_received
+signal notificaion_received(notification)
 var server_key 
 var oauth_base_url
 var oauth_client_id
@@ -24,7 +24,8 @@ func _ready():
 		else:
 			oauth_client_id = ContextService.oauth_client_id_local_gs_remote_wp
 	else:
-		client = Nakama.create_client(server_key, ProjectSettings.get_setting("debug/settings/network/gameserver_host"), 443, "https", 3, NakamaLogger.LOG_LEVEL.ERROR )
+		client = Nakama.create_client(server_key, ProjectSettings.get_setting("debug/settings/network/gameserver_host"), 443, "https", 3, NakamaLogger.LOG_LEVEL.DEBUG )
+
 	socket = Nakama.create_socket_from(client)
 	yield(authenticate_device_uid(), "completed") 
 	yield(connect_socket(), "completed") 
@@ -66,7 +67,7 @@ func _on_notification(p_notification : NakamaAPI.ApiNotification):
 		100: # Authenticated with network 
 			emit_signal("cy_network_authenticated")
 		201:
-			emit_signal("notificaion_received")
+			emit_signal("notificaion_received", p_notification)
 		_: 
 			pass
 
@@ -106,7 +107,7 @@ func authenticate_device_uid():
 		Logger.print(session, self)
 		
 	else:
-		Logger.print(session._to_string(), self)
+		Logger.error(session._to_string(), self)
 
 func connect_socket(): 
 	if not session:
@@ -128,6 +129,11 @@ func save_var(collection_name: String, key_name: String, value: String, can_read
 		Logger.print("Successfully stored object: %s/%s" % [collection_name, key_name], self)
 		return ack.acks[0]
 
+func push_error(message): 
+	if !session:
+		yield(self, "nk_connected")
+	yield(client.rpc_async(session, "push_error", message), "completed")
+	
 func read_collection(collection): 
 	if !session:
 		yield(self, "nk_connected")
@@ -178,6 +184,7 @@ func _store_dict(dict, collection, can_read, can_write, version) :
 #	print("Successfully stored objects:")
 #	for a in acks.acks:
 #		print("%s" % a)
+
 
 func sync_player_state(player_state : RTrackingStates):
 	if (not client or not session): 

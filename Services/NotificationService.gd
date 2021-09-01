@@ -11,6 +11,7 @@ func _ready():
 		ResourceSaver.save(notification_persist_path, persistent_notifications,32)
 
 func on_notification_received(notification): 
+	Logger.print("Notification received", self)
 	if notification.has("persist"): 
 		_persist_notification(notification)
 	else:

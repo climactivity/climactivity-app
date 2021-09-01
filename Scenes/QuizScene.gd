@@ -85,6 +85,9 @@ func align_footer(height):
 	footer.margin_top = current_margin
 
 func receive_navigation(_quiz_data):
+	if not _quiz_data.has("quiz"):
+		Logger.error( "Quiz data missing" , self)
+		return
 	quiz_data = _quiz_data.quiz
 	set_screen_title(quiz_data.name)
 	set_accent_color(_quiz_data.sector["sector_color"])
