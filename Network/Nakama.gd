@@ -30,6 +30,7 @@ func _ready():
 	yield(authenticate_device_uid(), "completed") 
 	yield(connect_socket(), "completed") 
 	socket.connect("received_notification", self, "_on_notification")
+	emit_signal("nk_connected")
 
 ### TODO
 func wallet_update(delta, new_coins, old_coins): 
@@ -38,6 +39,7 @@ func wallet_update(delta, new_coins, old_coins):
 func _reconnect(): 
 	yield(authenticate_device_uid(), "completed")
 	yield(connect_socket(), "completed")
+	emit_signal("nk_connected")
 	return
 
 ## notification codes, as made up by me on the fly: 
@@ -70,6 +72,20 @@ func _on_notification(p_notification : NakamaAPI.ApiNotification):
 			emit_signal("notificaion_received", p_notification)
 		_: 
 			pass
+			
+func get_notifications(): 
+	var result : NakamaAPI.ApiNotificationList = yield(client.list_notifications_async(session, 10), "completed")
+	if result.is_exception():
+		print("An error occured: %s" % result)
+		return
+	return result.notifications
+
+func delete_notifications(notification_ids: Array):
+	var delete : NakamaAsyncResult = yield(client.delete_notifications_async(session, notification_ids), "completed")
+	if delete.is_exception():
+		print("An error occured: %s" % delete)
+		return false
+	return true
 
 func get_user():
 	if !session: return null

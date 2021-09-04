@@ -1,40 +1,25 @@
 extends Node
 
-export (String) var notification_persist_path = "user://notifications.tres"
-var persistent_notifications = load("user://notifications.tres")
-var ephemeral_notifications = []
+var notifications = [] setget , get_notifications
 func _ready(): 
 	NakamaConnection.connect("notificaion_received", self, "on_notification_received")
-	if persistent_notifications == null: 
-		persistent_notifications = RPersistentNotifications.new()
-		persistent_notifications.take_over_path(notification_persist_path)
-		ResourceSaver.save(notification_persist_path, persistent_notifications,32)
-
+	NakamaConnection.connect("nk_connected", self, "fetch_notifications")
+	
 func on_notification_received(notification): 
 	Logger.print("Notification received", self)
-	if notification.has("persist"): 
-		_persist_notification(notification)
-	else:
-		ephemeral_notifications.push_front(notification)
+	notifications.push_front(notification)
 
-func _persist_notification(notification): 
-	persistent_notifications.append(notification)
-	ResourceSaver.save(notification_persist_path, persistent_notifications,32)
-
+func fetch_notifications(): 
+	notifications = yield(NakamaConnection.get_notifications(), "completed")
 func get_notifications(): 
-	if persistent_notifications == null: 
-		Logger.error("Notifications failed to initialize", self)
-		var _notifications: Array = ephemeral_notifications
-		_notifications.sort_custom(NotificationSorter, "sort_desc")
-		return _notifications
-	var _notifications: Array =  persistent_notifications.get_all() + ephemeral_notifications
-	_notifications.sort_custom(NotificationSorter, "sort_desc")
-	return _notifications
+	return notifications
+
+func has_notifications(): 
+	return notifications == null or notifications == []
 
 func dismiss_notification(notification): 
-	persistent_notifications.delete(notification)
-	ephemeral_notifications.erase(notification)
-	ResourceSaver.save(notification_persist_path, persistent_notifications,32)
+	notifications.erase(notification)
+	NakamaConnection.delete_notifications([notification.id])
 
 class NotificationSorter:
 	static func sort_desc(a, b):

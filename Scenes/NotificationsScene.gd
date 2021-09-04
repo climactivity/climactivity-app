@@ -9,6 +9,6 @@ onready var content_holder = $"ContentContainer/Content/VBoxContainer/MarginCont
 func _restored(): 
 	notifications = NotificationService.get_notifications()
 	for notification in notifications: 
-		bp_notification_card.instance()
-		content_holder.add_child(bp_notification_card)
-		bp_notification_card.set_notification(notification)
+		var inst = bp_notification_card.instance()
+		content_holder.add_child(inst)
+		inst.set_notification(notification)
