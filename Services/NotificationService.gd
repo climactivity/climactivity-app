@@ -1,6 +1,7 @@
 extends Node
 
 var notifications = [] setget , get_notifications
+signal notification_update
 func _ready(): 
 	NakamaConnection.connect("notificaion_received", self, "on_notification_received")
 	NakamaConnection.connect("nk_connected", self, "fetch_notifications")
@@ -8,7 +9,7 @@ func _ready():
 func on_notification_received(notification): 
 	Logger.print("Notification received", self)
 	notifications.push_front(notification)
-
+	emit_signal("notification_update")
 func fetch_notifications(): 
 	notifications = yield(NakamaConnection.get_notifications(), "completed")
 func get_notifications(): 
