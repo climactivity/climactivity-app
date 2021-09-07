@@ -20,8 +20,6 @@ export (Resource) var aspect_data
 #var ready = false
 var should_animate = false
 func _ready():
-	#tracking_settings.connect("emit_option", self, "commit_option")
-	#connect("commit_option", AspectTrackingService, "commit_tracking_level")
 	GameManager.scene_manager.connect("current_transition_finished", self, "anim_start")	
 	ready = true
 	_show_data()

@@ -50,9 +50,13 @@ func _get_current_tracking_level():
 		selected_option = options.get(current_level.level)
 		initial_option = selected_option
 		select_button.disabled = selected_option == null
-		select_button_label.text = tr("tracking_options_button_save") if initial_option == null else tr("tracking_options_button_confirm")
+		select_button_label.text = tr("tracking_options_button_confirm")
 		selected_option.preselect()
+		selected_option = initial_option
 		select_button.disabled = false
+	else:
+		select_button_label.text = tr("tracking_options_button_save")
+		select_button.disabled = true
 		
 func _show_data(): 
 	if tracking_data == null: 
@@ -75,10 +79,10 @@ func _show_data():
 
 func set_option(option):
 	if option == selected_option: 
-		selected_option = null
+		selected_option = initial_option
 	else:
 		selected_option = option
-	select_button_label.text = tr("tracking_options_button_save") if initial_option == null else tr("tracking_options_button_confirm")
+	select_button_label.text = tr("tracking_options_button_save") if initial_option == null or selected_option != initial_option  else tr("tracking_options_button_confirm")
 	print(option)
 	select_button.disabled = false
 
@@ -86,3 +90,6 @@ func _on_SaveTrackingOptionButton_pressed():
 	select_button.disabled = true
 	select_button_label.text = tr("tracking_options_button_saved")
 	emit_signal("emit_option", selected_option.option_data if selected_option != null else null, aspect)
+	if initial_option != null and selected_option == initial_option:
+		GameManager.scene_manager.push_scene("res://Scenes/EntityShopScene.tscn", {"aspect": aspect})
+
