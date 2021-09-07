@@ -26,13 +26,14 @@ enum Cloud_States {
 	DRAGGING,
 	WATERING
 }
-
+var cloud_sprite_initial_position
 var cloud_state = Cloud_States.EMPTY setget set_state
 
 func _ready():
 	update_water_available()
 	AspectTrackingService.connect("tracking_updated", self, "update_water_available")
 	hud = get_parent()
+	cloud_sprite_initial_position = $CloudSprite.position
 	#initial_position = Vector2(rect_position)
 
 func set_state(state): 
@@ -92,6 +93,7 @@ func _on_Cloud_gui_input(event):
 					hint_wait_water()
 				
 
+
 func start_drag(): 
 	dragging = true
 	sprite.visible = false
@@ -105,22 +107,30 @@ func start_drag():
 	}
 	cloud.set_fill_state(1.0)
 	set_state(Cloud_States.DRAGGING)
-	
+	$Tween.stop($CloudSprite, "position")
+	$Tween.interpolate_property($CloudSprite, "position", $CloudSprite.position, Vector2(0.0,-350.0), 1.0,Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	$Tween.start()
 func _reset(): 
 #	resetting = true
 #	t = 0.0
 	var start_offset = Vector2(rect_position)
 	var duration = .5
 	print(start_offset, " , ", initial_position)
+	$Tween.stop($CloudSprite, "position")
 	$Tween.interpolate_property(self, "rect_position", start_offset, initial_position, duration,Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	$Tween.interpolate_property($CloudSprite, "position", $CloudSprite.position, cloud_sprite_initial_position, 0.5,Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	$Tween.interpolate_callback(self, duration, "_reset_done")
 	$Tween.start()
 
 	
 func _reset_done(): 
 	set_state(Cloud_States.READY)
-	sprite.visible = true
-	cloud.visible = false
+	if stops > 0:
+		sprite.visible = true
+		cloud.visible = true
+	else: 
+		sprite.visible = true
+		cloud.visible = false
 	update_water_available()
 
 ## hours wasted here (so far): 4
@@ -133,13 +143,13 @@ func _watering(other: Spatial):
 	var _target_position =   target_position + Vector2(0, -400.0)
 	print( start_position,", initial: " , $CloudSprite.position ,  ", other: ", other.get_global_transform().origin, ", unprojected: ",target_position, ", fixed:", _target_position)
 	var duration = .5
-	$Tween.interpolate_property(self, "rect_position", start_position, _target_position, duration,Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-	$Tween.interpolate_callback(self, duration, "_watering_progress")
-	$Tween.start()
-
+#	$Tween.interpolate_property(self, "rect_position", start_position, _target_position, duration,Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+#	$Tween.interpolate_callback(self, duration, "_watering_progress")
+#	$Tween.start()
+	_watering_progress()
 func _watering_progress():
 	drops.emitting = true
-	var duration = 2
+	var duration = .75
 	var _stops = stops - 1
 	var fillstate_start = float(stops)/float(initial_stops)
 	var fillstate_end =  float(_stops)/float(initial_stops)
@@ -153,8 +163,9 @@ func _watering_done():
 	stops -= 1
 	drops.emitting = false
 	currently_watering = null
-	hud._enable_input()
+
 	if !dragging:
+		hud._enable_input()
 		_reset()
 func _input(event):
 	if cloud_state != Cloud_States.DRAGGING: 
