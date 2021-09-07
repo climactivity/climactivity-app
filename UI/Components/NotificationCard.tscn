@@ -72,7 +72,7 @@ margin_bottom = 136.0
 mouse_filter = 2
 
 [node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/MarginContainer/HBoxContainer"]
-margin_right = 778.0
+margin_right = 932.0
 margin_bottom = 104.0
 mouse_filter = 2
 size_flags_horizontal = 3
@@ -80,7 +80,7 @@ custom_fonts/normal_font = ExtResource( 1 )
 custom_colors/default_color = Color( 0.411765, 0.411765, 0.407843, 1 )
 bbcode_enabled = true
 bbcode_text = "Admin hat ihnen eine Nachricht geschrieben"
-text = "Diese Benachrichtigung hat keinen Text"
+text = "Admin hat ihnen eine Nachricht geschrieben"
 fit_content_height = true
 
 [node name="ActionButton" type="TextureButton" parent="PanelContainer/MarginContainer/HBoxContainer"]
@@ -89,7 +89,7 @@ margin_left = 936.0
 margin_right = 1016.0
 margin_bottom = 104.0
 rect_min_size = Vector2( 80, 0 )
-size_flags_horizontal = 14
+size_flags_horizontal = 4
 size_flags_vertical = 5
 size_flags_stretch_ratio = 0.3
 texture_normal = ExtResource( 2 )

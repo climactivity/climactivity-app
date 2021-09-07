@@ -5,7 +5,7 @@ signal pressed
 export (Color) var primary_color = Color("#636362") setget set_primary_color
 export (Texture) var icon = preload("res://Assets/Icons/wtree-solid.svg") setget set_icon
 export (String) var menu_label = "menu" setget set_label_text 
-
+export var alert_visible = false setget set_alert_visible
 onready var tex : TextureRect = $MarginContainer/VBoxContainer/tex
 onready var label : Label = $MarginContainer/VBoxContainer/Label
 
@@ -31,3 +31,7 @@ func set_icon(_icon):
 
 func _on_HomeButton_pressed():
 	emit_signal("pressed")
+
+func set_alert_visible(_visible):
+	alert_visible = _visible
+	$"MarginContainer/VBoxContainer/tex/Control/Alert".visible = alert_visible

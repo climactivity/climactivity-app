@@ -63,7 +63,7 @@ tracks/1/keys = {
 "values": [ Vector2( 0, 200 ), Vector2( 0, 0 ) ]
 }
 
-[node name="MainMenu2" type="PanelContainer"]
+[node name="MainMenu" type="PanelContainer"]
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0

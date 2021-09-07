@@ -39,6 +39,7 @@ __meta__ = {
 }
 
 [node name="BG_Icon" type="Panel" parent="."]
+self_modulate = Color( 0.654902, 0.654902, 0.654902, 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 18.0
@@ -49,6 +50,25 @@ rect_clip_content = true
 size_flags_horizontal = 0
 size_flags_vertical = 0
 custom_styles/panel = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="small_icon" type="TextureRect" parent="BG_Icon"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -84.4999
+margin_top = -83.5003
+margin_right = 79.5001
+margin_bottom = 74.4997
+rect_min_size = Vector2( 128, 128 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource( 3 )
+expand = true
+stretch_mode = 6
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -64,4 +84,5 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[connection signal="gui_input" from="BG_Icon/small_icon" to="." method="_on_Icon_gui_input"]
 [connection signal="gui_input" from="BG_Icon/Icon" to="." method="_on_Icon_gui_input"]

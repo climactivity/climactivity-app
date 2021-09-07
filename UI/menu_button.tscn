@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Assets/Icons/wtree-solid.svg" type="Texture" id=1]
 [ext_resource path="res://UI/sm_white.tres" type="Material" id=2]
 [ext_resource path="res://UI/typography/UI_menu.tres" type="DynamicFont" id=3]
 [ext_resource path="res://UI/theme/style_box_empty.tres" type="StyleBox" id=4]
 [ext_resource path="res://UI/menu_button.gd" type="Script" id=5]
+[ext_resource path="res://Assets/Icons/answer_checkbox_selected_correct.png" type="Texture" id=6]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
@@ -46,6 +47,39 @@ size_flags_vertical = 3
 texture = ExtResource( 1 )
 expand = true
 stretch_mode = 6
+
+[node name="Control" type="Control" parent="MarginContainer/VBoxContainer/tex"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = -20.0
+margin_right = 20.0
+margin_bottom = 20.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Alert" type="TextureRect" parent="MarginContainer/VBoxContainer/tex/Control"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 9.102
+margin_top = -49.983
+margin_right = 49.102
+margin_bottom = -9.983
+rect_min_size = Vector2( 40, 40 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource( 6 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
 margin_left = 15.0

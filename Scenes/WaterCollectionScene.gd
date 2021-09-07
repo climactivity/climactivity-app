@@ -17,8 +17,9 @@ var num_collected = 0.0
 
 func _ready(): 
 	_sector_data = SectorService.get_aspects_per_sector()
-	set_screen_title("Tracking")
+	#set_screen_title("Tracking")
 	set_accent_color(Color('#64A6E2'))
+	header.set_small_icon(true)
 	ready = true
 	update()
 	connect("align_top", self, "align_cloud")

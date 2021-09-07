@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Scenes/SceneBase.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/WaterCollectionScene.gd" type="Script" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://UI/typography/Heading.tres" type="DynamicFont" id=8]
 [ext_resource path="res://ForestScene3d/Interactables/SM_Cloud.tres" type="Material" id=9]
 [ext_resource path="res://UI/Behaviour/Stagger.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Assets/sketch/wolke_icon.png" type="Texture" id=11]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.392157, 0.65098, 0.886275, 1 )
@@ -46,9 +47,11 @@ script = ExtResource( 2 )
 accent_color = Color( 0.6, 0.6, 0.6, 1 )
 intro_gate_var = "WaterCollectPlayed"
 intro_timeline = "WaterCollectIntro"
+icon = ExtResource( 11 )
+screen_title = "water_collection_screen"
 
 [node name="ContentMain" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer" index="0"]
-margin_bottom = 3084.0
+margin_bottom = 3112.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="0"]
 margin_right = 1080.0
@@ -146,7 +149,7 @@ autowrap = true
 
 [node name="HSeparator" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="1"]
 margin_top = 2738.0
-margin_bottom = 3084.0
+margin_bottom = 3112.0
 
 [node name="HeaderBG" parent="ContentContainer/Content" index="1"]
 self_modulate = Color( 0.392157, 0.65098, 0.886275, 1 )

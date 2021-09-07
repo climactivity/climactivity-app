@@ -7,6 +7,7 @@ export var screen_label = "Screen Label" setget set_screen_label
 export var icon_texture = preload("res://Assets/Icons/AufforstungIcon.png") setget set_icon_texture
 export var color = Color("95c11f") setget set_color 
 export (bool) var back_button_override = false
+export var small_icon = false
 
 onready var back_button = $BG/BackButton
 onready var label = $BG/Label
@@ -26,6 +27,11 @@ func update_header(new_label = null, new_texture = null, new_color = null):
 	if(new_label != null): set_screen_label(new_label)
 	if(new_texture != null): set_icon_texture(new_texture)
 	if(new_color != null): set_color(new_color)
+
+func set_small_icon(_small_icon): 
+	small_icon = _small_icon
+	if(is_instance_valid(icon)):
+		icon.set_small_icon(small_icon)
 
 func set_screen_label(new_label): 
 	screen_label = new_label

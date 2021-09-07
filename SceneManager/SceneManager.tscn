@@ -5,10 +5,9 @@
 [ext_resource path="res://ForestScene3d/ForestScene3d.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Assets/TestData/Sprite-0001.png" type="Texture" id=4]
 
-[sub_resource type="StyleBoxEmpty" id=5]
+[sub_resource type="StyleBoxEmpty" id=1]
 
-[sub_resource type="Animation" id=1]
-resource_name = "Focus"
+[sub_resource type="Animation" id=2]
 step = 0.001
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:visible")
@@ -23,7 +22,7 @@ tracks/0/keys = {
 "values": [ false, true, false ]
 }
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=3]
 length = 0.3
 tracks/0/type = "value"
 tracks/0/path = NodePath("B:modulate")
@@ -74,7 +73,7 @@ tracks/3/keys = {
 "values": [ Vector2( -1080, 0 ), Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=4]
 length = 0.3
 tracks/0/type = "value"
 tracks/0/path = NodePath("B:modulate")
@@ -125,7 +124,7 @@ tracks/3/keys = {
 "values": [ Vector2( 1080, 0 ), Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=5]
 tracks/0/type = "value"
 tracks/0/path = NodePath("A:modulate")
 tracks/0/interp = 1
@@ -180,7 +179,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_right = 2.0
 mouse_filter = 2
-custom_styles/panel = SubResource( 5 )
+custom_styles/panel = SubResource( 1 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -241,10 +240,10 @@ physics_object_picking = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Reset"
-anims/Focus = SubResource( 1 )
-anims/Move_Back = SubResource( 2 )
-anims/Move_Out = SubResource( 3 )
-anims/Reset = SubResource( 4 )
+anims/Focus = SubResource( 2 )
+anims/Move_Back = SubResource( 3 )
+anims/Move_Out = SubResource( 4 )
+anims/Reset = SubResource( 5 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 
