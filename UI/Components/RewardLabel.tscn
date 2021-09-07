@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://UI/Components/RewardLabel.gd" type="Script" id=1]
 [ext_resource path="res://UI/typography/UI_Regular.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Assets/droplet.png" type="Texture" id=3]
 [ext_resource path="res://Assets/Icons/coins-stack.png" type="Texture" id=4]
 [ext_resource path="res://Assets/Icons/xp_star.png" type="Texture" id=5]
 [ext_resource path="res://UI/theme/style_box_empty.tres" type="StyleBox" id=6]
@@ -44,9 +45,38 @@ margin_right = 1072.0
 margin_bottom = 47.0
 alignment = 1
 
-[node name="xp_icon_holder" type="MarginContainer" parent="HBoxContainer"]
-margin_left = 425.0
+[node name="water_icon_holder" type="MarginContainer" parent="HBoxContainer"]
+margin_left = 367.0
+margin_right = 407.0
+margin_bottom = 43.0
+rect_min_size = Vector2( 40, 40 )
+
+[node name="water_icon" type="TextureRect" parent="HBoxContainer/water_icon_holder"]
+margin_right = 40.0
+margin_bottom = 43.0
+texture = ExtResource( 3 )
+expand = true
+stretch_mode = 6
+
+[node name="water_label" type="Label" parent="HBoxContainer"]
+margin_left = 411.0
 margin_right = 465.0
+margin_bottom = 43.0
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0.411765, 0.411765, 0.407843, 1 )
+text = "500"
+valign = 1
+
+[node name="w_sep" type="VSeparator" parent="HBoxContainer"]
+margin_left = 469.0
+margin_right = 479.0
+margin_bottom = 43.0
+custom_styles/separator = ExtResource( 6 )
+custom_constants/separation = 10
+
+[node name="xp_icon_holder" type="MarginContainer" parent="HBoxContainer"]
+margin_left = 483.0
+margin_right = 523.0
 margin_bottom = 43.0
 rect_min_size = Vector2( 40, 40 )
 
@@ -58,24 +88,24 @@ expand = true
 stretch_mode = 6
 
 [node name="xp_label" type="Label" parent="HBoxContainer"]
-margin_left = 469.0
-margin_right = 523.0
+margin_left = 527.0
+margin_right = 581.0
 margin_bottom = 43.0
 custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.411765, 0.411765, 0.407843, 1 )
 text = "500"
 valign = 1
 
-[node name="VSeparator" type="VSeparator" parent="HBoxContainer"]
-margin_left = 527.0
-margin_right = 537.0
+[node name="xp_sep" type="VSeparator" parent="HBoxContainer"]
+margin_left = 585.0
+margin_right = 595.0
 margin_bottom = 43.0
 custom_styles/separator = ExtResource( 6 )
 custom_constants/separation = 10
 
 [node name="coins_icon_holder" type="MarginContainer" parent="HBoxContainer"]
-margin_left = 541.0
-margin_right = 581.0
+margin_left = 599.0
+margin_right = 639.0
 margin_bottom = 43.0
 rect_min_size = Vector2( 40, 40 )
 
@@ -87,8 +117,8 @@ expand = true
 stretch_mode = 6
 
 [node name="coins_label" type="Label" parent="HBoxContainer"]
-margin_left = 585.0
-margin_right = 639.0
+margin_left = 643.0
+margin_right = 697.0
 margin_bottom = 43.0
 custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.411765, 0.411765, 0.407843, 1 )

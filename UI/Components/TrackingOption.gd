@@ -37,7 +37,10 @@ func set_tracking_option_data(new_option_data):
 	
 func _update_fields(): 
 	label.text = option_data.option
-	reward_label.set_reward(option_data.reward) 
+	var reward_to_display = option_data.reward
+	if option_data.has("waterFactor"):
+		reward_to_display.water = option_data.waterFactor
+	reward_label.set_reward(reward_to_display) 
 	badge_inst.level = option_data.level + 1
 	
 func set_checkbox_controller(controller):

@@ -11,24 +11,12 @@
 [ext_resource path="res://ForestScene3d/Interactables/SM_Cloud.tres" type="Material" id=9]
 [ext_resource path="res://UI/Behaviour/Stagger.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Assets/sketch/wolke_icon.png" type="Texture" id=11]
+[ext_resource path="res://UI/HintTextboxBG.stylebox" type="StyleBox" id=12]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.392157, 0.65098, 0.886275, 1 )
 
 [sub_resource type="StyleBoxEmpty" id=2]
-
-[sub_resource type="StyleBoxFlat" id=3]
-bg_color = Color( 0.584314, 0.729412, 0.894118, 1 )
-border_width_left = 20
-border_width_top = 20
-border_width_right = 20
-border_width_bottom = 20
-border_color = Color( 0.584314, 0.729412, 0.894118, 1 )
-border_blend = true
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
 
 [sub_resource type="StyleBoxEmpty" id=4]
 
@@ -136,7 +124,7 @@ margin_left = 40.0
 margin_top = 40.0
 margin_right = 1040.0
 margin_bottom = 307.0
-custom_styles/panel = SubResource( 3 )
+custom_styles/panel = ExtResource( 12 )
 
 [node name="Label" type="Label" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/VBoxContainer/UsageHintHolder/PanelContainer" index="0"]
 margin_left = 20.0
@@ -144,6 +132,7 @@ margin_top = 20.0
 margin_right = 980.0
 margin_bottom = 247.0
 custom_fonts/font = ExtResource( 7 )
+custom_colors/font_color = Color( 0.411765, 0.411765, 0.407843, 1 )
 text = "Hole dein Wasser regelmäßig ab, bevor die Tanks volllaufen und sich kein Wasser mehr sammeln kann.Je höher deine eingestellte Stufe in den Aspekten, umso mehr Wasser sammelst du. Tippe auf einen obigen Aspekt, um deine Stufe zu ändern."
 autowrap = true
 

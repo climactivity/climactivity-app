@@ -33,23 +33,30 @@ func update():
 		
 		var coins_str = ("%s" % str(_reward.coins) ) if _reward.get("coins") else ""
 		var xp_str = ("%s" % str(_reward.xp) ) if _reward.get("xp") else ""
+		var water_str = ("%s" % str(_reward.water) ) if _reward.get("water") else ""
 		
 		$HBoxContainer/coins_label.text = coins_str
 		$HBoxContainer/xp_label.text = xp_str
+		$HBoxContainer/water_label.text = water_str
 		
 		$HBoxContainer/coins_icon_holder.visible = coins_str != ""
 		$HBoxContainer/xp_icon_holder.visible = xp_str != ""
+		$HBoxContainer/water_icon_holder.visible = water_str != ""
 		
-		if coins_str == "" and xp_str == "": 
+		if coins_str == "" and xp_str == "" and water_str == "": 
 			visible = false
 		match label_size:
 			SIZE.normal:
 				$HBoxContainer/coins_icon_holder.rect_min_size = Vector2(40,40)
 				$HBoxContainer/xp_icon_holder.rect_min_size = Vector2(40,40)
+				$HBoxContainer/water_icon_holder.rect_min_size = Vector2(40,40)
 				$HBoxContainer/coins_label.set("custom_fonts/font", normal_font )
 				$HBoxContainer/xp_label.set("custom_fonts/font", normal_font )
+				$HBoxContainer/water_label.set("custom_fonts/font", normal_font )
 			SIZE.big:
 				$HBoxContainer/coins_icon_holder.rect_min_size = Vector2(80,80)
 				$HBoxContainer/xp_icon_holder.rect_min_size = Vector2(80,80)
+				$HBoxContainer/water_icon_holder.rect_min_size = Vector2(80,80)
 				$HBoxContainer/coins_label.set("custom_fonts/font", big_font )
 				$HBoxContainer/xp_label.set("custom_fonts/font", big_font )
+				$HBoxContainer/water_label.set("custom_fonts/font", big_font )
