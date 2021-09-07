@@ -367,9 +367,9 @@ custom_constants/margin_bottom = 10
 
 [node name="Panel" type="PanelContainer" parent="MarginContainer"]
 margin_left = 10.0
-margin_top = 2.0
+margin_top = 10.0
 margin_right = 1070.0
-margin_bottom = 185.0
+margin_bottom = 193.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_styles/panel = SubResource( 2 )

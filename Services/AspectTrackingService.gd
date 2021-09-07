@@ -199,7 +199,14 @@ func has_water_available():
 	var has_water = 0.0
 	for tracking_state_key in player_state.tracking_states: 
 		var tracking_state = player_state.tracking_states[tracking_state_key]
-		has_water += tracking_state.get_water_available()
+		has_water += 1.0 if (tracking_state.get_water_percent_available()  >= 0.05) else 0.0
+	return has_water > 0
+
+func has_water_capped(): 
+	var has_water = 0.0
+	for tracking_state_key in player_state.tracking_states: 
+		var tracking_state = player_state.tracking_states[tracking_state_key]
+		has_water += 1.0 if (tracking_state.get_water_percent_available() <= 0.95) else 0.0
 	return has_water > 0
 
 func get_tracked_aspects_for_sector(sector): 

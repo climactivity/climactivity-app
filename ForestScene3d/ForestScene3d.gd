@@ -45,6 +45,8 @@ func _restored():
 		GameManager.menu.set_navigation_state( MainMenu.Navigation_states.HOME, true)
 		GameManager.overlay.show_available_tutorial("Intro")
 		GameManager.overlay.hide_available_tutorial()
+		if GameManager.bonfire != null: 
+			GameManager.bonfire.randomize_chars()
 
 
 func enter_game():

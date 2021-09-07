@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://ForestScene3d/Interactables/Cloud.gd" type="Script" id=1]
 [ext_resource path="res://ForestScene3d/Interactables/Wolke_preview.tscn" type="PackedScene" id=2]
@@ -11,6 +11,46 @@
 [ext_resource path="res://Assets/Kiko/kiko_avatar.png" type="Texture" id=9]
 [ext_resource path="res://Assets/Theme/speech_bubble_down.png" type="Texture" id=10]
 [ext_resource path="res://UI/theme/style_box_empty.tres" type="StyleBox" id=11]
+
+[sub_resource type="Animation" id=4]
+resource_name = "RESET"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("preview:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("HintWaitForWater:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("HintWaterCapped:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
 
 [sub_resource type="Animation" id=1]
 resource_name = "hint_wait_water"
@@ -76,7 +116,83 @@ tracks/4/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="StyleBoxTexture" id=2]
+[sub_resource type="Animation" id=2]
+resource_name = "hint_water_capped"
+length = 6.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("HintWaterCapped:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 4.9 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("HintWaterCapped:rect_position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.1, 0.5, 4.5, 4.9 ),
+"transitions": PoolRealArray( -2, 0, -2, -2 ),
+"update": 0,
+"values": [ Vector2( -352.6, 0 ), Vector2( -352.6, 83 ), Vector2( -352.6, 83 ), Vector2( -352.6, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("HintWaterCapped/HBoxContainer/RichTextLabel:percent_visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.4, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 1.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("HintWaterCapped/HBoxContainer/RichTextLabel:rect_scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = false
+tracks/3/keys = {
+"times": PoolRealArray( 1.5, 1.6, 1.7 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.02, 1 ), Vector2( 1, 1 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("HintWaterCapped:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.1, 0.4, 4.6, 4.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("preview:rect_scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 1.2, 1.4, 1.7, 3, 3.2, 3.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.2, 1.2 ), Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1.2, 1.2 ), Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="StyleBoxTexture" id=3]
 texture = ExtResource( 10 )
 region_rect = Rect2( 3, -0.11908, 334, 78.1191 )
 margin_left = 21.5945
@@ -101,10 +217,12 @@ margin_left = -219.0
 margin_top = -124.0
 margin_right = 219.0
 margin_bottom = 124.0
+rect_pivot_offset = Vector2( 219, 124 )
 texture = ExtResource( 5 )
 stretch_mode = 6
 
 [node name="CloudSprite" type="Sprite" parent="."]
+visible = false
 material = ExtResource( 4 )
 position = Vector2( -1.00136e-05, 0.396821 )
 scale = Vector2( 0.488, 0.488 )
@@ -134,7 +252,10 @@ scale = Vector2( 1.322, 1.322 )
 texture = ExtResource( 6 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "RESET"
+anims/RESET = SubResource( 4 )
 anims/hint_wait_water = SubResource( 1 )
+anims/hint_water_capped = SubResource( 2 )
 
 [node name="HintWaitForWater" type="PanelContainer" parent="."]
 visible = false
@@ -146,7 +267,7 @@ anchor_bottom = 1.0
 margin_left = -352.6
 margin_right = 139.4
 margin_bottom = 185.0
-custom_styles/panel = SubResource( 2 )
+custom_styles/panel = SubResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -155,7 +276,7 @@ __meta__ = {
 margin_left = 21.5945
 margin_top = 51.971
 margin_right = 469.677
-margin_bottom = 140.061
+margin_bottom = 140.06
 
 [node name="TextureRect" type="TextureRect" parent="HintWaitForWater/HBoxContainer"]
 margin_right = 74.56
@@ -182,7 +303,60 @@ custom_fonts/normal_font = ExtResource( 8 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 bbcode_enabled = true
 bbcode_text = "Warte ab, bis sich etwas [color=#279bd4]Wasser[/color] angesammelt hat"
+visible_characters = 0
+percent_visible = 0.0
 text = "Warte ab, bis sich etwas Wasser angesammelt hat"
+fit_content_height = true
+
+[node name="HintWaterCapped" type="PanelContainer" parent="."]
+visible = false
+modulate = Color( 1, 1, 1, 0 )
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -352.6
+margin_right = 139.4
+margin_bottom = 185.0
+custom_styles/panel = SubResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HintWaterCapped"]
+margin_left = 21.5945
+margin_top = 51.971
+margin_right = 469.677
+margin_bottom = 140.061
+
+[node name="TextureRect" type="TextureRect" parent="HintWaterCapped/HBoxContainer"]
+margin_right = 74.56
+margin_bottom = 88.0
+rect_min_size = Vector2( 74.56, 0 )
+texture = ExtResource( 6 )
+expand = true
+stretch_mode = 6
+
+[node name="VSeparator" type="VSeparator" parent="HintWaterCapped/HBoxContainer"]
+margin_left = 78.0
+margin_right = 83.0
+margin_bottom = 88.0
+custom_styles/separator = ExtResource( 11 )
+custom_constants/separation = 5
+
+[node name="RichTextLabel" type="RichTextLabel" parent="HintWaterCapped/HBoxContainer"]
+margin_left = 87.0
+margin_right = 448.0
+margin_bottom = 88.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/normal_font = ExtResource( 8 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+bbcode_enabled = true
+bbcode_text = "Du kannst wieder [color=#279bd4]Wasser[/color] abholen"
+visible_characters = 0
+percent_visible = 0.0
+text = "Du kannst wieder Wasser abholen"
 fit_content_height = true
 
 [connection signal="gui_input" from="." to="." method="_on_Cloud_gui_input"]

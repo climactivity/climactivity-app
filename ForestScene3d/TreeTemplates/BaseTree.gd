@@ -139,6 +139,8 @@ func _update_stage():
 #		for option in aspect.tracking.options: 
 #			if option.level == tracking_level.level:
 #				reward = option.reward
+		if tracking_level == null:
+			return
 		if tracking_level.reward != null: 
 			RewardService.add_reward(tracking_level.reward)
 	_flush()

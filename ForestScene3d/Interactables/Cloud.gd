@@ -13,6 +13,7 @@ var hud
 var drag_data
 var currently_watering
 var has_water = false
+var water_capped = false
 var water_available = false
 var dragging = false
 var initial_position = Vector2(889.296, 263)
@@ -49,6 +50,7 @@ func set_state(state):
 		Cloud_States.READY:
 			sprite.texture = tex_water_available
 			cloud.set_fill_state(1.0)
+			cloud.visible = true
 			visible = true
 		Cloud_States.RESETING:
 			pass
@@ -56,10 +58,21 @@ func set_state(state):
 			pass
 		Cloud_States.WATERING:
 			pass
-			
+
+func grab_attention_water_capped():
+	yield(get_tree().create_timer(4.0), "timeout")
+	water_capped = AspectTrackingService.has_water_available()
+	if water_capped and Cloud_States.CAN_COLLECT and not acked:
+		$AnimationPlayer.play("hint_water_capped")
+
+		
 func update_water_available():
 	Logger.print("update water available", self)
 	water_available = AspectTrackingService.has_water_available()
+	water_capped = AspectTrackingService.has_water_available()
+	if water_capped: 
+		grab_attention_water_capped()
+	
 	has_water = AspectTrackingService.get_water_collected() != []
 	if sprite == null: return
 	if cloud_state == Cloud_States.DRAGGING or cloud_state == Cloud_States.WATERING or cloud_state == Cloud_States.RESETING:
@@ -167,9 +180,11 @@ func _watering_done():
 	if !dragging:
 		hud._enable_input()
 		_reset()
+var acked = false
 func _input(event):
 	if cloud_state != Cloud_States.DRAGGING: 
 		if event is InputEventScreenTouch and  event.index == 0:
+			acked = true
 			dragging = event.pressed
 		return
 	if event is InputEventScreenTouch and  event.index == 0 and not event.pressed:

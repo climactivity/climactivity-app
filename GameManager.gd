@@ -8,6 +8,7 @@ var forest
 var menu
 var overlay
 var xp_bar
+var bonfire
 
 func _init():
 	if OS.get_name() in ["iOS"]: 

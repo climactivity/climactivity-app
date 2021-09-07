@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Chara_010.png-c64324a3e0def13891dd7ac9c34c3cbb.stex"
+path="res://.import/Chara_010_F.png-e115104b1e9a1835f6461b5b466ebdb1.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/sketch/Characters/Chara_010.png"
-dest_files=[ "res://.import/Chara_010.png-c64324a3e0def13891dd7ac9c34c3cbb.stex" ]
+source_file="res://Assets/sketch/Characters/Chara_010_F.png"
+dest_files=[ "res://.import/Chara_010_F.png-e115104b1e9a1835f6461b5b466ebdb1.stex" ]
 
 [params]
 
@@ -18,11 +18,11 @@ compress/mode=1
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
-compress/normal_map=2
-flags/repeat=0
+compress/normal_map=0
+flags/repeat=true
 flags/filter=true
 flags/mipmaps=true
-flags/anisotropic=true
+flags/anisotropic=false
 flags/srgb=2
 process/fix_alpha_border=true
 process/premult_alpha=false

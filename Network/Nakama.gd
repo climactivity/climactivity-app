@@ -24,7 +24,7 @@ func _ready():
 		else:
 			oauth_client_id = ContextService.oauth_client_id_local_gs_remote_wp
 	else:
-		client = Nakama.create_client(server_key, ProjectSettings.get_setting("debug/settings/network/gameserver_host"), 443, "https", 3, NakamaLogger.LOG_LEVEL.DEBUG )
+		client = Nakama.create_client(server_key, ProjectSettings.get_setting("debug/settings/network/gameserver_host"), 443, "https", 3, NakamaLogger.LOG_LEVEL.ERROR )
 
 	socket = Nakama.create_socket_from(client)
 	yield(authenticate_device_uid(), "completed") 

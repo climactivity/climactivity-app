@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://ForestScene3d/TreeTemplates/ContactShadow.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/sketch/lagerfeuer/lagerfeuer_holz.png" type="Texture" id=2]
@@ -8,10 +8,19 @@
 [ext_resource path="res://Assets/sketch/lagerfeuer/lagerfeuer_flamme_gross.png" type="Texture" id=6]
 [ext_resource path="res://ForestScene3d/Tents/LogScene.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Assets/sketch/Characters/Chara_07.png" type="Texture" id=8]
-[ext_resource path="res://Assets/sketch/Characters/Chara_011.png" type="Texture" id=9]
+[ext_resource path="res://Assets/sketch/Characters/Chara_12.png" type="Texture" id=9]
 [ext_resource path="res://Assets/sketch/Characters/Chara_04.png" type="Texture" id=10]
 [ext_resource path="res://Assets/sketch/Characters/Chara_02.png" type="Texture" id=11]
 [ext_resource path="res://Assets/sketch/Characters/Chara_09.png" type="Texture" id=12]
+[ext_resource path="res://Assets/sketch/Characters/Chara_05.png" type="Texture" id=13]
+[ext_resource path="res://Assets/sketch/Characters/Chara_03.png" type="Texture" id=14]
+[ext_resource path="res://Assets/sketch/Characters/Chara_06.png" type="Texture" id=15]
+[ext_resource path="res://Assets/sketch/Characters/Chara_01.png" type="Texture" id=16]
+[ext_resource path="res://Assets/sketch/Characters/Chara_13.png" type="Texture" id=17]
+[ext_resource path="res://Assets/sketch/Characters/Chara_10.png" type="Texture" id=18]
+[ext_resource path="res://Assets/sketch/Characters/Chara_11.png" type="Texture" id=19]
+[ext_resource path="res://Assets/sketch/Characters/Chara_12_F.png" type="Texture" id=20]
+[ext_resource path="res://Assets/sketch/Characters/Chara_011_F.png" type="Texture" id=21]
 
 [sub_resource type="QuadMesh" id=1]
 
@@ -143,37 +152,58 @@ anims/flicker = SubResource( 4 )
 anims/place_top_person = SubResource( 5 )
 
 [node name="Spatial" parent="." instance=ExtResource( 7 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.910245, 0.104, -0.295859 )
-facing = 0
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.910245, 0.01019, -0.295859 )
 show_person = true
-show_log = true
 person_tex = ExtResource( 11 )
+person_texB = ExtResource( 16 )
+offset = Vector3( 0.009, 0.192, 0.057 )
+use_b = true
 
 [node name="Spatial2" parent="." instance=ExtResource( 7 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.925239, 0.104, -0.415874 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.925239, 0.0174187, -0.415874 )
 facing = 1
 show_person = true
-show_log = true
-person_tex = ExtResource( 10 )
+person_tex = ExtResource( 14 )
+person_texB = ExtResource( 10 )
+offset = Vector3( 0.029, 0.234, 0.05 )
 
 [node name="Spatial5" parent="." instance=ExtResource( 7 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.884693, 0.104, 0.671264 )
-facing = 0
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.884693, 0.0100808, 0.671264 )
 show_person = true
-person_tex = ExtResource( 8 )
+log_infront = true
+person_tex = ExtResource( 12 )
+person_texB = ExtResource( 8 )
+offset = Vector3( 0.089, 0.214, 0.08 )
 
 [node name="Spatial6" parent="." instance=ExtResource( 7 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.824605, 0.104, 0.645259 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.824605, 0.0526094, 0.645259 )
 facing = 1
 show_person = true
+log_infront = true
 person_tex = ExtResource( 9 )
+person_texB = ExtResource( 17 )
+person_texf = ExtResource( 20 )
+offset = Vector3( -0.053, 0.095, 0.026 )
+f_offset = Vector3( 0.012, -0.168, 0.072 )
+show_f = true
 
 [node name="Spatial3" parent="." instance=ExtResource( 7 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0227464, 0.104, -0.868712 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0227464, 0.00949511, -0.868712 )
+facing = 3
 show_person = true
-show_log = true
+person_tex = ExtResource( 15 )
+person_texB = ExtResource( 13 )
+offset = Vector3( -0.002, 0.171, 0.07 )
 
 [node name="Spatial4" parent="." instance=ExtResource( 7 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0168432, 0.104, 0.987334 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0304716, 0.012295, 0.987334 )
+facing = 3
 show_person = true
-person_tex = ExtResource( 12 )
+log_infront = true
+person_tex = ExtResource( 19 )
+person_texB = ExtResource( 18 )
+person_texf = ExtResource( 21 )
+offset = Vector3( 0.09, 0.155, 0.107 )
+f_offset = Vector3( 0.261, -0.022, 0.224 )
+use_b = true
+show_f = true
