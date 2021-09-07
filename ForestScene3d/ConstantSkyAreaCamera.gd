@@ -89,7 +89,7 @@ func _get_rotation_for_y(y: float):
 	return deg
 	
 func _pan(position: Vector2, delta: Vector2, natural_scroll = -1): 
-	var current_pan_factor = (pan_factor/100.0) * max(get_elevation_percent(),0.05)
+	var current_pan_factor = (pan_factor/100.0) * max(get_elevation_percent(),0.30)
 	var pan_by = Vector3(delta.x, 0.0, delta.y) * current_pan_factor
 	var old_origin = global_transform.origin
 	var new_origin = old_origin + pan_by * natural_scroll
