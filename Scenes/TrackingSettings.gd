@@ -13,6 +13,7 @@ var tracking_data
 var ready = false
 var title = "Heading not set!"
 var selected_option setget set_option, get_option
+var initial_option
 var aspect
 var options = {}
 
@@ -23,6 +24,7 @@ func set_tracking_data(new_tracking_data, new_aspect):
 	tracking_data = new_tracking_data
 	aspect = new_aspect
 	Logger.print("Aspect got data!", self)
+
 	if ready: _show_data()
 	
 func set_title(new_title): 
@@ -31,9 +33,10 @@ func set_title(new_title):
 	
 func _ready(): 
 	ready = true
+	select_button.disabled = true
 	_show_data()
 #	heading.set_heading(title)
-	select_button.disabled = selected_option == null
+
 	connect("emit_option", AspectTrackingService, "commit_tracking_level")
 	#get saved option
 
@@ -45,8 +48,12 @@ func _get_current_tracking_level():
 	print("level %s" % str(current_level.level))
 	if options.has(current_level.level):
 		selected_option = options.get(current_level.level)
+		initial_option = selected_option
+		select_button.disabled = selected_option == null
+		select_button_label.text = tr("tracking_options_button_save") if initial_option == null else tr("tracking_options_button_confirm")
 		selected_option.preselect()
-	
+		select_button.disabled = false
+		
 func _show_data(): 
 	if tracking_data == null: 
 		Logger.print("Aspect missing data!", self)
@@ -71,12 +78,11 @@ func set_option(option):
 		selected_option = null
 	else:
 		selected_option = option
-	select_button_label.text = "Speichern"
+	select_button_label.text = tr("tracking_options_button_save") if initial_option == null else tr("tracking_options_button_confirm")
 	print(option)
 	select_button.disabled = false
 
-
 func _on_SaveTrackingOptionButton_pressed():
 	select_button.disabled = true
-	select_button_label.text = "Gespeichert!"
+	select_button_label.text = tr("tracking_options_button_saved")
 	emit_signal("emit_option", selected_option.option_data if selected_option != null else null, aspect)
