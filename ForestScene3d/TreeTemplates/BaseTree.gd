@@ -106,7 +106,7 @@ func add_water(water):
 	#$AnimationPlayer.play("happy")
 	AspectTrackingService.water_used(instance_resource.aspect_id)
 	getting_watered = true
-	_add_water(null,instance_resource.current_water/10.0)
+	_add_water(null,instance_resource.current_water/48.0)
 	
 func _add_water( anim ,timeout): 
 	$AnimationPlayer.disconnect("animation_finished", self, "_add_water")
