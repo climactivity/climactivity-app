@@ -14,7 +14,7 @@ var can_water = false
 onready var bill_board = $"Sprite3D"
 onready var anim_player = $"AnimationPlayer"
 onready var tile = $MeshInstance
-onready var ui_alert = $"Sprite3D/SpatialUIPanel"
+onready var ui_alert = $"Sprite3D/UI_Alert_Can_Water"
 onready var collider = $Collider
 
 func _ready():
@@ -23,9 +23,10 @@ func _ready():
 	update_view()
 	ui_alert.connect("clicked", self, "on_click")
 	collider.connect("getting_watered", self, "add_water")
-	bill_board.translate_object_local(Vector3(instance_resource.center_offset.x, 0.0, instance_resource.center_offset.y) * offset_scale )
-	$AnimationTarget.translate_object_local(Vector3(instance_resource.center_offset.x, 0.0, instance_resource.center_offset.y) * offset_scale )
-	
+	bill_board.translate_object_local( Vector3(instance_resource.center_offset.x, 0.0, instance_resource.center_offset.y) * offset_scale )
+	$AnimationTarget.translate_object_local( Vector3(instance_resource.center_offset.x, 0.0, instance_resource.center_offset.y) * offset_scale )
+	$ContactShadow.translate_object_local( Vector3(instance_resource.center_offset.x, 0.0, instance_resource.center_offset.y) * offset_scale )
+	$MeshInstance.transform.origin = ( Vector3(instance_resource.center_offset.x, -0.01, instance_resource.center_offset.y) * offset_scale )
 	if instance_resource.just_planted:
 		_planted()
 	if _details_widget != null: details_widget = _details_widget.instance()
@@ -86,7 +87,11 @@ func set_state(state):
 	update_view()
 
 func focus_entity() -> Spatial:
+	$AnimationPlayer.play("Highlight")
 	return $CameraZoomTarget as Spatial
+
+func unfocus_entity() -> void:
+	$AnimationPlayer.play_backwards("Highlight")
 
 func on_touch():
 	print("focus")

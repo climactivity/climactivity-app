@@ -43,10 +43,13 @@ func _entity_focused():
 	
 func unfocus_entity():
 	if focused_entity == null:
-		set_process_input(true) 
+		set_process_input(true)
+	if (focused_entity.has_method("unfocus_entity")): 
+		focused_entity.unfocus_entity()
 	focused_entity = null 
 	focused = false
 	current_position = Transform(global_transform) 
+
 	$"../AnimationPlayer".play("HideEntityDetails")
 
 func _entity_unfocused():

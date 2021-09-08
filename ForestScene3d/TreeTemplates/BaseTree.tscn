@@ -1,6 +1,6 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=21 format=2]
 
-[ext_resource path="res://ForestScene3d/HexMesh.tres" type="CylinderMesh" id=1]
+[ext_resource path="res://ForestScene3d/TreeTemplates/Textures/tree0_2.png" type="Texture" id=1]
 [ext_resource path="res://ForestScene3d/TreeTemplates/Textures/Baum_Entwurf_01.png" type="Texture" id=2]
 [ext_resource path="res://ForestScene3d/TreeTemplates/BaseTree.gd" type="Script" id=3]
 [ext_resource path="res://ForestScene3d/TreeTemplates/FixedGroundPos.gd" type="Script" id=4]
@@ -8,6 +8,36 @@
 [ext_resource path="res://ForestScene3d/SpatialUIPanel.tscn" type="PackedScene" id=6]
 [ext_resource path="res://ForestScene3d/TreeTemplates/TreeWaterReceiver.gd" type="Script" id=7]
 [ext_resource path="res://UI/Components/TreeDetails.tscn" type="PackedScene" id=8]
+
+[sub_resource type="SpatialMaterial" id=11]
+
+[sub_resource type="QuadMesh" id=8]
+material = SubResource( 11 )
+size = Vector2( 2, 2 )
+
+[sub_resource type="Shader" id=9]
+code = "shader_type spatial;
+
+uniform float inner_radius : hint_range(0.0, 1.0) = 0.5;
+uniform float outer_radius : hint_range(0.0, 1.0) = 0.5;
+uniform vec2 center = vec2(0.5);
+uniform vec4 color : hint_color = vec4(vec3(0.0), 1.0);
+
+void fragment() {
+	if (distance(UV, center) > inner_radius && distance(UV, center) < outer_radius) {
+		ALPHA = color.a
+	} else {
+		ALPHA = 0.0
+	}
+	ALBEDO = color.rgb;
+}"
+
+[sub_resource type="ShaderMaterial" id=10]
+shader = SubResource( 9 )
+shader_param/inner_radius = 0.0
+shader_param/outer_radius = 0.0
+shader_param/center = Vector2( 0.5, 0.5 )
+shader_param/color = Color( 0.12549, 1, 0, 1 )
 
 [sub_resource type="CylinderShape" id=1]
 radius = 0.315774
@@ -20,6 +50,41 @@ albedo_color = Color( 0.541176, 0.964706, 0.517647, 1 )
 
 [sub_resource type="SphereMesh" id=3]
 material = SubResource( 2 )
+
+[sub_resource type="Animation" id=12]
+resource_name = "Highlight"
+tracks/0/type = "value"
+tracks/0/path = NodePath("MeshInstance:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, true ]
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("MeshInstance:material/0:shader_param/outer_radius")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.250282, -0.00189325, 0.498367, -0.558588, -0.00455821, 0.25, 0 ),
+"times": PoolRealArray( 0.1, 1 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("MeshInstance:material/0:shader_param/inner_radius")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0.4, -0.22824, -0.0128017, 0.25, 0 ),
+"times": PoolRealArray( 0.6, 1 )
+}
 
 [sub_resource type="Animation" id=4]
 length = 0.1
@@ -157,10 +222,10 @@ script = ExtResource( 3 )
 _details_widget = ExtResource( 8 )
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
-transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+transform = Transform( 0.5, 0, 0, 0, -2.18557e-08, 0.5, 0, -0.5, -2.18557e-08, 0, -0.001, 0 )
 visible = false
-mesh = ExtResource( 1 )
-material/0 = null
+mesh = SubResource( 8 )
+material/0 = SubResource( 10 )
 
 [node name="Collider" type="StaticBody" parent="."]
 script = ExtResource( 7 )
@@ -169,6 +234,7 @@ script = ExtResource( 7 )
 shape = SubResource( 1 )
 
 [node name="ContactShadow" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.005, 0 )
 
 [node name="Particles" type="CPUParticles" parent="."]
 emitting = false
@@ -186,7 +252,7 @@ hue_variation = 0.17
 hue_variation_random = 0.06
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.016155, 0 )
+cast_shadow = 0
 centered = false
 offset = Vector2( -281, 0 )
 pixel_size = 0.00259091
@@ -196,8 +262,12 @@ region_rect = Rect2( 123.448, 115.232, 38.423, 44.862 )
 script = ExtResource( 4 )
 _unit_factor = 1.71
 
-[node name="SpatialUIPanel" parent="Sprite3D" instance=ExtResource( 6 )]
+[node name="UI_Alert_Can_Water" parent="Sprite3D" instance=ExtResource( 6 )]
 transform = Transform( 0.15, 0, 0, 0, 0.15, 0, 0, 0, 1, 0, 0.097, 0 )
+
+[node name="UI_Alert_Can_Water2" parent="Sprite3D" instance=ExtResource( 6 )]
+transform = Transform( 0.15, 0, 0, 0, 0.15, 0, 0, 0, 1, 0, 0.097, 0 )
+widget = NodePath("../../WaterWidget")
 
 [node name="AnimationTarget" type="Sprite3D" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.016155, 0 )
@@ -217,6 +287,7 @@ visible = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "RESET"
+anims/Highlight = SubResource( 12 )
 anims/RESET = SubResource( 4 )
 anims/happy = SubResource( 5 )
 anims/planted = SubResource( 6 )
@@ -226,5 +297,13 @@ anims/stage_inc = SubResource( 7 )
 transform = Transform( 1, 0, 0, 0, 0.832061, 0.554685, 0, -0.554685, 0.832061, 1.09, 2.45, 3.363 )
 
 [node name="Camera" type="Camera" parent="CameraZoomTarget"]
+
+[node name="WaterWidget" type="TextureRect" parent="."]
+margin_right = 218.0
+margin_bottom = 428.0
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [connection signal="input_event" from="Collider" to="." method="_on_Collider_input_event"]

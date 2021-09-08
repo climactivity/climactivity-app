@@ -75,4 +75,5 @@ shape = SubResource( 4 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Attention"
 anims/Attention = SubResource( 5 )
+
 [connection signal="input_event" from="Sprite3D/Area" to="." method="_on_Area_input_event"]
