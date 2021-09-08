@@ -9,7 +9,7 @@ export (Resource) var reward setget set_reward_display
 export (String) var navigation_target  = "" setget set_navigation_target
 export (Dictionary) var navigation_payload = {} setget set_navigation_payload
 export (Color) var accent_color = Color("95c11e") setget set_accent_color
-export (PackedScene) var button_replacement
+export (PackedScene) var button_replacement setget set_button_replacement
 export var start_hidden = false setget is_start_hidden
 var has_entered_scene_animated = false
 export var important = false setget set_is_important
@@ -29,6 +29,11 @@ onready var progress_icon = $"MarginContainer/HBoxContainer/ContentContainer/VBo
 onready var progress_container = $"MarginContainer/HBoxContainer/ContentContainer/VBoxContainer/MarginContainer"
 var ready = false
 export var acceptance_radius = 5.0
+
+func set_button_replacement(_button):
+	button_replacement = _button
+	update()
+
 func set_attention_grabber(scene):
 	attention_grabber = scene
 	update()
@@ -92,6 +97,7 @@ func set_content_text(rich_text: String):
 	_content_text = rich_text
 	update()
 
+var _replacement_button
 func update():
 	if !ready: return  
 	icon.set_icon(texture)
@@ -107,7 +113,12 @@ func update():
 	if button_replacement != null: 
 		go_down_tex.visible = false
 		if go_down_container.get_children().size() == 1: 
-			go_down_container.add_child(button_replacement.instance())
+			_replacement_button = button_replacement.instance()
+			go_down_container.add_child(_replacement_button)
+		elif _replacement_button != null:
+			go_down_container.remove_child(_replacement_button)
+			_replacement_button = button_replacement.instance()
+			go_down_container.add_child(_replacement_button)
 	else: 
 		go_down_tex.visible = true
 	if Engine.is_editor_hint():

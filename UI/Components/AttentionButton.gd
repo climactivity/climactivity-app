@@ -1,6 +1,6 @@
 extends PanelContainer
 
-var grab_attention = true
+export var grab_attention = true
 
 func _ready(): 
 	var parent = get_parent()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Scenes/SceneBase.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/AspectScene.gd" type="Script" id=2]
@@ -7,7 +7,6 @@
 [ext_resource path="res://UI/typography/Button_Label.tres" type="DynamicFont" id=5]
 [ext_resource path="res://UI/Behaviour/Stagger.tscn" type="PackedScene" id=6]
 [ext_resource path="res://UI/Components/kiko_hint.tscn" type="PackedScene" id=7]
-[ext_resource path="res://UI/Components/AttentionButton.tscn" type="PackedScene" id=9]
 [ext_resource path="res://UI/theme/Button_Important_Down.tres" type="StyleBox" id=10]
 [ext_resource path="res://Scenes/QuestList.gd" type="Script" id=11]
 [ext_resource path="res://UI/theme/Button_Important.tres" type="StyleBox" id=18]
@@ -175,16 +174,16 @@ scroll_horizontal_enabled = false
 
 [node name="ContentMain" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer" index="0"]
 margin_right = 1075.0
-margin_bottom = 2184.0
+margin_bottom = 2212.0
 custom_constants/separation = 49
 
 [node name="HSeparator" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="0"]
 margin_right = 1075.0
 
 [node name="TrackingPreview" type="VBoxContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="1"]
-margin_top = 395.0
+margin_top = 423.0
 margin_right = 1075.0
-margin_bottom = 987.0
+margin_bottom = 1015.0
 script = ExtResource( 3 )
 
 [node name="TrackingQuestion" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview" index="0" instance=ExtResource( 7 )]
@@ -209,8 +208,8 @@ custom_styles/panel = SubResource( 1 )
 grab_attention = true
 navigation_payload = {
 }
-button_replacement = ExtResource( 9 )
 start_hidden = true
+show_progress = true
 
 [node name="shop_button_container" type="MarginContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview" index="2"]
 visible = false
@@ -245,9 +244,9 @@ __meta__ = {
 anims/ShowShopButton = SubResource( 2 )
 
 [node name="InfoGraph" type="PanelContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="2"]
-margin_top = 1036.0
+margin_top = 1064.0
 margin_right = 1075.0
-margin_bottom = 1536.0
+margin_bottom = 1564.0
 rect_min_size = Vector2( 0, 500 )
 mouse_filter = 1
 size_flags_vertical = 3
@@ -287,9 +286,9 @@ script = ExtResource( 4 )
 [node name="Stagger" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/InfoGraph/VBoxContainer/MarginContainer2/FactorHolder" index="0" instance=ExtResource( 6 )]
 
 [node name="Aufgaben" type="PanelContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="3"]
-margin_top = 1585.0
+margin_top = 1613.0
 margin_right = 1075.0
-margin_bottom = 2085.0
+margin_bottom = 2113.0
 rect_min_size = Vector2( 0, 500 )
 custom_styles/panel = SubResource( 4 )
 script = ExtResource( 11 )
@@ -324,9 +323,9 @@ custom_constants/separation = 36
 [node name="Stagger2" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/Aufgaben/MarginContainer/VBoxContainer/QuestList" index="0" instance=ExtResource( 6 )]
 
 [node name="HSeparator2" type="HSeparator" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="4"]
-margin_top = 2134.0
+margin_top = 2162.0
 margin_right = 1075.0
-margin_bottom = 2184.0
+margin_bottom = 2212.0
 custom_styles/separator = SubResource( 5 )
 custom_constants/separation = 50
 

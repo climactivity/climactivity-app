@@ -60,6 +60,8 @@ func set_state(state):
 			pass
 
 func grab_attention_water_capped():
+	if get_tree() == null: 
+		return
 	yield(get_tree().create_timer(4.0), "timeout")
 	water_capped = AspectTrackingService.has_water_available()
 	if water_capped and Cloud_States.CAN_COLLECT and not acked:

@@ -40,6 +40,7 @@ script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+grab_attention = false
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 margin_right = 428.0
@@ -82,12 +83,11 @@ custom_fonts/bold_font = ExtResource( 1 )
 custom_fonts/normal_font = ExtResource( 1 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 bbcode_enabled = true
-bbcode_text = "tracking_option_attention_button_select"
-text = "tracking_option_attention_button_select"
+bbcode_text = "tracking_option_attention_button_confirm"
+text = "tracking_option_attention_button_confirm"
 fit_content_height = true
 script = ExtResource( 5 )
-translation_key = "tracking_option_attention_button_select"
+translation_key = "tracking_option_attention_button_confirm"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "att"
 anims/att = SubResource( 1 )
