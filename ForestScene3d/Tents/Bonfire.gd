@@ -19,9 +19,15 @@ func _ready():
 	]
 	ready = true
 	GameManager.bonfire = self
-	randomize_chars()
+	init_chars()
 
-func randomize_chars(): 
+func init_chars(): 
 	if !ready: return
 	for person in people:
 		person.set_useB(randi() % 2)
+
+
+func randomize_chars(): 
+	if !ready: return
+	var person = people[randi() % people.size()]
+	person.set_useB(randi() % 2)
