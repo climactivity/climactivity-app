@@ -55,7 +55,7 @@ func _show_sector(coord, dir):
 		var current_coords = Vector2(parts[0].to_int(), parts[1].to_int())
 		#print(dir, " ",current_coords)
 		#if ( current_coords.x <= current_coords.y and current_coords.z > current_coords.y ):
-		if !(current_coords.x in range(-2, 3) and current_coords.y in range(max(-2, -2 + current_coords.x), min(2, 2 + current_coords.x) + 1)):
+		if !(current_coords.x in range(-3, 4) and current_coords.y in range(max(-3, -3 + current_coords.x), min(3, 3 + current_coords.x) + 1)):
 			child.show_grid()
 
 func grid(coords):  

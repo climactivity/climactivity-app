@@ -91,7 +91,7 @@ var placed_objects = {}
 var player_objects = {}
 
 var not_placeable_hexes
-var MIN_RING = 3
+var MIN_RING = 4
 export var SIZE = 34
 export (Vector2) var hex_size_override = Vector2(1.0,1.0) setget set_scale
 onready var cursor = $Cursor

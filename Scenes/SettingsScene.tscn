@@ -42,10 +42,6 @@ screen_title = "settings_screen"
 [node name="ContentMain" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer" index="0"]
 show_menu_bar = true
 
-[node name="HSeparator" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="0"]
-margin_bottom = 374.0
-custom_constants/separation = 374
-
 [node name="MarginContainer" type="MarginContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="1"]
 margin_top = 378.0
 margin_right = 1080.0
@@ -90,6 +86,7 @@ custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "privacy_statement"
 
 [node name="debug_settings" type="VBoxContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/Settings" index="1"]
+visible = false
 margin_top = 372.0
 margin_right = 744.0
 margin_bottom = 760.0
@@ -129,9 +126,9 @@ margin_top = 424.0
 margin_bottom = 832.0
 
 [node name="HSeparator" type="HSeparator" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/Settings" index="2"]
-margin_top = 1047.0
+margin_top = 150.0
 margin_right = 744.0
-margin_bottom = 1374.0
+margin_bottom = 477.0
 custom_styles/separator = SubResource( 5 )
 custom_constants/separation = 327
 
@@ -141,17 +138,7 @@ anchor_right = 0.0
 margin_right = 1080.0
 margin_bottom = 346.0
 
-[node name="HSeparator2" parent="ContentContainer/Content/HeaderBG" index="0"]
-margin_bottom = 374.0
-custom_constants/separation = 374
-
-[node name="HSeparator" parent="HeaderContainer" index="0"]
-margin_bottom = 128.0
-custom_constants/separation = 128
-
 [node name="Header" parent="HeaderContainer" index="1"]
-margin_top = 132.0
-margin_bottom = 289.0
 screen_label = "settings_screen"
 icon_texture = ExtResource( 2 )
 color = Color( 0.517647, 0.517647, 0.517647, 1 )
