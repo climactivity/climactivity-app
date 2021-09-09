@@ -3,6 +3,8 @@ extends Sprite3D
 
 export (float) var _unit_factor = 1.0 setget set_unit_factor
 export (float) var scaling_factor = 1.0 setget apply_scaling_factor
+
+export (Vector2) var tex_size_override_if_zero = Vector2(512,512)
 var _unit_factor_base
 onready var ui_panel = $SpatialUIPanel
 var ui_initial_transform 
@@ -33,6 +35,8 @@ func apply_scaling_factor(factor):
 	
 func _offset_and_scale():
 	tex_size = texture.get_size() if texture != null else Vector2(1.0,1.0)
+	if tex_size == Vector2.ZERO:
+		tex_size = tex_size_override_if_zero
 	pixel_size = _unit_factor / tex_size.y  
 	offset = Vector2( -tex_size.x / 2.0,0.0)
 	#print("_offset_and_scale %s %s" % [str(pixel_size), str(offset)])

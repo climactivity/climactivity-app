@@ -15,6 +15,7 @@ onready var bill_board = $"Sprite3D"
 onready var anim_player = $"AnimationPlayer"
 onready var tile = $MeshInstance
 onready var ui_alert = $"Sprite3D/UI_Alert_Can_Water"
+onready var ui_water_progress = $"Sprite3D/UI_Water_Progress"
 onready var collider = $Collider
 
 func _ready():

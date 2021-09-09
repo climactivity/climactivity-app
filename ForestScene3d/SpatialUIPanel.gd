@@ -2,12 +2,18 @@ extends Spatial
 
 signal clicked
 
+export var grab_attention = false setget set_grab_attention
 export (PackedScene) var widget setget set_widget
 var widget_instance
+
 onready var ui_panel = $"Viewport/GUI"
 
 func _ready():
 	update() 
+
+func set_grab_attention(_att): 
+	grab_attention = _att
+	update()
 
 func _on_Area_input_event(camera, event, click_position, click_normal, shape_idx):
 	if event is InputEventMouseButton: 
@@ -27,6 +33,11 @@ func update():
 	if ui_panel == null: return 
 	if widget_instance != null:  
 		Util.clear(ui_panel) 
-		widget_instance.get_parent().remove_child(widget_instance)
+		if widget_instance.get_parent():
+			widget_instance.get_parent().remove_child(widget_instance)
 		ui_panel.add_child(widget_instance)
-
+	if $AnimationPlayer != null: 
+		if grab_attention:
+			$AnimationPlayer.play("Attention")
+		elif $AnimationPlayer.current_animation == "Attention":
+			$AnimationPlayer.stop(true)
