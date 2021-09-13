@@ -146,30 +146,30 @@ custom_styles/separator = SubResource( 3 )
 custom_constants/separation = 0
 
 [node name="HomeButton" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer" instance=ExtResource( 4 )]
-margin_left = 4.0
-margin_right = 172.0
+margin_left = 44.0
+margin_right = 212.0
 grow_horizontal = 2
 grow_vertical = 2
 primary_color = Color( 0.988235, 0.988235, 0.988235, 1 )
 menu_label = "home_screen"
 
 [node name="VSeparator2" type="VSeparator" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer"]
-margin_left = 176.0
-margin_right = 180.0
+margin_left = 216.0
+margin_right = 256.0
 margin_bottom = 100.0
 size_flags_horizontal = 3
 custom_styles/separator = SubResource( 3 )
 
 [node name="NotificationButton" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer" instance=ExtResource( 4 )]
-margin_left = 184.0
-margin_right = 438.0
+margin_left = 260.0
+margin_right = 514.0
 primary_color = Color( 0.988235, 0.988235, 0.988235, 1 )
 icon = ExtResource( 2 )
 menu_label = "notifications_screen"
 
 [node name="VSeparator3" type="VSeparator" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer"]
-margin_left = 442.0
-margin_right = 446.0
+margin_left = 518.0
+margin_right = 558.0
 margin_bottom = 100.0
 size_flags_horizontal = 3
 custom_styles/separator = SubResource( 3 )
@@ -184,34 +184,35 @@ icon = ExtResource( 1 )
 menu_label = "stats_screen"
 
 [node name="NetworkButton" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer" instance=ExtResource( 4 )]
-margin_left = 450.0
-margin_right = 603.0
+margin_left = 562.0
+margin_right = 715.0
 primary_color = Color( 0.988235, 0.988235, 0.988235, 1 )
 icon = ExtResource( 8 )
 menu_label = "cy Netzwerk"
 
 [node name="VSeparator7" type="VSeparator" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer"]
-margin_left = 607.0
-margin_right = 611.0
+margin_left = 719.0
+margin_right = 759.0
 margin_bottom = 100.0
 size_flags_horizontal = 3
 custom_styles/separator = SubResource( 3 )
 
 [node name="ChallengesButton" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer" instance=ExtResource( 4 )]
-margin_left = 615.0
-margin_right = 753.0
+margin_left = 763.0
+margin_right = 901.0
 primary_color = Color( 0.988235, 0.988235, 0.988235, 1 )
 icon = ExtResource( 7 )
 menu_label = "Challenges"
 
 [node name="VSeparator4" type="VSeparator" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer"]
-margin_left = 757.0
-margin_right = 761.0
+margin_left = 905.0
+margin_right = 946.0
 margin_bottom = 100.0
 size_flags_horizontal = 3
 custom_styles/separator = SubResource( 3 )
 
 [node name="SocialButton" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer" instance=ExtResource( 4 )]
+visible = false
 margin_left = 765.0
 margin_right = 938.0
 primary_color = Color( 0.988235, 0.988235, 0.988235, 1 )
@@ -219,8 +220,9 @@ icon = ExtResource( 5 )
 menu_label = "social_screen"
 
 [node name="VSeparator5" type="VSeparator" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer"]
-margin_left = 942.0
-margin_right = 946.0
+visible = false
+margin_left = 913.0
+margin_right = 945.0
 margin_bottom = 100.0
 size_flags_horizontal = 3
 custom_styles/separator = SubResource( 3 )

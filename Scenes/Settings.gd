@@ -33,3 +33,22 @@ func _on_NavImpressum_pressed():
 func _on_NavPrivacyNotice_pressed():
 	OS.shell_open("https://climactivity.de/datenschutzerklaerung/")
 
+func _on_CyButton_pressed():
+	NakamaConnection.connect("cy_network_authenticated", self, "_authenticated_callback")
+	NakamaConnection.start_cy_network_oauth_flow()
+
+onready var connect_box = $Settings/VBoxContainer
+onready var profile_box = $Settings/MarginContainer/VBoxContainer2
+onready var profile_box_label = $Settings/MarginContainer/VBoxContainer2/Label
+
+func update():
+	var user =  yield(NakamaConnection.get_user(), "completed")
+	if user.display_name != "": 
+		connect_box.visible = false
+		profile_box.visible = true
+		profile_box_label.bbcode_text = "Angemeldet als " + user.display_name # + " (" + user.custom.id  + ")" 
+		
+func _authenticated_callback(): 
+	update()
+func _ready():
+	update()
