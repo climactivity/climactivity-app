@@ -20,6 +20,8 @@ export var max_rotation_deg = -45.0
 export var nw_bound = Vector2(-15.0,-5.0)
 export var se_bound = Vector2(15.0,5.0)
 
+onready var mountpoint = $"HUD/EntityDetails/MarginContainer/PanelContainer/MountPoint"
+
 var saved_position 
 var current_position
 var target_position
@@ -28,13 +30,15 @@ var t = 0.0
 var focused = false
 func focus_entity(entity):
 	if (entity.has_method("focus_entity")): 
+		if focused_entity != null: 
+			unfocus_entity()
 		focused_entity = entity
 		saved_position = Transform(global_transform) 
 		current_position = Transform(global_transform) 
 		target_position = Transform( entity.focus_entity().global_transform )
 		set_process_input(false)
 		if entity.has_method("get_details_widget"):
-			$"HUD/EntityDetails/MarginContainer/PanelContainer/MountPoint".add_child(entity.get_details_widget())
+			mountpoint.add_child(entity.get_details_widget())
 		$"../AnimationPlayer".play("ShowEntityDetails")
 		
 
@@ -44,18 +48,19 @@ func _entity_focused():
 func unfocus_entity():
 	if focused_entity == null:
 		set_process_input(true)
+		return
 	if (focused_entity.has_method("unfocus_entity")): 
 		focused_entity.unfocus_entity()
 	focused_entity = null 
 	focused = false
 	current_position = Transform(global_transform) 
 
-	$"../AnimationPlayer".play("HideEntityDetails")
+	$"../AnimationPlayer".queue("HideEntityDetails")
 
 func _entity_unfocused():
 	set_process_input(true) 
 	target_position = null
-	Util.clear($"HUD/EntityDetails/MarginContainer/PanelContainer/MountPoint")
+	Util.clear(mountpoint)
 
 func _physics_process(delta):
 	if focused_entity != null and not focused:

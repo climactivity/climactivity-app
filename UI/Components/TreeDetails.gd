@@ -38,8 +38,8 @@ func _remaining_growth_period_label(instance_resource) -> String:
 	return "%d / %d Tage" % [time_remaining ,instance_resource.growth_period/Util.DAY]
 	
 func _height_label(instance_resource) -> String: 
-	return "%1d (%2d" % [instance_resource.stage + 1, 100*instance_resource.water_applied/instance_resource.water_required if instance_resource.water_required != 0 else 1] + "%) von 5"
-
+	return "%d von 5" % [instance_resource.stage + 1]
+#	return "%1d (%2d" % [instance_resource.stage + 1, 100*instance_resource.water_applied/instance_resource.water_required if instance_resource.water_required != 0 else 1] + "%) von 5"
 func _aspect_label(instance_resource) -> String: 
 	return instance_resource.aspect_id.title
 

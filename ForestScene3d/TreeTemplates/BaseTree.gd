@@ -28,6 +28,7 @@ func _ready():
 	$AnimationTarget.translate_object_local( Vector3(instance_resource.center_offset.x, 0.0, instance_resource.center_offset.y) * offset_scale )
 	$ContactShadow.translate_object_local( Vector3(instance_resource.center_offset.x, 0.0, instance_resource.center_offset.y) * offset_scale )
 	$MeshInstance.transform.origin = ( Vector3(instance_resource.center_offset.x, -0.01, instance_resource.center_offset.y) * offset_scale )
+	$CameraZoomTarget.translate_object_local( Vector3(instance_resource.center_offset.x, -0.01, instance_resource.center_offset.y) * offset_scale )
 	if instance_resource.just_planted:
 		_planted()
 	if _details_widget != null: details_widget = _details_widget.instance()
@@ -91,11 +92,13 @@ func set_state(state):
 
 func focus_entity() -> Spatial:
 	$AnimationPlayer.play("Highlight")
+	_show_water_ui()
 	return $CameraZoomTarget as Spatial
 
 func unfocus_entity() -> void:
 	$AnimationPlayer.play_backwards("Highlight")
-
+	_hide_water_ui()
+	
 func on_touch():
 	print("focus")
 	details_widget.set_entity(self)
@@ -108,6 +111,14 @@ func set_textures(new_textures):
 
 var getting_watered = false
 
+func _show_water_ui():
+	var widget = ui_water_progress.get_widget_instance()
+	widget.show() 
+
+func _hide_water_ui():
+	var widget = ui_water_progress.get_widget_instance()
+	widget.hide() 
+
 func add_water(water): 
 	if getting_watered: return
 	var widget = ui_water_progress.get_widget_instance()
@@ -115,7 +126,7 @@ func add_water(water):
 	getting_watered = true
 	$AnimationPlayer.play("show_water_progress")
 	_add_water(null,1.0) # instance_resource.current_water/48.0)
-	
+
 func _add_water( anim ,timeout): 
 	$AnimationPlayer.disconnect("animation_finished", self, "_add_water")
 	if (timeout <= 0.0):

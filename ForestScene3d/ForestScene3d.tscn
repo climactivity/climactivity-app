@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=2]
+[gd_scene load_steps=55 format=2]
 
 [ext_resource path="res://ForestScene3d/Interactables/SeedlingBox.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Vertical_Gradient.shader" type="Shader" id=2]
@@ -14,7 +14,6 @@
 [ext_resource path="res://Assets/sketch/floortex_TILED.png" type="Texture" id=12]
 [ext_resource path="res://UI/xp_bar.png" type="Texture" id=13]
 [ext_resource path="res://ForestScene3d/DebugMenu.gd" type="Script" id=14]
-[ext_resource path="res://UI/theme/TransparentGreen.tres" type="StyleBox" id=15]
 [ext_resource path="res://ForestScene3d/MapHolder.gd" type="Script" id=16]
 [ext_resource path="res://UI/typography/Content_Regular.tres" type="DynamicFont" id=17]
 [ext_resource path="res://UI/typography/Button_Label.tres" type="DynamicFont" id=18]
@@ -58,6 +57,21 @@ bg_color = Color( 0.584314, 0.760784, 0.121569, 1 )
 bg_color = Color( 0.886275, 0.886275, 0.886275, 1 )
 
 [sub_resource type="StyleBoxEmpty" id=6]
+
+[sub_resource type="StyleBoxEmpty" id=23]
+
+[sub_resource type="StyleBoxFlat" id=24]
+bg_color = Color( 0.482353, 0.776471, 0.109804, 0.741176 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.584314, 0.756863, 0.117647, 1 )
+corner_radius_top_left = 64
+corner_radius_top_right = 64
+corner_radius_bottom_right = 64
+corner_radius_bottom_left = 64
+corner_detail = 20
 
 [sub_resource type="StyleBoxFlat" id=7]
 bg_color = Color( 0.482353, 0.776471, 0.109804, 1 )
@@ -126,7 +140,7 @@ tracks/0/keys = {
 "values": [ true, false ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Camera/HUD/EntityDetails:rect_position")
+tracks/1/path = NodePath("Camera/HUD/EntityDetails:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -135,27 +149,15 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.3 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 408, 244 ), Vector2( 1000, 244 ) ]
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Camera/HUD/EntityDetails:modulate")
+tracks/2/path = NodePath("Camera/HUD/DetailsBG:mouse_filter")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.3 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("Camera/HUD/DetailsBG:mouse_filter")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
@@ -204,36 +206,24 @@ tracks/0/keys = {
 "values": [ false, true ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Camera/HUD/EntityDetails:rect_position")
+tracks/1/path = NodePath("Camera/HUD/EntityDetails:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.3 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 1000, 244 ), Vector2( 325, 244 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("Camera/HUD/EntityDetails:modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
 "times": PoolRealArray( 0, 0.2 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
-tracks/3/type = "value"
-tracks/3/path = NodePath("Camera/HUD/DetailsBG:mouse_filter")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
+tracks/2/type = "value"
+tracks/2/path = NodePath("Camera/HUD/DetailsBG:mouse_filter")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
 "times": PoolRealArray( 0, 0.1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
@@ -520,38 +510,42 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="EntityDetails" type="Control" parent="Camera/HUD"]
+[node name="EntityDetails" type="PanelContainer" parent="Camera/HUD"]
 visible = false
-anchor_left = 1.0
+modulate = Color( 1, 1, 1, 0 )
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-margin_left = -672.0
-margin_top = -716.0
-margin_right = 83.0
-margin_bottom = 586.0
+margin_top = -33.0
+margin_bottom = 769.0
+rect_min_size = Vector2( 0, 802 )
+mouse_filter = 2
+size_flags_horizontal = 3
+custom_styles/panel = SubResource( 23 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="MarginContainer" type="MarginContainer" parent="Camera/HUD/EntityDetails"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 85.0
+margin_right = 1080.0
+margin_bottom = 802.0
+custom_constants/margin_right = 64
+custom_constants/margin_left = 64
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="PanelContainer" type="PanelContainer" parent="Camera/HUD/EntityDetails/MarginContainer"]
-margin_right = 670.0
-margin_bottom = 1302.0
-custom_styles/panel = ExtResource( 15 )
+margin_left = 64.0
+margin_right = 1016.0
+margin_bottom = 802.0
+custom_styles/panel = SubResource( 24 )
 
 [node name="MountPoint" type="MarginContainer" parent="Camera/HUD/EntityDetails/MarginContainer/PanelContainer"]
 margin_left = 1.0
 margin_top = 1.0
-margin_right = 669.0
-margin_bottom = 1301.0
+margin_right = 951.0
+margin_bottom = 801.0
 custom_constants/margin_right = 32
 custom_constants/margin_top = 32
 custom_constants/margin_left = 32

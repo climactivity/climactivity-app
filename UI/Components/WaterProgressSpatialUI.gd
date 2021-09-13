@@ -12,11 +12,16 @@ onready var tween = $Tween
 func _ready():
 	ready = true
 
+func show():
+	$AnimationPlayer.play("Activate")
 
+func hide():
+	$AnimationPlayer.play_backwards("Activate")
+	
 func set_instance(_instance):
 	instance_resource = _instance
 	update()
-
+	_update_current_progress(water)
 func update():
 	if !ready: return
 	water = instance_resource.water_applied
@@ -24,10 +29,10 @@ func update():
 	stage = float(instance_resource.stage)
 	
 func _update_current_progress(new_water): 
-	var progress =  Util.map_to_range( new_water, min_water, max_water, 0, 100)
+	var progress =  Util.frac_percent(new_water, min_water, max_water)
 #	if Logger != null:
 #		Logger.print("_update_current_progress(%d)" % progress, self )
-	progress_bar.value = progress
+	progress_bar.value = progress if stage < 4 else 100
 
 func _after_update():
 	update()

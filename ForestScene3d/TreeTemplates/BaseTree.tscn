@@ -85,18 +85,6 @@ tracks/2/keys = {
 "points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0.4, -0.22824, -0.0128017, 0.25, 0 ),
 "times": PoolRealArray( 0.6, 1 )
 }
-tracks/3/type = "value"
-tracks/3/path = NodePath("UI_Water_Progress:visible")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0, 0.1, 1 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 1,
-"values": [ false, true, true ]
-}
 
 [sub_resource type="Animation" id=4]
 length = 0.1
@@ -167,17 +155,19 @@ tracks/0/keys = {
 [sub_resource type="Animation" id=14]
 resource_name = "hide_water_progress"
 length = 0.1
-tracks/0/type = "value"
-tracks/0/path = NodePath("UI_Water_Progress:visible")
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ true, false ]
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_hide_water_ui"
+} ]
 }
 
 [sub_resource type="Animation" id=6]
@@ -198,17 +188,19 @@ tracks/0/keys = {
 [sub_resource type="Animation" id=13]
 resource_name = "show_water_progress"
 length = 0.1
-tracks/0/type = "value"
-tracks/0/path = NodePath("UI_Water_Progress:visible")
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ false, true ]
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_show_water_ui"
+} ]
 }
 
 [sub_resource type="Animation" id=7]
@@ -296,8 +288,7 @@ hue_variation = 0.17
 hue_variation_random = 0.06
 
 [node name="UI_Water_Progress" parent="." instance=ExtResource( 6 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.481209, 0.662, 0.07 )
-visible = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.121, 0.552, 0.07 )
 widget = ExtResource( 1 )
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
@@ -342,7 +333,7 @@ anims/show_water_progress = SubResource( 13 )
 anims/stage_inc = SubResource( 7 )
 
 [node name="CameraZoomTarget" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 0.832061, 0.554685, 0, -0.554685, 0.832061, 1.09, 2.45, 3.363 )
+transform = Transform( 1, 0, 0, 0, 0.832061, 0.554685, 0, -0.554685, 0.832061, 0, 1.289, 2.649 )
 
 [node name="Camera" type="Camera" parent="CameraZoomTarget"]
 
