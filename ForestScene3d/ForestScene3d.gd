@@ -6,7 +6,6 @@ func _ready():
 	get_tree().get_root().set_disable_input(true)
 	#$AnimationPlayer.play("Zoom_To_Clearing")
 	GameManager.forest = self
-#	if GameManager.menu != null: GameManager.menu.hide_menu()
 	$Camera/HUD/DebugMenu.connect("free_place", $ForestFloor/HexGrid, "set_free_place")
 	connect("update_hud", $Camera/HUD, "update_hud")
 	connect("update_hud", $Camera/HUD/Cloud, "update_water_available")

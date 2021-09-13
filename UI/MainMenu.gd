@@ -5,7 +5,8 @@ enum Navigation_states {
 	NOTIFICATIONS = 1,
 	SOCIAL = 3,
 	STATS = 2,
-	SETTINGS = 4
+	SETTINGS = 4,
+	CHALLENGES = 5
 }
 signal show_menu 
 signal hide_menu
@@ -20,9 +21,11 @@ onready var notification_button = $MarginContainer/PanelContainer/MarginContaine
 onready var stats_button = $MarginContainer/PanelContainer/MarginContainer/HBoxContainer/StatsButton
 onready var social_button = $MarginContainer/PanelContainer/MarginContainer/HBoxContainer/SocialButton
 onready var settings_button = $MarginContainer/PanelContainer/MarginContainer/HBoxContainer/SettingsButton
+onready var network_button = $MarginContainer/PanelContainer/MarginContainer/HBoxContainer/NetworkButton
+onready var challengens_button = $MarginContainer/PanelContainer/MarginContainer/HBoxContainer/ChallengesButton
 var buttons
 func _ready():
-	buttons = [home_button, notification_button, stats_button, social_button, settings_button]
+	buttons = [home_button, notification_button, stats_button, social_button, settings_button, network_button,challengens_button]
 	set_navigation_state(navigation_state, true)
 	if GameManager != null:
 		GameManager.menu = self
@@ -35,7 +38,6 @@ func _avoid_screen_cutouts():
 	
 func hide_menu(): 
 	Logger.print("Hiding Menu", self)
-	return
 	if visible: 
 		anim_player.play_backwards("Show")
 		emit_signal("hide_menu")
@@ -66,9 +68,15 @@ func _on_SettingsButton_pressed():
 	Logger.print("SettingsButton pressed", self)
 	set_navigation_state(Navigation_states.SETTINGS)
 
+
+func _on_ChallengesButton_pressed():
+	Logger.print("ChallengesButton pressed", self)
+	set_navigation_state(Navigation_states.CHALLENGES)
+
 func _on_NetworkButton_pressed():
 	Logger.print("NetworkButton pressed", self)
 	OS.shell_open("https://climactivity-netzwerk.de/")
+	
 func set_navigation_state(new_state, stay = false): 
 	last_navigation_state = navigation_state
 	navigation_state = new_state
@@ -90,6 +98,9 @@ func set_navigation_state(new_state, stay = false):
 		Navigation_states.SETTINGS:
 			settings_button.set_primary_color(active_tab_primary)
 			if !stay: _navigate_settings()
+		Navigation_states.CHALLENGES:
+			challengens_button.set_primary_color(active_tab_primary)
+			if !stay: _navigate_challenges()
 		_:
 			pass
 
@@ -109,12 +120,11 @@ func _navigate_stats():
 func _navigate_settings(): 
 	_navigate("settings_scene")
 
+func _navigate_challenges(): 
+	_navigate("res://Scenes/QuestList.tscn")
+
 func _navigate(scene):
 	if GameManager == null or GameManager.scene_manager == null: return
 	GameManager.scene_manager.push_scene(scene, {},
 	 TransitionFactory.MoveOut() if last_navigation_state <= navigation_state else TransitionFactory.MoveBack())
-
-
-
-
 
