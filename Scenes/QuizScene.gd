@@ -110,9 +110,9 @@ func _on_quiz_data(quiz_data):
 	questions_holder.on_data(quiz_data.questions)
 
 func _finished_loading(): 
-	anim_player.queue("show_frontmatter")
-	state = InfoByteState.FRONT
-
+#	anim_player.queue("show_frontmatter")
+#	state = InfoByteState.FRONT
+	_show_infobits()
 func _show_infobits():
 #	print("showing infobits")
 	state = InfoByteState.INFO
@@ -272,3 +272,7 @@ func _on_ShareButton_pressed():
 		OS.shell_open(share_target)
 	else:
 		Logger.error("Can't share state %d" % state, self)
+
+
+func _on_ShowQuizButton_pressed():
+	_show_quiz()
