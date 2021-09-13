@@ -30,11 +30,12 @@ func _ready():
 	
 func _avoid_screen_cutouts(): 
 	var safe_area = OS.get_window_safe_area()
-	var container = $MarginContainer/PanelContainer
+	var container = $MarginContainer
+	container.margin_bottom =  safe_area.position.y
 	
-	container.margin_top = container.margin_top - safe_area.position.y
 func hide_menu(): 
 	Logger.print("Hiding Menu", self)
+	return
 	if visible: 
 		anim_player.play_backwards("Show")
 		emit_signal("hide_menu")
