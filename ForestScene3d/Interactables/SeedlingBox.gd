@@ -40,6 +40,7 @@ var dragging = false
 func reset():
 	var start_offset = seedling.position
 	var duration = .5
+	$Tween.interpolate_property($Seedling/Offset, "position", Vector2(0.0, -500.0), Vector2.ZERO, .5, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	$Tween.interpolate_property(seedling, "position", start_offset, initial_pos, duration,Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	$Tween.interpolate_callback(self, duration, "_reset_done")
 	$Tween.start()
@@ -54,6 +55,8 @@ func place_entity():
 	trying_to_place = false
 	emit_signal("placed", last_pos, entity)
 	seedling.position = initial_pos
+	$Seedling/Offset.position = Vector2.ZERO
+	seedling.show_pot(true)
 	if hud != null and hud.has_method("_enable_input"):
 		hud._enable_input()
 
@@ -91,6 +94,8 @@ func _on_SeedlingBox_gui_input(event):
 		if  event.pressed:
 			dragging = true
 			seedling.show_pot(false)
+			$Tween.interpolate_property($Seedling/Offset, "position", Vector2.ZERO, Vector2(0.0, -500.0), .5, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+			$Tween.start()
 			emit_signal("dragging", true)
 			if hud != null and hud.has_method("_disable_input"):
 				hud._disable_input({})
