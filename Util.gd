@@ -6,6 +6,9 @@ static func map_to_range(x,a,b,c,d):
 static func frac(value, start, end): 
 	return map_to_range(value, start, end, 0.0, 1.0)
 
+static func frac_percent(value, start, end): 
+	return map_to_range(value, start, end, 0.0, 100.0)
+
 static func debug_dialog():
 	return OS.is_debug_build() and ProjectSettings.get_setting("debug/settings/game_logic/debug_dialog") and not OS.get_name() in ["iOS", "Android"]
 const uuid_util = preload('res://uuid.gd')

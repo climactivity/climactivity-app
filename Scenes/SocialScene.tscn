@@ -45,8 +45,6 @@ show_menu_bar = true
 
 [node name="HSeparator" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="0"]
 margin_right = 1084.0
-margin_bottom = 374.0
-custom_constants/separation = 374
 
 [node name="MarginContainer" type="MarginContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="1"]
 margin_top = 378.0
@@ -116,17 +114,7 @@ bbcode_text = "Angemeldet als"
 text = "Angemeldet als"
 fit_content_height = true
 
-[node name="HSeparator2" parent="ContentContainer/Content/HeaderBG" index="0"]
-margin_bottom = 374.0
-custom_constants/separation = 374
-
-[node name="HSeparator" parent="HeaderContainer" index="0"]
-margin_bottom = 128.0
-custom_constants/separation = 128
-
 [node name="Header" parent="HeaderContainer" index="1"]
-margin_top = 132.0
-margin_bottom = 289.0
 screen_label = "social_screen"
 
 [connection signal="pressed" from="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/VBoxContainer/CyButton" to="." method="_on_CyButton_pressed"]

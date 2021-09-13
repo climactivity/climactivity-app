@@ -235,13 +235,16 @@ func get_water_collected():
 	return  water_collected_for
 
 func water_used(aspect):
+	var retval = 0.0
 	for tracking_state in water_collected_for:
 		if tracking_state.aspect == aspect._id:
 			water_collected_for.erase(tracking_state)
+			retval += tracking_state.get_water_available()
 			tracking_state.apply_water()
 	emit_signal("tracking_updated")
 	_flush()
-			
+	return retval
+	
 func water_used_for(entity_id):
 	#_get_tracking_state_for
 	pass

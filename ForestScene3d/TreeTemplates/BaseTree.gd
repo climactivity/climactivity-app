@@ -15,7 +15,7 @@ onready var bill_board = $"Sprite3D"
 onready var anim_player = $"AnimationPlayer"
 onready var tile = $MeshInstance
 onready var ui_alert = $"Sprite3D/UI_Alert_Can_Water"
-onready var ui_water_progress = $"Sprite3D/UI_Water_Progress"
+onready var ui_water_progress = $"UI_Water_Progress"
 onready var collider = $Collider
 
 func _ready():
@@ -42,6 +42,8 @@ func get_details_widget():
 func update_view(animate = false):
 	if( template_resource == null || instance_resource == null || bill_board == null): return
 	var texture_key = int(instance_resource.stage)
+	var widget = ui_water_progress.get_widget_instance()
+	widget.set_instance(instance_resource)
 	var old_texture = bill_board.texture
 	var old_size = bill_board._unit_factor
 	var current_texture
@@ -75,7 +77,7 @@ func _animate_update(new_texture, new_size, old_texture, old_size):
 	var track = anim.find_track("AnimationTarget:_unit_factor")
 	anim.track_set_key_value(track, 0, old_size)
 	anim.track_set_key_value(track, 1, new_size)
-	$AnimationPlayer.play("stage_inc")
+	$AnimationPlayer.queue("stage_inc")
 	
 func get_state(): 
 	return instance_resource
@@ -108,11 +110,11 @@ var getting_watered = false
 
 func add_water(water): 
 	if getting_watered: return
-	print(water)
-	#$AnimationPlayer.play("happy")
-	AspectTrackingService.water_used(instance_resource.aspect_id)
+	var widget = ui_water_progress.get_widget_instance()
+	widget.add_water(AspectTrackingService.water_used(instance_resource.aspect_id))
 	getting_watered = true
-	_add_water(null,instance_resource.current_water/48.0)
+	$AnimationPlayer.play("show_water_progress")
+	_add_water(null,1.0) # instance_resource.current_water/48.0)
 	
 func _add_water( anim ,timeout): 
 	$AnimationPlayer.disconnect("animation_finished", self, "_add_water")
@@ -122,12 +124,13 @@ func _add_water( anim ,timeout):
 		_after_water()
 		return
 	timeout -= 0.5
-	$AnimationPlayer.play("happy")
+	$AnimationPlayer.queue("happy")
 	$AnimationPlayer.connect("animation_finished", self, "_add_water", [timeout])
 
 func _after_water():
 	_flush()
 	can_water = false
+	$AnimationPlayer.queue("hide_water_progress")
 	if instance_resource.water_applied > instance_resource.water_required: 
 		instance_resource.water_applied -= instance_resource.water_applied
 		if instance_resource.stage >= 4:
