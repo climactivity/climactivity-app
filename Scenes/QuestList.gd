@@ -6,7 +6,7 @@ var ready = false
 var sector
 var aspect
 export var is_started_icon = preload("res://Assets/Icons/bookmark.png")
-export var is_completed_icon = preload("res://Assets/Icons/xp_star.png")
+export var is_completed_icon = preload("res://Assets/Theme/Checkmark.png")
 onready var quest_list = $MarginContainer/VBoxContainer/QuestList
 func _ready():
 	ready = true
@@ -26,6 +26,7 @@ func _update():
 	if quest_list.get_child_count() > 1:
 		reentering = true
 	Util.clear(quest_list)
+	_quests.sort_custom(self, "custom_sort_quests")
 	for quest in _quests: 
 		var quest_card_inst = quest_card.instance()
 		#quest_card_inst.set_quest(quest)
@@ -52,3 +53,22 @@ func _update():
 				quest_card_inst.set_icon(is_started_icon)
 
 		quest_list.add_child(quest_card_inst)
+
+func custom_sort_quests(q1, q2):
+	var q2_status = QuestService.get_quest_status(q2._id)
+	var q1_status = QuestService.get_quest_status(q1._id)
+	if q1_status != null and q2_status != null: 
+		if q1_status.has("completed") and q2_status.has("completed"):
+			return q1_status.completed < q2_status.completed
+		elif q1_status.has("completed") and !q2_status.has("completed"):
+			return false
+		elif !q1_status.has("completed") and q2_status.has("completed"):
+			return true
+		else:
+			return q1_status.when < q2_status.when
+	elif q1_status != null and q2_status == null: 
+		return false
+	elif q1_status == null and q2_status != null: 
+		return true
+	else:
+		return q1.start_date < q2.start_date

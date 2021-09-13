@@ -209,7 +209,6 @@ grab_attention = true
 navigation_payload = {
 }
 start_hidden = true
-show_progress = true
 
 [node name="shop_button_container" type="MarginContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview" index="2"]
 visible = false

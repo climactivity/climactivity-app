@@ -5,56 +5,68 @@ extends Spatial
 var sectors = {
 	"ernährung": {
 		"texture": preload("res://Assets/sketch/zelt_neu/zelt_gruen_ZU.png"),
+		"texture_open": preload("res://Assets/sketch/zelt_neu/zelt_gruen_AUF.png"),
 		"target_scene": "res://Scenes/BigPointScene.tscn",
+		"left_facing": true,
 		"navigation_data": {
 			"sector": "ernaehrung",
 			"sector_title": "Zelt der Ernährung",
-			"sector_logo": preload("res://Assets/Icons/sector_icon_ern.png"),
+			"sector_logo": preload("res://Assets/Icons/climactivity_H-Icon_Ernaehrung.png"),
 		}
 	},
 	"energy": {
 		"texture": preload("res://Assets/sketch/zelt_neu/zelt_rot_ZU.png"),
+		"texture_open": preload("res://Assets/sketch/zelt_neu/zelt_rot_AUF.png"),
 		"target_scene": "res://Scenes/BigPointScene.tscn",
+		"left_facing": false,
 		"navigation_data": {
 			"sector": "energy",
 			"sector_title": "Zelt der Energie",
-			"sector_logo": preload("res://Assets/Icons/sector_icon_ern.png")
+			"sector_logo": preload("res://Assets/Icons/climactivity_H-Icon_Energie.png")
 		}
 	},
 	"mobility": {
 		"texture": preload("res://Assets/sketch/zelt_neu/zelt_gelb_ZU.png"), 
+		"texture_open": preload("res://Assets/sketch/zelt_neu/zelt_gelb_AUF.png"),
 		"target_scene": "res://Scenes/BigPointScene.tscn", 
+		"left_facing": false,
 		"navigation_data": {
 			"sector": "mobility",
 			"sector_title": "Zelt der Mobilität",
-			"sector_logo": preload("res://Assets/Icons/sector_icon_ern.png")
+			"sector_logo": preload("res://Assets/Icons/climactivity_H-Icon_Mobilitaet.png")
 		}
 	},
 	"indirect_emissions": {
 		"texture": preload("res://Assets/sketch/zelt_neu/zelt_lila_ZU.png"),
+		"texture_open": preload("res://Assets/sketch/zelt_neu/zelt_lila_AUF.png"),
 		"target_scene": "res://Scenes/BigPointScene.tscn",
+		"left_facing": false,
 		"navigation_data": {
 			"sector": "indirect_emissions",
 			"sector_title": "Zelt des Konsums",
-			"sector_logo": preload("res://Assets/Icons/sector_icon_ern.png")
+			"sector_logo": preload("res://Assets/Icons/climactivity_H-Icon_Konsum.png")
 		}
 	},
 	"private_engagement": {
 		"texture": preload("res://Assets/sketch/zelt_neu/zelt_hellblau_ZU.png"),
+		"texture_open": preload("res://Assets/sketch/zelt_neu/zelt_hellblau_AUF.png"),
 		"target_scene": "res://Scenes/BigPointScene.tscn",
+		"left_facing": true,
 		"navigation_data": {
 			"sector": "private_engagement",
 			"sector_title": "Zelt der privaten Aktivität",
-			"sector_logo": preload("res://Assets/Icons/sector_icon_ern.png")
+			"sector_logo": preload("res://Assets/Icons/climactivity_H-Icon_Engage_Privat.png")
 		}
 	},
 	"public_engagement": {
 		"texture": preload("res://Assets/sketch/zelt_neu/zelt_dunkelblau_ZU.png"),
+		"texture_open": preload("res://Assets/sketch/zelt_neu/zelt_dunkelblau_AUF.png"),
 		"target_scene": "res://Scenes/BigPointScene.tscn",
+		"left_facing": true,
 		"navigation_data": {
 			"sector": "public_engagement",
 			"sector_title": "Zelt der gesellschaftlichen Aktivität",
-			"sector_logo": preload("res://Assets/Icons/sector_icon_ern.png")
+			"sector_logo": preload("res://Assets/Icons/climactivity_H-Icon_Engage_Gesellschaft.png")
 		}
 	},
 }
@@ -65,6 +77,7 @@ var sector_name
 var target_scene
 var navigation_data
 var texture = preload("res://Assets/sketch/zelt_neu/zelt_rot_ZU.png") setget set_sprite
+var left_facing = false
 onready var sprite = $Sprite3D
 onready var tile = $MeshInstance
 
@@ -77,6 +90,12 @@ func init_at(for_sector = [""]):
 		set_sprite(init_params.get("texture"))
 		name = sector_name + "s Zelt"
 		was_initialized = true
+		_set_icon(navigation_data["sector_logo"], init_params["left_facing"])
+
+func _set_icon(icon, facing_left):
+	$Icon.texture = icon
+	if !facing_left:
+		$Icon.translate(Vector3( -2.0, 0.0, 0.0))
 
 func _ready():
 	if(!OS.is_debug_build()): tile.visible = false

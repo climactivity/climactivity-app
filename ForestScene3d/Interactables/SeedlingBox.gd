@@ -22,7 +22,8 @@ func set_entity(new_entity):
 		"action": "place",
 		"entity": entity
 	}
-	
+#	if seedling != null: 
+#		$Seedling/Offset/_Seedling.texture = drag_data.entity.tree_template.texture_data[0]
 		
 #func get_drag_data(_pos):
 #	var preview = TextureRect.new()
