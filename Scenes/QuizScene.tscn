@@ -770,7 +770,7 @@ mouse_filter = 2
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = -368.0
+margin_top = -381.0
 size_flags_horizontal = 3
 size_flags_vertical = 9
 custom_styles/panel = SubResource( 5 )
@@ -780,16 +780,16 @@ __meta__ = {
 
 [node name="Panel" type="Panel" parent="ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/Footer" index="0"]
 margin_right = 1080.0
-margin_bottom = 368.0
+margin_bottom = 381.0
 custom_styles/panel = ExtResource( 10 )
 
 [node name="BackButton" parent="ContentContainer/Content/VBoxContainer/MarginContainer/VSplitContainer/Footer/Panel" index="0" instance=ExtResource( 7 )]
 anchor_top = 0.5
 anchor_bottom = 0.5
 margin_left = 40.0
-margin_top = -156.5
+margin_top = -146.5
 margin_right = 360.0
-margin_bottom = -47.5
+margin_bottom = -37.5
 icon_left = true
 icon_texture = ExtResource( 18 )
 texture_min_size = 76
@@ -804,9 +804,9 @@ anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
 margin_left = -360.0
-margin_top = -156.5
+margin_top = -146.5
 margin_right = -40.0
-margin_bottom = -47.5
+margin_bottom = -37.5
 texture_min_size = 76
 font_color = Color( 0.482353, 0.776471, 0.109804, 1 )
 text = "Weiter"
