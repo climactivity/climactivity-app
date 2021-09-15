@@ -191,7 +191,7 @@ func _gui_input(event):
 			_on_Button_button_down()
 			last_touch_point = event.position
 		else: 
-			if (event.position - last_touch_point).length() < nc.get("ui/2dClicKAcceptanceRadius"):
+			if (event.position - last_touch_point).length() < nc.get("ui/2dClicKAcceptanceRadius", 5.0):
 				_on_Button_button_up()
 				_on_Button_pressed()
 

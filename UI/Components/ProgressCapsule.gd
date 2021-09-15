@@ -15,7 +15,7 @@ var ready = false
 
 onready var icon = $CenterIcon/Icon
 onready var progress_bar = $TextureProgress
-
+onready var progress_label = $CenterIcon/Label
 func _ready (): 
 	ready = true
 	_redraw()
@@ -41,6 +41,9 @@ func set_icon(tex):
 func _redraw(): 
 	if icon == null or progress_bar == null: return
 	icon.texture = completed_texture if progress >= 100.0 else icon_texture
+	icon.visible = progress >= 100.0
+	progress_label.text = "%3d %%" % progress
+	progress_label.visible = !(progress >= 100.0)
 	progress_bar.tint_progress =  border_color_completed if progress >= 100.0 else border_color
 	progress_bar.value = progress
 	

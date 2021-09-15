@@ -105,7 +105,8 @@ func authenticate_email(email, password):
 
 func start_cy_network_oauth_flow(): 
 	if !session: 
-		yield(_reconnect(), "completed")
+		_reconnect()
+		yield(self, "nk_connected")
 	var account : NakamaAPI.ApiAccount = yield(client.get_account_async(session), "completed")
 	if account.is_exception():
 		Logger.print("An error occured: %s" % account, self)
@@ -155,7 +156,8 @@ func push_error(message):
 	
 func read_collection(collection): 
 	if !session: 
-		yield(_reconnect(), "completed")
+		_reconnect()
+		yield(self, "nk_connected")
 	var objects_in_collection = yield(client.list_storage_objects_async(session, collection, session.user_id, 100), "completed")
 	if objects_in_collection.is_exception(): 
 		Logger.error("Socket error: %s" % objects_in_collection, self)
@@ -168,7 +170,8 @@ func read_collection(collection):
 
 func read_global_constants(): 
 	if !session: 
-		yield(_reconnect(), "completed")
+		_reconnect()
+		yield(self, "nk_connected")
 	var objects_in_collection = yield(client.list_storage_objects_async(session, "game_constants", "", 100), "completed")
 	if objects_in_collection.is_exception(): 
 		Logger.error("Socket error: %s" % objects_in_collection, self)
@@ -225,7 +228,8 @@ func _store_dict(dict, collection, can_read, can_write, version) :
 
 func sync_player_state(player_state : RTrackingStates):
 	if !session: 
-		yield(_reconnect(), "completed")
+		_reconnect()
+		yield(self, "nk_connected")
 	var can_read = 1
 	var can_write = 1
 	var version = ""

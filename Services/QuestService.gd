@@ -71,3 +71,14 @@ func get_quest_status(quest_id):
 				completed_quest["completed"] = OS.get_unix_time()
 			return completed_quest
 	return null
+
+func get_aspect_quest_completion(_aspect): 
+	var quests = get_quests_for_aspect(_aspect)
+	if quests == []:
+		return 0.0
+	var _completed_quests = []
+	for quest in quests: 
+		var status = get_quest_status(quest._id)
+		if status != null and status.has("completed"): 
+			_completed_quests.append(quest)
+	return  float(_completed_quests.size())/ float(quests.size())

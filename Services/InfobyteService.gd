@@ -31,3 +31,9 @@ func complete_infobyte(infobyte_id, instigator = null , callback: String = ""):
 
 func flush():
 	PSS.flush()
+
+func get_aspect_infobyte_completion(aspect): 
+	var completion = 0.0
+	for factor in aspect.factors: 
+		completion += get_factor_completion(factor, aspect)
+	return completion / float(aspect.factors.size())

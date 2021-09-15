@@ -90,6 +90,9 @@ func get_tracked_aspects():
 		out.append(aspect_id)
 	return out
 
+func get_aspect_completion(aspect): 
+	return 1.0 if get_tracking_state(aspect) != null else 0.0
+
 # TODO move construction logic to builder methods
 func commit_tracking_level(option, aspect): 
 	if option == null:

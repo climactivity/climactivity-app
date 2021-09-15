@@ -104,6 +104,5 @@ custom_styles/pressed = ExtResource( 4 )
 custom_styles/focus = ExtResource( 4 )
 custom_styles/disabled = ExtResource( 4 )
 custom_styles/normal = ExtResource( 4 )
-action_mode = 0
 
 [connection signal="pressed" from="button" to="." method="_on_HomeButton_pressed"]

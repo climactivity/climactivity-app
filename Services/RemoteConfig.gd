@@ -10,6 +10,12 @@ const DEFAULTS = {
 	"tracking": {
 		"TrackingPeriodsShort": [1,2,4,7,28], 
 		"TrackingPeriodsLong": [7,28,28*3,365],
+	},
+	"gamelogic": {
+		"InfoCompletionWeight": 1.0,
+		"TrackingCompletionWeight": 1.0,
+		"QuestCompletionWeight": 0.0,
+		"TrackingTypeWeight": 0.0
 	}
 }
 
@@ -39,11 +45,11 @@ func _ready():
 #	for section in config.get_sections(): 
 #		for key in config.get_section_keys(section):
 #			config.get_value(section, key, DEFAULTS[section][key] if DEFAULTS.has(section) and DEFAULTS[section].has(key) else null)
-func get(setting: String): 
-	if !loaded:
-		return null
+func get(setting: String, default = null): 
 	var _vars = setting.split('/', true, 1)
 	var section = _vars[0]
 	var key = _vars[1]
-	return config.get_value(section, key, DEFAULTS[section][key] if DEFAULTS.has(section) and DEFAULTS[section].has(key) else null)
+	if !loaded:
+		return DEFAULTS[section][key] if DEFAULTS.has(section) and DEFAULTS[section].has(key) else default
+	return config.get_value(section, key, DEFAULTS[section][key] if DEFAULTS.has(section) and DEFAULTS[section].has(key) else default)
 	

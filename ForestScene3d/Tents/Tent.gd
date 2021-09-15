@@ -125,7 +125,8 @@ func _on_Collider_input_event(camera, event, click_position, click_normal, shape
 	if event is InputEventMouseButton and event.pressed: 
 		last_pos = event.position
 	if event is InputEventMouseButton and !event.pressed: 
-		if (event.position - last_pos).length() < nc.get("ui/3dClicKAcceptanceRadius"):
+		var r = nc.get("ui/3dClicKAcceptanceRadius") if nc.get("ui/3dClicKAcceptanceRadius") != null else 5.0
+		if (event.position - last_pos).length() < r:
 			call_deferred('on_touch')
 		else:
 			print( (event.position - last_pos).length() ) 

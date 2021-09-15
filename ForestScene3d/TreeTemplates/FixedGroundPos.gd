@@ -6,7 +6,7 @@ export (float) var scaling_factor = 1.0 setget apply_scaling_factor
 
 export (Vector2) var tex_size_override_if_zero = Vector2(512,512)
 var _unit_factor_base
-onready var ui_panel = $SpatialUIPanel
+onready var ui_panel = $UI_Alert_Can_Water
 var ui_initial_transform 
 var tex_size = Vector2(0.0,0)
 
