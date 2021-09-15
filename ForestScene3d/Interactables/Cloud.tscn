@@ -12,7 +12,7 @@
 [ext_resource path="res://Assets/Theme/speech_bubble_down.png" type="Texture" id=10]
 [ext_resource path="res://UI/theme/style_box_empty.tres" type="StyleBox" id=11]
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=1]
 resource_name = "RESET"
 length = 0.1
 tracks/0/type = "value"
@@ -52,8 +52,7 @@ tracks/2/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=1]
-resource_name = "hint_wait_water"
+[sub_resource type="Animation" id=2]
 length = 2.6
 tracks/0/type = "value"
 tracks/0/path = NodePath("HintWaitForWater:visible")
@@ -116,8 +115,7 @@ tracks/4/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "hint_water_capped"
+[sub_resource type="Animation" id=3]
 length = 6.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("HintWaterCapped:visible")
@@ -192,7 +190,7 @@ tracks/5/keys = {
 "values": [ Vector2( 1, 1 ), Vector2( 1.2, 1.2 ), Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1.2, 1.2 ), Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="StyleBoxTexture" id=3]
+[sub_resource type="StyleBoxTexture" id=4]
 texture = ExtResource( 10 )
 region_rect = Rect2( 3, -0.11908, 334, 78.1191 )
 margin_left = 21.5945
@@ -253,9 +251,9 @@ texture = ExtResource( 6 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "RESET"
-anims/RESET = SubResource( 4 )
-anims/hint_wait_water = SubResource( 1 )
-anims/hint_water_capped = SubResource( 2 )
+anims/RESET = SubResource( 1 )
+anims/hint_wait_water = SubResource( 2 )
+anims/hint_water_capped = SubResource( 3 )
 
 [node name="HintWaitForWater" type="PanelContainer" parent="."]
 visible = false
@@ -267,7 +265,7 @@ anchor_bottom = 1.0
 margin_left = -352.6
 margin_right = 139.4
 margin_bottom = 185.0
-custom_styles/panel = SubResource( 3 )
+custom_styles/panel = SubResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -318,7 +316,7 @@ anchor_bottom = 1.0
 margin_left = -352.6
 margin_right = 139.4
 margin_bottom = 185.0
-custom_styles/panel = SubResource( 3 )
+custom_styles/panel = SubResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

@@ -88,7 +88,8 @@ func delete_notifications(notification_ids: Array):
 	return true
 
 func get_user():
-	if !session: return null
+	if !session: 
+		yield(_reconnect(), "completed")
 
 	var account : NakamaAPI.ApiAccount = yield(client.get_account_async(session), "completed")
 	if account.is_exception():
@@ -103,7 +104,8 @@ func authenticate_email(email, password):
 #	Logger.print(session)
 
 func start_cy_network_oauth_flow(): 
-	if !session: return 
+	if !session: 
+		yield(_reconnect(), "completed")
 	var account : NakamaAPI.ApiAccount = yield(client.get_account_async(session), "completed")
 	if account.is_exception():
 		Logger.print("An error occured: %s" % account, self)
@@ -121,7 +123,7 @@ func authenticate_device_uid():
 	if session.valid: 
 		emit_signal("nk_connected")
 		Logger.print(session, self)
-		
+		analytics_store_client_device_info()
 	else:
 		Logger.error(session._to_string(), self)
 
@@ -146,13 +148,14 @@ func save_var(collection_name: String, key_name: String, value: String, can_read
 		return ack.acks[0]
 
 func push_error(message): 
-	if !session:
-		yield(self, "nk_connected")
+
+	if !session: 
+		yield(_reconnect(), "completed")
 	yield(client.rpc_async(session, "push_error", message), "completed")
 	
 func read_collection(collection): 
-	if !session:
-		yield(self, "nk_connected")
+	if !session: 
+		yield(_reconnect(), "completed")
 	var objects_in_collection = yield(client.list_storage_objects_async(session, collection, session.user_id, 100), "completed")
 	if objects_in_collection.is_exception(): 
 		Logger.error("Socket error: %s" % objects_in_collection, self)
@@ -164,8 +167,8 @@ func read_collection(collection):
 		return objects
 
 func read_global_constants(): 
-	if !session:
-		yield(self, "nk_connected")
+	if !session: 
+		yield(_reconnect(), "completed")
 	var objects_in_collection = yield(client.list_storage_objects_async(session, "game_constants", "", 100), "completed")
 	if objects_in_collection.is_exception(): 
 		Logger.error("Socket error: %s" % objects_in_collection, self)
@@ -186,6 +189,24 @@ func analytics_store_viewed_tutorials():
 		
 	_store_dict(completed_tutorials, "completed_tutorials", 1, 1, "" )
 
+func analytics_store_client_device_info(): 
+	var device_info = {
+		"device_info": {
+			"OS_Name": OS.get_name(),
+			"OS_Model_Name": OS.get_model_name(),
+			"Startup_Time": OS.get_splash_tick_msec(),
+			"Screen_DPI": OS.get_screen_dpi(),
+			"Screen_Size": OS.get_screen_size(),
+			"GL_Texture_Compression": {
+				"etc": OS.has_feature("etc"),
+				"etc2": OS.has_feature("etc2"),
+				"s3tc": OS.has_feature("s3tc"),
+				"pvrtc": OS.has_feature("pvrtc"),
+			}
+		}
+	}
+	_store_dict(device_info, "device_info", 1, 1, "" )
+
 func _store_dict(dict, collection, can_read, can_write, version) :
 	var objs = []
 	for key in dict.keys(): 
@@ -195,7 +216,7 @@ func _store_dict(dict, collection, can_read, can_write, version) :
 		objs.append(storage_object)	
 	var acks : NakamaAPI.ApiStorageObjectAcks = yield(client.write_storage_objects_async(session, objs), "completed")
 	if acks.is_exception():
-		print("An error occured: %s" % acks)
+		Logger.error("An error occured: %s" % acks)
 		return
 #	print("Successfully stored objects:")
 #	for a in acks.acks:
@@ -203,9 +224,8 @@ func _store_dict(dict, collection, can_read, can_write, version) :
 
 
 func sync_player_state(player_state : RTrackingStates):
-	if (not client or not session): 
-		Logger.print("Connection not ready!", self)
-		return
+	if !session: 
+		yield(_reconnect(), "completed")
 	var can_read = 1
 	var can_write = 1
 	var version = ""

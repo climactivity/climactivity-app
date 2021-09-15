@@ -139,6 +139,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://UI/Components/infobits/blip.gd"
 }, {
+"base": "Panel",
+"class": "ProgressCapsule",
+"language": "GDScript",
+"path": "res://UI/Components/ProgressCapsule.gd"
+}, {
 "base": "PanelContainer",
 "class": "QuestCard",
 "language": "GDScript",
@@ -286,6 +291,7 @@ _global_script_class_icons={
 "NakamaWriteStorageObject": "",
 "Overlay": "",
 "ProgressBlip": "",
+"ProgressCapsule": "",
 "QuestCard": "",
 "QuizScene": "",
 "RBoardEntityx": "",

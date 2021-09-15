@@ -28,10 +28,16 @@ func _update_display():
 		factor_list_entry.set_accent_color(sector["sector_color"])
 		factor_list_entry.is_start_hidden(!reentering)
 		if factor.has('icon'): 
-			factor_list_entry.set_icon(factor.icon)
+			factor_list_entry.set_progress_icon(factor.icon)
 		elif aspect.icon != null: 
-			factor_list_entry.set_icon(aspect.icon)
+			factor_list_entry.set_progress_icon(aspect.icon)
 		else:
-			factor_list_entry.set_icon(sector["sector_logo"])
+			factor_list_entry.set_progress_icon(sector["sector_logo"])
+		var completion = InfobyteService.get_factor_completion(factor, aspect)
+		factor_list_entry.set_use_cirular_progress(true)
+		factor_list_entry.set_is_show_progress(true)
+		factor_list_entry.set_progress(completion)
 		add_child(factor_list_entry)
 
+func _restored(): 
+	_update_display()

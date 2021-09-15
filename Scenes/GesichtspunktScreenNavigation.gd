@@ -43,9 +43,13 @@ func _show_data():
 			new_child.set_accent_color(sector["sector_color"])
 			new_child.set_navigation_target("res://Scenes/QuizScene.tscn", {"aspect": aspect, "sector": sector,"factor": factor, "quiz": infobyte})
 			if aspect.icon != null: 
-				new_child.set_icon(aspect.icon)
+				new_child.set_progress_icon(aspect.icon)
 			else:
-				new_child.set_icon(sector["sector_logo"])
+				new_child.set_progress_icon(sector["sector_logo"])
 			new_child.is_start_hidden(true)
 			container.add_child(new_child)
+			new_child.set_use_cirular_progress(true)
+			new_child.set_is_show_progress(true)
+			new_child.set_progress(1.0 if infobyte_completed else 0.0)
 		reshow = true
+

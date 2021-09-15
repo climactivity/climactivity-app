@@ -123,7 +123,7 @@ func start_drag():
 	cloud.set_fill_state(1.0)
 	set_state(Cloud_States.DRAGGING)
 	$Tween.stop($CloudSprite, "position")
-	$Tween.interpolate_property($CloudSprite, "position", $CloudSprite.position, Vector2(0.0,-350.0), 1.0,Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	$Tween.interpolate_property($CloudSprite, "position", $CloudSprite.position, Vector2(0.0,-175.0), 1.0,Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	$Tween.start()
 func _reset(): 
 #	resetting = true

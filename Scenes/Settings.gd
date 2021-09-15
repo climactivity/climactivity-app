@@ -43,6 +43,7 @@ onready var profile_box_label = $Settings/MarginContainer/VBoxContainer2/Label
 
 func update():
 	var user =  yield(NakamaConnection.get_user(), "completed")
+	
 	if user.display_name != "": 
 		connect_box.visible = false
 		profile_box.visible = true

@@ -13,6 +13,13 @@ func is_completed(infobyte_id):
 	else:
 		return false
 
+func get_factor_completion(factor, aspect):
+	var infobytes = Api.get_infobytes_for_factor(factor, aspect)
+	var num_complete = 0.0
+	for infobyte in infobytes:
+		if is_completed(infobyte._id):
+			num_complete += 1.0
+	return num_complete / float(infobytes.size())
 func complete_infobyte(infobyte_id, instigator = null , callback: String = ""):
 	completed_infobytes[infobyte_id] = {
 		"completed_at": OS.get_unix_time()

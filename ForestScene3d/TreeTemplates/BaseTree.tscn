@@ -9,13 +9,13 @@
 [ext_resource path="res://ForestScene3d/TreeTemplates/TreeWaterReceiver.gd" type="Script" id=7]
 [ext_resource path="res://UI/Components/TreeDetails.tscn" type="PackedScene" id=8]
 
-[sub_resource type="SpatialMaterial" id=11]
+[sub_resource type="SpatialMaterial" id=1]
 
-[sub_resource type="QuadMesh" id=8]
-material = SubResource( 11 )
+[sub_resource type="QuadMesh" id=2]
+material = SubResource( 1 )
 size = Vector2( 2, 2 )
 
-[sub_resource type="Shader" id=9]
+[sub_resource type="Shader" id=3]
 code = "shader_type spatial;
 
 uniform float inner_radius : hint_range(0.0, 1.0) = 0.5;
@@ -32,26 +32,26 @@ void fragment() {
 	ALBEDO = color.rgb;
 }"
 
-[sub_resource type="ShaderMaterial" id=10]
-shader = SubResource( 9 )
+[sub_resource type="ShaderMaterial" id=4]
+shader = SubResource( 3 )
 shader_param/inner_radius = 0.0
 shader_param/outer_radius = 0.0
 shader_param/center = Vector2( 0.5, 0.5 )
 shader_param/color = Color( 0.12549, 1, 0, 1 )
 
-[sub_resource type="CylinderShape" id=1]
+[sub_resource type="CylinderShape" id=5]
 radius = 0.315774
 height = 1.99314
 
-[sub_resource type="SpatialMaterial" id=2]
+[sub_resource type="SpatialMaterial" id=6]
 flags_transparent = true
 flags_unshaded = true
 albedo_color = Color( 0.541176, 0.964706, 0.517647, 1 )
 
-[sub_resource type="SphereMesh" id=3]
-material = SubResource( 2 )
+[sub_resource type="SphereMesh" id=7]
+material = SubResource( 6 )
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=8]
 resource_name = "Highlight"
 tracks/0/type = "value"
 tracks/0/path = NodePath("MeshInstance:visible")
@@ -86,7 +86,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0.6, 1 )
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=9]
 length = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite3D:scale")
@@ -137,7 +137,7 @@ tracks/3/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=10]
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite3D:scale")
@@ -152,7 +152,7 @@ tracks/0/keys = {
 "values": [ Vector3( 1, 1, 1 ), Vector3( 1.2, 1.2, 1.2 ), Vector3( 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=14]
+[sub_resource type="Animation" id=11]
 resource_name = "hide_water_progress"
 length = 0.1
 tracks/0/type = "method"
@@ -170,7 +170,7 @@ tracks/0/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=12]
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite3D:_unit_factor")
@@ -203,7 +203,7 @@ tracks/0/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=14]
 tracks/0/type = "value"
 tracks/0/path = NodePath("AnimationTarget:visible")
 tracks/0/interp = 1
@@ -260,14 +260,14 @@ _details_widget = ExtResource( 8 )
 [node name="MeshInstance" type="MeshInstance" parent="."]
 transform = Transform( 0.5, 0, 0, 0, -2.18557e-08, 0.5, 0, -0.5, -2.18557e-08, 0, -0.001, 0 )
 visible = false
-mesh = SubResource( 8 )
-material/0 = SubResource( 10 )
+mesh = SubResource( 2 )
+material/0 = SubResource( 4 )
 
 [node name="Collider" type="StaticBody" parent="."]
 script = ExtResource( 7 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Collider"]
-shape = SubResource( 1 )
+shape = SubResource( 5 )
 
 [node name="ContactShadow" parent="." instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.005, 0 )
@@ -277,7 +277,7 @@ emitting = false
 amount = 128
 one_shot = true
 explosiveness = 1.0
-mesh = SubResource( 3 )
+mesh = SubResource( 7 )
 direction = Vector3( 0, 0, -1 )
 spread = 78.56
 flatness = 0.36
@@ -324,13 +324,13 @@ visible = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "RESET"
-anims/Highlight = SubResource( 12 )
-anims/RESET = SubResource( 4 )
-anims/happy = SubResource( 5 )
-anims/hide_water_progress = SubResource( 14 )
-anims/planted = SubResource( 6 )
+anims/Highlight = SubResource( 8 )
+anims/RESET = SubResource( 9 )
+anims/happy = SubResource( 10 )
+anims/hide_water_progress = SubResource( 11 )
+anims/planted = SubResource( 12 )
 anims/show_water_progress = SubResource( 13 )
-anims/stage_inc = SubResource( 7 )
+anims/stage_inc = SubResource( 14 )
 
 [node name="CameraZoomTarget" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 0.832061, 0.554685, 0, -0.554685, 0.832061, 0, 1.289, 2.649 )

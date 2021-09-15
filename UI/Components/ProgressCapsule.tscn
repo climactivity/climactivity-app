@@ -1,0 +1,98 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://UI/Components/ProgressCapsule.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Theme/RaidalProgress.png" type="Texture" id=2]
+[ext_resource path="res://Assets/TestData/checkered.png" type="Texture" id=3]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 1, 1, 1, 1 )
+border_color = Color( 1, 1, 1, 1 )
+corner_radius_top_left = 1024
+corner_radius_top_right = 1000
+corner_radius_bottom_right = 1000
+corner_radius_bottom_left = 1000
+
+[node name="Capsule" type="Panel"]
+anchor_right = 0.119
+anchor_bottom = 0.067
+margin_right = -0.520004
+margin_bottom = -0.639999
+rect_min_size = Vector2( 160, 160 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+progress = 38.0
+border_color = Color( 0.458824, 0.458824, 0.458824, 1 )
+border_color_completed = Color( 0.392157, 0.6, 0.129412, 1 )
+icon_texture = ExtResource( 3 )
+
+[node name="CenterIcon" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_clip_content = true
+mouse_filter = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+custom_constants/margin_right = 40
+custom_constants/margin_top = 40
+custom_constants/margin_left = 40
+custom_constants/margin_bottom = 40
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Icon" type="TextureRect" parent="CenterIcon"]
+margin_left = 40.0
+margin_top = 40.0
+margin_right = 120.0
+margin_bottom = 120.0
+mouse_filter = 2
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureProgressPreview" type="TextureProgress" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.0
+max_value = 89.847
+value = 89.847
+texture_progress = ExtResource( 2 )
+fill_mode = 4
+tint_progress = Color( 0.956863, 0.956863, 0.956863, 1 )
+radial_initial_angle = 180.0
+radial_fill_degrees = 359.8
+nine_patch_stretch = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureProgress" type="TextureProgress" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.0
+value = 59.0
+texture_progress = ExtResource( 2 )
+fill_mode = 4
+tint_progress = Color( 0.533333, 0.92549, 0.376471, 1 )
+radial_initial_angle = 180.0
+radial_fill_degrees = 359.8
+nine_patch_stretch = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="gui_input" from="CenterIcon/Icon" to="." method="_on_Icon_gui_input"]

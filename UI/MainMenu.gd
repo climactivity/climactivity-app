@@ -5,8 +5,8 @@ enum Navigation_states {
 	NOTIFICATIONS = 1,
 	SOCIAL = 3,
 	STATS = 2,
-	SETTINGS = 4,
-	CHALLENGES = 5
+	SETTINGS = 5,
+	CHALLENGES = 4
 }
 signal show_menu 
 signal hide_menu

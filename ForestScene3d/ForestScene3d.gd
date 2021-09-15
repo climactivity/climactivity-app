@@ -43,7 +43,7 @@ func _restored():
 		GameManager.menu.show_menu()
 		GameManager.menu.set_navigation_state( MainMenu.Navigation_states.HOME, true)
 		GameManager.overlay.show_available_tutorial("Intro")
-		GameManager.overlay.hide_available_tutorial()
+#		GameManager.overlay.hide_available_tutorial()
 		if GameManager.bonfire != null: 
 			GameManager.bonfire.randomize_chars()
 
@@ -58,6 +58,7 @@ func enter_game():
 		if definition.name == "v2":
 			reset = false
 			break
+	show_overlay()
 	if reset: 
 		Logger.print("Outdated intro states, reset!", self)
 		DialogicSingleton.init(true)
@@ -66,11 +67,12 @@ func enter_game():
 	if Dialogic.get_variable("IntroPlayed") == "0" or Util.debug_dialog():
 		yield( $AnimationPlayer, "animation_finished" )
 		GameManager.overlay.show_dialog("Intro")
-	else: 
+	else:
+		yield(get_tree().create_timer(1.5), "timeout")
 		GameManager.overlay.show_available_tutorial("Intro") # looks janky with main menu
-		GameManager.overlay.hide_available_tutorial()
-	show_overlay()
+
 
 func show_overlay(): 
 	if GameManager.menu != null: GameManager.menu.show_menu()
 	if GameManager.xp_bar != null: GameManager.xp_bar.show()
+

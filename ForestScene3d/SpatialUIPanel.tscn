@@ -61,8 +61,8 @@ stretch_mode = 6
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 material_override = SubResource( 2 )
+offset = Vector2( -128, 0 )
 pixel_size = 0.00390625
-billboard = 1
 texture = SubResource( 3 )
 script = ExtResource( 3 )
 

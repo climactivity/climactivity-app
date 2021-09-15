@@ -16,8 +16,10 @@ export var important = false setget set_is_important
 export var progress_icon_tex = preload("res://Assets/Icons/Time Circle.png") setget set_progress_icon
 export var show_progress = false setget set_is_show_progress 
 export var progress = 0.0 setget set_progress
+export var use_circular_progress = false setget set_use_cirular_progress
 export var show_attention_grabber = false setget set_show_attention_grabber
 export (NodePath) var attention_grabber setget set_attention_grabber
+
 onready var icon = $MarginContainer/HBoxContainer/IconContainer/CenterContainer/Capsule
 onready var content_holder = $MarginContainer/HBoxContainer/ContentContainer
 onready var content_text = $MarginContainer/HBoxContainer/ContentContainer/VBoxContainer/RichTextLabel
@@ -27,8 +29,13 @@ onready var go_down_container = $MarginContainer/HBoxContainer/PanelContainer
 onready var progress_bar = $"MarginContainer/HBoxContainer/ContentContainer/VBoxContainer/MarginContainer/PanelContainer/MarginContainer/ProgressBar"
 onready var progress_icon = $"MarginContainer/HBoxContainer/ContentContainer/VBoxContainer/MarginContainer/PanelContainer/AspectRatioContainer/TextureRect"
 onready var progress_container = $"MarginContainer/HBoxContainer/ContentContainer/VBoxContainer/MarginContainer"
+onready var circular_progress = $"MarginContainer/HBoxContainer/IconContainer/CenterContainer/Progress"
 var ready = false
 export var acceptance_radius = 5.0
+
+func set_use_cirular_progress(_b):
+	use_circular_progress = _b
+	update()
 
 func set_button_replacement(_button):
 	button_replacement = _button
@@ -101,9 +108,7 @@ var _replacement_button
 func update():
 	if !ready: return  
 	icon.set_icon(texture)
-	progress_icon.texture = progress_icon_tex
-	progress_container.visible = show_progress
-	progress_bar.value = progress * 100
+
 	if reward == null: 
 		content_reward.visible = false
 	else: 
@@ -126,7 +131,24 @@ func update():
 	bg_style = bg_style.duplicate()
 	bg_style.set_bg_color(accent_color)
 	set('custom_styles/panel', bg_style)
-	progress_bar.get_stylebox("fg").set_bg_color(accent_color)
+	if show_progress:
+		if use_circular_progress: 
+			progress_container.visible = false
+			circular_progress.visible = true
+			$"MarginContainer/HBoxContainer/IconContainer/CenterContainer/Capsule".visible = false
+			circular_progress.set_border(accent_color)
+			circular_progress.set_icon(progress_icon_tex)
+			circular_progress.set_progress(progress * 100)
+		else:
+			progress_container.visible = true
+			circular_progress.visible = false
+			progress_icon.texture = progress_icon_tex
+
+			progress_bar.value = progress * 100
+			progress_bar.get_stylebox("fg").set_bg_color(accent_color)
+	else:
+		progress_container.visible = false
+		circular_progress.visible = false
 	$BadgeAttachmentPoint.visible = show_attention_grabber
 	if show_attention_grabber and $BadgeAttachmentPoint.get_child_count() == 0 and attention_grabber != null:
 		$BadgeAttachmentPoint.add_child(attention_grabber)

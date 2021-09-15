@@ -11,7 +11,7 @@
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
-[sub_resource type="StyleBoxFlat" id=6]
+[sub_resource type="StyleBoxFlat" id=2]
 bg_color = Color( 1, 1, 1, 1 )
 border_width_top = 9
 border_color = Color( 0.498039, 0.709804, 0.172549, 1 )
@@ -21,7 +21,7 @@ shadow_offset = Vector2( 0, -8 )
 
 [sub_resource type="StyleBoxEmpty" id=3]
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=4]
 resource_name = "KikoCutout"
 length = 0.5
 tracks/0/type = "value"
@@ -37,8 +37,7 @@ tracks/0/keys = {
 "values": [ 0, 113 ]
 }
 
-[sub_resource type="Animation" id=4]
-resource_name = "RESET"
+[sub_resource type="Animation" id=5]
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:visible")
 tracks/0/interp = 1
@@ -52,8 +51,7 @@ tracks/0/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=5]
-resource_name = "Show"
+[sub_resource type="Animation" id=6]
 length = 0.4
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:visible")
@@ -99,7 +97,7 @@ active_tab_primary = Color( 0.337255, 0.537255, 0.627451, 1 )
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 margin_top = 60.0
-margin_right = 1229.0
+margin_right = 1219.0
 margin_bottom = 244.0
 size_flags_horizontal = 3
 size_flags_vertical = 8
@@ -108,16 +106,16 @@ __meta__ = {
 }
 
 [node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
-margin_right = 1229.0
+margin_right = 1219.0
 margin_bottom = 184.0
 rect_min_size = Vector2( 1000, 180 )
 size_flags_horizontal = 3
 size_flags_vertical = 0
-custom_styles/panel = SubResource( 6 )
+custom_styles/panel = SubResource( 2 )
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer"]
 margin_top = 9.0
-margin_right = 1229.0
+margin_right = 1219.0
 margin_bottom = 184.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -131,7 +129,7 @@ custom_constants/margin_bottom = 40
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer"]
 margin_left = 40.0
 margin_top = 35.0
-margin_right = 1189.0
+margin_right = 1179.0
 margin_bottom = 135.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -146,30 +144,30 @@ custom_styles/separator = SubResource( 3 )
 custom_constants/separation = 0
 
 [node name="HomeButton" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer" instance=ExtResource( 4 )]
-margin_left = 44.0
-margin_right = 212.0
+margin_left = 42.0
+margin_right = 210.0
 grow_horizontal = 2
 grow_vertical = 2
 primary_color = Color( 0.988235, 0.988235, 0.988235, 1 )
 menu_label = "home_screen"
 
 [node name="VSeparator2" type="VSeparator" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer"]
-margin_left = 216.0
-margin_right = 256.0
+margin_left = 214.0
+margin_right = 252.0
 margin_bottom = 100.0
 size_flags_horizontal = 3
 custom_styles/separator = SubResource( 3 )
 
 [node name="NotificationButton" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer" instance=ExtResource( 4 )]
-margin_left = 260.0
-margin_right = 514.0
+margin_left = 256.0
+margin_right = 510.0
 primary_color = Color( 0.988235, 0.988235, 0.988235, 1 )
 icon = ExtResource( 2 )
 menu_label = "notifications_screen"
 
 [node name="VSeparator3" type="VSeparator" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer"]
-margin_left = 518.0
-margin_right = 558.0
+margin_left = 514.0
+margin_right = 552.0
 margin_bottom = 100.0
 size_flags_horizontal = 3
 custom_styles/separator = SubResource( 3 )
@@ -184,29 +182,29 @@ icon = ExtResource( 1 )
 menu_label = "stats_screen"
 
 [node name="NetworkButton" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer" instance=ExtResource( 4 )]
-margin_left = 562.0
-margin_right = 715.0
+margin_left = 556.0
+margin_right = 709.0
 primary_color = Color( 0.988235, 0.988235, 0.988235, 1 )
 icon = ExtResource( 8 )
 menu_label = "cy Netzwerk"
 
 [node name="VSeparator7" type="VSeparator" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer"]
-margin_left = 719.0
-margin_right = 759.0
+margin_left = 713.0
+margin_right = 751.0
 margin_bottom = 100.0
 size_flags_horizontal = 3
 custom_styles/separator = SubResource( 3 )
 
 [node name="ChallengesButton" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer" instance=ExtResource( 4 )]
-margin_left = 763.0
-margin_right = 901.0
+margin_left = 755.0
+margin_right = 893.0
 primary_color = Color( 0.988235, 0.988235, 0.988235, 1 )
 icon = ExtResource( 7 )
 menu_label = "Challenges"
 
 [node name="VSeparator4" type="VSeparator" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer"]
-margin_left = 905.0
-margin_right = 946.0
+margin_left = 897.0
+margin_right = 936.0
 margin_bottom = 100.0
 size_flags_horizontal = 3
 custom_styles/separator = SubResource( 3 )
@@ -228,8 +226,8 @@ size_flags_horizontal = 3
 custom_styles/separator = SubResource( 3 )
 
 [node name="SettingsButton" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer" instance=ExtResource( 4 )]
-margin_left = 950.0
-margin_right = 1149.0
+margin_left = 940.0
+margin_right = 1139.0
 primary_color = Color( 0.988235, 0.988235, 0.988235, 1 )
 icon = ExtResource( 3 )
 menu_label = "settings_screen"
@@ -246,9 +244,9 @@ custom_constants/separation = -1361
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "RESET"
-anims/KikoCutout = SubResource( 7 )
-anims/RESET = SubResource( 4 )
-anims/Show = SubResource( 5 )
+anims/KikoCutout = SubResource( 4 )
+anims/RESET = SubResource( 5 )
+anims/Show = SubResource( 6 )
 
 [connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/HomeButton" to="." method="_on_HomeButton_pressed"]
 [connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/NotificationButton" to="." method="_on_NotificationButton_pressed"]
