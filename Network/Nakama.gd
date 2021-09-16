@@ -151,7 +151,7 @@ func save_var(collection_name: String, key_name: String, value: String, can_read
 func push_error(message): 
 
 	if !session: 
-		yield(_reconnect(), "completed")
+		return
 	yield(client.rpc_async(session, "push_error", message), "completed")
 	
 func read_collection(collection): 

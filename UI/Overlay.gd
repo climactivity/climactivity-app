@@ -11,6 +11,7 @@ func _ready():
 #	$TextureButton.set_position(Vector2($TextureButton.get_position().x, get_viewport_rect().size.y - $TextureButton.rect_size.y))
 	$MainMenu.connect("show_menu", self, "_tutorial_button_avoid_menu", [true])
 	$MainMenu.connect("hide_menu", self, "_tutorial_button_avoid_menu", [false])
+	$TextureButton/kiko.rect_position.y -= OS.get_window_safe_area().position.y/2
 func _show_popup(control):
 	anim_player.play("ShowPopupLayer")
 	$Popup.add_child(control)
@@ -27,7 +28,7 @@ func _on_Close_Button_pressed():
 func _tutorial_button_avoid_menu(show_menu):
 #	pass
 	print("_tutorial_button_avoid_menu: ", show_menu)
-	$TextureButton.rect_position.y += -250.0 if show_menu else  250.0
+#	$TextureButton.rect_position.y += -250.0 if show_menu else  250.0
 
 
 func _close_popup(): 
@@ -55,7 +56,7 @@ func show_available_tutorial(timeline):
 		$AnimationPlayer.play("show_available_tutorial")
 		$MainMenu/AnimationPlayer.play("KikoCutout")
 		hidden = false
-
+	Logger.print($TextureButton.rect_position, self)
 func hide_available_tutorial():
 	if hidden: 
 		Logger.print("Not hinding", self)

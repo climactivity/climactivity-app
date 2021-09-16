@@ -33,9 +33,11 @@ func _ready():
 	
 func _avoid_screen_cutouts(): 
 	var safe_area = OS.get_window_safe_area()
-	var container = $MarginContainer
-	container.margin_bottom =  safe_area.position.y
-	
+	var container = $MarginContainer/PanelContainer/MarginContainer
+	Logger.print("%d %d %d" % [safe_area.position.y, container.margin_bottom, container.margin_bottom + safe_area.position.y], self)
+#	container.margin_bottom +=  safe_area.position.y
+	container.add_constant_override("margin_bottom", 40 + safe_area.position.y/2)
+
 func hide_menu(): 
 	Logger.print("Hiding Menu", self)
 	if visible: 

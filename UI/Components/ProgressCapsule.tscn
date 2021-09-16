@@ -48,6 +48,7 @@ __meta__ = {
 }
 
 [node name="Icon" type="TextureRect" parent="CenterIcon"]
+visible = false
 margin_left = 30.0
 margin_top = 30.0
 margin_right = 130.0

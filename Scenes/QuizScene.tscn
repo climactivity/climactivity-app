@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://Scenes/SceneBase.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/QuizScene.gd" type="Script" id=2]
@@ -21,6 +21,8 @@
 [ext_resource path="res://Assets/Theme/skipquiz_button_hover.png" type="Texture" id=19]
 [ext_resource path="res://Assets/Theme/skipquiz_button__disabled.png" type="Texture" id=20]
 [ext_resource path="res://Assets/Theme/skipquiz_button_down.png" type="Texture" id=21]
+[ext_resource path="res://UI/Components/QuizFooter.gd" type="Script" id=22]
+[ext_resource path="res://UI/Components/BottomPadding.gd" type="Script" id=23]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.972549, 0.972549, 0.972549, 1 )
@@ -39,12 +41,12 @@ corner_radius_top_right = 30
 corner_radius_bottom_right = 30
 corner_radius_bottom_left = 30
 
-[sub_resource type="StyleBoxEmpty" id=13]
+[sub_resource type="StyleBoxEmpty" id=14]
 
-[sub_resource type="StyleBoxFlat" id=5]
+[sub_resource type="StyleBoxFlat" id=15]
 bg_color = Color( 1, 1, 1, 0.698039 )
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=16]
 length = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ContentHolder/FrontMatter:visible")
@@ -143,7 +145,7 @@ tracks/7/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=17]
 length = 0.2
 step = 0.01
 tracks/0/type = "value"
@@ -223,7 +225,7 @@ tracks/5/keys = {
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=18]
 length = 0.573
 tracks/0/type = "method"
 tracks/0/path = NodePath(".")
@@ -336,7 +338,7 @@ tracks/8/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=19]
 length = 0.317
 tracks/0/type = "method"
 tracks/0/path = NodePath(".")
@@ -401,7 +403,7 @@ tracks/4/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=20]
 length = 0.3
 tracks/0/type = "value"
 tracks/0/path = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ContentHolder/Infobits:modulate")
@@ -502,8 +504,7 @@ tracks/7/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="Animation" id=11]
-resource_name = "show_quiz_result"
+[sub_resource type="Animation" id=21]
 tracks/0/type = "value"
 tracks/0/path = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ContentHolder/Quiz:visible")
 tracks/0/interp = 1
@@ -553,8 +554,7 @@ tracks/3/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=12]
-resource_name = "skip_to_quiz"
+[sub_resource type="Animation" id=13]
 length = 0.3
 tracks/0/type = "method"
 tracks/0/path = NodePath(".")
@@ -615,7 +615,7 @@ progress_blips = NodePath("ContentContainer/Content/VBoxContainer/MarginContaine
 [node name="ContentHolder" type="PanelContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="1"]
 margin_top = 378.0
 margin_right = 1080.0
-margin_bottom = 1699.0
+margin_bottom = 1534.0
 mouse_filter = 2
 size_flags_vertical = 3
 custom_styles/panel = SubResource( 2 )
@@ -692,7 +692,7 @@ margin_bottom = 1349.0
 
 [node name="QuizStart" type="Control" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ContentHolder" index="3"]
 margin_right = 1080.0
-margin_bottom = 1321.0
+margin_bottom = 1156.0
 
 [node name="kiko_avatar - placeholder" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ContentHolder/QuizStart" index="0" instance=ExtResource( 3 )]
 text = "Wie wäre es mit einem kurzen Quiz?"
@@ -755,11 +755,12 @@ margin_bottom = 1349.0
 visible = false
 
 [node name="HSeparator2" type="HSeparator" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="2"]
-margin_top = 1703.0
+margin_top = 1538.0
 margin_right = 1080.0
 margin_bottom = 1920.0
-custom_styles/separator = SubResource( 13 )
-custom_constants/separation = 217
+custom_styles/separator = SubResource( 14 )
+custom_constants/separation = 382
+script = ExtResource( 23 )
 
 [node name="VSplitContainer" type="Control" parent="ContentContainer/Content/VBoxContainer/MarginContainer" index="1"]
 margin_right = 1080.0
@@ -773,7 +774,8 @@ anchor_bottom = 1.0
 margin_top = -381.0
 size_flags_horizontal = 3
 size_flags_vertical = 9
-custom_styles/panel = SubResource( 5 )
+custom_styles/panel = SubResource( 15 )
+script = ExtResource( 22 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -841,13 +843,13 @@ __meta__ = {
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1"]
 autoplay = "RESET"
-anims/RESET = SubResource( 6 )
-anims/show_frontmatter = SubResource( 7 )
-anims/show_infobit_holder = SubResource( 8 )
-anims/show_quiz = SubResource( 9 )
-anims/show_quiz_intro = SubResource( 10 )
-anims/show_quiz_result = SubResource( 11 )
-anims/skip_to_quiz = SubResource( 12 )
+anims/RESET = SubResource( 16 )
+anims/show_frontmatter = SubResource( 17 )
+anims/show_infobit_holder = SubResource( 18 )
+anims/show_quiz = SubResource( 19 )
+anims/show_quiz_intro = SubResource( 20 )
+anims/show_quiz_result = SubResource( 21 )
+anims/skip_to_quiz = SubResource( 13 )
 
 [connection signal="pressed" from="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ContentHolder/QuizStart/ShowQuizButton" to="." method="_on_ShowQuizButton_pressed"]
 [connection signal="reward_collected" from="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ContentHolder/QuizEnd" to="." method="_on_CollectRewardButton_pressed"]
