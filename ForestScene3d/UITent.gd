@@ -14,4 +14,5 @@ func set_sector_data(_s):
 func get_progress():
 	var sector_name = sector_data["navigation_data"]["sector"]
 	var progress = AspectTrackingService.get_sector_completion(sector_name)
-	return 0.0
+	Logger.print(progress,self)
+	return progress * 100

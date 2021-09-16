@@ -5,6 +5,9 @@ signal camera_moved(position)
 signal camera_rotated(rotation)
 signal consuming_gesture()
 signal release_gesture()
+
+signal entity_focused()
+signal entity_unfocused()
 # """ exports zoom level
 # """ used to determine distance above origin and tilt
 export var zoom_level = 1.0
@@ -40,6 +43,7 @@ func focus_entity(entity):
 		if entity.has_method("get_details_widget"):
 			mountpoint.add_child(entity.get_details_widget())
 		$"../AnimationPlayer".play("ShowEntityDetails")
+		emit_signal("entity_focused")
 		
 
 func _entity_focused(): 
@@ -56,7 +60,7 @@ func unfocus_entity():
 	current_position = Transform(global_transform) 
 
 	$"../AnimationPlayer".queue("HideEntityDetails")
-
+	emit_signal("entity_unfocused")
 func _entity_unfocused():
 	set_process_input(true) 
 	target_position = null

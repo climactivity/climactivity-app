@@ -98,6 +98,12 @@ func init_at(for_sector = [""]):
 		was_initialized = true
 #		_set_icon(navigation_data["sector_logo"], init_params["left_facing"])
 
+func _show_progress_ui():
+	$AnimationPlayer.play("show_progress")
+	
+func _hide_progress_ui(): 
+	$AnimationPlayer.play_backwards("show_progress")
+	
 func _set_icon(icon, facing_left):
 	$Icon.texture = icon
 	if !facing_left:
@@ -107,6 +113,8 @@ func _ready():
 	if(!OS.is_debug_build()): tile.visible = false
 	$Sprite3D.texture = texture
 	$SpatialUIPanel.get_widget_instance().set_sector_data(init_params)
+	GameManager.camera.connect("entity_focused", self, "_hide_progress_ui" )
+	GameManager.camera.connect("entity_unfocused", self, "_show_progress_ui" )
 func set_sprite(new_texture):
 	texture = new_texture
 	$Sprite3D.texture = texture

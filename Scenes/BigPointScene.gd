@@ -75,7 +75,7 @@ func render_resources():
 		
 		aspect_card.set_use_cirular_progress(true)
 		aspect_card.set_is_show_progress(true)
-		aspect_card.set_progress(get_aspect_completion(aspect))
+		aspect_card.set_progress(AspectTrackingService.get_aspect_completion(aspect))
 		
 		
 		if badge:
@@ -97,23 +97,3 @@ func render_resources():
 	$"ContentContainer/Content/HeaderBG".self_modulate = sector_data["sector_color"]
 	kiko_hint.set_text(sector_data["sector_hint"])
 	$ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/AspectList/Stagger.play_enter()
-func get_aspect_completion(_aspect) -> float:
-	var info_completion = InfobyteService.get_aspect_infobyte_completion(_aspect)
-	var tracking_completion = AspectTrackingService.get_aspect_completion(_aspect)
-	var quest_completion = QuestService.get_aspect_quest_completion(_aspect)
-	var info_completion_weight = nc.get("gamelogic/InfoCompletionWeight", 1.0)
-	var tracking_completion_weight = nc.get("gamelogic/TrackingCompletionWeight", 1.0)
-	var quest_completion_weight = nc.get("gamelogic/QuestCompletionWeight", 0.0)
-	var tracking_type = 1.0
-	match _aspect.type: 
-		'tree': 
-			tracking_type = 4.0
-		'bush':
-			tracking_type= 2.0
-		_:
-			tracking_type = 1.0
-	var tracking_type_weight = nc.get("gamelogic/TrackingTypeWeight", 0.0)
-	var completion_num = info_completion * info_completion_weight + tracking_completion * tracking_completion_weight * max(tracking_type * tracking_type_weight, 1.0) + quest_completion * quest_completion_weight
-	var completion_denom = info_completion_weight + tracking_completion_weight + quest_completion_weight + tracking_type * tracking_type_weight
-	var completion = completion_num / completion_denom
-	return completion

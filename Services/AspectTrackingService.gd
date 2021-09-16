@@ -90,11 +90,42 @@ func get_tracked_aspects():
 		out.append(aspect_id)
 	return out
 
-func get_aspect_completion(aspect) -> float: 
+func get_aspect_tracking_completion(aspect) -> float: 
 	return 1.0 if get_tracking_state(aspect) != null else 0.0
 
+func get_aspect_completion(_aspect) -> float:
+	var info_completion = InfobyteService.get_aspect_infobyte_completion(_aspect)
+	var tracking_completion = AspectTrackingService.get_aspect_tracking_completion(_aspect)
+	var quest_completion = QuestService.get_aspect_quest_completion(_aspect)
+	var info_completion_weight = nc.get("gamelogic/InfoCompletionWeight", 1.0)
+	var tracking_completion_weight = nc.get("gamelogic/TrackingCompletionWeight", 1.0)
+	var quest_completion_weight = nc.get("gamelogic/QuestCompletionWeight", 0.0)
+	var completion_num = info_completion * info_completion_weight + tracking_completion * tracking_completion_weight + quest_completion * quest_completion_weight
+	var completion_denom = info_completion_weight + tracking_completion_weight + quest_completion_weight
+	var completion = completion_num / completion_denom
+	return completion
+
+
 func get_sector_completion(sector_name: String) -> float: 
-	return 0.0
+	var aspects = Api.get_aspect_data_for_sector(sector_name)
+	var completion = 0.0 
+	var value = 0.0
+	for aspect in aspects: 
+		var aspect_completion = get_aspect_completion(aspect)
+		var aspect_value = 1.0
+		match aspect.type: 
+			'tree': 
+				aspect_value = 4.0
+			'bush':
+				aspect_value= 2.0
+			_:
+				aspect_value = 1.0
+		
+		completion += aspect_completion
+		value += aspect_value * nc.get("gamelogic/TrackingTypeWeight", 1.0)
+	if value == 0.0: 
+		return 0.0
+	return completion / value
 
 # TODO move construction logic to builder methods
 func commit_tracking_level(option, aspect): 

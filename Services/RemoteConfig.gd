@@ -15,7 +15,7 @@ const DEFAULTS = {
 		"InfoCompletionWeight": 1.0,
 		"TrackingCompletionWeight": 1.0,
 		"QuestCompletionWeight": 0.0,
-		"TrackingTypeWeight": 0.0
+		"TrackingTypeWeight": 1.0
 	}
 }
 
