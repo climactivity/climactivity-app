@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Assets/Icons/climactivity_H-Icon_Engage_Gesellschaft.png" type="Texture" id=1]
 [ext_resource path="res://ForestScene3d/Tents/Tent.gd" type="Script" id=2]
@@ -6,6 +6,8 @@
 [ext_resource path="res://ForestScene3d/TreeTemplates/ContactShadow.tscn" type="PackedScene" id=4]
 [ext_resource path="res://ForestScene3d/TreeTemplates/TreeWaterReceiver.gd" type="Script" id=5]
 [ext_resource path="res://Assets/sketch/zelt_neu/zelt_lila_AUF.png" type="Texture" id=6]
+[ext_resource path="res://ForestScene3d/SpatialUIPanel.tscn" type="PackedScene" id=7]
+[ext_resource path="res://ForestScene3d/Tents/UITent.tscn" type="PackedScene" id=8]
 
 [sub_resource type="PlaneMesh" id=1]
 
@@ -33,14 +35,21 @@ height = 0.551764
 [node name="Spatial" type="Spatial"]
 script = ExtResource( 2 )
 
+[node name="SpatialUIPanel" parent="." instance=ExtResource( 7 )]
+transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 1, 0.47, 0.784, 0.299 )
+widget = ExtResource( 8 )
+
 [node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.2, 0.0119777, 0.302746, 0.110183 )
-pixel_size = 0.02
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.2, 0, -0.081, 0.489 )
+centered = false
+offset = Vector2( -256, 0 )
+pixel_size = 0.0229043
 billboard = 1
 texture = ExtResource( 6 )
 
 [node name="Icon" type="Sprite3D" parent="."]
 transform = Transform( 0.0992014, -0.012613, 0, 0.012613, 0.0992014, 0, 0, 0, 0.2, 0.125733, 0.344269, 0.127436 )
+visible = false
 pixel_size = 0.005
 billboard = 1
 texture = ExtResource( 1 )

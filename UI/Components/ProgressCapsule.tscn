@@ -38,9 +38,9 @@ rect_clip_content = true
 mouse_filter = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-custom_constants/margin_right = 40
-custom_constants/margin_top = 40
-custom_constants/margin_left = 40
+custom_constants/margin_right = 30
+custom_constants/margin_top = 30
+custom_constants/margin_left = 30
 custom_constants/margin_bottom = 40
 __meta__ = {
 "_edit_group_": true,
@@ -48,10 +48,9 @@ __meta__ = {
 }
 
 [node name="Icon" type="TextureRect" parent="CenterIcon"]
-visible = false
-margin_left = 40.0
-margin_top = 40.0
-margin_right = 120.0
+margin_left = 30.0
+margin_top = 30.0
+margin_right = 130.0
 margin_bottom = 120.0
 mouse_filter = 2
 texture = ExtResource( 3 )
@@ -62,13 +61,13 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="CenterIcon"]
-margin_left = 40.0
-margin_top = 58.0
-margin_right = 120.0
-margin_bottom = 101.0
+margin_left = 30.0
+margin_top = 53.0
+margin_right = 130.0
+margin_bottom = 96.0
 custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 0.411765, 0.411765, 0.407843, 1 )
-text = "100%"
+text = " 38 %"
 align = 1
 valign = 1
 

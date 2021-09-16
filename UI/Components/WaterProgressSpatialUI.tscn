@@ -39,10 +39,13 @@ tracks/1/keys = {
 
 [node name="Control" type="PanelContainer"]
 modulate = Color( 1, 1, 1, 0.682353 )
+anchor_left = 1.0
+anchor_top = 0.5
 anchor_right = 1.0
-anchor_bottom = 1.0
-margin_right = -1016.0
-margin_bottom = -1664.0
+anchor_bottom = 0.5
+margin_left = -64.0
+margin_top = -128.0
+margin_bottom = 128.0
 rect_min_size = Vector2( 6, 0 )
 size_flags_horizontal = 0
 size_flags_vertical = 0
@@ -53,8 +56,6 @@ __meta__ = {
 }
 
 [node name="ProgressBar" type="TextureProgress" parent="."]
-visible = false
-modulate = Color( 1, 1, 1, 0 )
 material = SubResource( 2 )
 margin_right = 64.0
 margin_bottom = 256.0
@@ -65,6 +66,9 @@ texture_under = ExtResource( 3 )
 texture_over = ExtResource( 2 )
 texture_progress = ExtResource( 1 )
 fill_mode = 3
+stretch_margin_left = 196
+stretch_margin_top = 176
+stretch_margin_right = 327
 
 [node name="Tween" type="Tween" parent="."]
 

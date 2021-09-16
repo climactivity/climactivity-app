@@ -8,6 +8,7 @@ var sectors = {
 		"texture_open": preload("res://Assets/sketch/zelt_neu/zelt_gruen_AUF.png"),
 		"target_scene": "res://Scenes/BigPointScene.tscn",
 		"left_facing": true,
+		"sector_color": Color('#97e831'),
 		"navigation_data": {
 			"sector": "ernaehrung",
 			"sector_title": "Zelt der Ernährung",
@@ -19,6 +20,7 @@ var sectors = {
 		"texture_open": preload("res://Assets/sketch/zelt_neu/zelt_rot_AUF.png"),
 		"target_scene": "res://Scenes/BigPointScene.tscn",
 		"left_facing": false,
+		"sector_color": Color('#E40045'),
 		"navigation_data": {
 			"sector": "energy",
 			"sector_title": "Zelt der Energie",
@@ -30,6 +32,7 @@ var sectors = {
 		"texture_open": preload("res://Assets/sketch/zelt_neu/zelt_gelb_AUF.png"),
 		"target_scene": "res://Scenes/BigPointScene.tscn", 
 		"left_facing": false,
+		"sector_color": Color('#E6A718'),     #E6A7183
 		"navigation_data": {
 			"sector": "mobility",
 			"sector_title": "Zelt der Mobilität",
@@ -41,6 +44,7 @@ var sectors = {
 		"texture_open": preload("res://Assets/sketch/zelt_neu/zelt_lila_AUF.png"),
 		"target_scene": "res://Scenes/BigPointScene.tscn",
 		"left_facing": false,
+		"sector_color": Color('#A75177'),
 		"navigation_data": {
 			"sector": "indirect_emissions",
 			"sector_title": "Zelt des Konsums",
@@ -52,6 +56,7 @@ var sectors = {
 		"texture_open": preload("res://Assets/sketch/zelt_neu/zelt_hellblau_AUF.png"),
 		"target_scene": "res://Scenes/BigPointScene.tscn",
 		"left_facing": true,
+		"sector_color": Color('#599DBB'),
 		"navigation_data": {
 			"sector": "private_engagement",
 			"sector_title": "Zelt der privaten Aktivität",
@@ -63,6 +68,7 @@ var sectors = {
 		"texture_open": preload("res://Assets/sketch/zelt_neu/zelt_dunkelblau_AUF.png"),
 		"target_scene": "res://Scenes/BigPointScene.tscn",
 		"left_facing": true,
+		"sector_color": Color('#37647A'),
 		"navigation_data": {
 			"sector": "public_engagement",
 			"sector_title": "Zelt der gesellschaftlichen Aktivität",
@@ -80,17 +86,17 @@ var texture = preload("res://Assets/sketch/zelt_neu/zelt_rot_ZU.png") setget set
 var left_facing = false
 onready var sprite = $Sprite3D
 onready var tile = $MeshInstance
-
+var init_params
 func init_at(for_sector = [""]):
 	if(sectors.has(for_sector[0])):
-		var init_params = sectors.get(for_sector[0])
+		init_params = sectors.get(for_sector[0])
 		sector_name = for_sector[0]
 		target_scene = init_params.get("target_scene")
 		navigation_data = init_params.get("navigation_data")
 		set_sprite(init_params.get("texture"))
 		name = sector_name + "s Zelt"
 		was_initialized = true
-		_set_icon(navigation_data["sector_logo"], init_params["left_facing"])
+#		_set_icon(navigation_data["sector_logo"], init_params["left_facing"])
 
 func _set_icon(icon, facing_left):
 	$Icon.texture = icon
@@ -100,7 +106,7 @@ func _set_icon(icon, facing_left):
 func _ready():
 	if(!OS.is_debug_build()): tile.visible = false
 	$Sprite3D.texture = texture
-
+	$SpatialUIPanel.get_widget_instance().set_sector_data(init_params)
 func set_sprite(new_texture):
 	texture = new_texture
 	$Sprite3D.texture = texture
