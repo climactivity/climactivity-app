@@ -50,5 +50,4 @@ func _play_enter_anim():
 
 func _on_CloseButton_pressed():
 	emit_signal("close")
-	yield(get_tree().create_timer(0.7),"timeout")
-	queue_free()
+	$AnimationPlayer.play("Leave")
