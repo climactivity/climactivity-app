@@ -1,10 +1,13 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Scenes/SceneBase.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/Icons/bell-solid.svg" type="Texture" id=2]
 [ext_resource path="res://UI/typography/Heading.tres" type="DynamicFont" id=3]
 [ext_resource path="res://Scenes/NotificationsScene.gd" type="Script" id=4]
 [ext_resource path="res://UI/Components/NotificationCard.tscn" type="PackedScene" id=5]
+[ext_resource path="res://UI/typography/UI_bigger.tres" type="DynamicFont" id=6]
+[ext_resource path="res://UI/theme/ButtonPrimary_Active_small.stylebox" type="StyleBox" id=7]
+[ext_resource path="res://UI/Components/TranslatedRichTextLabel.gd" type="Script" id=8]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item; 
@@ -41,7 +44,8 @@ show_menu_bar = true
 [node name="MarginContainer" type="MarginContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="1"]
 margin_top = 378.0
 margin_right = 1080.0
-margin_bottom = 552.0
+margin_bottom = 716.0
+mouse_filter = 2
 custom_constants/margin_right = 64
 custom_constants/margin_top = 40
 custom_constants/margin_left = 64
@@ -50,37 +54,63 @@ custom_constants/margin_left = 64
 margin_left = 64.0
 margin_top = 40.0
 margin_right = 1016.0
-margin_bottom = 174.0
+margin_bottom = 338.0
+custom_constants/separation = 111
 
-[node name="Label" type="Label" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/VBoxContainer" index="0"]
+[node name="OAuthReminder" type="VBoxContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/VBoxContainer" index="0"]
 margin_right = 952.0
-margin_bottom = 65.0
+margin_bottom = 122.0
+
+[node name="OAuthReminderButton" type="Button" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/VBoxContainer/OAuthReminder" index="0"]
+margin_right = 952.0
+margin_bottom = 122.195
+rect_min_size = Vector2( 0, 122.195 )
+custom_styles/hover = ExtResource( 7 )
+custom_styles/pressed = ExtResource( 7 )
+custom_styles/focus = ExtResource( 7 )
+custom_styles/disabled = ExtResource( 7 )
+custom_styles/normal = ExtResource( 7 )
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+align = 0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/VBoxContainer/OAuthReminder/OAuthReminderButton" index="0"]
+margin_top = -4.0
+margin_right = 952.0
+margin_bottom = -4.0
+mouse_filter = 2
+custom_fonts/normal_font = ExtResource( 6 )
+bbcode_enabled = true
+bbcode_text = "[center]Melde dich im Climactivity Netzwerk an um benachrichtigungen zu erhalten[/center]"
+text = "Melde dich im Climactivity Netzwerk an um benachrichtigungen zu erhalten"
+fit_content_height = true
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+translation_key = "notifications_oauth_connect_reminder"
+
+[node name="Label" type="Label" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/VBoxContainer" index="1"]
+margin_top = 233.0
+margin_right = 952.0
+margin_bottom = 298.0
 custom_fonts/font = ExtResource( 3 )
 text = "Noch keine Benachrichtigungen!"
 autowrap = true
 
-[node name="OAuthReminder" type="VBoxContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/VBoxContainer" index="1"]
-margin_top = 69.0
-margin_right = 952.0
-margin_bottom = 134.0
-
-[node name="Label_OAuth" type="Label" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/VBoxContainer/OAuthReminder" index="0"]
-margin_right = 952.0
-margin_bottom = 65.0
-custom_fonts/font = ExtResource( 3 )
-text = "notifications_oauth_connect_reminder"
-autowrap = true
-
 [node name="MarginContainer2" type="MarginContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="2"]
-margin_top = 556.0
+margin_top = 720.0
 margin_right = 1080.0
-margin_bottom = 556.0
+margin_bottom = 811.0
 custom_constants/margin_right = 64
+custom_constants/margin_top = 91
 custom_constants/margin_left = 64
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer2" index="0"]
 margin_left = 64.0
+margin_top = 91.0
 margin_right = 1016.0
+margin_bottom = 91.0
 custom_constants/separation = 32
 
 [node name="HeaderBG" parent="ContentContainer/Content" index="1"]
@@ -90,3 +120,5 @@ self_modulate = Color( 0.501961, 0.501961, 0.501961, 1 )
 screen_label = "notifications_screen"
 icon_texture = ExtResource( 2 )
 color = Color( 0.501961, 0.501961, 0.501961, 1 )
+
+[connection signal="pressed" from="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/VBoxContainer/OAuthReminder/OAuthReminderButton" to="." method="_on_OAuthReminderButton_pressed"]

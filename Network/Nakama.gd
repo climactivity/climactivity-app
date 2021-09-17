@@ -8,6 +8,7 @@ signal nk_connected
 signal completed
 signal cy_network_authenticated
 signal notificaion_received(notification)
+signal signed_out
 var server_key 
 var oauth_base_url
 var oauth_client_id
@@ -41,6 +42,10 @@ func _reconnect():
 	yield(connect_socket(), "completed")
 	emit_signal("nk_connected")
 	return
+
+func logout(): 
+	emit_signal("signed_out")
+	yield(client.rpc_async(session, "logout"),"completed")
 
 ## notification codes, as made up by me on the fly: 
 ## 1xx -> Oauth things 

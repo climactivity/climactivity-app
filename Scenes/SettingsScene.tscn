@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://Scenes/SceneBase.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/Icons/cog-solid.svg" type="Texture" id=2]
@@ -22,7 +22,7 @@
 [ext_resource path="res://Assets/Theme/ToggleOff.png" type="Texture" id=20]
 [ext_resource path="res://Assets/Theme/ToggleOff_Disabled.png" type="Texture" id=21]
 
-[sub_resource type="Shader" id=6]
+[sub_resource type="Shader" id=15]
 code = "shader_type canvas_item; 
 
 uniform sampler2D gradient; 
@@ -32,21 +32,34 @@ void fragment() {
 	//COLOR = vec4(UV.y,0,0,1);
 }"
 
-[sub_resource type="Gradient" id=7]
+[sub_resource type="Gradient" id=16]
 offsets = PoolRealArray( 0.213622, 1 )
 colors = PoolColorArray( 0.517647, 0.517647, 0.517647, 1, 1, 1, 1, 1 )
 
-[sub_resource type="GradientTexture" id=8]
-gradient = SubResource( 7 )
+[sub_resource type="GradientTexture" id=17]
+gradient = SubResource( 16 )
 
-[sub_resource type="ShaderMaterial" id=9]
-shader = SubResource( 6 )
-shader_param/gradient = SubResource( 8 )
+[sub_resource type="ShaderMaterial" id=18]
+shader = SubResource( 15 )
+shader_param/gradient = SubResource( 17 )
 
 [sub_resource type="StyleBoxEmpty" id=5]
 
+[sub_resource type="StyleBoxLine" id=19]
+thickness = 3
+
+[sub_resource type="StyleBoxFlat" id=10]
+
+[sub_resource type="StyleBoxFlat" id=11]
+
+[sub_resource type="StyleBoxFlat" id=12]
+
+[sub_resource type="StyleBoxFlat" id=13]
+
+[sub_resource type="StyleBoxFlat" id=14]
+
 [node name="SettingsScene" instance=ExtResource( 1 )]
-material = SubResource( 9 )
+material = SubResource( 18 )
 accent_color = Color( 0.517647, 0.517647, 0.517647, 1 )
 icon = ExtResource( 2 )
 screen_title = "settings_screen"
@@ -60,6 +73,7 @@ scroll_horizontal_enabled = false
 
 [node name="ContentMain" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer" index="0"]
 margin_right = 1124.0
+margin_bottom = 2402.0
 show_menu_bar = true
 
 [node name="HSeparator" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="0"]
@@ -68,7 +82,7 @@ margin_right = 1124.0
 [node name="MarginContainer" type="MarginContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="1"]
 margin_top = 378.0
 margin_right = 1124.0
-margin_bottom = 1916.0
+margin_bottom = 2402.0
 size_flags_vertical = 3
 custom_constants/margin_right = 168
 custom_constants/margin_left = 168
@@ -78,7 +92,7 @@ script = ExtResource( 5 )
 [node name="Settings" type="VBoxContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer" index="0"]
 margin_left = 168.0
 margin_right = 956.0
-margin_bottom = 1370.0
+margin_bottom = 1856.0
 size_flags_vertical = 3
 custom_constants/separation = 64
 
@@ -158,7 +172,7 @@ custom_constants/separation = 327
 [node name="SettingsOAuthConnect" type="VBoxContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/Settings" index="3"]
 margin_top = 541.0
 margin_right = 788.0
-margin_bottom = 1121.0
+margin_bottom = 1856.0
 script = ExtResource( 16 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/Settings/SettingsOAuthConnect" index="0"]
@@ -209,11 +223,11 @@ fit_content_height = true
 [node name="MarginContainer" type="MarginContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/Settings/SettingsOAuthConnect" index="1"]
 margin_top = 404.0
 margin_right = 788.0
-margin_bottom = 580.0
+margin_bottom = 1315.0
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/Settings/SettingsOAuthConnect/MarginContainer" index="0"]
 margin_right = 788.0
-margin_bottom = 176.0
+margin_bottom = 911.0
 custom_constants/separation = 36
 
 [node name="Label" type="RichTextLabel" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/Settings/SettingsOAuthConnect/MarginContainer/VBoxContainer2" index="0"]
@@ -240,6 +254,50 @@ pressed = true
 text = "settings_recv_notifications"
 flat = true
 
+[node name="HSeparator" type="HSeparator" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/Settings/SettingsOAuthConnect/MarginContainer/VBoxContainer2" index="2"]
+margin_top = 212.0
+margin_right = 788.0
+margin_bottom = 253.0
+custom_styles/separator = SubResource( 19 )
+custom_constants/separation = 41
+
+[node name="SupportLabel" type="RichTextLabel" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/Settings/SettingsOAuthConnect/MarginContainer/VBoxContainer2" index="3"]
+margin_top = 289.0
+margin_right = 788.0
+margin_bottom = 355.0
+custom_fonts/normal_font = ExtResource( 11 )
+bbcode_enabled = true
+bbcode_text = "Angemeldet als"
+text = "Angemeldet als"
+fit_content_height = true
+
+[node name="HSeparator2" type="HSeparator" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/Settings/SettingsOAuthConnect/MarginContainer/VBoxContainer2" index="4"]
+margin_top = 391.0
+margin_right = 788.0
+margin_bottom = 432.0
+custom_styles/separator = SubResource( 19 )
+custom_constants/separation = 41
+
+[node name="MarginContainer" type="MarginContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/Settings/SettingsOAuthConnect/MarginContainer/VBoxContainer2" index="5"]
+margin_top = 468.0
+margin_right = 788.0
+margin_bottom = 911.0
+custom_constants/margin_top = 200
+custom_constants/margin_bottom = 200
+
+[node name="LogoutButton" type="Button" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/Settings/SettingsOAuthConnect/MarginContainer/VBoxContainer2/MarginContainer" index="0"]
+margin_top = 200.0
+margin_right = 788.0
+margin_bottom = 243.0
+custom_styles/hover = SubResource( 10 )
+custom_styles/pressed = SubResource( 11 )
+custom_styles/focus = SubResource( 12 )
+custom_styles/disabled = SubResource( 13 )
+custom_styles/normal = SubResource( 14 )
+custom_fonts/font = ExtResource( 10 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Abmelden"
+
 [node name="HeaderBG" parent="ContentContainer/Content" index="1"]
 self_modulate = Color( 0.517647, 0.517647, 0.517647, 1 )
 anchor_right = 0.0
@@ -257,4 +315,7 @@ color = Color( 0.517647, 0.517647, 0.517647, 1 )
 [connection signal="pressed" from="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/Settings/debug_settings/ResetTutorialsButton" to="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer" method="_on_ResetTutorialsButton_pressed"]
 [connection signal="pressed" from="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/Settings/debug_settings/DeleteButton" to="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer" method="_on_DeleteButton_pressed"]
 [connection signal="pressed" from="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/Settings/SettingsOAuthConnect/VBoxContainer/CyButton" to="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/Settings/SettingsOAuthConnect" method="_on_CyButton_pressed"]
+[connection signal="meta_clicked" from="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/Settings/SettingsOAuthConnect/MarginContainer/VBoxContainer2/Label" to="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/Settings/SettingsOAuthConnect" method="_on_Label_meta_clicked"]
 [connection signal="toggled" from="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/Settings/SettingsOAuthConnect/MarginContainer/VBoxContainer2/NotificationToggle" to="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/Settings/SettingsOAuthConnect" method="_on_NotificationToggle_toggled"]
+[connection signal="meta_clicked" from="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/Settings/SettingsOAuthConnect/MarginContainer/VBoxContainer2/SupportLabel" to="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/Settings/SettingsOAuthConnect" method="_on_SupportLabel_meta_clicked"]
+[connection signal="pressed" from="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/Settings/SettingsOAuthConnect/MarginContainer/VBoxContainer2/MarginContainer/LogoutButton" to="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/Settings/SettingsOAuthConnect" method="_on_LogoutButton_pressed"]

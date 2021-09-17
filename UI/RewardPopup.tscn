@@ -14,6 +14,9 @@ anchor_bottom = 1.0
 margin_top = 145.0
 margin_bottom = -1281.0
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 anchor_right = 1.0
@@ -148,4 +151,5 @@ custom_styles/normal = ExtResource( 5 )
 custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "ack_reward_button_label"
+
 [connection signal="pressed" from="VBoxContainer/MarginContainer2/CenterContainer/AcceptButton" to="." method="_on_AcceptButton_pressed"]

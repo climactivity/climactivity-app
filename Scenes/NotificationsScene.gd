@@ -13,7 +13,7 @@ func _ready():
 func _restored(): 
 	Util.clear(content_holder)
 	notifications = NotificationService.get_notifications()
-	no_notifications_message.visible = notifications.size() == 0
+	no_notifications_message.visible = notifications == null or notifications.size() == 0
 	var user = yield(NakamaConnection.get_user(),"completed")
 	if user != null and user.display_name != "": 
 		oauth_reminder.visible = false

@@ -16,6 +16,7 @@ func _show_popup(control):
 	anim_player.play("ShowPopupLayer")
 	$Popup.add_child(control)
 	emit_signal("popup_show")
+	control.connect("close", self,"_close_popup")
 func _on_Popup_gui_input(event):
 	if event is InputEventMouseButton: 
 		if event.pressed: 
