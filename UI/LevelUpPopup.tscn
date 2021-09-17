@@ -124,10 +124,10 @@ tracks/6/loop_wrap = true
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
-"times": PoolRealArray( 0.6, 2.2 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0, 0.6, 2.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
 [node name="LevelUpPopup" type="Control"]
@@ -287,7 +287,7 @@ stretch_mode = 6
 
 [node name="CloseButton" type="TextureButton" parent="PanelContainer/VBoxContainer"]
 modulate = Color( 0.937255, 0.937255, 0.937255, 1 )
-self_modulate = Color( 0.449201, 0.973504, 0, 1 )
+self_modulate = Color( 0.880598, 1, 0, 1 )
 margin_top = 1049.0
 margin_right = 864.0
 margin_bottom = 1238.18
@@ -358,3 +358,5 @@ hue_variation_random = 1.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Enter = SubResource( 3 )
+
+[connection signal="pressed" from="PanelContainer/VBoxContainer/CloseButton" to="." method="_on_CloseButton_pressed"]

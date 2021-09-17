@@ -13,9 +13,7 @@ func _ready():
 	update()
 	if play_enter_anim:
 		_play_enter_anim()
-	
-func _on_AcceptButton_pressed():
-	emit_signal("close")
+
 
 func set_level_up_to(_level): 
 	level = _level
@@ -48,3 +46,7 @@ func _enter_tree():
 
 func _play_enter_anim(): 
 	$AnimationPlayer.play("Enter")
+
+
+func _on_CloseButton_pressed():
+	emit_signal("close")
