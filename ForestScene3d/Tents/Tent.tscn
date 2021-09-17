@@ -36,7 +36,7 @@ height = 0.551764
 resource_name = "show_progress"
 length = 0.7
 tracks/0/type = "value"
-tracks/0/path = NodePath("SpatialUIPanel:translation")
+tracks/0/path = NodePath("SpatialUIPanel:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -45,27 +45,15 @@ tracks/0/keys = {
 "times": PoolRealArray( 0.1, 0.7 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector3( 0.47, 0.484, 0.299 ), Vector3( 0.47, 0.784, 0.299 ) ]
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("SpatialUIPanel:modulate")
+tracks/1/path = NodePath("SpatialUIPanel:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0.1, 0.7 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("SpatialUIPanel:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
 "times": PoolRealArray( 0, 0.1, 0.7 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
@@ -76,7 +64,7 @@ tracks/2/keys = {
 script = ExtResource( 2 )
 
 [node name="SpatialUIPanel" parent="." instance=ExtResource( 7 )]
-transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 1, 0.47, 0.784, 0.299 )
+transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 1, 0.405, 0.191, 0.512 )
 widget = ExtResource( 8 )
 
 [node name="Sprite3D" type="Sprite3D" parent="."]

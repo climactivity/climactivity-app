@@ -49,12 +49,12 @@ icon = ExtResource( 2 )
 screen_title = "about"
 
 [node name="ContentMain" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer" index="0"]
-margin_bottom = 11986.0
+margin_bottom = 12014.0
 
 [node name="MarginContainer" type="MarginContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="1"]
-margin_top = 350.0
+margin_top = 378.0
 margin_right = 1080.0
-margin_bottom = 11986.0
+margin_bottom = 12014.0
 custom_constants/margin_right = 64
 custom_constants/margin_left = 64
 __meta__ = {
@@ -85,11 +85,11 @@ custom_colors/default_color = Color( 0.411765, 0.411765, 0.407843, 1 )
 bbcode_enabled = true
 bbcode_text = "[center][img=256]res://Assets/BG/cyIcon.png[/img]
 Climactivty App
-Version 1.45
+Version 1.49
 Engine Version: 3.3.2-stable (official) "
 text = "
 Climactivty App
-Version 1.45
+Version 1.49
 Engine Version: 3.3.2-stable (official) "
 fit_content_height = true
 script = ExtResource( 12 )

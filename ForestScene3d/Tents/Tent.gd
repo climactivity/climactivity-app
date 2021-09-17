@@ -113,6 +113,8 @@ func _ready():
 	if(!OS.is_debug_build()): tile.visible = false
 	$Sprite3D.texture = texture
 	$SpatialUIPanel.get_widget_instance().set_sector_data(init_params)
+	if !init_params["left_facing"]:
+		$SpatialUIPanel.translate(Vector3( -0.4, 0.0, 0.0))
 	GameManager.camera.connect("entity_focused", self, "_hide_progress_ui" )
 	GameManager.camera.connect("entity_unfocused", self, "_show_progress_ui" )
 func set_sprite(new_texture):

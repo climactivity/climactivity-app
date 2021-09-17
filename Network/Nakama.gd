@@ -197,6 +197,8 @@ func analytics_store_client_device_info():
 		"device_info": {
 			"OS_Name": OS.get_name(),
 			"OS_Model_Name": OS.get_model_name(),
+			"App_Version": ProjectSettings.get_setting("application/config/version"), 
+			"Engine": Engine.get_version_info().string,
 			"Startup_Time": OS.get_splash_tick_msec(),
 			"Screen_DPI": OS.get_screen_dpi(),
 			"Screen_Size": OS.get_screen_size(),
@@ -210,6 +212,25 @@ func analytics_store_client_device_info():
 	}
 	_store_dict(device_info, "device_info", 1, 1, "" )
 
+
+func get_client_settings(): 
+	var settings_array = yield(read_collection("settings"), "completed")
+	var settings = {}
+	for settings_json in settings_array: 
+		var json_parse = JSON.parse(settings_json)
+		if json_parse.error == OK:
+			var settings_part = json_parse.result
+			var key = settings_part.keys()[0]
+			settings[key] = settings_part[key]
+		else:
+			Logger.error("JSON parse error in user settings at %s " % settings_json ,self)
+	return settings
+
+func set_client_setting(key, value): 
+	var settings = yield(get_client_settings(), "completed")
+	settings[key] = value
+	_store_dict(settings, "settings", 1, 1, "" )
+
 func _store_dict(dict, collection, can_read, can_write, version) :
 	var objs = []
 	for key in dict.keys(): 
@@ -221,10 +242,22 @@ func _store_dict(dict, collection, can_read, can_write, version) :
 	if acks.is_exception():
 		Logger.error("An error occured: %s" % acks)
 		return
-#	print("Successfully stored objects:")
-#	for a in acks.acks:
-#		print("%s" % a)
 
+func _read_dict(key, collection): 
+	var ret = {}
+	var user = yield(get_user(), "completed")
+	var storage_object = yield(client.read_storage_objects_async(session, [{
+		"collection": collection,
+		"key": key,
+		"user_id": user.id
+	}]), "completed")
+	if storage_object.is_exception():
+		Logger.error("Could not read storage_object %s" % storage_object, self)
+		return null
+	if storage_object.objects == []:
+		return {}
+	return storage_object.objects[0]
+	
 
 func sync_player_state(player_state : RTrackingStates):
 	if !session: 
