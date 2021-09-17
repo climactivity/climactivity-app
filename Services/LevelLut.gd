@@ -107,6 +107,12 @@ func get_level(xp):
 		var _level = levels[key]
 		if _level.xp_total > xp:
 			return key 
+			
+func get_level_by_level(_lvl):
+	if !levels.has(_lvl):
+		return null
+	else:
+		return levels[_lvl]
 
 func get_frac(xp): 
 	var level = get_level(xp)

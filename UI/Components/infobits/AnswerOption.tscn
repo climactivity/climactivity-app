@@ -10,7 +10,7 @@
 
 [sub_resource type="StyleBoxEmpty" id=2]
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=3]
 resource_name = "Correct"
 length = 0.3
 tracks/0/type = "value"
@@ -98,8 +98,7 @@ tracks/6/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 0.929412, 0.956863, 0.85098, 1 ) ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "Deselect"
+[sub_resource type="Animation" id=4]
 length = 0.3
 tracks/0/type = "value"
 tracks/0/path = NodePath("MarginContainer/Panel/Panel:custom_styles/panel:border_color")
@@ -186,8 +185,7 @@ tracks/6/keys = {
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=4]
-resource_name = "Preselected"
+[sub_resource type="Animation" id=5]
 length = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("MarginContainer/Panel/Panel:custom_styles/panel:border_color")
@@ -262,8 +260,7 @@ tracks/5/keys = {
 "values": [ Color( 0, 0, 0, 0.129412 ) ]
 }
 
-[sub_resource type="Animation" id=5]
-resource_name = "RESET"
+[sub_resource type="Animation" id=6]
 length = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("MarginContainer/Panel/Panel:custom_styles/panel:border_color")
@@ -350,7 +347,7 @@ tracks/6/keys = {
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=7]
 resource_name = "Select"
 length = 0.3
 tracks/0/type = "value"
@@ -426,7 +423,7 @@ tracks/5/keys = {
 "values": [ Color( 0, 0, 0, 0.129412 ) ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=8]
 resource_name = "SelectedCorrect"
 length = 0.3
 tracks/0/type = "value"
@@ -538,7 +535,7 @@ tracks/8/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=9]
 resource_name = "Wrong"
 length = 0.6
 tracks/0/type = "value"
@@ -638,8 +635,7 @@ tracks/7/keys = {
 "values": [ Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=7]
-resource_name = "Enter"
+[sub_resource type="Animation" id=10]
 tracks/0/type = "value"
 tracks/0/path = NodePath("MarginContainer:modulate")
 tracks/0/interp = 1
@@ -665,8 +661,7 @@ tracks/1/keys = {
 "values": [ Vector2( 0, -75 ), Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=8]
-resource_name = "RESET"
+[sub_resource type="Animation" id=11]
 length = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("MarginContainer:modulate")
@@ -796,18 +791,18 @@ __meta__ = {
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "RESET"
-anims/Correct = SubResource( 11 )
-anims/Deselect = SubResource( 3 )
-anims/Preselected = SubResource( 4 )
-anims/RESET = SubResource( 5 )
-anims/Select = SubResource( 10 )
-anims/SelectedCorrect = SubResource( 9 )
-anims/Wrong = SubResource( 12 )
+anims/Correct = SubResource( 3 )
+anims/Deselect = SubResource( 4 )
+anims/Preselected = SubResource( 5 )
+anims/RESET = SubResource( 6 )
+anims/Select = SubResource( 7 )
+anims/SelectedCorrect = SubResource( 8 )
+anims/Wrong = SubResource( 9 )
 
 [node name="Enter" type="AnimationPlayer" parent="."]
 autoplay = "RESET"
-anims/Enter = SubResource( 7 )
-anims/RESET = SubResource( 8 )
+anims/Enter = SubResource( 10 )
+anims/RESET = SubResource( 11 )
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 position = Vector2( 536.636, 74 )

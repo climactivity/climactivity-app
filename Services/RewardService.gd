@@ -28,7 +28,18 @@ func level_frag(xp):
 
 func update_xp_vals(): 
 	var inventory = player_state.inventory
-	inventory.level = LevelLut.get_level(inventory.xp)
+	var old_level = inventory.level 
+	var new_level = LevelLut.get_level(inventory.xp)
+	inventory.level = new_level
+	if new_level > old_level:
+		_show_levelup_popup(new_level,old_level)
+
+var levelup_popup = preload("res://UI/LevelUpPopup.tscn")
+
+func _show_levelup_popup(new_level, old_level):
+	var _lu_popup_inst = levelup_popup.instance()
+	_lu_popup_inst.set_level_up_to(new_level)
+	GameManager.overlay._show_popup(_lu_popup_inst)
 	
 func pay_coins(amount): 
 	if player_state.inventory.coins >= amount: 

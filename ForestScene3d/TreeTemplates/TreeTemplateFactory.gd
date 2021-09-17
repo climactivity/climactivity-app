@@ -206,6 +206,10 @@ var _example_template = {
 	"preview_name": "stage2",
 	"coin_value": 0,
 	"bigpoint_available": ["ernaehrung"],
+	"unlock_level": 5,
+	"preview_texture": {
+		"resource_path": "res://Assets/sketch/baum/Apfelbaum/apfelbaum_02.png"
+	},
 	"initial_state": {
 		"stage": 0,
 		"water": 0.0,
@@ -267,6 +271,9 @@ func get_available_templates(sector_name: String, type: String = "tree") -> Arra
 #		if template.bigpoint_available.find(sector_name) != -1 and template.archetype == type:
 #			out.push_back(template)
 	return out
+
+func get_all_templates() -> Array: 
+	return _tree_templates
 
 func get_template(key):
 	if _tree_templates.has(key):

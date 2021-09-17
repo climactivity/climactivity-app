@@ -73,3 +73,11 @@ notifications_oauth_connect_reminder,[center]Melde dich im Climactivity Netzwerk
 logout_popup_hint,[center]Wirklich Abmelden?,
 support_link_label,Hilfe mit der App bekommen,
 signed_in_as_label,Angemeldet als ,
+level_up_heading,[center]Glückwunsch[/center],
+level_up_message,[center] Du hast Level %d erreicht![/center],
+level_up_unlock,"[center]Jetzt freigeschaltet:
+[wave amp=50 freq=5]%s[/wave]
+
+[img=400]%s[/img]
+[/center]",
+level_up_close,Geschafft,
