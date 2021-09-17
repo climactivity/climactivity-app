@@ -1,6 +1,8 @@
 extends SceneBase
 
 onready var tracking_settings = $"ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/TrackingSettings"
+onready var footnotes_container = $"ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/FootNoteContainer"
+onready var footnotes_label = $"ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/FootNoteContainer/FootNoteText"
 export (Resource) var aspect_data
 
 func _ready():
@@ -28,9 +30,11 @@ func update():
 	set_accent_color(sector["sector_color"])
 	set_header_icon(aspect_data.icon if aspect_data.icon !=null else sector["sector_logo"])
 	set_screen_title(aspect_data["title"])
-	#_show_seedling_button()
-
-
+	if aspect_data.tracking.has("footnote"): 
+		footnotes_container.visible = true
+		footnotes_label.bbcode_text = aspect_data.tracking.footnote
+	else: 
+		footnotes_container.visible = false
 
 func _on_ShopButton_pressed():
 		GameManager.scene_manager.push_scene("res://Scenes/EntityShopScene.tscn", {"aspect": aspect_data})

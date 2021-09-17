@@ -21,7 +21,6 @@ widget = ExtResource( 3 )
 [node name="Viewport" type="Viewport" parent="."]
 size = Vector2( 512, 512 )
 transparent_bg = true
-msaa = 2
 fxaa = true
 hdr = false
 disable_3d = true

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Scenes/SceneBase.tscn" type="PackedScene" id=1]
 [ext_resource path="res://UI/Components/TrackingSettings.tscn" type="PackedScene" id=2]
@@ -9,10 +9,32 @@
 [ext_resource path="res://Assets/Theme/collect_button_9p_normal.png" type="Texture" id=7]
 [ext_resource path="res://Assets/Theme/collect_button_9p_disabled.png" type="Texture" id=8]
 [ext_resource path="res://UI/theme/style_box_empty.tres" type="StyleBox" id=9]
+[ext_resource path="res://UI/typography/italic_light.tres" type="DynamicFont" id=10]
+
+[sub_resource type="StyleBoxEmpty" id=4]
+content_margin_left = 40.0
+content_margin_right = 40.0
+content_margin_top = 40.0
+content_margin_bottom = 40.0
+
+[sub_resource type="StyleBoxFlat" id=5]
+content_margin_top = 20.0
+content_margin_bottom = 20.0
+bg_color = Color( 1, 1, 1, 1 )
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color( 0.933333, 0.933333, 0.933333, 1 )
+border_blend = true
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
 
 [sub_resource type="StyleBoxFlat" id=1]
-bg_color = Color( 1, 1, 1, 1 )
-border_width_top = 11
+bg_color = Color( 1, 1, 1, 0.811765 )
+border_width_top = 4
 border_color = Color( 0.584314, 0.756863, 0.121569, 1 )
 shadow_color = Color( 0, 0, 0, 0.168627 )
 shadow_size = 8
@@ -118,7 +140,7 @@ tracks/3/keys = {
 "times": PoolRealArray( 0, 1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ 0, -400.0 ]
+"values": [ 0, -500 ]
 }
 tracks/4/type = "value"
 tracks/4/path = NodePath("ContentContainer/Content/ShopButtonPanel:visible")
@@ -140,7 +162,8 @@ intro_timeline = "TrackingSettingsIntro"
 intro_autoplay_delay = 1.5
 
 [node name="ContentMain" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer" index="0"]
-margin_bottom = 2117.0
+margin_bottom = 2461.0
+rect_pivot_offset = Vector2( -301.603, 1650 )
 
 [node name="MarginContainer" type="MarginContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="1"]
 margin_top = 378.0
@@ -159,12 +182,31 @@ rect_scale = Vector2( 1, 1 )
 
 [node name="HSeparator2" type="HSeparator" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="2"]
 visible = false
-margin_top = 2093.0
+margin_top = 2121.0
 margin_right = 1080.0
-margin_bottom = 2442.0
+margin_bottom = 2470.0
 size_flags_vertical = 0
 custom_styles/separator = ExtResource( 9 )
 custom_constants/separation = 349
+
+[node name="FootNoteContainer" type="PanelContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="3"]
+margin_top = 2121.0
+margin_right = 1080.0
+margin_bottom = 2461.0
+custom_styles/panel = SubResource( 4 )
+
+[node name="FootNoteText" type="RichTextLabel" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/FootNoteContainer" index="0"]
+margin_left = 40.0
+margin_top = 40.0
+margin_right = 1040.0
+margin_bottom = 300.0
+custom_styles/normal = SubResource( 5 )
+custom_fonts/normal_font = ExtResource( 10 )
+custom_colors/default_color = Color( 0.411765, 0.411765, 0.407843, 1 )
+bbcode_enabled = true
+bbcode_text = "Hole dein Wasser regelmäßig ab, bevor die Tanks volllaufen und sich kein Wasser mehr sammeln kann.Je höher deine eingestellte Stufe in den Aspekten, umso mehr Wasser sammelst du. Tippe auf einen obigen Aspekt, um deine Stufe zu ändern."
+text = "Hole dein Wasser regelmäßig ab, bevor die Tanks volllaufen und sich kein Wasser mehr sammeln kann.Je höher deine eingestellte Stufe in den Aspekten, umso mehr Wasser sammelst du. Tippe auf einen obigen Aspekt, um deine Stufe zu ändern."
+fit_content_height = true
 
 [node name="ShopButtonPanel" type="PanelContainer" parent="ContentContainer/Content" index="1"]
 modulate = Color( 1, 1, 1, 0 )
@@ -177,10 +219,10 @@ __meta__ = {
 }
 
 [node name="MarginContainer" type="MarginContainer" parent="ContentContainer/Content/ShopButtonPanel" index="0"]
-margin_top = 11.0
+margin_top = 4.0
 margin_right = 1080.0
-margin_bottom = 75.0
-custom_constants/margin_bottom = 64
+margin_bottom = 157.0
+custom_constants/margin_bottom = 153
 
 [node name="ShopButton" type="TextureButton" parent="ContentContainer/Content/ShopButtonPanel/MarginContainer" index="0"]
 margin_right = 1080.0

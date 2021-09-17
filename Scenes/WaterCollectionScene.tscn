@@ -18,9 +18,9 @@ bg_color = Color( 0.392157, 0.65098, 0.886275, 1 )
 
 [sub_resource type="StyleBoxEmpty" id=2]
 
-[sub_resource type="StyleBoxEmpty" id=4]
+[sub_resource type="StyleBoxEmpty" id=3]
 
-[sub_resource type="StyleBoxFlat" id=5]
+[sub_resource type="StyleBoxFlat" id=4]
 bg_color = Color( 0.462745, 0.741176, 1, 1 )
 corner_radius_top_left = 1024
 corner_radius_top_right = 1024
@@ -37,6 +37,15 @@ intro_gate_var = "WaterCollectPlayed"
 intro_timeline = "WaterCollectIntro"
 icon = ExtResource( 11 )
 screen_title = "water_collection_screen"
+
+[node name="Content" parent="ContentContainer" index="0"]
+margin_bottom = 1848.0
+
+[node name="MarginContainer" parent="ContentContainer/Content/VBoxContainer" index="0"]
+margin_bottom = 1848.0
+
+[node name="ScrollContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer" index="0"]
+margin_bottom = 1848.0
 
 [node name="ContentMain" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer" index="0"]
 margin_bottom = 3112.0
@@ -154,7 +163,7 @@ __meta__ = {
 [node name="HSeparator" type="HSeparator" parent="ContentContainer/Content/VBoxContainer2" index="0"]
 margin_right = 1080.0
 margin_bottom = 300.0
-custom_styles/separator = SubResource( 4 )
+custom_styles/separator = SubResource( 3 )
 custom_constants/separation = 300
 
 [node name="CloudHolder" type="MarginContainer" parent="ContentContainer/Content/VBoxContainer2" index="1"]
@@ -177,7 +186,7 @@ margin_left = 118.0
 margin_top = 36.0
 margin_right = 1006.0
 margin_bottom = 186.0
-custom_styles/panel = SubResource( 5 )
+custom_styles/panel = SubResource( 4 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="ContentContainer/Content/VBoxContainer2/CloudHolder" index="1"]
 margin_left = 118.0
@@ -223,6 +232,10 @@ stretch_mode = 6
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="HSeparator" parent="ContentContainer" index="1"]
+margin_top = 1852.0
+custom_constants/separation = 68
 
 [node name="Header" parent="HeaderContainer" index="1"]
 screen_label = "water_collection_screen"
