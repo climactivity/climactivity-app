@@ -8,7 +8,7 @@ func print(message, caller = null):
 func error(message, caller = null): 
 	var dt=OS.get_datetime()
 	printerr( "%02d:%02d:%02d " % [dt.hour,dt.minute,dt.second], "[ERROR] " ,"[%s] " % get_caller_name(caller), message)
-	NakamaConnection.push_error("%02d:%02d:%02d " % [dt.hour,dt.minute,dt.second] + " [ERROR] " +"[%s] " % get_caller_name(caller) + ": %s" % message)
+#	NakamaConnection.push_error("%02d:%02d:%02d " % [dt.hour,dt.minute,dt.second] + " [ERROR] " +"[%s] " % get_caller_name(caller) + ": %s" % message)
 func _notification(what):
 	if what == MainLoop.NOTIFICATION_CRASH:
 		error(str(what))

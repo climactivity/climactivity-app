@@ -16,6 +16,8 @@ func is_completed(infobyte_id):
 func get_factor_completion(factor, aspect):
 	var infobytes = Api.get_infobytes_for_factor(factor, aspect)
 	var num_complete = 0.0
+	if infobytes.size() == 0: 
+		return 0.0
 	for infobyte in infobytes:
 		if is_completed(infobyte._id):
 			num_complete += 1.0

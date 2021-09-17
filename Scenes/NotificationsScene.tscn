@@ -41,22 +41,40 @@ show_menu_bar = true
 [node name="MarginContainer" type="MarginContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="1"]
 margin_top = 378.0
 margin_right = 1080.0
-margin_bottom = 483.0
+margin_bottom = 552.0
+custom_constants/margin_right = 64
 custom_constants/margin_top = 40
-custom_constants/margin_left = 163
+custom_constants/margin_left = 64
 
-[node name="Label" type="Label" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer" index="0"]
-margin_left = 163.0
+[node name="VBoxContainer" type="VBoxContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer" index="0"]
+margin_left = 64.0
 margin_top = 40.0
-margin_right = 1080.0
-margin_bottom = 105.0
+margin_right = 1016.0
+margin_bottom = 174.0
+
+[node name="Label" type="Label" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/VBoxContainer" index="0"]
+margin_right = 952.0
+margin_bottom = 65.0
 custom_fonts/font = ExtResource( 3 )
 text = "Noch keine Benachrichtigungen!"
+autowrap = true
+
+[node name="OAuthReminder" type="VBoxContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/VBoxContainer" index="1"]
+margin_top = 69.0
+margin_right = 952.0
+margin_bottom = 134.0
+
+[node name="Label_OAuth" type="Label" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/VBoxContainer/OAuthReminder" index="0"]
+margin_right = 952.0
+margin_bottom = 65.0
+custom_fonts/font = ExtResource( 3 )
+text = "notifications_oauth_connect_reminder"
+autowrap = true
 
 [node name="MarginContainer2" type="MarginContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="2"]
-margin_top = 487.0
+margin_top = 556.0
 margin_right = 1080.0
-margin_bottom = 487.0
+margin_bottom = 556.0
 custom_constants/margin_right = 64
 custom_constants/margin_left = 64
 
