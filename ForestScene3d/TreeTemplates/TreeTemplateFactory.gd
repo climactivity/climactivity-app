@@ -219,9 +219,9 @@ var _example_template = {
 	}
 }
 
-var _tree_templates = {
+var _tree_templates = [{
 	"tree0": _example_template
-}
+}]
 
 #func _preload_textures():
 #	var dir = Directory.new()

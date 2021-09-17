@@ -287,7 +287,7 @@ stretch_mode = 6
 
 [node name="CloseButton" type="TextureButton" parent="PanelContainer/VBoxContainer"]
 modulate = Color( 0.937255, 0.937255, 0.937255, 1 )
-self_modulate = Color( 0.880598, 1, 0, 1 )
+self_modulate = Color( 0.754429, 1, 0, 1 )
 margin_top = 1049.0
 margin_right = 864.0
 margin_bottom = 1238.18

@@ -22,8 +22,8 @@ func set_level_up_to(_level):
 	var templates = TreeTemplateFactory.get_all_templates()
 	unlocks = []
 	for template in templates: 
-		if templates[template].unlock_level == level:
-			unlocks.append(templates[template])
+		if template.unlock_level == level:
+			unlocks.append(template)
 	update()
 	
 func update(): 

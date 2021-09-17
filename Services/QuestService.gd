@@ -40,6 +40,7 @@ func _reward_quest(acceped_quest):
 		return 
 	var reward = quest.reward
 	RewardService.add_reward(reward)
+	_flush()
 
 func _flush(): 
 	PSS.flush()
