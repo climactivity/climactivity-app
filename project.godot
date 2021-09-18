@@ -326,7 +326,7 @@ boot_splash/image="res://Assets/logo_sm.png"
 boot_splash/fullsize=false
 boot_splash/bg_color=Color( 1, 1, 1, 1 )
 config/icon="res://Assets/BG/cyIcon.png"
-config/version="1.49"
+config/version="1.50rc1"
 
 [autoload]
 
