@@ -360,10 +360,10 @@ __meta__ = {
 }
 
 [node name="QuestLog" parent="Camera/HUD" instance=ExtResource( 11 )]
-margin_left = 90.0
-margin_top = 263.0
-margin_right = 439.0
-margin_bottom = 363.0
+margin_left = 43.547
+margin_top = 214.991
+margin_right = 392.547
+margin_bottom = 314.992
 
 [node name="SeedlingBox" parent="Camera/HUD" instance=ExtResource( 1 )]
 visible = false
@@ -377,10 +377,10 @@ margin_bottom = 342.68
 [node name="Cloud" parent="Camera/HUD" instance=ExtResource( 10 )]
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -190.704
+margin_left = -166.374
 margin_top = 263.0
-margin_right = -190.704
-margin_bottom = 163.157
+margin_right = -166.374
+margin_bottom = 263.0
 
 [node name="xp_bar" type="TextureRect" parent="Camera/HUD"]
 visible = false
