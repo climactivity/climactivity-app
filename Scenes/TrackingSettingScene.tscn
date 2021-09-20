@@ -11,13 +11,13 @@
 [ext_resource path="res://UI/theme/style_box_empty.tres" type="StyleBox" id=9]
 [ext_resource path="res://UI/typography/italic_light.tres" type="DynamicFont" id=10]
 
-[sub_resource type="StyleBoxEmpty" id=4]
+[sub_resource type="StyleBoxEmpty" id=1]
 content_margin_left = 40.0
 content_margin_right = 40.0
 content_margin_top = 40.0
 content_margin_bottom = 40.0
 
-[sub_resource type="StyleBoxFlat" id=5]
+[sub_resource type="StyleBoxFlat" id=2]
 content_margin_top = 20.0
 content_margin_bottom = 20.0
 bg_color = Color( 1, 1, 1, 1 )
@@ -32,7 +32,7 @@ corner_radius_top_right = 20
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 
-[sub_resource type="StyleBoxFlat" id=1]
+[sub_resource type="StyleBoxFlat" id=3]
 bg_color = Color( 1, 1, 1, 0.811765 )
 border_width_top = 4
 border_color = Color( 0.584314, 0.756863, 0.121569, 1 )
@@ -40,8 +40,7 @@ shadow_color = Color( 0, 0, 0, 0.168627 )
 shadow_size = 8
 shadow_offset = Vector2( 0, -4 )
 
-[sub_resource type="Animation" id=2]
-resource_name = "RESET"
+[sub_resource type="Animation" id=4]
 length = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("ContentContainer/Content/ShopButtonPanel/MarginContainer/ShopButton:disabled")
@@ -92,8 +91,7 @@ tracks/3/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "ShowShopButton"
+[sub_resource type="Animation" id=5]
 tracks/0/type = "value"
 tracks/0/path = NodePath("ContentContainer/Content/ShopButtonPanel:modulate")
 tracks/0/interp = 1
@@ -193,14 +191,14 @@ custom_constants/separation = 349
 margin_top = 2121.0
 margin_right = 1080.0
 margin_bottom = 2461.0
-custom_styles/panel = SubResource( 4 )
+custom_styles/panel = SubResource( 1 )
 
 [node name="FootNoteText" type="RichTextLabel" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/FootNoteContainer" index="0"]
 margin_left = 40.0
 margin_top = 40.0
 margin_right = 1040.0
 margin_bottom = 300.0
-custom_styles/normal = SubResource( 5 )
+custom_styles/normal = SubResource( 2 )
 custom_fonts/normal_font = ExtResource( 10 )
 custom_colors/default_color = Color( 0.411765, 0.411765, 0.407843, 1 )
 bbcode_enabled = true
@@ -213,7 +211,7 @@ modulate = Color( 1, 1, 1, 0 )
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_styles/panel = SubResource( 1 )
+custom_styles/panel = SubResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -247,8 +245,8 @@ __meta__ = {
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="3"]
 autoplay = "RESET"
-anims/RESET = SubResource( 2 )
-anims/ShowShopButton = SubResource( 3 )
+anims/RESET = SubResource( 4 )
+anims/ShowShopButton = SubResource( 5 )
 
 [connection signal="emit_option" from="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/TrackingSettings" to="." method="_on_TrackingSettings_emit_option"]
 [connection signal="pressed" from="ContentContainer/Content/ShopButtonPanel/MarginContainer/ShopButton" to="." method="_on_ShopButton_pressed"]

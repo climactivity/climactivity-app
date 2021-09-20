@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://UI/typography/Content_Regular.tres" type="DynamicFont" id=1]
 [ext_resource path="res://ForestScene3d/Interactables/QuestLog.gd" type="Script" id=2]
@@ -24,6 +24,16 @@ shadow_color = Color( 0, 0, 0, 0.0705882 )
 shadow_size = 32
 shadow_offset = Vector2( 0, 10.141 )
 
+[sub_resource type="StyleBoxEmpty" id=4]
+
+[sub_resource type="StyleBoxEmpty" id=5]
+
+[sub_resource type="StyleBoxEmpty" id=6]
+
+[sub_resource type="StyleBoxEmpty" id=7]
+
+[sub_resource type="StyleBoxEmpty" id=8]
+
 [sub_resource type="StyleBoxFlat" id=1]
 
 [sub_resource type="Theme" id=2]
@@ -38,22 +48,35 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Button" type="Button" parent="."]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 339.0
+margin_bottom = 90.0
+custom_styles/hover = SubResource( 4 )
+custom_styles/pressed = SubResource( 5 )
+custom_styles/focus = SubResource( 6 )
+custom_styles/disabled = SubResource( 7 )
+custom_styles/normal = SubResource( 8 )
+
 [node name="VBoxContainer" type="HBoxContainer" parent="."]
 margin_left = 10.0
 margin_top = 10.0
 margin_right = 339.0
 margin_bottom = 90.0
+mouse_filter = 2
 theme = SubResource( 2 )
 
-[node name="ActionButton" type="TextureButton" parent="VBoxContainer"]
+[node name="ActionButton" type="TextureRect" parent="VBoxContainer"]
 margin_right = 80.0
 margin_bottom = 80.0
 rect_min_size = Vector2( 80, 80 )
+mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-texture_normal = ExtResource( 3 )
+texture = ExtResource( 3 )
 expand = true
-stretch_mode = 4
+stretch_mode = 7
 
 [node name="Label" type="Label" parent="VBoxContainer"]
 margin_left = 84.0
@@ -64,4 +87,4 @@ custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 0.411765, 0.411765, 0.407843, 1 )
 text = "Challenges"
 
-[connection signal="pressed" from="VBoxContainer/ActionButton" to="." method="_on_ActionButton_pressed"]
+[connection signal="pressed" from="Button" to="." method="_on_ActionButton_pressed"]

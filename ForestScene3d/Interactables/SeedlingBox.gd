@@ -54,7 +54,7 @@ func _reset_done():
 func place_entity(): 
 	emit_signal("dragging", false)
 	trying_to_place = false
-	emit_signal("placed", last_pos, entity)
+	emit_signal("placed", last_pos , entity)
 	seedling.position = initial_pos
 	$Seedling/Offset.position = Vector2.ZERO
 	seedling.show_pot(true)
@@ -69,12 +69,13 @@ func dropped_entity():
 	
 var trying_to_place = false
 var last_pos
+var touch_offset = Vector2(0.0, -110.0)
 func _input(event):
 	if !dragging or trying_to_place: return
 	if event is InputEventScreenTouch and event.index == 0:
 		dragging = false
-		if hud.can_drop_data(event.position, drag_data):
-			last_pos = event.position
+		if hud.can_drop_data(event.position + Vector2(0.0, -110.0), drag_data):
+			last_pos = event.position + touch_offset
 			trying_to_place = true
 			emit_signal("trying_to_place")
 			return
