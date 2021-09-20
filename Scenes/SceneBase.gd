@@ -13,6 +13,8 @@ export (String) var intro_gate_var = ""
 export (String) var intro_timeline = ""
 export (float) var intro_autoplay_delay
 
+export var use_small_icon = false
+
 export var icon = preload("res://Assets/Icons/AufforstungIcon.png")
 
 export (NodePath) var navigation_dispatcher 
@@ -35,6 +37,7 @@ func _ready():
 	ready = true
 	align_top()
 	header.set_screen_label(screen_title)
+	header.set_small_icon(use_small_icon)
 	material = material.duplicate(true)
 	gradient = material.get_shader_param("gradient")
 	_set_vars()
