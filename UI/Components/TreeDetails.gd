@@ -41,7 +41,10 @@ func _height_label(instance_resource) -> String:
 	return "%d von 5" % [instance_resource.stage + 1]
 #	return "%1d (%2d" % [instance_resource.stage + 1, 100*instance_resource.water_applied/instance_resource.water_required if instance_resource.water_required != 0 else 1] + "%) von 5"
 func _aspect_label(instance_resource) -> String: 
-	return instance_resource.aspect_id.title
+	var tracking_state = AspectTrackingService.get_tracking_state(instance_resource.aspect_id)
+	var tree_count = tracking_state.entity_list.size()
+	var text = "%s (%d. Baum)" % [instance_resource.aspect_id.title, tree_count]
+	return text
 
 func _tracked_option_label(instance_resource) -> String: 
 	var tracking_state = AspectTrackingService.get_tracking_state(instance_resource.aspect_id)

@@ -84,7 +84,7 @@ func _input(event):
 		return
 	if event is InputEventScreenDrag:
 		seedling.position += event.relative # * (1.0/cloud.transform.get_scale().x)
-		current_tile = hud.can_drop_data(event.position, drag_data)
+		current_tile = hud.can_drop_data(event.position + Vector2(0.0, -110.0), drag_data)
 		if current_tile != null: 
 			print("hover ", current_tile)
 

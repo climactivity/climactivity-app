@@ -4,7 +4,7 @@ export var sector_data = {
 		"sector_title": "Zelt der Ernährung",
 		"sector_logo": preload("res://Assets/Icons/climactivity_H-Icon_Ernaehrung.png"),
 		"sector_color": Color('#97e831'),
-		"sector_hint": "Dieses Zelt ist leider noch leer. Wir sind fleißig dabei weitere Inhalte in die App zu bringen. Bitte hab noch ein wenig Geduld. Danke!"
+		"sector_hint": "Ernährung ist Geschmackssache! Und ein Big Point beim Klimaschutz, was insbesondere mit der Herstellung von Fleisch und Milch zusammenhängt. Eine klimatarische Ernährung lässt sich aber dennoch so vielfältig gestalten, dass jed:er lecker satt wird."
 	},
 	"energy": {
 		"sector": "energy",
@@ -39,6 +39,6 @@ export var sector_data = {
 		"sector_title": "Zelt der gesellschaftlichen Aktivität",
 		"sector_logo": preload("res://Assets/Icons/climactivity_H-Icon_Engage_Gesellschaft.png"),
 		"sector_color": Color('#37647A'),
-		"sector_hint": "Dieses Zelt ist leider noch leer. Wir sind fleißig dabei weitere Inhalte in die App zu bringen. Bitte hab noch ein wenig Geduld. Danke!"   
+		"sector_hint": "Klimaschutz wird nur gelingen, wenn persönliche, gesellschaftliche und politische Veränderungen Hand-in-Hand gehen. Hier erfährst du, wie du dich in Schule und Betrieb sowie in Politik und Gesellschaft für Klimaschutz engagieren kannst und warum sich das lohnt."   
 	}
 }

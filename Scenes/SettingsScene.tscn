@@ -22,7 +22,7 @@
 [ext_resource path="res://Assets/Theme/ToggleOff.png" type="Texture" id=20]
 [ext_resource path="res://Assets/Theme/ToggleOff_Disabled.png" type="Texture" id=21]
 
-[sub_resource type="Shader" id=20]
+[sub_resource type="Shader" id=1]
 code = "shader_type canvas_item; 
 
 uniform sampler2D gradient; 
@@ -32,18 +32,18 @@ void fragment() {
 	//COLOR = vec4(UV.y,0,0,1);
 }"
 
-[sub_resource type="Gradient" id=21]
+[sub_resource type="Gradient" id=2]
 offsets = PoolRealArray( 0.213622, 1 )
 colors = PoolColorArray( 0.517647, 0.517647, 0.517647, 1, 1, 1, 1, 1 )
 
-[sub_resource type="GradientTexture" id=22]
-gradient = SubResource( 21 )
+[sub_resource type="GradientTexture" id=3]
+gradient = SubResource( 2 )
 
-[sub_resource type="ShaderMaterial" id=23]
-shader = SubResource( 20 )
-shader_param/gradient = SubResource( 22 )
+[sub_resource type="ShaderMaterial" id=4]
+shader = SubResource( 1 )
+shader_param/gradient = SubResource( 3 )
 
-[sub_resource type="StyleBoxFlat" id=24]
+[sub_resource type="StyleBoxFlat" id=5]
 bg_color = Color( 1, 1, 1, 1 )
 border_width_left = 2
 border_width_top = 2
@@ -62,11 +62,15 @@ shadow_color = Color( 0, 0, 0, 0.0980392 )
 shadow_size = 16
 shadow_offset = Vector2( 0, 8 )
 
-[sub_resource type="StyleBoxEmpty" id=5]
+[sub_resource type="StyleBoxEmpty" id=6]
 
-[sub_resource type="StyleBoxLine" id=19]
+[sub_resource type="StyleBoxLine" id=7]
 color = Color( 0.411765, 0.411765, 0.407843, 1 )
 thickness = 3
+
+[sub_resource type="StyleBoxFlat" id=8]
+
+[sub_resource type="StyleBoxFlat" id=9]
 
 [sub_resource type="StyleBoxFlat" id=10]
 
@@ -74,12 +78,8 @@ thickness = 3
 
 [sub_resource type="StyleBoxFlat" id=12]
 
-[sub_resource type="StyleBoxFlat" id=13]
-
-[sub_resource type="StyleBoxFlat" id=14]
-
 [node name="SettingsScene" instance=ExtResource( 1 )]
-material = SubResource( 23 )
+material = SubResource( 4 )
 accent_color = Color( 0.517647, 0.517647, 0.517647, 1 )
 icon = ExtResource( 2 )
 screen_title = "settings_screen"
@@ -113,7 +113,7 @@ script = ExtResource( 5 )
 margin_left = 168.0
 margin_right = 956.0
 margin_bottom = 1409.0
-custom_styles/panel = SubResource( 24 )
+custom_styles/panel = SubResource( 5 )
 
 [node name="Settings" type="VBoxContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer" index="1"]
 margin_left = 168.0
@@ -192,7 +192,7 @@ margin_bottom = 832.0
 margin_top = 150.0
 margin_right = 788.0
 margin_bottom = 190.0
-custom_styles/separator = SubResource( 5 )
+custom_styles/separator = SubResource( 6 )
 custom_constants/separation = 40
 
 [node name="SettingsOAuthConnect" type="VBoxContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/Settings" index="3"]
@@ -288,7 +288,7 @@ flat = true
 margin_top = 212.0
 margin_right = 788.0
 margin_bottom = 253.0
-custom_styles/separator = SubResource( 19 )
+custom_styles/separator = SubResource( 7 )
 custom_constants/separation = 41
 
 [node name="SupportLabel" type="RichTextLabel" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/Settings/SettingsOAuthConnect/MarginContainer/VBoxContainer2" index="3"]
@@ -306,7 +306,7 @@ fit_content_height = true
 margin_top = 391.0
 margin_right = 788.0
 margin_bottom = 432.0
-custom_styles/separator = SubResource( 19 )
+custom_styles/separator = SubResource( 7 )
 custom_constants/separation = 41
 
 [node name="MarginContainer" type="MarginContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/Settings/SettingsOAuthConnect/MarginContainer/VBoxContainer2" index="5"]
@@ -320,11 +320,11 @@ custom_constants/margin_bottom = 200
 margin_top = 40.0
 margin_right = 788.0
 margin_bottom = 83.0
-custom_styles/hover = SubResource( 10 )
-custom_styles/pressed = SubResource( 11 )
-custom_styles/focus = SubResource( 12 )
-custom_styles/disabled = SubResource( 13 )
-custom_styles/normal = SubResource( 14 )
+custom_styles/hover = SubResource( 8 )
+custom_styles/pressed = SubResource( 9 )
+custom_styles/focus = SubResource( 10 )
+custom_styles/disabled = SubResource( 11 )
+custom_styles/normal = SubResource( 12 )
 custom_fonts/font = ExtResource( 10 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "Abmelden"

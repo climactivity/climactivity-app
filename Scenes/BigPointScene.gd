@@ -57,7 +57,9 @@ func render_resources():
 	Util.clear(aspect_list)
 	
 #	if aspect_resources.size() == 0: 
-		
+	
+	aspect_resources.sort_custom(self, "custom_sort_aspects" )
+	
 	for aspect in aspect_resources: 
 		var aspect_card = bp_aspect_card.instance()
 		aspect_list.add_child(aspect_card)
@@ -97,3 +99,18 @@ func render_resources():
 	$"ContentContainer/Content/HeaderBG".self_modulate = sector_data["sector_color"]
 	kiko_hint.set_text(sector_data["sector_hint"])
 	$ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/AspectList/Stagger.play_enter()
+
+
+func custom_sort_aspects(a, b): 
+	var a_weight = _get_type_weight(a.type)
+	var b_weight = _get_type_weight(b.type)
+	return a_weight > b_weight
+	
+func _get_type_weight(aspect_type): 
+	match aspect_type:
+		'tree': 
+			return 4
+		'bush':
+			return 2
+		_:
+			return 1
