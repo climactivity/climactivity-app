@@ -43,7 +43,7 @@ func update():
 		else: 
 			selected_label.text = tr("no_longer_tracked")
 			water_tank.set_percent(aspect_tracking_data.get_water_percent_available())
-		if aspect_tracking_data.current_entity == null or aspect_tracking_data.current_entity.is_mature():
+		if aspect_tracking_data.should_place_new_entity():
 			no_current_entity = true
 			water_tank.set_no_current_entity(true)
 			Logger.print("prompt pick tree", self)

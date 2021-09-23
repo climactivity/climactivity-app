@@ -52,6 +52,29 @@ func get_water_for_time_interval_from_now(seconds) -> Resource:
 				break
 		return water
 
+func _get_water_for_time_interval(start, end): 
+	var seconds = end - start
+	if current == null:
+		return null
+	var current_state_since = end - current.time_stamp
+	if seconds <= current_state_since:
+		return current.get_water_from_factor(seconds)
+	else: 
+		var water = null
+		var remaining = seconds
+		var last_time_stamp = end
+		for entry in history: 
+			var applied_time =  last_time_stamp - entry.time_stamp
+			var current_water =  entry.get_water_from_factor(min(applied_time, remaining))
+			remaining -= applied_time
+			if water == null:
+				water = current_water
+			else:
+				water = water + current_water
+			if remaining <= 0: 
+				break
+		return water
+
 func get_next_growth_period(): 
 	var next_entity_count = entity_list.size()
 	
@@ -146,13 +169,38 @@ func get_current_entity():
 	else:
 		if is_instance_valid(Logger): Logger.print("No current active entity for %s:%s" % [aspect, bigpoint], self)
 
-func apply_water(): 
+func should_place_new_entity(): 
+	if _has_legacy_water(): 
+		return false
+	return current_entity == null or current_entity.is_mature()
+
+func apply_water(entity = null): 
+	if entity == null:
+		entity = current_entity
 	var current_water = get_water_available()
-	if current_entity.has_method("consume_water"): 
-		current_entity.consume_water(current_water)
-		_empty_water_tank()
+	if entity.has_method("consume_water"): 
+		var water_period_start = water_tank.last_used if entity.planted_at < water_tank.last_used else entity.planted_at
+		var water_period_end = OS.get_unix_time() if entity == current_entity else entity.matured_at()
+		var entity_water_amount_wanted = _get_water_for_time_interval(water_period_start, water_period_end)
+		var entity_water_amount = water_tank.consume_water_amount(entity_water_amount_wanted)
+		entity.consume_water(entity_water_amount)
 	
 func show_waiting_for_water(): 
-	if current_entity == null: return 
-	if current_entity.has_method("alert_can_water"): 
+	if current_entity != null and current_entity.has_method("alert_can_water"): 
 		current_entity.alert_can_water() 
+	if _has_legacy_water(): 
+		var _work_copy = [] + entity_list # cool array cloning
+		var _legacy_entity = _work_copy.pop_back()
+		while _legacy_entity != null and _legacy_entity.planted_at >= water_tank.last_used:
+			if _legacy_entity.has_method("alert_can_water"):
+				_legacy_entity.alert_can_water()
+			_legacy_entity = _work_copy.pop_back()
+
+
+func _has_legacy_water(): 
+	if current_entity == null: 
+		if entity_list.size() > 0: 
+			return entity_list.back().matured_at() <= water_tank.last_used
+		else:
+			return false
+	return current_entity.planted_at >= water_tank.last_used

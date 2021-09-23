@@ -3,6 +3,7 @@ class_name RWaterTank
 export (String) var for_aspect
 export (float) var max_value = 100.0
 export (float) var current_value
+export (int) var last_used = 0
 
 func add_water(water: float): 
 	Logger.print("Added %2.4f water for %s" % [water, for_aspect], "RWaterTank")
@@ -17,6 +18,7 @@ func to_dict():
 		"for_aspect": for_aspect,
 		"max_value": max_value,
 		"current_value": current_value,
+		"last_used": last_used
 	}
 
 func _to_string():
@@ -25,16 +27,18 @@ func _to_string():
 func initialize(aspect_id,run_time): 
 	for_aspect = aspect_id
 	max_value *= run_time
-
+	last_used = OS.get_unix_time()
+	
 func get_water_amount():
 	return current_value
 
 func consume_water_amount(amount):
-	if (current_value < amount):
-		Logger.error("Could not consume %d of %d" % [amount, current_value], self)
-		return -1
+	last_used = OS.get_unix_time()
+	var old_value = current_value 
 	current_value -= amount
-	return current_value
+	if (old_value < amount):
+		return old_value
+	return amount
 
 func reset(): 
 	current_value = 0.0
