@@ -23,6 +23,8 @@ func _init(data = {}):
 	if dict is Dictionary and dict != {}:
 		from_dict(dict)
 
+func _ready(): 
+	JANK_fix_water_tank_last_used_on_old_saves()
 
 func from_dict(dict): 
 	bigpoint = dict["bigpoint"] if dict.has("bigpoint") else "" # p_bigpoint
@@ -196,6 +198,11 @@ func show_waiting_for_water():
 				_legacy_entity.alert_can_water()
 			_legacy_entity = _work_copy.pop_back()
 
+func JANK_fix_water_tank_last_used_on_old_saves(): 
+	if current_entity != null:
+		if current_entity.water_applied > 0:
+			water_tank.last_used = current_entity.planted_at 
+		
 
 func _has_legacy_water(): 
 	if current_entity == null: 
