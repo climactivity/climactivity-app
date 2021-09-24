@@ -86,5 +86,5 @@ entity_complete_message,"[center]Dein(e) %s ist ausgewachsen
 
 [img=400]%s[/img][/center]",
 entity_complete_unlock,[center] Du hast einen neuen [color=#77B924]Setzling[/color] freigeschaltet[/center],
-entity_complete_close,Setzling auswählen!,
+entity_complete_close,Zum Aspekt!,
 entity_complete_hint_seedling,[center][i] Du kannst deinen [color=#98BC6A]Setzling[/color] auch später im Zelt einsammeln[/i][/center],

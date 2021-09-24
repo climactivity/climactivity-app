@@ -45,4 +45,4 @@ func _on_CloseButton_pressed():
 
 func _open_shop():
 	if aspect != null:
-		GameManager.scene_manager.push_scene("res://Scenes/EntityShopScene.tscn", {"aspect": aspect})
+		GameManager.scene_manager.push_scene("res://Scenes/TrackingSettingScene.tscn", {"aspect": aspect})
