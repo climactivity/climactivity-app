@@ -15,6 +15,13 @@ func add_reward(reward, show = false):
 	if show: emit_signal("reward_added", reward)
 	PSS.flush()
 	emit_signal("xp_bar_update")
+	
+func add_xp(xp):
+	var _reward = reward.from_dict({
+		"xp": xp 
+	}) 
+	add_reward(_reward)
+	
 func DEBUG_default_reward():
 	Logger.print("Generated default reward", self)
 	var r =  reward.new()

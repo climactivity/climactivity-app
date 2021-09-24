@@ -53,7 +53,7 @@ func _get_current_tracking_level():
 		select_button_label.text = tr("tracking_options_button_confirm")
 		selected_option.preselect()
 		selected_option = initial_option
-		select_button.disabled = false
+		select_button.disabled = !AspectTrackingService.has_seedling_available(aspect)
 	else:
 		select_button_label.text = tr("tracking_options_button_save")
 		select_button.disabled = true
@@ -69,6 +69,8 @@ func _show_data():
 	if tracking_data.options == null: 
 		return
 	for option_data in tracking_data.options: 
+		if !option_data.has("waterFactor") or option_data.waterFactor == "0": 
+			continue
 		var new_option_instance = bp_option.instance()
 		new_option_instance.set_checkbox_controller(options_holder)
 		new_option_instance.set_tracking_option_data(option_data)
@@ -82,9 +84,15 @@ func set_option(option):
 		selected_option = initial_option
 	else:
 		selected_option = option
-	select_button_label.text = tr("tracking_options_button_save") if initial_option == null or selected_option != initial_option  else tr("tracking_options_button_confirm")
-	print(option)
-	select_button.disabled = false
+	
+	if initial_option == null or selected_option != initial_option : 
+		select_button_label.text = tr("tracking_options_button_save")
+		select_button.disabled = false
+	else:
+		tr("tracking_options_button_confirm")
+		select_button.disabled = !AspectTrackingService.has_seedling_available(aspect)
+
+
 
 func _on_SaveTrackingOptionButton_pressed():
 	select_button.disabled = true

@@ -6,6 +6,7 @@ onready var footnotes_label = $"ContentContainer/Content/VBoxContainer/MarginCon
 export (Resource) var aspect_data
 
 func _ready():
+	ready = true
 	if (aspect_data == null): return
 	update()
 	yield(get_tree().create_timer(1.0), "timeout")
@@ -30,7 +31,7 @@ func update():
 	set_accent_color(sector["sector_color"])
 	set_header_icon(aspect_data.icon if aspect_data.icon !=null else sector["sector_logo"])
 	set_screen_title(aspect_data["title"])
-	if aspect_data.tracking.has("footnote"): 
+	if aspect_data.tracking.has("footnote") and aspect_data.tracking.footnote != null: 
 		footnotes_container.visible = true
 		footnotes_label.bbcode_text = aspect_data.tracking.footnote
 	else: 

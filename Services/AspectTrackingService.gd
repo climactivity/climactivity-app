@@ -38,14 +38,14 @@ func _process(delta):
 func do_update(): 
 	var now = OS.get_unix_time()
 	var last_update = player_state.last_update
-	var absolute_delta = OS.get_unix_time() - player_state.last_update
+	var absolute_delta = now - player_state.last_update
 	# handle initialization of player state when no updates have happended yet 
 	var levels = player_state.tracking_states
 	# break if no aspects are tracked or the app is started for the first time
 	if player_state.last_update == 0 or levels.size() == 0: 
 		# just set the current time when the app is first started
 		# there cannot be anything to track yet
-		player_state.last_update = OS.get_unix_time()
+		player_state.last_update = now
 		Logger.print("Aspect tracking initialized at %s!" % Util.date_as_RFC1123(OS.get_datetime_from_unix_time(now)), self)
 		_flush()
 		return
@@ -69,10 +69,23 @@ func do_update():
 			tracking_state.water_tank = bp_r_water_tank.new()
 			tracking_state.water_tank.initialize(aspect_id, tracking_state.run_time)
 			#tracking_state.water_tank.add_water(100.0)
-		var water = tracking_state.get_water_for_time_interval_from_now(absolute_delta)
 		
-		if water != null: 
-			tracking_state.water_tank.add_water(water)
+		if tracking_state.current_entity != null and tracking_state.current_entity.planted_at != 0: 
+			var _current_entity = tracking_state.current_entity
+			var interval = absolute_delta
+			var lower_bound = max(_current_entity.planted_at, last_update)
+			var upper_bound = min(_current_entity.matured_at(), now)
+			var water = 0.0
+			if upper_bound > lower_bound:
+				water = tracking_state.get_water_for_time_interval(lower_bound, upper_bound)
+			if tracking_state.should_generate_water(): 
+				tracking_state.water_tank.add_water(water)
+#			if _current_entity.is_mature(): # if the entity reached the end of its tracking interval in the last update period generate water for the time before 
+#				water = tracking_state.get_water_for_time_interval( last_update, _current_entity.matured_at())
+#			else: # get water for the whole update period
+#				 water = tracking_state.get_water_for_time_interval_from_now(absolute_delta)
+#
+
 		# add update to stats
 #		tracking_update.add_reward(aspect_id, reward)
 #		total_reward.merge(reward)
@@ -205,7 +218,8 @@ func get_tracking_state(aspect):
 func has_seedling_available(aspect):
 	var current_state = get_tracking_state(aspect)
 	if current_state != null: 
-		return current_state.new_seedling_available
+		if current_state.should_place_new_entity():
+			return current_state.new_seedling_available
 	else: 
 		return false
 

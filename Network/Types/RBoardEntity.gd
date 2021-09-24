@@ -36,7 +36,6 @@ func make_new(template, new_entity_id, new_aspect_id, initial_stage = 0, new_gro
 	base_water_required = 12
 	water_required = base_water_required * (new_growth_period / Util.DAY)
 	just_planted = true
-	last_watered = planted_at
 	_calculate_offset()
 
 func last_sync():
@@ -55,7 +54,10 @@ func consume_water(amount: float):
 	current_water = amount
 	last_watered = OS.get_unix_time()
 	emit_signal("getting_watered", old_water, water_applied)
+	RewardService.add_xp(amount)
 	Logger.print( "Added %2.4f water to %s" % [amount, entity_id], self)
+
+
 
 func alert_can_water(): 
 	if node == null: return

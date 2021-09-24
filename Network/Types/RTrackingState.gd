@@ -32,9 +32,9 @@ func from_dict(dict):
 	run_time = dict["run_time"] if dict.has("run_time") else 0 # p_bigpoint
 	new_seedling_available = dict["new_seedling_available"] if dict.has("new_seedling_available") else false # p_bigpoint
 
-func get_water_for_time_interval_from_now(seconds) -> Resource:
+func get_water_for_time_interval_from_now(seconds) -> float:
 	if current == null:
-		return null
+		return 0.0
 	var current_state_since = OS.get_unix_time() - current.time_stamp
 	if seconds <= current_state_since:	
 		return current.get_water_from_factor(seconds)
@@ -54,7 +54,7 @@ func get_water_for_time_interval_from_now(seconds) -> Resource:
 				break
 		return water
 
-func _get_water_for_time_interval(start, end): 
+func get_water_for_time_interval(start, end): 
 	var seconds = end - start
 	if current == null:
 		return null
@@ -172,31 +172,45 @@ func get_current_entity():
 		if is_instance_valid(Logger): Logger.print("No current active entity for %s:%s" % [aspect, bigpoint], self)
 
 func should_place_new_entity(): 
-	if _has_legacy_water(): 
-		return false
-	return current_entity == null or current_entity.is_mature()
+	if current_entity == null:
+		return true # no entity has been placed for the aspect
+	if water_tank.get_water_amount() > 0.0:
+		return false # water remains for current entity
+#	if _has_legacy_water(): 
+#		return false
+	return current_entity.is_mature()
+
+func should_generate_water(): 
+	return !should_place_new_entity() or current_entity.planted_at != 0  # start generating water when entity is placed
 
 func apply_water(entity = null): 
 	if entity == null:
 		entity = current_entity
 	var current_water = get_water_available()
 	if entity.has_method("consume_water"): 
+#		entity.consume_water(current_water)
+#		water_tank.reset()
+		
+#
 		var water_period_start = water_tank.last_used if entity.planted_at < water_tank.last_used else entity.planted_at
 		var water_period_end = OS.get_unix_time() if entity == current_entity else entity.matured_at()
-		var entity_water_amount_wanted = _get_water_for_time_interval(water_period_start, water_period_end)
+		var entity_water_amount_wanted = get_water_for_time_interval(water_period_start, water_period_end)
 		var entity_water_amount = water_tank.consume_water_amount(entity_water_amount_wanted)
 		entity.consume_water(entity_water_amount)
 	
 func show_waiting_for_water(): 
-	if current_entity != null and current_entity.has_method("alert_can_water"): 
-		current_entity.alert_can_water() 
+	
 	if _has_legacy_water(): 
 		var _work_copy = [] + entity_list # cool array cloning
 		var _legacy_entity = _work_copy.pop_back()
-		while _legacy_entity != null and _legacy_entity.planted_at >= water_tank.last_used:
-			if _legacy_entity.has_method("alert_can_water"):
-				_legacy_entity.alert_can_water()
-			_legacy_entity = _work_copy.pop_back()
+		_legacy_entity.alert_can_water()
+	elif current_entity != null and current_entity.has_method("alert_can_water"): 
+		current_entity.alert_can_water() 
+
+#		while _legacy_entity != null and _legacy_entity.planted_at >= water_tank.last_used:
+#			if _legacy_entity.has_method("alert_can_water"):
+#				_legacy_entity.alert_can_water()
+#			_legacy_entity = _work_copy.pop_back()
 
 func JANK_fix_water_tank_last_used_on_old_saves(): 
 	if current_entity != null:
