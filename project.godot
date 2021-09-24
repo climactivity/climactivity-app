@@ -155,7 +155,7 @@ _global_script_classes=[ {
 "path": "res://Scenes/QuizScene.gd"
 }, {
 "base": "Resource",
-"class": "RBoardEntityx",
+"class": "RBoardEntity",
 "language": "GDScript",
 "path": "res://Network/Types/RBoardEntity.gd"
 }, {
@@ -294,7 +294,7 @@ _global_script_class_icons={
 "ProgressCapsule": "",
 "QuestCard": "",
 "QuizScene": "",
-"RBoardEntityx": "",
+"RBoardEntity": "",
 "RInfoByte": "",
 "RInfoGraphEntry": "",
 "RInventory": "",
@@ -466,4 +466,3 @@ vram_compression/import_pvrtc=true
 quality/filters/anisotropic_filter_level=16
 gles2/compatibility/disable_half_float=true
 environment/default_clear_color=Color( 0.898039, 0.898039, 0.898039, 1 )
-environment/default_environment="res://default_env.tres"

@@ -40,6 +40,8 @@ func get_details_widget():
 #	details_widget.show_entity()
 	return details_widget
 
+var current_texture
+
 func update_view(animate = false):
 	if( template_resource == null || instance_resource == null || bill_board == null): return
 	var texture_key = int(instance_resource.stage)
@@ -47,7 +49,7 @@ func update_view(animate = false):
 	widget.set_instance(instance_resource)
 	var old_texture = bill_board.texture
 	var old_size = bill_board._unit_factor
-	var current_texture
+	current_texture = null
 	var current_size
 	if template_resource.texture_data.has(texture_key): 
 		current_texture = template_resource.texture_data.get(texture_key)
@@ -164,7 +166,18 @@ func _update_stage():
 		if tracking_level.reward != null: 
 			RewardService.add_reward(tracking_level.reward)
 	_flush()
-	
+	if instance_resource.is_mature(): 
+		yield(get_tree().create_timer(1.0), "timeout")
+		_show_entity_finished_message()
+
+
+var entity_complete_popup = preload("res://UI/EntityCompletePopup.tscn")
+
+func _show_entity_finished_message(): 
+	var _popup_inst = entity_complete_popup.instance()
+	_popup_inst.set_entity(instance_resource, bill_board.texture)
+	GameManager.overlay._show_popup(_popup_inst)
+
 func DEBUG_add_stage(): 
 	if instance_resource.stage >= 4:
 			return

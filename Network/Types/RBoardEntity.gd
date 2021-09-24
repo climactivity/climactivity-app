@@ -1,5 +1,5 @@
 extends Resource
-class_name RBoardEntityx
+class_name RBoardEntity
 signal getting_watered(from, to)
 
 var node = null

@@ -1,0 +1,397 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://UI/typography/UI_big.tres" type="DynamicFont" id=1]
+[ext_resource path="res://UI/EntityCompletePopup.gd" type="Script" id=2]
+[ext_resource path="res://UI/typography/UI_bigger.tres" type="DynamicFont" id=3]
+[ext_resource path="res://Assets/Theme/collect_button_9p_hover.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Theme/collect_button_9p_down.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Theme/collect_button_9p_disabled.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Theme/collect_button_9p_normal.png" type="Texture" id=7]
+[ext_resource path="res://UI/Components/TranslatedRichTextLabel.gd" type="Script" id=8]
+[ext_resource path="res://Assets/Icons/coins-stack.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Theme/importance_star.png" type="Texture" id=10]
+[ext_resource path="res://UI/typography/italic_light.tres" type="DynamicFont" id=11]
+
+[sub_resource type="StyleBoxFlat" id=1]
+content_margin_left = 64.0
+content_margin_right = 64.0
+content_margin_top = 64.0
+content_margin_bottom = 64.0
+bg_color = Color( 1, 1, 1, 1 )
+corner_radius_top_left = 64
+corner_radius_top_right = 64
+corner_radius_bottom_right = 64
+corner_radius_bottom_left = 64
+shadow_color = Color( 0, 0, 0, 0.0980392 )
+shadow_size = 16
+shadow_offset = Vector2( 0, 8 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "Huehuehue"
+length = 4.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.2, 2, 2.9, 4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0.337255, 1, 0, 1 ), Color( 1, 0.843137, 0, 1 ), Color( 0.545098, 1, 0, 1 ), Color( 0.945098, 1, 0, 1 ), Color( 0.337255, 1, 0, 1 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "Enter"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("PanelContainer/EdgeParticles/CPUParticles2D:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 2.2, 2.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("PanelContainer/EdgeParticles/CPUParticles2D2:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 2.2, 2.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("PanelContainer:anchor_top")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 2.2 ),
+"transitions": PoolRealArray( 1, 0.63728 ),
+"update": 0,
+"values": [ 0.716, 0.5 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("PanelContainer:anchor_bottom")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 2.2 ),
+"transitions": PoolRealArray( 1, 0.63728 ),
+"update": 0,
+"values": [ 0.716, 0.5 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("CPUParticles2D3:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = false
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("CPUParticles2D4:emitting")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = false
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("PanelContainer:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.6, 2.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "Leave"
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.8, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "_open_shop"
+}, {
+"args": [  ],
+"method": "queue_free"
+} ]
+}
+
+[node name="EntityCompletePopup" type="Control"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -540.0
+margin_top = -960.0
+margin_right = 540.0
+margin_bottom = 960.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -496.0
+margin_top = -742.5
+margin_right = 496.0
+margin_bottom = 742.5
+size_flags_vertical = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EdgeParticles" type="Node2D" parent="PanelContainer"]
+position = Vector2( 496.636, 36.5 )
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="PanelContainer/EdgeParticles"]
+emitting = false
+amount = 30
+one_shot = true
+explosiveness = 0.32
+texture = ExtResource( 10 )
+emission_shape = 4
+emission_points = PoolVector2Array( 300, -74, -300, -47, 0, -74 )
+emission_normals = PoolVector2Array( 1, -1, -1, -1, 0, -1 )
+emission_colors = PoolColorArray(  )
+spread = 60.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 375.0
+initial_velocity_random = 0.78
+scale_amount = 0.74
+scale_amount_random = 0.49
+color = Color( 0.4, 1, 0.12549, 1 )
+
+[node name="CPUParticles2D2" type="CPUParticles2D" parent="PanelContainer/EdgeParticles"]
+position = Vector2( -8, 1410 )
+rotation = -3.14159
+emitting = false
+amount = 30
+one_shot = true
+explosiveness = 0.32
+texture = ExtResource( 10 )
+emission_shape = 4
+emission_points = PoolVector2Array( 300, -74, -300, -47, 0, -74 )
+emission_normals = PoolVector2Array( 1, -1, -1, -1, 0, -1 )
+emission_colors = PoolColorArray(  )
+spread = 60.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 375.0
+initial_velocity_random = 0.78
+scale_amount = 0.74
+scale_amount_random = 0.49
+color = Color( 0.4, 1, 0.12549, 1 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+margin_left = 64.0
+margin_top = 64.0
+margin_right = 928.0
+margin_bottom = 1421.0
+grow_horizontal = 0
+grow_vertical = 2
+custom_constants/separation = 32
+alignment = 1
+
+[node name="Heading" type="RichTextLabel" parent="PanelContainer/VBoxContainer"]
+margin_top = 80.0
+margin_right = 864.0
+margin_bottom = 157.0
+custom_fonts/normal_font = ExtResource( 1 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+bbcode_enabled = true
+bbcode_text = "[center]Glückwunsch[/center]"
+text = "Glückwunsch"
+fit_content_height = true
+script = ExtResource( 8 )
+translation_key = "entity_complete_heading"
+
+[node name="ContentText" type="RichTextLabel" parent="PanelContainer/VBoxContainer"]
+margin_top = 189.0
+margin_right = 864.0
+margin_bottom = 648.0
+custom_fonts/normal_font = ExtResource( 3 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+bbcode_enabled = true
+bbcode_text = "[center]Dein Baum %s ist ausgewachsen
+
+[img=400]res://Assets/sketch/baum/Apfelbaum/apfelbaum_03.png[/img][/center]"
+text = "Dein Baum %s ist ausgewachsen
+
+"
+fit_content_height = true
+
+[node name="UnlockText" type="RichTextLabel" parent="PanelContainer/VBoxContainer"]
+margin_top = 680.0
+margin_right = 864.0
+margin_bottom = 814.0
+custom_fonts/normal_font = ExtResource( 3 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+bbcode_enabled = true
+bbcode_text = "[center] Du hast einen neuen [color=#77B924]Setzling[/color] freigeschaltet[/center]"
+text = " Du hast einen neuen Setzling freigeschaltet"
+fit_content_height = true
+override_selected_font_color = true
+
+[node name="CoinsContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+margin_top = 846.0
+margin_right = 864.0
+margin_bottom = 912.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="coins_label" type="Label" parent="PanelContainer/VBoxContainer/CoinsContainer"]
+margin_left = 339.0
+margin_right = 464.0
+margin_bottom = 66.0
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "+500 "
+valign = 1
+
+[node name="coins_icon_holder" type="MarginContainer" parent="PanelContainer/VBoxContainer/CoinsContainer"]
+margin_left = 468.0
+margin_right = 524.0
+margin_bottom = 66.0
+rect_min_size = Vector2( 56, 56 )
+
+[node name="coins_icon" type="TextureRect" parent="PanelContainer/VBoxContainer/CoinsContainer/coins_icon_holder"]
+margin_right = 56.0
+margin_bottom = 66.0
+texture = ExtResource( 9 )
+expand = true
+stretch_mode = 6
+
+[node name="CloseButton" type="TextureButton" parent="PanelContainer/VBoxContainer"]
+modulate = Color( 0.937255, 0.937255, 0.937255, 1 )
+self_modulate = Color( 0.566607, 0.945715, 0, 1 )
+margin_top = 944.0
+margin_right = 864.0
+margin_bottom = 1133.18
+rect_min_size = Vector2( 0, 189.178 )
+texture_normal = ExtResource( 7 )
+texture_pressed = ExtResource( 5 )
+texture_hover = ExtResource( 4 )
+texture_disabled = ExtResource( 6 )
+expand = true
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/CloseButton"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = ExtResource( 3 )
+text = "entity_complete_close"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PanelContainer/VBoxContainer/CloseButton"]
+autoplay = "Huehuehue"
+anims/Huehuehue = SubResource( 2 )
+
+[node name="hint" type="RichTextLabel" parent="PanelContainer/VBoxContainer"]
+margin_top = 1165.0
+margin_right = 864.0
+margin_bottom = 1276.0
+custom_fonts/italics_font = ExtResource( 11 )
+custom_fonts/normal_font = ExtResource( 3 )
+custom_colors/default_color = Color( 0.717647, 0.717647, 0.717647, 1 )
+bbcode_enabled = true
+bbcode_text = "[center][i] Du kannst deinen [color=#98BC6A]Setzling[/color] auch später im Zelt einsammeln[/i][/center]"
+text = " Du kannst deinen Setzling auch später im Zelt einsammeln"
+fit_content_height = true
+override_selected_font_color = true
+script = ExtResource( 8 )
+translation_key = "entity_complete_hint_seedling"
+
+[node name="CPUParticles2D3" type="CPUParticles2D" parent="."]
+visible = false
+position = Vector2( -1.63635, 1939.16 )
+emitting = false
+amount = 60
+lifetime = 2.0
+one_shot = true
+explosiveness = 0.32
+randomness = 0.15
+lifetime_randomness = 0.54
+texture = ExtResource( 10 )
+direction = Vector2( 0.2, -1 )
+spread = 7.5
+gravity = Vector2( 0, 1200 )
+initial_velocity = 2000.0
+initial_velocity_random = 0.07
+scale_amount = 0.74
+scale_amount_random = 0.49
+color = Color( 0.662745, 1, 0.505882, 1 )
+hue_variation = 1.0
+hue_variation_random = 1.0
+
+[node name="CPUParticles2D4" type="CPUParticles2D" parent="."]
+visible = false
+position = Vector2( 1071.35, 1942.52 )
+emitting = false
+amount = 60
+lifetime = 2.0
+one_shot = true
+explosiveness = 0.32
+randomness = 0.15
+lifetime_randomness = 0.54
+texture = ExtResource( 10 )
+direction = Vector2( -0.2, -1 )
+spread = 7.5
+gravity = Vector2( 0, 1200 )
+initial_velocity = 2000.0
+initial_velocity_random = 0.07
+scale_amount = 0.74
+scale_amount_random = 0.49
+color = Color( 0.662745, 1, 0.505882, 1 )
+hue_variation = 1.0
+hue_variation_random = 1.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Enter = SubResource( 3 )
+anims/Leave = SubResource( 4 )
+
+[connection signal="pressed" from="PanelContainer/VBoxContainer/CloseButton" to="." method="_on_CloseButton_pressed"]
