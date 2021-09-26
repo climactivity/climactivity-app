@@ -13,6 +13,7 @@ func _ready():
 	$Camera/HUD/SeedlingBox.connect("placed", $ForestFloor/HexGrid, "place_entity")
 	if is_instance_valid(AspectTrackingService): connect("update_hud", AspectTrackingService, "notify_watered_aspects")
 	$ForestFloor/HexGrid.connect("placed_entity", $Camera/HUD, "update_hud")
+	$Background/Backdrop.texture = $Viewport.get_texture()
 	enter_game()
 #	GameManager.overlay.hide_available_tutorial()
 func _input(event):

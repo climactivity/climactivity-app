@@ -46,6 +46,9 @@ var levelup_popup = preload("res://UI/LevelUpPopup.tscn")
 func _show_levelup_popup(new_level, old_level):
 	var _lu_popup_inst = levelup_popup.instance()
 	_lu_popup_inst.set_level_up_to(new_level)
+	if GameManager.overlay == null:
+		printerr("GameManager not ready!")
+		return
 	GameManager.overlay._show_popup(_lu_popup_inst)
 	
 func pay_coins(amount): 

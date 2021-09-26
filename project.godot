@@ -327,7 +327,7 @@ boot_splash/fullsize=false
 boot_splash/bg_color=Color( 1, 1, 1, 1 )
 config/icon="res://Assets/BG/cyIcon.png"
 config/quit_on_go_back=false
-config/version="1.52rc3"
+config/version="1.55rc4"
 
 [autoload]
 

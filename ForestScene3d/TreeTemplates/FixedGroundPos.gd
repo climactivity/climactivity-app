@@ -6,13 +6,14 @@ export (float) var scaling_factor = 1.0 setget apply_scaling_factor
 
 export (Vector2) var tex_size_override_if_zero = Vector2(512,512)
 var _unit_factor_base
-onready var ui_panel = $UI_Alert_Can_Water
+var ui_panel 
 var ui_initial_transform 
 var tex_size = Vector2(0.0,0)
 
 func _ready():
 	_unit_factor_base = _unit_factor
 	_offset_and_scale()
+	ui_panel = get_node_or_null("UI_Alert_Can_Water")
 	if ui_panel == null: return
 	ui_initial_transform = ui_panel.transform
 	if GameManager != null and GameManager.camera != null: 

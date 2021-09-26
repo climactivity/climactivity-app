@@ -58,8 +58,9 @@ func _make_dirs():
 	for d in dirs:
 		dir.make_dir_recursive("%s://Network/Cache/%s" % [fs,d])
 
-func _make_manifest(): 
-	fixed_cache_manifest = load("user://Network/Cache/fmanifest.tres")
+func _make_manifest():
+	if (res_writable): 
+		fixed_cache_manifest = load("user://Network/Cache/fmanifest.tres")
 	dynamic_cache_manifest = load("user://Network/Cache/manifest.tres")
 	if(dynamic_cache_manifest == null): 
 		dynamic_cache_manifest = bp_cache_manifest.new()

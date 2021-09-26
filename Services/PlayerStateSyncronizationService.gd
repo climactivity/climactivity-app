@@ -5,13 +5,20 @@ var bp_r_tracking_states = preload("res://Network/Types/RTrackingStates.gd")
 var player_state_path = "user://AspectTracking"
 var player_state_format = ".tres"
 var player_state_qualifyed_path = "%s%s" % [player_state_path, player_state_format]
-var player_state = load(player_state_qualifyed_path)
+var player_state = null
 
 var flush_on = [NOTIFICATION_APP_PAUSED]
 
 func _init(): 
-	if player_state == null: 
-		init_player_state()
+	var check_file = File.new()
+	if check_file.file_exists(player_state_qualifyed_path):
+		
+		player_state = ResourceLoader.load(player_state_qualifyed_path)
+		if player_state == null: 
+			init_player_state()
+	else: 
+		init_player_state() 
+
 
 func flush():
 	ResourceSaver.save(player_state_qualifyed_path, player_state)
