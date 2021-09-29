@@ -147,6 +147,7 @@
 				English,
 				en,
 				Base,
+				de,
 			);
 			mainGroup = D0BCFE2B18AEBDA2004A7AAE;
 			productRefGroup = D0BCFE3518AEBDA2004A7AAE /* Products */;
@@ -285,7 +286,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
-				CURRENT_PROJECT_VERSION = 1.48;
+				CURRENT_PROJECT_VERSION = 1.56;
 				DEVELOPMENT_TEAM = BGH588JJJP;
 				INFOPLIST_FILE = "climactivity-app/climactivity-app-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -294,7 +295,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/**",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = de.climactivity.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -313,7 +314,7 @@
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
-				CURRENT_PROJECT_VERSION = 1.48;
+				CURRENT_PROJECT_VERSION = 1.56;
 				DEVELOPMENT_TEAM = BGH588JJJP;
 				INFOPLIST_FILE = "climactivity-app/climactivity-app-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -322,7 +323,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/**",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = de.climactivity.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
