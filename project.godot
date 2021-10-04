@@ -160,7 +160,7 @@ _global_script_classes=[ {
 "path": "res://Scenes/QuizScene.gd"
 }, {
 "base": "Resource",
-"class": "RBoardEntity",
+"class": "RBoardEntityx",
 "language": "GDScript",
 "path": "res://Network/Types/RBoardEntity.gd"
 }, {
@@ -300,7 +300,7 @@ _global_script_class_icons={
 "ProgressCapsule": "",
 "QuestCard": "",
 "QuizScene": "",
-"RBoardEntity": "",
+"RBoardEntityx": "",
 "RInfoByte": "",
 "RInfoGraphEntry": "",
 "RInventory": "",
