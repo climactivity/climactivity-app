@@ -16,8 +16,16 @@ const DEFAULTS = {
 		"TrackingCompletionWeight": 1.0,
 		"QuestCompletionWeight": 0.0,
 		"TrackingTypeWeight": 1.0
+	},
+	"events": {
+		"key": "",
+		"relevant": {
+			
+		}
 	}
 }
+
+signal remote_conifg_loaded
 
 var config
 var loaded = false
@@ -42,6 +50,7 @@ func _ready():
 				config.set_value(section, key, keys[key])
 	config.save(FILE_PATH)
 	loaded = true
+	emit_signal("remote_conifg_loaded")
 #	for section in config.get_sections(): 
 #		for key in config.get_section_keys(section):
 #			config.get_value(section, key, DEFAULTS[section][key] if DEFAULTS.has(section) and DEFAULTS[section].has(key) else null)

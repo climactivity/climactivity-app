@@ -2,8 +2,7 @@
 
 [ext_resource path="res://UI/typography/UI_Regular.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Assets/Icons/OpenExternal.png" type="Texture" id=2]
-[ext_resource path="res://UI/Components/NotificationCard.gd" type="Script" id=3]
-[ext_resource path="res://UI/Components/NotificationCard.stylebox" type="StyleBox" id=4]
+[ext_resource path="res://UI/Components/EventCard.gd" type="Script" id=3]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
@@ -35,7 +34,17 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[node name="Notification" type="PanelContainer"]
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.0980392, 0.298039, 0.647059, 1 )
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+shadow_color = Color( 0, 0, 0, 0.235294 )
+shadow_size = 12
+shadow_offset = Vector2( 0, 12 )
+
+[node name="Event" type="PanelContainer"]
 margin_top = 487.0
 margin_right = 1080.0
 margin_bottom = 655.0
@@ -50,13 +59,13 @@ anims/Dismiss = SubResource( 2 )
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 margin_right = 1080.0
-margin_bottom = 168.0
+margin_bottom = 196.0
 mouse_filter = 2
-custom_styles/panel = ExtResource( 4 )
+custom_styles/panel = SubResource( 3 )
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
 margin_right = 1080.0
-margin_bottom = 168.0
+margin_bottom = 196.0
 mouse_filter = 2
 custom_constants/margin_right = 32
 custom_constants/margin_top = 32
@@ -67,22 +76,24 @@ custom_constants/margin_bottom = 32
 margin_left = 32.0
 margin_top = 32.0
 margin_right = 1048.0
-margin_bottom = 136.0
+margin_bottom = 164.0
 mouse_filter = 2
 
 [node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/MarginContainer/HBoxContainer"]
-margin_right = 932.0
-margin_bottom = 104.0
-mouse_filter = 2
+margin_right = 1016.0
+margin_bottom = 132.0
 size_flags_horizontal = 3
 custom_fonts/normal_font = ExtResource( 1 )
-custom_colors/default_color = Color( 0.411765, 0.411765, 0.407843, 1 )
+custom_colors/default_color = Color( 1, 1, 1, 1 )
 bbcode_enabled = true
-bbcode_text = "Admin hat ihnen eine Nachricht geschrieben"
-text = "Admin hat ihnen eine Nachricht geschrieben"
+bbcode_text = "Am 07.10 findet Climactivity Abend, finde einen Veranstaltungsort in deiner nähe unter [color=#cad9f3] [url=https://www.facebook.com/events/822782368339249/]Facebook? [/url][/color]oder  [color=#cad9f3][url=https://www.youtube.com/watch?v=j4G_BGugAsk]sieh bequem von zu Hause aus zu[/url][/color]
+"
+text = "Am 07.10 findet Climactivity Abend, finde einen Veranstaltungsort in deiner nähe unter  Facebook? oder  sieh bequem von zu Hause aus zu
+"
 fit_content_height = true
 
 [node name="ActionButton" type="TextureButton" parent="PanelContainer/MarginContainer/HBoxContainer"]
+visible = false
 modulate = Color( 0.411765, 0.411765, 0.407843, 1 )
 margin_left = 936.0
 margin_right = 1016.0
@@ -91,6 +102,7 @@ rect_min_size = Vector2( 80, 0 )
 size_flags_horizontal = 4
 size_flags_vertical = 5
 size_flags_stretch_ratio = 0.3
+disabled = true
 texture_normal = ExtResource( 2 )
 expand = true
 stretch_mode = 5
@@ -98,4 +110,6 @@ stretch_mode = 5
 [node name="Tween" type="Tween" parent="."]
 
 [connection signal="gui_input" from="." to="." method="_on_Notification_gui_input"]
+[connection signal="gui_input" from="PanelContainer/MarginContainer/HBoxContainer/RichTextLabel" to="." method="_on_RichTextLabel_gui_input"]
+[connection signal="meta_clicked" from="PanelContainer/MarginContainer/HBoxContainer/RichTextLabel" to="." method="_on_RichTextLabel_meta_clicked"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/HBoxContainer/ActionButton" to="." method="_on_ActionButton_pressed"]
