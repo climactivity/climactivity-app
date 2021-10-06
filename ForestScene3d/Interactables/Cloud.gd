@@ -154,7 +154,6 @@ func _watering(other: Spatial):
 	#  get_viewport().get_canvas_transform().affine_inverse().xform($CloudSprite.get_position())   
 	var start_position = rect_position
 	var target_position =  GameManager.camera.unproject_position(other.get_global_transform().origin)
-	self.get_global_mouse_position()
 	var _target_position =   target_position + Vector2(0, -400.0)
 	print( start_position,", initial: " , $CloudSprite.position ,  ", other: ", other.get_global_transform().origin, ", unprojected: ",target_position, ", fixed:", _target_position)
 	var duration = .5

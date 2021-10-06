@@ -160,7 +160,7 @@ _global_script_classes=[ {
 "path": "res://Scenes/QuizScene.gd"
 }, {
 "base": "Resource",
-"class": "RBoardEntityx",
+"class": "RBoardEntity",
 "language": "GDScript",
 "path": "res://Network/Types/RBoardEntity.gd"
 }, {
@@ -300,7 +300,7 @@ _global_script_class_icons={
 "ProgressCapsule": "",
 "QuestCard": "",
 "QuizScene": "",
-"RBoardEntityx": "",
+"RBoardEntity": "",
 "RInfoByte": "",
 "RInfoGraphEntry": "",
 "RInventory": "",
@@ -333,7 +333,7 @@ boot_splash/fullsize=false
 boot_splash/bg_color=Color( 1, 1, 1, 1 )
 config/icon="res://Assets/BG/cyIcon.png"
 config/quit_on_go_back=false
-config/version="1.55rc4"
+config/version="1.57"
 
 [autoload]
 

@@ -1,4 +1,8 @@
 extends Spatial
+
+signal will_update_stage
+signal updated_stage
+
 export (PackedScene) var _details_widget 
 var details_widget setget , get_details_widget
 export var offset_scale = .2
@@ -81,6 +85,7 @@ func _animate_update(new_texture, new_size, old_texture, old_size):
 	anim.track_set_key_value(track, 0, old_size)
 	anim.track_set_key_value(track, 1, new_size)
 	$AnimationPlayer.queue("stage_inc")
+
 	
 func get_state(): 
 	return instance_resource
@@ -121,12 +126,17 @@ func _hide_water_ui():
 	var widget = ui_water_progress.get_widget_instance()
 	widget.hide() 
 
+func _will_update():
+	return instance_resource.water_applied > instance_resource.water_required
+
 func add_water(water): 
 	if getting_watered: return
 	var widget = ui_water_progress.get_widget_instance()
 	widget.add_water(AspectTrackingService.water_used(instance_resource.aspect_id))
 	getting_watered = true
 	$AnimationPlayer.play("show_water_progress")
+	if _will_update(): 
+		emit_signal("will_update_stage")
 	_add_water(null,1.0) # instance_resource.current_water/48.0)
 
 func _add_water( anim ,timeout): 
@@ -144,12 +154,17 @@ func _after_water():
 	_flush()
 	can_water = false
 	$AnimationPlayer.queue("hide_water_progress")
-	if instance_resource.water_applied > instance_resource.water_required: 
-		instance_resource.water_applied -= instance_resource.water_applied
+	# TODO fix this
+#	var should_update_stage = instance_resource.water_applied > instance_resource.water_required
+	while instance_resource.water_applied > instance_resource.water_required:
+		instance_resource.water_applied -= instance_resource.water_required
 		if instance_resource.stage >= 4:
-			return
-		instance_resource.stage += 1 
+			break
+		instance_resource.stage += 1
 		_update_stage()
+		yield(get_tree().create_timer(1.0), "timeout")
+#	if should_update_stage: 
+#		_update_stage()
 
 func _update_stage(): 
 	Logger.print("Current stage %s" % str(instance_resource.stage), self)
@@ -166,6 +181,7 @@ func _update_stage():
 		if tracking_level.reward != null: 
 			RewardService.add_reward(tracking_level.reward)
 	_flush()
+	emit_signal("updated_stage")
 	if instance_resource.is_mature(): 
 		yield(get_tree().create_timer(1.0), "timeout")
 		_show_entity_finished_message()

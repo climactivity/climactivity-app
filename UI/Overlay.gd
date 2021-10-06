@@ -13,6 +13,8 @@ func _ready():
 	$MainMenu.connect("hide_menu", self, "_tutorial_button_avoid_menu", [false])
 	$TextureButton/kiko.rect_position.y -= OS.get_window_safe_area().position.y/2
 func _show_popup(control):
+	if $Popup.has_popup():
+		return
 	anim_player.play("ShowPopupLayer")
 	$Popup.add_child(control)
 	emit_signal("popup_show")
