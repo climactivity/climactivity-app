@@ -2,7 +2,8 @@ extends Spatial
 
 signal will_update_stage
 signal updated_stage
-
+signal wants_popup(entity)
+signal has_popup(entity)
 export (PackedScene) var _details_widget 
 var details_widget setget , get_details_widget
 export var offset_scale = .2
@@ -39,7 +40,11 @@ func _ready():
 	details_widget.set_entity(self)
 	details_widget.connect("DEBUG_add_stage", self, "DEBUG_add_stage")
 	details_widget.connect("DEBUG_sub_stage", self, "DEBUG_sub_stage")
-
+	if GameManager.cloud:
+		self.connect("wants_popup", GameManager.cloud, "lock_target")
+		self.connect("has_popup", GameManager.cloud, "unlock_target")
+	else: 
+		printerr("cloud not found")
 func get_details_widget(): 
 #	details_widget.show_entity()
 	return details_widget
@@ -136,8 +141,13 @@ func _hide_water_ui():
 func _will_update():
 	return instance_resource.water_applied > instance_resource.water_required
 
+var wants_popup = false
+
 func add_water(water): 
 	if getting_watered: return
+	if instance_resource.is_mature(): 
+		emit_signal("wants_popup", self)
+		wants_popup = true
 	var widget = ui_water_progress.get_widget_instance()
 	widget.add_water(AspectTrackingService.water_used(instance_resource.aspect_id))
 	getting_watered = true
@@ -196,6 +206,7 @@ func _show_entity_finished_message():
 	var _popup_inst = entity_complete_popup.instance()
 	_popup_inst.set_entity(instance_resource, bill_board.texture)
 	GameManager.overlay._show_popup(_popup_inst)
+	emit_signal("has_popup", self)
 
 func DEBUG_add_stage(): 
 	if instance_resource.stage >= 4:
@@ -209,11 +220,11 @@ func DEBUG_sub_stage():
 	instance_resource.stage -= 1 
 	_update_stage()
 
-	
 func _planted(): 
 	$AnimationPlayer.play("planted")
 	instance_resource.just_planted = false
 	_flush()
+	
 func alert_has_water_avaialble():
 	pass
 

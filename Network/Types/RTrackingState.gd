@@ -175,7 +175,7 @@ func should_place_new_entity():
 	if current_entity == null:
 		return true # no entity has been placed for the aspect
 	if water_tank.get_water_amount() > 0.0:
-		return false # water remains for current entity
+		return current_entity.last_watered >= current_entity.matured_at() # water remains for current entity
 #	if _has_legacy_water(): 
 #		return false
 	return current_entity.is_mature()
@@ -194,11 +194,11 @@ func apply_water(entity = null):
 #
 		var water_period_start = water_tank.last_used if entity.planted_at < water_tank.last_used else entity.planted_at
 		var water_period_end = OS.get_unix_time() if entity == current_entity else entity.matured_at()
-		# var entity_water_amount_wanted = get_water_for_time_interval(water_period_start, water_period_end)
-		# var entity_water_amount = water_tank.consume_water_amount(entity_water_amount_wanted)
-		# entity.consume_water(entity_water_amount)
+		var entity_water_amount_wanted = get_water_for_time_interval(water_period_start, water_period_end)
+		var entity_water_amount = water_tank.consume_water_amount(entity_water_amount_wanted)
+		entity.consume_water(entity_water_amount)
 	
-		entity.consume_water(water_tank.get_water_amount())
+		# entity.consume_water(water_tank.get_water_amount())
 func show_waiting_for_water(): 
 	
 	if _has_legacy_water(): 
