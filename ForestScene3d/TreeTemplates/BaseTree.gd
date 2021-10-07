@@ -76,20 +76,27 @@ func update_view(animate = false):
 		Logger.error("Missing key %s in %s from %s" % [texture_key, template_resource._id, instance_resource._id], self)
 
 func _animate_update(new_texture, new_size, old_texture, old_size): 
-	bill_board.set_texture(new_texture)
-	bill_board.set_unit_factor(new_size)
-	$AnimationTarget.set_texture(old_texture)
-	$AnimationTarget.set_unit_factor(old_size)
-	var anim = $AnimationPlayer.get_animation("stage_inc")
-	var track = anim.find_track("AnimationTarget:_unit_factor")
-	anim.track_set_key_value(track, 0, old_size)
-	anim.track_set_key_value(track, 1, new_size)
-	$AnimationPlayer.queue("stage_inc")
-
+	yield($AnimationPlayer, "animation_finished")
 	
+	bill_board.call("set_texture", new_texture)
+#	bill_board.call("set_unit_factor", new_size)
+	$AnimationTarget.set_texture(old_texture)
+#	$AnimationTarget.set_unit_factor(old_size)
+	var anim = $AnimationPlayer.get_animation("stage_inc")
+	var _anim_target_track = anim.find_track("AnimationTarget:_unit_factor")
+	anim.track_set_key_value(_anim_target_track, 0, old_size)
+	anim.track_set_key_value(_anim_target_track, 1, new_size)
+	
+	var _sprite_track = anim.find_track("Sprite3D:_unit_factor")
+	anim.track_set_key_value(_sprite_track, 0, old_size)
+	anim.track_set_key_value(_sprite_track, 1, new_size)
+	
+	var err = $AnimationPlayer.add_animation("stage_inc", anim)
+
+	$AnimationPlayer.play("stage_inc")
+
 func get_state(): 
 	return instance_resource
-
 
 func set_state(state):
 	instance_resource = state
@@ -154,8 +161,6 @@ func _after_water():
 	_flush()
 	can_water = false
 	$AnimationPlayer.queue("hide_water_progress")
-	# TODO fix this
-#	var should_update_stage = instance_resource.water_applied > instance_resource.water_required
 	while instance_resource.water_applied > instance_resource.water_required:
 		instance_resource.water_applied -= instance_resource.water_required
 		if instance_resource.stage >= 4:
@@ -163,8 +168,12 @@ func _after_water():
 		instance_resource.stage += 1
 		_update_stage()
 		yield(get_tree().create_timer(1.0), "timeout")
-#	if should_update_stage: 
-#		_update_stage()
+	_check_show_finished()
+
+func _check_show_finished():
+	if instance_resource.is_mature(): 
+		yield(get_tree().create_timer(1.0), "timeout")
+		_show_entity_finished_message()
 
 func _update_stage(): 
 	Logger.print("Current stage %s" % str(instance_resource.stage), self)
@@ -172,19 +181,13 @@ func _update_stage():
 	if instance_resource.stage == 4: 
 		var aspect = instance_resource.aspect_id
 		var tracking_level = AspectTrackingService.get_current_tracking_level(aspect)
-#		var reward = null
-#		for option in aspect.tracking.options: 
-#			if option.level == tracking_level.level:
-#				reward = option.reward
 		if tracking_level == null:
 			return
 		if tracking_level.reward != null: 
 			RewardService.add_reward(tracking_level.reward)
 	_flush()
 	emit_signal("updated_stage")
-	if instance_resource.is_mature(): 
-		yield(get_tree().create_timer(1.0), "timeout")
-		_show_entity_finished_message()
+
 
 
 var entity_complete_popup = preload("res://UI/EntityCompletePopup.tscn")
