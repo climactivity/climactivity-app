@@ -80,13 +80,18 @@ func update_view(animate = false):
 	else: 
 		Logger.error("Missing key %s in %s from %s" % [texture_key, template_resource._id, instance_resource._id], self)
 
+var _new_texture = null
+
+func _update_billboard(): 
+	bill_board.call("set_texture", _new_texture)
+
 func _animate_update(new_texture, new_size, old_texture, old_size): 
 	yield($AnimationPlayer, "animation_finished")
-	
-	bill_board.call("set_texture", new_texture)
-#	bill_board.call("set_unit_factor", new_size)
+	_new_texture = new_texture
+#	bill_board.call("set_texture", new_texture)
+	bill_board.call("set_unit_factor", old_size)
 	$AnimationTarget.set_texture(old_texture)
-#	$AnimationTarget.set_unit_factor(old_size)
+	$AnimationTarget.set_unit_factor(old_size)
 	var anim = $AnimationPlayer.get_animation("stage_inc")
 	var _anim_target_track = anim.find_track("AnimationTarget:_unit_factor")
 	anim.track_set_key_value(_anim_target_track, 0, old_size)

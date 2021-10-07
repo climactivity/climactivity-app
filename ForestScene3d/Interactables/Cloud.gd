@@ -167,7 +167,7 @@ func lock_target(target: Spatial):
 	print("locked")
 	$Tween.interpolate_property(self, "rect_position", start_position, _target_position, duration,Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 #	$Tween.interpolate_callback(self, duration, "_watering_progress")
-	$Tween.interpolate_property(self, "locked", true, false, 5, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT) # just block movements for like 5s, that is enough time for the popup to fire
+	$Tween.interpolate_property(self, "locked", true, false, 15, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT) # just block movements for like 15s, that is enough time for the popup to fire
 	$Tween.start()
 
 func unlock(_target: Spatial): 
