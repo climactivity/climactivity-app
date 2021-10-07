@@ -172,7 +172,7 @@ func _after_water():
 
 func _check_show_finished():
 	if instance_resource.is_mature(): 
-		yield(get_tree().create_timer(1.0), "timeout")
+		yield(get_tree().create_timer(.4), "timeout")
 		_show_entity_finished_message()
 
 func _update_stage(): 

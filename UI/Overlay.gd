@@ -26,6 +26,7 @@ func _on_Popup_gui_input(event):
 
 
 func _on_Close_Button_pressed():
+	print("close button clicked")
 	_close_popup()
 
 func _tutorial_button_avoid_menu(show_menu):
