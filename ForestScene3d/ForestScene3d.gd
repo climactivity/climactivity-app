@@ -14,6 +14,7 @@ func _ready():
 	if is_instance_valid(AspectTrackingService): connect("update_hud", AspectTrackingService, "notify_watered_aspects")
 	$ForestFloor/HexGrid.connect("placed_entity", $Camera/HUD, "update_hud")
 	$Background/Backdrop.texture = $Viewport.get_texture()
+	NakamaConnection.analytics_user_activity_info()
 	enter_game()
 #	GameManager.overlay.hide_available_tutorial()
 func _input(event):
