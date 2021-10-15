@@ -359,6 +359,7 @@ NakamaConnection="*res://Network/Nakama.gd"
 nc="*res://Services/RemoteConfig.gd"
 NotificationService="*res://Services/NotificationService.gd"
 EventMessageService="*res://Services/EventMessageService.gd"
+RemoteMessageService="*res://Services/RemoteMessageService.gd"
 
 [debug]
 

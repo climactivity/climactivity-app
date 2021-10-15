@@ -175,6 +175,18 @@ func read_collection(collection):
 			objects.append(object.value)
 		return objects
 
+func _read_collection_storage_objects(collection): 
+	if !session: 
+		_reconnect()
+		yield(self, "nk_connected")
+	var objects_in_collection = yield(client.list_storage_objects_async(session, collection, session.user_id, 100), "completed")
+	if objects_in_collection.is_exception(): 
+		Logger.error("Socket error: %s" % objects_in_collection, self)
+		return []
+	else:
+		var objects = []
+		return objects_in_collection.objects
+
 func read_global_constants(): 
 	if !session: 
 		_reconnect()
@@ -285,7 +297,23 @@ func _read_dict(key, collection, userId = "", version = ""):
 	if storage_object.objects == []:
 		return {}
 	return storage_object.objects[0]
-	
+
+func _delete_dict(key, collection, version = ""): 
+	var user = yield(get_user(), "completed")
+	var user_id = user.id
+	var ack = yield(client.delete_storage_objects_async(session, [NakamaStorageObjectId.new(collection, key, user_id, version)]), "completed")
+	if ack.exception:
+		Logger.error("An error occured: %s" % ack)
+	return ack
+
+func get_remote_messages():
+	return _read_collection_storage_objects("remote_messages")
+
+func consume_remote_message(message):
+	var ack = yield(_delete_dict(message.key, message.collection, message.version), "completed")
+	if ack.is_exception(): 
+		Logger.error("An error occured: %s" % ack)
+	return ack 
 
 func sync_player_state(player_state : RTrackingStates):
 	if !session: 
