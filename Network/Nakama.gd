@@ -12,7 +12,7 @@ signal signed_out
 var server_key 
 var oauth_base_url
 var oauth_client_id
-
+var sent_startup_analytics = false
 func _ready():
 	server_key = ContextService.server_key
 	oauth_base_url = ProjectSettings.get_setting("debug/settings/network/oauth_base_url")
@@ -30,7 +30,9 @@ func _ready():
 	socket = Nakama.create_socket_from(client)
 	yield(authenticate_device_uid(), "completed") 
 	yield(connect_socket(), "completed") 
+
 	socket.connect("received_notification", self, "_on_notification")
+
 	emit_signal("nk_connected")
 
 ### TODO
@@ -173,6 +175,18 @@ func read_collection(collection):
 			objects.append(object.value)
 		return objects
 
+func _read_collection_storage_objects(collection): 
+	if !session: 
+		_reconnect()
+		yield(self, "nk_connected")
+	var objects_in_collection = yield(client.list_storage_objects_async(session, collection, session.user_id, 100), "completed")
+	if objects_in_collection.is_exception(): 
+		Logger.error("Socket error: %s" % objects_in_collection, self)
+		return []
+	else:
+		var objects = []
+		return objects_in_collection.objects
+
 func read_global_constants(): 
 	if !session: 
 		_reconnect()
@@ -196,6 +210,31 @@ func analytics_store_viewed_tutorials():
 			completed_tutorials[def.name] = def
 		
 	_store_dict(completed_tutorials, "completed_tutorials", 1, 1, "" )
+
+static func get_value(storage_object): 
+	if storage_object == null:
+		return {}
+	if storage_object is Dictionary:
+		return storage_object
+	return JSON.parse(storage_object.value).result
+
+func analytics_user_activity_info(): 
+#
+#	if sent_startup_analytics:
+#		return
+#
+#	sent_startup_analytics = true
+	var user = yield(get_user(), "completed")
+	
+	var user_activity_info =  get_value(yield(_read_dict( "logins", "user_activity_info", user.id), "completed"))
+	var current_timestamp = OS.get_unix_time()
+	if !user_activity_info.has("logins"):
+		user_activity_info["logins"] = [current_timestamp]
+	else: 
+		var last_login = user_activity_info["logins"]
+		last_login.push_front(current_timestamp)
+		last_login.resize(min(last_login.size(), 50))
+	_store_dict(user_activity_info, "user_activity_info", 1, 1, "")
 
 func analytics_store_client_device_info(): 
 	var device_info = {
@@ -248,21 +287,33 @@ func _store_dict(dict, collection, can_read, can_write, version) :
 		Logger.error("An error occured: %s" % acks)
 		return
 
-func _read_dict(key, collection): 
+func _read_dict(key, collection, userId = "", version = ""): 
 	var ret = {}
 	var user = yield(get_user(), "completed")
-	var storage_object = yield(client.read_storage_objects_async(session, [{
-		"collection": collection,
-		"key": key,
-		"user_id": user.id
-	}]), "completed")
+	var storage_object = yield(client.read_storage_objects_async(session, [NakamaStorageObjectId.new(collection, key, userId, version)]), "completed")
 	if storage_object.is_exception():
 		Logger.error("Could not read storage_object %s" % storage_object, self)
 		return null
 	if storage_object.objects == []:
 		return {}
 	return storage_object.objects[0]
-	
+
+func _delete_dict(key, collection, version = ""): 
+	var user = yield(get_user(), "completed")
+	var user_id = user.id
+	var ack = yield(client.delete_storage_objects_async(session, [NakamaStorageObjectId.new(collection, key, user_id, version)]), "completed")
+	if ack.exception:
+		Logger.error("An error occured: %s" % ack)
+	return ack
+
+func get_remote_messages():
+	return _read_collection_storage_objects("remote_messages")
+
+func consume_remote_message(message):
+	var ack = yield(_delete_dict(message.key, message.collection, message.version), "completed")
+	if ack.is_exception(): 
+		Logger.error("An error occured: %s" % ack)
+	return ack 
 
 func sync_player_state(player_state : RTrackingStates):
 	if !session: 

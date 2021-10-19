@@ -70,7 +70,7 @@ func matured_at():
 func is_mature(): 
 	if !planted_at: 
 		return false 
-	return OS.get_unix_time() > planted_at + growth_period
+	return OS.get_unix_time() > planted_at + growth_period or stage >= 4
 
 func to_dict(): 
 	var out = {

@@ -110,19 +110,19 @@ uv1_scale = Vector3( 0.1, 0.109, 0.1 )
 uv1_offset = Vector3( 0.751, 0, 0 )
 uv1_triplanar = true
 
-[sub_resource type="World" id=17]
+[sub_resource type="World" id=16]
 
-[sub_resource type="Gradient" id=18]
+[sub_resource type="Gradient" id=17]
 colors = PoolColorArray( 0.015625, 0.377075, 1, 1, 0.628906, 0.765167, 1, 1 )
 
-[sub_resource type="GradientTexture" id=19]
-gradient = SubResource( 18 )
+[sub_resource type="GradientTexture" id=18]
+gradient = SubResource( 17 )
 
-[sub_resource type="ShaderMaterial" id=20]
+[sub_resource type="ShaderMaterial" id=19]
 shader = ExtResource( 2 )
-shader_param/gradient = SubResource( 19 )
+shader_param/gradient = SubResource( 18 )
 
-[sub_resource type="Animation" id=21]
+[sub_resource type="Animation" id=20]
 length = 0.479
 tracks/0/type = "value"
 tracks/0/path = NodePath("Camera/HUD/EntityDetails:visible")
@@ -161,7 +161,7 @@ tracks/2/keys = {
 "values": [ 2 ]
 }
 
-[sub_resource type="Animation" id=22]
+[sub_resource type="Animation" id=21]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/path = NodePath("Camera:translation")
@@ -188,7 +188,7 @@ tracks/1/keys = {
 "values": [ Vector3( -39.767, 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=23]
+[sub_resource type="Animation" id=22]
 length = 0.479
 tracks/0/type = "value"
 tracks/0/path = NodePath("Camera/HUD/EntityDetails:visible")
@@ -227,7 +227,7 @@ tracks/2/keys = {
 "values": [ 2, 0 ]
 }
 
-[sub_resource type="Animation" id=24]
+[sub_resource type="Animation" id=23]
 tracks/0/type = "bezier"
 tracks/0/path = NodePath("Camera:translation:x")
 tracks/0/interp = 1
@@ -779,22 +779,22 @@ region_rect = Rect2( 0, 0, 8000, 1024 )
 
 [node name="Viewport" type="Viewport" parent="."]
 size = Vector2( 2048, 2048 )
-world = SubResource( 17 )
+world = SubResource( 16 )
 hdr = false
 usage = 0
 render_target_v_flip = true
 
 [node name="ColorRect" type="ColorRect" parent="Viewport"]
-material = SubResource( 20 )
+material = SubResource( 19 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "RESET"
-anims/HideEntityDetails = SubResource( 21 )
-anims/RESET = SubResource( 22 )
-anims/ShowEntityDetails = SubResource( 23 )
-anims/Zoom_To_Clearing = SubResource( 24 )
+anims/HideEntityDetails = SubResource( 20 )
+anims/RESET = SubResource( 21 )
+anims/ShowEntityDetails = SubResource( 22 )
+anims/Zoom_To_Clearing = SubResource( 23 )
 
 [connection signal="cancle" from="Camera/HUD/SeedlingBox" to="Camera/HUD/PlaceHereDialog" method="_on_SeedlingBox_cancle"]
 [connection signal="placed" from="Camera/HUD/SeedlingBox" to="Camera/HUD/PlaceHereDialog" method="_on_SeedlingBox_placed"]

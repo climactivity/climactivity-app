@@ -143,6 +143,7 @@ func _last_infobit():
 	progress_blips.next()
 	anim_player.queue("show_quiz_intro")
 	continue_button.set_disabled(completed_infobyte)
+	$"ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ContentHolder/QuizStart/ShowQuizButton".set_disabled(completed_infobyte)
 	play_intro( "QuizIntro", "QuizIntroPlayed", 1.0)
 	
 func _show_quiz(): 

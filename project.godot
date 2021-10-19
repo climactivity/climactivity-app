@@ -14,6 +14,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Network/Types/CacheManifest.gd"
 }, {
+"base": "PanelContainer",
+"class": "CyMenuButton",
+"language": "GDScript",
+"path": "res://UI/menu_button.gd"
+}, {
 "base": "Node",
 "class": "Dialogic",
 "language": "GDScript",
@@ -266,6 +271,7 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "CacheManifest": "",
+"CyMenuButton": "",
 "Dialogic": "",
 "DialogicBackgroundMusic": "",
 "DialogicDefinitionsUtil": "",
@@ -327,7 +333,7 @@ boot_splash/fullsize=false
 boot_splash/bg_color=Color( 1, 1, 1, 1 )
 config/icon="res://Assets/BG/cyIcon.png"
 config/quit_on_go_back=false
-config/version="1.55rc4"
+config/version="1.58"
 
 [autoload]
 
@@ -352,6 +358,8 @@ Nakama="*res://addons/com.heroiclabs.nakama/Nakama.gd"
 NakamaConnection="*res://Network/Nakama.gd"
 nc="*res://Services/RemoteConfig.gd"
 NotificationService="*res://Services/NotificationService.gd"
+EventMessageService="*res://Services/EventMessageService.gd"
+RemoteMessageService="*res://Services/RemoteMessageService.gd"
 
 [debug]
 

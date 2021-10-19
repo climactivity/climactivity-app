@@ -14,6 +14,7 @@ func _ready():
 	if is_instance_valid(AspectTrackingService): connect("update_hud", AspectTrackingService, "notify_watered_aspects")
 	$ForestFloor/HexGrid.connect("placed_entity", $Camera/HUD, "update_hud")
 	$Background/Backdrop.texture = $Viewport.get_texture()
+	NakamaConnection.analytics_user_activity_info()
 	enter_game()
 #	GameManager.overlay.hide_available_tutorial()
 func _input(event):
@@ -70,8 +71,8 @@ func enter_game():
 		GameManager.overlay.show_dialog("Intro")
 	else:
 		yield(get_tree().create_timer(1.5), "timeout")
-		GameManager.overlay.show_available_tutorial("Intro") # looks janky with main menu
-
+		GameManager.overlay.show_available_tutorial("Intro")
+		RemoteMessageService.show_alert_if_any()
 
 func show_overlay(): 
 	if GameManager.menu != null: GameManager.menu.show_menu()

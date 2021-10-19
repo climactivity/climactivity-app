@@ -28,3 +28,6 @@ func _show_popup(node):
 	
 func clear():
 	Util.clear($MarginContainer)
+
+func has_popup():
+	return $MarginContainer.get_child_count() > 0

@@ -1,7 +1,7 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://UI/typography/UI_big.tres" type="DynamicFont" id=1]
-[ext_resource path="res://UI/EntityCompletePopup.gd" type="Script" id=2]
+[ext_resource path="res://UI/RemoteRewardPopup.gd" type="Script" id=2]
 [ext_resource path="res://UI/typography/UI_bigger.tres" type="DynamicFont" id=3]
 [ext_resource path="res://Assets/Theme/collect_button_9p_hover.png" type="Texture" id=4]
 [ext_resource path="res://Assets/Theme/collect_button_9p_down.png" type="Texture" id=5]
@@ -10,7 +10,6 @@
 [ext_resource path="res://UI/Components/TranslatedRichTextLabel.gd" type="Script" id=8]
 [ext_resource path="res://Assets/Icons/coins-stack.png" type="Texture" id=9]
 [ext_resource path="res://Assets/Theme/importance_star.png" type="Texture" id=10]
-[ext_resource path="res://UI/typography/italic_light.tres" type="DynamicFont" id=11]
 
 [sub_resource type="StyleBoxFlat" id=1]
 content_margin_left = 64.0
@@ -99,7 +98,7 @@ tracks/4/path = NodePath("CPUParticles2D3:emitting")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
-tracks/4/enabled = false
+tracks/4/enabled = true
 tracks/4/keys = {
 "times": PoolRealArray( 0, 0.1 ),
 "transitions": PoolRealArray( 1, 1 ),
@@ -111,7 +110,7 @@ tracks/5/path = NodePath("CPUParticles2D4:emitting")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
-tracks/5/enabled = false
+tracks/5/enabled = true
 tracks/5/keys = {
 "times": PoolRealArray( 0, 0.1 ),
 "transitions": PoolRealArray( 1, 1 ),
@@ -140,18 +139,15 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0.8, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
 "values": [ {
-"args": [  ],
-"method": "_open_shop"
-}, {
 "args": [  ],
 "method": "queue_free"
 } ]
 }
 
-[node name="EntityCompletePopup" type="Control"]
+[node name="LevelUpPopup" type="Control"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -233,9 +229,9 @@ custom_constants/separation = 32
 alignment = 1
 
 [node name="Heading" type="RichTextLabel" parent="PanelContainer/VBoxContainer"]
-margin_top = 80.0
+margin_top = 431.0
 margin_right = 864.0
-margin_bottom = 157.0
+margin_bottom = 508.0
 custom_fonts/normal_font = ExtResource( 1 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 bbcode_enabled = true
@@ -243,39 +239,25 @@ bbcode_text = "[center]Glückwunsch[/center]"
 text = "Glückwunsch"
 fit_content_height = true
 script = ExtResource( 8 )
-translation_key = "entity_complete_heading"
+translation_key = "level_up_heading"
 
-[node name="ContentText" type="RichTextLabel" parent="PanelContainer/VBoxContainer"]
-margin_top = 189.0
+[node name="RewardMessage" type="RichTextLabel" parent="PanelContainer/VBoxContainer"]
+margin_top = 540.0
 margin_right = 864.0
-margin_bottom = 648.0
+margin_bottom = 607.0
 custom_fonts/normal_font = ExtResource( 3 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 bbcode_enabled = true
-bbcode_text = "[center]Dein Baum %s ist ausgewachsen
-
-[img=400]res://Assets/sketch/baum/Apfelbaum/apfelbaum_03.png[/img][/center]"
-text = "Dein Baum %s ist ausgewachsen
-
-"
+bbcode_text = "[center]Hier ist Text[/center]"
+text = "Hier ist Text"
 fit_content_height = true
-
-[node name="UnlockText" type="RichTextLabel" parent="PanelContainer/VBoxContainer"]
-margin_top = 680.0
-margin_right = 864.0
-margin_bottom = 814.0
-custom_fonts/normal_font = ExtResource( 3 )
-custom_colors/default_color = Color( 0, 0, 0, 1 )
-bbcode_enabled = true
-bbcode_text = "[center] Du hast einen neuen [color=#77B924]Setzling[/color] freigeschaltet[/center]"
-text = " Du hast einen neuen Setzling freigeschaltet"
-fit_content_height = true
-override_selected_font_color = true
+script = ExtResource( 8 )
+translation_key = "level_up_heading"
 
 [node name="CoinsContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
-margin_top = 846.0
+margin_top = 639.0
 margin_right = 864.0
-margin_bottom = 912.0
+margin_bottom = 705.0
 alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
@@ -306,9 +288,9 @@ stretch_mode = 6
 [node name="CloseButton" type="TextureButton" parent="PanelContainer/VBoxContainer"]
 modulate = Color( 0.937255, 0.937255, 0.937255, 1 )
 self_modulate = Color( 0.566607, 0.945715, 0, 1 )
-margin_top = 944.0
+margin_top = 737.0
 margin_right = 864.0
-margin_bottom = 1133.18
+margin_bottom = 926.178
 rect_min_size = Vector2( 0, 189.178 )
 texture_normal = ExtResource( 7 )
 texture_pressed = ExtResource( 5 )
@@ -321,7 +303,7 @@ stretch_mode = 5
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_fonts/font = ExtResource( 3 )
-text = "entity_complete_close"
+text = "level_up_close"
 align = 1
 valign = 1
 __meta__ = {
@@ -332,23 +314,7 @@ __meta__ = {
 autoplay = "Huehuehue"
 anims/Huehuehue = SubResource( 2 )
 
-[node name="hint" type="RichTextLabel" parent="PanelContainer/VBoxContainer"]
-margin_top = 1165.0
-margin_right = 864.0
-margin_bottom = 1276.0
-custom_fonts/italics_font = ExtResource( 11 )
-custom_fonts/normal_font = ExtResource( 3 )
-custom_colors/default_color = Color( 0.717647, 0.717647, 0.717647, 1 )
-bbcode_enabled = true
-bbcode_text = "[center][i] Du kannst deinen [color=#98BC6A]Setzling[/color] auch später im Zelt einsammeln[/i][/center]"
-text = " Du kannst deinen Setzling auch später im Zelt einsammeln"
-fit_content_height = true
-override_selected_font_color = true
-script = ExtResource( 8 )
-translation_key = "entity_complete_hint_seedling"
-
 [node name="CPUParticles2D3" type="CPUParticles2D" parent="."]
-visible = false
 position = Vector2( -1.63635, 1939.16 )
 emitting = false
 amount = 60
@@ -370,7 +336,6 @@ hue_variation = 1.0
 hue_variation_random = 1.0
 
 [node name="CPUParticles2D4" type="CPUParticles2D" parent="."]
-visible = false
 position = Vector2( 1071.35, 1942.52 )
 emitting = false
 amount = 60
