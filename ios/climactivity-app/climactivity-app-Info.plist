@@ -25,18 +25,7 @@
 	<key>CFBundleSignature</key>
 	<string></string>
 	<key>CFBundleURLTypes</key>
-	<array>
-		<dict>
-			<key>CFBundleTypeRole</key>
-			<string>Viewer</string>
-			<key>CFBundleURLName</key>
-			<string>Cy App</string>
-			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>cyapp://</string>
-			</array>
-		</dict>
-	</array>
+	<array/>
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>ITSAppUsesNonExemptEncryption</key>
