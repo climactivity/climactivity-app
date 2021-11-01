@@ -31,6 +31,48 @@ func restore(nk_collection):
 				var entity = RBoardEntity.new()
 				entity.from_dict(_board_entites[_entity])
 				board_entites[entity.axial_coords] = entity
+		if object.has("tracking_states"):
+			tracking_states = {} #### ----- TODO ab hier
+			var _tracking_states = object.tracking_states
+			for _entity in _tracking_states:
+				var entity = RTrackingState.new()
+				entity.from_dict(_tracking_states[_entity])
+				tracking_states[entity.aspect] = entity
+#		if object.has("tracking_updates"):
+#			board_entites = {} 
+#			var _board_entites = object.board_entites
+#			for _entity in _board_entites:
+#				var entity = RBoardEntity.new()
+#				entity.from_dict(_board_entites[_entity])
+#				board_entites[entity.axial_coords] = entity	
+#		if object.has("inventory"):
+#			board_entites = {} 
+#			var _board_entites = object.board_entites
+#			for _entity in _board_entites:
+#				var entity = RBoardEntity.new()
+#				entity.from_dict(_board_entites[_entity])
+#				board_entites[entity.axial_coords] = entity	
+#		if object.has("completed_infobytes"):
+#			board_entites = {} 
+#			var _board_entites = object.board_entites
+#			for _entity in _board_entites:
+#				var entity = RBoardEntity.new()
+#				entity.from_dict(_board_entites[_entity])
+#				board_entites[entity.axial_coords] = entity	
+#		if object.has("current_quests"):
+#			board_entites = {} 
+#			var _board_entites = object.board_entites
+#			for _entity in _board_entites:
+#				var entity = RBoardEntity.new()
+#				entity.from_dict(_board_entites[_entity])
+#				board_entites[entity.axial_coords] = entity	
+#		if object.has("completed_quests"):
+#			board_entites = {} 
+#			var _board_entites = object.board_entites
+#			for _entity in _board_entites:
+#				var entity = RBoardEntity.new()
+#				entity.from_dict(_board_entites[_entity])
+#				board_entites[entity.axial_coords] = entity
 
 func to_dict(): 
 	var out = {

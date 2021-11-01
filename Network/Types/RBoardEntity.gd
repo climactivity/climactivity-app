@@ -5,7 +5,7 @@ signal getting_watered(from, to)
 var node = null
 
 export (String) var entity_id
-export (String) var _id
+export (String) var _id = ""
 export (String) var last_sync
 export (String) var stage
 export (int) var growth_period
