@@ -1,5 +1,7 @@
 extends Node
 
+signal tree_templates_ready
+
 var _base_tree_scene = preload("res://ForestScene3d/TreeTemplates/BaseTree.tscn")
 
 onready var http_request = $HTTPRequest
@@ -251,6 +253,7 @@ func load_templates():
 		template.texture_data = available_textures[template.texture_name]
 		template.preview_texture = available_textures[template.texture_name].get(int(template.preview_name)) # ain't that some jank
 		if template.has_method("save_texture_assignment"): template.save_texture_assignment()
+	emit_signal("tree_templates_ready")
 
 func available_templates():
 	return _tree_templates.keys()
@@ -275,12 +278,18 @@ func get_available_templates(sector_name: String, type: String = "tree") -> Arra
 func get_all_templates() -> Array: 
 	return _tree_templates
 
+func is_ready(): 
+	return _tree_templates is Array
+
 func get_template(key):
-	if _tree_templates.has(key):
-		return _tree_templates.get(key)
-	else:
-		Logger.error("Entity template for " + str(key) + " not found!", self)
-		return null 
+	if !(_tree_templates is Array): 
+		yield(self, "tree_templates_ready")
+	for template in _tree_templates: 
+		if template._id == key:
+			return template
+
+	Logger.error("Entity template for " + str(key) + " not found!", self)
+	return null 
 
 func _make_new(resource):
 	var new_tree = _base_tree_scene.instance()
