@@ -17,6 +17,13 @@
             "autoload": {
                 "localnotification": "*res://scripts/localnotification.gd"
             }
+        },
+        "nativelib-export": {
+            "version": "0.2.0",
+            "platforms": [
+                "all"
+            ],
+            "dependencies": []
         }
     }
 }

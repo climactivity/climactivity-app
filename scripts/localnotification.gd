@@ -4,6 +4,8 @@ signal device_token_received(token)
 signal enabled
 var _ln = null
 
+onready var _analytics := $'/root/analytics' if has_node('/root/analytics') else null
+
 func _ready() -> void:
 	pause_mode = Node.PAUSE_MODE_PROCESS
 	if Engine.has_singleton("LocalNotification"):
@@ -79,6 +81,8 @@ func get_deeplink_uri():
 		return null
 
 func _on_notifications_enabled() -> void:
+	if _analytics != null:
+		_analytics.event('notifications_enabled')
 	emit_signal('enabled')
 
 func _on_device_token_received(token) -> void:

@@ -401,7 +401,7 @@ window/stretch/aspect="expand"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/dialogic/plugin.cfg", "res://addons/tile_object/plugin.cfg" )
+enabled=PoolStringArray( "res://addons/NativeLib/plugin.cfg", "res://addons/dialogic/plugin.cfg", "res://addons/nativelib-export/plugin.cfg", "res://addons/tile_object/plugin.cfg" )
 
 [gdnative]
 
