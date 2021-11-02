@@ -59,6 +59,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://UI/ListEntry.gd"
 }, {
+"base": "",
+"class": "LocalNotification",
+"language": "NativeScript",
+"path": "res://addons/localnotification-ios/localnotification.gdns"
+}, {
 "base": "Control",
 "class": "MainMenu",
 "language": "GDScript",
@@ -280,6 +285,7 @@ _global_script_class_icons={
 "IconCapsule": "",
 "InfoSection": "",
 "ListEntry": "",
+"LocalNotification": "",
 "MainMenu": "",
 "NakamaAPI": "",
 "NakamaAsyncResult": "",
@@ -360,6 +366,7 @@ nc="*res://Services/RemoteConfig.gd"
 NotificationService="*res://Services/NotificationService.gd"
 EventMessageService="*res://Services/EventMessageService.gd"
 RemoteMessageService="*res://Services/RemoteMessageService.gd"
+localnotification="*res://scripts/localnotification.gd"
 
 [debug]
 
@@ -395,6 +402,10 @@ window/stretch/aspect="expand"
 [editor_plugins]
 
 enabled=PoolStringArray( "res://addons/dialogic/plugin.cfg", "res://addons/tile_object/plugin.cfg" )
+
+[gdnative]
+
+singletons=[ "res://addons/localnotification-ios/localnotification.gdnlib" ]
 
 [global]
 

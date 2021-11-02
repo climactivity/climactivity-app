@@ -1,0 +1,16 @@
+[general]
+
+singleton=true
+load_once=true
+symbol_prefix="localnotification_"
+reloadable=false
+
+[entry]
+
+iOS.armv7="res://addons/localnotification-ios/localnotification.xcframework"
+iOS.arm64="res://addons/localnotification-ios/localnotification.xcframework"
+
+[dependencies]
+
+iOS.armv7=[  ]
+iOS.arm64=[  ]
