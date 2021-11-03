@@ -33,7 +33,8 @@ func local_notificaionts_inited():
 			if initied: 
 				return localnotification.is_enabled()
 			else: 
-				return yield(localnotification.init(), "enabled")
+				localnotification.connect("enabled", self, "init_local_notifications")
+				localnotification.init()
 		"Android":
 			return true
 		_:
@@ -43,8 +44,8 @@ func init_local_notifications():
 	var is_initied = local_notificaionts_inited()
 	if is_initied: 
 		print("Notifications initialized!")
-		localnotification.show("Hello", "It works", 10, 100) 
-		print(localnotification.get_notification_data())
+		localnotification.show("Hello", "It works", 30, 1) 
+		print("Notification Data: ", localnotification.get_notification_data())
 	else:
 		print("Notifications failed initialization!")
 

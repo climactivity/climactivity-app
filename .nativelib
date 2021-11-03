@@ -1,29 +1,29 @@
 {
-    "id": "ae78e520-d6ac-4830-8de4-86d1534f7977",
     "platforms": [
-        "all",
-        "ios",
+        "all", 
+        "ios", 
         "android"
-    ],
+    ], 
     "packages": {
         "local-notification": {
-            "version": "0.2.2",
             "platforms": [
-                "all",
-                "ios",
+                "all", 
+                "ios", 
                 "android"
-            ],
-            "dependencies": [],
+            ], 
+            "version": "0.2.2", 
             "autoload": {
                 "localnotification": "*res://scripts/localnotification.gd"
-            }
-        },
+            }, 
+            "dependencies": []
+        }, 
         "nativelib-export": {
-            "version": "0.2.0",
             "platforms": [
                 "all"
-            ],
+            ], 
+            "version": "0.2.0", 
             "dependencies": []
         }
-    }
+    }, 
+    "id": "ae78e520-d6ac-4830-8de4-86d1534f7977"
 }
