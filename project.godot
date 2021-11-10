@@ -406,6 +406,7 @@ enabled=PoolStringArray( "res://addons/NativeLib/plugin.cfg", "res://addons/dial
 [gdnative]
 
 singletons=[ "res://addons/localnotification-ios/localnotification.gdnlib" ]
+singletons_disabled=[  ]
 
 [global]
 
