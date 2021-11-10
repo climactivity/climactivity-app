@@ -226,7 +226,8 @@ func analytics_user_activity_info():
 #
 #	sent_startup_analytics = true
 	var user = yield(get_user(), "completed")
-	
+	if !is_instance_valid(user): 
+		return
 	var user_activity_info =  get_value(yield(_read_dict( "logins", "user_activity_info", user.id), "completed"))
 	var current_timestamp = OS.get_unix_time()
 	if !user_activity_info.has("logins"):

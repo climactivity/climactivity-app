@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Climactivity App.ipa</key>
+	<array>
+		<dict>
+			<key>architectures</key>
+			<array>
+				<string>arm64</string>
+			</array>
+			<key>bitcode</key>
+			<false/>
+			<key>buildNumber</key>
+			<string>1.40</string>
+			<key>certificate</key>
+			<dict>
+				<key>SHA1</key>
+				<string>C130EA9A2E55926695706C7BB125EAA18580AA76</string>
+				<key>dateExpires</key>
+				<string>22.04.22</string>
+				<key>type</key>
+				<string>Apple Distribution</string>
+			</dict>
+			<key>embeddedBinaries</key>
+			<array>
+				<dict>
+					<key>architectures</key>
+					<array>
+						<string>armv7</string>
+						<string>arm64</string>
+					</array>
+					<key>bitcode</key>
+					<false/>
+					<key>buildNumber</key>
+					<string>1.40</string>
+					<key>certificate</key>
+					<dict>
+						<key>SHA1</key>
+						<string>C130EA9A2E55926695706C7BB125EAA18580AA76</string>
+						<key>dateExpires</key>
+						<string>22.04.22</string>
+						<key>type</key>
+						<string>Apple Distribution</string>
+					</dict>
+					<key>name</key>
+					<string>localnotification.framework</string>
+					<key>symbols</key>
+					<true/>
+					<key>team</key>
+					<dict>
+						<key>id</key>
+						<string>BGH588JJJP</string>
+						<key>name</key>
+						<string></string>
+					</dict>
+					<key>versionNumber</key>
+					<string>1.40</string>
+				</dict>
+			</array>
+			<key>entitlements</key>
+			<dict>
+				<key>application-identifier</key>
+				<string>BGH588JJJP.de.climactivity.app</string>
+				<key>aps-environment</key>
+				<string>production</string>
+				<key>beta-reports-active</key>
+				<true/>
+				<key>com.apple.developer.team-identifier</key>
+				<string>BGH588JJJP</string>
+				<key>get-task-allow</key>
+				<false/>
+			</dict>
+			<key>name</key>
+			<string>climactivity-app.app</string>
+			<key>profile</key>
+			<dict>
+				<key>UUID</key>
+				<string>cef417a0-802d-4717-9bd2-437a63caf6e5</string>
+				<key>dateExpires</key>
+				<string>24.09.22</string>
+				<key>name</key>
+				<string>iOS Team Store Provisioning Profile: de.climactivity.app</string>
+			</dict>
+			<key>symbols</key>
+			<true/>
+			<key>team</key>
+			<dict>
+				<key>id</key>
+				<string>BGH588JJJP</string>
+				<key>name</key>
+				<string></string>
+			</dict>
+			<key>versionNumber</key>
+			<string>1.40</string>
+		</dict>
+	</array>
+</dict>
+</plist>

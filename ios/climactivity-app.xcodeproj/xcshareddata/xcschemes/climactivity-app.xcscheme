@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0710"
+   LastUpgradeVersion = "1310"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A340BDFEBCA49239A941883D"
+               BlueprintIdentifier = "D0BCFE3318AEBDA2004A7AAE"
                BuildableName = "climactivity-app.app"
                BlueprintName = "climactivity-app"
                ReferencedContainer = "container:climactivity-app.xcodeproj">
@@ -27,19 +27,17 @@
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "D0BCFE3318AEBDA2004A7AAE"
+            BuildableName = "climactivity-app.app"
+            BlueprintName = "climactivity-app"
+            ReferencedContainer = "container:climactivity-app.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <Testables>
       </Testables>
-      <MacroExpansion>
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A340BDFEBCA49239A941883D"
-               BuildableName = "climactivity-app.app"
-               BlueprintName = "climactivity-app"
-               ReferencedContainer = "container:climactivity-app.xcodeproj">
-            </BuildableReference>
-      </MacroExpansion>
-      <AdditionalOptions>
-      </AdditionalOptions>
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"
@@ -53,18 +51,14 @@
       allowLocationSimulation = "YES">
       <BuildableProductRunnable
          runnableDebuggingMode = "0">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A340BDFEBCA49239A941883D"
-               BuildableName = "climactivity-app.app"
-               BlueprintName = "climactivity-app"
-               ReferencedContainer = "container:climactivity-app.xcodeproj">
-            </BuildableReference>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "D0BCFE3318AEBDA2004A7AAE"
+            BuildableName = "climactivity-app.app"
+            BlueprintName = "climactivity-app"
+            ReferencedContainer = "container:climactivity-app.xcodeproj">
+         </BuildableReference>
       </BuildableProductRunnable>
-      <CommandLineArguments>
-      </CommandLineArguments>
-      <AdditionalOptions>
-      </AdditionalOptions>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Debug"
@@ -74,13 +68,13 @@
       debugDocumentVersioning = "YES">
       <BuildableProductRunnable
          runnableDebuggingMode = "0">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A340BDFEBCA49239A941883D"
-               BuildableName = "climactivity-app.app"
-               BlueprintName = "climactivity-app"
-               ReferencedContainer = "container:climactivity-app.xcodeproj">
-            </BuildableReference>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "D0BCFE3318AEBDA2004A7AAE"
+            BuildableName = "climactivity-app.app"
+            BlueprintName = "climactivity-app"
+            ReferencedContainer = "container:climactivity-app.xcodeproj">
+         </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
    <AnalyzeAction
@@ -91,4 +85,3 @@
       revealArchiveInOrganizer = "YES">
    </ArchiveAction>
 </Scheme>
-
