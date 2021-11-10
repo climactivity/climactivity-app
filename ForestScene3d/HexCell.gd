@@ -57,6 +57,7 @@ func obj_to_coords(val):
 	elif typeof(val) == TYPE_OBJECT and val.has_method("get_cube_coords"):
 		return val.get_cube_coords()
 	# Fall through to nothing
+	print(typeof(val))
 	return
 	
 func axial_to_cube_coords(val):

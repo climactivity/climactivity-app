@@ -21,9 +21,58 @@ func _init():
 	if inventory == null: 
 		inventory = load("res://Network/Types/RInventory.gd").new()
 
-func from_dict(dict): 
-	Logger.error("from_dict not impemented!", self)
-	pass
+func restore(nk_collection): 
+	for json in nk_collection: 
+		var object = JSON.parse(json).result
+		if object.has("board_entites"):
+			board_entites = {} 
+			var _board_entites = object.board_entites
+			for _entity in _board_entites:
+				var entity = RBoardEntity.new()
+				entity.from_dict(_board_entites[_entity])
+				board_entites[entity.axial_coords] = entity
+		if object.has("tracking_states"):
+			tracking_states = {} #### ----- TODO ab hier
+			var _tracking_states = object.tracking_states
+			for _entity in _tracking_states:
+				var entity = RTrackingState.new()
+				entity.from_dict(_tracking_states[_entity])
+				tracking_states[entity.aspect] = entity
+#		if object.has("tracking_updates"):
+#			board_entites = {} 
+#			var _board_entites = object.board_entites
+#			for _entity in _board_entites:
+#				var entity = RBoardEntity.new()
+#				entity.from_dict(_board_entites[_entity])
+#				board_entites[entity.axial_coords] = entity	
+#		if object.has("inventory"):
+#			board_entites = {} 
+#			var _board_entites = object.board_entites
+#			for _entity in _board_entites:
+#				var entity = RBoardEntity.new()
+#				entity.from_dict(_board_entites[_entity])
+#				board_entites[entity.axial_coords] = entity	
+#		if object.has("completed_infobytes"):
+#			board_entites = {} 
+#			var _board_entites = object.board_entites
+#			for _entity in _board_entites:
+#				var entity = RBoardEntity.new()
+#				entity.from_dict(_board_entites[_entity])
+#				board_entites[entity.axial_coords] = entity	
+#		if object.has("current_quests"):
+#			board_entites = {} 
+#			var _board_entites = object.board_entites
+#			for _entity in _board_entites:
+#				var entity = RBoardEntity.new()
+#				entity.from_dict(_board_entites[_entity])
+#				board_entites[entity.axial_coords] = entity	
+#		if object.has("completed_quests"):
+#			board_entites = {} 
+#			var _board_entites = object.board_entites
+#			for _entity in _board_entites:
+#				var entity = RBoardEntity.new()
+#				entity.from_dict(_board_entites[_entity])
+#				board_entites[entity.axial_coords] = entity
 
 func to_dict(): 
 	var out = {
@@ -31,9 +80,8 @@ func to_dict():
 		"tracking_updates": Util.flatten_array(tracking_updates),
 		"last_update": last_update,
 		"board_entites": Util.flatten_dict(board_entites),
-		#"inventory": Util.flatten_dict(inventory.to_dict()),
+		"inventory": Util.flatten_dict(inventory.to_dict()),
 		"completed_infobytes": Util.flatten_dict(completed_infobytes),
-	#	"level": Util.flatten_dict(level)
 		"current_quests": Util.flatten_array(current_quests),
 		"completed_quests": Util.flatten_array(completed_quests)
 	}

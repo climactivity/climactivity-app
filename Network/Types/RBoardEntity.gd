@@ -91,3 +91,27 @@ func to_dict():
 	}
 	#Logger.print(out)
 	return out
+
+func from_dict(dict): 
+	
+#	var hm = str2var(dict["axial_coords"])
+#	var a = var2str(Vector2(2,1))
+#	print(typeof(a), a)
+#	var b = str2var(a)
+#	print(typeof(b),b )
+#	print(typeof(hm), hm)
+	self._id = dict["_id"]
+	self.aspect_id = Api.get_aspect_by_name(dict["aspect_id"])
+	self.axial_coords = Vector2(str2var("Vector2" + dict["axial_coords"]))
+	self.base_water_required = dict["base_water_required"] as int
+	self.center_offset = Vector2(str2var( "Vector2" + dict["center_offset"]))  # in AABB (1.0,1.0),(-1.0,1-.0), how much the scene is acutally shifted is controlled by presentation layer
+	self.growth_period = dict["growth_period"] as int 
+	self.just_planted =  dict["just_planted"] as bool
+	self.last_sync = dict["last_sync"] as int
+	self.last_watered = int(dict["last_watered"])
+	self.planted_at = int(dict["planted_at"])
+	self.stage = int(dict["stage"])
+	self.tree_template = TreeTemplateFactory.get_template(dict["tree_template"])
+	self.water_applied = dict["water_applied"] as int 
+	self.water_required = dict["water_required"] as int 
+	return self

@@ -7,23 +7,46 @@ var wait_frames
 var time_max = 100 # msec
 var current_scene
 var b_cache_ready
+var b_save_ready
 export var game_root_path = "res://SceneManager/SceneManager.tscn"
-
+export var first_run_scene = preload("res://Scenes/FirstRun.tscn")
 func setProgress(progress):
 	$Panel/ProgressBar.value = progress
 
 func _ready():
-	enter_game(game_root_path)
+
 	Api.connect("cache_ready", self, "cache_ready")
 	call_deferred("_init_cache")
+	
+	if PSS.is_first_run is String:
+		PSS.connect("loaded", self, "is_save_game_ready")
+	else:
+		is_save_game_ready(PSS.is_first_run)
+
 
 func _init_cache(): 
 	Api.update_cache()
 
+func is_save_game_ready(newGame): 
+	print("is_save_game_ready: ", newGame)
+	b_save_ready = !newGame
+	if newGame:
+		var frs = first_run_scene.instance()
+		add_child(frs)
+		frs.connect("save_ready", self, "save_game_ready")
+	enter_game(game_root_path)
 
+func save_game_ready(): 
+	b_save_ready = true
+	PSS.is_first_run = false
+	PSS.flush()
+
+	if current_scene != null and b_cache_ready and b_save_ready:
+		show_scene()
+	
 func cache_ready(): 
 	b_cache_ready = true
-	if current_scene != null:
+	if current_scene != null and b_cache_ready and b_save_ready:
 		show_scene()
 	
 func enter_game(path): 
@@ -45,7 +68,7 @@ func show_scene():
 	
 func set_new_scene(res): 
 	current_scene = res.instance()
-	if b_cache_ready: 
+	if b_cache_ready and b_save_ready: 
 		show_scene()
 
 var last_progress = 0.0

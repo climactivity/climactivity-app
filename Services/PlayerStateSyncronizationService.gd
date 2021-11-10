@@ -1,5 +1,7 @@
 extends Node
 
+signal loaded(newGame)
+
 var bp_r_tracking_states = preload("res://Network/Types/RTrackingStates.gd") 
 
 var player_state_path = "user://AspectTracking"
@@ -8,6 +10,8 @@ var player_state_qualifyed_path = "%s%s" % [player_state_path, player_state_form
 var player_state = null
 
 var flush_on = [NOTIFICATION_APP_PAUSED]
+var is_first_run = "loading"
+
 
 func _init(): 
 	var check_file = File.new()
@@ -16,6 +20,10 @@ func _init():
 		player_state = ResourceLoader.load(player_state_qualifyed_path)
 		if player_state == null: 
 			init_player_state()
+		else: 
+			is_first_run = false
+			emit_signal("loaded", false)
+			Logger.print("loaded save data", "PSS")
 	else: 
 		init_player_state() 
 
@@ -36,10 +44,12 @@ func get_player_state_ref() -> RTrackingStates:
 	return player_state
 
 func init_player_state():
+	Logger.print("creating new save game", "PSS")
+	is_first_run = true
 	player_state = bp_r_tracking_states.new()
 	player_state.take_over_path(player_state_qualifyed_path)
-	flush()
-	
+	#flush()
+	emit_signal("loaded", true)
 func _sync(): 
 #	Api.sync_player_state()
 	if NakamaConnection: NakamaConnection.sync_player_state(player_state) 
