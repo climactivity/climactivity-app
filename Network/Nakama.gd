@@ -128,6 +128,7 @@ func update_account_with_email(email, password):
 func authenticate_device_uid(): 
 	var device_id = OS.get_unique_id()
 	session = yield(client.authenticate_device_async(device_id), "completed")
+
 	if session.valid: 
 		emit_signal("nk_connected")
 		Logger.print(session, self)

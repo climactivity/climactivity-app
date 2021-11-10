@@ -66,9 +66,9 @@ func custom_sort_quests(q1, q2):
 			return true
 		else:
 			return q1_status.when < q2_status.when
-	elif q1_status != null and q2_status == null: 
+	elif q1_status != null and q2_status == null or q2.start_date is String: 
 		return false
-	elif q1_status == null and q2_status != null: 
+	elif q1_status == null and q2_status != null or q1.start_date is String: 
 		return true
 	else:
 		return q1.start_date < q2.start_date

@@ -45,6 +45,8 @@ func do_update():
 	if player_state.last_update == 0 or levels.size() == 0: 
 		# just set the current time when the app is first started
 		# there cannot be anything to track yet
+		if PSS.is_first_run:
+			return
 		player_state.last_update = now
 		Logger.print("Aspect tracking initialized at %s!" % Util.date_as_RFC1123(OS.get_datetime_from_unix_time(now)), self)
 		_flush()

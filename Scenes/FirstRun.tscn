@@ -1,0 +1,282 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Scenes/FirstRun.gd" type="Script" id=1]
+[ext_resource path="res://UI/theme/Button_FristRun_Option_Down.tres" type="StyleBox" id=2]
+[ext_resource path="res://UI/theme/Button_FristRun_Option.tres" type="StyleBox" id=3]
+[ext_resource path="res://Assets/Icons/vector/cloud-download.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Icons/vector/cloud-upload.png" type="Texture" id=5]
+
+[sub_resource type="StyleBoxFlat" id=1]
+content_margin_left = 64.0
+content_margin_right = 64.0
+content_margin_top = 64.0
+content_margin_bottom = 64.0
+bg_color = Color( 1, 1, 1, 1 )
+corner_radius_top_left = 64
+corner_radius_top_right = 64
+corner_radius_bottom_right = 64
+corner_radius_bottom_left = 64
+shadow_color = Color( 0, 0, 0, 0.109804 )
+shadow_size = 12
+shadow_offset = Vector2( 0, 8.369 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "Enter"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath("Container:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 40, 500 ), Vector2( 40, 289 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Container:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "Loading"
+length = 0.486
+tracks/0/type = "value"
+tracks/0/path = NodePath("Container/VBoxContainer:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Container/CenterContainer:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[node name="FirstRun" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Container" type="PanelContainer" parent="."]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = 40.0
+margin_top = -671.0
+margin_right = -41.0
+margin_bottom = 670.0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="Container"]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 64.0
+margin_top = 64.0
+margin_right = 935.0
+margin_bottom = 1277.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Container/CenterContainer"]
+margin_left = 185.0
+margin_top = 553.0
+margin_right = 685.0
+margin_bottom = 660.0
+rect_min_size = Vector2( 500, 0 )
+mouse_filter = 2
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+bbcode_enabled = true
+bbcode_text = "
+[center] [font=res://UI/typography/UI_big.tres]Lade Spielstand[/font]
+"
+text = "
+ Lade Spielstand
+"
+fit_content_height = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Container"]
+margin_left = 64.0
+margin_top = 64.0
+margin_right = 935.0
+margin_bottom = 1277.0
+custom_constants/separation = 100
+alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Container/VBoxContainer"]
+margin_top = 131.0
+margin_right = 871.0
+margin_bottom = 282.0
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+bbcode_enabled = true
+bbcode_text = "[center][font=res://UI/typography/UI_big.tres]Spielstand wiederherstellen[/font]
+
+
+[font=res://UI/typography/UI_regular.tres][color=gray]blablabla[/color][/font]"
+text = "Spielstand wiederherstellen
+
+
+blablabla"
+fit_content_height = true
+
+[node name="Button_Restore" type="Button" parent="Container/VBoxContainer"]
+margin_top = 382.0
+margin_right = 871.0
+margin_bottom = 682.0
+rect_min_size = Vector2( 0, 300 )
+custom_styles/hover = ExtResource( 3 )
+custom_styles/pressed = ExtResource( 2 )
+custom_styles/focus = ExtResource( 3 )
+custom_styles/disabled = ExtResource( 3 )
+custom_styles/normal = ExtResource( 3 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Container/VBoxContainer/Button_Restore"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="Container/VBoxContainer/Button_Restore/HBoxContainer"]
+margin_left = 33.0
+margin_right = 333.0
+margin_bottom = 300.0
+rect_min_size = Vector2( 300, 0 )
+mouse_filter = 2
+stretch_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="Container/VBoxContainer/Button_Restore/HBoxContainer/AspectRatioContainer"]
+modulate = Color( 0.419608, 0.709804, 0.0980392, 1 )
+margin_right = 300.0
+margin_bottom = 300.0
+mouse_filter = 2
+texture = ExtResource( 4 )
+expand = true
+
+[node name="AspectRatioContainer2" type="AspectRatioContainer" parent="Container/VBoxContainer/Button_Restore/HBoxContainer"]
+margin_left = 337.0
+margin_right = 837.0
+margin_bottom = 300.0
+rect_min_size = Vector2( 300, 0 )
+mouse_filter = 2
+stretch_mode = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Container/VBoxContainer/Button_Restore/HBoxContainer/AspectRatioContainer2"]
+margin_right = 500.0
+margin_bottom = 300.0
+rect_min_size = Vector2( 500, 0 )
+mouse_filter = 2
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+bbcode_enabled = true
+bbcode_text = "[center] [font=res://UI/typography/UI_big.tres]Spielstand wiederherstellen[/font]
+
+
+[font=res://UI/typography/UI_regular.tres][color=gray]blablabla[/color][/font]"
+text = " Spielstand wiederherstellen
+
+
+blablabla"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button_New" type="Button" parent="Container/VBoxContainer"]
+margin_top = 782.0
+margin_right = 871.0
+margin_bottom = 1082.0
+rect_min_size = Vector2( 0, 300 )
+custom_styles/hover = ExtResource( 3 )
+custom_styles/pressed = ExtResource( 2 )
+custom_styles/focus = ExtResource( 3 )
+custom_styles/disabled = ExtResource( 3 )
+custom_styles/normal = ExtResource( 3 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Container/VBoxContainer/Button_New"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="Container/VBoxContainer/Button_New/HBoxContainer"]
+margin_left = 33.0
+margin_right = 333.0
+margin_bottom = 300.0
+rect_min_size = Vector2( 300, 0 )
+mouse_filter = 2
+stretch_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="Container/VBoxContainer/Button_New/HBoxContainer/AspectRatioContainer"]
+modulate = Color( 0.0980392, 0.180392, 0.709804, 1 )
+margin_right = 300.0
+margin_bottom = 300.0
+mouse_filter = 2
+texture = ExtResource( 5 )
+expand = true
+
+[node name="AspectRatioContainer2" type="AspectRatioContainer" parent="Container/VBoxContainer/Button_New/HBoxContainer"]
+margin_left = 337.0
+margin_right = 837.0
+margin_bottom = 300.0
+stretch_mode = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Container/VBoxContainer/Button_New/HBoxContainer/AspectRatioContainer2"]
+margin_right = 500.0
+margin_bottom = 300.0
+rect_min_size = Vector2( 500, 0 )
+mouse_filter = 2
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+bbcode_enabled = true
+bbcode_text = "
+[center] [font=res://UI/typography/UI_big.tres]Neu Starten[/font]
+
+
+[font=res://UI/typography/UI_regular.tres][color=gray]blablabla[/color][/font]"
+text = "
+ Neu Starten
+
+
+blablabla"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Enter = SubResource( 2 )
+anims/Loading = SubResource( 3 )
+
+[connection signal="pressed" from="Container/VBoxContainer/Button_Restore" to="." method="_on_Button_Restore_pressed"]
+[connection signal="pressed" from="Container/VBoxContainer/Button_New" to="." method="_on_Button_New_pressed"]
