@@ -7,7 +7,7 @@ var wait_frames
 var time_max = 100 # msec
 var current_scene
 var b_cache_ready
-var b_save_ready
+var b_save_ready = true
 export var game_root_path = "res://SceneManager/SceneManager.tscn"
 export var first_run_scene = preload("res://Scenes/FirstRun.tscn")
 func setProgress(progress):
@@ -18,10 +18,12 @@ func _ready():
 	Api.connect("cache_ready", self, "cache_ready")
 	call_deferred("_init_cache")
 	
-	if PSS.is_first_run is String:
-		PSS.connect("loaded", self, "is_save_game_ready")
-	else:
-		is_save_game_ready(PSS.is_first_run)
+	enter_game(game_root_path)
+	
+#	if PSS.is_first_run is String:
+#		PSS.connect("loaded", self, "is_save_game_ready")
+#	else:
+#		is_save_game_ready(PSS.is_first_run)
 
 
 func _init_cache(): 

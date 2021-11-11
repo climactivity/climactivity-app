@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/icon-app-60x60@2x.png-c9ebcc9967e5cdf3c82fc7c4d3632c94.stex"
+path="res://.import/Icon-App-60x60@2x.png-294b89965e63cc9e12605c007d933e53.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/AppIcon/icon-app-60x60@2x.png"
-dest_files=[ "res://.import/icon-app-60x60@2x.png-c9ebcc9967e5cdf3c82fc7c4d3632c94.stex" ]
+source_file="res://Assets/AppIcon/Icon-App-60x60@2x.png"
+dest_files=[ "res://.import/Icon-App-60x60@2x.png-294b89965e63cc9e12605c007d933e53.stex" ]
 
 [params]
 
@@ -28,6 +28,7 @@ process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
 process/invert_color=false
+process/normal_map_invert_y=false
 stream=false
 size_limit=0
 detect_3d=false
