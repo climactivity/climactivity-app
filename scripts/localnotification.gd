@@ -2,6 +2,7 @@ extends Node
 
 signal device_token_received(token)
 signal enabled
+signal lib_inited
 var _ln = null
 
 onready var _analytics := $'/root/analytics' if has_node('/root/analytics') else null
@@ -12,6 +13,7 @@ func _ready() -> void:
 		_ln = Engine.get_singleton("LocalNotification")
 	elif OS.get_name() == 'iOS':
 		_ln = load("res://addons/localnotification-ios/localnotification.gdns").new()
+		print(_ln)
 		_ln.connect('notifications_enabled', self, '_on_notifications_enabled')
 		_ln.connect('device_token_received', self, '_on_device_token_received')
 	elif OS.get_name() == 'HTML5':
@@ -20,10 +22,14 @@ func _ready() -> void:
 		push_warning('LocalNotification plugin not found!')
 	else:
 		print('LocalNotification plugin inited')
+		emit_signal("lib_inited")
+		
 
 func init() -> void:
 	if _ln != null:
 		_ln.init()
+	else: 
+		print("_ln not defined!")
 
 func show(message: String, title: String, interval: int, tag: int = 1, repeat_duration: int = 0) -> void:
 	if _ln != null:
