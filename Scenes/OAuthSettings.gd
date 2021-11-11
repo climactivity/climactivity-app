@@ -1,15 +1,18 @@
 extends Control
 
 
-func _on_CyButton_pressed():
-	NakamaConnection.connect("cy_network_authenticated", self, "_authenticated_callback")
-	NakamaConnection.start_cy_network_oauth_flow()
-
 onready var connect_box = $VBoxContainer
 onready var profile_box = $MarginContainer/VBoxContainer2
 onready var profile_box_label = $MarginContainer/VBoxContainer2/Label
 onready var support_label = $MarginContainer/VBoxContainer2/SupportLabel
 onready var notification_toggle = $MarginContainer/VBoxContainer2/NotificationToggle
+
+func _ready():
+	update()
+	NakamaConnection.connect("cy_network_authenticated", self, "_authenticated_callback")
+
+func _on_CyButton_pressed():
+	NakamaConnection.start_cy_network_oauth_flow()
 
 func update():
 	var user =  yield(NakamaConnection.get_user(), "completed")
@@ -57,9 +60,6 @@ func _update_settings():
 			NakamaConnection.set_client_setting("notifications", {"enabled": true})
 
 func _authenticated_callback(): 
-	update()
-
-func _ready():
 	update()
 
 func _on_NotificationToggle_toggled(button_pressed):

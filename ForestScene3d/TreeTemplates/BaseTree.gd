@@ -1,4 +1,9 @@
 extends Spatial
+
+signal will_update_stage
+signal updated_stage
+signal wants_popup(entity)
+signal has_popup(entity)
 export (PackedScene) var _details_widget 
 var details_widget setget , get_details_widget
 export var offset_scale = .2
@@ -35,7 +40,11 @@ func _ready():
 	details_widget.set_entity(self)
 	details_widget.connect("DEBUG_add_stage", self, "DEBUG_add_stage")
 	details_widget.connect("DEBUG_sub_stage", self, "DEBUG_sub_stage")
-
+	if GameManager.cloud:
+		self.connect("wants_popup", GameManager.cloud, "lock_target")
+		self.connect("has_popup", GameManager.cloud, "unlock_target")
+	else: 
+		printerr("cloud not found")
 func get_details_widget(): 
 #	details_widget.show_entity()
 	return details_widget
@@ -71,20 +80,33 @@ func update_view(animate = false):
 	else: 
 		Logger.error("Missing key %s in %s from %s" % [texture_key, template_resource._id, instance_resource._id], self)
 
+var _new_texture = null
+
+func _update_billboard(): 
+	bill_board.call("set_texture", _new_texture)
+
 func _animate_update(new_texture, new_size, old_texture, old_size): 
-	bill_board.set_texture(new_texture)
-	bill_board.set_unit_factor(new_size)
+	yield($AnimationPlayer, "animation_finished")
+	_new_texture = new_texture
+#	bill_board.call("set_texture", new_texture)
+	bill_board.call("set_unit_factor", old_size)
 	$AnimationTarget.set_texture(old_texture)
 	$AnimationTarget.set_unit_factor(old_size)
 	var anim = $AnimationPlayer.get_animation("stage_inc")
-	var track = anim.find_track("AnimationTarget:_unit_factor")
-	anim.track_set_key_value(track, 0, old_size)
-	anim.track_set_key_value(track, 1, new_size)
-	$AnimationPlayer.queue("stage_inc")
+	var _anim_target_track = anim.find_track("AnimationTarget:_unit_factor")
+	anim.track_set_key_value(_anim_target_track, 0, old_size)
+	anim.track_set_key_value(_anim_target_track, 1, new_size)
 	
+	var _sprite_track = anim.find_track("Sprite3D:_unit_factor")
+	anim.track_set_key_value(_sprite_track, 0, old_size)
+	anim.track_set_key_value(_sprite_track, 1, new_size)
+	
+	var err = $AnimationPlayer.add_animation("stage_inc", anim)
+
+	$AnimationPlayer.play("stage_inc")
+
 func get_state(): 
 	return instance_resource
-
 
 func set_state(state):
 	instance_resource = state
@@ -121,12 +143,22 @@ func _hide_water_ui():
 	var widget = ui_water_progress.get_widget_instance()
 	widget.hide() 
 
+func _will_update():
+	return instance_resource.water_applied > instance_resource.water_required
+
+var wants_popup = false
+
 func add_water(water): 
 	if getting_watered: return
+	if instance_resource.is_mature(): 
+		emit_signal("wants_popup", self)
+		wants_popup = true
 	var widget = ui_water_progress.get_widget_instance()
 	widget.add_water(AspectTrackingService.water_used(instance_resource.aspect_id))
 	getting_watered = true
 	$AnimationPlayer.play("show_water_progress")
+	if _will_update(): 
+		emit_signal("will_update_stage")
 	_add_water(null,1.0) # instance_resource.current_water/48.0)
 
 func _add_water( anim ,timeout): 
@@ -144,12 +176,19 @@ func _after_water():
 	_flush()
 	can_water = false
 	$AnimationPlayer.queue("hide_water_progress")
-	if instance_resource.water_applied > instance_resource.water_required: 
-		instance_resource.water_applied -= instance_resource.water_applied
+	while instance_resource.water_applied > instance_resource.water_required:
+		instance_resource.water_applied -= instance_resource.water_required
 		if instance_resource.stage >= 4:
-			return
-		instance_resource.stage += 1 
+			break
+		instance_resource.stage += 1
 		_update_stage()
+		yield(get_tree().create_timer(1.0), "timeout")
+	_check_show_finished()
+
+func _check_show_finished():
+	if instance_resource.is_mature(): 
+		yield(get_tree().create_timer(.4), "timeout")
+		_show_entity_finished_message()
 
 func _update_stage(): 
 	Logger.print("Current stage %s" % str(instance_resource.stage), self)
@@ -157,18 +196,13 @@ func _update_stage():
 	if instance_resource.stage == 4: 
 		var aspect = instance_resource.aspect_id
 		var tracking_level = AspectTrackingService.get_current_tracking_level(aspect)
-#		var reward = null
-#		for option in aspect.tracking.options: 
-#			if option.level == tracking_level.level:
-#				reward = option.reward
 		if tracking_level == null:
 			return
 		if tracking_level.reward != null: 
 			RewardService.add_reward(tracking_level.reward)
 	_flush()
-	if instance_resource.is_mature(): 
-		yield(get_tree().create_timer(1.0), "timeout")
-		_show_entity_finished_message()
+	emit_signal("updated_stage")
+
 
 
 var entity_complete_popup = preload("res://UI/EntityCompletePopup.tscn")
@@ -177,6 +211,7 @@ func _show_entity_finished_message():
 	var _popup_inst = entity_complete_popup.instance()
 	_popup_inst.set_entity(instance_resource, bill_board.texture)
 	GameManager.overlay._show_popup(_popup_inst)
+	emit_signal("has_popup", self)
 
 func DEBUG_add_stage(): 
 	if instance_resource.stage >= 4:
@@ -190,11 +225,11 @@ func DEBUG_sub_stage():
 	instance_resource.stage -= 1 
 	_update_stage()
 
-	
 func _planted(): 
 	$AnimationPlayer.play("planted")
 	instance_resource.just_planted = false
 	_flush()
+	
 func alert_has_water_avaialble():
 	pass
 

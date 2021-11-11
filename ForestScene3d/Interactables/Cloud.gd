@@ -31,6 +31,8 @@ var cloud_sprite_initial_position
 var cloud_state = Cloud_States.EMPTY setget set_state
 
 func _ready():
+	if GameManager:
+		GameManager.cloud = self
 	update_water_available()
 	AspectTrackingService.connect("tracking_updated", self, "update_water_available")
 	hud = get_parent()
@@ -151,17 +153,27 @@ func _reset_done():
 ## hours wasted here (so far): 4
 func _watering(other: Spatial): 
 	set_state(Cloud_States.WATERING)
-	#  get_viewport().get_canvas_transform().affine_inverse().xform($CloudSprite.get_position())   
-	var start_position = rect_position
-	var target_position =  GameManager.camera.unproject_position(other.get_global_transform().origin)
-	self.get_global_mouse_position()
-	var _target_position =   target_position + Vector2(0, -400.0)
-	print( start_position,", initial: " , $CloudSprite.position ,  ", other: ", other.get_global_transform().origin, ", unprojected: ",target_position, ", fixed:", _target_position)
-	var duration = .5
-#	$Tween.interpolate_property(self, "rect_position", start_position, _target_position, duration,Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-#	$Tween.interpolate_callback(self, duration, "_watering_progress")
-#	$Tween.start()
 	_watering_progress()
+
+var locked = false
+
+func lock_target(target: Spatial): 
+	var start_position = rect_position
+	var target_position =  GameManager.camera.unproject_position(target.get_global_transform().origin)
+	var _target_position =   target_position + Vector2(0, -400.0)
+	print( start_position,", initial: " , $CloudSprite.position ,  ", other: ", target.get_global_transform().origin, ", unprojected: ",target_position, ", fixed:", _target_position)
+	var duration = .5
+	locked = true 
+	print("locked")
+	$Tween.interpolate_property(self, "rect_position", start_position, _target_position, duration,Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+#	$Tween.interpolate_callback(self, duration, "_watering_progress")
+	$Tween.interpolate_property(self, "locked", true, false, 15, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT) # just block movements for like 15s, that is enough time for the popup to fire
+	$Tween.start()
+
+func unlock(_target: Spatial): 
+	print("unlocked")
+	locked = false
+
 func _watering_progress():
 	drops.emitting = true
 	var duration = .75
@@ -195,7 +207,7 @@ func _input(event):
 		if hud != null and hud.has_method("_enable_input"):
 			hud._enable_input()
 		return
-	if event is InputEventScreenDrag:
+	if event is InputEventScreenDrag and not locked:
 		rect_position += event.relative # * (1.0/cloud.transform.get_scale().x)
 		currently_watering = hud.can_drop_data(event.position, drag_data)
 		if currently_watering != null and typeof(currently_watering) == TYPE_OBJECT: 

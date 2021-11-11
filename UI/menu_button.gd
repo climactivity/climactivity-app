@@ -1,5 +1,6 @@
 tool 
 extends PanelContainer
+class_name CyMenuButton
 
 signal pressed
 export (Color) var primary_color = Color("#636362") setget set_primary_color

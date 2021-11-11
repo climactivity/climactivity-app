@@ -1,0 +1,97 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://UI/menu_button.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Assets/Icons/bell-solid.svg" type="Texture" id=2]
+[ext_resource path="res://UI/NotificationsButton.gd" type="Script" id=3]
+[ext_resource path="res://UI/circle_fade.shader" type="Shader" id=4]
+
+[sub_resource type="ShaderMaterial" id=3]
+shader = ExtResource( 4 )
+shader_param/fg = Color( 0.670588, 0.917647, 0.4, 1 )
+shader_param/bg = Color( 0, 0, 0, 0 )
+shader_param/r_inner = 1.15288
+shader_param/r_outer = 1.07463
+shader_param/center = Vector2( 0.5, 0.5 )
+shader_param/w = 10.0
+shader_param/h = 10.0
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.439216, 0.298039, 0.298039, 0.192157 )
+corner_radius_top_left = 1024
+corner_radius_top_right = 1024
+corner_radius_bottom_right = 1024
+corner_radius_bottom_left = 1024
+expand_margin_left = 40.0
+expand_margin_right = 40.0
+expand_margin_top = 40.0
+expand_margin_bottom = 40.0
+
+[sub_resource type="Animation" id=2]
+resource_name = "Alert"
+length = 4.752
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("MarginContainer/VBoxContainer/tex/Control/bgAlert:material:shader_param/r_inner")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 2.6, 4.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.2 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("MarginContainer/VBoxContainer/tex/Control/bgAlert:material:shader_param/r_outer")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 2.6, 4.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.2 ]
+}
+
+[node name="NotificationsButton" instance=ExtResource( 1 )]
+script = ExtResource( 3 )
+icon = ExtResource( 2 )
+menu_label = "notifications_screen"
+
+[node name="MarginContainer" parent="." index="0"]
+margin_right = 254.0
+
+[node name="VBoxContainer" parent="MarginContainer" index="0"]
+margin_right = 254.0
+
+[node name="tex" parent="MarginContainer/VBoxContainer" index="0"]
+margin_right = 254.0
+texture = ExtResource( 2 )
+
+[node name="Control" parent="MarginContainer/VBoxContainer/tex" index="0"]
+show_behind_parent = true
+
+[node name="bgAlert" type="Panel" parent="MarginContainer/VBoxContainer/tex/Control" index="1"]
+show_behind_parent = true
+material = SubResource( 3 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" parent="MarginContainer/VBoxContainer" index="1"]
+margin_left = 0.0
+margin_right = 254.0
+text = "notifications_screen"
+
+[node name="button" parent="." index="1"]
+margin_right = 254.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2"]
+anims/Alert = SubResource( 2 )
+
+[connection signal="pressed" from="button" to="." method="_on_button_pressed"]

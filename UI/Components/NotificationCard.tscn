@@ -5,10 +5,9 @@
 [ext_resource path="res://UI/Components/NotificationCard.gd" type="Script" id=3]
 [ext_resource path="res://UI/Components/NotificationCard.stylebox" type="StyleBox" id=4]
 
-[sub_resource type="StyleBoxEmpty" id=2]
+[sub_resource type="StyleBoxEmpty" id=1]
 
-[sub_resource type="Animation" id=1]
-resource_name = "Dismiss"
+[sub_resource type="Animation" id=2]
 tracks/0/type = "method"
 tracks/0/path = NodePath(".")
 tracks/0/interp = 1
@@ -40,14 +39,14 @@ tracks/1/keys = {
 margin_top = 487.0
 margin_right = 1080.0
 margin_bottom = 655.0
-custom_styles/panel = SubResource( 2 )
+custom_styles/panel = SubResource( 1 )
 script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Dismiss = SubResource( 1 )
+anims/Dismiss = SubResource( 2 )
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 margin_right = 1080.0

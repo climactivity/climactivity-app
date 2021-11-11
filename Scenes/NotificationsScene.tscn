@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Scenes/SceneBase.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/Icons/bell-solid.svg" type="Texture" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://UI/typography/UI_bigger.tres" type="DynamicFont" id=6]
 [ext_resource path="res://UI/theme/ButtonPrimary_Active_small.stylebox" type="StyleBox" id=7]
 [ext_resource path="res://UI/Components/TranslatedRichTextLabel.gd" type="Script" id=8]
+[ext_resource path="res://UI/Components/EventCard.tscn" type="PackedScene" id=9]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item; 
@@ -37,6 +38,7 @@ accent_color = Color( 0.6, 0.6, 0.6, 1 )
 icon = ExtResource( 2 )
 screen_title = "notifications_screen"
 bp_notification_card = ExtResource( 5 )
+bp_event_card = ExtResource( 9 )
 
 [node name="ContentMain" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer" index="0"]
 show_menu_bar = true
@@ -98,10 +100,25 @@ custom_fonts/font = ExtResource( 3 )
 text = "Noch keine Benachrichtigungen!"
 autowrap = true
 
-[node name="MarginContainer2" type="MarginContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="2"]
+[node name="SystemMessages" type="MarginContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="2"]
 margin_top = 720.0
 margin_right = 1080.0
 margin_bottom = 811.0
+custom_constants/margin_right = 64
+custom_constants/margin_top = 91
+custom_constants/margin_left = 64
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/SystemMessages" index="0"]
+margin_left = 64.0
+margin_top = 91.0
+margin_right = 1016.0
+margin_bottom = 91.0
+custom_constants/separation = 32
+
+[node name="MarginContainer2" type="MarginContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="3"]
+margin_top = 815.0
+margin_right = 1080.0
+margin_bottom = 906.0
 custom_constants/margin_right = 64
 custom_constants/margin_top = 91
 custom_constants/margin_left = 64

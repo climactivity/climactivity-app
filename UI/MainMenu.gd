@@ -17,7 +17,7 @@ var navigation_state = Navigation_states.HOME setget set_navigation_state
 var last_navigation_state = Navigation_states.HOME
 onready var anim_player = $AnimationPlayer
 onready var home_button = $MarginContainer/PanelContainer/MarginContainer/HBoxContainer/HomeButton
-onready var notification_button = $MarginContainer/PanelContainer/MarginContainer/HBoxContainer/NotificationButton
+onready var notification_button = $MarginContainer/PanelContainer/MarginContainer/HBoxContainer/NotificationsButton
 onready var stats_button = $MarginContainer/PanelContainer/MarginContainer/HBoxContainer/StatsButton
 onready var social_button = $MarginContainer/PanelContainer/MarginContainer/HBoxContainer/SocialButton
 onready var settings_button = $MarginContainer/PanelContainer/MarginContainer/HBoxContainer/SettingsButton
@@ -54,7 +54,7 @@ func _on_HomeButton_pressed():
 	Logger.print("HomeButton pressed", self)
 	set_navigation_state(Navigation_states.HOME)
 
-func _on_NotificationButton_pressed():
+func _on_NotificationsButton_pressed():
 	Logger.print("NotificationButton pressed", self)
 	set_navigation_state(Navigation_states.NOTIFICATIONS)
 	
@@ -129,4 +129,3 @@ func _navigate(scene):
 	if GameManager == null or GameManager.scene_manager == null: return
 	GameManager.scene_manager.push_scene(scene, {},
 	 TransitionFactory.MoveOut() if last_navigation_state <= navigation_state else TransitionFactory.MoveBack())
-

@@ -1,0 +1,11 @@
+[config]
+
+name="LocalNotification"
+binary_type="local"
+binary="LocalNotification.release.aar"
+
+[dependencies]
+
+local=[]
+remote=[]
+custom_maven_repos=["https://dl.bintray.com/mobilap/maven/"]

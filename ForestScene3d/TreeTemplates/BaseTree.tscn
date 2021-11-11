@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://UI/Components/WaterProgressSpatialUI.tscn" type="PackedScene" id=1]
 [ext_resource path="res://ForestScene3d/TreeTemplates/Textures/Baum_Entwurf_01.png" type="Texture" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://ForestScene3d/SpatialUIPanel.tscn" type="PackedScene" id=6]
 [ext_resource path="res://ForestScene3d/TreeTemplates/TreeWaterReceiver.gd" type="Script" id=7]
 [ext_resource path="res://UI/Components/TreeDetails.tscn" type="PackedScene" id=8]
+[ext_resource path="res://UI/circle_fade_3d.shader" type="Shader" id=9]
 
 [sub_resource type="SpatialMaterial" id=1]
 
@@ -50,6 +51,20 @@ albedo_color = Color( 0.541176, 0.964706, 0.517647, 1 )
 
 [sub_resource type="SphereMesh" id=7]
 material = SubResource( 6 )
+
+[sub_resource type="ShaderMaterial" id=15]
+shader = ExtResource( 9 )
+shader_param/fg = Color( 1, 1, 1, 1 )
+shader_param/center = Vector2( 0.5, 0.5 )
+shader_param/str = 0.419
+shader_param/p = 1.435
+
+[sub_resource type="QuadMesh" id=16]
+material = SubResource( 15 )
+
+[sub_resource type="Gradient" id=17]
+offsets = PoolRealArray( 0, 0.495441, 1 )
+colors = PoolColorArray( 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0 )
 
 [sub_resource type="Animation" id=8]
 resource_name = "Highlight"
@@ -110,7 +125,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ 1.0 ]
+"values": [ 1.71 ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("Sprite3D:visible")
@@ -135,6 +150,18 @@ tracks/3/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Sprite3D:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
 }
 
 [sub_resource type="Animation" id=10]
@@ -211,22 +238,22 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.9, 1 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.9, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ true, true, false ]
+"values": [ true, true, true, false ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Sprite3D:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
-tracks/1/enabled = true
+tracks/1/enabled = false
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.9, 1 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.9, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ false, false, true ]
+"values": [ false, false, false, true ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("AnimationTarget:_unit_factor")
@@ -238,7 +265,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0, 1 ),
 "transitions": PoolRealArray( 0.594604, 1.62451 ),
 "update": 0,
-"values": [ 0.0, 1.0 ]
+"values": [ 1.16, 1.71 ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("Particles:emitting")
@@ -251,6 +278,68 @@ tracks/3/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Sprite3D:_unit_factor")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 0.594604, 1.62 ),
+"update": 0,
+"values": [ 1.16, 1.71 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("AnimationTarget:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.4, 0.6, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Sprite3D:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.4, 0.6, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Upgrade:emitting")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ false, true, false ]
+}
+tracks/8/type = "method"
+tracks/8/path = NodePath(".")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0.2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_update_billboard"
+} ]
 }
 
 [node name="TreeRoot" type="Spatial"]
@@ -287,6 +376,29 @@ scale_amount = 0.02
 hue_variation = 0.17
 hue_variation_random = 0.06
 
+[node name="Upgrade" type="CPUParticles" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00567085, 0.772113, 0.344199 )
+layers = 3
+emitting = false
+amount = 64
+lifetime = 0.56
+explosiveness = 1.0
+mesh = SubResource( 16 )
+emission_shape = 2
+emission_box_extents = Vector3( 0.31, 0.437, 0 )
+flag_disable_z = true
+direction = Vector3( 0, 0.065, 0 )
+spread = 0.0
+gravity = Vector3( 0, 2.331, 0 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+orbit_velocity_curve = null
+scale_amount = 2.56
+scale_amount_random = 0.61
+color_ramp = SubResource( 17 )
+hue_variation = -0.88
+hue_variation_random = 0.33
+
 [node name="UI_Water_Progress" parent="." instance=ExtResource( 6 )]
 transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.553718, 0.128467, 0 )
 widget = ExtResource( 1 )
@@ -295,12 +407,13 @@ widget = ExtResource( 1 )
 cast_shadow = 0
 centered = false
 offset = Vector2( -281, 0 )
-pixel_size = 0.00259091
+modulate = Color( 1, 1, 1, 0 )
+pixel_size = 0.00175758
 billboard = 1
 texture = ExtResource( 2 )
 region_rect = Rect2( 123.448, 115.232, 38.423, 44.862 )
 script = ExtResource( 4 )
-_unit_factor = 1.71
+_unit_factor = 1.16
 
 [node name="UI_Alert_Can_Water" parent="Sprite3D" instance=ExtResource( 6 )]
 transform = Transform( 0.15, 0, 0, 0, 0.15, 0, 0, 0, 1, 0.0870486, 0.307155, 0 )
@@ -310,12 +423,12 @@ grab_attention = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.016155, 0 )
 centered = false
 offset = Vector2( -281, 0 )
-pixel_size = 0.0
+pixel_size = 0.00175758
 billboard = 1
 texture = ExtResource( 2 )
 region_rect = Rect2( 123.448, 115.232, 38.423, 44.862 )
 script = ExtResource( 4 )
-_unit_factor = 0.0
+_unit_factor = 1.16
 
 [node name="UI_Alert_Can_Water" parent="AnimationTarget" instance=ExtResource( 6 )]
 transform = Transform( 0.15, 0, 0, 0, 0.15, 0, 0, 0, 1, 0, 0.097, 0 )
