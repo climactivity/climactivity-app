@@ -49,12 +49,12 @@ icon = ExtResource( 2 )
 screen_title = "about"
 
 [node name="ContentMain" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer" index="0"]
-margin_bottom = 12014.0
+margin_bottom = 13084.0
 
 [node name="MarginContainer" type="MarginContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="1"]
 margin_top = 378.0
 margin_right = 1080.0
-margin_bottom = 12014.0
+margin_bottom = 13084.0
 custom_constants/margin_right = 64
 custom_constants/margin_left = 64
 __meta__ = {
@@ -64,33 +64,34 @@ __meta__ = {
 [node name="VBoxContainer" type="VBoxContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer" index="0"]
 margin_left = 64.0
 margin_right = 1016.0
-margin_bottom = 11636.0
+margin_bottom = 12706.0
 custom_constants/separation = 64
 
 [node name="Version" type="PanelContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/VBoxContainer" index="0"]
+visible = false
 margin_right = 952.0
-margin_bottom = 458.0
+margin_bottom = 486.0
 custom_styles/panel = SubResource( 5 )
 
 [node name="VersionBox" type="RichTextLabel" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/VBoxContainer/Version" index="0"]
 margin_left = 20.0
 margin_right = 932.0
-margin_bottom = 458.0
+margin_bottom = 486.0
+custom_colors/default_color = Color( 0.411765, 0.411765, 0.407843, 1 )
 custom_fonts/mono_font = ExtResource( 6 )
 custom_fonts/bold_italics_font = ExtResource( 5 )
 custom_fonts/italics_font = ExtResource( 4 )
 custom_fonts/bold_font = ExtResource( 7 )
 custom_fonts/normal_font = ExtResource( 3 )
-custom_colors/default_color = Color( 0.411765, 0.411765, 0.407843, 1 )
 bbcode_enabled = true
 bbcode_text = "[center][img=256]res://Assets/BG/cyIcon.png[/img]
 Climactivty App
-Version 1.49
-Engine Version: 3.3.2-stable (official) "
+Version 1.59
+Engine Version: 3.4-stable (official) "
 text = "
 Climactivty App
-Version 1.49
-Engine Version: 3.3.2-stable (official) "
+Version 1.59
+Engine Version: 3.4-stable (official) "
 fit_content_height = true
 script = ExtResource( 12 )
 template_str = "[center][img=256]res://Assets/BG/cyIcon.png[/img]
@@ -99,21 +100,20 @@ Version %s
 Engine Version: %s "
 
 [node name="Impressum" type="PanelContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/VBoxContainer" index="1"]
-margin_top = 522.0
 margin_right = 952.0
-margin_bottom = 7452.0
+margin_bottom = 7762.0
 custom_styles/panel = SubResource( 5 )
 
 [node name="Impressum" type="RichTextLabel" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/VBoxContainer/Impressum" index="0"]
 margin_left = 20.0
 margin_right = 932.0
-margin_bottom = 6930.0
+margin_bottom = 7762.0
+custom_colors/default_color = Color( 0.411765, 0.411765, 0.407843, 1 )
 custom_fonts/mono_font = ExtResource( 6 )
 custom_fonts/bold_italics_font = ExtResource( 5 )
 custom_fonts/italics_font = ExtResource( 4 )
 custom_fonts/bold_font = ExtResource( 7 )
 custom_fonts/normal_font = ExtResource( 3 )
-custom_colors/default_color = Color( 0.411765, 0.411765, 0.407843, 1 )
 bbcode_enabled = true
 bbcode_text = "[center][b][color=#5689A0]Impressum[/color][/b][/center]
 
@@ -202,32 +202,32 @@ Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unt
 fit_content_height = true
 
 [node name="NavPrivacyNotice" type="Button" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/VBoxContainer" index="2"]
-margin_top = 7516.0
+margin_top = 7826.0
 margin_right = 952.0
-margin_bottom = 7602.0
+margin_bottom = 7912.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 9 )
 custom_styles/hover = ExtResource( 14 )
 custom_styles/pressed = ExtResource( 11 )
 custom_styles/normal = ExtResource( 10 )
-custom_fonts/font = ExtResource( 9 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "privacy_statement"
 
 [node name="OSS" type="PanelContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/VBoxContainer" index="3"]
-margin_top = 7666.0
+margin_top = 7976.0
 margin_right = 952.0
-margin_bottom = 10564.0
+margin_bottom = 11242.0
 custom_styles/panel = SubResource( 5 )
 
 [node name="OSS" type="RichTextLabel" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/VBoxContainer/OSS" index="0"]
 margin_left = 20.0
 margin_right = 932.0
-margin_bottom = 2898.0
+margin_bottom = 3266.0
+custom_colors/default_color = Color( 0.411765, 0.411765, 0.407843, 1 )
 custom_fonts/mono_font = ExtResource( 6 )
 custom_fonts/bold_italics_font = ExtResource( 5 )
 custom_fonts/italics_font = ExtResource( 4 )
 custom_fonts/bold_font = ExtResource( 7 )
 custom_fonts/normal_font = ExtResource( 3 )
-custom_colors/default_color = Color( 0.411765, 0.411765, 0.407843, 1 )
 bbcode_enabled = true
 bbcode_text = "Verwendet [b] Godot Engine [/b] lizensiert unter: 
 %s 
@@ -316,21 +316,21 @@ SOFTWARE.
 "
 
 [node name="pics" type="PanelContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/VBoxContainer" index="4"]
-margin_top = 10628.0
+margin_top = 11306.0
 margin_right = 952.0
-margin_bottom = 11636.0
+margin_bottom = 12442.0
 custom_styles/panel = SubResource( 5 )
 
 [node name="pics" type="RichTextLabel" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/VBoxContainer/pics" index="0"]
 margin_left = 20.0
 margin_right = 932.0
-margin_bottom = 1008.0
+margin_bottom = 1136.0
+custom_colors/default_color = Color( 0.411765, 0.411765, 0.407843, 1 )
 custom_fonts/mono_font = ExtResource( 6 )
 custom_fonts/bold_italics_font = ExtResource( 5 )
 custom_fonts/italics_font = ExtResource( 4 )
 custom_fonts/bold_font = ExtResource( 7 )
 custom_fonts/normal_font = ExtResource( 3 )
-custom_colors/default_color = Color( 0.411765, 0.411765, 0.407843, 1 )
 bbcode_enabled = true
 bbcode_text = "[center][b][color=#5689A0]Icons[/color][/b][/center]
 Verwendet Icons von: 
@@ -365,6 +365,12 @@ pixabay
 
 "
 fit_content_height = true
+
+[node name="HSeparator" type="HSeparator" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/VBoxContainer" index="5"]
+margin_top = 12506.0
+margin_right = 952.0
+margin_bottom = 12706.0
+custom_constants/separation = 200
 
 [node name="HeaderBG" parent="ContentContainer/Content" index="1"]
 self_modulate = Color( 1, 1, 1, 1 )

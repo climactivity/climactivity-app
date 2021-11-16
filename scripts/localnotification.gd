@@ -23,7 +23,6 @@ func _ready() -> void:
 	else:
 		print('LocalNotification plugin inited')
 		emit_signal("lib_inited")
-		
 
 func init() -> void:
 	if _ln != null:

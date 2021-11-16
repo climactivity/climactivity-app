@@ -35,6 +35,7 @@ shader_param/gradient = SubResource( 3 )
 material = SubResource( 4 )
 script = ExtResource( 4 )
 accent_color = Color( 0.6, 0.6, 0.6, 1 )
+use_small_icon = true
 icon = ExtResource( 2 )
 screen_title = "notifications_screen"
 bp_notification_card = ExtResource( 5 )
@@ -67,13 +68,13 @@ margin_bottom = 122.0
 margin_right = 952.0
 margin_bottom = 122.195
 rect_min_size = Vector2( 0, 122.195 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 3 )
 custom_styles/hover = ExtResource( 7 )
 custom_styles/pressed = ExtResource( 7 )
 custom_styles/focus = ExtResource( 7 )
 custom_styles/disabled = ExtResource( 7 )
 custom_styles/normal = ExtResource( 7 )
-custom_fonts/font = ExtResource( 3 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
 align = 0
 
 [node name="RichTextLabel" type="RichTextLabel" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/VBoxContainer/OAuthReminder/OAuthReminderButton" index="0"]

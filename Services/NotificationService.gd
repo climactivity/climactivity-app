@@ -1,8 +1,9 @@
 extends Node
 
 var notifications = [] setget , get_notifications
-
+var local_notifications_inited = false
 signal notification_update
+signal local_notifications_inited
 func _ready(): 
 	NakamaConnection.connect("notificaion_received", self, "on_notification_received")
 	NakamaConnection.connect("nk_connected", self, "fetch_notifications")
@@ -11,6 +12,8 @@ func _ready():
 func on_notification_received(notification): 
 	Logger.print("Notification received", self)
 	notifications.push_front(notification)
+	if local_notifications_inited:
+		_put_nk_notification(notification.code)
 	emit_signal("notification_update")
 func fetch_notifications(): 
 	notifications = yield(NakamaConnection.get_notifications(), "completed")
@@ -42,12 +45,36 @@ func local_notificaionts_inited():
 		_:
 			return false 
 
+func _put_nk_notification(notification):
+	if notification == null: return 
+	var content = JSON.parse(notification.content).result
+	if !content.has("messageType"):
+		Logger.error("This should not be shown to the user like this", self)
+		return
+	match content.messageType:
+		"Notification":
+			var text = content.text.split(">")[1].split("<")[0]
+			put_local_notification("", text, notification.code)
+		_:
+			return
+
+func put_local_notification(title: String, message: String, tag: int = 0, date = OS.get_unix_time(), repeat_duration: int = 0) -> int:
+	if !local_notifications_inited:
+		init_local_notifications()
+		yield(self, "local_notifications_inited")
+	# if none provided make a tag to refer to the notification later
+	if tag == 0: 
+		tag = randi() % 1000 + 1000
+	localnotification.show(message, title, date - OS.get_unix_time(), tag, repeat_duration)
+	return tag
+
 func init_local_notifications(): 
-	var is_initied = local_notificaionts_inited()
-	if is_initied: 
+	local_notifications_inited = local_notificaionts_inited()
+	if local_notifications_inited: 
 		print("Notifications initialized!")
-		localnotification.show("Hello", "It works", 30, 1) 
+#		localnotification.show("Hello", "It works", 30, 1) 
 		print("Notification Data: ", localnotification.get_notification_data())
+		emit_signal("local_notifications_inited")
 	else:
 		print("Notifications failed initialization, prompt permission?")
 
