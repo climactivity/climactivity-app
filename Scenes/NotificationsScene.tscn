@@ -47,7 +47,7 @@ show_menu_bar = true
 [node name="MarginContainer" type="MarginContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="1"]
 margin_top = 378.0
 margin_right = 1080.0
-margin_bottom = 716.0
+margin_bottom = 817.0
 mouse_filter = 2
 custom_constants/margin_right = 64
 custom_constants/margin_top = 40
@@ -57,17 +57,17 @@ custom_constants/margin_left = 64
 margin_left = 64.0
 margin_top = 40.0
 margin_right = 1016.0
-margin_bottom = 338.0
+margin_bottom = 439.0
 custom_constants/separation = 111
 
 [node name="OAuthReminder" type="VBoxContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/VBoxContainer" index="0"]
 margin_right = 952.0
-margin_bottom = 122.0
+margin_bottom = 223.0
 
 [node name="OAuthReminderButton" type="Button" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/VBoxContainer/OAuthReminder" index="0"]
 margin_right = 952.0
-margin_bottom = 122.195
-rect_min_size = Vector2( 0, 122.195 )
+margin_bottom = 223.944
+rect_min_size = Vector2( 0, 223.944 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 3 )
 custom_styles/hover = ExtResource( 7 )
@@ -78,9 +78,11 @@ custom_styles/normal = ExtResource( 7 )
 align = 0
 
 [node name="RichTextLabel" type="RichTextLabel" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/VBoxContainer/OAuthReminder/OAuthReminderButton" index="0"]
-margin_top = -4.0
-margin_right = 952.0
-margin_bottom = -4.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = -108.972
+margin_bottom = 107.028
 mouse_filter = 2
 custom_fonts/normal_font = ExtResource( 6 )
 bbcode_enabled = true
@@ -94,17 +96,17 @@ __meta__ = {
 translation_key = "notifications_oauth_connect_reminder"
 
 [node name="Label" type="Label" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/VBoxContainer" index="1"]
-margin_top = 233.0
+margin_top = 334.0
 margin_right = 952.0
-margin_bottom = 298.0
+margin_bottom = 399.0
 custom_fonts/font = ExtResource( 3 )
 text = "Noch keine Benachrichtigungen!"
 autowrap = true
 
 [node name="SystemMessages" type="MarginContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="2"]
-margin_top = 720.0
+margin_top = 821.0
 margin_right = 1080.0
-margin_bottom = 811.0
+margin_bottom = 912.0
 custom_constants/margin_right = 64
 custom_constants/margin_top = 91
 custom_constants/margin_left = 64
@@ -117,9 +119,9 @@ margin_bottom = 91.0
 custom_constants/separation = 32
 
 [node name="MarginContainer2" type="MarginContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="3"]
-margin_top = 815.0
+margin_top = 916.0
 margin_right = 1080.0
-margin_bottom = 906.0
+margin_bottom = 1007.0
 custom_constants/margin_right = 64
 custom_constants/margin_top = 91
 custom_constants/margin_left = 64

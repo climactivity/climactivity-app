@@ -82,15 +82,8 @@ func do_update():
 				water = tracking_state.get_water_for_time_interval(lower_bound, upper_bound)
 			if tracking_state.should_generate_water(): 
 				tracking_state.water_tank.add_water(water)
-#			if _current_entity.is_mature(): # if the entity reached the end of its tracking interval in the last update period generate water for the time before 
-#				water = tracking_state.get_water_for_time_interval( last_update, _current_entity.matured_at())
-#			else: # get water for the whole update period
-#				 water = tracking_state.get_water_for_time_interval_from_now(absolute_delta)
-#
-
-		# add update to stats
-#		tracking_update.add_reward(aspect_id, reward)
-#		total_reward.merge(reward)
+			if tracking_state.water_tank.is_dangerously_full():
+				NotificationService.put_local_notification("Es sammelt sich...", "Du kannst wieder Wasser für deinen Wald abholen!", 1000, OS.get_unix_time() + Util.HOUR)
 	player_state.add_tracking_update(tracking_update)
 	#finalize
 	player_state.last_update = OS.get_unix_time()

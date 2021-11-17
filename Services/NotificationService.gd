@@ -21,7 +21,7 @@ func get_notifications():
 	return notifications
 
 func has_notifications(): 
-	return notifications == null or notifications == []
+	return not notifications == null or notifications == []
 
 func dismiss_notification(notification): 
 	notifications.erase(notification)
@@ -65,6 +65,11 @@ func put_local_notification(title: String, message: String, tag: int = 0, date =
 	# if none provided make a tag to refer to the notification later
 	if tag == 0: 
 		tag = randi() % 1000 + 1000
+	var current_notifications = localnotification.get_notification_data()
+	
+	if date < OS.get_unix_time(): 
+		date = OS.get_unix_time()
+	
 	localnotification.show(message, title, date - OS.get_unix_time(), tag, repeat_duration)
 	return tag
 

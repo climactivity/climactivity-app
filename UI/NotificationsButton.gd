@@ -2,6 +2,7 @@ extends CyMenuButton
 
 func _ready():
 	_set_alert()
+	NotificationService.connect("notification_update", self, "_set_alert")
 	
 func _set_alert():
 	if NotificationService.has_notifications() or EventMessageService.should_alert():

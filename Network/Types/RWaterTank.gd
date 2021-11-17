@@ -42,3 +42,6 @@ func consume_water_amount(amount):
 
 func reset(): 
 	current_value = 0.0
+
+func is_dangerously_full(): 
+	return max_value - current_value < 10.0 

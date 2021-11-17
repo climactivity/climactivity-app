@@ -31,6 +31,7 @@ func init() -> void:
 		print("_ln not defined!")
 
 func show(message: String, title: String, interval: int, tag: int = 1, repeat_duration: int = 0) -> void:
+	print("Local notification: %s: %s" % [title, message])
 	if _ln != null:
 		if repeat_duration <= 0:
 			_ln.showLocalNotification(message, title, interval, tag)
