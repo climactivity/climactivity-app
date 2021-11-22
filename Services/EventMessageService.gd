@@ -26,6 +26,11 @@ func event_notifications_loaded():
 			if notify_from <= now and now <= notify_till:
 				print([notify_from,now,notify_till])
 				current_events.push_back(event)
+			
+			# local notifications notifications 
+			if now <= notify_till: 
+				if not(event.has("eventKey") and flags.get_value("EventNotificationsSeen", event.eventKey, 0) != 0):
+					NotificationService.put_local_notification(tr("notification_title_cy_event"), event.message, Util.parse_date_to_unix(event["notifyFrom"]) )
 
 	
 func dispatch_event_notification(): 
@@ -42,7 +47,6 @@ func should_alert():
 	var alert = false
 	for event in current_events: 
 		if not(event.has("eventKey") and flags.get_value("EventNotificationsSeen", event.eventKey, 0) != 0):
-			NotificationService.put_local_notification(tr("notification_title_cy_event"), event.message, Util.parse_date_to_unix(event["notifyFrom"]) )
 			alert = true
 			break
 			

@@ -77,7 +77,7 @@ func init_local_notifications():
 	local_notifications_inited = local_notificaionts_inited()
 	if local_notifications_inited: 
 		print("Notifications initialized!")
-#		localnotification.show("Hello", "It works", 30, 1) 
+		localnotification.show("Hello", "It works", 30, 1) 
 		print("Notification Data: ", localnotification.get_notification_data())
 		emit_signal("local_notifications_inited")
 	else:
