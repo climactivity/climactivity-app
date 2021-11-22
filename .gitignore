@@ -8,8 +8,9 @@ export_presets.cfg
 
 android/.gradle
 android/.idea
-android/build/**/*
 
+android/build/**/*
+!android/build/res/
 android/gradle
 
 logs/
