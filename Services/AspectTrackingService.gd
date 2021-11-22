@@ -83,7 +83,7 @@ func do_update():
 			if tracking_state.should_generate_water(): 
 				tracking_state.water_tank.add_water(water)
 			if tracking_state.water_tank.is_dangerously_full():
-				NotificationService.put_local_notification("Es sammelt sich...", "Du kannst wieder Wasser für deinen Wald abholen!", 1000, OS.get_unix_time() + Util.HOUR)
+				NotificationService.put_local_notification(tr("notification_title_water"), tr("notification_content_water"), 1000, OS.get_unix_time() + Util.HOUR)
 	player_state.add_tracking_update(tracking_update)
 	#finalize
 	player_state.last_update = OS.get_unix_time()

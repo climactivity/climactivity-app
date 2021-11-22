@@ -42,7 +42,7 @@ func should_alert():
 	var alert = false
 	for event in current_events: 
 		if not(event.has("eventKey") and flags.get_value("EventNotificationsSeen", event.eventKey, 0) != 0):
-			NotificationService.put_local_notification("Es gibt bald ein climactivity event!", event.message, Util.parse_date_to_unix(event["notifyFrom"]) )
+			NotificationService.put_local_notification(tr("notification_title_cy_event"), event.message, Util.parse_date_to_unix(event["notifyFrom"]) )
 			alert = true
 			break
 			

@@ -88,3 +88,7 @@ entity_complete_message,"[center]Dein(e) %s ist ausgewachsen
 entity_complete_unlock,[center] Du hast einen neuen [color=#77B924]Setzling[/color] freigeschaltet[/center],
 entity_complete_close,Zum Aspekt!,
 entity_complete_hint_seedling,[center][i] Du kannst deinen [color=#98BC6A]Setzling[/color] auch später im Zelt einsammeln[/i][/center],
+notification_title_network,Eine neue Nachricht aus dem cy-Netzwerk,
+notification_title_water,Es sammelt sich...,
+notification_content_water,Du kannst wieder Wasser für deinen Wald abholen!,
+notification_title_cy_event,Es gibt bald ein climactivity event!,

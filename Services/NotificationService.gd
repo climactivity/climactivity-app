@@ -37,7 +37,7 @@ func local_notificaionts_inited():
 				print("ln inited")
 				return localnotification.is_enabled()
 			else: 
-				print("ln req permissionss")
+				print("ln req permissions")
 				localnotification.connect("enabled", self, "init_local_notifications")
 				localnotification.init()
 		"Android":
@@ -54,7 +54,7 @@ func _put_nk_notification(notification):
 	match content.messageType:
 		"Notification":
 			var text = content.text.split(">")[1].split("<")[0]
-			put_local_notification("", text, notification.code)
+			put_local_notification(tr("notification_title_network"), text, notification.code)
 		_:
 			return
 
