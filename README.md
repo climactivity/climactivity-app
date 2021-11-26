@@ -7,8 +7,8 @@ Falls die Szene zu der gewechselt wird die Methode ```receive_navigation``` hat,
 
 ## API 
 
-Für lokales Testing gibt es die Projekteinstellung ```debug/settings/network/localhost``` Dann Versucht die App daten von ```http://localhost:3000``` zu lesen, sonst von ```https://app.climactiviy.de/api/v1``` **(noch nicht aktiv auf Grund des Providerwechsels)**
-API Calls verwenden eine szenenlokale Instanz von HTTPRequest, damit mehrere Requests gleichzeitig laufen können. 
+Die Spielinhalte und die Nakama Instanz sind mit den ProjectSettings unter ```debug/settings/network``` definiert. 
+Darüber lässt sich 
 
 ## ForestScene3d 
 
