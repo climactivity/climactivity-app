@@ -29,12 +29,13 @@ var scene_map = {
 	"loading_instance": preload("res://SceneManager/Loading.tscn"), # loading screen
 	"big_point_scene": preload("res://Scenes/BigPointScene.tscn"),
 	"quiz_scene": preload("res://Scenes/QuizScene.tscn"),
-	"big_point_scene_consumption": preload("res://Scenes/BigPointScene.tscn"),
-	"big_point_scene_energy": preload("res://Scenes/BigPointScene.tscn"),
-	"big_point_scene_mobility": preload("res://Scenes/BigPointScene.tscn"),
-	"big_point_scene_indirect_emissions": preload("res://Scenes/BigPointScene.tscn"),
-	"big_point_scene_private_engagement": preload("res://Scenes/BigPointScene.tscn"),
-	"big_point_scene_public_engagement": preload("res://Scenes/BigPointScene.tscn"),
+#	"big_point_scene_consumption": preload("res://Scenes/BigPointScene.tscn"),
+#	"big_point_scene_energy": preload("res://Scenes/BigPointScene.tscn"),
+#	"big_point_scene_mobility": preload("res://Scenes/BigPointScene.tscn"),
+#	"big_point_scene_indirect_emissions": preload("res://Scenes/BigPointScene.tscn"),
+#	"big_point_scene_private_engagement": preload("res://Scenes/BigPointScene.tscn"),
+#	"big_point_scene_public_engagement": preload("res://Scenes/BigPointScene.tscn"),
+#	"big_point_scene_bilanzierung": preload("res://Scenes/BigPointScene.tscn"),
 	"water_collection_scene": preload("res://Scenes/WaterCollectionScene.tscn")
 }
 

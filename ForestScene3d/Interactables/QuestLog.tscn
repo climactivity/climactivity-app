@@ -1,28 +1,12 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://UI/typography/Content_Regular.tres" type="DynamicFont" id=1]
 [ext_resource path="res://ForestScene3d/Interactables/QuestLog.gd" type="Script" id=2]
 [ext_resource path="res://Assets/Icons/xp_star.png" type="Texture" id=3]
 [ext_resource path="res://UI/typography/UI_bigger.tres" type="DynamicFont" id=4]
-
-[sub_resource type="StyleBoxFlat" id=3]
-content_margin_left = 10.0
-content_margin_right = 10.0
-content_margin_top = 10.0
-content_margin_bottom = 10.0
-bg_color = Color( 1, 1, 1, 1 )
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color( 1, 1, 1, 1 )
-corner_radius_top_left = 7
-corner_radius_top_right = 7
-corner_radius_bottom_right = 7
-corner_radius_bottom_left = 7
-shadow_color = Color( 0, 0, 0, 0.0705882 )
-shadow_size = 32
-shadow_offset = Vector2( 0, 10.141 )
+[ext_resource path="res://ForestScene3d/Interactables/HudActionButtonBG.tres" type="StyleBox" id=5]
+[ext_resource path="res://Assets/Icons/hand.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Icons/foot.png" type="Texture" id=7]
 
 [sub_resource type="StyleBoxEmpty" id=4]
 
@@ -40,18 +24,23 @@ shadow_offset = Vector2( 0, 10.141 )
 default_font = ExtResource( 1 )
 PanelContainer/styles/panel = SubResource( 1 )
 
-[node name="QuestLog" type="PanelContainer"]
+[node name="QuestLog" type="VBoxContainer"]
 rect_min_size = Vector2( 80, 80 )
-custom_styles/panel = SubResource( 3 )
+custom_constants/separation = 55
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button" type="Button" parent="."]
+[node name="ChallengesContainer" type="PanelContainer" parent="."]
+margin_right = 462.0
+margin_bottom = 100.0
+custom_styles/panel = ExtResource( 5 )
+
+[node name="Button" type="Button" parent="ChallengesContainer"]
 margin_left = 10.0
 margin_top = 10.0
-margin_right = 339.0
+margin_right = 452.0
 margin_bottom = 90.0
 custom_styles/hover = SubResource( 4 )
 custom_styles/pressed = SubResource( 5 )
@@ -59,32 +48,93 @@ custom_styles/focus = SubResource( 6 )
 custom_styles/disabled = SubResource( 7 )
 custom_styles/normal = SubResource( 8 )
 
-[node name="VBoxContainer" type="HBoxContainer" parent="."]
+[node name="VBoxContainer" type="HBoxContainer" parent="ChallengesContainer"]
 margin_left = 10.0
 margin_top = 10.0
-margin_right = 339.0
+margin_right = 452.0
 margin_bottom = 90.0
 mouse_filter = 2
 theme = SubResource( 2 )
 
-[node name="ActionButton" type="TextureRect" parent="VBoxContainer"]
+[node name="ActionButton" type="TextureRect" parent="ChallengesContainer/VBoxContainer"]
+margin_right = 80.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 80, 80 )
+mouse_filter = 2
+size_flags_vertical = 3
+texture = ExtResource( 3 )
+expand = true
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="ChallengesContainer/VBoxContainer"]
+margin_left = 84.0
+margin_top = 7.0
+margin_right = 442.0
+margin_bottom = 73.0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 0.411765, 0.411765, 0.407843, 1 )
+custom_fonts/font = ExtResource( 4 )
+text = "Challenges"
+align = 1
+
+[node name="BilanzierungContainer" type="PanelContainer" parent="."]
+margin_top = 155.0
+margin_right = 462.0
+margin_bottom = 255.0
+custom_styles/panel = ExtResource( 5 )
+
+[node name="BilanzierungButton" type="Button" parent="BilanzierungContainer"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 452.0
+margin_bottom = 90.0
+custom_styles/hover = SubResource( 4 )
+custom_styles/pressed = SubResource( 5 )
+custom_styles/focus = SubResource( 6 )
+custom_styles/disabled = SubResource( 7 )
+custom_styles/normal = SubResource( 8 )
+
+[node name="VBoxContainer" type="HBoxContainer" parent="BilanzierungContainer"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 452.0
+margin_bottom = 90.0
+mouse_filter = 2
+theme = SubResource( 2 )
+
+[node name="ActionButton" type="TextureRect" parent="BilanzierungContainer/VBoxContainer"]
+modulate = Color( 0.411765, 0.411765, 0.407843, 1 )
 margin_right = 80.0
 margin_bottom = 80.0
 rect_min_size = Vector2( 80, 80 )
 mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-texture = ExtResource( 3 )
+texture = ExtResource( 7 )
 expand = true
-stretch_mode = 7
+stretch_mode = 6
 
-[node name="Label" type="Label" parent="VBoxContainer"]
+[node name="Label" type="Label" parent="BilanzierungContainer/VBoxContainer"]
 margin_left = 84.0
 margin_top = 7.0
-margin_right = 329.0
+margin_right = 358.0
 margin_bottom = 73.0
-custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 0.411765, 0.411765, 0.407843, 1 )
-text = "Challenges"
+custom_fonts/font = ExtResource( 4 )
+text = "Bilanzierung"
 
-[connection signal="pressed" from="Button" to="." method="_on_ActionButton_pressed"]
+[node name="ActionButton2" type="TextureRect" parent="BilanzierungContainer/VBoxContainer"]
+modulate = Color( 0.411765, 0.411765, 0.407843, 1 )
+margin_left = 362.0
+margin_right = 442.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 80, 80 )
+mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 6 )
+expand = true
+stretch_mode = 6
+
+[connection signal="pressed" from="ChallengesContainer/Button" to="." method="_on_ActionButton_pressed"]
+[connection signal="pressed" from="BilanzierungContainer/BilanzierungButton" to="." method="_on_BilanzierungButton_pressed"]
