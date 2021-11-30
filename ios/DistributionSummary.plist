@@ -12,7 +12,7 @@
 			<key>bitcode</key>
 			<false/>
 			<key>buildNumber</key>
-			<string>1.40</string>
+			<string>2</string>
 			<key>certificate</key>
 			<dict>
 				<key>SHA1</key>
@@ -33,7 +33,7 @@
 					<key>bitcode</key>
 					<false/>
 					<key>buildNumber</key>
-					<string>1.40</string>
+					<string>2</string>
 					<key>certificate</key>
 					<dict>
 						<key>SHA1</key>
@@ -55,7 +55,7 @@
 						<string></string>
 					</dict>
 					<key>versionNumber</key>
-					<string>1.40</string>
+					<string>1.70</string>
 				</dict>
 			</array>
 			<key>entitlements</key>
@@ -92,7 +92,7 @@
 				<string></string>
 			</dict>
 			<key>versionNumber</key>
-			<string>1.40</string>
+			<string>1.70</string>
 		</dict>
 	</array>
 </dict>

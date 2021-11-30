@@ -13,9 +13,9 @@
 		<key>CFBundleIdentifier</key>
 		<string>de.climactivity.app</string>
 		<key>CFBundleShortVersionString</key>
-		<string>1.40</string>
+		<string>1.70</string>
 		<key>CFBundleVersion</key>
-		<string>1.40</string>
+		<string>1.70</string>
 		<key>SigningIdentity</key>
 		<string>Apple Development: Timo Volk (WAL3F8KU9P)</string>
 		<key>Team</key>
@@ -24,7 +24,7 @@
 	<key>ArchiveVersion</key>
 	<integer>2</integer>
 	<key>CreationDate</key>
-	<date>2021-11-02T14:17:59Z</date>
+	<date>2021-11-22T15:44:23Z</date>
 	<key>Name</key>
 	<string>climactivity-app</string>
 	<key>SchemeName</key>
