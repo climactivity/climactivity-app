@@ -8,7 +8,7 @@ func _on_ActionButton_pressed():
 
 func _on_BilanzierungButton_pressed():
 	GameManager.scene_manager.push_scene("res://Scenes/BigPointScene.tscn", {
-		"sector": "energy",
-		"sector_title": "Zelt der Beep",
-		"sector_logo": preload("res://Assets/Icons/climactivity_H-Icon_Energie.png")
+		"sector": "accounting",
+		"sector_title": "Zelt der Bilanzierung",
+		"sector_logo": preload("res://Assets/Icons/hand.png")
 	})

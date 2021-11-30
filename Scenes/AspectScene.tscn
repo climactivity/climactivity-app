@@ -199,7 +199,6 @@ mouse_filter = 2
 custom_constants/margin_left = 15
 
 [node name="TrackingState" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview/MarginContainer" index="0" instance=ExtResource( 19 )]
-modulate = Color( 1, 1, 1, 0 )
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 1075.0
@@ -225,15 +224,15 @@ margin_left = 40.0
 margin_top = 40.0
 margin_right = 1035.0
 margin_bottom = 115.0
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 5 )
 custom_styles/hover = ExtResource( 18 )
 custom_styles/pressed = ExtResource( 10 )
 custom_styles/focus = ExtResource( 18 )
 custom_styles/disabled = ExtResource( 18 )
 custom_styles/normal = ExtResource( 18 )
-custom_fonts/font = ExtResource( 5 )
-custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
 text = "Neuen Setzling auswählen"
 __meta__ = {
 "_editor_description_": ""
@@ -325,8 +324,8 @@ custom_constants/separation = 36
 margin_top = 2162.0
 margin_right = 1075.0
 margin_bottom = 2212.0
-custom_styles/separator = SubResource( 5 )
 custom_constants/separation = 50
+custom_styles/separator = SubResource( 5 )
 
 [node name="HTTPRequest" type="HTTPRequest" parent="." index="1"]
 

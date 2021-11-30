@@ -34,6 +34,8 @@ func receive_navigation(navigation_data):
 func _show_data(): 
 	if (aspect_data == null): return
 	var sector = SectorService.get_sector_data(aspect_data.bigpoint)
+	if aspect_data.bigpoint == 'accounting':
+		_accounting_mode()
 	
 	set_screen_title(aspect_data.title)
 	if aspect_data.icon != null: 
@@ -56,17 +58,25 @@ func _show_data():
 #		should_animate = true
 #		#tracking_preview.show_shop_button()
 
+func _accounting_mode(): 
+	tracking_preview.visible = false
+	info_graph.set("custom_styles/panel", StyleBoxEmpty.new())
+
 func anim_start(): 
 	if should_animate or ProjectSettings.get_setting("debug/settings/game_logic/cheat_seedlings"):# || OS.is_debug_build():
 		tracking_preview.show_shop_button(aspect_data)
 
 func _on_Button_pressed():
-	GameManager.scene_manager.push_scene("res://Scenes/TrackingSettingScene.tscn", {"aspect": aspect_data})
+	_go_to_tracking()
 
 func _enter_tree():
 	if ready:
 		_show_data()
 
-
 func _on_Panel_pressed():
+	_go_to_tracking()
+
+func _go_to_tracking(): 
+	if aspect_data.bigpoint == 'accounting':
+		return 
 	GameManager.scene_manager.push_scene("res://Scenes/TrackingSettingScene.tscn", {"aspect": aspect_data})

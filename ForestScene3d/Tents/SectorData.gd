@@ -40,5 +40,12 @@ export var sector_data = {
 		"sector_logo": preload("res://Assets/Icons/climactivity_H-Icon_Engage_Gesellschaft.png"),
 		"sector_color": Color('#37647A'),
 		"sector_hint": "Klimaschutz wird nur gelingen, wenn persönliche, gesellschaftliche und politische Veränderungen Hand-in-Hand gehen. Hier erfährst du, wie du dich in Schule und Betrieb sowie in Politik und Gesellschaft für Klimaschutz engagieren kannst und warum sich das lohnt."   
+	},
+	"accounting": {
+		"sector": "accounting",
+		"sector_title": "Bilanzierung",
+		"sector_logo": preload("res://Assets/Icons/hand.png"),
+		"sector_color": Color('#696968'),
+		"sector_hint": "Die Klimaschutzziele lassen sich nur erreichen, wenn möglichst viele Menschen ambitionierten Klimaschutz betreiben. Je mehr Menschen du also motivierst, desto besser! Und auch den eigenen Fußabdruck zu kennen ist gut und wichtig. Doch wie genau kannst du vorgehen, wenn du diesen verkleinern möchtest?"   
 	}
 }
