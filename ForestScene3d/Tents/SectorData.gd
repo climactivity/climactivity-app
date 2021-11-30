@@ -44,7 +44,7 @@ export var sector_data = {
 	"accounting": {
 		"sector": "accounting",
 		"sector_title": "Bilanzierung",
-		"sector_logo": preload("res://Assets/Icons/hand.png"),
+		"sector_logo": preload("res://Assets/Icons/hand_b.png"),
 		"sector_color": Color('#696968'),
 		"sector_hint": "Im Dezember ist bei uns der Themenmonat der Bilanzierung. Die Klimaschutzziele lassen sich nur erreichen, wenn möglichst viele Menschen ambitionierten Klimaschutz betreiben. Je mehr Menschen du also motivierst, desto besser! Und auch den eigenen Fußabdruck zu kennen ist gut und wichtig. Doch wie genau kannst du vorgehen, wenn du diesen verkleinern möchtest?"   
 	}
