@@ -270,18 +270,18 @@ intro_timeline = "QuestIntro"
 follow_focus = true
 
 [node name="ContentMain" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer" index="0"]
-margin_bottom = 3031.0
+margin_bottom = 2165.0
 
 [node name="kiko_avatar - placeholder" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="1" instance=ExtResource( 7 )]
 anchor_right = 0.0
-margin_top = 350.0
+margin_top = 378.0
 margin_right = 1080.0
-margin_bottom = 750.0
+margin_bottom = 778.0
 
 [node name="TextContainer" type="MarginContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="2"]
-margin_top = 754.0
+margin_top = 782.0
 margin_right = 1080.0
-margin_bottom = 2196.0
+margin_bottom = 1330.0
 size_flags_horizontal = 3
 custom_constants/margin_right = 24
 custom_constants/margin_top = 24
@@ -292,7 +292,7 @@ custom_constants/margin_bottom = 24
 margin_left = 24.0
 margin_top = 24.0
 margin_right = 1056.0
-margin_bottom = 1418.0
+margin_bottom = 524.0
 rect_min_size = Vector2( 0, 500 )
 size_flags_horizontal = 3
 custom_styles/panel = SubResource( 5 )
@@ -304,7 +304,7 @@ __meta__ = {
 margin_left = 1.0
 margin_top = 1.0
 margin_right = 1031.0
-margin_bottom = 1393.0
+margin_bottom = 499.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/margin_right = 64
@@ -318,12 +318,12 @@ anchor_bottom = 0.0
 margin_left = 64.0
 margin_top = 64.0
 margin_right = 966.0
-margin_bottom = 1328.0
+margin_bottom = 434.0
 
 [node name="StatusContainer" type="Control" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="3"]
-margin_top = 2200.0
+margin_top = 1334.0
 margin_right = 1080.0
-margin_bottom = 2328.0
+margin_bottom = 1462.0
 rect_min_size = Vector2( 0, 128 )
 
 [node name="DatePanel" type="Panel" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/StatusContainer" index="0"]
@@ -381,16 +381,16 @@ margin_bottom = 0.0
 label_size = 1
 
 [node name="HSeparator2" type="HSeparator" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="4"]
-margin_top = 2332.0
+margin_top = 1466.0
 margin_right = 1080.0
-margin_bottom = 2391.0
-custom_styles/separator = SubResource( 7 )
+margin_bottom = 1525.0
 custom_constants/separation = 59
+custom_styles/separator = SubResource( 7 )
 
 [node name="ActionContainer" type="MarginContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="5"]
-margin_top = 2395.0
+margin_top = 1529.0
 margin_right = 1080.0
-margin_bottom = 2820.27
+margin_bottom = 1954.27
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/margin_right = 36
@@ -408,6 +408,7 @@ margin_top = 0.0
 margin_right = 1044.0
 margin_bottom = 225.0
 focus_mode = 2
+disabled = false
 
 [node name="ActionButton" type="TextureButton" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ActionContainer" index="1"]
 margin_left = 36.0
@@ -437,11 +438,11 @@ __meta__ = {
 }
 
 [node name="HSeparator3" type="HSeparator" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="6"]
-margin_top = 2824.0
+margin_top = 1958.0
 margin_right = 1080.0
-margin_bottom = 3031.0
-custom_styles/separator = SubResource( 7 )
+margin_bottom = 2165.0
 custom_constants/separation = 207
+custom_styles/separator = SubResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

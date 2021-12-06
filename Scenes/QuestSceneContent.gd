@@ -35,7 +35,9 @@ func _update():
 		end_date_label.text = Util.date_as_eu_string(QuestService.get_quest_status(_quest._id)["quest_dead_line"])
 	else: 
 		action_button_label.text = tr("quest_action_start") if !just_completed else tr("quest_action_just_completed")
-		if _quest.deadline != 0: 
+		if _quest.deadline is String:
+			end_date_label.text = _quest.deadline
+		elif _quest.deadline != 0: 
 			end_date_label.text = Util.date_as_eu_string(_quest.deadline)
 		else: 
 			end_date_label.text = "%d Tage" % [_quest.max_duration / 24]
