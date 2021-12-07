@@ -161,6 +161,11 @@ func lock():
 		if is_correct:
 			set_state(AnswerState.CORRECT)
 
+func set_select_anim_target_color(color: Color) -> void: 
+	var anim = $AnimationPlayer.get_animation("Select")
+	var track = anim.find_track("MarginContainer/Panel/Panel:custom_styles/panel:bg_color")
+	anim.track_set_key_value(track, 1, color)
+
 func unlock():
 	can_fire = true
 	set_state(AnswerState.DEFAULT)

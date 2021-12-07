@@ -72,8 +72,8 @@ __meta__ = {
 margin_top = 478.0
 margin_right = 1084.0
 margin_bottom = 548.0
-custom_styles/separator = ExtResource( 2 )
 custom_constants/separation = 70
+custom_styles/separator = ExtResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Enter = SubResource( 1 )
