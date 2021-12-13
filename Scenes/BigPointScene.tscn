@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scenes/SceneBase.tscn" type="PackedScene" id=1]
 [ext_resource path="res://UI/Behaviour/Stagger.tscn" type="PackedScene" id=2]
 [ext_resource path="res://UI/Components/kiko_hint.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/BigPointScene.gd" type="Script" id=4]
+
+[sub_resource type="StyleBoxEmpty" id=1]
 
 [node name="BigPointScene" instance=ExtResource( 1 )]
 script = ExtResource( 4 )
@@ -32,14 +34,19 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = 36
 
-[node name="kiko_avatar - placeholder" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/AspectList" index="0" groups=[
-"behaviour",
-] instance=ExtResource( 3 )]
+[node name="kiko_avatar - placeholder" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/AspectList" index="0" groups=["behaviour"] instance=ExtResource( 3 )]
 anchor_right = 0.0
 margin_right = 1040.0
 margin_bottom = 400.0
 
 [node name="Stagger" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/AspectList" index="1" instance=ExtResource( 2 )]
+
+[node name="bottom_padding" type="HSeparator" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="2"]
+margin_top = 862.0
+margin_right = 1080.0
+margin_bottom = 1062.0
+custom_constants/separation = 200
+custom_styles/separator = SubResource( 1 )
 
 [node name="HTTPRequest" type="HTTPRequest" parent="." index="1"]
 

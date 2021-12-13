@@ -259,7 +259,7 @@ func _on_CollectRewardButton_pressed():
 	RewardService.add_reward(quiz_data.reward)
 	can_exit = true
 	yield(get_tree().create_timer(3.0), "timeout")
-#	GameManager.scene_manager.pop_scene()
+	GameManager.scene_manager.pop_scene()
 	
 
 func _on_direct_to_quiz_button_pressed():
