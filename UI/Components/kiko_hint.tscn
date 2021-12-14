@@ -193,8 +193,10 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 
 [node name="Control" type="TextureRect" parent="MarginContainer2"]
+modulate = Color( 1, 1, 1, 0 )
+margin_top = -100.0
 margin_right = 400.0
-margin_bottom = 400.0
+margin_bottom = 300.0
 grow_horizontal = 0
 grow_vertical = 0
 rect_min_size = Vector2( 400, 400 )
@@ -212,7 +214,9 @@ grow_horizontal = 0
 grow_vertical = 0
 
 [node name="SpeechBubbleHolder" type="PanelContainer" parent="."]
-margin_right = 1080.0
+modulate = Color( 1, 1, 1, 0 )
+margin_left = -300.0
+margin_right = 780.0
 margin_bottom = 400.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -254,17 +258,17 @@ margin_bottom = 380.0
 custom_constants/margin_right = 20
 custom_constants/margin_top = 20
 custom_constants/margin_left = 100
-custom_constants/margin_bottom = 20
+custom_constants/margin_bottom = 46
 
 [node name="DialogLine" type="RichTextLabel" parent="SpeechBubbleHolder/MarginContainer/MarginContainer"]
 margin_left = 100.0
 margin_top = 20.0
 margin_right = 821.0
-margin_bottom = 253.0
+margin_bottom = 227.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/normal_font = ExtResource( 1 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = ExtResource( 1 )
 bbcode_enabled = true
 visible_characters = 0
 percent_visible = 0.0
