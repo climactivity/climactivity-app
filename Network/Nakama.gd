@@ -157,7 +157,6 @@ func save_var(collection_name: String, key_name: String, value: String, can_read
 		return ack.acks[0]
 
 func push_error(message): 
-
 	if !session: 
 		return
 	yield(client.rpc_async(session, "push_error", message), "completed")
