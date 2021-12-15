@@ -229,7 +229,7 @@ func can_place(hex, instance):
 	var x = hex.axial_coords.x
 	var y = hex.axial_coords.y
 	if x in range(-SIZE, SIZE+1) && y in range(max(-SIZE, -SIZE + x), min(SIZE, SIZE + x) + 1):
-		if !(abs(x) >= MIN_RING || abs(y) >= MIN_RING): 
+		if (hex in not_placeable_hexes): 
 			#print("can't place at: ", x,", ",y, "; ", "Blocked by min dist from center")
 			last_hex = null
 			return false

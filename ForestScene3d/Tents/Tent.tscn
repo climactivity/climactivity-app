@@ -88,6 +88,7 @@ mesh = ExtResource( 3 )
 material/0 = null
 
 [node name="ContactShadow" parent="." instance=ExtResource( 4 )]
+visible = false
 mesh = SubResource( 1 )
 material/0 = SubResource( 3 )
 
