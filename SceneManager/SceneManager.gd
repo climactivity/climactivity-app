@@ -143,8 +143,14 @@ func _prepare_bigpoint_scene(sector):
 func go_home(config = TransitionFactory.MoveBack()): 
 	push_scene(home_scene, {}, config)
 
+func get_context() -> Dictionary:
+	return last_nav_data
+
+var last_nav_data = {}
+
 func push_scene(scene, navigation_data = {}, config = TransitionFactory.MoveOut()) -> void: 
 	if (is_changing_scene or _is_current_focus(scene)): return
+	last_nav_data = navigation_data
 	get_tree().get_root().set_disable_input(true)
 	is_changing_scene = true
 	A_viewport.remove_child(current_scene)
