@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1FF8DBB11FBA9DE1009DE660 /* dummy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FF8DBB01FBA9DE1009DE660 /* dummy.cpp */; };
-		589384010000000000000001 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 589384010000000000000002 /* Accelerate.framework */; };
+		5479596B276C09C70034108B /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5479596A276C09C70034108B /* Accelerate.framework */; };
 		589384010000000000000003 /* localnotification.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 589384010000000000000004 /* localnotification.xcframework */; };
 		589384010000000000000005 /* localnotification.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 589384010000000000000004 /* localnotification.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		90DD2D9E24B36E8000717FE1 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 90DD2D9D24B36E8000717FE1 /* Launch Screen.storyboard */; };
@@ -36,7 +36,7 @@
 		1F1575711F582BE20003B888 /* dylibs */ = {isa = PBXFileReference; lastKnownFileType = folder; name = dylibs; path = "climactivity-app/dylibs"; sourceTree = "<group>"; };
 		1FF4C1881F584E6300A41E41 /* climactivity-app.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "climactivity-app.entitlements"; sourceTree = "<group>"; };
 		1FF8DBB01FBA9DE1009DE660 /* dummy.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = dummy.cpp; sourceTree = "<group>"; };
-		589384010000000000000002 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Accelerate.framework; sourceTree = "<group>"; };
+		5479596A276C09C70034108B /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		589384010000000000000004 /* localnotification.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = localnotification.xcframework; path = "climactivity-app/dylibs/addons/localnotification-ios/localnotification.xcframework"; sourceTree = "<group>"; };
 		90DD2D9D24B36E8000717FE1 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		D07CD44D1C5D589C00B7FB28 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -52,8 +52,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5479596B276C09C70034108B /* Accelerate.framework in Frameworks */,
 				DEADBEEF2F582BE20003B888 /* godot in Frameworks */,
-				589384010000000000000001 /* Accelerate.framework in Frameworks */,
 				589384010000000000000003 /* localnotification.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -83,8 +83,8 @@
 		D0BCFE3618AEBDA2004A7AAE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5479596A276C09C70034108B /* Accelerate.framework */,
 				DEADBEEF1F582BE20003B888 /* godot */,
-				589384010000000000000002 /* Accelerate.framework */,
 				589384010000000000000004 /* localnotification.xcframework */,
 			);
 			name = Frameworks;
@@ -295,7 +295,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
-				CURRENT_PROJECT_VERSION = 1.711;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = BGH588JJJP;
 				INFOPLIST_FILE = "climactivity-app/climactivity-app-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -307,7 +307,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/**",
 				);
-				MARKETING_VERSION = 1.71;
+				MARKETING_VERSION = 1.72;
 				PRODUCT_BUNDLE_IDENTIFIER = de.climactivity.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -326,7 +326,7 @@
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
-				CURRENT_PROJECT_VERSION = 1.711;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = BGH588JJJP;
 				INFOPLIST_FILE = "climactivity-app/climactivity-app-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -338,7 +338,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/**",
 				);
-				MARKETING_VERSION = 1.71;
+				MARKETING_VERSION = 1.72;
 				PRODUCT_BUNDLE_IDENTIFIER = de.climactivity.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
