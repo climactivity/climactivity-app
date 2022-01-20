@@ -55,6 +55,7 @@ func consume_water(amount: float):
 	last_watered = OS.get_unix_time()
 	emit_signal("getting_watered", old_water, water_applied)
 	RewardService.add_xp(amount)
+	RewardService.add_coins(amount)
 	Logger.print( "Added %2.4f water to %s" % [amount, entity_id], self)
 
 

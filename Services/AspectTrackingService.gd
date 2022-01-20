@@ -78,6 +78,7 @@ func do_update():
 			var lower_bound = max(_current_entity.planted_at, last_update)
 			var upper_bound = min(_current_entity.matured_at(), now)
 			var water = 0.0
+			water = tracking_state.get_water_for_time_interval_from_now(absolute_delta) || 0 
 			if upper_bound > lower_bound:
 				water = tracking_state.get_water_for_time_interval(lower_bound, upper_bound)
 			if tracking_state.should_generate_water(): 
