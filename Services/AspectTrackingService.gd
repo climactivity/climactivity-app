@@ -78,12 +78,13 @@ func do_update():
 			var lower_bound = max(_current_entity.planted_at, last_update)
 			var upper_bound = min(_current_entity.matured_at(), now)
 			var water = 0.0
+			water = tracking_state.get_water_for_time_interval_from_now(absolute_delta) || 0 
 			if upper_bound > lower_bound:
 				water = tracking_state.get_water_for_time_interval(lower_bound, upper_bound)
 			if tracking_state.should_generate_water(): 
 				tracking_state.water_tank.add_water(water)
-			if tracking_state.water_tank.is_dangerously_full():
-				NotificationService.put_local_notification(tr("notification_title_water"), tr("notification_content_water"), 1000, OS.get_unix_time() + Util.HOUR)
+#			if tracking_state.water_tank.is_dangerously_full():
+#				NotificationService.put_local_notification(tr("notification_title_water"), tr("notification_content_water"), 1000, OS.get_unix_time() + Util.HOUR)
 	player_state.add_tracking_update(tracking_update)
 	#finalize
 	player_state.last_update = OS.get_unix_time()

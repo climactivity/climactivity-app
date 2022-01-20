@@ -21,7 +21,14 @@ func add_xp(xp):
 		"xp": xp 
 	}) 
 	add_reward(_reward)
+
+func add_coins(coins):
+	var _reward = reward.from_dict({
+		"coins": coins 
+	}) 
+	add_reward(_reward)
 	
+
 func DEBUG_default_reward():
 	Logger.print("Generated default reward", self)
 	var r =  reward.new()
