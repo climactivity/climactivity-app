@@ -121,6 +121,22 @@ func start_cy_network_oauth_flow():
 	var user = account.user
 	var auth_url = "%s/authorize?response_type=code&client_id=%s&state=%s" % [oauth_base_url, oauth_client_id, user.id]
 	OS.shell_open(auth_url)
+	
+func IOS_start_cy_network_oauth_flow(): 
+	if !Engine.has_singleton("WebView"): 
+		printerr("Framework not loaded!")
+		return
+	var _webView = Engine.get_singleton("WebView")
+	if !session: 
+		_reconnect()
+		yield(self, "nk_connected")
+	var account : NakamaAPI.ApiAccount = yield(client.get_account_async(session), "completed")
+	if account.is_exception():
+		Logger.print("An error occured: %s" % account, self)
+		return
+	var user = account.user
+	var auth_url = "%s/json/authorize?response_type=code&client_id=%s&state=%s" % [oauth_base_url, oauth_client_id, user.id]
+	return _webView.load_url(auth_url)
 
 func update_account_with_email(email, password): 
 	yield(client.link_email_async(session, email, password), "completed")

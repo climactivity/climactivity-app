@@ -173,7 +173,7 @@ tracks/4/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ 0.0 ]
+"values": [ 1.0 ]
 }
 
 [node name="kiko_avatar - placeholder" type="PanelContainer"]

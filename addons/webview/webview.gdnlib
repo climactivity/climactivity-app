@@ -1,0 +1,19 @@
+[config]
+name="WebView"
+binary="webview.xcframework"
+
+initialization="godot_webview_init"
+deinitialization="godot_webview_deinit"
+
+[dependencies]
+linked=[]
+embedded=[]
+system=[]
+
+capabilities=[]
+
+files=[]
+
+[plist]
+NSPhotoLibraryUsageDescription:string_input="Photo Library usage description"
+NSCameraUsageDescription:string_input="Camera usage description"

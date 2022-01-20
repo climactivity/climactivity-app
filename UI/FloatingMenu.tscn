@@ -109,7 +109,7 @@ __meta__ = {
 
 [node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
 margin_right = 1219.0
-margin_bottom = 184.0
+margin_bottom = 180.0
 rect_min_size = Vector2( 1000, 180 )
 size_flags_horizontal = 3
 size_flags_vertical = 0
@@ -182,6 +182,7 @@ icon = ExtResource( 1 )
 menu_label = "stats_screen"
 
 [node name="NetworkButton" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer" instance=ExtResource( 4 )]
+visible = false
 margin_left = 556.0
 margin_right = 709.0
 primary_color = Color( 0.988235, 0.988235, 0.988235, 1 )
