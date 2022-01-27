@@ -242,6 +242,8 @@ custom_styles/disabled = SubResource( 11 )
 custom_styles/normal = SubResource( 12 )
 text = "Abmelden"
 
+[node name="HTTPRequest" type="HTTPRequest" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/Settings/SettingsOAuthConnect" index="2"]
+
 [node name="Version" type="PanelContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/Settings" index="1"]
 margin_top = 1058.0
 margin_right = 952.0
@@ -261,11 +263,11 @@ custom_fonts/normal_font = ExtResource( 3 )
 bbcode_enabled = true
 bbcode_text = "[center][img=256]res://Assets/BG/cyIcon.png[/img]
 Climactivty App
-Version 1.59
+Version 1.72
 Engine Version: 3.4-stable (official) "
 text = "
 Climactivty App
-Version 1.59
+Version 1.72
 Engine Version: 3.4-stable (official) "
 fit_content_height = true
 script = ExtResource( 26 )
@@ -364,6 +366,7 @@ color = Color( 1, 1, 1, 1 )
 [connection signal="toggled" from="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/Settings/SettingsOAuthConnect/MarginContainer/VBoxContainer2/NotificationToggle" to="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/Settings/SettingsOAuthConnect" method="_on_NotificationToggle_toggled"]
 [connection signal="meta_clicked" from="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/Settings/SettingsOAuthConnect/MarginContainer/VBoxContainer2/SupportLabel" to="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/Settings/SettingsOAuthConnect" method="_on_SupportLabel_meta_clicked"]
 [connection signal="pressed" from="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/Settings/SettingsOAuthConnect/MarginContainer/VBoxContainer2/MarginContainer/LogoutButton" to="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/Settings/SettingsOAuthConnect" method="_on_LogoutButton_pressed"]
+[connection signal="request_completed" from="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/Settings/SettingsOAuthConnect/HTTPRequest" to="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/Settings/SettingsOAuthConnect" method="_on_HTTPRequest_request_completed"]
 [connection signal="pressed" from="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/Settings/Legal/NavImpressum" to="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer" method="_on_NavImpressum_pressed"]
 [connection signal="pressed" from="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/Settings/Legal/NavPrivacyNotice" to="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer" method="_on_NavPrivacyNotice_pressed"]
 [connection signal="pressed" from="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/Settings/debug_settings/ResetCacheButton" to="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer" method="_on_ResetCacheButton_pressed"]

@@ -2,17 +2,32 @@ extends Control
 
 
 onready var connect_box = $VBoxContainer
+onready var login_button = $"VBoxContainer/CyButton"
+onready var login_button_label = $"VBoxContainer/CyButton/MarginContainer/Label"
 onready var profile_box = $MarginContainer/VBoxContainer2
 onready var profile_box_label = $MarginContainer/VBoxContainer2/Label
 onready var support_label = $MarginContainer/VBoxContainer2/SupportLabel
 onready var notification_toggle = $MarginContainer/VBoxContainer2/NotificationToggle
-
+onready var req = $HTTPRequest
 func _ready():
 	update()
 	NakamaConnection.connect("cy_network_authenticated", self, "_authenticated_callback")
 
 func _on_CyButton_pressed():
-	NakamaConnection.start_cy_network_oauth_flow()
+	if OS.get_name() in ['iOS', "OSX"]:
+		var auth_url = yield(NakamaConnection.IOS_start_cy_network_oauth_flow(),"completed")
+		req.request(auth_url)
+		print(auth_url)
+		login_button.disabled = true
+		login_button_label.text = "melde an..."
+	else:
+		NakamaConnection.start_cy_network_oauth_flow()
+
+func _on_HTTPRequest_request_completed(result, response_code, headers, body):
+	login_button.disabled = true
+	login_button_label.text = "melde an..."
+	print(result)
+	
 
 func update():
 	var user =  yield(NakamaConnection.get_user(), "completed")
@@ -78,3 +93,6 @@ func _on_Label_meta_clicked(meta):
 
 func _on_SupportLabel_meta_clicked(meta):
 	OS.shell_open(meta)
+
+
+
