@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/logo_sm.png-2a53992a9a5ca1a57be82a3a980c0544.stex"
+path="res://.import/uwb.jpg-f254c3856e7fa0444d1d038643c91ab1.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/logo_sm.png"
-dest_files=[ "res://.import/logo_sm.png-2a53992a9a5ca1a57be82a3a980c0544.stex" ]
+source_file="res://Assets/Icons/uwb.jpg"
+dest_files=[ "res://.import/uwb.jpg-f254c3856e7fa0444d1d038643c91ab1.stex" ]
 
 [params]
 

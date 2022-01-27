@@ -1,0 +1,95 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://UI/typography/italic_light.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Assets/Icons/sp_bremen.jpeg" type="Texture" id=2]
+[ext_resource path="res://Assets/Icons/sp_lotto.jpeg" type="Texture" id=3]
+[ext_resource path="res://Assets/Icons/bmu.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Icons/uwb.jpg" type="Texture" id=5]
+
+[sub_resource type="StyleBoxEmpty" id=4]
+
+[node name="CenterContainer" type="AspectRatioContainer"]
+margin_top = 716.0
+margin_right = 952.0
+margin_bottom = 1468.0
+size_flags_vertical = 0
+stretch_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_left = 74.0
+margin_right = 878.0
+margin_bottom = 752.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer"]
+margin_right = 804.0
+margin_bottom = 44.0
+custom_colors/default_color = Color( 0.411765, 0.411765, 0.407843, 1 )
+custom_fonts/normal_font = ExtResource( 1 )
+bbcode_enabled = true
+bbcode_text = "[center] Gefördert durch"
+text = " Gefördert durch"
+fit_content_height = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 48.0
+margin_right = 804.0
+margin_bottom = 398.0
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/HBoxContainer"]
+margin_right = 400.0
+margin_bottom = 350.0
+rect_min_size = Vector2( 400, 350 )
+custom_styles/panel = SubResource( 4 )
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer/PanelContainer"]
+margin_right = 400.0
+margin_bottom = 350.0
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 6
+
+[node name="PanelContainer2" type="PanelContainer" parent="VBoxContainer/HBoxContainer"]
+margin_left = 404.0
+margin_right = 804.0
+margin_bottom = 350.0
+rect_min_size = Vector2( 400, 350 )
+custom_styles/panel = SubResource( 4 )
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer/PanelContainer2"]
+margin_right = 400.0
+margin_bottom = 350.0
+texture = ExtResource( 3 )
+expand = true
+stretch_mode = 6
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 402.0
+margin_right = 804.0
+margin_bottom = 752.0
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/HBoxContainer2"]
+margin_right = 400.0
+margin_bottom = 350.0
+rect_min_size = Vector2( 400, 350 )
+custom_styles/panel = SubResource( 4 )
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer2/PanelContainer"]
+margin_right = 400.0
+margin_bottom = 350.0
+texture = ExtResource( 4 )
+expand = true
+stretch_mode = 6
+
+[node name="PanelContainer2" type="PanelContainer" parent="VBoxContainer/HBoxContainer2"]
+margin_left = 404.0
+margin_right = 804.0
+margin_bottom = 350.0
+rect_min_size = Vector2( 400, 350 )
+custom_styles/panel = SubResource( 4 )
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer2/PanelContainer2"]
+margin_right = 400.0
+margin_bottom = 350.0
+texture = ExtResource( 5 )
+expand = true
+stretch_mode = 6

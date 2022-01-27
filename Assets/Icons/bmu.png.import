@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/logo_sm.png-2a53992a9a5ca1a57be82a3a980c0544.stex"
+path="res://.import/bmu.png-114cd5a167a8062f3ef3c076e4ba278f.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/logo_sm.png"
-dest_files=[ "res://.import/logo_sm.png-2a53992a9a5ca1a57be82a3a980c0544.stex" ]
+source_file="res://Assets/Icons/bmu.png"
+dest_files=[ "res://.import/bmu.png-114cd5a167a8062f3ef3c076e4ba278f.stex" ]
 
 [params]
 
