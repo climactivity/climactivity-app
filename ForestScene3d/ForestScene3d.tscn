@@ -474,9 +474,9 @@ custom_constants/separation = 200
 alignment = 1
 
 [node name="logo" type="TextureRect" parent="Camera/HUD/Panel/MarginContainer/VBoxContainer"]
-margin_top = 52.0
+margin_top = 184.0
 margin_right = 952.0
-margin_bottom = 252.0
+margin_bottom = 384.0
 rect_min_size = Vector2( 0, 200 )
 mouse_filter = 2
 texture = ExtResource( 4 )
@@ -487,6 +487,7 @@ __meta__ = {
 }
 
 [node name="MarginContainer" type="MarginContainer" parent="Camera/HUD/Panel/MarginContainer/VBoxContainer"]
+visible = false
 margin_top = 452.0
 margin_right = 952.0
 margin_bottom = 516.0
@@ -506,6 +507,8 @@ value = 100.0
 percent_visible = false
 
 [node name="CenterContainer2" parent="Camera/HUD/Panel/MarginContainer/VBoxContainer" instance=ExtResource( 15 )]
+margin_top = 584.0
+margin_bottom = 1336.0
 
 [node name="DetailsBG" type="Panel" parent="Camera/HUD"]
 anchor_right = 1.0
