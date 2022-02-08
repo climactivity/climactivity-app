@@ -624,7 +624,6 @@ __meta__ = {
 }
 
 [node name="FrontMatter" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ContentHolder" index="0" instance=ExtResource( 6 )]
-visible = false
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 1080.0
@@ -633,7 +632,7 @@ rect_rotation = 0.0
 
 [node name="Loading" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ContentHolder" index="1" instance=ExtResource( 5 )]
 visible = false
-margin_bottom = 1607.0
+margin_bottom = 1152.0
 
 [node name="Panel" type="Panel" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ContentHolder/Loading" index="0"]
 use_parent_material = true
@@ -691,6 +690,7 @@ margin_right = 1080.0
 margin_bottom = 1349.0
 
 [node name="QuizStart" type="Control" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ContentHolder" index="3"]
+visible = false
 margin_right = 1080.0
 margin_bottom = 1152.0
 
@@ -726,8 +726,8 @@ __meta__ = {
 margin_top = 42.0
 margin_right = 788.0
 margin_bottom = 118.0
-custom_fonts/font = ExtResource( 12 )
 custom_colors/font_color = Color( 0.466667, 0.72549, 0.141176, 1 )
+custom_fonts/font = ExtResource( 12 )
 text = "info_start_quiz"
 align = 1
 valign = 1
@@ -758,8 +758,8 @@ visible = false
 margin_top = 1534.0
 margin_right = 1080.0
 margin_bottom = 1916.0
-custom_styles/separator = SubResource( 5 )
 custom_constants/separation = 382
+custom_styles/separator = SubResource( 5 )
 script = ExtResource( 23 )
 
 [node name="VSplitContainer" type="Control" parent="ContentContainer/Content/VBoxContainer/MarginContainer" index="1"]

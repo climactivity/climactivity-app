@@ -1,8 +1,16 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://UI/theme/style_box_empty.tres" type="StyleBox" id=1]
 [ext_resource path="res://UI/Components/infobits/ProgressBlips.gd" type="Script" id=2]
 [ext_resource path="res://UI/Components/infobits/blip.tscn" type="PackedScene" id=3]
+
+[sub_resource type="StyleBoxEmpty" id=5]
+
+[sub_resource type="Gradient" id=3]
+colors = PoolColorArray( 0.396078, 0.396078, 0.396078, 1, 0.396078, 0.396078, 0.396078, 1 )
+
+[sub_resource type="GradientTexture" id=4]
+gradient = SubResource( 3 )
 
 [node name="ProgressBlips" type="PanelContainer"]
 anchor_right = 1.0
@@ -13,19 +21,45 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 _blip = ExtResource( 3 )
-blip_count = 0
+blip_count = 6
 
-[node name="TextureProgress" type="TextureProgress" parent="."]
-margin_right = 1080.0
-margin_bottom = 1.0
+[node name="PanelContainer" type="PanelContainer" parent="."]
+margin_left = 189.0
+margin_right = 891.0
+margin_bottom = 72.0
+size_flags_horizontal = 4
+custom_styles/panel = SubResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
-margin_right = 1080.0
-margin_bottom = 1.0
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+margin_right = 702.0
+margin_bottom = 72.0
+custom_constants/margin_right = 32
+custom_constants/margin_top = 30
+custom_constants/margin_left = 32
+custom_constants/margin_bottom = 30
+
+[node name="TextureProgress" type="TextureProgress" parent="PanelContainer/MarginContainer"]
+margin_left = 32.0
+margin_top = 30.0
+margin_right = 670.0
+margin_bottom = 42.0
+max_value = 5.0
+step = 0.01
+texture_progress = SubResource( 4 )
+nine_patch_stretch = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer"]
+margin_right = 702.0
+margin_bottom = 72.0
 grow_horizontal = 2
 grow_vertical = 2
-custom_constants/separation = 9
+custom_constants/separation = 54
 alignment = 1
+
+[node name="Tween" type="Tween" parent="."]
