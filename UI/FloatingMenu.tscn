@@ -182,7 +182,6 @@ icon = ExtResource( 1 )
 menu_label = "stats_screen"
 
 [node name="NetworkButton" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer" instance=ExtResource( 4 )]
-visible = false
 margin_left = 556.0
 margin_right = 709.0
 primary_color = Color( 0.988235, 0.988235, 0.988235, 1 )
