@@ -90,6 +90,23 @@ func _input(event):
 			last_relative = Vector2.ZERO
 
 
+func scroll_to_child(nodepath: NodePath, offset = 200): 
+	var child = get_node(nodepath)
+	if !is_instance_valid(child):
+		print_debug("Child not found at ", nodepath)
+		return
+	if tween == null:
+		tween = Tween.new()
+		add_child(tween)
+	
+	tween.remove_all()
+	tween.interpolate_method(self, "set_v_scroll", self.get_v_scroll(), 
+		child.margin_top + offset, 0.5, 
+		Tween.TRANS_QUAD, Tween.EASE_OUT)
+	tween.start()
+	
+	emit_signal("scrolled", child.margin_top + offset)
+
 # The function provides disable/enable kinetic scrolling at runtime
 func setKineticScrollEnable(enable: bool):
 	kineticScrollEnable = enable
