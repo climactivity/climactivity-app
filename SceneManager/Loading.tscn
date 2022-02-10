@@ -1,12 +1,14 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://SceneManager/Loading.gd" type="Script" id=1]
 [ext_resource path="res://Assets/logo.png" type="Texture" id=2]
-[ext_resource path="res://Assets/Icons/sp_bremen.jpeg" type="Texture" id=3]
-[ext_resource path="res://Assets/Icons/sp_lotto.jpeg" type="Texture" id=4]
+[ext_resource path="res://Scenes/foerderhinweis.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Assets/logo_loading_start.png" type="Texture" id=4]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 1, 1, 1, 1 )
+
+[sub_resource type="StyleBoxEmpty" id=6]
 
 [sub_resource type="StyleBoxFlat" id=2]
 bg_color = Color( 0.584314, 0.760784, 0.121569, 1 )
@@ -14,7 +16,110 @@ bg_color = Color( 0.584314, 0.760784, 0.121569, 1 )
 [sub_resource type="StyleBoxFlat" id=3]
 bg_color = Color( 0.886275, 0.886275, 0.886275, 1 )
 
-[sub_resource type="StyleBoxEmpty" id=4]
+[sub_resource type="Animation" id=4]
+resource_name = "Pulse"
+length = 2.004
+tracks/0/type = "value"
+tracks/0/path = NodePath("MarginContainer/VBoxContainer/PanelContainer/ColorRect:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 0.63728, 0.615572 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("MarginContainer/VBoxContainer/PanelContainer/logo2:rect_scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.9, 2 ),
+"transitions": PoolRealArray( 1, 0.732043, 1 ),
+"update": 0,
+"values": [ Vector2( 0.95, 0.95 ), Vector2( 1, 1 ), Vector2( 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("MarginContainer/VBoxContainer/PanelContainer/logo:rect_scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.9, 2 ),
+"transitions": PoolRealArray( 1, 0.732043, 1 ),
+"update": 0,
+"values": [ Vector2( 0.95, 0.95 ), Vector2( 1, 1 ), Vector2( 1, 1 ) ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "pulse_title"
+} ]
+}
+
+[sub_resource type="Animation" id=5]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("MarginContainer/VBoxContainer/PanelContainer/logo:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("MarginContainer/VBoxContainer/PanelContainer/ColorRect:rect_scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("MarginContainer/VBoxContainer/PanelContainer/logo2:rect_scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("MarginContainer/VBoxContainer/PanelContainer/logo:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
 
 [node name="Loading" type="PanelContainer"]
 anchor_right = 1.0
@@ -44,11 +149,17 @@ mouse_filter = 2
 custom_constants/separation = 200
 alignment = 1
 
-[node name="logo" type="TextureRect" parent="MarginContainer/VBoxContainer"]
-margin_top = 253.0
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer"]
+margin_top = 184.0
 margin_right = 952.0
-margin_bottom = 453.0
-rect_min_size = Vector2( 0, 200 )
+margin_bottom = 384.0
+custom_styles/panel = SubResource( 6 )
+
+[node name="logo2" type="TextureRect" parent="MarginContainer/VBoxContainer/PanelContainer"]
+margin_right = 952.0
+margin_bottom = 200.0
+rect_min_size = Vector2( 952, 200 )
+rect_pivot_offset = Vector2( 476, 100 )
 mouse_filter = 2
 texture = ExtResource( 2 )
 expand = true
@@ -57,10 +168,29 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
-margin_top = 653.0
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/VBoxContainer/PanelContainer"]
 margin_right = 952.0
-margin_bottom = 717.0
+margin_bottom = 200.0
+rect_pivot_offset = Vector2( 952, 0 )
+
+[node name="logo" type="TextureRect" parent="MarginContainer/VBoxContainer/PanelContainer"]
+margin_right = 952.0
+margin_bottom = 200.0
+rect_min_size = Vector2( 952, 200 )
+rect_pivot_offset = Vector2( 476, 100 )
+mouse_filter = 2
+texture = ExtResource( 4 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+visible = false
+margin_top = 452.0
+margin_right = 952.0
+margin_bottom = 516.0
 mouse_filter = 2
 custom_constants/margin_right = 64
 custom_constants/margin_left = 64
@@ -75,41 +205,11 @@ custom_styles/fg = SubResource( 2 )
 custom_styles/bg = SubResource( 3 )
 percent_visible = false
 
-[node name="CenterContainer" type="AspectRatioContainer" parent="MarginContainer/VBoxContainer"]
-margin_top = 917.0
-margin_right = 952.0
-margin_bottom = 1267.0
-size_flags_vertical = 0
-stretch_mode = 1
+[node name="CenterContainer" parent="MarginContainer/VBoxContainer" instance=ExtResource( 3 )]
+margin_top = 584.0
+margin_bottom = 1336.0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/CenterContainer"]
-margin_left = 74.0
-margin_right = 878.0
-margin_bottom = 350.0
-
-[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer/CenterContainer/HBoxContainer"]
-margin_right = 400.0
-margin_bottom = 350.0
-rect_min_size = Vector2( 400, 350 )
-custom_styles/panel = SubResource( 4 )
-
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/CenterContainer/HBoxContainer/PanelContainer"]
-margin_right = 400.0
-margin_bottom = 350.0
-texture = ExtResource( 3 )
-expand = true
-stretch_mode = 6
-
-[node name="PanelContainer2" type="PanelContainer" parent="MarginContainer/VBoxContainer/CenterContainer/HBoxContainer"]
-margin_left = 404.0
-margin_right = 804.0
-margin_bottom = 350.0
-rect_min_size = Vector2( 400, 350 )
-custom_styles/panel = SubResource( 4 )
-
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/CenterContainer/HBoxContainer/PanelContainer2"]
-margin_right = 400.0
-margin_bottom = 350.0
-texture = ExtResource( 4 )
-expand = true
-stretch_mode = 6
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Pulse"
+anims/Pulse = SubResource( 4 )
+anims/RESET = SubResource( 5 )

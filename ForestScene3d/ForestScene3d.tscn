@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=2]
+[gd_scene load_steps=55 format=2]
 
 [ext_resource path="res://ForestScene3d/Interactables/SeedlingBox.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Vertical_Gradient.shader" type="Shader" id=2]
@@ -14,14 +14,13 @@
 [ext_resource path="res://Assets/sketch/floortex_TILED.png" type="Texture" id=12]
 [ext_resource path="res://UI/xp_bar.png" type="Texture" id=13]
 [ext_resource path="res://ForestScene3d/DebugMenu.gd" type="Script" id=14]
-[ext_resource path="res://Assets/Icons/sp_bremen.jpeg" type="Texture" id=15]
+[ext_resource path="res://Scenes/foerderhinweis.tscn" type="PackedScene" id=15]
 [ext_resource path="res://ForestScene3d/MapHolder.gd" type="Script" id=16]
 [ext_resource path="res://UI/typography/Content_Regular.tres" type="DynamicFont" id=17]
 [ext_resource path="res://UI/typography/Button_Label.tres" type="DynamicFont" id=18]
 [ext_resource path="res://UI/theme/Button_Important.tres" type="StyleBox" id=19]
 [ext_resource path="res://UI/theme/Button_Important_Down.tres" type="StyleBox" id=20]
 [ext_resource path="res://ForestScene3d/PlaceHereDialog.gd" type="Script" id=21]
-[ext_resource path="res://Assets/Icons/sp_lotto.jpeg" type="Texture" id=22]
 [ext_resource path="res://Assets/BG/01.png" type="Texture" id=23]
 [ext_resource path="res://Assets/BG/03.png" type="Texture" id=24]
 [ext_resource path="res://Assets/BG/02.png" type="Texture" id=25]
@@ -57,8 +56,6 @@ bg_color = Color( 0.584314, 0.760784, 0.121569, 1 )
 
 [sub_resource type="StyleBoxFlat" id=5]
 bg_color = Color( 0.886275, 0.886275, 0.886275, 1 )
-
-[sub_resource type="StyleBoxEmpty" id=24]
 
 [sub_resource type="StyleBoxEmpty" id=6]
 
@@ -463,6 +460,9 @@ custom_constants/margin_right = 64
 custom_constants/margin_top = 200
 custom_constants/margin_left = 64
 custom_constants/margin_bottom = 200
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Camera/HUD/Panel/MarginContainer"]
 margin_left = 64.0
@@ -474,9 +474,9 @@ custom_constants/separation = 200
 alignment = 1
 
 [node name="logo" type="TextureRect" parent="Camera/HUD/Panel/MarginContainer/VBoxContainer"]
-margin_top = 253.0
+margin_top = 184.0
 margin_right = 952.0
-margin_bottom = 453.0
+margin_bottom = 384.0
 rect_min_size = Vector2( 0, 200 )
 mouse_filter = 2
 texture = ExtResource( 4 )
@@ -487,9 +487,10 @@ __meta__ = {
 }
 
 [node name="MarginContainer" type="MarginContainer" parent="Camera/HUD/Panel/MarginContainer/VBoxContainer"]
-margin_top = 653.0
+visible = false
+margin_top = 452.0
 margin_right = 952.0
-margin_bottom = 717.0
+margin_bottom = 516.0
 mouse_filter = 2
 custom_constants/margin_right = 64
 custom_constants/margin_left = 64
@@ -505,44 +506,9 @@ custom_styles/bg = SubResource( 5 )
 value = 100.0
 percent_visible = false
 
-[node name="CenterContainer" type="AspectRatioContainer" parent="Camera/HUD/Panel/MarginContainer/VBoxContainer"]
-margin_top = 917.0
-margin_right = 952.0
-margin_bottom = 1267.0
-size_flags_vertical = 0
-stretch_mode = 1
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Camera/HUD/Panel/MarginContainer/VBoxContainer/CenterContainer"]
-margin_left = 74.0
-margin_right = 878.0
-margin_bottom = 350.0
-
-[node name="PanelContainer" type="PanelContainer" parent="Camera/HUD/Panel/MarginContainer/VBoxContainer/CenterContainer/HBoxContainer"]
-margin_right = 400.0
-margin_bottom = 350.0
-rect_min_size = Vector2( 400, 350 )
-custom_styles/panel = SubResource( 24 )
-
-[node name="TextureRect" type="TextureRect" parent="Camera/HUD/Panel/MarginContainer/VBoxContainer/CenterContainer/HBoxContainer/PanelContainer"]
-margin_right = 400.0
-margin_bottom = 350.0
-texture = ExtResource( 15 )
-expand = true
-stretch_mode = 6
-
-[node name="PanelContainer2" type="PanelContainer" parent="Camera/HUD/Panel/MarginContainer/VBoxContainer/CenterContainer/HBoxContainer"]
-margin_left = 404.0
-margin_right = 804.0
-margin_bottom = 350.0
-rect_min_size = Vector2( 400, 350 )
-custom_styles/panel = SubResource( 24 )
-
-[node name="TextureRect" type="TextureRect" parent="Camera/HUD/Panel/MarginContainer/VBoxContainer/CenterContainer/HBoxContainer/PanelContainer2"]
-margin_right = 400.0
-margin_bottom = 350.0
-texture = ExtResource( 22 )
-expand = true
-stretch_mode = 6
+[node name="CenterContainer2" parent="Camera/HUD/Panel/MarginContainer/VBoxContainer" instance=ExtResource( 15 )]
+margin_top = 584.0
+margin_bottom = 1336.0
 
 [node name="DetailsBG" type="Panel" parent="Camera/HUD"]
 anchor_right = 1.0

@@ -91,7 +91,7 @@ var placed_objects = {}
 var player_objects = {}
 
 var not_placeable_hexes
-var MIN_RING = 4
+var MIN_RING = 3
 export var SIZE = 34
 export (Vector2) var hex_size_override = Vector2(1.0,1.0) setget set_scale
 onready var cursor = $Cursor
@@ -115,7 +115,7 @@ func _ready():
 		#GameManager.camera.connect("release_gesture", self, "_disable_interaction")
 	HexGrid.set_hex_scale(hex_size_override)
 	var centerTile = HexGrid.get_hex_at(Vector2(0.0,0.0))
-	not_placeable_hexes = centerTile.get_all_within2(2)
+	not_placeable_hexes = centerTile.get_all_within2(3)
 	_tile_area(centerTile, SIZE, preload("res://ForestScene3d/TreeTemplates/TestScenes/TestHex.tscn"))
 	_place_fixed_objects() 
 	if !Engine.is_editor_hint(): 
@@ -225,12 +225,12 @@ func place_entity(position, entity):
 		emit_signal("placed_entity")
 		_place_object_at(selected_hex.axial_coords, new_object, true)
 		
-func can_place(hex, instance): 
+func can_place(hex, _instance): 
 	var x = hex.axial_coords.x
 	var y = hex.axial_coords.y
 	if x in range(-SIZE, SIZE+1) && y in range(max(-SIZE, -SIZE + x), min(SIZE, SIZE + x) + 1):
-		if (hex in not_placeable_hexes): 
-			#print("can't place at: ", x,", ",y, "; ", "Blocked by min dist from center")
+		if x in range(-MIN_RING, MIN_RING+1) && y in range(max(-MIN_RING, -MIN_RING + x), min(MIN_RING, MIN_RING + x) + 1):
+			print("can't place at: ", x,", ",y, "; ", "Blocked by min dist from center")
 			last_hex = null
 			return false
 		if (placed_objects.has(hex.axial_coords)):

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/step_indicator_inactive.png-dd8fe528871147203a3645acedcf9d49.stex"
+path="res://.import/logo_loading_start.png-199b0b63522939a7f9c48e5f34f6dfd3.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Theme/blips/step_indicator_inactive.png"
-dest_files=[ "res://.import/step_indicator_inactive.png-dd8fe528871147203a3645acedcf9d49.stex" ]
+source_file="res://Assets/logo_loading_start.png"
+dest_files=[ "res://.import/logo_loading_start.png-199b0b63522939a7f9c48e5f34f6dfd3.stex" ]
 
 [params]
 
@@ -19,7 +19,7 @@ compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
-flags/repeat=0
+flags/repeat=true
 flags/filter=true
 flags/mipmaps=true
 flags/anisotropic=false

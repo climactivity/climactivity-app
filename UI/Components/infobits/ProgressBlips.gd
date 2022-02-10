@@ -14,14 +14,21 @@ var ready = false
 
 func _ready():
 	ready = true 
+	set_blips(blip_count)
 	update()
+	
 func set_completed(_completed): 
 	completed = _completed
 	update()
 	
 func set_blips(count):
 	blip_count = count 
-	update()
+	if $PanelContainer/HBoxContainer == null: return
+	$PanelContainer/MarginContainer/TextureProgress.max_value =  max(blip_count - 1, 1)
+	Util.clear($PanelContainer/HBoxContainer)
+	for i in range(0,blip_count):
+		var blip = _blip.instance()
+		$PanelContainer/HBoxContainer.add_child(blip)
 
 func set_mode(_mode):
 	mode = _mode 
@@ -34,6 +41,10 @@ func set_active(_active):
 func next(): 
 	active += 1
 	active = min(active, blip_count)
+	
+#	$Tween.interpolate_property($PanelContainer/MarginContainer/TextureProgress, "value", active - 1, active, 0.4, Tween.TRANS_CUBIC)
+#	$T
+	
 	update()
 
 func prev(): 
@@ -51,10 +62,9 @@ func update():
 #		return
 	if !is_inside_tree(): return
 	# print("blips: ", active)
-	Util.clear($HBoxContainer)
-	for i in range(0,blip_count):
-		var blip = _blip.instance()
-		$HBoxContainer.add_child(blip)
+	for i in range(0,$PanelContainer/HBoxContainer.get_child_count()):
+		var blip = $PanelContainer/HBoxContainer.get_child(i)
+
 		blip.set_mode(mode)
 		if i == active: 
 			blip.state = ProgressBlip.BlipState.ACTIVE
@@ -62,3 +72,8 @@ func update():
 			blip.state = ProgressBlip.BlipState.INACTIVE
 		else: 
 			blip.state = ProgressBlip.BlipState.COMPLETED
+			
+	
+
+	
+	$PanelContainer/MarginContainer/TextureProgress.value = active
