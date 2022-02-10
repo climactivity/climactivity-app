@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/icon-app-83.5x83.5@2x.png-56f67cce870d43434a7c2cbf7894ee41.stex"
+path="res://.import/splash_2-1.png-7259ef2aea0fc0a5e635098f026b3d52.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/AppIcon/icon-app-83.5x83.5@2x.png"
-dest_files=[ "res://.import/icon-app-83.5x83.5@2x.png-56f67cce870d43434a7c2cbf7894ee41.stex" ]
+source_file="res://ios/climactivity-app/Images.xcassets/SplashImage.imageset/splash_2-1.png"
+dest_files=[ "res://.import/splash_2-1.png-7259ef2aea0fc0a5e635098f026b3d52.stex" ]
 
 [params]
 
@@ -18,7 +18,7 @@ compress/mode=1
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
-compress/normal_map=2
+compress/normal_map=0
 flags/repeat=true
 flags/filter=true
 flags/mipmaps=true

@@ -1,0 +1,15 @@
+[config]
+name="WebView"
+binary="webview.xcframework"
+
+initialization="godot_webview_init"
+deinitialization="godot_webview_deinit"
+
+[dependencies]
+linked=[]
+embedded=[]
+system=[]
+
+capabilities=[]
+
+files=[]
