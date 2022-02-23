@@ -16,6 +16,9 @@ func _input(event):
 		
 
 func start(): 
+	GameManager.overlay.show_available_tutorial("Intro")
+	if GameManager.menu != null: GameManager.menu.show_menu()
+	if GameManager.xp_bar != null: GameManager.xp_bar.show()
 	$AnimationPlayer.play("RESET")
 	#$AnimationPlayer.play("Zoom_To_Clearing")
 	#$AnimationPlayer.queue("Cloud_Drag")

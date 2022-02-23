@@ -33,12 +33,18 @@ var cloud_state = Cloud_States.EMPTY setget set_state
 func _ready():
 	if GameManager:
 		GameManager.cloud = self
+
 	update_water_available()
 	AspectTrackingService.connect("tracking_updated", self, "update_water_available")
 	hud = get_parent()
 	cloud_sprite_initial_position = $CloudSprite.position
 	#initial_position = Vector2(rect_position)
 
+
+func restored_forest():
+	Logger.print("hard reseting reseting", self)
+#	set_state(Cloud_States.EMPTY)
+	
 func set_state(state): 
 	cloud_state = state
 	print(cloud_state)

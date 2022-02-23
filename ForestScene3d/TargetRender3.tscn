@@ -1,6 +1,6 @@
-[gd_scene load_steps=75 format=2]
+[gd_scene load_steps=86 format=2]
 
-[ext_resource path="res://Assets/Theme/Fonts/LovedbytheKing-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Assets/logo.png" type="Texture" id=1]
 [ext_resource path="res://Vertical_Gradient.shader" type="Shader" id=2]
 [ext_resource path="res://ForestScene3d/TargetRender.gd" type="Script" id=3]
 [ext_resource path="res://Assets/BG/02.png" type="Texture" id=4]
@@ -8,11 +8,11 @@
 [ext_resource path="res://ForestScene3d/Background.gd" type="Script" id=6]
 [ext_resource path="res://ForestScene3d/TargetRenderForestGrid.gd" type="Script" id=7]
 [ext_resource path="res://ForestScene3d/EmptyHex.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Assets/Theme/Fonts/RobotoSlab-Regular.ttf" type="DynamicFontData" id=9]
+[ext_resource path="res://UI/theme/Button_Important_Down.tres" type="StyleBox" id=9]
 [ext_resource path="res://Assets/BG/06.png" type="Texture" id=10]
-[ext_resource path="res://Assets/logo_sm.png" type="Texture" id=11]
+[ext_resource path="res://UI/theme/Button_Important.tres" type="StyleBox" id=11]
 [ext_resource path="res://Assets/sketch/floortex_TILED.png" type="Texture" id=12]
-[ext_resource path="res://ForestScene3d/up_count.gd" type="Script" id=13]
+[ext_resource path="res://UI/typography/Content_Regular.tres" type="DynamicFont" id=13]
 [ext_resource path="res://Assets/sketch/blume/07.png" type="Texture" id=14]
 [ext_resource path="res://Assets/sketch/baum/Weide/weide_04.png" type="Texture" id=15]
 [ext_resource path="res://Assets/BG/04.png" type="Texture" id=16]
@@ -53,7 +53,15 @@
 [ext_resource path="res://Assets/sketch/Tiere/fasan.png" type="Texture" id=51]
 [ext_resource path="res://Assets/sketch/blume/10.png" type="Texture" id=52]
 [ext_resource path="res://Assets/sketch/baum/Kastanie/kastanie_03.png" type="Texture" id=53]
-
+[ext_resource path="res://UI/typography/Button_Label.tres" type="DynamicFont" id=54]
+[ext_resource path="res://ForestScene3d/Interactables/SeedlingBox.tscn" type="PackedScene" id=55]
+[ext_resource path="res://ForestScene3d/Interactables/Cloud.tscn" type="PackedScene" id=56]
+[ext_resource path="res://ForestScene3d/Interactables/QuestLog.tscn" type="PackedScene" id=57]
+[ext_resource path="res://UI/theme/TransparentGreen.tres" type="StyleBox" id=58]
+[ext_resource path="res://ForestScene3d/DebugMenu.gd" type="Script" id=59]
+[ext_resource path="res://ForestScene3d/HUD.gd" type="Script" id=60]
+[ext_resource path="res://UI/xp_bar.png" type="Texture" id=61]
+[ext_resource path="res://ForestScene3d/PlaceHereDialog.gd" type="Script" id=62]
 
 [sub_resource type="ProceduralSky" id=1]
 sky_top_color = Color( 0.105882, 0.231373, 0.301961, 1 )
@@ -68,32 +76,46 @@ background_mode = 2
 background_sky = SubResource( 1 )
 background_energy = 16.0
 
-[sub_resource type="StyleBoxFlat" id=3]
-bg_color = Color( 0.823529, 0.823529, 0.823529, 0.627451 )
-border_color = Color( 0, 0, 0, 1 )
+[sub_resource type="StyleBoxEmpty" id=22]
+
+[sub_resource type="StyleBoxFlat" id=23]
+bg_color = Color( 1, 1, 1, 1 )
+
+[sub_resource type="StyleBoxFlat" id=24]
+corner_radius_top_left = 1024
+corner_radius_top_right = 1024
+corner_radius_bottom_right = 1024
+corner_radius_bottom_left = 1024
+
+[sub_resource type="Animation" id=25]
+resource_name = "loading"
+length = 0.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Panel:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0.9, 0.9 ), Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="StyleBoxFlat" id=26]
+bg_color = Color( 0.482353, 0.776471, 0.109804, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.584314, 0.756863, 0.117647, 1 )
 corner_radius_top_left = 64
 corner_radius_top_right = 64
 corner_radius_bottom_right = 64
 corner_radius_bottom_left = 64
-shadow_color = Color( 0, 0, 0, 0.12549 )
-shadow_size = 24
-shadow_offset = Vector2( 0, 8 )
-
-[sub_resource type="DynamicFont" id=4]
-size = 64
-outline_size = 2
-outline_color = Color( 0.0745098, 0.0745098, 0.0745098, 1 )
-use_mipmaps = true
-use_filter = true
-font_data = ExtResource( 1 )
-
-[sub_resource type="DynamicFont" id=5]
-size = 72
-outline_size = 2
-outline_color = Color( 0.0745098, 0.0745098, 0.0745098, 1 )
-use_mipmaps = true
-use_filter = true
-font_data = ExtResource( 9 )
+corner_detail = 20
 
 [sub_resource type="SphereShape" id=6]
 
@@ -169,32 +191,6 @@ tracks/0/keys = {
 "args": [  ],
 "method": "plop"
 } ]
-}
-tracks/1/type = "method"
-tracks/1/path = NodePath("Camera/HUD/PanelContainer/MarginContainer/VBoxContainer/Label2")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0.2 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "animate"
-} ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("Camera/HUD/PanelContainer:modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0.1, 0.3, 0.301, 0.302 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ) ]
 }
 
 [sub_resource type="Animation" id=21]
@@ -279,84 +275,274 @@ nw_bound = Vector2( -50, -50 )
 se_bound = Vector2( 50, 50 )
 
 [node name="HUD" type="Control" parent="Camera"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource( 60 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="QuestLog" parent="Camera/HUD" instance=ExtResource( 57 )]
+visible = false
+margin_left = 120.779
+margin_top = 88.9949
+margin_right = 120.779
+margin_bottom = 88.9949
+
+[node name="SeedlingBox" parent="Camera/HUD" instance=ExtResource( 55 )]
+visible = false
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -92.0
+margin_top = 103.0
+margin_right = 92.0
+margin_bottom = 226.68
+
+[node name="Cloud" parent="Camera/HUD" instance=ExtResource( 56 )]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -191.301
+margin_top = 195.148
+margin_right = -191.301
+margin_bottom = 195.148
+
+[node name="xp_bar" type="TextureRect" parent="Camera/HUD"]
+visible = false
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -268.5
+margin_right = 268.5
+margin_bottom = 52.0
+texture = ExtResource( 61 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DebugMenu" type="PanelContainer" parent="Camera/HUD"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -142.0
+margin_top = -40.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource( 59 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBox" type="VBoxContainer" parent="Camera/HUD/DebugMenu"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 135.0
+margin_bottom = 33.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Camera/HUD/DebugMenu/VBox"]
+margin_right = 128.0
+margin_bottom = 24.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Camera/HUD/DebugMenu/VBox/HBoxContainer"]
+margin_top = 5.0
+margin_right = 100.0
+margin_bottom = 19.0
+text = "Free placement"
+
+[node name="CheckBox" type="CheckBox" parent="Camera/HUD/DebugMenu/VBox/HBoxContainer"]
+margin_left = 104.0
+margin_right = 128.0
+margin_bottom = 24.0
+
+[node name="DetailsBG" type="Panel" parent="Camera/HUD"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+custom_styles/panel = SubResource( 22 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Loading" type="Panel" parent="Camera/HUD"]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
+custom_styles/panel = SubResource( 23 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="PanelContainer" type="PanelContainer" parent="Camera/HUD"]
-anchor_left = 0.5
-anchor_right = 0.5
-margin_left = -316.0
-margin_top = 64.0
-margin_right = 320.0
-margin_bottom = 392.0
-custom_styles/panel = SubResource( 3 )
-__meta__ = {
-"_edit_group_": true,
-"_edit_use_anchors_": false
-}
-
-[node name="MarginContainer" type="MarginContainer" parent="Camera/HUD/PanelContainer"]
-margin_right = 636.0
-margin_bottom = 328.0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Camera/HUD/PanelContainer/MarginContainer"]
-margin_right = 636.0
-margin_bottom = 328.0
-alignment = 1
-
-[node name="Label" type="Label" parent="Camera/HUD/PanelContainer/MarginContainer/VBoxContainer"]
-margin_top = 1.0
-margin_right = 636.0
-margin_bottom = 112.0
-custom_fonts/font = SubResource( 4 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Vielen Dank für"
-align = 1
-
-[node name="Label2" type="Label" parent="Camera/HUD/PanelContainer/MarginContainer/VBoxContainer"]
-margin_top = 116.0
-margin_right = 636.0
-margin_bottom = 212.0
-custom_fonts/font = SubResource( 5 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "  0,00 €"
-align = 1
-script = ExtResource( 13 )
-duration = 6.0
-
-[node name="CenterContainer" type="CenterContainer" parent="Camera/HUD/PanelContainer/MarginContainer/VBoxContainer"]
-margin_top = 216.0
-margin_right = 636.0
-margin_bottom = 327.0
+[node name="MarginContainer" type="MarginContainer" parent="Camera/HUD/Loading"]
+anchor_right = 1.0
+margin_bottom = 814.0
+custom_constants/margin_right = 100
+custom_constants/margin_top = 100
+custom_constants/margin_left = 100
+custom_constants/margin_bottom = 100
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Camera/HUD/PanelContainer/MarginContainer/VBoxContainer/CenterContainer"]
-margin_left = 164.0
-margin_right = 472.0
-margin_bottom = 111.0
-
-[node name="Label3" type="Label" parent="Camera/HUD/PanelContainer/MarginContainer/VBoxContainer/CenterContainer/HBoxContainer"]
-margin_right = 26.0
-margin_bottom = 111.0
-custom_fonts/font = SubResource( 4 )
-text = "-"
-align = 1
-
-[node name="TextureRect" type="TextureRect" parent="Camera/HUD/PanelContainer/MarginContainer/VBoxContainer/CenterContainer/HBoxContainer"]
-margin_left = 30.0
-margin_right = 308.565
-margin_bottom = 111.0
-rect_min_size = Vector2( 278.565, 100 )
-texture = ExtResource( 11 )
+[node name="TextureRect" type="TextureRect" parent="Camera/HUD/Loading/MarginContainer"]
+margin_left = 100.0
+margin_top = 100.0
+margin_right = 980.0
+margin_bottom = 714.0
+texture = ExtResource( 1 )
 expand = true
 stretch_mode = 6
+
+[node name="Panel" type="Panel" parent="Camera/HUD/Loading"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -90.7158
+margin_top = -87.86
+margin_right = 89.2842
+margin_bottom = 92.14
+grow_horizontal = 2
+grow_vertical = 2
+rect_scale = Vector2( 0.926607, 0.926607 )
+rect_pivot_offset = Vector2( 90, 90 )
+custom_styles/panel = SubResource( 24 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Camera/HUD/Loading"]
+autoplay = "loading"
+anims/loading = SubResource( 25 )
+
+[node name="EntityDetails" type="Control" parent="Camera/HUD"]
+visible = false
+modulate = Color( 1, 1, 1, 0 )
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -80.0
+margin_top = -716.0
+margin_right = 675.0
+margin_bottom = 586.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="Camera/HUD/EntityDetails"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 85.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PanelContainer" type="PanelContainer" parent="Camera/HUD/EntityDetails/MarginContainer"]
+margin_right = 670.0
+margin_bottom = 1302.0
+custom_styles/panel = ExtResource( 58 )
+
+[node name="MountPoint" type="MarginContainer" parent="Camera/HUD/EntityDetails/MarginContainer/PanelContainer"]
+margin_left = 1.0
+margin_top = 1.0
+margin_right = 668.0
+margin_bottom = 1301.0
+custom_constants/margin_right = 32
+custom_constants/margin_top = 32
+custom_constants/margin_left = 32
+custom_constants/margin_bottom = 32
+
+[node name="PlaceHereDialog" type="Control" parent="Camera/HUD"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.083
+anchor_right = 0.502
+anchor_bottom = 0.098
+margin_left = -457.0
+margin_top = -127.36
+margin_right = 461.84
+margin_bottom = 177.84
+script = ExtResource( 62 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PanelContainer" type="PanelContainer" parent="Camera/HUD/PlaceHereDialog"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = SubResource( 26 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="Camera/HUD/PlaceHereDialog/PanelContainer"]
+margin_left = 1.0
+margin_top = 1.0
+margin_right = 920.0
+margin_bottom = 333.0
+custom_constants/margin_right = 40
+custom_constants/margin_left = 40
+custom_constants/margin_bottom = 115
+
+[node name="Label" type="Label" parent="Camera/HUD/PlaceHereDialog/PanelContainer/MarginContainer"]
+margin_left = 40.0
+margin_top = 73.0
+margin_right = 944.0
+margin_bottom = 143.0
+custom_fonts/font = ExtResource( 13 )
+text = "Möchtest du deinen Setzling hier platzieren?"
+align = 1
+
+[node name="PlantButton" type="Button" parent="Camera/HUD/PlaceHereDialog"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -325.646
+margin_top = 49.8912
+margin_right = -80.6464
+margin_bottom = 107.891
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 0.321569, 0.321569, 0.321569, 1 )
+custom_fonts/font = ExtResource( 54 )
+custom_styles/hover = ExtResource( 11 )
+custom_styles/pressed = ExtResource( 9 )
+custom_styles/focus = ExtResource( 11 )
+custom_styles/disabled = ExtResource( 11 )
+custom_styles/normal = ExtResource( 11 )
+text = "Hier pflanzen"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Abbrechen" type="Button" parent="Camera/HUD/PlaceHereDialog"]
+anchor_top = 0.507545
+anchor_bottom = 0.507545
+margin_left = 92.2548
+margin_top = 49.8912
+margin_right = 337.255
+margin_bottom = 107.891
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 0.321569, 0.321569, 0.321569, 1 )
+custom_fonts/font = ExtResource( 54 )
+custom_styles/hover = ExtResource( 11 )
+custom_styles/pressed = ExtResource( 9 )
+custom_styles/focus = ExtResource( 11 )
+custom_styles/disabled = ExtResource( 11 )
+custom_styles/normal = ExtResource( 11 )
+text = "Abbrechen"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="PositionProbe" type="KinematicBody" parent="Camera"]
 
@@ -587,90 +773,70 @@ transparent = false
 shaded = true
 texture = SubResource( 12 )
 
-[node name="01" type="Sprite3D" parent="Background2" groups=[
-"Parallax",
-]]
+[node name="01" type="Sprite3D" parent="Background2" groups=["Parallax"]]
 transform = Transform( 1, 0, 0, 0, 1, 5.30056e-08, 0, -5.30056e-08, 1, -2.63846, -2.94097, -49 )
 billboard = 2
 texture = ExtResource( 20 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 16000, 1024 )
 
-[node name="02" type="Sprite3D" parent="Background2" groups=[
-"Parallax",
-]]
+[node name="02" type="Sprite3D" parent="Background2" groups=["Parallax"]]
 transform = Transform( 1, 0, 0, 0, 1, 5.30056e-08, 0, -5.30056e-08, 1, -0.820302, 2.57403, -48 )
 billboard = 2
 texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 16000, 1024 )
 
-[node name="03" type="Sprite3D" parent="Background2" groups=[
-"Parallax",
-]]
+[node name="03" type="Sprite3D" parent="Background2" groups=["Parallax"]]
 transform = Transform( 1, 0, 0, 0, 1, 5.30056e-08, 0, -5.30056e-08, 1, -2.63846, 2.57403, -47 )
 billboard = 2
 texture = ExtResource( 21 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 4000, 1024 )
 
-[node name="04" type="Sprite3D" parent="Background2" groups=[
-"Parallax",
-]]
+[node name="04" type="Sprite3D" parent="Background2" groups=["Parallax"]]
 transform = Transform( 1, 0, 0, 0, 1, 5.30056e-08, 0, -5.30056e-08, 1, -2.63846, 2.57403, -46 )
 billboard = 2
 texture = ExtResource( 16 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 16000, 1024 )
 
-[node name="05" type="Sprite3D" parent="Background2" groups=[
-"Parallax",
-]]
+[node name="05" type="Sprite3D" parent="Background2" groups=["Parallax"]]
 transform = Transform( 1, 0, 0, 0, 1, 5.30056e-08, 0, -5.30056e-08, 1, -2.63846, 2.57403, -45 )
 billboard = 2
 texture = ExtResource( 19 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 16000, 1024 )
 
-[node name="06" type="Sprite3D" parent="Background2" groups=[
-"Parallax",
-]]
+[node name="06" type="Sprite3D" parent="Background2" groups=["Parallax"]]
 transform = Transform( 1, 0, 0, 0, 1, 5.30056e-08, 0, -5.30056e-08, 1, -2.63846, 2.57403, -44 )
 billboard = 2
 texture = ExtResource( 10 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 16000, 1024 )
 
-[node name="07" type="Sprite3D" parent="Background2" groups=[
-"Parallax",
-]]
+[node name="07" type="Sprite3D" parent="Background2" groups=["Parallax"]]
 transform = Transform( 1, 0, 0, 0, 1, 5.30056e-08, 0, -5.30056e-08, 1, -2.63846, 2.57403, -43 )
 billboard = 2
 texture = ExtResource( 22 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 16000, 1024 )
 
-[node name="08" type="Sprite3D" parent="Background2" groups=[
-"Parallax",
-]]
+[node name="08" type="Sprite3D" parent="Background2" groups=["Parallax"]]
 transform = Transform( 1, 0, 0, 0, 1, 5.30056e-08, 0, -5.30056e-08, 1, -2.63846, 2.57403, -42 )
 billboard = 2
 texture = ExtResource( 23 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 16000, 1024 )
 
-[node name="09" type="Sprite3D" parent="Background2" groups=[
-"Parallax",
-]]
+[node name="09" type="Sprite3D" parent="Background2" groups=["Parallax"]]
 transform = Transform( 1, 0, 0, 0, 1, 5.30056e-08, 0, -5.30056e-08, 1, -2.63846, 2.57403, -41 )
 billboard = 2
 texture = ExtResource( 17 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 16000, 1024 )
 
-[node name="10" type="Sprite3D" parent="Background2" groups=[
-"Parallax",
-]]
+[node name="10" type="Sprite3D" parent="Background2" groups=["Parallax"]]
 transform = Transform( 1, 0, 0, 0, 1, 5.30056e-08, 0, -5.30056e-08, 1, -2.63846, 2.57403, -42.7508 )
 billboard = 2
 texture = ExtResource( 26 )
@@ -697,5 +863,11 @@ anims/Tree_Anim = SubResource( 19 )
 anims/Zoom_Out = SubResource( 20 )
 anims/Zoom_To_Clearing = SubResource( 21 )
 
+[connection signal="cancle" from="Camera/HUD/SeedlingBox" to="Camera/HUD/PlaceHereDialog" method="_on_SeedlingBox_cancle"]
+[connection signal="placed" from="Camera/HUD/SeedlingBox" to="Camera/HUD/PlaceHereDialog" method="_on_SeedlingBox_placed"]
+[connection signal="trying_to_place" from="Camera/HUD/SeedlingBox" to="Camera/HUD/PlaceHereDialog" method="_on_SeedlingBox_trying_to_place"]
+[connection signal="toggled" from="Camera/HUD/DebugMenu/VBox/HBoxContainer/CheckBox" to="Camera/HUD/DebugMenu" method="_set_free_placement_mode"]
+[connection signal="pressed" from="Camera/HUD/PlaceHereDialog/PlantButton" to="Camera/HUD/SeedlingBox" method="_on_PlantButton_pressed"]
+[connection signal="pressed" from="Camera/HUD/PlaceHereDialog/Abbrechen" to="Camera/HUD/SeedlingBox" method="_on_Abbrechen_pressed"]
 [connection signal="input_event" from="ForestFloor/HexGrid" to="ForestFloor/HexGrid" method="_on_HexGrid_input_event"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
