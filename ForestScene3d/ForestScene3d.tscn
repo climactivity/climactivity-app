@@ -691,6 +691,8 @@ shaded = true
 
 [node name="01" type="Sprite3D" parent="Background" groups=["Parallax"]]
 transform = Transform( 1, 0, 0, 0, 1, 5.30056e-08, 0, -5.30056e-08, 1, -2.63846, -2.94097, -49 )
+offset = Vector2( 0, -215 )
+pixel_size = 0.02
 billboard = 2
 texture = ExtResource( 23 )
 region_enabled = true
@@ -698,6 +700,8 @@ region_rect = Rect2( 708, 103, 0, 0 )
 
 [node name="02" type="Sprite3D" parent="Background" groups=["Parallax"]]
 transform = Transform( 1, 0, 0, 0, 1, 5.30056e-08, 0, -5.30056e-08, 1, -0.820302, 2.57403, -48 )
+offset = Vector2( 0, -215 )
+pixel_size = 0.02
 billboard = 2
 texture = ExtResource( 25 )
 region_enabled = true
@@ -705,6 +709,8 @@ region_rect = Rect2( 0, 0, 8000, 1024 )
 
 [node name="03" type="Sprite3D" parent="Background" groups=["Parallax"]]
 transform = Transform( 1, 0, 0, 0, 1, 5.30056e-08, 0, -5.30056e-08, 1, -2.63846, 2.57403, -47 )
+offset = Vector2( 0, -215 )
+pixel_size = 0.02
 billboard = 2
 texture = ExtResource( 24 )
 region_enabled = true
@@ -712,6 +718,8 @@ region_rect = Rect2( 0, 0, 8000, 1024 )
 
 [node name="04" type="Sprite3D" parent="Background" groups=["Parallax"]]
 transform = Transform( 1, 0, 0, 0, 1, 5.30056e-08, 0, -5.30056e-08, 1, -2.63846, 2.57403, -46 )
+offset = Vector2( 0, -215 )
+pixel_size = 0.02
 billboard = 2
 texture = ExtResource( 29 )
 region_enabled = true
@@ -719,6 +727,8 @@ region_rect = Rect2( 0, 0, 8000, 1024 )
 
 [node name="05" type="Sprite3D" parent="Background" groups=["Parallax"]]
 transform = Transform( 1, 0, 0, 0, 1, 5.30056e-08, 0, -5.30056e-08, 1, -2.63846, 2.57403, -45 )
+offset = Vector2( 0, -215 )
+pixel_size = 0.02
 billboard = 2
 texture = ExtResource( 31 )
 region_enabled = true
@@ -726,6 +736,8 @@ region_rect = Rect2( 0, 0, 8000, 1024 )
 
 [node name="06" type="Sprite3D" parent="Background" groups=["Parallax"]]
 transform = Transform( 1, 0, 0, 0, 1, 5.30056e-08, 0, -5.30056e-08, 1, -2.63846, 2.57403, -44 )
+offset = Vector2( 0, -215 )
+pixel_size = 0.02
 billboard = 2
 texture = ExtResource( 27 )
 region_enabled = true
@@ -733,6 +745,8 @@ region_rect = Rect2( 0, 0, 8000, 1024 )
 
 [node name="07" type="Sprite3D" parent="Background" groups=["Parallax"]]
 transform = Transform( 1, 0, 0, 0, 1, 5.30056e-08, 0, -5.30056e-08, 1, -2.63846, 2.57403, -43 )
+offset = Vector2( 0, -215 )
+pixel_size = 0.02
 billboard = 2
 texture = ExtResource( 26 )
 region_enabled = true
@@ -740,6 +754,8 @@ region_rect = Rect2( 0, 0, 8000, 1024 )
 
 [node name="08" type="Sprite3D" parent="Background" groups=["Parallax"]]
 transform = Transform( 1, 0, 0, 0, 1, 5.30056e-08, 0, -5.30056e-08, 1, -2.63846, 2.57403, -42 )
+offset = Vector2( 0, -215 )
+pixel_size = 0.02
 billboard = 2
 texture = ExtResource( 28 )
 region_enabled = true
@@ -747,6 +763,8 @@ region_rect = Rect2( 0, 0, 8000, 1024 )
 
 [node name="09" type="Sprite3D" parent="Background" groups=["Parallax"]]
 transform = Transform( 1, 0, 0, 0, 1, 5.30056e-08, 0, -5.30056e-08, 1, -2.63846, 2.57403, -41 )
+offset = Vector2( 0, -215 )
+pixel_size = 0.02
 billboard = 2
 texture = ExtResource( 30 )
 region_enabled = true
@@ -754,6 +772,8 @@ region_rect = Rect2( 0, 0, 8000, 1024 )
 
 [node name="10" type="Sprite3D" parent="Background" groups=["Parallax"]]
 transform = Transform( 1, 0, 0, 0, 1, 5.30056e-08, 0, -5.30056e-08, 1, -2.63846, 2.57403, -42.7508 )
+offset = Vector2( 0, -215 )
+pixel_size = 0.02
 billboard = 2
 texture = ExtResource( 32 )
 region_enabled = true
