@@ -73,6 +73,9 @@ func set_new_scene(res):
 	if b_cache_ready and b_save_ready: 
 		show_scene()
 
+func pulse_title():
+	$AnimationPlayer.play("Pulse_Loop")
+
 var last_progress = 0.0
 func update_progress():
 	var progress = float(loader.get_stage()) / loader.get_stage_count()
