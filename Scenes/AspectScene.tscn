@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://Scenes/SceneBase.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/AspectScene.gd" type="Script" id=2]
@@ -7,6 +7,8 @@
 [ext_resource path="res://UI/typography/Button_Label.tres" type="DynamicFont" id=5]
 [ext_resource path="res://UI/Behaviour/Stagger.tscn" type="PackedScene" id=6]
 [ext_resource path="res://UI/Components/kiko_hint.tscn" type="PackedScene" id=7]
+[ext_resource path="res://UI/typography/UI_big.tres" type="DynamicFont" id=8]
+[ext_resource path="res://Scenes/AspectNavbar.gd" type="Script" id=9]
 [ext_resource path="res://UI/theme/Button_Important_Down.tres" type="StyleBox" id=10]
 [ext_resource path="res://Scenes/QuestList.gd" type="Script" id=11]
 [ext_resource path="res://UI/theme/Button_Important.tres" type="StyleBox" id=18]
@@ -71,6 +73,30 @@ bg_color = Color( 0.960784, 0.960784, 0.960784, 0.513726 )
 [sub_resource type="StyleBoxEmpty" id=4]
 
 [sub_resource type="StyleBoxEmpty" id=5]
+
+[sub_resource type="StyleBoxFlat" id=7]
+content_margin_left = 32.0
+content_margin_right = 32.0
+content_margin_top = 8.0
+content_margin_bottom = 8.0
+bg_color = Color( 1, 1, 1, 1 )
+corner_radius_top_left = 1024
+corner_radius_top_right = 1024
+corner_radius_bottom_right = 1024
+corner_radius_bottom_left = 1024
+shadow_color = Color( 0, 0, 0, 0.239216 )
+shadow_size = 23
+shadow_offset = Vector2( 0, 7.554 )
+
+[sub_resource type="StyleBoxEmpty" id=9]
+
+[sub_resource type="StyleBoxEmpty" id=10]
+
+[sub_resource type="StyleBoxEmpty" id=11]
+
+[sub_resource type="StyleBoxEmpty" id=12]
+
+[sub_resource type="StyleBoxEmpty" id=8]
 
 [sub_resource type="Animation" id=6]
 resource_name = "Play"
@@ -329,8 +355,88 @@ custom_styles/separator = SubResource( 5 )
 
 [node name="HTTPRequest" type="HTTPRequest" parent="." index="1"]
 
+[node name="MarginContainer" type="MarginContainer" parent="HeaderContainer" index="2"]
+margin_top = 293.0
+margin_right = 1080.0
+margin_bottom = 407.0
+custom_constants/margin_right = 72
+custom_constants/margin_top = 22
+custom_constants/margin_left = 72
+
+[node name="PanelContainer" type="PanelContainer" parent="HeaderContainer/MarginContainer" index="0"]
+margin_left = 178.0
+margin_top = 22.0
+margin_right = 902.0
+margin_bottom = 114.0
+size_flags_horizontal = 4
+custom_styles/panel = SubResource( 7 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HeaderContainer/MarginContainer/PanelContainer" index="0"]
+margin_left = 32.0
+margin_top = 8.0
+margin_right = 692.0
+margin_bottom = 84.0
+custom_constants/separation = 34
+alignment = 1
+script = ExtResource( 9 )
+target = NodePath("../../../../ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer")
+offset = -450
+
+[node name="Button" type="Button" parent="HeaderContainer/MarginContainer/PanelContainer/HBoxContainer" index="0"]
+margin_right = 220.0
+margin_bottom = 76.0
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color_focus = Color( 0.407843, 0.407843, 0.411765, 1 )
+custom_colors/font_color = Color( 0.407843, 0.407843, 0.411765, 1 )
+custom_colors/font_color_hover = Color( 0.25098, 0.25098, 0.25098, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 8 )
+custom_styles/hover = SubResource( 9 )
+custom_styles/pressed = SubResource( 10 )
+custom_styles/focus = SubResource( 11 )
+custom_styles/disabled = SubResource( 12 )
+custom_styles/normal = SubResource( 8 )
+text = "Tracking"
+
+[node name="Button2" type="Button" parent="HeaderContainer/MarginContainer/PanelContainer/HBoxContainer" index="1"]
+margin_left = 254.0
+margin_right = 382.0
+margin_bottom = 76.0
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color_focus = Color( 0.407843, 0.407843, 0.411765, 1 )
+custom_colors/font_color = Color( 0.407843, 0.407843, 0.411765, 1 )
+custom_colors/font_color_hover = Color( 0.25098, 0.25098, 0.25098, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 8 )
+custom_styles/hover = SubResource( 9 )
+custom_styles/pressed = SubResource( 10 )
+custom_styles/focus = SubResource( 11 )
+custom_styles/disabled = SubResource( 12 )
+custom_styles/normal = SubResource( 8 )
+text = "Infos"
+
+[node name="Button3" type="Button" parent="HeaderContainer/MarginContainer/PanelContainer/HBoxContainer" index="2"]
+margin_left = 416.0
+margin_right = 660.0
+margin_bottom = 76.0
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color_focus = Color( 0.407843, 0.407843, 0.411765, 1 )
+custom_colors/font_color = Color( 0.407843, 0.407843, 0.411765, 1 )
+custom_colors/font_color_hover = Color( 0.25098, 0.25098, 0.25098, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 8 )
+custom_styles/hover = SubResource( 9 )
+custom_styles/pressed = SubResource( 10 )
+custom_styles/focus = SubResource( 11 )
+custom_styles/disabled = SubResource( 12 )
+custom_styles/normal = SubResource( 8 )
+text = "Aufgaben"
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="4"]
 autoplay = "Play"
 anims/Play = SubResource( 6 )
 
 [connection signal="pressed" from="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview/shop_button_container/entity_shop_button" to="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/TrackingPreview" method="_on_entity_shop_button_pressed"]
+[connection signal="pressed" from="HeaderContainer/MarginContainer/PanelContainer/HBoxContainer/Button" to="HeaderContainer/MarginContainer/PanelContainer/HBoxContainer" method="_on_Button1_pressed"]
+[connection signal="pressed" from="HeaderContainer/MarginContainer/PanelContainer/HBoxContainer/Button2" to="HeaderContainer/MarginContainer/PanelContainer/HBoxContainer" method="_on_Button2_pressed"]
+[connection signal="pressed" from="HeaderContainer/MarginContainer/PanelContainer/HBoxContainer/Button3" to="HeaderContainer/MarginContainer/PanelContainer/HBoxContainer" method="_on_Button3_pressed"]

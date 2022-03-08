@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/pappel_01.png-f6359d2994d8afc3ff41606b00be908c.stex"
+path="res://.import/pappel_03.png-96e15af56fd7c13698b7b94e5ec1996c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/sketch/baum/Pappel/pappel_01.png"
-dest_files=[ "res://.import/pappel_01.png-f6359d2994d8afc3ff41606b00be908c.stex" ]
+source_file="res://Assets/sketch/baum/Pappel/pappel_03.png"
+dest_files=[ "res://.import/pappel_03.png-96e15af56fd7c13698b7b94e5ec1996c.stex" ]
 
 [params]
 
@@ -19,16 +19,17 @@ compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
-flags/repeat=0
+flags/repeat=true
 flags/filter=true
-flags/mipmaps=false
+flags/mipmaps=true
 flags/anisotropic=false
 flags/srgb=2
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
 process/invert_color=false
+process/normal_map_invert_y=false
 stream=false
 size_limit=0
-detect_3d=true
+detect_3d=false
 svg/scale=1.0

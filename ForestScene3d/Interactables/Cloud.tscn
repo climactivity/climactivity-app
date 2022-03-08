@@ -288,8 +288,8 @@ stretch_mode = 6
 margin_left = 78.0
 margin_right = 83.0
 margin_bottom = 88.0
-custom_styles/separator = ExtResource( 11 )
 custom_constants/separation = 5
+custom_styles/separator = ExtResource( 11 )
 
 [node name="RichTextLabel" type="RichTextLabel" parent="HintWaitForWater/HBoxContainer"]
 margin_left = 87.0
@@ -297,8 +297,8 @@ margin_right = 448.0
 margin_bottom = 88.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/normal_font = ExtResource( 8 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = ExtResource( 8 )
 bbcode_enabled = true
 bbcode_text = "Warte ab, bis sich etwas [color=#279bd4]Wasser[/color] angesammelt hat"
 visible_characters = 0
@@ -339,8 +339,8 @@ stretch_mode = 6
 margin_left = 78.0
 margin_right = 83.0
 margin_bottom = 88.0
-custom_styles/separator = ExtResource( 11 )
 custom_constants/separation = 5
+custom_styles/separator = ExtResource( 11 )
 
 [node name="RichTextLabel" type="RichTextLabel" parent="HintWaterCapped/HBoxContainer"]
 margin_left = 87.0
@@ -348,8 +348,8 @@ margin_right = 448.0
 margin_bottom = 88.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/normal_font = ExtResource( 8 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = ExtResource( 8 )
 bbcode_enabled = true
 bbcode_text = "Du kannst wieder [color=#279bd4]Wasser[/color] abholen"
 visible_characters = 0

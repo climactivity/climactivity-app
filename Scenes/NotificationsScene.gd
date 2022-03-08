@@ -19,9 +19,9 @@ func _restored():
 	notifications = NotificationService.get_notifications()
 	event_messages = EventMessageService.get_current_events()
 	no_notifications_message.visible = (notifications == null or notifications.size() == 0) and !EventMessageService.has_current_events()
-	var user = yield(NakamaConnection.get_user(),"completed")
-	if user != null and user.display_name != "": 
-		oauth_reminder.visible = false
+#	var user = yield(NakamaConnection.get_user(),"completed")
+#	if user != null and user.display_name != "": 
+#		oauth_reminder.visible = false
 		
 	for notification in notifications: 
 		var inst = bp_notification_card.instance()

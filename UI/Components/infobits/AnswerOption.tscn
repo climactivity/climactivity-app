@@ -23,14 +23,14 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.3 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Color( 0.411765, 0.411765, 0.407843, 1 ), Color( 0.584314, 0.756863, 0.121569, 1 ) ]
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.584314, 0.756863, 0.121569, 1 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("MarginContainer/Panel/Panel:custom_styles/panel:border_width_right")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
-tracks/1/enabled = true
+tracks/1/enabled = false
 tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
@@ -54,7 +54,7 @@ tracks/3/path = NodePath("MarginContainer/Panel/Panel:custom_styles/panel:shadow
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
-tracks/3/enabled = true
+tracks/3/enabled = false
 tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
@@ -90,7 +90,7 @@ tracks/6/path = NodePath("MarginContainer/Panel/Panel:self_modulate")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
-tracks/6/enabled = true
+tracks/6/enabled = false
 tracks/6/keys = {
 "times": PoolRealArray( 0, 0.3 ),
 "transitions": PoolRealArray( 1, 1 ),
@@ -98,10 +98,11 @@ tracks/6/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 0.929412, 0.956863, 0.85098, 1 ) ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=12]
+resource_name = "Deselect"
 length = 0.3
 tracks/0/type = "value"
-tracks/0/path = NodePath("MarginContainer/Panel/Panel:custom_styles/panel:border_color")
+tracks/0/path = NodePath("MarginContainer/Panel:rect_position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -110,10 +111,10 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.3 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Color( 0.411765, 0.411765, 0.407843, 1 ), Color( 0.411765, 0.411765, 0.407843, 1 ) ]
+"values": [ Vector2( 10, 2 ), Vector2( 10, 10 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("MarginContainer/Panel/Panel:custom_styles/panel:border_width_right")
+tracks/1/path = NodePath("MarginContainer/Panel/Panel:custom_styles/panel:border_color")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -122,10 +123,10 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.3 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ 60, 2 ]
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.411765, 0.411765, 0.407843, 1 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("MarginContainer/Panel:rect_position")
+tracks/2/path = NodePath("MarginContainer/Panel/Panel:custom_styles/panel:bg_color")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -134,10 +135,10 @@ tracks/2/keys = {
 "times": PoolRealArray( 0, 0.3 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 10, 2 ), Vector2( 10, 10 ) ]
+"values": [ Color( 0.12549, 0.745098, 0.0352941, 1 ), Color( 1, 1, 1, 1 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("MarginContainer/Panel/Panel:custom_styles/panel:shadow_size")
+tracks/3/path = NodePath("MarginContainer/Panel/MarginContainer/MarginContainer2/VBoxContainer/Label:custom_colors/font_color")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -146,10 +147,10 @@ tracks/3/keys = {
 "times": PoolRealArray( 0, 0.3 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ 16, 8 ]
+"values": [ Color( 0.411765, 0.411765, 0.407843, 1 ), Color( 1, 1, 1, 1 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("MarginContainer/Panel/Panel:custom_styles/panel:shadow_offset")
+tracks/4/path = NodePath("MarginContainer/Panel/Panel:custom_styles/panel:border_width_left")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -157,32 +158,44 @@ tracks/4/enabled = true
 tracks/4/keys = {
 "times": PoolRealArray( 0, 0.3 ),
 "transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 0, 8 ), Vector2( 0, 4 ) ]
+"update": 1,
+"values": [ 10, 2 ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("MarginContainer/Panel/Panel:custom_styles/panel:shadow_color")
+tracks/5/path = NodePath("MarginContainer/Panel/Panel:custom_styles/panel:border_width_top")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Color( 0, 0, 0, 0.129412 ) ]
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 2, 10 ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("MarginContainer/Panel/Panel:self_modulate")
+tracks/6/path = NodePath("MarginContainer/Panel/Panel:custom_styles/panel:border_width_right")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
-"times": PoolRealArray( 0.2 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 1 ) ]
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 2, 10 ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("MarginContainer/Panel/Panel:custom_styles/panel:border_width_bottom")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 2, 10 ]
 }
 
 [sub_resource type="Animation" id=5]
@@ -520,14 +533,14 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.3 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Color( 0.411765, 0.411765, 0.407843, 1 ), Color( 0.584314, 0.756863, 0.121569, 1 ) ]
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.584314, 0.756863, 0.121569, 1 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("MarginContainer/Panel/Panel:custom_styles/panel:border_width_right")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
-tracks/1/enabled = true
+tracks/1/enabled = false
 tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
@@ -551,7 +564,7 @@ tracks/3/path = NodePath("MarginContainer/Panel/Panel:custom_styles/panel:shadow
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
-tracks/3/enabled = true
+tracks/3/enabled = false
 tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
@@ -587,7 +600,7 @@ tracks/6/path = NodePath("MarginContainer/Panel/Panel:self_modulate")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
-tracks/6/enabled = true
+tracks/6/enabled = false
 tracks/6/keys = {
 "times": PoolRealArray( 0, 0.3 ),
 "transitions": PoolRealArray( 1, 1 ),
@@ -599,7 +612,7 @@ tracks/7/path = NodePath("MarginContainer/Panel/MarginContainer/MarginContainer2
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/imported = false
-tracks/7/enabled = true
+tracks/7/enabled = false
 tracks/7/keys = {
 "times": PoolRealArray( 0, 0.2, 0.3 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
@@ -632,14 +645,14 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.2 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Color( 0.411765, 0.411765, 0.407843, 1 ), Color( 0.894118, 0, 0.270588, 1 ) ]
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.894118, 0, 0.270588, 1 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("MarginContainer/Panel/Panel:custom_styles/panel:border_width_right")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
-tracks/1/enabled = true
+tracks/1/enabled = false
 tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
@@ -663,7 +676,7 @@ tracks/3/path = NodePath("MarginContainer/Panel/Panel:custom_styles/panel:shadow
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
-tracks/3/enabled = true
+tracks/3/enabled = false
 tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
@@ -675,7 +688,7 @@ tracks/4/path = NodePath("MarginContainer/Panel/Panel:custom_styles/panel:shadow
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
-tracks/4/enabled = true
+tracks/4/enabled = false
 tracks/4/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
@@ -699,7 +712,7 @@ tracks/6/path = NodePath("MarginContainer/Panel/Panel:self_modulate")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
-tracks/6/enabled = true
+tracks/6/enabled = false
 tracks/6/keys = {
 "times": PoolRealArray( 0, 0.2 ),
 "transitions": PoolRealArray( 1, 1 ),
@@ -875,7 +888,7 @@ __meta__ = {
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "RESET"
 anims/Correct = SubResource( 3 )
-anims/Deselect = SubResource( 4 )
+anims/Deselect = SubResource( 12 )
 anims/Preselected = SubResource( 5 )
 anims/RESET = SubResource( 6 )
 anims/Select = SubResource( 7 )

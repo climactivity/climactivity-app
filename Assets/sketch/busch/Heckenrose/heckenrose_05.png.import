@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/weide_02.png-2d8988aaf18f2254b5e81061c9337e4a.stex"
+path="res://.import/heckenrose_05.png-5067812966dce6bdb4af01e1f6c57bc5.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/sketch/baum/Weide/weide_02.png"
-dest_files=[ "res://.import/weide_02.png-2d8988aaf18f2254b5e81061c9337e4a.stex" ]
+source_file="res://Assets/sketch/busch/Heckenrose/heckenrose_05.png"
+dest_files=[ "res://.import/heckenrose_05.png-5067812966dce6bdb4af01e1f6c57bc5.stex" ]
 
 [params]
 
@@ -28,6 +28,7 @@ process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
 process/invert_color=false
+process/normal_map_invert_y=false
 stream=false
 size_limit=0
 detect_3d=false

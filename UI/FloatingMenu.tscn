@@ -109,7 +109,7 @@ __meta__ = {
 
 [node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
 margin_right = 1219.0
-margin_bottom = 184.0
+margin_bottom = 180.0
 rect_min_size = Vector2( 1000, 180 )
 size_flags_horizontal = 3
 size_flags_vertical = 0

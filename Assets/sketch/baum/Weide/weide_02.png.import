@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/pappel_03.png-96e15af56fd7c13698b7b94e5ec1996c.stex"
+path="res://.import/weide_02.png-2d8988aaf18f2254b5e81061c9337e4a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/sketch/baum/Pappel/pappel_03.png"
-dest_files=[ "res://.import/pappel_03.png-96e15af56fd7c13698b7b94e5ec1996c.stex" ]
+source_file="res://Assets/sketch/baum/Weide/weide_02.png"
+dest_files=[ "res://.import/weide_02.png-2d8988aaf18f2254b5e81061c9337e4a.stex" ]
 
 [params]
 
@@ -28,6 +28,7 @@ process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
 process/invert_color=false
+process/normal_map_invert_y=false
 stream=false
 size_limit=0
 detect_3d=false

@@ -3,7 +3,7 @@ extends Control
 signal selected(option)
 signal deselected(option)
 export var badge = preload("res://UI/Components/ImportanceBadge.tscn")
-export var panel_style = preload("res://UI/Components/M_TrackingOption.tres")
+export var panel_style = preload("res://UI/Components/M_TrackingOption2.tres")
 var selected = false
 var option_data setget set_tracking_option_data
 export (NodePath) var checkbox_controller_path setget set_checkbox_controller_path, get_checkbox_controller_path

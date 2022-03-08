@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/wacholder_03.png-bd969ee93caf9e486178366679e77581.stex"
+path="res://.import/weide_01.png-37b8e2f2b186a83c7738f61dbb1cc384.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/sketch/busch/Wacholder/wacholder_03.png"
-dest_files=[ "res://.import/wacholder_03.png-bd969ee93caf9e486178366679e77581.stex" ]
+source_file="res://Assets/sketch/baum/Weide/weide_01.png"
+dest_files=[ "res://.import/weide_01.png-37b8e2f2b186a83c7738f61dbb1cc384.stex" ]
 
 [params]
 
@@ -28,6 +28,7 @@ process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
 process/invert_color=false
+process/normal_map_invert_y=false
 stream=false
 size_limit=0
 detect_3d=false

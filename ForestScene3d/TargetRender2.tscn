@@ -54,7 +54,6 @@
 [ext_resource path="res://Assets/sketch/Tiere/wildschwein.png" type="Texture" id=52]
 [ext_resource path="res://Assets/sketch/blume/Blumen_bluehend.png" type="Texture" id=53]
 
-
 [sub_resource type="ProceduralSky" id=1]
 sky_top_color = Color( 0.105882, 0.231373, 0.301961, 1 )
 sky_horizon_color = Color( 0.0627451, 0.235294, 0.372549, 1 )
@@ -506,7 +505,6 @@ __meta__ = {
 }
 
 [node name="Loading" type="Panel" parent="Camera/HUD"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
@@ -629,9 +627,9 @@ custom_constants/margin_bottom = 115
 
 [node name="Label" type="Label" parent="Camera/HUD/PlaceHereDialog/PanelContainer/MarginContainer"]
 margin_left = 40.0
-margin_top = 83.0
-margin_right = 879.0
-margin_bottom = 133.0
+margin_top = 73.0
+margin_right = 944.0
+margin_bottom = 143.0
 custom_fonts/font = ExtResource( 17 )
 text = "Möchtest du deinen Setzling hier platzieren?"
 align = 1
@@ -645,15 +643,15 @@ margin_left = -325.646
 margin_top = 49.8912
 margin_right = -80.6464
 margin_bottom = 107.891
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 0.321569, 0.321569, 0.321569, 1 )
+custom_fonts/font = ExtResource( 18 )
 custom_styles/hover = ExtResource( 19 )
 custom_styles/pressed = ExtResource( 20 )
 custom_styles/focus = ExtResource( 19 )
 custom_styles/disabled = ExtResource( 19 )
 custom_styles/normal = ExtResource( 19 )
-custom_fonts/font = ExtResource( 18 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
-custom_colors/font_color_pressed = Color( 0.321569, 0.321569, 0.321569, 1 )
 text = "Hier pflanzen"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -666,15 +664,15 @@ margin_left = 92.2548
 margin_top = 49.8912
 margin_right = 337.255
 margin_bottom = 107.891
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 0.321569, 0.321569, 0.321569, 1 )
+custom_fonts/font = ExtResource( 18 )
 custom_styles/hover = ExtResource( 19 )
 custom_styles/pressed = ExtResource( 20 )
 custom_styles/focus = ExtResource( 19 )
 custom_styles/disabled = ExtResource( 19 )
 custom_styles/normal = ExtResource( 19 )
-custom_fonts/font = ExtResource( 18 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
-custom_colors/font_color_pressed = Color( 0.321569, 0.321569, 0.321569, 1 )
 text = "Abbrechen"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -745,6 +743,7 @@ texture = ExtResource( 37 )
 
 [node name="TestRender15" parent="ForestFloor/HexGrid/MapHolder" instance=ExtResource( 7 )]
 transform = Transform( 2.8, 0, 0, 0, 2.8, 0, 0, 0, 3, 0.220537, -0.0732375, 5.63686 )
+visible = false
 texture = ExtResource( 53 )
 sf = 2.457
 
@@ -851,90 +850,70 @@ transparent = false
 shaded = true
 texture = SubResource( 14 )
 
-[node name="01" type="Sprite3D" parent="Background" groups=[
-"Parallax",
-]]
+[node name="01" type="Sprite3D" parent="Background" groups=["Parallax"]]
 transform = Transform( 1, 0, 0, 0, 1, 5.30056e-08, 0, -5.30056e-08, 1, -2.63846, -2.94097, -49 )
 billboard = 2
 texture = ExtResource( 23 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 8000, 1024 )
 
-[node name="02" type="Sprite3D" parent="Background" groups=[
-"Parallax",
-]]
+[node name="02" type="Sprite3D" parent="Background" groups=["Parallax"]]
 transform = Transform( 1, 0, 0, 0, 1, 5.30056e-08, 0, -5.30056e-08, 1, -0.820302, 2.57403, -48 )
 billboard = 2
 texture = ExtResource( 25 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 8000, 1024 )
 
-[node name="03" type="Sprite3D" parent="Background" groups=[
-"Parallax",
-]]
+[node name="03" type="Sprite3D" parent="Background" groups=["Parallax"]]
 transform = Transform( 1, 0, 0, 0, 1, 5.30056e-08, 0, -5.30056e-08, 1, -2.63846, 2.57403, -47 )
 billboard = 2
 texture = ExtResource( 24 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 8000, 1024 )
 
-[node name="04" type="Sprite3D" parent="Background" groups=[
-"Parallax",
-]]
+[node name="04" type="Sprite3D" parent="Background" groups=["Parallax"]]
 transform = Transform( 1, 0, 0, 0, 1, 5.30056e-08, 0, -5.30056e-08, 1, -2.63846, 2.57403, -46 )
 billboard = 2
 texture = ExtResource( 29 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 8000, 1024 )
 
-[node name="05" type="Sprite3D" parent="Background" groups=[
-"Parallax",
-]]
+[node name="05" type="Sprite3D" parent="Background" groups=["Parallax"]]
 transform = Transform( 1, 0, 0, 0, 1, 5.30056e-08, 0, -5.30056e-08, 1, 3.602, 2.574, -45 )
 billboard = 2
 texture = ExtResource( 31 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 8000, 1024 )
 
-[node name="06" type="Sprite3D" parent="Background" groups=[
-"Parallax",
-]]
+[node name="06" type="Sprite3D" parent="Background" groups=["Parallax"]]
 transform = Transform( 1, 0, 0, 0, 1, 5.30056e-08, 0, -5.30056e-08, 1, -2.63846, 2.57403, -44 )
 billboard = 2
 texture = ExtResource( 27 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 8000, 1024 )
 
-[node name="07" type="Sprite3D" parent="Background" groups=[
-"Parallax",
-]]
+[node name="07" type="Sprite3D" parent="Background" groups=["Parallax"]]
 transform = Transform( 1, 0, 0, 0, 1, 5.30056e-08, 0, -5.30056e-08, 1, -2.63846, 2.57403, -43 )
 billboard = 2
 texture = ExtResource( 26 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 8000, 1024 )
 
-[node name="08" type="Sprite3D" parent="Background" groups=[
-"Parallax",
-]]
+[node name="08" type="Sprite3D" parent="Background" groups=["Parallax"]]
 transform = Transform( 1, 0, 0, 0, 1, 5.30056e-08, 0, -5.30056e-08, 1, -2.63846, 2.57403, -42 )
 billboard = 2
 texture = ExtResource( 28 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 8000, 1024 )
 
-[node name="09" type="Sprite3D" parent="Background" groups=[
-"Parallax",
-]]
+[node name="09" type="Sprite3D" parent="Background" groups=["Parallax"]]
 transform = Transform( 1, 0, 0, 0, 1, 5.30056e-08, 0, -5.30056e-08, 1, -2.63846, 2.57403, -41 )
 billboard = 2
 texture = ExtResource( 30 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 8000, 1024 )
 
-[node name="10" type="Sprite3D" parent="Background" groups=[
-"Parallax",
-]]
+[node name="10" type="Sprite3D" parent="Background" groups=["Parallax"]]
 transform = Transform( 1, 0, 0, 0, 1, 5.30056e-08, 0, -5.30056e-08, 1, -2.63846, 2.57403, -42.7508 )
 billboard = 2
 texture = ExtResource( 32 )
@@ -959,6 +938,7 @@ anims/HideEntityDetails = SubResource( 19 )
 anims/RESET = SubResource( 20 )
 anims/ShowEntityDetails = SubResource( 21 )
 anims/Zoom_To_Clearing = SubResource( 22 )
+
 [connection signal="cancle" from="Camera/HUD/SeedlingBox" to="Camera/HUD/PlaceHereDialog" method="_on_SeedlingBox_cancle"]
 [connection signal="placed" from="Camera/HUD/SeedlingBox" to="Camera/HUD/PlaceHereDialog" method="_on_SeedlingBox_placed"]
 [connection signal="trying_to_place" from="Camera/HUD/SeedlingBox" to="Camera/HUD/PlaceHereDialog" method="_on_SeedlingBox_trying_to_place"]

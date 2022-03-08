@@ -47,7 +47,7 @@ show_menu_bar = true
 [node name="MarginContainer" type="MarginContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="1"]
 margin_top = 378.0
 margin_right = 1080.0
-margin_bottom = 817.0
+margin_bottom = 483.0
 mouse_filter = 2
 custom_constants/margin_right = 64
 custom_constants/margin_top = 40
@@ -57,10 +57,11 @@ custom_constants/margin_left = 64
 margin_left = 64.0
 margin_top = 40.0
 margin_right = 1016.0
-margin_bottom = 439.0
+margin_bottom = 105.0
 custom_constants/separation = 111
 
 [node name="OAuthReminder" type="VBoxContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/VBoxContainer" index="0"]
+visible = false
 margin_right = 952.0
 margin_bottom = 223.0
 
@@ -96,17 +97,16 @@ __meta__ = {
 translation_key = "notifications_oauth_connect_reminder"
 
 [node name="Label" type="Label" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/VBoxContainer" index="1"]
-margin_top = 334.0
 margin_right = 952.0
-margin_bottom = 399.0
+margin_bottom = 65.0
 custom_fonts/font = ExtResource( 3 )
 text = "Noch keine Benachrichtigungen!"
 autowrap = true
 
 [node name="SystemMessages" type="MarginContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="2"]
-margin_top = 821.0
+margin_top = 487.0
 margin_right = 1080.0
-margin_bottom = 912.0
+margin_bottom = 578.0
 custom_constants/margin_right = 64
 custom_constants/margin_top = 91
 custom_constants/margin_left = 64
@@ -119,9 +119,9 @@ margin_bottom = 91.0
 custom_constants/separation = 32
 
 [node name="MarginContainer2" type="MarginContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="3"]
-margin_top = 916.0
+margin_top = 582.0
 margin_right = 1080.0
-margin_bottom = 1007.0
+margin_bottom = 673.0
 custom_constants/margin_right = 64
 custom_constants/margin_top = 91
 custom_constants/margin_left = 64

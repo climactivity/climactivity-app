@@ -181,7 +181,8 @@ func should_place_new_entity():
 	return current_entity.is_mature()
 
 func should_generate_water(): 
-	return !should_place_new_entity() or current_entity.planted_at != 0  # start generating water when entity is placed
+	return current_entity != null and current_entity.planted_at != 0
+	#return !should_place_new_entity() or current_entity.planted_at != 0  # start generating water when entity is placed
 
 func apply_water(entity = null): 
 	if entity == null:

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/icon-app-20x20@3x.png-340066f19842bb4bec7f0522f2e85618.stex"
+path="res://.import/Icon-App-20x20@3x.png-c2c64f0915d9bf832b3be2a6e9364968.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/AppIcon/icon-app-20x20@3x.png"
-dest_files=[ "res://.import/icon-app-20x20@3x.png-340066f19842bb4bec7f0522f2e85618.stex" ]
+source_file="res://Assets/AppIcon/Icon-App-20x20@3x.png"
+dest_files=[ "res://.import/Icon-App-20x20@3x.png-c2c64f0915d9bf832b3be2a6e9364968.stex" ]
 
 [params]
 

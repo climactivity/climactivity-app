@@ -26,13 +26,13 @@ heading_text = "Infobyte"
 margin_left = 230.677
 margin_top = 167.191
 margin_right = 966.0
-margin_bottom = 217.191
+margin_bottom = 237.191
 mouse_filter = 2
 size_flags_vertical = 0
 
 [node name="Label" type="Label" parent="CySidePanel/MarginContainer"]
 margin_right = 735.0
-margin_bottom = 50.0
+margin_bottom = 70.0
 custom_fonts/font = ExtResource( 4 )
 text = "Introsatz wird wieder gelöscht"
 

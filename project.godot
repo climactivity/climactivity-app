@@ -144,7 +144,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://UI/Overlay.gd"
 }, {
-"base": "TextureRect",
+"base": "Control",
 "class": "ProgressBlip",
 "language": "GDScript",
 "path": "res://UI/Components/infobits/blip.gd"
@@ -334,12 +334,12 @@ _global_script_class_icons={
 
 config/name="Climactivity-app"
 run/main_scene="res://SceneManager/Loading.tscn"
-boot_splash/image="res://Assets/logo_sm.png"
+boot_splash/image="res://Assets/Icons/splash_2.png"
 boot_splash/fullsize=false
 boot_splash/bg_color=Color( 1, 1, 1, 1 )
 config/icon="res://Assets/BG/cyIcon.png"
 config/quit_on_go_back=false
-config/version="1.59"
+config/version="1.72"
 
 [autoload]
 
@@ -401,7 +401,7 @@ window/stretch/aspect="expand"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/NativeLib/plugin.cfg", "res://addons/dialogic/plugin.cfg", "res://addons/nativelib-export/plugin.cfg", "res://addons/tile_object/plugin.cfg" )
+enabled=PoolStringArray( "res://addons/NativeLib/plugin.cfg", "res://addons/dialogic/plugin.cfg", "res://addons/gut/plugin.cfg", "res://addons/nativelib-export/plugin.cfg", "res://addons/tile_object/plugin.cfg" )
 
 [gdnative]
 
@@ -416,24 +416,10 @@ phy=false
 [importer_defaults]
 
 texture={
-"compress/bptc_ldr": 0,
-"compress/hdr_mode": 0,
-"compress/lossy_quality": 0.7,
 "compress/mode": 1,
-"compress/normal_map": 0,
 "detect_3d": false,
-"flags/anisotropic": false,
-"flags/filter": true,
 "flags/mipmaps": true,
-"flags/repeat": true,
-"flags/srgb": 2,
-"process/HDR_as_SRGB": false,
-"process/fix_alpha_border": true,
-"process/invert_color": false,
-"process/premult_alpha": false,
-"size_limit": 0,
-"stream": false,
-"svg/scale": 1.0
+"flags/repeat": true
 }
 
 [input]

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/pappel_05.png-2015b62a5bb906fde5ea3d464056db8e.stex"
+path="res://.import/uwb.jpg-f254c3856e7fa0444d1d038643c91ab1.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/sketch/baum/Pappel/pappel_05.png"
-dest_files=[ "res://.import/pappel_05.png-2015b62a5bb906fde5ea3d464056db8e.stex" ]
+source_file="res://Assets/Icons/uwb.jpg"
+dest_files=[ "res://.import/uwb.jpg-f254c3856e7fa0444d1d038643c91ab1.stex" ]
 
 [params]
 
@@ -28,6 +28,7 @@ process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
 process/invert_color=false
+process/normal_map_invert_y=false
 stream=false
 size_limit=0
 detect_3d=false

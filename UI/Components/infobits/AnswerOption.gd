@@ -40,6 +40,12 @@ func _ready():
 	panel.set('custom_styles/panel', new_style)
 	selected = preselected
 	
+	var nav_data = GameManager.scene_manager.get_context()
+	if nav_data && nav_data.has("sector"):
+		var sector = nav_data["sector"]
+		set_select_anim_target_color(sector["sector_color"])
+
+	
 func set_answer_data(new_answer_data): 
 	answer_data = new_answer_data
 	is_correct = new_answer_data.correct
@@ -58,7 +64,7 @@ func update():
 			if last_state == AnswerState.DEFAULT: 
 				$AnimationPlayer.play("RESET")
 			else: 
-				$AnimationPlayer.play("Deselect")
+				$AnimationPlayer.play_backwards("Select")
 		AnswerState.SELECTED:
 			$AnimationPlayer.play("Select")
 		AnswerState.SELECTED_CORRECT:

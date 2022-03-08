@@ -160,13 +160,13 @@ intro_timeline = "TrackingSettingsIntro"
 intro_autoplay_delay = 1.5
 
 [node name="ContentMain" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer" index="0"]
-margin_bottom = 2461.0
+margin_bottom = 2501.0
 rect_pivot_offset = Vector2( -301.603, 1650 )
 
 [node name="MarginContainer" type="MarginContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="1"]
 margin_top = 378.0
 margin_right = 1080.0
-margin_bottom = 2117.0
+margin_bottom = 2157.0
 custom_constants/margin_right = 27
 custom_constants/margin_left = 22
 
@@ -175,7 +175,7 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 22.0
 margin_right = 1053.0
-margin_bottom = 1739.0
+margin_bottom = 1779.0
 rect_scale = Vector2( 1, 1 )
 
 [node name="HSeparator2" type="HSeparator" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="2"]
@@ -184,13 +184,13 @@ margin_top = 2121.0
 margin_right = 1080.0
 margin_bottom = 2470.0
 size_flags_vertical = 0
-custom_styles/separator = ExtResource( 9 )
 custom_constants/separation = 349
+custom_styles/separator = ExtResource( 9 )
 
 [node name="FootNoteContainer" type="PanelContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="3"]
-margin_top = 2121.0
+margin_top = 2161.0
 margin_right = 1080.0
-margin_bottom = 2461.0
+margin_bottom = 2501.0
 custom_styles/panel = SubResource( 1 )
 
 [node name="FootNoteText" type="RichTextLabel" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/FootNoteContainer" index="0"]
@@ -198,15 +198,16 @@ margin_left = 40.0
 margin_top = 40.0
 margin_right = 1040.0
 margin_bottom = 300.0
-custom_styles/normal = SubResource( 2 )
-custom_fonts/normal_font = ExtResource( 10 )
 custom_colors/default_color = Color( 0.411765, 0.411765, 0.407843, 1 )
+custom_fonts/normal_font = ExtResource( 10 )
+custom_styles/normal = SubResource( 2 )
 bbcode_enabled = true
 bbcode_text = "Hole dein Wasser regelmäßig ab, bevor die Tanks volllaufen und sich kein Wasser mehr sammeln kann.Je höher deine eingestellte Stufe in den Aspekten, umso mehr Wasser sammelst du. Tippe auf einen obigen Aspekt, um deine Stufe zu ändern."
 text = "Hole dein Wasser regelmäßig ab, bevor die Tanks volllaufen und sich kein Wasser mehr sammeln kann.Je höher deine eingestellte Stufe in den Aspekten, umso mehr Wasser sammelst du. Tippe auf einen obigen Aspekt, um deine Stufe zu ändern."
 fit_content_height = true
 
 [node name="ShopButtonPanel" type="PanelContainer" parent="ContentContainer/Content" index="1"]
+visible = false
 modulate = Color( 1, 1, 1, 0 )
 anchor_top = 1.0
 anchor_right = 1.0

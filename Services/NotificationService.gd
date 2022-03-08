@@ -69,7 +69,10 @@ func put_local_notification(title: String, message: String, tag: int = 0, date =
 	
 	if date < OS.get_unix_time(): 
 		date = OS.get_unix_time()
-	var interval =  max(date - OS.get_unix_time(),10)
+	var interval =  date - OS.get_unix_time()
+	if interval < 10:
+		Logger.error("Illegal notification duration %d" % interval, self)
+		interval = 10
 	Logger.print("triggering notification %s in %d" % [title, interval])
 	localnotification.show(message, title, interval, tag, repeat_duration)
 	return tag

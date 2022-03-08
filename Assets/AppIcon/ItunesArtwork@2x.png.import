@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/itunesartwork@2x.png-37e9f0f7e83604d71f1a80884ec91a3f.stex"
+path="res://.import/ItunesArtwork@2x.png-f0e79e36cbf1975d742631c4ca13fd49.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/AppIcon/itunesartwork@2x.png"
-dest_files=[ "res://.import/itunesartwork@2x.png-37e9f0f7e83604d71f1a80884ec91a3f.stex" ]
+source_file="res://Assets/AppIcon/ItunesArtwork@2x.png"
+dest_files=[ "res://.import/ItunesArtwork@2x.png-f0e79e36cbf1975d742631c4ca13fd49.stex" ]
 
 [params]
 

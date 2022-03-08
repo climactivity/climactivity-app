@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/heckenrose_02.png-d71a544d105469f678451e9f8e64c7ed.stex"
+path="res://.import/pappel_01.png-f6359d2994d8afc3ff41606b00be908c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/sketch/busch/Heckenrose/heckenrose_02.png"
-dest_files=[ "res://.import/heckenrose_02.png-d71a544d105469f678451e9f8e64c7ed.stex" ]
+source_file="res://Assets/sketch/baum/Pappel/pappel_01.png"
+dest_files=[ "res://.import/pappel_01.png-f6359d2994d8afc3ff41606b00be908c.stex" ]
 
 [params]
 
@@ -19,16 +19,17 @@ compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
-flags/repeat=true
+flags/repeat=0
 flags/filter=true
-flags/mipmaps=true
+flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
 process/invert_color=false
+process/normal_map_invert_y=false
 stream=false
 size_limit=0
-detect_3d=false
+detect_3d=true
 svg/scale=1.0

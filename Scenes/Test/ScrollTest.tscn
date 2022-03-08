@@ -9,7 +9,7 @@
 [ext_resource path="res://UI/typography/Content_Italic.tres" type="DynamicFont" id=7]
 [ext_resource path="res://UI/typography/Content_Bold_Italic.tres" type="DynamicFont" id=8]
 
-[sub_resource type="Shader" id=9]
+[sub_resource type="Shader" id=15]
 code = "shader_type canvas_item; 
 
 uniform sampler2D gradient; 
@@ -19,16 +19,16 @@ void fragment() {
 	//COLOR = vec4(UV.y,0,0,1);
 }"
 
-[sub_resource type="Gradient" id=10]
+[sub_resource type="Gradient" id=16]
 offsets = PoolRealArray( 0.213622, 1 )
 colors = PoolColorArray( 0.592157, 0.909804, 0.192157, 1, 1, 1, 1, 1 )
 
-[sub_resource type="GradientTexture" id=11]
-gradient = SubResource( 10 )
+[sub_resource type="GradientTexture" id=17]
+gradient = SubResource( 16 )
 
-[sub_resource type="ShaderMaterial" id=12]
-shader = SubResource( 9 )
-shader_param/gradient = SubResource( 11 )
+[sub_resource type="ShaderMaterial" id=18]
+shader = SubResource( 15 )
+shader_param/gradient = SubResource( 17 )
 
 [sub_resource type="StyleBoxFlat" id=13]
 bg_color = Color( 0.0862745, 0.101961, 0.0509804, 1 )
@@ -101,19 +101,19 @@ tracks/1/keys = {
 }
 
 [node name="ScrollTest" instance=ExtResource( 1 )]
-material = SubResource( 12 )
+material = SubResource( 18 )
 
 [node name="MarginContainer" type="MarginContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="1"]
-margin_top = 450.0
+margin_top = 378.0
 margin_right = 1080.0
-margin_bottom = 1190.0
+margin_bottom = 1198.0
 custom_constants/margin_right = 27
 custom_constants/margin_left = 30
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer" index="0"]
 margin_left = 30.0
 margin_right = 1053.0
-margin_bottom = 740.0
+margin_bottom = 820.0
 custom_constants/separation = 20
 
 [node name="ListEntry" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/VBoxContainer" index="0" instance=ExtResource( 2 )]
@@ -142,20 +142,20 @@ accent_color = Color( 0.282353, 0.47451, 0.741176, 1 )
 [node name="PanelContainer" type="PanelContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/VBoxContainer" index="2"]
 margin_top = 464.0
 margin_right = 1023.0
-margin_bottom = 740.0
+margin_bottom = 820.0
 custom_styles/panel = SubResource( 7 )
 
 [node name="RichTextLabel" type="RichTextLabel" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/VBoxContainer/PanelContainer" index="0"]
 margin_left = 36.0
 margin_top = 36.0
 margin_right = 987.0
-margin_bottom = 240.0
+margin_bottom = 320.0
+custom_colors/default_color = Color( 0.0705882, 0.0705882, 0.0705882, 1 )
 custom_fonts/mono_font = ExtResource( 6 )
 custom_fonts/bold_italics_font = ExtResource( 8 )
 custom_fonts/italics_font = ExtResource( 7 )
 custom_fonts/bold_font = ExtResource( 5 )
 custom_fonts/normal_font = ExtResource( 4 )
-custom_colors/default_color = Color( 0.0705882, 0.0705882, 0.0705882, 1 )
 bbcode_enabled = true
 bbcode_text = "[i]Hier[/i]
 [b] ist [/b] 
@@ -172,9 +172,9 @@ anims/Select = SubResource( 8 )
 
 [node name="Panel" type="Panel" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MarginContainer/VBoxContainer/PanelContainer" index="2"]
 margin_left = 947.0
-margin_top = 118.0
+margin_top = 158.0
 margin_right = 987.0
-margin_bottom = 158.0
+margin_bottom = 198.0
 rect_min_size = Vector2( 40, 40 )
 size_flags_horizontal = 8
 size_flags_vertical = 4
