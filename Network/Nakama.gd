@@ -77,6 +77,8 @@ func _on_notification(p_notification : NakamaAPI.ApiNotification):
 			emit_signal("cy_network_authenticated")
 		201:
 			emit_signal("notificaion_received", p_notification)
+		1001:
+			emit_signal("notification_received", p_notification)
 		_: 
 			pass
 			
