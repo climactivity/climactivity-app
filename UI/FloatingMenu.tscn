@@ -181,7 +181,16 @@ primary_color = Color( 0.988235, 0.988235, 0.988235, 1 )
 icon = ExtResource( 1 )
 menu_label = "stats_screen"
 
+[node name="MatchMakerButton" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer" instance=ExtResource( 4 )]
+margin_left = 440.0
+margin_right = 601.0
+margin_bottom = 104.0
+primary_color = Color( 0.988235, 0.988235, 0.988235, 1 )
+icon = ExtResource( 1 )
+menu_label = "Matchmaking"
+
 [node name="NetworkButton" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer" instance=ExtResource( 4 )]
+visible = false
 margin_left = 556.0
 margin_right = 709.0
 primary_color = Color( 0.988235, 0.988235, 0.988235, 1 )
@@ -251,6 +260,7 @@ anims/Show = SubResource( 6 )
 [connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/HomeButton" to="." method="_on_HomeButton_pressed"]
 [connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/NotificationsButton" to="." method="_on_NotificationsButton_pressed"]
 [connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/StatsButton" to="." method="_on_StatsButton_pressed"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/MatchMakerButton" to="." method="_on_MatchMakerButton_pressed"]
 [connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/NetworkButton" to="." method="_on_NetworkButton_pressed"]
 [connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/ChallengesButton" to="." method="_on_ChallengesButton_pressed"]
 [connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/SocialButton" to="." method="_on_SocialButton_pressed"]

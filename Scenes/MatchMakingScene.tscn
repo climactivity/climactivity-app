@@ -1,0 +1,111 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Scenes/SceneBase.tscn" type="PackedScene" id=1]
+[ext_resource path="res://MatchMakingScene.gd" type="Script" id=2]
+[ext_resource path="res://UI/typography/UI_Regular.tres" type="DynamicFont" id=3]
+[ext_resource path="res://UI/typography/UI_bigger.tres" type="DynamicFont" id=4]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item; 
+
+uniform sampler2D gradient; 
+
+void fragment() {
+	COLOR = texture(gradient, vec2(UV.y, 0));
+	//COLOR = vec4(UV.y,0,0,1);
+}"
+
+[sub_resource type="Gradient" id=2]
+offsets = PoolRealArray( 0.213622, 1 )
+colors = PoolColorArray( 0.592157, 0.909804, 0.192157, 1, 1, 1, 1, 1 )
+
+[sub_resource type="GradientTexture" id=3]
+gradient = SubResource( 2 )
+
+[sub_resource type="ShaderMaterial" id=4]
+shader = SubResource( 1 )
+shader_param/gradient = SubResource( 3 )
+
+[sub_resource type="StyleBoxEmpty" id=5]
+
+[node name="MatchMakingScene" instance=ExtResource( 1 )]
+material = SubResource( 4 )
+script = ExtResource( 2 )
+accent_color = Color( 0.223529, 0, 0.552941, 1 )
+screen_title = "Finding Match"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="1"]
+margin_top = 378.0
+margin_right = 1080.0
+margin_bottom = 807.0
+
+[node name="MarginContainer" type="MarginContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/VBoxContainer" index="0"]
+margin_right = 1080.0
+margin_bottom = 429.0
+custom_constants/margin_right = 64
+custom_constants/margin_top = 64
+custom_constants/margin_left = 64
+custom_constants/margin_bottom = 64
+
+[node name="PanelContainer" type="PanelContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/VBoxContainer/MarginContainer" index="0"]
+margin_left = 64.0
+margin_top = 64.0
+margin_right = 1016.0
+margin_bottom = 365.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/VBoxContainer/MarginContainer/PanelContainer" index="0"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 945.0
+margin_bottom = 294.0
+
+[node name="lfg_label" type="RichTextLabel" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/VBoxContainer/MarginContainer/PanelContainer/VBoxContainer" index="0"]
+margin_right = 938.0
+margin_bottom = 67.0
+custom_fonts/normal_font = ExtResource( 4 )
+bbcode_enabled = true
+bbcode_text = "[center]Suche nach Mitspieler"
+text = "Suche nach Mitspieler"
+fit_content_height = true
+
+[node name="time_in_queue" type="RichTextLabel" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/VBoxContainer/MarginContainer/PanelContainer/VBoxContainer" index="1"]
+margin_top = 71.0
+margin_right = 938.0
+margin_bottom = 138.0
+custom_fonts/normal_font = ExtResource( 4 )
+bbcode_enabled = true
+bbcode_text = "[center]0:00"
+text = "0:00"
+fit_content_height = true
+
+[node name="HSeparator" type="HSeparator" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/VBoxContainer/MarginContainer/PanelContainer/VBoxContainer" index="2"]
+margin_top = 142.0
+margin_right = 938.0
+margin_bottom = 146.0
+custom_styles/separator = SubResource( 5 )
+
+[node name="SpinnyThing" type="Control" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/VBoxContainer/MarginContainer/PanelContainer/VBoxContainer" index="3"]
+margin_top = 150.0
+margin_right = 938.0
+margin_bottom = 150.0
+
+[node name="HSeparator2" type="HSeparator" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/VBoxContainer/MarginContainer/PanelContainer/VBoxContainer" index="4"]
+margin_top = 154.0
+margin_right = 938.0
+margin_bottom = 234.0
+custom_constants/separation = 80
+custom_styles/separator = SubResource( 5 )
+
+[node name="CancelButton" type="Button" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/VBoxContainer/MarginContainer/PanelContainer/VBoxContainer" index="5"]
+margin_top = 238.0
+margin_right = 938.0
+margin_bottom = 287.0
+custom_fonts/font = ExtResource( 3 )
+text = "Abbrechen"
+
+[node name="Timer" type="Timer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/VBoxContainer/MarginContainer/PanelContainer/VBoxContainer" index="6"]
+
+[node name="HeaderContainer" parent="." index="1"]
+visible = false
+
+[connection signal="pressed" from="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/VBoxContainer/MarginContainer/PanelContainer/VBoxContainer/CancelButton" to="." method="_on_CancelButton_pressed"]

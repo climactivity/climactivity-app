@@ -19,13 +19,14 @@ onready var anim_player = $AnimationPlayer
 onready var home_button = $MarginContainer/PanelContainer/MarginContainer/HBoxContainer/HomeButton
 onready var notification_button = $MarginContainer/PanelContainer/MarginContainer/HBoxContainer/NotificationsButton
 onready var stats_button = $MarginContainer/PanelContainer/MarginContainer/HBoxContainer/StatsButton
+onready var mm_button = $MarginContainer/PanelContainer/MarginContainer/HBoxContainer/MatchMakerButton
 onready var social_button = $MarginContainer/PanelContainer/MarginContainer/HBoxContainer/SocialButton
 onready var settings_button = $MarginContainer/PanelContainer/MarginContainer/HBoxContainer/SettingsButton
 onready var network_button = $MarginContainer/PanelContainer/MarginContainer/HBoxContainer/NetworkButton
 onready var challengens_button = $MarginContainer/PanelContainer/MarginContainer/HBoxContainer/ChallengesButton
 var buttons
 func _ready():
-	buttons = [home_button, notification_button, stats_button, social_button, settings_button, network_button,challengens_button]
+	buttons = [home_button, notification_button, stats_button, mm_button, social_button, settings_button, network_button,challengens_button]
 	set_navigation_state(navigation_state, true)
 	if GameManager != null:
 		GameManager.menu = self
@@ -96,6 +97,7 @@ func set_navigation_state(new_state, stay = false):
 			if !stay: _navigate_social()
 		Navigation_states.STATS:
 			stats_button.set_primary_color(active_tab_primary)
+			mm_button.set_primary_color(active_tab_primary)
 			if !stay: _navigate_stats()
 		Navigation_states.SETTINGS:
 			settings_button.set_primary_color(active_tab_primary)
@@ -129,3 +131,8 @@ func _navigate(scene):
 	if GameManager == null or GameManager.scene_manager == null: return
 	GameManager.scene_manager.push_scene(scene, {},
 	 TransitionFactory.MoveOut() if last_navigation_state <= navigation_state else TransitionFactory.MoveBack())
+
+
+func _on_MatchMakerButton_pressed():
+	_navigate("res://Scenes/MatchMakingScene.tscn")
+	set_navigation_state(Navigation_states.STATS)
