@@ -58,7 +58,7 @@ func show_available_tutorial(timeline):
 	available_timeline = timeline
 	if hidden:
 		$AnimationPlayer.play("show_available_tutorial")
-		$MainMenu/AnimationPlayer.play("KikoCutout")
+		$MainMenu/AnimationPlayer.queue("KikoCutout")
 		hidden = false
 	Logger.print($TextureButton.rect_position, self)
 func hide_available_tutorial():
@@ -69,7 +69,7 @@ func hide_available_tutorial():
 	yield(get_tree().create_timer(0.1), "timeout")
 	if available_timeline == '':
 		$AnimationPlayer.play_backwards("show_available_tutorial")
-		$MainMenu/AnimationPlayer.play_backwards("KikoCutout")
+		$MainMenu/AnimationPlayer.queue("KikoCutoutRev")
 		hidden = true
 
 func _on_TextureButton_pressed():

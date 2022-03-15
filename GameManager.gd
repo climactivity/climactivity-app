@@ -5,7 +5,7 @@ var map
 var camera
 var scene_manager: SceneManager
 var forest
-var menu
+var menu : MainMenu
 var overlay
 var xp_bar
 var bonfire

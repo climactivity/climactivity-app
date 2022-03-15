@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Assets/Icons/chart-line-solid.svg" type="Texture" id=1]
 [ext_resource path="res://Assets/Icons/cog-solid.svg" type="Texture" id=3]
@@ -35,6 +35,22 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ 0, 113 ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "KikoCutoutRev"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VSeparator:custom_constants/separation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 113, 0 ]
 }
 
 [sub_resource type="Animation" id=5]
@@ -97,9 +113,9 @@ __meta__ = {
 active_tab_primary = Color( 0.337255, 0.537255, 0.627451, 1 )
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
-margin_top = 60.0
+margin_top = 200.0
 margin_right = 1219.0
-margin_bottom = 244.0
+margin_bottom = 384.0
 input_pass_on_modal_close_click = false
 size_flags_horizontal = 3
 size_flags_vertical = 8
@@ -147,27 +163,27 @@ custom_constants/separation = 0
 custom_styles/separator = SubResource( 3 )
 
 [node name="HomeButton" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer" instance=ExtResource( 4 )]
-margin_left = 42.0
-margin_right = 210.0
+margin_left = 39.0
+margin_right = 207.0
 grow_horizontal = 2
 grow_vertical = 2
 primary_color = Color( 0.988235, 0.988235, 0.988235, 1 )
 menu_label = "home_screen"
 
 [node name="VSeparator2" type="VSeparator" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer"]
-margin_left = 214.0
-margin_right = 252.0
+margin_left = 211.0
+margin_right = 246.0
 margin_bottom = 100.0
 size_flags_horizontal = 3
 custom_styles/separator = SubResource( 3 )
 
 [node name="NotificationsButton" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer" instance=ExtResource( 9 )]
-margin_left = 256.0
-margin_right = 510.0
+margin_left = 250.0
+margin_right = 504.0
 
 [node name="VSeparator3" type="VSeparator" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer"]
-margin_left = 514.0
-margin_right = 552.0
+margin_left = 508.0
+margin_right = 543.0
 margin_bottom = 100.0
 size_flags_horizontal = 3
 custom_styles/separator = SubResource( 3 )
@@ -182,9 +198,8 @@ icon = ExtResource( 1 )
 menu_label = "stats_screen"
 
 [node name="MatchMakerButton" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer" instance=ExtResource( 4 )]
-margin_left = 440.0
-margin_right = 601.0
-margin_bottom = 104.0
+margin_left = 547.0
+margin_right = 716.0
 primary_color = Color( 0.988235, 0.988235, 0.988235, 1 )
 icon = ExtResource( 1 )
 menu_label = "Matchmaking"
@@ -198,21 +213,21 @@ icon = ExtResource( 8 )
 menu_label = "cy Netzwerk"
 
 [node name="VSeparator7" type="VSeparator" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer"]
-margin_left = 713.0
-margin_right = 751.0
+margin_left = 720.0
+margin_right = 755.0
 margin_bottom = 100.0
 size_flags_horizontal = 3
 custom_styles/separator = SubResource( 3 )
 
 [node name="ChallengesButton" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer" instance=ExtResource( 4 )]
-margin_left = 755.0
-margin_right = 893.0
+margin_left = 759.0
+margin_right = 897.0
 primary_color = Color( 0.988235, 0.988235, 0.988235, 1 )
 icon = ExtResource( 7 )
 menu_label = "Challenges"
 
 [node name="VSeparator4" type="VSeparator" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer"]
-margin_left = 897.0
+margin_left = 901.0
 margin_right = 936.0
 margin_bottom = 100.0
 size_flags_horizontal = 3
@@ -254,6 +269,7 @@ custom_styles/separator = SubResource( 3 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "RESET"
 anims/KikoCutout = SubResource( 4 )
+anims/KikoCutoutRev = SubResource( 7 )
 anims/RESET = SubResource( 5 )
 anims/Show = SubResource( 6 )
 

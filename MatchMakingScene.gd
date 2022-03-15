@@ -12,7 +12,7 @@ onready var queue_timer_label = $ContentContainer/Content/VBoxContainer/MarginCo
 var query = "*"
 var min_count = 2 
 var max_count = 2 
-var string_props = {"region": "europe"}
+var string_props = {"region": "europe", "mode": "vsquiz"}
 var num_props = {"rank": 8}
 
 
