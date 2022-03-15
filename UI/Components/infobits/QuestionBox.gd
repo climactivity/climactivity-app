@@ -30,7 +30,22 @@ func play_enter():
 	question_box.play_enter()
 	$"VBoxContainer2/VBoxContainer/Stagger".play_enter()
 	$AnimationPlayer.play("Enter")
+
+func TEMP_set_vs_question(question):
+	var ret = {
+		"question" : question.question.question,
+		"answers": []
+	}
 	
+	for i in range(0, question.question.answers.size()):
+		var a = question.question.answers[i]
+		ret["answers"].append({
+			"value": a.value,
+			"correct": a.correct
+		})
+		
+	set_question(ret)
+
 func set_question(new_question): 
 	question = new_question
 	question_text = question.question
@@ -48,6 +63,15 @@ func set_question(new_question):
 			$"VBoxContainer2/Label".text = tr("hint_select_exactly_one")
 		_:
 			$"VBoxContainer2/Label".text = tr("hint_select_at_least_one")
+	
+
+	question_box.set_text( question_text if question_text != null else "null" )
+	Util.clear(answer_button_holder)
+	for answer_button in answers:
+		answer_button_holder.add_child(answer_button)
+		answer_button.connect("selected", self, "_on_answer_selected")
+		answer_button.connect("unselected", self, "_on_answer_unselected")
+	
 func _on_answer_selected(answer): 
 	if(question_mode == "radio_buttons"): 
 		for answer_button in selected_answers:

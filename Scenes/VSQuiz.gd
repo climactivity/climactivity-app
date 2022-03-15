@@ -5,8 +5,10 @@ var socket : NakamaSocket
 
 var own_presence : NakamaRTAPI.UserPresence
 
-var match_state : VSQuizState
+signal current_question(question_idx, time_left, match_state)
 
+var match_state : VSQuizState
+var last_match_state_state = false
 var is_ready = false 
 onready var ready_button = $ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MatchHolder/Lobby/VBoxContainer/ReadyButton
 
@@ -23,6 +25,13 @@ onready var timer = $ContentContainer/Content/VBoxContainer/MarginContainer/Scro
 onready var category_label = $ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MatchHolder/Lobby/PanelContainer/CatergoryLabel
 
 onready var animation_player = $ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MatchHolder/AnimationPlayer
+
+onready var question_box = $ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MatchHolder/Questions/VBoxContainer/QuestionBox
+
+onready var question_timer = $ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MatchHolder/Questions/VBoxContainer/Timer
+
+onready var question_timer_label = $ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MatchHolder/Questions/VBoxContainer/Timer/TimerLabel
+
 var unreadyColor = Color.white
 var readyColor = Color.greenyellow
 
@@ -38,7 +47,7 @@ func _start_match(_navigation_data):
 	socket = _navigation_data.socket
 	socket.connect("received_match_presence", self, "_update_presences")
 	socket.connect("received_match_state", self, "_on_match_state")
-	
+	connect("current_question", self, "_update_current_question")
 func _update_presences(p_presence : NakamaRTAPI.MatchPresenceEvent):
 	for p in p_presence.joins:
 		matchData.presences.append(p)
@@ -57,7 +66,7 @@ func _update_opponent():
 			opponent_name_label.text = p.username
 
 func _on_match_state(p_state: NakamaRTAPI.MatchData):
-	print(p_state)
+#	print(p_state)
 	var json_result = JSON.parse(p_state.data)
 
 		
@@ -71,13 +80,32 @@ func _on_match_state(p_state: NakamaRTAPI.MatchData):
 				oppnent_ready.modulate = readyColor
 				
 		elif p_state.op_code > 2:
+			
 			match_state = NakamaSerializer.deserialize(self.get_script(), "VSQuizState", result)
+
 			if match_state.show_intro: 
 				category_label.text = category_label.text % match_state.num_questions
 				animation_player.play("show_intro")
 				timer.connect("timeout", self, "count_match_start")
 				count_match_start()
-
+			if match_state.show_questions and not last_match_state_state: 
+				animation_player.play("GotoQuestions")
+				last_match_state_state = true
+			if match_state.show_questions: 
+				emit_signal("current_question", match_state.current_question, match_state.current_question_time_left ,match_state)
+			
+var last_idx = -1 
+func _update_current_question(idx: int, time_left: float, p_match_state: VSQuizState):
+	print(idx, time_left)
+	
+	question_timer_label.text = "%02d" % floor(time_left)
+	question_timer.value = (time_left / p_match_state.time_limit_questions) * 100.0
+	
+	if idx != last_idx:
+		last_idx = idx
+		question_box.TEMP_set_vs_question(p_match_state.questions[idx - 1])
+		question_box.play_enter()
+	
 func count_match_start():
 	ready_button.text = "%0*d" % [2, floor(fmod(match_state.intro_time_left,60.0))]
 	match_state.intro_time_left = max(match_state.intro_time_left - 1.0, 0.0)
@@ -136,6 +164,7 @@ class VSQuizState:
 		"presences" : {"name": "presences", "type": TYPE_DICTIONARY, "required": true, "content": TYPE_DICTIONARY},
 		"questions" : {"name": "questions", "type": TYPE_ARRAY, "required": false, "content": "VSQuestion"},
 		"num_questions" : {"name": "num_questions", "type": TYPE_INT, "required": false},
+		"current_question" : {"name": "current_question", "type": TYPE_INT, "required": false},
 		"answers" : {"name": "answers", "type": TYPE_ARRAY, "required": false, "content": "VSAnswer"},
 		"time_limit_question" : {"name": "time_limit_question", "type": TYPE_REAL, "required": true},
 		"time_limit_result" : {"name": "time_limit_result", "type": TYPE_REAL, "required": true},
@@ -144,13 +173,16 @@ class VSQuizState:
 		"show_intro" : {"name": "show_intro", "type": TYPE_BOOL, "required": true},
 		"show_questions" : {"name": "show_questions", "type": TYPE_BOOL, "required": true},
 		"show_complete" : {"name": "show_complete", "type": TYPE_BOOL, "required": true},
-		"intro_time_left" : {"name": "show_complete", "type": TYPE_REAL, "required": true}
+		"intro_time_left" : {"name": "show_complete", "type": TYPE_REAL, "required": true},
+		"current_question_time_left" : {"name": "current_question_time_left", "type": TYPE_REAL, "required": true},
+		"show_q_result_time" : {"name": "show_q_result_time", "type": TYPE_REAL, "required": true}
 	}
 	
 	var _ex : NakamaException
 	var presences : Dictionary
 	var questions : Array
 	var num_questions : int = 9
+	var current_question: int = 0
 	var answers : Array
 	
 	var time_limit_questions : float = 10.0
@@ -163,4 +195,5 @@ class VSQuizState:
 	var show_complete : bool = false
 	
 	var intro_time_left : float = 5.0
-
+	var current_question_time_left : float
+	var show_q_result_time : float
