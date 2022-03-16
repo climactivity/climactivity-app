@@ -45,7 +45,6 @@ margin_right = 1084.0
 margin_bottom = 400.0
 
 [node name="Label" type="Label" parent="VBoxContainer2"]
-modulate = Color( 1, 1, 1, 0 )
 margin_top = 404.0
 margin_right = 1084.0
 margin_bottom = 470.0

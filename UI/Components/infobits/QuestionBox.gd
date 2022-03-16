@@ -31,20 +31,55 @@ func play_enter():
 	$"VBoxContainer2/VBoxContainer/Stagger".play_enter()
 	$AnimationPlayer.play("Enter")
 
-func TEMP_set_vs_question(question):
-	var ret = {
-		"question" : question.question.question,
-		"answers": []
-	}
+
+func _reset():
+	answers = []
+	num_correct_answers = 0
+	Util.clear(answer_button_holder)
+
+func TEMP_set_vs_question(p_question: VSQuiz.VSQuestion):
+#	var ret = {
+#		"question" : question.question.question,
+#		"answers": []
+#	}
+#
+#	for i in range(0, question.question.answers.size()):
+#		var a = question.question.answers[i]
+#		ret["answers"].append({
+#			"value": a.value,
+#			"correct": a.correct
+#		})
+#
+#	set_question(ret)
+
+	_reset()
 	
-	for i in range(0, question.question.answers.size()):
-		var a = question.question.answers[i]
-		ret["answers"].append({
-			"value": a.value,
-			"correct": a.correct
-		})
+	question = p_question.question
+	question_text = question.question
+	question_box.set_text( question_text )
+	question_mode = "vs_quiz"
+
+	for answer in question.answers:
+		var answer_button = answer_button_factory.instance()
+		answers.append(answer_button)
+		answer_button.set_answer_data(answer)
+		if answer.correct:
+			num_correct_answers += 1
+		answer_button_holder.add_child(answer_button)
+		answer_button.connect("selected", self, "_on_answer_selected")
+		answer_button.connect("unselected", self, "_on_answer_unselected")
 		
-	set_question(ret)
+	match num_correct_answers:
+		0: 
+			Logger.error("No correct answers in question: %s" % question.question, self )
+		1: 
+			$"VBoxContainer2/Label".text = tr("hint_select_exactly_one")
+		_:
+			$"VBoxContainer2/Label".text = tr("hint_select_at_least_one")
+	
+	
+
+	
 
 func set_question(new_question): 
 	question = new_question
@@ -65,24 +100,22 @@ func set_question(new_question):
 			$"VBoxContainer2/Label".text = tr("hint_select_at_least_one")
 	
 
-	question_box.set_text( question_text if question_text != null else "null" )
-	Util.clear(answer_button_holder)
-	for answer_button in answers:
-		answer_button_holder.add_child(answer_button)
-		answer_button.connect("selected", self, "_on_answer_selected")
-		answer_button.connect("unselected", self, "_on_answer_unselected")
+
 	
 func _on_answer_selected(answer): 
-	if(question_mode == "radio_buttons"): 
+	if(question_mode == "radio_buttons" or question_mode == "vs_quiz"): 
 		for answer_button in selected_answers:
 			answer_button.set_state(AnswerState.DEFAULT)
 			selected_answers.clear()
 		answer.set_state(AnswerState.SELECTED)
 		selected_answers.push_back(answer)
 		_can_check()
+	if question_mode == "vs_quiz": 
+		emit_result()
+
 
 func clear_selected():
-	if(question_mode == "radio_buttons"): 
+	if(question_mode == "radio_buttons" or question_mode == "vs_quiz"): 
 		selected_answers.clear()
 		for answer in answers:
 			answer.unlock()
@@ -97,6 +130,17 @@ func check_result():
 		answer_button.lock() 
 	return selected_answers
 	
+signal answer_changed(answer)
+
+func emit_result(): 
+	if(question_mode != "vs_quiz"):
+		return
+	
+	var selected_answer = selected_answers.front()
+	if selected_answer != null:
+		emit_signal("answer_changed", selected_answer.answer_data)
+	 
+
 func get_result(): 
 	if(question_mode == "radio_buttons"): 
 		if selected_answers.empty(): return 0.0
