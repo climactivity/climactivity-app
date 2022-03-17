@@ -247,6 +247,14 @@ func get_infobytes_for_factor(factor, aspect):
 			selected.push_back(infobyte)
 	return selected
 
+func get_infobyte_by_id(id):
+	if !is_ready(): return null
+	var candidates =  entities.get("RLocalizedInfobyte")
+	for infobyte in candidates:
+		if id == infobyte._id: 
+			return infobyte
+	return null
+
 func get_quests_for_aspect(aspect): 
 	if !is_ready(): return null
 	if aspect is String:

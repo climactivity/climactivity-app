@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://Scenes/SceneBase.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/VSQuiz.gd" type="Script" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://UI/Components/infobits/QuestionBox.tscn" type="PackedScene" id=9]
 [ext_resource path="res://UI/Components/vsquiz/OppContainer.tscn" type="PackedScene" id=10]
 [ext_resource path="res://UI/Behaviour/Stagger.tscn" type="PackedScene" id=11]
+[ext_resource path="res://UI/Components/vsquiz/QuestionSummary.tscn" type="PackedScene" id=12]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item; 
@@ -32,6 +33,59 @@ gradient = SubResource( 2 )
 [sub_resource type="ShaderMaterial" id=4]
 shader = SubResource( 1 )
 shader_param/gradient = SubResource( 3 )
+
+[sub_resource type="Animation" id=17]
+resource_name = "GotoMatchSummary"
+tracks/0/type = "value"
+tracks/0/path = NodePath("MatchSummary:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Lobby:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Questions:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath("MatchSummary/SummaryContainer/Stagger")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "play_enter"
+} ]
+}
 
 [sub_resource type="Animation" id=12]
 resource_name = "GotoQuestions"
@@ -142,6 +196,18 @@ tracks/8/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 0, 556 ), Vector2( 0, 0 ) ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Questions:self_modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0.4, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
 [sub_resource type="Animation" id=10]
@@ -290,6 +356,30 @@ tracks/11/keys = {
 "update": 0,
 "values": [ Vector2( 952, 676 ) ]
 }
+tracks/12/type = "value"
+tracks/12/path = NodePath("MatchSummary:visible")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("Questions:self_modulate")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
 
 [sub_resource type="Animation" id=11]
 resource_name = "show_intro"
@@ -388,17 +478,17 @@ bg_color = Color( 1, 1, 1, 1 )
 [sub_resource type="StyleBoxFlat" id=15]
 bg_color = Color( 0, 0, 0, 1 )
 
-[sub_resource type="StyleBoxFlat" id=16]
+[sub_resource type="StyleBoxFlat" id=18]
 content_margin_left = 64.0
 content_margin_right = 64.0
 content_margin_top = 128.0
 content_margin_bottom = 64.0
-bg_color = Color( 1, 1, 1, 0.52549 )
+bg_color = Color( 1, 1, 1, 0 )
 
 [node name="VSQuiz" instance=ExtResource( 1 )]
 material = SubResource( 4 )
 script = ExtResource( 2 )
-accent_color = Color( 0.6, 0.6, 0.6, 1 )
+accent_color = Color( 0.368627, 0.0156863, 1, 1 )
 navigation_dispatcher = NodePath("ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MatchHolder")
 screen_title = "Match Lobby"
 
@@ -422,6 +512,7 @@ controller = NodePath("../../../../../../..")
 [node name="Tween" type="Tween" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MatchHolder" index="1"]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MatchHolder" index="2"]
+anims/GotoMatchSummary = SubResource( 17 )
 anims/GotoQuestions = SubResource( 12 )
 anims/RESET = SubResource( 10 )
 anims/show_intro = SubResource( 11 )
@@ -569,7 +660,7 @@ custom_styles/panel = SubResource( 13 )
 visible = false
 margin_top = 128.0
 margin_right = 1080.0
-margin_bottom = 978.0
+margin_bottom = 1545.33
 
 [node name="Timer" type="ProgressBar" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MatchHolder/Questions/VBoxContainer" index="0"]
 margin_right = 1080.0
@@ -610,19 +701,39 @@ margin_right = 1016.0
 margin_bottom = 612.0
 
 [node name="MatchSummary" type="PanelContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MatchHolder" index="5"]
+visible = false
 margin_right = 1080.0
 margin_bottom = 1916.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_styles/panel = SubResource( 16 )
+custom_styles/panel = SubResource( 18 )
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MatchHolder/MatchSummary" index="0"]
+[node name="SummaryContainer" type="VBoxContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MatchHolder/MatchSummary" index="0"]
 margin_left = 64.0
 margin_top = 128.0
 margin_right = 1016.0
 margin_bottom = 1852.0
+custom_constants/separation = 32
 
-[node name="Stagger" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MatchHolder/MatchSummary/VBoxContainer" index="0" instance=ExtResource( 11 )]
+[node name="Stagger" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MatchHolder/MatchSummary/SummaryContainer" index="0" instance=ExtResource( 11 )]
+delay = 1.0
+start_delay = 0.8
+
+[node name="QuestionSummary" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MatchHolder/MatchSummary/SummaryContainer" index="1" instance=ExtResource( 12 )]
+anchor_right = 0.0
+margin_right = 952.0
+
+[node name="QuestionSummary2" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MatchHolder/MatchSummary/SummaryContainer" index="2" instance=ExtResource( 12 )]
+anchor_right = 0.0
+margin_top = 248.0
+margin_right = 952.0
+margin_bottom = 464.0
+
+[node name="QuestionSummary3" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MatchHolder/MatchSummary/SummaryContainer" index="3" instance=ExtResource( 12 )]
+anchor_right = 0.0
+margin_top = 496.0
+margin_right = 952.0
+margin_bottom = 712.0
 
 [node name="HeaderBG" parent="ContentContainer/Content" index="1"]
 visible = false

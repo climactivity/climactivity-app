@@ -37,7 +37,7 @@ func _reset():
 	num_correct_answers = 0
 	Util.clear(answer_button_holder)
 
-func TEMP_set_vs_question(p_question: VSQuiz.VSQuestion):
+func TEMP_set_vs_question(p_question: VSQuizAPI.VSQuestion):
 #	var ret = {
 #		"question" : question.question.question,
 #		"answers": []

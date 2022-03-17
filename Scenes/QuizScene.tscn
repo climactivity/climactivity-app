@@ -627,7 +627,7 @@ __meta__ = {
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 1080.0
-margin_bottom = 1321.0
+margin_bottom = 1152.0
 rect_rotation = 0.0
 
 [node name="Loading" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ContentHolder" index="1" instance=ExtResource( 5 )]
