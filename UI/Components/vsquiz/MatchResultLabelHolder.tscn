@@ -1,0 +1,73 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://UI/typography/Content_Regular.tres" type="DynamicFont" id=1]
+[ext_resource path="res://UI/typography/Content_Italic.tres" type="DynamicFont" id=2]
+[ext_resource path="res://UI/typography/Content_Bold_Italic.tres" type="DynamicFont" id=3]
+[ext_resource path="res://Assets/Theme/Fonts/RobotoCondensed-Bold.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://UI/Components/vsquiz/MatchResultLabelHolder.gd" type="Script" id=5]
+
+[sub_resource type="StyleBoxEmpty" id=1]
+
+[sub_resource type="DynamicFont" id=2]
+size = 64
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
+extra_spacing_char = 4
+font_data = ExtResource( 4 )
+
+[node name="ResultLabelHolder" type="PanelContainer"]
+anchor_right = 1.0
+margin_bottom = 78.0
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="WinLabel" type="RichTextLabel" parent="."]
+margin_right = 1080.0
+margin_bottom = 78.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.0
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/bold_italics_font = ExtResource( 3 )
+custom_fonts/italics_font = ExtResource( 2 )
+custom_fonts/bold_font = SubResource( 2 )
+custom_fonts/normal_font = ExtResource( 1 )
+bbcode_enabled = true
+bbcode_text = "[center][b][wave amp=50 freq=2][rainbow freq=0.1 sat=1 val=1.1 ]Gewonnen"
+text = "Gewonnen"
+fit_content_height = true
+
+[node name="LostLabel" type="RichTextLabel" parent="."]
+visible = false
+margin_right = 888.0
+margin_bottom = 78.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.0
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/bold_italics_font = ExtResource( 3 )
+custom_fonts/italics_font = ExtResource( 2 )
+custom_fonts/bold_font = SubResource( 2 )
+custom_fonts/normal_font = ExtResource( 1 )
+bbcode_enabled = true
+bbcode_text = "[center][b]Verloren"
+text = "Verloren"
+fit_content_height = true
+
+[node name="DrawLabel" type="RichTextLabel" parent="."]
+visible = false
+margin_right = 888.0
+margin_bottom = 78.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.0
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/bold_italics_font = ExtResource( 3 )
+custom_fonts/italics_font = ExtResource( 2 )
+custom_fonts/bold_font = SubResource( 2 )
+custom_fonts/normal_font = ExtResource( 1 )
+bbcode_enabled = true
+bbcode_text = "[center][b]Unendschieden"
+text = "Unendschieden"
+fit_content_height = true

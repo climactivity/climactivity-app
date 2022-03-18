@@ -34,7 +34,9 @@ onready var question_timer = $ContentContainer/Content/VBoxContainer/MarginConta
 
 onready var question_timer_label = $ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MatchHolder/Questions/VBoxContainer/Timer/TimerLabel
 
-onready var summary_container = $ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MatchHolder/MatchSummary/SummaryContainer
+onready var summary_container = $ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MatchHolder/MatchSummary/Layout/SummaryContainer
+
+onready var result_container = $ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MatchHolder/MatchSummary/Layout/ResultContainer
 
 onready var tween = $ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MatchHolder/Tween
 onready var scroller = $ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer
@@ -44,6 +46,7 @@ var bp_q_summary = preload("res://UI/Components/vsquiz/QuestionSummary.tscn")
 var unreadyColor = Color.white
 var readyColor = Color.greenyellow
 var opponent_presence_id 
+var opponent_name
 func _start_match(_navigation_data):
 	
 	match_state = VSQuizAPI.VSQuizState.new()
@@ -65,7 +68,7 @@ func _update_presences(p_presence : NakamaRTAPI.MatchPresenceEvent):
 
 	for p in p_presence.leaves:
 		matchData.presences.erase(p)
-	
+
 	
 	_update_opponent()
 	
@@ -74,9 +77,11 @@ func _update_opponent():
 	for i in range(0,matchData.presences.size()):
 		var p : NakamaRTAPI.UserPresence =  matchData.presences[i]
 		if p.session_id != own_presence.session_id:
-			opponent_name_label.text = p.username
+			var opponent: NakamaAPI.ApiUser = yield(NakamaConnection.get_user_profile_async(p.user_id), "completed")
+			opponent_name = opponent.display_name if opponent.display_name != '' else opponent.username
+			opponent_name_label.text = opponent.display_name
 			opponent_presence_id = p.session_id
-			opp_container.set_name(p.username) ## fixme
+			opp_container.set_name(opponent_name) ## fixme
 
 func _on_match_state(p_state: NakamaRTAPI.MatchData):
 #	print(p_state)
@@ -113,7 +118,9 @@ func _on_match_state(p_state: NakamaRTAPI.MatchData):
 				_update_opponent_state( match_state.current_question, true, match_state )
 			if p_state.op_code == 10:
 				_show_match_summary()
-
+		elif p_state.op_code == 1000: 
+			match_state = VSQuizAPI.VSQuizState.create(VSQuizAPI.new().get_script(), result) 
+			_update_opponent()
 func _show_match_summary():
 	_interpolate_accent_color(Color.purple)
 	_get_winner()
@@ -126,19 +133,19 @@ func _show_match_summary():
 		
 	animation_player.play("GotoMatchSummary")
 
+var match_result_summary
+
 func _get_winner():
 	var result : Dictionary = match_state.result
-	if result == null or !result.has(own_presence.session_id): 
+	if result == null or !result.has("state"): 
 		return null
 	
-	var own_result = result[own_presence.session_id]
+	var _match_result_summary = result["state"]
 	
-	var match_result_summary = {
-		"own_score": 0,
-		"opponent_score": 0, 
-		"state": "draw"
-	}
-	
+	match_result_summary = _match_result_summary
+
+	result_container.set_state(result, own_presence.username, opponent_name_label.text, own_presence.session_id, opponent_presence_id)
+	result_container.play_enter()
 	return match_result_summary
 
 func scroll_to(node: Node):
@@ -159,9 +166,9 @@ func _update_opponent_state(p_q_index: int, p_show_result: bool, p_match_state: 
 var last_idx = -1 
 
 func _update_current_question(idx: int, time_left: float, p_match_state: VSQuizAPI.VSQuizState):
-	question_timer_label.text = "%02d" % floor(time_left)
-	question_timer.value = (time_left / p_match_state.time_limit_questions) * 100.0
-	
+	question_timer_label.text = "%02d" % max(0.0,floor(time_left))
+	var timeleft = (time_left / p_match_state.time_limit_questions) * 100.0
+
 	if idx != last_idx:
 		last_idx = idx
 		var question = p_match_state.questions[idx-1] # lua is 1-indexed 
@@ -175,6 +182,29 @@ func _update_current_question(idx: int, time_left: float, p_match_state: VSQuizA
 		var sector = SectorService.get_sector_data(aspect.bigpoint)		# ew		# ew		# ew		# ew		# ew
 		new_accent_color = sector["sector_color"]
 		_interpolate_accent_color(new_accent_color)
+		tween.stop(question_timer, "value")
+		question_timer.value = timeleft
+		tween.stop(question_timer, "self_modulate")
+		tween.interpolate_property(
+			question_timer,
+			"self_modulate",
+			Color.green,
+			Color.red,
+			p_match_state.time_limit_questions,
+			Tween.TRANS_LINEAR,
+			Tween.EASE_IN_OUT)
+		tween.start()
+	else:
+		tween.stop(question_timer, "value")
+		tween.interpolate_property(
+			question_timer,
+			"value",
+			question_timer.value,
+			timeleft,
+			1.0,
+			Tween.TRANS_LINEAR,
+			Tween.EASE_IN_OUT)
+		tween.start()
 
 func _interpolate_accent_color(p_color): 
 	tween.stop_all()
@@ -204,5 +234,11 @@ func _on_ReadyButton_pressed():
 
 func _notification(what):  
 	if what == MainLoop.NOTIFICATION_WM_GO_BACK_REQUEST: 
-		yield(socket.leave_match_async(matchData.match_id), "completed")
-		GameManager.scene_manager.go_home()
+		_leave_match()
+
+func _leave_match(): 
+	yield(socket.leave_match_async(matchData.match_id), "completed")
+	GameManager.scene_manager.go_home()
+
+func _on_ExitButton_pressed():
+	_leave_match()

@@ -96,7 +96,7 @@ func delete_notifications(notification_ids: Array):
 		return false
 	return true
 
-func get_user():
+func get_user() -> NakamaAPI.ApiUser:
 	if !session: 
 		yield(_reconnect(), "completed")
 
@@ -344,18 +344,15 @@ func sync_player_state(player_state : RTrackingStates):
 	
 	var player_state_dict = player_state.to_dict()
 	_store_dict(player_state_dict, "player_state", can_read, can_write, version )
-#	var objs = []
-#
-#	for key in player_state_dict.keys(): 
-#		var value = player_state_dict[key]
-#		var storage_object = NakamaWriteStorageObject.new("player_state", key, can_read, can_write, JSON.print({key: value}), version)
-##		print(JSON.print(value))
-#		objs.append(storage_object)	
-#
-#	var acks : NakamaAPI.ApiStorageObjectAcks = yield(client.write_storage_objects_async(session, objs), "completed")
-#	if acks.is_exception():
-#		print("An error occured: %s" % acks)
-#		return
-##	print("Successfully stored objects:")
-#	for a in acks.acks:
-#		print("%s" % a)
+
+func update_user_name(p_name: String): 
+	if !session: 
+		yield(_reconnect(), "completed")
+	var result = yield(client.update_account_async(session, null, p_name), "completed")
+
+
+func get_user_profile_async(user_id : String) -> NakamaAPI.ApiUser: 
+	if !session: 
+		yield(_reconnect(), "completed")
+	var users : NakamaAPI.ApiUsers = yield(client.get_users_async(session, [user_id]), "completed")
+	return users.users[0]

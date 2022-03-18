@@ -5,9 +5,13 @@ extends SceneBase
 # var a = 2
 # var b = "text"
 
-onready var timer = $ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/VBoxContainer/MarginContainer/PanelContainer/VBoxContainer/Timer
+onready var timer = $ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/VBoxContainer/PanelContainer/MarginContainer/PanelContainer/VBoxContainer/Timer
 
-onready var queue_timer_label = $ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/VBoxContainer/MarginContainer/PanelContainer/VBoxContainer/time_in_queue
+onready var queue_timer_label = $ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/VBoxContainer/PanelContainer/MarginContainer/PanelContainer/VBoxContainer/time_in_queue
+
+onready var mm_button = $ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/VBoxContainer/PanelContainer/MarginContainer/PanelContainer/MatchMakerStartButton
+
+onready var name_input = $ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/VBoxContainer/NameContainer/MarginContainer/PanelContainer/VBoxContainer/NameInput
 
 var query = "*"
 var min_count = 2 
@@ -23,7 +27,11 @@ var queue_time = 0.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	mm_button.disabled = false 
+	_get_name()
+func search_match(): 
 	GameManager.menu.hide_menu()
+	$AnimationPlayer.play("StartMM")
 	socket = NakamaConnection.socket
 	socket.connect("received_matchmaker_matched", self, "_on_matchmaker_matched")
 	_start_mm()
@@ -67,8 +75,13 @@ func _cancel_mm():
 	return
 
 func _on_CancelButton_pressed():
+	mm_button.disabled = false
 	yield(_cancel_mm(), "completed")
-	GameManager.scene_manager.go_home()
+
+	queue_time = 0.0
+	timer.stop()
+	$AnimationPlayer.play_backwards("StartMM")
+	GameManager.menu.show_menu()
 
 func _on_matchmaker_matched(p_matched : NakamaRTAPI.MatchmakerMatched): 
 	print("Received MatchmakerMatched message: %s" % [p_matched])
@@ -82,3 +95,20 @@ func _on_matchmaker_matched(p_matched : NakamaRTAPI.MatchmakerMatched):
 		return
 	
 	GameManager.scene_manager.push_scene("res://Scenes/VSQuiz.tscn", {"socket": socket, "joined_match": joined_match})
+
+
+func _on_MatchMakerStartButton_pressed():
+
+	
+	mm_button.disabled = true
+	
+	search_match()
+
+
+func _on_UpdateNameButton_pressed():
+	var name = name_input.text
+	var name_changed = yield(NakamaConnection.update_user_name(name), "completed")
+
+func _get_name(): 
+	var user : NakamaAPI.ApiUser = yield(NakamaConnection.get_user(), "completed")
+	name_input.text = user.display_name

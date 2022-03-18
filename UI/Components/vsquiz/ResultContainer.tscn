@@ -1,0 +1,184 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://UI/typography/UI_bigger.tres" type="DynamicFont" id=1]
+[ext_resource path="res://UI/Components/vsquiz/Card.stylebox" type="StyleBox" id=2]
+[ext_resource path="res://UI/Components/vsquiz/MatchResultLabelHolder.tscn" type="PackedScene" id=3]
+[ext_resource path="res://UI/Components/vsquiz/ResultContainer.gd" type="Script" id=5]
+
+[sub_resource type="StyleBoxEmpty" id=1]
+
+[sub_resource type="StyleBoxFlat" id=19]
+content_margin_left = 32.0
+content_margin_right = 32.0
+content_margin_top = 8.0
+content_margin_bottom = 8.0
+bg_color = Color( 0.152941, 0.192157, 0.768627, 1 )
+corner_radius_top_left = 1024
+corner_radius_bottom_left = 1024
+
+[sub_resource type="StyleBoxFlat" id=20]
+content_margin_left = 32.0
+content_margin_right = 32.0
+content_margin_top = 8.0
+content_margin_bottom = 8.0
+bg_color = Color( 0.72549, 0.129412, 0.129412, 1 )
+corner_radius_top_right = 1024
+corner_radius_bottom_right = 1024
+
+[sub_resource type="StyleBoxEmpty" id=21]
+
+[sub_resource type="Animation" id=22]
+resource_name = "Enter"
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_animate_ratio"
+} ]
+}
+
+[node name="ResultContainer" type="PanelContainer"]
+anchor_right = 1.0
+margin_bottom = 298.0
+custom_styles/panel = ExtResource( 2 )
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_left = 32.0
+margin_top = 32.0
+margin_right = 1048.0
+margin_bottom = 266.0
+
+[node name="ResultLabelHolder" parent="VBoxContainer" instance=ExtResource( 3 )]
+anchor_right = 0.0
+margin_right = 1016.0
+custom_styles/panel = SubResource( 1 )
+
+[node name="Ratio" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 82.0
+margin_right = 1016.0
+margin_bottom = 164.0
+custom_constants/separation = -1
+alignment = 1
+
+[node name="YouContainer" type="PanelContainer" parent="VBoxContainer/Ratio"]
+margin_right = 508.0
+margin_bottom = 82.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/panel = SubResource( 19 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Ratio/YouContainer"]
+margin_left = 32.0
+margin_top = 8.0
+margin_right = 476.0
+margin_bottom = 74.0
+rect_pivot_offset = Vector2( -157.112, 90 )
+size_flags_horizontal = 3
+
+[node name="OwnNameLabel" type="Label" parent="VBoxContainer/Ratio/YouContainer/HBoxContainer"]
+margin_right = 444.0
+margin_bottom = 66.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.0
+custom_fonts/font = ExtResource( 1 )
+text = "Du"
+
+[node name="OppContainer" type="PanelContainer" parent="VBoxContainer/Ratio"]
+margin_left = 507.0
+margin_right = 1016.0
+margin_bottom = 82.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/panel = SubResource( 20 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Ratio/OppContainer"]
+margin_left = 32.0
+margin_top = 8.0
+margin_right = 477.0
+margin_bottom = 74.0
+alignment = 2
+
+[node name="OpponentLabel" type="Label" parent="VBoxContainer/Ratio/OppContainer/HBoxContainer"]
+margin_right = 445.0
+margin_bottom = 66.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.0
+custom_fonts/font = ExtResource( 1 )
+text = "test"
+align = 2
+
+[node name="ResultDetails" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 168.0
+margin_right = 1016.0
+margin_bottom = 234.0
+custom_constants/separation = -1
+alignment = 1
+
+[node name="YouContainer" type="PanelContainer" parent="VBoxContainer/ResultDetails"]
+margin_right = 508.0
+margin_bottom = 66.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/panel = SubResource( 21 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/ResultDetails/YouContainer"]
+margin_right = 508.0
+margin_bottom = 66.0
+rect_pivot_offset = Vector2( -157.112, 90 )
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="OwnScoreLabel" type="Label" parent="VBoxContainer/ResultDetails/YouContainer/HBoxContainer"]
+margin_right = 508.0
+margin_bottom = 66.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.0
+custom_colors/font_color = Color( 0.407843, 0.407843, 0.411765, 1 )
+custom_fonts/font = ExtResource( 1 )
+text = "4"
+align = 1
+
+[node name="OppContainer" type="PanelContainer" parent="VBoxContainer/ResultDetails"]
+margin_left = 507.0
+margin_right = 1016.0
+margin_bottom = 66.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/panel = SubResource( 21 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/ResultDetails/OppContainer"]
+margin_right = 509.0
+margin_bottom = 66.0
+alignment = 1
+
+[node name="OpponentScoreLabel" type="Label" parent="VBoxContainer/ResultDetails/OppContainer/HBoxContainer"]
+margin_right = 509.0
+margin_bottom = 66.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.0
+custom_colors/font_color = Color( 0.407843, 0.407843, 0.411765, 1 )
+custom_fonts/font = ExtResource( 1 )
+text = "2"
+align = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Enter = SubResource( 22 )
+
+[node name="Tween" type="Tween" parent="."]

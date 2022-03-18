@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://Scenes/SceneBase.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/VSQuiz.gd" type="Script" id=2]
@@ -12,6 +12,8 @@
 [ext_resource path="res://UI/Components/vsquiz/OppContainer.tscn" type="PackedScene" id=10]
 [ext_resource path="res://UI/Behaviour/Stagger.tscn" type="PackedScene" id=11]
 [ext_resource path="res://UI/Components/vsquiz/QuestionSummary.tscn" type="PackedScene" id=12]
+[ext_resource path="res://UI/typography/UI_Regular.tres" type="DynamicFont" id=13]
+[ext_resource path="res://UI/Components/vsquiz/ResultContainer.tscn" type="PackedScene" id=14]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item; 
@@ -73,7 +75,7 @@ tracks/2/keys = {
 "values": [ false ]
 }
 tracks/3/type = "method"
-tracks/3/path = NodePath("MatchSummary/SummaryContainer/Stagger")
+tracks/3/path = NodePath("MatchSummary/Layout/SummaryContainer/Stagger")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -476,7 +478,7 @@ bg_color = Color( 1, 1, 1, 0.52549 )
 bg_color = Color( 1, 1, 1, 1 )
 
 [sub_resource type="StyleBoxFlat" id=15]
-bg_color = Color( 0, 0, 0, 1 )
+bg_color = Color( 0, 0, 0, 0.419608 )
 
 [sub_resource type="StyleBoxFlat" id=18]
 content_margin_left = 64.0
@@ -651,7 +653,7 @@ valign = 1
 [node name="Questions" type="PanelContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MatchHolder" index="4"]
 visible = false
 margin_right = 1080.0
-margin_bottom = 128.0
+margin_bottom = 978.0
 size_flags_horizontal = 3
 size_flags_vertical = 0
 custom_styles/panel = SubResource( 13 )
@@ -660,16 +662,17 @@ custom_styles/panel = SubResource( 13 )
 visible = false
 margin_top = 128.0
 margin_right = 1080.0
-margin_bottom = 1545.33
+margin_bottom = 978.0
 
 [node name="Timer" type="ProgressBar" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MatchHolder/Questions/VBoxContainer" index="0"]
+self_modulate = Color( 0.0784314, 1, 0, 1 )
 margin_right = 1080.0
 margin_bottom = 84.0
 rect_min_size = Vector2( 0, 84 )
 custom_styles/fg = SubResource( 14 )
 custom_styles/bg = SubResource( 15 )
+step = 0.001
 value = 82.0
-rounded = true
 percent_visible = false
 
 [node name="TimerLabel" type="Label" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MatchHolder/Questions/VBoxContainer/Timer" index="0"]
@@ -708,32 +711,50 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_styles/panel = SubResource( 18 )
 
-[node name="SummaryContainer" type="VBoxContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MatchHolder/MatchSummary" index="0"]
+[node name="Layout" type="VBoxContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MatchHolder/MatchSummary" index="0"]
 margin_left = 64.0
 margin_top = 128.0
 margin_right = 1016.0
 margin_bottom = 1852.0
-custom_constants/separation = 32
+custom_constants/separation = 64
 
-[node name="Stagger" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MatchHolder/MatchSummary/SummaryContainer" index="0" instance=ExtResource( 11 )]
-delay = 1.0
-start_delay = 0.8
-
-[node name="QuestionSummary" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MatchHolder/MatchSummary/SummaryContainer" index="1" instance=ExtResource( 12 )]
+[node name="ResultContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MatchHolder/MatchSummary/Layout" index="0" instance=ExtResource( 14 )]
 anchor_right = 0.0
 margin_right = 952.0
 
-[node name="QuestionSummary2" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MatchHolder/MatchSummary/SummaryContainer" index="2" instance=ExtResource( 12 )]
+[node name="SummaryContainer" type="VBoxContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MatchHolder/MatchSummary/Layout" index="1"]
+margin_top = 362.0
+margin_right = 952.0
+margin_bottom = 1074.0
+custom_constants/separation = 32
+
+[node name="Stagger" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MatchHolder/MatchSummary/Layout/SummaryContainer" index="0" instance=ExtResource( 11 )]
+delay = 1.0
+start_delay = 0.8
+
+[node name="QuestionSummary" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MatchHolder/MatchSummary/Layout/SummaryContainer" index="1" instance=ExtResource( 12 )]
+anchor_right = 0.0
+margin_right = 952.0
+
+[node name="QuestionSummary2" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MatchHolder/MatchSummary/Layout/SummaryContainer" index="2" instance=ExtResource( 12 )]
 anchor_right = 0.0
 margin_top = 248.0
 margin_right = 952.0
 margin_bottom = 464.0
 
-[node name="QuestionSummary3" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MatchHolder/MatchSummary/SummaryContainer" index="3" instance=ExtResource( 12 )]
+[node name="QuestionSummary3" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MatchHolder/MatchSummary/Layout/SummaryContainer" index="3" instance=ExtResource( 12 )]
 anchor_right = 0.0
 margin_top = 496.0
 margin_right = 952.0
 margin_bottom = 712.0
+
+[node name="ExitButton" type="Button" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MatchHolder/MatchSummary/Layout" index="2"]
+margin_top = 1675.0
+margin_right = 952.0
+margin_bottom = 1724.0
+size_flags_vertical = 10
+custom_fonts/font = ExtResource( 13 )
+text = "Verlassen"
 
 [node name="HeaderBG" parent="ContentContainer/Content" index="1"]
 visible = false
@@ -742,3 +763,4 @@ visible = false
 visible = false
 
 [connection signal="pressed" from="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MatchHolder/Lobby/VBoxContainer/ReadyButton" to="." method="_on_ReadyButton_pressed"]
+[connection signal="pressed" from="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/MatchHolder/MatchSummary/Layout/ExitButton" to="." method="_on_ExitButton_pressed"]

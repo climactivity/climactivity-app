@@ -26,7 +26,7 @@ func set_state(p_index : int, p_match_state : VSQuizAPI.VSQuizState, p_own_sessi
 	_set_indicator(opponent_state_indicator, answers, p_opponent_session_id)
 
 func _set_question_details(p_question: VSQuizAPI.VSQuestion, p_index):
-	heading_label.text = "Frage %d" % p_index
+	heading_label.text = "Frage %d" % (p_index + 1)
 
 func _set_indicator(p_indicator, p_answers, p_session_id ):
 	if p_answers.has(p_session_id): 
