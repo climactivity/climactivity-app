@@ -144,7 +144,7 @@ func _get_winner():
 	
 	match_result_summary = _match_result_summary
 
-	result_container.set_state(result, own_presence.username, opponent_name_label.text, own_presence.session_id, opponent_presence_id)
+	result_container.set_state(result, "Du", opponent_name, own_presence.session_id, opponent_presence_id)
 	result_container.play_enter()
 	return match_result_summary
 
