@@ -352,7 +352,7 @@ boot_splash/fullsize=false
 boot_splash/bg_color=Color( 1, 1, 1, 1 )
 config/icon="res://Assets/BG/cyIcon.png"
 config/quit_on_go_back=false
-config/version="1.75 (1)"
+config/version="1.75 (2)"
 
 [autoload]
 
@@ -363,7 +363,6 @@ Util="*res://Util.gd"
 Api="*res://Network/Api.tscn"
 GameManager="*res://GameManager.gd"
 PSS="*res://Services/PlayerStateSyncronizationService.gd"
-PlayerController="*res://PlayerController.gd"
 SectorService="*res://Services/SectorService.gd"
 AspectTrackingService="*res://Services/AspectTrackingService.gd"
 TreeTemplateFactory="*res://ForestScene3d/TreeTemplates/TreeTemplateFactory.tscn"
