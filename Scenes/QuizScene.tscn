@@ -631,7 +631,6 @@ margin_bottom = 1152.0
 rect_rotation = 0.0
 
 [node name="Loading" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ContentHolder" index="1" instance=ExtResource( 5 )]
-visible = false
 margin_bottom = 1152.0
 
 [node name="Panel" type="Panel" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/ContentHolder/Loading" index="0"]

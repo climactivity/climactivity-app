@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://Scenes/SceneBase.tscn" type="PackedScene" id=1]
 [ext_resource path="res://MatchMakingScene.gd" type="Script" id=2]
@@ -11,6 +11,14 @@
 [ext_resource path="res://UI/typography/Content_Regular.tres" type="DynamicFont" id=9]
 [ext_resource path="res://UI/typography/Content_Bold.tres" type="DynamicFont" id=10]
 [ext_resource path="res://UI/Components/vsquiz/button_primary_ok_hover.tres" type="StyleBox" id=11]
+[ext_resource path="res://UI/theme/Floating_Button/Floating_Button_Pressed.tres" type="StyleBox" id=12]
+[ext_resource path="res://UI/theme/Floating_Button/Floating_Button_Disabled.tres" type="StyleBox" id=13]
+[ext_resource path="res://UI/Components/text_input_readonly.tres" type="StyleBox" id=14]
+[ext_resource path="res://UI/theme/Floating_Button/Floating_Button_Focus.tres" type="StyleBox" id=15]
+[ext_resource path="res://UI/theme/Floating_Button/Floating_Button_Normal.tres" type="StyleBox" id=16]
+[ext_resource path="res://UI/Components/text_input_normal.tres" type="StyleBox" id=17]
+[ext_resource path="res://UI/theme/Floating_Button/Floating_Button_Hover.tres" type="StyleBox" id=18]
+[ext_resource path="res://UI/Components/text_input_focus.tres" type="StyleBox" id=19]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item; 
@@ -36,8 +44,6 @@ shader_param/gradient = SubResource( 3 )
 [sub_resource type="StyleBoxEmpty" id=7]
 
 [sub_resource type="StyleBoxEmpty" id=5]
-
-[sub_resource type="StyleBoxEmpty" id=8]
 
 [sub_resource type="Animation" id=9]
 length = 0.001
@@ -103,16 +109,16 @@ screen_title = "Finding Match"
 [node name="VBoxContainer" type="VBoxContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain" index="1"]
 margin_top = 378.0
 margin_right = 1080.0
-margin_bottom = 1466.0
+margin_bottom = 1460.0
 
 [node name="NameContainer" type="PanelContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/VBoxContainer" index="0"]
 margin_right = 1080.0
-margin_bottom = 605.0
+margin_bottom = 599.0
 custom_styles/panel = SubResource( 7 )
 
 [node name="MarginContainer" type="MarginContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/VBoxContainer/NameContainer" index="0"]
 margin_right = 1080.0
-margin_bottom = 605.0
+margin_bottom = 599.0
 custom_constants/margin_right = 64
 custom_constants/margin_top = 64
 custom_constants/margin_left = 64
@@ -122,14 +128,14 @@ custom_constants/margin_bottom = 64
 margin_left = 64.0
 margin_top = 64.0
 margin_right = 1016.0
-margin_bottom = 541.0
+margin_bottom = 535.0
 custom_styles/panel = ExtResource( 5 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/VBoxContainer/NameContainer/MarginContainer/PanelContainer" index="0"]
 margin_left = 32.0
 margin_top = 32.0
 margin_right = 920.0
-margin_bottom = 445.0
+margin_bottom = 439.0
 
 [node name="NameLabel" type="RichTextLabel" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/VBoxContainer/NameContainer/MarginContainer/PanelContainer/VBoxContainer" index="0"]
 margin_right = 888.0
@@ -139,7 +145,7 @@ custom_colors/default_color = Color( 0.411765, 0.411765, 0.407843, 1 )
 custom_fonts/normal_font = ExtResource( 4 )
 bbcode_enabled = true
 bbcode_text = "MP_Name"
-text = "MP_Name"
+text = "Anzeigename"
 fit_content_height = true
 
 [node name="NameDescriptionLabel" type="RichTextLabel" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/VBoxContainer/NameContainer/MarginContainer/PanelContainer/VBoxContainer" index="1"]
@@ -151,7 +157,7 @@ custom_colors/default_color = Color( 0.411765, 0.411765, 0.407843, 1 )
 custom_fonts/normal_font = ExtResource( 3 )
 bbcode_enabled = true
 bbcode_text = "so wirst du anderen Spieler:innen angezeigt, bitte Teste nicht den bad words filter :( "
-text = "so wirst du anderen Spieler:innen angezeigt, bitte Teste nicht den bad words filter :( "
+text = "Andere Spieler:innen sehen diesen Namen, wenn sie mit dir spielen "
 fit_content_height = true
 
 [node name="HSeparator2" type="HSeparator" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/VBoxContainer/NameContainer/MarginContainer/PanelContainer/VBoxContainer" index="2"]
@@ -168,22 +174,27 @@ __meta__ = {
 [node name="NameInput" type="LineEdit" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/VBoxContainer/NameContainer/MarginContainer/PanelContainer/VBoxContainer" index="3"]
 margin_top = 199.0
 margin_right = 888.0
-margin_bottom = 279.0
+margin_bottom = 273.0
+custom_colors/cursor_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 9 )
+custom_styles/read_only = ExtResource( 14 )
+custom_styles/focus = ExtResource( 19 )
+custom_styles/normal = ExtResource( 17 )
 text = "asdasdasdasdasd"
 
 [node name="HSeparator" type="HSeparator" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/VBoxContainer/NameContainer/MarginContainer/PanelContainer/VBoxContainer" index="4"]
-margin_top = 283.0
+margin_top = 277.0
 margin_right = 888.0
-margin_bottom = 315.0
+margin_bottom = 309.0
 mouse_filter = 1
 custom_constants/separation = 32
 custom_styles/separator = SubResource( 5 )
 
 [node name="Actions" type="HBoxContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/VBoxContainer/NameContainer/MarginContainer/PanelContainer/VBoxContainer" index="5"]
-margin_top = 319.0
+margin_top = 313.0
 margin_right = 888.0
-margin_bottom = 413.0
+margin_bottom = 407.0
 alignment = 2
 
 [node name="UpdateNameButton" type="Button" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/VBoxContainer/NameContainer/MarginContainer/PanelContainer/VBoxContainer/Actions" index="0"]
@@ -199,9 +210,9 @@ custom_styles/normal = ExtResource( 8 )
 text = "Speichern"
 
 [node name="PanelContainer" type="PanelContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/VBoxContainer" index="1"]
-margin_top = 609.0
+margin_top = 603.0
 margin_right = 1080.0
-margin_bottom = 1088.0
+margin_bottom = 1082.0
 custom_styles/panel = SubResource( 7 )
 
 [node name="MarginContainer" type="MarginContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/VBoxContainer/PanelContainer" index="0"]
@@ -226,7 +237,11 @@ margin_right = 920.0
 margin_bottom = 319.0
 rect_min_size = Vector2( 0, 287 )
 custom_fonts/font = ExtResource( 4 )
-custom_styles/hover = SubResource( 8 )
+custom_styles/hover = ExtResource( 18 )
+custom_styles/pressed = ExtResource( 12 )
+custom_styles/focus = ExtResource( 15 )
+custom_styles/disabled = ExtResource( 13 )
+custom_styles/normal = ExtResource( 16 )
 text = "Match suchen"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ContentContainer/Content/VBoxContainer/MarginContainer/ScrollContainer/ContentMain/VBoxContainer/PanelContainer/MarginContainer/PanelContainer" index="1"]

@@ -679,6 +679,7 @@ mesh = SubResource( 14 )
 material = SubResource( 15 )
 
 [node name="Background" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.808126, 0 )
 script = ExtResource( 6 )
 should_move = true
 parallax2_factor = 1.0

@@ -202,7 +202,7 @@ margin_left = 547.0
 margin_right = 716.0
 primary_color = Color( 0.988235, 0.988235, 0.988235, 1 )
 icon = ExtResource( 1 )
-menu_label = "Matchmaking"
+menu_label = "Klimaquiz"
 
 [node name="NetworkButton" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer" instance=ExtResource( 4 )]
 visible = false
